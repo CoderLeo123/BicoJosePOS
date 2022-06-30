@@ -1,11 +1,11 @@
 namespace Capstone
 {
-    public partial class Form1 : Form
+    public partial class frmAdmin : Form
     {
        
         Boolean isCollapsed1, isCollapsed2, isCollapsed3 = true;
         
-        public Form1()
+        public frmAdmin()
         {
             InitializeComponent();
         }
@@ -170,17 +170,32 @@ namespace Capstone
 
         private void btnProd_Click(object sender, EventArgs e)
         {
-            
+            frmProductsList frm = new frmProductsList();
+            frm.TopLevel = false;
+            panelLoad.Controls.Clear();
+            panelLoad.Controls.Add(frm);
+            frm.BringToFront();
+            frm.Show();
         }
 
         private void btnItems_Click(object sender, EventArgs e)
         {
-            
+            frmItemsList frm = new frmItemsList();
+            frm.TopLevel = false;
+            panelLoad.Controls.Clear();
+            panelLoad.Controls.Add(frm);
+            frm.BringToFront();
+            frm.Show();
         }
 
         private void btnServices_Click(object sender, EventArgs e)
         {
-            
+            frmServiceList frm = new frmServiceList();
+            frm.TopLevel = false;
+            panelLoad.Controls.Clear();
+            panelLoad.Controls.Add(frm);
+            frm.BringToFront();
+            frm.Show();
         }
 
         private void btnStockDel_Click(object sender, EventArgs e)
@@ -211,6 +226,11 @@ namespace Capstone
         {
             btnCollapsed();
             timerStart();
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
