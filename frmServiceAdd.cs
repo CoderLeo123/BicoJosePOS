@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Capstone
 {
-    public partial class frmProductAdd : Form
+    public partial class frmServiceAdd : Form
     {
-        public frmProductAdd()
+        public frmServiceAdd()
         {
             InitializeComponent();
         }
@@ -21,28 +21,30 @@ namespace Capstone
         {
 
         }
-        public void Clear()
-        {
-            btnSave.Enabled = true;
-            btnUpdate.Enabled = false;
-            txtAddProd.Clear();
-            txtAddProd.Focus();
-            
-        }
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Record has been successfully saved.");
-            Clear();
-        }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Dispose();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Dispose();
+        }
+        public void Clear()
+        {
+            btnSave.Enabled = true;
+            btnUpdate.Enabled = false;
+            txtServName.Clear();
+            txtServDesc.Clear();
+            txtServPrice.Clear();
+            txtServName.Focus();
+
+        }
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Record has been successfully saved.");
+            Clear();
         }
     }
 }
