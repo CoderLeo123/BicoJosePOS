@@ -19,6 +19,7 @@ namespace Capstone
             {
                 dataGridView1.Rows.Add(1, "1", "Brand 1");
             }
+
         }
     }
 }

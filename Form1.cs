@@ -154,7 +154,7 @@ namespace Capstone
 
         private void button25_Click(object sender, EventArgs e)
         {//btnPayStatus
-            
+             
         }
 
         private void btnOrderStatus_Click(object sender, EventArgs e)

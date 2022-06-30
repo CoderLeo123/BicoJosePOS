@@ -60,6 +60,7 @@
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.timerDrpBtnPayment = new System.Windows.Forms.Timer(this.components);
             this.timerDrpBtnSales = new System.Windows.Forms.Timer(this.components);
+            this.button1 = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
             this.dropPanelSales.SuspendLayout();
@@ -538,12 +539,22 @@
             this.timerDrpBtnSales.Interval = 15;
             this.timerDrpBtnSales.Tick += new System.EventHandler(this.timerDrpBtnSales_Tick);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(630, 241);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(429, 183);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1798, 998);
             this.ControlBox = false;
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -593,5 +604,6 @@
         private Button dropBtnPayment;
         private Button btnServices;
         private Button btnInventoryReport;
+        private Button button1;
     }
 }
