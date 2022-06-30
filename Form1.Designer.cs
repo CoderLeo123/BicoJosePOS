@@ -1,6 +1,6 @@
 ﻿namespace Capstone
 {
-    partial class Form1
+    partial class frmAdmin
     {
         /// <summary>
         ///  Required designer variable.
@@ -60,7 +60,7 @@
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.timerDrpBtnPayment = new System.Windows.Forms.Timer(this.components);
             this.timerDrpBtnSales = new System.Windows.Forms.Timer(this.components);
-            this.button1 = new System.Windows.Forms.Button();
+            this.panelLoad = new System.Windows.Forms.Panel();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
             this.dropPanelSales.SuspendLayout();
@@ -539,26 +539,25 @@
             this.timerDrpBtnSales.Interval = 15;
             this.timerDrpBtnSales.Tick += new System.EventHandler(this.timerDrpBtnSales_Tick);
             // 
-            // button1
+            // panelLoad
             // 
-            this.button1.Location = new System.Drawing.Point(630, 241);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(429, 183);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.panelLoad.Location = new System.Drawing.Point(437, 56);
+            this.panelLoad.Name = "panelLoad";
+            this.panelLoad.Size = new System.Drawing.Size(1349, 930);
+            this.panelLoad.TabIndex = 2;
+            this.panelLoad.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
-            // Form1
+            // frmAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1798, 998);
             this.ControlBox = false;
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.panelLoad);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "Form1";
+            this.Name = "frmAdmin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel2.ResumeLayout(false);
@@ -604,6 +603,6 @@
         private Button dropBtnPayment;
         private Button btnServices;
         private Button btnInventoryReport;
-        private Button button1;
+        private Panel panelLoad;
     }
 }
