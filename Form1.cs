@@ -172,6 +172,7 @@ namespace Capstone
         {
             frmProductsList frm = new frmProductsList();
             frm.TopLevel = false;
+            panelLoad.Controls.Clear();
             panelLoad.Controls.Add(frm);
             frm.BringToFront();
             frm.Show();
@@ -181,6 +182,7 @@ namespace Capstone
         {
             frmItemsList frm = new frmItemsList();
             frm.TopLevel = false;
+            panelLoad.Controls.Clear();
             panelLoad.Controls.Add(frm);
             frm.BringToFront();
             frm.Show();

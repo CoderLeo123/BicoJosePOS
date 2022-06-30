@@ -15,10 +15,9 @@ namespace Capstone
         public frmProductsList()
         {
             InitializeComponent();
-
             for (int i = 0; i <= 10; i++)
             {
-                dataGridViewProducts.Rows.Add(1, "1", "Brand 1");
+                dataGridViewProducts.Rows.Add(1, "Brand 1");
             }
         }
 
@@ -35,7 +34,12 @@ namespace Capstone
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Dispose();
+        }
+
+        private void dataGridViewProducts_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
