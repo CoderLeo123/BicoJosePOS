@@ -190,12 +190,7 @@ namespace Capstone
 
         private void btnServices_Click(object sender, EventArgs e)
         {
-            frmServiceList frm = new frmServiceList();
-            frm.TopLevel = false;
-            panelLoad.Controls.Clear();
-            panelLoad.Controls.Add(frm);
-            frm.BringToFront();
-            frm.Show();
+            
         }
 
         private void btnStockDel_Click(object sender, EventArgs e)
