@@ -164,7 +164,12 @@ namespace Capstone
 
         private void btnOrderStatus_Click(object sender, EventArgs e)
         {
-            
+            frmOrderStatus frm = new frmOrderStatus();
+            frm.TopLevel = false;
+            panelLoad.Controls.Clear();
+            panelLoad.Controls.Add(frm);
+            frm.BringToFront();
+            frm.Show();
         }
 
         private void btnTranscHist_Click(object sender, EventArgs e)
