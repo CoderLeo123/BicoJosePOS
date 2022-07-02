@@ -174,6 +174,12 @@ namespace Capstone
 
         private void btnTranscHist_Click(object sender, EventArgs e)
         {
+            frmTransactionHistory frm = new frmTransactionHistory();
+            frm.TopLevel = false;
+            panelLoad.Controls.Clear();
+            panelLoad.Controls.Add(frm);
+            frm.BringToFront();
+            frm.Show();
             btnCollapsed();
             timerStart();
         }
