@@ -31,8 +31,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnAddFrame = new System.Windows.Forms.Button();
+            this.btnAddLense = new System.Windows.Forms.Button();
+            this.btnAddAccessories = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dataGridViewItems = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,7 +47,6 @@
             this.EDIT = new System.Windows.Forms.DataGridViewImageColumn();
             this.DELETE = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewItems)).BeginInit();
             this.SuspendLayout();
@@ -53,15 +54,65 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.LightBlue;
+            this.panel1.Controls.Add(this.btnAddFrame);
+            this.panel1.Controls.Add(this.btnAddLense);
+            this.panel1.Controls.Add(this.btnAddAccessories);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1349, 57);
+            this.panel1.Size = new System.Drawing.Size(1315, 71);
             this.panel1.TabIndex = 1;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint_1);
+            // 
+            // btnAddFrame
+            // 
+            this.btnAddFrame.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnAddFrame.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddFrame.FlatAppearance.BorderSize = 0;
+            this.btnAddFrame.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddFrame.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnAddFrame.ForeColor = System.Drawing.Color.White;
+            this.btnAddFrame.Location = new System.Drawing.Point(924, 12);
+            this.btnAddFrame.Name = "btnAddFrame";
+            this.btnAddFrame.Size = new System.Drawing.Size(153, 49);
+            this.btnAddFrame.TabIndex = 23;
+            this.btnAddFrame.Text = "Frame";
+            this.btnAddFrame.UseVisualStyleBackColor = false;
+            this.btnAddFrame.Click += new System.EventHandler(this.btnAddFrame_Click);
+            // 
+            // btnAddLense
+            // 
+            this.btnAddLense.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnAddLense.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddLense.FlatAppearance.BorderSize = 0;
+            this.btnAddLense.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddLense.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnAddLense.ForeColor = System.Drawing.Color.White;
+            this.btnAddLense.Location = new System.Drawing.Point(754, 12);
+            this.btnAddLense.Name = "btnAddLense";
+            this.btnAddLense.Size = new System.Drawing.Size(153, 49);
+            this.btnAddLense.TabIndex = 22;
+            this.btnAddLense.Text = "Lense";
+            this.btnAddLense.UseVisualStyleBackColor = false;
+            this.btnAddLense.Click += new System.EventHandler(this.btnAddLense_Click);
+            // 
+            // btnAddAccessories
+            // 
+            this.btnAddAccessories.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnAddAccessories.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddAccessories.FlatAppearance.BorderSize = 0;
+            this.btnAddAccessories.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddAccessories.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnAddAccessories.ForeColor = System.Drawing.Color.White;
+            this.btnAddAccessories.Location = new System.Drawing.Point(1093, 12);
+            this.btnAddAccessories.Name = "btnAddAccessories";
+            this.btnAddAccessories.Size = new System.Drawing.Size(153, 49);
+            this.btnAddAccessories.TabIndex = 21;
+            this.btnAddAccessories.Text = "Accessories";
+            this.btnAddAccessories.UseVisualStyleBackColor = false;
+            this.btnAddAccessories.Click += new System.EventHandler(this.btnAddAccessories_Click);
             // 
             // label1
             // 
@@ -75,26 +126,13 @@
             this.label1.Text = "Items List";
             this.label1.Click += new System.EventHandler(this.label1_Click_1);
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.BackgroundImage = global::Capstone.Properties.Resources.AddNew;
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox2.Location = new System.Drawing.Point(1243, 9);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(39, 38);
-            this.pictureBox2.TabIndex = 3;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click_1);
-            // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.BackgroundImage = global::Capstone.Properties.Resources.CloseTab;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox1.Location = new System.Drawing.Point(1297, 9);
+            this.pictureBox1.Location = new System.Drawing.Point(1263, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Padding = new System.Windows.Forms.Padding(3);
             this.pictureBox1.Size = new System.Drawing.Size(40, 38);
@@ -139,14 +177,14 @@
             this.dataGridViewItems.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewItems.EnableHeadersVisualStyles = false;
             this.dataGridViewItems.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.dataGridViewItems.Location = new System.Drawing.Point(0, 57);
+            this.dataGridViewItems.Location = new System.Drawing.Point(0, 71);
             this.dataGridViewItems.Name = "dataGridViewItems";
             this.dataGridViewItems.RowHeadersVisible = false;
             this.dataGridViewItems.RowHeadersWidth = 51;
             this.dataGridViewItems.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridViewItems.RowTemplate.Height = 29;
             this.dataGridViewItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewItems.Size = new System.Drawing.Size(1349, 873);
+            this.dataGridViewItems.Size = new System.Drawing.Size(1315, 859);
             this.dataGridViewItems.TabIndex = 2;
             this.dataGridViewItems.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -224,7 +262,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1349, 930);
+            this.ClientSize = new System.Drawing.Size(1315, 930);
             this.ControlBox = false;
             this.Controls.Add(this.dataGridViewItems);
             this.Controls.Add(this.panel1);
@@ -234,7 +272,6 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewItems)).EndInit();
             this.ResumeLayout(false);
@@ -246,7 +283,6 @@
         private Panel panel1;
         private DataGridView dataGridViewItems;
         private Label label1;
-        private PictureBox pictureBox2;
         private PictureBox pictureBox1;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn ID;
@@ -257,5 +293,8 @@
         private DataGridViewTextBoxColumn QUANTITY;
         private DataGridViewImageColumn EDIT;
         private DataGridViewImageColumn DELETE;
+        private Button btnAddAccessories;
+        private Button btnAddFrame;
+        private Button btnAddLense;
     }
 }

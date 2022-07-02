@@ -154,7 +154,12 @@ namespace Capstone
 
         private void button25_Click(object sender, EventArgs e)
         {//btnPayStatus
-             
+            frmPaymentStatus frm = new frmPaymentStatus();
+            frm.TopLevel = false;
+            panelLoad.Controls.Clear();
+            panelLoad.Controls.Add(frm);
+            frm.BringToFront();
+            frm.Show();
         }
 
         private void btnOrderStatus_Click(object sender, EventArgs e)
