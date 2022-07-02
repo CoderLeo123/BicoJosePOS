@@ -41,5 +41,11 @@ namespace Capstone
         {
 
         }
+
+        private void btnAddService_Click(object sender, EventArgs e)
+        {
+            frmServiceAdd frm = new frmServiceAdd();
+            frm.ShowDialog();
+        }
     }
 }

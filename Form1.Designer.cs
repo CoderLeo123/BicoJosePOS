@@ -75,7 +75,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1798, 50);
+            this.panel1.Size = new System.Drawing.Size(1698, 50);
             this.panel1.TabIndex = 0;
             // 
             // panel2
@@ -88,7 +88,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 50);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(431, 948);
+            this.panel2.Size = new System.Drawing.Size(365, 948);
             this.panel2.TabIndex = 1;
             // 
             // panel4
@@ -104,9 +104,9 @@
             this.panel4.Controls.Add(this.dropPanelPayment);
             this.panel4.Controls.Add(this.btnPatientR);
             this.panel4.Controls.Add(this.btnDashboard);
-            this.panel4.Location = new System.Drawing.Point(31, 229);
+            this.panel4.Location = new System.Drawing.Point(12, 230);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(366, 912);
+            this.panel4.Size = new System.Drawing.Size(334, 912);
             this.panel4.TabIndex = 6;
             // 
             // btnLogout
@@ -121,7 +121,7 @@
             this.btnLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLogout.Location = new System.Drawing.Point(0, 881);
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(366, 52);
+            this.btnLogout.Size = new System.Drawing.Size(334, 52);
             this.btnLogout.TabIndex = 17;
             this.btnLogout.Text = "Logout";
             this.btnLogout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -140,7 +140,7 @@
             this.btnUserSettings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnUserSettings.Location = new System.Drawing.Point(0, 829);
             this.btnUserSettings.Name = "btnUserSettings";
-            this.btnUserSettings.Size = new System.Drawing.Size(366, 52);
+            this.btnUserSettings.Size = new System.Drawing.Size(334, 52);
             this.btnUserSettings.TabIndex = 16;
             this.btnUserSettings.Text = "UserSettings";
             this.btnUserSettings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -159,7 +159,7 @@
             this.btnBackupArch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnBackupArch.Location = new System.Drawing.Point(0, 777);
             this.btnBackupArch.Name = "btnBackupArch";
-            this.btnBackupArch.Size = new System.Drawing.Size(366, 52);
+            this.btnBackupArch.Size = new System.Drawing.Size(334, 52);
             this.btnBackupArch.TabIndex = 15;
             this.btnBackupArch.Text = "Backup and Archive";
             this.btnBackupArch.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -248,7 +248,7 @@
             this.btnInventory.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnInventory.Location = new System.Drawing.Point(0, 570);
             this.btnInventory.Name = "btnInventory";
-            this.btnInventory.Size = new System.Drawing.Size(366, 52);
+            this.btnInventory.Size = new System.Drawing.Size(334, 52);
             this.btnInventory.TabIndex = 13;
             this.btnInventory.Text = "Inventory";
             this.btnInventory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -267,7 +267,7 @@
             this.btnStockDel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnStockDel.Location = new System.Drawing.Point(0, 518);
             this.btnStockDel.Name = "btnStockDel";
-            this.btnStockDel.Size = new System.Drawing.Size(366, 52);
+            this.btnStockDel.Size = new System.Drawing.Size(334, 52);
             this.btnStockDel.TabIndex = 12;
             this.btnStockDel.Text = "Stock Delivery";
             this.btnStockDel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -376,7 +376,7 @@
             this.btnTranscHist.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnTranscHist.Location = new System.Drawing.Point(0, 259);
             this.btnTranscHist.Name = "btnTranscHist";
-            this.btnTranscHist.Size = new System.Drawing.Size(366, 52);
+            this.btnTranscHist.Size = new System.Drawing.Size(334, 52);
             this.btnTranscHist.TabIndex = 8;
             this.btnTranscHist.Text = "Transaction History";
             this.btnTranscHist.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -465,7 +465,7 @@
             this.btnPatientR.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnPatientR.Location = new System.Drawing.Point(0, 52);
             this.btnPatientR.Name = "btnPatientR";
-            this.btnPatientR.Size = new System.Drawing.Size(366, 52);
+            this.btnPatientR.Size = new System.Drawing.Size(334, 52);
             this.btnPatientR.TabIndex = 0;
             this.btnPatientR.Text = "Patient\'s Record";
             this.btnPatientR.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -484,7 +484,7 @@
             this.btnDashboard.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDashboard.Location = new System.Drawing.Point(0, 0);
             this.btnDashboard.Name = "btnDashboard";
-            this.btnDashboard.Size = new System.Drawing.Size(366, 52);
+            this.btnDashboard.Size = new System.Drawing.Size(334, 52);
             this.btnDashboard.TabIndex = 0;
             this.btnDashboard.Text = "Dashboard";
             this.btnDashboard.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -495,9 +495,9 @@
             // 
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(0, 189);
+            this.label1.Location = new System.Drawing.Point(31, 192);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(425, 51);
+            this.label1.Size = new System.Drawing.Size(291, 51);
             this.label1.TabIndex = 2;
             this.label1.Text = "Administrator";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -507,9 +507,9 @@
             this.lblName.BackColor = System.Drawing.Color.Transparent;
             this.lblName.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblName.ForeColor = System.Drawing.Color.Aqua;
-            this.lblName.Location = new System.Drawing.Point(0, 152);
+            this.lblName.Location = new System.Drawing.Point(31, 154);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(425, 51);
+            this.lblName.Size = new System.Drawing.Size(291, 51);
             this.lblName.TabIndex = 1;
             this.lblName.Text = "Username";
             this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -517,7 +517,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Capstone.Properties.Resources.User;
-            this.pictureBox1.Location = new System.Drawing.Point(140, 24);
+            this.pictureBox1.Location = new System.Drawing.Point(107, 26);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(138, 125);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -541,9 +541,9 @@
             // 
             // panelLoad
             // 
-            this.panelLoad.Location = new System.Drawing.Point(437, 56);
+            this.panelLoad.Location = new System.Drawing.Point(371, 56);
             this.panelLoad.Name = "panelLoad";
-            this.panelLoad.Size = new System.Drawing.Size(1349, 930);
+            this.panelLoad.Size = new System.Drawing.Size(1315, 930);
             this.panelLoad.TabIndex = 2;
             this.panelLoad.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
@@ -551,7 +551,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1798, 998);
+            this.ClientSize = new System.Drawing.Size(1698, 998);
             this.ControlBox = false;
             this.Controls.Add(this.panelLoad);
             this.Controls.Add(this.panel2);

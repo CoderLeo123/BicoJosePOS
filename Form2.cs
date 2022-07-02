@@ -59,12 +59,30 @@ namespace Capstone
 
         private void pictureBox1_Click_1(object sender, EventArgs e)
         {
-            this.Close();
+            this.Dispose();
         }
 
         private void panel1_Paint_1(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void btnAddFrame_Click(object sender, EventArgs e)
+        {
+            frmAddFrame frm = new frmAddFrame();
+            frm.ShowDialog();
+        }
+
+        private void btnAddLense_Click(object sender, EventArgs e)
+        {
+            frmAddLense frm = new frmAddLense();
+            frm.ShowDialog();
+        }
+
+        private void btnAddAccessories_Click(object sender, EventArgs e)
+        {
+            frmAddAccessories frm = new frmAddAccessories();
+            frm.ShowDialog();
         }
     }
 }
