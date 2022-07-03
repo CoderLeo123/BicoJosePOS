@@ -148,6 +148,12 @@ namespace Capstone
 
         private void btnPatientR_Click(object sender, EventArgs e)
         {
+            frmPatientRecord frm = new frmPatientRecord();
+            frm.TopLevel = false;
+            panelLoad.Controls.Clear();
+            panelLoad.Controls.Add(frm);
+            frm.BringToFront();
+            frm.Show();
             btnCollapsed();
             timerStart();
         }
