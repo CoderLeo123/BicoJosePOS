@@ -26,6 +26,7 @@ namespace Capstone
             btnSave.Enabled = true;
             btnUpdate.Enabled = false;
             txtAddProd.Clear();
+            txtType.Clear();
             txtAddProd.Focus();
             
         }
@@ -43,6 +44,11 @@ namespace Capstone
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Dispose();
+        }
+
+        private void txtAddProd_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

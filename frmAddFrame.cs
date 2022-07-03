@@ -41,10 +41,9 @@ namespace Capstone
         {
             btnSaveFrame.Enabled = true;
             btnUpdateFrame.Enabled = false;
-            txtFrameMaterial.Clear();
-            txtFrameShapes.Clear();
-            txtFrameTypes.Clear();
-            txtFrameTypes.Focus();
+            txtPriceFrame.Clear();
+            txtNameFrame.Clear();
+            txtNameFrame.Focus();
 
         }
         private void btnSaveFrame_Click(object sender, EventArgs e)
@@ -61,6 +60,11 @@ namespace Capstone
         private void btnCloseFrame_Click(object sender, EventArgs e)
         {
             this.Dispose();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
