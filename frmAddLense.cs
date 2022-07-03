@@ -20,9 +20,8 @@ namespace Capstone
         {
             btnSaveLense.Enabled = true;
             btnUpdateLense.Enabled = false;
-            txtLenseTypes.Clear();
-            txtFeature.Clear();
-            txtLenseTypes.Focus();
+            txtPriceLense.Clear();
+            txtPriceLense.Focus();
 
         }
         private void btnSaveLense_Click(object sender, EventArgs e)

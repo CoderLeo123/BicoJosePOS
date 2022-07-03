@@ -36,7 +36,7 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtType = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
@@ -96,6 +96,7 @@
             this.txtAddProd.Name = "txtAddProd";
             this.txtAddProd.Size = new System.Drawing.Size(582, 38);
             this.txtAddProd.TabIndex = 5;
+            this.txtAddProd.TextChanged += new System.EventHandler(this.txtAddProd_TextChanged);
             // 
             // btnSave
             // 
@@ -145,13 +146,13 @@
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // textBox1
+            // txtType
             // 
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox1.Location = new System.Drawing.Point(207, 115);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(582, 38);
-            this.textBox1.TabIndex = 10;
+            this.txtType.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtType.Location = new System.Drawing.Point(207, 115);
+            this.txtType.Name = "txtType";
+            this.txtType.Size = new System.Drawing.Size(582, 38);
+            this.txtType.TabIndex = 10;
             // 
             // label3
             // 
@@ -170,7 +171,7 @@
             this.BackColor = System.Drawing.Color.Azure;
             this.ClientSize = new System.Drawing.Size(876, 324);
             this.ControlBox = false;
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtType);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnUpdate);
@@ -199,7 +200,7 @@
         private Button btnSave;
         private Button btnUpdate;
         private Button btnCancel;
-        private TextBox textBox1;
+        private TextBox txtType;
         private Label label3;
     }
 }

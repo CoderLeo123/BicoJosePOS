@@ -20,8 +20,9 @@ namespace Capstone
         {
             btnSaveAccessories.Enabled = true;
             btnUpdateAccessories.Enabled = false;
-            txtAccessories.Clear();
-            txtAccessories.Focus();
+            txtPriceAccessories.Clear();
+            txtDescAccessories.Clear();
+            txtPriceAccessories.Focus();
 
         }
         private void btnSaveAccessories_Click(object sender, EventArgs e)
