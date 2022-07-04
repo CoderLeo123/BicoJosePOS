@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnClose = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnLogout = new System.Windows.Forms.Button();
@@ -62,8 +60,6 @@
             this.timerDrpBtnPayment = new System.Windows.Forms.Timer(this.components);
             this.timerDrpBtnSales = new System.Windows.Forms.Timer(this.components);
             this.panelLoad = new System.Windows.Forms.Panel();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
             this.dropPanelSales.SuspendLayout();
@@ -71,30 +67,6 @@
             this.dropPanelPayment.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.LightBlue;
-            this.panel1.Controls.Add(this.btnClose);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1698, 50);
-            this.panel1.TabIndex = 0;
-            // 
-            // btnClose
-            // 
-            this.btnClose.BackColor = System.Drawing.Color.Transparent;
-            this.btnClose.BackgroundImage = global::Capstone.Properties.Resources.CloseTab;
-            this.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnClose.Location = new System.Drawing.Point(1646, 3);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Padding = new System.Windows.Forms.Padding(3);
-            this.btnClose.Size = new System.Drawing.Size(40, 38);
-            this.btnClose.TabIndex = 1;
-            this.btnClose.TabStop = false;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // panel2
             // 
@@ -104,7 +76,7 @@
             this.panel2.Controls.Add(this.lblName);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(0, 50);
+            this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(365, 948);
             this.panel2.TabIndex = 1;
@@ -559,7 +531,7 @@
             // 
             // panelLoad
             // 
-            this.panelLoad.Location = new System.Drawing.Point(371, 56);
+            this.panelLoad.Location = new System.Drawing.Point(371, 6);
             this.panelLoad.Name = "panelLoad";
             this.panelLoad.Size = new System.Drawing.Size(1315, 930);
             this.panelLoad.TabIndex = 2;
@@ -569,17 +541,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1698, 998);
+            this.ClientSize = new System.Drawing.Size(1698, 948);
             this.ControlBox = false;
             this.Controls.Add(this.panelLoad);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmAdmin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.btnClose)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.dropPanelSales.ResumeLayout(false);
@@ -591,8 +560,6 @@
         }
 
         #endregion
-
-        private Panel panel1;
         private Panel panel2;
         private PictureBox pictureBox1;
         private Label label1;
@@ -624,6 +591,5 @@
         private Button btnServices;
         private Button btnInventoryReport;
         private Panel panelLoad;
-        private PictureBox btnClose;
     }
 }
