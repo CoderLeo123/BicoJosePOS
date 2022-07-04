@@ -205,6 +205,7 @@
             this.txtPriceFrame.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtPriceFrame.Location = new System.Drawing.Point(204, 144);
             this.txtPriceFrame.Name = "txtPriceFrame";
+            this.txtPriceFrame.PlaceholderText = "0.00";
             this.txtPriceFrame.Size = new System.Drawing.Size(199, 38);
             this.txtPriceFrame.TabIndex = 29;
             // 

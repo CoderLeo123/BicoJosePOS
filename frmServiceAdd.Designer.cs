@@ -133,6 +133,7 @@
             this.txtServName.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtServName.Location = new System.Drawing.Point(206, 105);
             this.txtServName.Name = "txtServName";
+            this.txtServName.PlaceholderText = "Ex. Refractor Machine";
             this.txtServName.Size = new System.Drawing.Size(582, 38);
             this.txtServName.TabIndex = 10;
             // 
@@ -152,6 +153,7 @@
             this.txtServDesc.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtServDesc.Location = new System.Drawing.Point(206, 167);
             this.txtServDesc.Name = "txtServDesc";
+            this.txtServDesc.PlaceholderText = "Ex. Automated reading of eyeglass prescription";
             this.txtServDesc.Size = new System.Drawing.Size(582, 38);
             this.txtServDesc.TabIndex = 15;
             // 
@@ -170,6 +172,7 @@
             this.txtServPrice.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtServPrice.Location = new System.Drawing.Point(206, 225);
             this.txtServPrice.Name = "txtServPrice";
+            this.txtServPrice.PlaceholderText = "0.00";
             this.txtServPrice.Size = new System.Drawing.Size(199, 38);
             this.txtServPrice.TabIndex = 17;
             // 

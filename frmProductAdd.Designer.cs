@@ -82,18 +82,19 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(27, 170);
+            this.label2.Location = new System.Drawing.Point(33, 105);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(138, 28);
+            this.label2.Size = new System.Drawing.Size(81, 28);
             this.label2.TabIndex = 4;
-            this.label2.Text = "Product Name";
+            this.label2.Text = "Product";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // txtAddProd
             // 
             this.txtAddProd.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtAddProd.Location = new System.Drawing.Point(207, 170);
+            this.txtAddProd.Location = new System.Drawing.Point(213, 105);
             this.txtAddProd.Name = "txtAddProd";
+            this.txtAddProd.PlaceholderText = "Ex. Eyeglass Frame";
             this.txtAddProd.Size = new System.Drawing.Size(582, 38);
             this.txtAddProd.TabIndex = 5;
             this.txtAddProd.TextChanged += new System.EventHandler(this.txtAddProd_TextChanged);
@@ -149,8 +150,9 @@
             // txtType
             // 
             this.txtType.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtType.Location = new System.Drawing.Point(207, 115);
+            this.txtType.Location = new System.Drawing.Point(213, 160);
             this.txtType.Name = "txtType";
+            this.txtType.PlaceholderText = "Ex. Semi-Rimless Frames";
             this.txtType.Size = new System.Drawing.Size(582, 38);
             this.txtType.TabIndex = 10;
             // 
@@ -158,11 +160,11 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(27, 115);
+            this.label3.Location = new System.Drawing.Point(33, 160);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(110, 28);
+            this.label3.Size = new System.Drawing.Size(53, 28);
             this.label3.TabIndex = 9;
-            this.label3.Text = "Type Name";
+            this.label3.Text = "Type";
             // 
             // frmProductAdd
             // 
