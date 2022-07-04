@@ -21,5 +21,17 @@ namespace Capstone
         {
             this.Dispose();
         }
+        
+       
+        private void txtTypeLensePR_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAddPatientRecord_Click(object sender, EventArgs e)
+        {
+            frmAddPatientRecord frm = new frmAddPatientRecord();
+            frm.ShowDialog();
+        }
     }
 }

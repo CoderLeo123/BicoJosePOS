@@ -15,6 +15,7 @@ namespace Capstone
         public frmAddAccessories()
         {
             InitializeComponent();
+            
         }
         public void Clear()
         {
@@ -39,6 +40,16 @@ namespace Capstone
         private void btnCloseAccessories_Click(object sender, EventArgs e)
         {
             this.Dispose();
+        }
+
+        private void comBoxTypeAccessories_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void comBoxTypeAccessories_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }

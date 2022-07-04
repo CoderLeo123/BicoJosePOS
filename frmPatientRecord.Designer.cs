@@ -35,7 +35,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnClosePatientRecord = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.dataGridViewProducts = new System.Windows.Forms.DataGridView();
+            this.dataGridViewPatientRecord = new System.Windows.Forms.DataGridView();
             this.NumPRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PatientIDPRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CustomerNamePRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,20 +46,19 @@
             this.CheckUpDatePRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EditPRecord = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.textBox13 = new System.Windows.Forms.TextBox();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.panelPresc = new System.Windows.Forms.Panel();
+            this.txtPD = new System.Windows.Forms.TextBox();
+            this.txtFeature = new System.Windows.Forms.TextBox();
+            this.txtNote = new System.Windows.Forms.TextBox();
+            this.txtDueDate = new System.Windows.Forms.TextBox();
+            this.txtOSADD = new System.Windows.Forms.TextBox();
+            this.txtODADD = new System.Windows.Forms.TextBox();
+            this.txtOSAXIS = new System.Windows.Forms.TextBox();
+            this.txtODAXIS = new System.Windows.Forms.TextBox();
+            this.txtOSCYL = new System.Windows.Forms.TextBox();
+            this.txtODCYL = new System.Windows.Forms.TextBox();
+            this.txtOSSPH = new System.Windows.Forms.TextBox();
+            this.txtODSPH = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -70,15 +69,14 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.textBox17 = new System.Windows.Forms.TextBox();
-            this.textBox18 = new System.Windows.Forms.TextBox();
-            this.textBox19 = new System.Windows.Forms.TextBox();
-            this.textBox16 = new System.Windows.Forms.TextBox();
-            this.textBox15 = new System.Windows.Forms.TextBox();
-            this.textBox14 = new System.Windows.Forms.TextBox();
+            this.panelTrans = new System.Windows.Forms.Panel();
+            this.txtBalance = new System.Windows.Forms.TextBox();
+            this.txtDeposit = new System.Windows.Forms.TextBox();
+            this.txtTotal = new System.Windows.Forms.TextBox();
+            this.txtOthersPrice = new System.Windows.Forms.TextBox();
+            this.txtFramePrice = new System.Windows.Forms.TextBox();
+            this.txtLensePrice = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
@@ -91,10 +89,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnAddPatientRecord)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnClosePatientRecord)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProducts)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPatientRecord)).BeginInit();
             this.panel3.SuspendLayout();
-            this.panel5.SuspendLayout();
-            this.panel4.SuspendLayout();
+            this.panelPresc.SuspendLayout();
+            this.panelTrans.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -120,6 +118,7 @@
             this.btnAddPatientRecord.Size = new System.Drawing.Size(39, 38);
             this.btnAddPatientRecord.TabIndex = 5;
             this.btnAddPatientRecord.TabStop = false;
+            this.btnAddPatientRecord.Click += new System.EventHandler(this.btnAddPatientRecord_Click);
             // 
             // label1
             // 
@@ -148,19 +147,19 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.dataGridViewProducts);
+            this.panel2.Controls.Add(this.dataGridViewPatientRecord);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 57);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1315, 362);
             this.panel2.TabIndex = 5;
             // 
-            // dataGridViewProducts
+            // dataGridViewPatientRecord
             // 
-            this.dataGridViewProducts.AllowUserToResizeColumns = false;
-            this.dataGridViewProducts.AllowUserToResizeRows = false;
-            this.dataGridViewProducts.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridViewProducts.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dataGridViewPatientRecord.AllowUserToResizeColumns = false;
+            this.dataGridViewPatientRecord.AllowUserToResizeRows = false;
+            this.dataGridViewPatientRecord.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridViewPatientRecord.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -168,10 +167,10 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewProducts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridViewProducts.ColumnHeadersHeight = 40;
-            this.dataGridViewProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dataGridViewProducts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewPatientRecord.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridViewPatientRecord.ColumnHeadersHeight = 40;
+            this.dataGridViewPatientRecord.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridViewPatientRecord.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NumPRecord,
             this.PatientIDPRecord,
             this.CustomerNamePRecord,
@@ -188,19 +187,19 @@
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewProducts.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridViewProducts.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewProducts.EnableHeadersVisualStyles = false;
-            this.dataGridViewProducts.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.dataGridViewProducts.Location = new System.Drawing.Point(0, 0);
-            this.dataGridViewProducts.Name = "dataGridViewProducts";
-            this.dataGridViewProducts.RowHeadersVisible = false;
-            this.dataGridViewProducts.RowHeadersWidth = 51;
-            this.dataGridViewProducts.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dataGridViewProducts.RowTemplate.Height = 29;
-            this.dataGridViewProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewProducts.Size = new System.Drawing.Size(1315, 362);
-            this.dataGridViewProducts.TabIndex = 6;
+            this.dataGridViewPatientRecord.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridViewPatientRecord.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewPatientRecord.EnableHeadersVisualStyles = false;
+            this.dataGridViewPatientRecord.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.dataGridViewPatientRecord.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewPatientRecord.Name = "dataGridViewPatientRecord";
+            this.dataGridViewPatientRecord.RowHeadersVisible = false;
+            this.dataGridViewPatientRecord.RowHeadersWidth = 51;
+            this.dataGridViewPatientRecord.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dataGridViewPatientRecord.RowTemplate.Height = 29;
+            this.dataGridViewPatientRecord.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewPatientRecord.Size = new System.Drawing.Size(1315, 362);
+            this.dataGridViewPatientRecord.TabIndex = 6;
             // 
             // NumPRecord
             // 
@@ -274,179 +273,179 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.panel5);
-            this.panel3.Controls.Add(this.panel4);
+            this.panel3.Controls.Add(this.panelPresc);
+            this.panel3.Controls.Add(this.panelTrans);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 419);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1315, 511);
             this.panel3.TabIndex = 6;
             // 
-            // panel5
+            // panelPresc
             // 
-            this.panel5.BackColor = System.Drawing.Color.Linen;
-            this.panel5.Controls.Add(this.textBox11);
-            this.panel5.Controls.Add(this.textBox13);
-            this.panel5.Controls.Add(this.textBox12);
-            this.panel5.Controls.Add(this.textBox10);
-            this.panel5.Controls.Add(this.textBox9);
-            this.panel5.Controls.Add(this.textBox7);
-            this.panel5.Controls.Add(this.textBox8);
-            this.panel5.Controls.Add(this.textBox5);
-            this.panel5.Controls.Add(this.textBox6);
-            this.panel5.Controls.Add(this.textBox3);
-            this.panel5.Controls.Add(this.textBox4);
-            this.panel5.Controls.Add(this.textBox2);
-            this.panel5.Controls.Add(this.textBox1);
-            this.panel5.Controls.Add(this.label14);
-            this.panel5.Controls.Add(this.label2);
-            this.panel5.Controls.Add(this.label8);
-            this.panel5.Controls.Add(this.label13);
-            this.panel5.Controls.Add(this.label7);
-            this.panel5.Controls.Add(this.label9);
-            this.panel5.Controls.Add(this.label12);
-            this.panel5.Controls.Add(this.label6);
-            this.panel5.Controls.Add(this.label4);
-            this.panel5.Controls.Add(this.label10);
-            this.panel5.Controls.Add(this.label11);
-            this.panel5.Controls.Add(this.label5);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel5.Location = new System.Drawing.Point(0, 0);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(930, 511);
-            this.panel5.TabIndex = 19;
+            this.panelPresc.BackColor = System.Drawing.Color.SeaShell;
+            this.panelPresc.Controls.Add(this.txtPD);
+            this.panelPresc.Controls.Add(this.txtFeature);
+            this.panelPresc.Controls.Add(this.txtNote);
+            this.panelPresc.Controls.Add(this.txtDueDate);
+            this.panelPresc.Controls.Add(this.txtOSADD);
+            this.panelPresc.Controls.Add(this.txtODADD);
+            this.panelPresc.Controls.Add(this.txtOSAXIS);
+            this.panelPresc.Controls.Add(this.txtODAXIS);
+            this.panelPresc.Controls.Add(this.txtOSCYL);
+            this.panelPresc.Controls.Add(this.txtODCYL);
+            this.panelPresc.Controls.Add(this.txtOSSPH);
+            this.panelPresc.Controls.Add(this.txtODSPH);
+            this.panelPresc.Controls.Add(this.label14);
+            this.panelPresc.Controls.Add(this.label2);
+            this.panelPresc.Controls.Add(this.label8);
+            this.panelPresc.Controls.Add(this.label13);
+            this.panelPresc.Controls.Add(this.label7);
+            this.panelPresc.Controls.Add(this.label9);
+            this.panelPresc.Controls.Add(this.label12);
+            this.panelPresc.Controls.Add(this.label6);
+            this.panelPresc.Controls.Add(this.label4);
+            this.panelPresc.Controls.Add(this.label10);
+            this.panelPresc.Controls.Add(this.label5);
+            this.panelPresc.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelPresc.Location = new System.Drawing.Point(0, 0);
+            this.panelPresc.Name = "panelPresc";
+            this.panelPresc.Size = new System.Drawing.Size(930, 511);
+            this.panelPresc.TabIndex = 19;
             // 
-            // textBox11
+            // txtPD
             // 
-            this.textBox11.BackColor = System.Drawing.Color.LightCyan;
-            this.textBox11.Enabled = false;
-            this.textBox11.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox11.Location = new System.Drawing.Point(690, 138);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(204, 34);
-            this.textBox11.TabIndex = 38;
+            this.txtPD.BackColor = System.Drawing.Color.LightCyan;
+            this.txtPD.Enabled = false;
+            this.txtPD.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtPD.Location = new System.Drawing.Point(692, 429);
+            this.txtPD.Name = "txtPD";
+            this.txtPD.PlaceholderText = "     ---";
+            this.txtPD.Size = new System.Drawing.Size(85, 34);
+            this.txtPD.TabIndex = 37;
             // 
-            // textBox13
+            // txtFeature
             // 
-            this.textBox13.BackColor = System.Drawing.Color.LightCyan;
-            this.textBox13.Enabled = false;
-            this.textBox13.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox13.Location = new System.Drawing.Point(692, 429);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(85, 34);
-            this.textBox13.TabIndex = 37;
+            this.txtFeature.BackColor = System.Drawing.Color.LightCyan;
+            this.txtFeature.Enabled = false;
+            this.txtFeature.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtFeature.Location = new System.Drawing.Point(691, 234);
+            this.txtFeature.Multiline = true;
+            this.txtFeature.Name = "txtFeature";
+            this.txtFeature.PlaceholderText = "E.g. Multicoated, etc..";
+            this.txtFeature.Size = new System.Drawing.Size(201, 132);
+            this.txtFeature.TabIndex = 36;
             // 
-            // textBox12
+            // txtNote
             // 
-            this.textBox12.BackColor = System.Drawing.Color.LightCyan;
-            this.textBox12.Enabled = false;
-            this.textBox12.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox12.Location = new System.Drawing.Point(691, 234);
-            this.textBox12.Multiline = true;
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(201, 132);
-            this.textBox12.TabIndex = 36;
+            this.txtNote.BackColor = System.Drawing.Color.LightCyan;
+            this.txtNote.Enabled = false;
+            this.txtNote.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtNote.Location = new System.Drawing.Point(132, 350);
+            this.txtNote.Multiline = true;
+            this.txtNote.Name = "txtNote";
+            this.txtNote.PlaceholderText = "E.g. Notify thru contacts remaining balance";
+            this.txtNote.Size = new System.Drawing.Size(508, 130);
+            this.txtNote.TabIndex = 34;
             // 
-            // textBox10
+            // txtDueDate
             // 
-            this.textBox10.BackColor = System.Drawing.Color.LightCyan;
-            this.textBox10.Enabled = false;
-            this.textBox10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox10.Location = new System.Drawing.Point(132, 350);
-            this.textBox10.Multiline = true;
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(508, 130);
-            this.textBox10.TabIndex = 34;
+            this.txtDueDate.BackColor = System.Drawing.Color.LightCyan;
+            this.txtDueDate.Enabled = false;
+            this.txtDueDate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtDueDate.Location = new System.Drawing.Point(188, 274);
+            this.txtDueDate.Name = "txtDueDate";
+            this.txtDueDate.PlaceholderText = "     --/--/--";
+            this.txtDueDate.Size = new System.Drawing.Size(452, 34);
+            this.txtDueDate.TabIndex = 33;
             // 
-            // textBox9
+            // txtOSADD
             // 
-            this.textBox9.BackColor = System.Drawing.Color.LightCyan;
-            this.textBox9.Enabled = false;
-            this.textBox9.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox9.Location = new System.Drawing.Point(188, 274);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(452, 34);
-            this.textBox9.TabIndex = 33;
+            this.txtOSADD.BackColor = System.Drawing.Color.LightCyan;
+            this.txtOSADD.Enabled = false;
+            this.txtOSADD.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtOSADD.Location = new System.Drawing.Point(555, 197);
+            this.txtOSADD.Name = "txtOSADD";
+            this.txtOSADD.PlaceholderText = "     ---";
+            this.txtOSADD.Size = new System.Drawing.Size(85, 34);
+            this.txtOSADD.TabIndex = 32;
             // 
-            // textBox7
+            // txtODADD
             // 
-            this.textBox7.BackColor = System.Drawing.Color.LightCyan;
-            this.textBox7.Enabled = false;
-            this.textBox7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox7.Location = new System.Drawing.Point(555, 197);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(85, 34);
-            this.textBox7.TabIndex = 32;
+            this.txtODADD.BackColor = System.Drawing.Color.LightCyan;
+            this.txtODADD.Enabled = false;
+            this.txtODADD.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtODADD.Location = new System.Drawing.Point(555, 134);
+            this.txtODADD.Name = "txtODADD";
+            this.txtODADD.PlaceholderText = "     ---";
+            this.txtODADD.Size = new System.Drawing.Size(85, 34);
+            this.txtODADD.TabIndex = 31;
             // 
-            // textBox8
+            // txtOSAXIS
             // 
-            this.textBox8.BackColor = System.Drawing.Color.LightCyan;
-            this.textBox8.Enabled = false;
-            this.textBox8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox8.Location = new System.Drawing.Point(555, 134);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(85, 34);
-            this.textBox8.TabIndex = 31;
+            this.txtOSAXIS.BackColor = System.Drawing.Color.LightCyan;
+            this.txtOSAXIS.Enabled = false;
+            this.txtOSAXIS.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtOSAXIS.Location = new System.Drawing.Point(419, 197);
+            this.txtOSAXIS.Name = "txtOSAXIS";
+            this.txtOSAXIS.PlaceholderText = "     ---";
+            this.txtOSAXIS.Size = new System.Drawing.Size(85, 34);
+            this.txtOSAXIS.TabIndex = 30;
             // 
-            // textBox5
+            // txtODAXIS
             // 
-            this.textBox5.BackColor = System.Drawing.Color.LightCyan;
-            this.textBox5.Enabled = false;
-            this.textBox5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox5.Location = new System.Drawing.Point(419, 197);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(85, 34);
-            this.textBox5.TabIndex = 30;
+            this.txtODAXIS.BackColor = System.Drawing.Color.LightCyan;
+            this.txtODAXIS.Enabled = false;
+            this.txtODAXIS.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtODAXIS.Location = new System.Drawing.Point(419, 134);
+            this.txtODAXIS.Name = "txtODAXIS";
+            this.txtODAXIS.PlaceholderText = "     ---";
+            this.txtODAXIS.Size = new System.Drawing.Size(85, 34);
+            this.txtODAXIS.TabIndex = 29;
             // 
-            // textBox6
+            // txtOSCYL
             // 
-            this.textBox6.BackColor = System.Drawing.Color.LightCyan;
-            this.textBox6.Enabled = false;
-            this.textBox6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox6.Location = new System.Drawing.Point(419, 134);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(85, 34);
-            this.textBox6.TabIndex = 29;
+            this.txtOSCYL.BackColor = System.Drawing.Color.LightCyan;
+            this.txtOSCYL.Enabled = false;
+            this.txtOSCYL.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtOSCYL.Location = new System.Drawing.Point(276, 197);
+            this.txtOSCYL.Name = "txtOSCYL";
+            this.txtOSCYL.PlaceholderText = "     ---";
+            this.txtOSCYL.Size = new System.Drawing.Size(85, 34);
+            this.txtOSCYL.TabIndex = 28;
             // 
-            // textBox3
+            // txtODCYL
             // 
-            this.textBox3.BackColor = System.Drawing.Color.LightCyan;
-            this.textBox3.Enabled = false;
-            this.textBox3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox3.Location = new System.Drawing.Point(276, 197);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(85, 34);
-            this.textBox3.TabIndex = 28;
+            this.txtODCYL.BackColor = System.Drawing.Color.LightCyan;
+            this.txtODCYL.Enabled = false;
+            this.txtODCYL.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtODCYL.Location = new System.Drawing.Point(276, 134);
+            this.txtODCYL.Name = "txtODCYL";
+            this.txtODCYL.PlaceholderText = "     ---";
+            this.txtODCYL.Size = new System.Drawing.Size(85, 34);
+            this.txtODCYL.TabIndex = 27;
             // 
-            // textBox4
+            // txtOSSPH
             // 
-            this.textBox4.BackColor = System.Drawing.Color.LightCyan;
-            this.textBox4.Enabled = false;
-            this.textBox4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox4.Location = new System.Drawing.Point(276, 134);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(85, 34);
-            this.textBox4.TabIndex = 27;
+            this.txtOSSPH.BackColor = System.Drawing.Color.LightCyan;
+            this.txtOSSPH.Enabled = false;
+            this.txtOSSPH.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtOSSPH.Location = new System.Drawing.Point(134, 197);
+            this.txtOSSPH.Name = "txtOSSPH";
+            this.txtOSSPH.PlaceholderText = "     ---";
+            this.txtOSSPH.Size = new System.Drawing.Size(85, 34);
+            this.txtOSSPH.TabIndex = 26;
             // 
-            // textBox2
+            // txtODSPH
             // 
-            this.textBox2.BackColor = System.Drawing.Color.LightCyan;
-            this.textBox2.Enabled = false;
-            this.textBox2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox2.Location = new System.Drawing.Point(134, 197);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(85, 34);
-            this.textBox2.TabIndex = 26;
-            // 
-            // textBox1
-            // 
-            this.textBox1.BackColor = System.Drawing.Color.LightCyan;
-            this.textBox1.Enabled = false;
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox1.Location = new System.Drawing.Point(134, 134);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(85, 34);
-            this.textBox1.TabIndex = 25;
+            this.txtODSPH.BackColor = System.Drawing.Color.LightCyan;
+            this.txtODSPH.Enabled = false;
+            this.txtODSPH.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtODSPH.Location = new System.Drawing.Point(134, 134);
+            this.txtODSPH.Name = "txtODSPH";
+            this.txtODSPH.PlaceholderText = "     ---";
+            this.txtODSPH.Size = new System.Drawing.Size(85, 34);
+            this.txtODSPH.TabIndex = 25;
             // 
             // label14
             // 
@@ -548,16 +547,6 @@
             this.label10.TabIndex = 20;
             this.label10.Text = "PD";
             // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label11.Location = new System.Drawing.Point(692, 81);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(187, 38);
-            this.label11.TabIndex = 21;
-            this.label11.Text = "Type of Lense";
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -568,88 +557,94 @@
             this.label5.TabIndex = 15;
             this.label5.Text = "OS";
             // 
-            // panel4
+            // panelTrans
             // 
-            this.panel4.BackColor = System.Drawing.Color.LemonChiffon;
-            this.panel4.Controls.Add(this.textBox17);
-            this.panel4.Controls.Add(this.textBox18);
-            this.panel4.Controls.Add(this.textBox19);
-            this.panel4.Controls.Add(this.textBox16);
-            this.panel4.Controls.Add(this.textBox15);
-            this.panel4.Controls.Add(this.textBox14);
-            this.panel4.Controls.Add(this.label21);
-            this.panel4.Controls.Add(this.label20);
-            this.panel4.Controls.Add(this.label15);
-            this.panel4.Controls.Add(this.label19);
-            this.panel4.Controls.Add(this.label3);
-            this.panel4.Controls.Add(this.label18);
-            this.panel4.Controls.Add(this.label16);
-            this.panel4.Controls.Add(this.label17);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(930, 0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(385, 511);
-            this.panel4.TabIndex = 18;
+            this.panelTrans.BackColor = System.Drawing.Color.LemonChiffon;
+            this.panelTrans.Controls.Add(this.txtBalance);
+            this.panelTrans.Controls.Add(this.txtDeposit);
+            this.panelTrans.Controls.Add(this.txtTotal);
+            this.panelTrans.Controls.Add(this.txtOthersPrice);
+            this.panelTrans.Controls.Add(this.txtFramePrice);
+            this.panelTrans.Controls.Add(this.txtLensePrice);
+            this.panelTrans.Controls.Add(this.label21);
+            this.panelTrans.Controls.Add(this.label20);
+            this.panelTrans.Controls.Add(this.label15);
+            this.panelTrans.Controls.Add(this.label19);
+            this.panelTrans.Controls.Add(this.label3);
+            this.panelTrans.Controls.Add(this.label18);
+            this.panelTrans.Controls.Add(this.label16);
+            this.panelTrans.Controls.Add(this.label17);
+            this.panelTrans.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panelTrans.Location = new System.Drawing.Point(930, 0);
+            this.panelTrans.Name = "panelTrans";
+            this.panelTrans.Size = new System.Drawing.Size(385, 511);
+            this.panelTrans.TabIndex = 18;
             // 
-            // textBox17
+            // txtBalance
             // 
-            this.textBox17.BackColor = System.Drawing.Color.LightCyan;
-            this.textBox17.Enabled = false;
-            this.textBox17.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox17.Location = new System.Drawing.Point(197, 415);
-            this.textBox17.Name = "textBox17";
-            this.textBox17.Size = new System.Drawing.Size(146, 34);
-            this.textBox17.TabIndex = 44;
+            this.txtBalance.BackColor = System.Drawing.Color.LightCyan;
+            this.txtBalance.Enabled = false;
+            this.txtBalance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtBalance.Location = new System.Drawing.Point(197, 415);
+            this.txtBalance.Name = "txtBalance";
+            this.txtBalance.PlaceholderText = "0.00";
+            this.txtBalance.Size = new System.Drawing.Size(146, 34);
+            this.txtBalance.TabIndex = 44;
             // 
-            // textBox18
+            // txtDeposit
             // 
-            this.textBox18.BackColor = System.Drawing.Color.LightCyan;
-            this.textBox18.Enabled = false;
-            this.textBox18.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox18.Location = new System.Drawing.Point(197, 365);
-            this.textBox18.Name = "textBox18";
-            this.textBox18.Size = new System.Drawing.Size(146, 34);
-            this.textBox18.TabIndex = 43;
+            this.txtDeposit.BackColor = System.Drawing.Color.LightCyan;
+            this.txtDeposit.Enabled = false;
+            this.txtDeposit.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtDeposit.Location = new System.Drawing.Point(197, 365);
+            this.txtDeposit.Name = "txtDeposit";
+            this.txtDeposit.PlaceholderText = "0.00";
+            this.txtDeposit.Size = new System.Drawing.Size(146, 34);
+            this.txtDeposit.TabIndex = 43;
             // 
-            // textBox19
+            // txtTotal
             // 
-            this.textBox19.BackColor = System.Drawing.Color.LightCyan;
-            this.textBox19.Enabled = false;
-            this.textBox19.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox19.Location = new System.Drawing.Point(197, 315);
-            this.textBox19.Name = "textBox19";
-            this.textBox19.Size = new System.Drawing.Size(146, 34);
-            this.textBox19.TabIndex = 42;
+            this.txtTotal.BackColor = System.Drawing.Color.LightCyan;
+            this.txtTotal.Enabled = false;
+            this.txtTotal.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtTotal.Location = new System.Drawing.Point(197, 315);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.PlaceholderText = "0.00";
+            this.txtTotal.Size = new System.Drawing.Size(146, 34);
+            this.txtTotal.TabIndex = 42;
             // 
-            // textBox16
+            // txtOthersPrice
             // 
-            this.textBox16.BackColor = System.Drawing.Color.LightCyan;
-            this.textBox16.Enabled = false;
-            this.textBox16.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox16.Location = new System.Drawing.Point(197, 211);
-            this.textBox16.Name = "textBox16";
-            this.textBox16.Size = new System.Drawing.Size(146, 34);
-            this.textBox16.TabIndex = 41;
+            this.txtOthersPrice.BackColor = System.Drawing.Color.LightCyan;
+            this.txtOthersPrice.Enabled = false;
+            this.txtOthersPrice.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtOthersPrice.Location = new System.Drawing.Point(197, 211);
+            this.txtOthersPrice.Name = "txtOthersPrice";
+            this.txtOthersPrice.PlaceholderText = "0.00";
+            this.txtOthersPrice.Size = new System.Drawing.Size(146, 34);
+            this.txtOthersPrice.TabIndex = 41;
             // 
-            // textBox15
+            // txtFramePrice
             // 
-            this.textBox15.BackColor = System.Drawing.Color.LightCyan;
-            this.textBox15.Enabled = false;
-            this.textBox15.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox15.Location = new System.Drawing.Point(197, 161);
-            this.textBox15.Name = "textBox15";
-            this.textBox15.Size = new System.Drawing.Size(146, 34);
-            this.textBox15.TabIndex = 40;
+            this.txtFramePrice.BackColor = System.Drawing.Color.LightCyan;
+            this.txtFramePrice.Enabled = false;
+            this.txtFramePrice.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtFramePrice.Location = new System.Drawing.Point(197, 161);
+            this.txtFramePrice.Name = "txtFramePrice";
+            this.txtFramePrice.PlaceholderText = "0.00";
+            this.txtFramePrice.Size = new System.Drawing.Size(146, 34);
+            this.txtFramePrice.TabIndex = 40;
             // 
-            // textBox14
+            // txtLensePrice
             // 
-            this.textBox14.BackColor = System.Drawing.Color.LightCyan;
-            this.textBox14.Enabled = false;
-            this.textBox14.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox14.Location = new System.Drawing.Point(197, 111);
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(146, 34);
-            this.textBox14.TabIndex = 39;
+            this.txtLensePrice.BackColor = System.Drawing.Color.LightCyan;
+            this.txtLensePrice.Enabled = false;
+            this.txtLensePrice.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtLensePrice.Location = new System.Drawing.Point(197, 111);
+            this.txtLensePrice.Name = "txtLensePrice";
+            this.txtLensePrice.PlaceholderText = "0.00";
+            this.txtLensePrice.Size = new System.Drawing.Size(146, 34);
+            this.txtLensePrice.TabIndex = 39;
             // 
             // label21
             // 
@@ -747,12 +742,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnAddPatientRecord)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnClosePatientRecord)).EndInit();
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProducts)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPatientRecord)).EndInit();
             this.panel3.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
+            this.panelPresc.ResumeLayout(false);
+            this.panelPresc.PerformLayout();
+            this.panelTrans.ResumeLayout(false);
+            this.panelTrans.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -765,7 +760,7 @@
         private PictureBox btnAddPatientRecord;
         private Panel panel2;
         private Panel panel3;
-        private DataGridView dataGridViewProducts;
+        private DataGridView dataGridViewPatientRecord;
         private DataGridViewTextBoxColumn NumPRecord;
         private DataGridViewTextBoxColumn PatientIDPRecord;
         private DataGridViewTextBoxColumn CustomerNamePRecord;
@@ -776,7 +771,7 @@
         private DataGridViewTextBoxColumn CheckUpDatePRecord;
         private DataGridViewImageColumn EditPRecord;
         private Label label3;
-        private Panel panel5;
+        private Panel panelPresc;
         private Label label14;
         private Label label2;
         private Label label8;
@@ -787,9 +782,8 @@
         private Label label6;
         private Label label4;
         private Label label10;
-        private Label label11;
         private Label label5;
-        private Panel panel4;
+        private Panel panelTrans;
         private Label label15;
         private Label label19;
         private Label label18;
@@ -797,24 +791,23 @@
         private Label label17;
         private Label label21;
         private Label label20;
-        private TextBox textBox7;
-        private TextBox textBox8;
-        private TextBox textBox5;
-        private TextBox textBox6;
-        private TextBox textBox3;
-        private TextBox textBox4;
-        private TextBox textBox2;
-        private TextBox textBox1;
-        private TextBox textBox11;
-        private TextBox textBox13;
-        private TextBox textBox12;
-        private TextBox textBox10;
-        private TextBox textBox9;
-        private TextBox textBox17;
-        private TextBox textBox18;
-        private TextBox textBox19;
-        private TextBox textBox16;
-        private TextBox textBox15;
-        private TextBox textBox14;
+        private TextBox txtOSADD;
+        private TextBox txtODADD;
+        private TextBox txtOSAXIS;
+        private TextBox txtODAXIS;
+        private TextBox txtOSCYL;
+        private TextBox txtODCYL;
+        private TextBox txtOSSPH;
+        private TextBox txtODSPH;
+        private TextBox txtPD;
+        private TextBox txtFeature;
+        private TextBox txtNote;
+        private TextBox txtDueDate;
+        private TextBox txtBalance;
+        private TextBox txtDeposit;
+        private TextBox txtTotal;
+        private TextBox txtOthersPrice;
+        private TextBox txtFramePrice;
+        private TextBox txtLensePrice;
     }
 }

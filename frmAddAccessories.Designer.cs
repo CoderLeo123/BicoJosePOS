@@ -97,6 +97,7 @@
             this.txtPriceAccessories.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtPriceAccessories.Location = new System.Drawing.Point(200, 202);
             this.txtPriceAccessories.Name = "txtPriceAccessories";
+            this.txtPriceAccessories.PlaceholderText = "0.00";
             this.txtPriceAccessories.Size = new System.Drawing.Size(256, 38);
             this.txtPriceAccessories.TabIndex = 20;
             // 
@@ -151,6 +152,7 @@
             this.txtDescAccessories.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtDescAccessories.Location = new System.Drawing.Point(200, 145);
             this.txtDescAccessories.Name = "txtDescAccessories";
+            this.txtDescAccessories.PlaceholderText = "Ex. Eyeglass Cleaning Solution Spray Bottle 50ml";
             this.txtDescAccessories.Size = new System.Drawing.Size(584, 38);
             this.txtDescAccessories.TabIndex = 25;
             // 
@@ -172,6 +174,8 @@
             this.comBoxTypeAccessories.Name = "comBoxTypeAccessories";
             this.comBoxTypeAccessories.Size = new System.Drawing.Size(256, 36);
             this.comBoxTypeAccessories.TabIndex = 26;
+            this.comBoxTypeAccessories.SelectedIndexChanged += new System.EventHandler(this.comBoxTypeAccessories_SelectedIndexChanged);
+            this.comBoxTypeAccessories.TextChanged += new System.EventHandler(this.comBoxTypeAccessories_TextChanged);
             // 
             // label4
             // 

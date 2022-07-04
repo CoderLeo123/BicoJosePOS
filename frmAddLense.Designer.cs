@@ -50,6 +50,7 @@
             this.txtPriceLense.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtPriceLense.Location = new System.Drawing.Point(209, 154);
             this.txtPriceLense.Name = "txtPriceLense";
+            this.txtPriceLense.PlaceholderText = "0.00";
             this.txtPriceLense.Size = new System.Drawing.Size(347, 38);
             this.txtPriceLense.TabIndex = 25;
             // 
