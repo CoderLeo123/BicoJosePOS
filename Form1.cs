@@ -217,6 +217,12 @@ namespace Capstone
 
         private void btnStockDel_Click(object sender, EventArgs e)
         {
+            frmStockIn frm = new frmStockIn();
+            frm.TopLevel = false;
+            panelLoad.Controls.Clear();
+            panelLoad.Controls.Add(frm);
+            frm.BringToFront();
+            frm.Show();
             btnCollapsed();
             timerStart();
         }
