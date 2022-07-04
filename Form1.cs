@@ -250,6 +250,11 @@ namespace Capstone
 
         }
 
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         private void btnLogout_Click(object sender, EventArgs e)
         {
             btnCollapsed();

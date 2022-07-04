@@ -31,6 +31,11 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.label11 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.txtSearchPatientRecord = new System.Windows.Forms.TextBox();
             this.btnAddPatientRecord = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnClosePatientRecord = new System.Windows.Forms.PictureBox();
@@ -86,6 +91,7 @@
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnAddPatientRecord)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnClosePatientRecord)).BeginInit();
             this.panel2.SuspendLayout();
@@ -98,14 +104,64 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.LightBlue;
+            this.panel1.Controls.Add(this.dateTimePicker2);
+            this.panel1.Controls.Add(this.dateTimePicker1);
+            this.panel1.Controls.Add(this.label11);
+            this.panel1.Controls.Add(this.panel5);
             this.panel1.Controls.Add(this.btnAddPatientRecord);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.btnClosePatientRecord);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1315, 57);
+            this.panel1.Size = new System.Drawing.Size(1315, 95);
             this.panel1.TabIndex = 4;
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.CalendarFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker2.Location = new System.Drawing.Point(464, 58);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(158, 27);
+            this.dateTimePicker2.TabIndex = 37;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.CalendarFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker1.Location = new System.Drawing.Point(300, 58);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(158, 27);
+            this.dateTimePicker1.TabIndex = 36;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label11.Location = new System.Drawing.Point(29, 54);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(265, 31);
+            this.label11.TabIndex = 35;
+            this.label11.Text = "Filter By Date (From - To)";
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.txtSearchPatientRecord);
+            this.panel5.Location = new System.Drawing.Point(656, 38);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(542, 57);
+            this.panel5.TabIndex = 6;
+            // 
+            // txtSearchPatientRecord
+            // 
+            this.txtSearchPatientRecord.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtSearchPatientRecord.Location = new System.Drawing.Point(19, 9);
+            this.txtSearchPatientRecord.Name = "txtSearchPatientRecord";
+            this.txtSearchPatientRecord.PlaceholderText = "Search Here";
+            this.txtSearchPatientRecord.Size = new System.Drawing.Size(498, 38);
+            this.txtSearchPatientRecord.TabIndex = 0;
             // 
             // btnAddPatientRecord
             // 
@@ -149,7 +205,7 @@
             // 
             this.panel2.Controls.Add(this.dataGridViewPatientRecord);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 57);
+            this.panel2.Location = new System.Drawing.Point(0, 95);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1315, 362);
             this.panel2.TabIndex = 5;
@@ -276,9 +332,9 @@
             this.panel3.Controls.Add(this.panelPresc);
             this.panel3.Controls.Add(this.panelTrans);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 419);
+            this.panel3.Location = new System.Drawing.Point(0, 457);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1315, 511);
+            this.panel3.Size = new System.Drawing.Size(1315, 473);
             this.panel3.TabIndex = 6;
             // 
             // panelPresc
@@ -577,7 +633,7 @@
             this.panelTrans.Dock = System.Windows.Forms.DockStyle.Right;
             this.panelTrans.Location = new System.Drawing.Point(930, 0);
             this.panelTrans.Name = "panelTrans";
-            this.panelTrans.Size = new System.Drawing.Size(385, 511);
+            this.panelTrans.Size = new System.Drawing.Size(385, 473);
             this.panelTrans.TabIndex = 18;
             // 
             // txtBalance
@@ -739,6 +795,8 @@
             this.Text = "frmPatientRecord";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnAddPatientRecord)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnClosePatientRecord)).EndInit();
             this.panel2.ResumeLayout(false);
@@ -809,5 +867,10 @@
         private TextBox txtOthersPrice;
         private TextBox txtFramePrice;
         private TextBox txtLensePrice;
+        private Panel panel5;
+        private TextBox txtSearchPatientRecord;
+        private DateTimePicker dateTimePicker2;
+        private DateTimePicker dateTimePicker1;
+        private Label label11;
     }
 }
