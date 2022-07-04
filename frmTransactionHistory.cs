@@ -21,5 +21,10 @@ namespace Capstone
         {
             this.Dispose();
         }
+
+        private void frmTransactionHistory_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
