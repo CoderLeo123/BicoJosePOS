@@ -38,7 +38,7 @@
             this.txtSearchOrderStatus = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.PictureBox();
-            this.dataGridViewProducts = new System.Windows.Forms.DataGridView();
+            this.dataGridViewOrderStatus = new System.Windows.Forms.DataGridView();
             this.NumOrderStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CustomerNameOrdStat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PurchaseItemOrdStat = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,7 +49,7 @@
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProducts)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrderStatus)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -70,19 +70,21 @@
             // dateTimePicker2
             // 
             this.dateTimePicker2.CalendarFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dateTimePicker2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker2.Location = new System.Drawing.Point(465, 65);
+            this.dateTimePicker2.Location = new System.Drawing.Point(465, 63);
             this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(158, 27);
+            this.dateTimePicker2.Size = new System.Drawing.Size(158, 34);
             this.dateTimePicker2.TabIndex = 34;
             // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.CalendarFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dateTimePicker1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(301, 65);
+            this.dateTimePicker1.Location = new System.Drawing.Point(301, 63);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(158, 27);
+            this.dateTimePicker1.Size = new System.Drawing.Size(158, 34);
             this.dateTimePicker1.TabIndex = 33;
             // 
             // label3
@@ -138,12 +140,12 @@
             this.btnClose.TabStop = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // dataGridViewProducts
+            // dataGridViewOrderStatus
             // 
-            this.dataGridViewProducts.AllowUserToResizeColumns = false;
-            this.dataGridViewProducts.AllowUserToResizeRows = false;
-            this.dataGridViewProducts.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridViewProducts.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dataGridViewOrderStatus.AllowUserToResizeColumns = false;
+            this.dataGridViewOrderStatus.AllowUserToResizeRows = false;
+            this.dataGridViewOrderStatus.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridViewOrderStatus.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -151,10 +153,10 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewProducts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewProducts.ColumnHeadersHeight = 40;
-            this.dataGridViewProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dataGridViewProducts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewOrderStatus.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewOrderStatus.ColumnHeadersHeight = 40;
+            this.dataGridViewOrderStatus.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridViewOrderStatus.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NumOrderStatus,
             this.CustomerNameOrdStat,
             this.PurchaseItemOrdStat,
@@ -169,19 +171,19 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewProducts.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridViewProducts.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewProducts.EnableHeadersVisualStyles = false;
-            this.dataGridViewProducts.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.dataGridViewProducts.Location = new System.Drawing.Point(0, 110);
-            this.dataGridViewProducts.Name = "dataGridViewProducts";
-            this.dataGridViewProducts.RowHeadersVisible = false;
-            this.dataGridViewProducts.RowHeadersWidth = 51;
-            this.dataGridViewProducts.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dataGridViewProducts.RowTemplate.Height = 29;
-            this.dataGridViewProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewProducts.Size = new System.Drawing.Size(1315, 840);
-            this.dataGridViewProducts.TabIndex = 5;
+            this.dataGridViewOrderStatus.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewOrderStatus.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewOrderStatus.EnableHeadersVisualStyles = false;
+            this.dataGridViewOrderStatus.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.dataGridViewOrderStatus.Location = new System.Drawing.Point(0, 110);
+            this.dataGridViewOrderStatus.Name = "dataGridViewOrderStatus";
+            this.dataGridViewOrderStatus.RowHeadersVisible = false;
+            this.dataGridViewOrderStatus.RowHeadersWidth = 51;
+            this.dataGridViewOrderStatus.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dataGridViewOrderStatus.RowTemplate.Height = 29;
+            this.dataGridViewOrderStatus.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewOrderStatus.Size = new System.Drawing.Size(1315, 820);
+            this.dataGridViewOrderStatus.TabIndex = 5;
             // 
             // NumOrderStatus
             // 
@@ -241,8 +243,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1315, 950);
-            this.Controls.Add(this.dataGridViewProducts);
+            this.ClientSize = new System.Drawing.Size(1315, 930);
+            this.Controls.Add(this.dataGridViewOrderStatus);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmOrderStatus";
@@ -253,7 +255,7 @@
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProducts)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrderStatus)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -263,7 +265,7 @@
         private Panel panel1;
         private Label label1;
         private PictureBox btnClose;
-        private DataGridView dataGridViewProducts;
+        private DataGridView dataGridViewOrderStatus;
         private DataGridViewTextBoxColumn NumOrderStatus;
         private DataGridViewTextBoxColumn CustomerNameOrdStat;
         private DataGridViewTextBoxColumn PurchaseItemOrdStat;

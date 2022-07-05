@@ -99,8 +99,7 @@ namespace Capstone
 
         private void button32_Click(object sender, EventArgs e)
         {//btnSalesReport
-            btnCollapsed();
-            timerStart();
+            
         }
         public void btnCollapsed()
         {
@@ -235,8 +234,7 @@ namespace Capstone
 
         private void btnInventoryReport_Click(object sender, EventArgs e)
         {
-            btnCollapsed();
-            timerStart();
+            
         }
 
         private void btnBackupArch_Click(object sender, EventArgs e)
@@ -263,6 +261,7 @@ namespace Capstone
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
+            this.Close();
             btnCollapsed();
             timerStart();
         }

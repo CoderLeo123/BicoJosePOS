@@ -40,6 +40,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.comBoxTypeAccessories = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.GeneratePCodeAccessories = new System.Windows.Forms.LinkLabel();
+            this.txtPCodeAccessories = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnCloseAccessories)).BeginInit();
             this.SuspendLayout();
@@ -52,7 +55,7 @@
             this.btnCancelAccessories.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelAccessories.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnCancelAccessories.ForeColor = System.Drawing.Color.White;
-            this.btnCancelAccessories.Location = new System.Drawing.Point(518, 274);
+            this.btnCancelAccessories.Location = new System.Drawing.Point(518, 330);
             this.btnCancelAccessories.Name = "btnCancelAccessories";
             this.btnCancelAccessories.Size = new System.Drawing.Size(153, 49);
             this.btnCancelAccessories.TabIndex = 23;
@@ -69,7 +72,7 @@
             this.btnUpdateAccessories.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdateAccessories.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnUpdateAccessories.ForeColor = System.Drawing.Color.White;
-            this.btnUpdateAccessories.Location = new System.Drawing.Point(359, 274);
+            this.btnUpdateAccessories.Location = new System.Drawing.Point(359, 330);
             this.btnUpdateAccessories.Name = "btnUpdateAccessories";
             this.btnUpdateAccessories.Size = new System.Drawing.Size(153, 49);
             this.btnUpdateAccessories.TabIndex = 22;
@@ -84,7 +87,7 @@
             this.btnSaveAccessories.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSaveAccessories.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnSaveAccessories.ForeColor = System.Drawing.Color.White;
-            this.btnSaveAccessories.Location = new System.Drawing.Point(200, 274);
+            this.btnSaveAccessories.Location = new System.Drawing.Point(200, 330);
             this.btnSaveAccessories.Name = "btnSaveAccessories";
             this.btnSaveAccessories.Size = new System.Drawing.Size(153, 49);
             this.btnSaveAccessories.TabIndex = 21;
@@ -95,7 +98,7 @@
             // txtPriceAccessories
             // 
             this.txtPriceAccessories.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtPriceAccessories.Location = new System.Drawing.Point(200, 202);
+            this.txtPriceAccessories.Location = new System.Drawing.Point(200, 258);
             this.txtPriceAccessories.Name = "txtPriceAccessories";
             this.txtPriceAccessories.PlaceholderText = "0.00";
             this.txtPriceAccessories.Size = new System.Drawing.Size(256, 38);
@@ -105,7 +108,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(31, 207);
+            this.label2.Location = new System.Drawing.Point(31, 263);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(54, 28);
             this.label2.TabIndex = 19;
@@ -141,7 +144,7 @@
             this.btnCloseAccessories.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCloseAccessories.Location = new System.Drawing.Point(824, 12);
             this.btnCloseAccessories.Name = "btnCloseAccessories";
-            this.btnCloseAccessories.Padding = new System.Windows.Forms.Padding(3);
+            this.btnCloseAccessories.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.btnCloseAccessories.Size = new System.Drawing.Size(40, 38);
             this.btnCloseAccessories.TabIndex = 0;
             this.btnCloseAccessories.TabStop = false;
@@ -150,7 +153,7 @@
             // txtDescAccessories
             // 
             this.txtDescAccessories.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtDescAccessories.Location = new System.Drawing.Point(200, 145);
+            this.txtDescAccessories.Location = new System.Drawing.Point(200, 201);
             this.txtDescAccessories.Name = "txtDescAccessories";
             this.txtDescAccessories.PlaceholderText = "Ex. Eyeglass Cleaning Solution Spray Bottle 50ml";
             this.txtDescAccessories.Size = new System.Drawing.Size(584, 38);
@@ -160,7 +163,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(31, 150);
+            this.label3.Location = new System.Drawing.Point(31, 206);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(112, 28);
             this.label3.TabIndex = 24;
@@ -170,7 +173,7 @@
             // 
             this.comBoxTypeAccessories.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.comBoxTypeAccessories.FormattingEnabled = true;
-            this.comBoxTypeAccessories.Location = new System.Drawing.Point(200, 87);
+            this.comBoxTypeAccessories.Location = new System.Drawing.Point(200, 143);
             this.comBoxTypeAccessories.Name = "comBoxTypeAccessories";
             this.comBoxTypeAccessories.Size = new System.Drawing.Size(256, 36);
             this.comBoxTypeAccessories.TabIndex = 26;
@@ -181,17 +184,52 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(31, 90);
+            this.label4.Location = new System.Drawing.Point(31, 146);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(53, 28);
             this.label4.TabIndex = 27;
             this.label4.Text = "Type";
             // 
+            // GeneratePCodeAccessories
+            // 
+            this.GeneratePCodeAccessories.AutoSize = true;
+            this.GeneratePCodeAccessories.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.GeneratePCodeAccessories.LinkColor = System.Drawing.Color.Navy;
+            this.GeneratePCodeAccessories.Location = new System.Drawing.Point(481, 95);
+            this.GeneratePCodeAccessories.Name = "GeneratePCodeAccessories";
+            this.GeneratePCodeAccessories.Size = new System.Drawing.Size(103, 28);
+            this.GeneratePCodeAccessories.TabIndex = 30;
+            this.GeneratePCodeAccessories.TabStop = true;
+            this.GeneratePCodeAccessories.Text = "[Generate]";
+            // 
+            // txtPCodeAccessories
+            // 
+            this.txtPCodeAccessories.Enabled = false;
+            this.txtPCodeAccessories.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtPCodeAccessories.Location = new System.Drawing.Point(200, 89);
+            this.txtPCodeAccessories.Name = "txtPCodeAccessories";
+            this.txtPCodeAccessories.PlaceholderText = "P000000";
+            this.txtPCodeAccessories.Size = new System.Drawing.Size(256, 34);
+            this.txtPCodeAccessories.TabIndex = 29;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(31, 92);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(132, 28);
+            this.label5.TabIndex = 28;
+            this.label5.Text = "Product Code";
+            // 
             // frmAddAccessories
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(876, 364);
+            this.ClientSize = new System.Drawing.Size(876, 413);
+            this.Controls.Add(this.GeneratePCodeAccessories);
+            this.Controls.Add(this.txtPCodeAccessories);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.comBoxTypeAccessories);
             this.Controls.Add(this.txtDescAccessories);
@@ -202,6 +240,7 @@
             this.Controls.Add(this.txtPriceAccessories);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panel1);
+            this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmAddAccessories";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -227,5 +266,8 @@
         private Label label3;
         private ComboBox comBoxTypeAccessories;
         private Label label4;
+        private LinkLabel GeneratePCodeAccessories;
+        private TextBox txtPCodeAccessories;
+        private Label label5;
     }
 }

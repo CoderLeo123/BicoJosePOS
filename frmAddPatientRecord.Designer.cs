@@ -95,6 +95,8 @@
             this.label18 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
+            this.GeneratePrescNum = new System.Windows.Forms.LinkLabel();
+            this.GenerateCustID = new System.Windows.Forms.LinkLabel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClosePatientRecord)).BeginInit();
             this.panelAddInfo.SuspendLayout();
@@ -141,6 +143,8 @@
             // panelAddInfo
             // 
             this.panelAddInfo.BackColor = System.Drawing.Color.Honeydew;
+            this.panelAddInfo.Controls.Add(this.GenerateCustID);
+            this.panelAddInfo.Controls.Add(this.GeneratePrescNum);
             this.panelAddInfo.Controls.Add(this.txtAddLName);
             this.panelAddInfo.Controls.Add(this.label31);
             this.panelAddInfo.Controls.Add(this.label30);
@@ -229,7 +233,7 @@
             this.txtAddCustID.BackColor = System.Drawing.Color.LightCyan;
             this.txtAddCustID.Enabled = false;
             this.txtAddCustID.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtAddCustID.Location = new System.Drawing.Point(970, 301);
+            this.txtAddCustID.Location = new System.Drawing.Point(970, 273);
             this.txtAddCustID.Name = "txtAddCustID";
             this.txtAddCustID.Size = new System.Drawing.Size(298, 34);
             this.txtAddCustID.TabIndex = 58;
@@ -238,7 +242,7 @@
             // 
             this.label29.AutoSize = true;
             this.label29.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label29.Location = new System.Drawing.Point(939, 248);
+            this.label29.Location = new System.Drawing.Point(930, 232);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(171, 38);
             this.label29.TabIndex = 57;
@@ -250,7 +254,7 @@
             this.txtAddPrescNum.BackColor = System.Drawing.Color.LightCyan;
             this.txtAddPrescNum.Enabled = false;
             this.txtAddPrescNum.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtAddPrescNum.Location = new System.Drawing.Point(970, 181);
+            this.txtAddPrescNum.Location = new System.Drawing.Point(970, 155);
             this.txtAddPrescNum.Name = "txtAddPrescNum";
             this.txtAddPrescNum.Size = new System.Drawing.Size(298, 34);
             this.txtAddPrescNum.TabIndex = 56;
@@ -259,7 +263,7 @@
             // 
             this.label28.AutoSize = true;
             this.label28.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label28.Location = new System.Drawing.Point(939, 126);
+            this.label28.Location = new System.Drawing.Point(930, 114);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(233, 38);
             this.label28.TabIndex = 55;
@@ -364,7 +368,7 @@
             // 
             this.txtAddTransRefNo.BackColor = System.Drawing.Color.LightCyan;
             this.txtAddTransRefNo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtAddTransRefNo.Location = new System.Drawing.Point(970, 66);
+            this.txtAddTransRefNo.Location = new System.Drawing.Point(961, 63);
             this.txtAddTransRefNo.Name = "txtAddTransRefNo";
             this.txtAddTransRefNo.Size = new System.Drawing.Size(298, 34);
             this.txtAddTransRefNo.TabIndex = 46;
@@ -373,7 +377,7 @@
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label22.Location = new System.Drawing.Point(939, 15);
+            this.label22.Location = new System.Drawing.Point(929, 22);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(358, 38);
             this.label22.TabIndex = 45;
@@ -862,6 +866,30 @@
             this.label17.TabIndex = 15;
             this.label17.Text = "Others";
             // 
+            // GeneratePrescNum
+            // 
+            this.GeneratePrescNum.AutoSize = true;
+            this.GeneratePrescNum.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.GeneratePrescNum.LinkColor = System.Drawing.Color.Navy;
+            this.GeneratePrescNum.Location = new System.Drawing.Point(967, 192);
+            this.GeneratePrescNum.Name = "GeneratePrescNum";
+            this.GeneratePrescNum.Size = new System.Drawing.Size(103, 28);
+            this.GeneratePrescNum.TabIndex = 64;
+            this.GeneratePrescNum.TabStop = true;
+            this.GeneratePrescNum.Text = "[Generate]";
+            // 
+            // GenerateCustID
+            // 
+            this.GenerateCustID.AutoSize = true;
+            this.GenerateCustID.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.GenerateCustID.LinkColor = System.Drawing.Color.Navy;
+            this.GenerateCustID.Location = new System.Drawing.Point(970, 311);
+            this.GenerateCustID.Name = "GenerateCustID";
+            this.GenerateCustID.Size = new System.Drawing.Size(103, 28);
+            this.GenerateCustID.TabIndex = 65;
+            this.GenerateCustID.TabStop = true;
+            this.GenerateCustID.Text = "[Generate]";
+            // 
             // frmAddPatientRecord
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -957,5 +985,7 @@
         private Button btnCancelPatientRecord;
         private Button btnUpdatePatientRecord;
         private Button btnSavePatientRecord;
+        private LinkLabel GenerateCustID;
+        private LinkLabel GeneratePrescNum;
     }
 }
