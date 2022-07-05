@@ -94,7 +94,7 @@
             this.panel4.Controls.Add(this.dropPanelPayment);
             this.panel4.Controls.Add(this.btnPatientR);
             this.panel4.Controls.Add(this.btnDashboard);
-            this.panel4.Location = new System.Drawing.Point(12, 230);
+            this.panel4.Location = new System.Drawing.Point(12, 227);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(334, 912);
             this.panel4.TabIndex = 6;
@@ -531,9 +531,10 @@
             // 
             // panelLoad
             // 
-            this.panelLoad.Location = new System.Drawing.Point(371, 6);
+            this.panelLoad.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelLoad.Location = new System.Drawing.Point(365, 0);
             this.panelLoad.Name = "panelLoad";
-            this.panelLoad.Size = new System.Drawing.Size(1315, 930);
+            this.panelLoad.Size = new System.Drawing.Size(1333, 948);
             this.panelLoad.TabIndex = 2;
             this.panelLoad.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 

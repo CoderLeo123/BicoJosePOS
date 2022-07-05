@@ -43,8 +43,11 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtPriceFrame = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.comBoxShapeFrame = new System.Windows.Forms.ComboBox();
+            this.GeneratePCodeFrame = new System.Windows.Forms.LinkLabel();
+            this.txtPCodeFrame = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.comBoxMaterialFrame = new System.Windows.Forms.ComboBox();
+            this.comBoxShapeFrame = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnCloseFrame)).BeginInit();
             this.SuspendLayout();
@@ -53,7 +56,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(75, 371);
+            this.label4.Location = new System.Drawing.Point(75, 423);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(143, 28);
             this.label4.TabIndex = 25;
@@ -63,7 +66,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(75, 313);
+            this.label3.Location = new System.Drawing.Point(75, 365);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(133, 28);
             this.label3.TabIndex = 23;
@@ -77,7 +80,7 @@
             this.btnCancelFrame.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelFrame.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnCancelFrame.ForeColor = System.Drawing.Color.White;
-            this.btnCancelFrame.Location = new System.Drawing.Point(522, 426);
+            this.btnCancelFrame.Location = new System.Drawing.Point(522, 478);
             this.btnCancelFrame.Name = "btnCancelFrame";
             this.btnCancelFrame.Size = new System.Drawing.Size(153, 49);
             this.btnCancelFrame.TabIndex = 22;
@@ -94,7 +97,7 @@
             this.btnUpdateFrame.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdateFrame.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnUpdateFrame.ForeColor = System.Drawing.Color.White;
-            this.btnUpdateFrame.Location = new System.Drawing.Point(363, 426);
+            this.btnUpdateFrame.Location = new System.Drawing.Point(363, 478);
             this.btnUpdateFrame.Name = "btnUpdateFrame";
             this.btnUpdateFrame.Size = new System.Drawing.Size(153, 49);
             this.btnUpdateFrame.TabIndex = 21;
@@ -109,7 +112,7 @@
             this.btnSaveFrame.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSaveFrame.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnSaveFrame.ForeColor = System.Drawing.Color.White;
-            this.btnSaveFrame.Location = new System.Drawing.Point(204, 426);
+            this.btnSaveFrame.Location = new System.Drawing.Point(204, 478);
             this.btnSaveFrame.Name = "btnSaveFrame";
             this.btnSaveFrame.Size = new System.Drawing.Size(153, 49);
             this.btnSaveFrame.TabIndex = 20;
@@ -121,7 +124,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(35, 90);
+            this.label2.Location = new System.Drawing.Point(35, 150);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(120, 28);
             this.label2.TabIndex = 18;
@@ -167,7 +170,7 @@
             // 
             this.comBoxTypeFrame.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.comBoxTypeFrame.FormattingEnabled = true;
-            this.comBoxTypeFrame.Location = new System.Drawing.Point(204, 90);
+            this.comBoxTypeFrame.Location = new System.Drawing.Point(204, 142);
             this.comBoxTypeFrame.Name = "comBoxTypeFrame";
             this.comBoxTypeFrame.Size = new System.Drawing.Size(387, 36);
             this.comBoxTypeFrame.TabIndex = 30;
@@ -175,7 +178,7 @@
             // txtNameFrame
             // 
             this.txtNameFrame.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtNameFrame.Location = new System.Drawing.Point(244, 252);
+            this.txtNameFrame.Location = new System.Drawing.Point(244, 304);
             this.txtNameFrame.Name = "txtNameFrame";
             this.txtNameFrame.Size = new System.Drawing.Size(347, 38);
             this.txtNameFrame.TabIndex = 32;
@@ -184,7 +187,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(75, 257);
+            this.label6.Location = new System.Drawing.Point(75, 309);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(123, 28);
             this.label6.TabIndex = 31;
@@ -194,7 +197,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(35, 149);
+            this.label5.Location = new System.Drawing.Point(35, 201);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(54, 28);
             this.label5.TabIndex = 28;
@@ -203,7 +206,7 @@
             // txtPriceFrame
             // 
             this.txtPriceFrame.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtPriceFrame.Location = new System.Drawing.Point(204, 144);
+            this.txtPriceFrame.Location = new System.Drawing.Point(204, 196);
             this.txtPriceFrame.Name = "txtPriceFrame";
             this.txtPriceFrame.PlaceholderText = "0.00";
             this.txtPriceFrame.Size = new System.Drawing.Size(199, 38);
@@ -213,36 +216,71 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(35, 209);
+            this.label7.Location = new System.Drawing.Point(35, 261);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(112, 28);
             this.label7.TabIndex = 33;
             this.label7.Text = "Description";
             // 
-            // comBoxShapeFrame
+            // GeneratePCodeFrame
             // 
-            this.comBoxShapeFrame.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.comBoxShapeFrame.FormattingEnabled = true;
-            this.comBoxShapeFrame.Location = new System.Drawing.Point(244, 310);
-            this.comBoxShapeFrame.Name = "comBoxShapeFrame";
-            this.comBoxShapeFrame.Size = new System.Drawing.Size(347, 36);
-            this.comBoxShapeFrame.TabIndex = 34;
-            this.comBoxShapeFrame.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.GeneratePCodeFrame.AutoSize = true;
+            this.GeneratePCodeFrame.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.GeneratePCodeFrame.LinkColor = System.Drawing.Color.Navy;
+            this.GeneratePCodeFrame.Location = new System.Drawing.Point(485, 97);
+            this.GeneratePCodeFrame.Name = "GeneratePCodeFrame";
+            this.GeneratePCodeFrame.Size = new System.Drawing.Size(103, 28);
+            this.GeneratePCodeFrame.TabIndex = 38;
+            this.GeneratePCodeFrame.TabStop = true;
+            this.GeneratePCodeFrame.Text = "[Generate]";
+            // 
+            // txtPCodeFrame
+            // 
+            this.txtPCodeFrame.Enabled = false;
+            this.txtPCodeFrame.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtPCodeFrame.Location = new System.Drawing.Point(204, 91);
+            this.txtPCodeFrame.Name = "txtPCodeFrame";
+            this.txtPCodeFrame.PlaceholderText = "P000000";
+            this.txtPCodeFrame.Size = new System.Drawing.Size(256, 34);
+            this.txtPCodeFrame.TabIndex = 37;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label8.Location = new System.Drawing.Point(35, 94);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(132, 28);
+            this.label8.TabIndex = 36;
+            this.label8.Text = "Product Code";
             // 
             // comBoxMaterialFrame
             // 
             this.comBoxMaterialFrame.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.comBoxMaterialFrame.FormattingEnabled = true;
-            this.comBoxMaterialFrame.Location = new System.Drawing.Point(244, 368);
+            this.comBoxMaterialFrame.Location = new System.Drawing.Point(244, 420);
             this.comBoxMaterialFrame.Name = "comBoxMaterialFrame";
             this.comBoxMaterialFrame.Size = new System.Drawing.Size(347, 36);
             this.comBoxMaterialFrame.TabIndex = 35;
+            // 
+            // comBoxShapeFrame
+            // 
+            this.comBoxShapeFrame.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.comBoxShapeFrame.FormattingEnabled = true;
+            this.comBoxShapeFrame.Location = new System.Drawing.Point(244, 362);
+            this.comBoxShapeFrame.Name = "comBoxShapeFrame";
+            this.comBoxShapeFrame.Size = new System.Drawing.Size(347, 36);
+            this.comBoxShapeFrame.TabIndex = 34;
+            this.comBoxShapeFrame.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // frmAddFrame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(876, 507);
+            this.ClientSize = new System.Drawing.Size(876, 549);
+            this.Controls.Add(this.GeneratePCodeFrame);
+            this.Controls.Add(this.txtPCodeFrame);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.comBoxMaterialFrame);
             this.Controls.Add(this.comBoxShapeFrame);
             this.Controls.Add(this.label7);
@@ -287,7 +325,10 @@
         private Label label5;
         private TextBox txtPriceFrame;
         private Label label7;
-        private ComboBox comBoxShapeFrame;
+        private LinkLabel GeneratePCodeFrame;
+        private TextBox txtPCodeFrame;
+        private Label label8;
         private ComboBox comBoxMaterialFrame;
+        private ComboBox comBoxShapeFrame;
     }
 }

@@ -41,6 +41,9 @@
             this.checkedListBoxFeaturesLense = new System.Windows.Forms.CheckedListBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.GeneratePCodeLense = new System.Windows.Forms.LinkLabel();
+            this.txtPCodeLense = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnCloseLense)).BeginInit();
             this.SuspendLayout();
@@ -48,7 +51,7 @@
             // txtPriceLense
             // 
             this.txtPriceLense.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtPriceLense.Location = new System.Drawing.Point(209, 154);
+            this.txtPriceLense.Location = new System.Drawing.Point(205, 197);
             this.txtPriceLense.Name = "txtPriceLense";
             this.txtPriceLense.PlaceholderText = "0.00";
             this.txtPriceLense.Size = new System.Drawing.Size(347, 38);
@@ -58,7 +61,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(40, 159);
+            this.label3.Location = new System.Drawing.Point(36, 202);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(54, 28);
             this.label3.TabIndex = 24;
@@ -72,7 +75,7 @@
             this.btnCancelLense.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelLense.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnCancelLense.ForeColor = System.Drawing.Color.White;
-            this.btnCancelLense.Location = new System.Drawing.Point(526, 430);
+            this.btnCancelLense.Location = new System.Drawing.Point(522, 473);
             this.btnCancelLense.Name = "btnCancelLense";
             this.btnCancelLense.Size = new System.Drawing.Size(153, 49);
             this.btnCancelLense.TabIndex = 23;
@@ -89,7 +92,7 @@
             this.btnUpdateLense.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdateLense.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnUpdateLense.ForeColor = System.Drawing.Color.White;
-            this.btnUpdateLense.Location = new System.Drawing.Point(367, 430);
+            this.btnUpdateLense.Location = new System.Drawing.Point(363, 473);
             this.btnUpdateLense.Name = "btnUpdateLense";
             this.btnUpdateLense.Size = new System.Drawing.Size(153, 49);
             this.btnUpdateLense.TabIndex = 22;
@@ -104,7 +107,7 @@
             this.btnSaveLense.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSaveLense.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnSaveLense.ForeColor = System.Drawing.Color.White;
-            this.btnSaveLense.Location = new System.Drawing.Point(208, 430);
+            this.btnSaveLense.Location = new System.Drawing.Point(204, 473);
             this.btnSaveLense.Name = "btnSaveLense";
             this.btnSaveLense.Size = new System.Drawing.Size(153, 49);
             this.btnSaveLense.TabIndex = 21;
@@ -116,7 +119,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(40, 99);
+            this.label2.Location = new System.Drawing.Point(36, 142);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(129, 28);
             this.label2.TabIndex = 19;
@@ -162,7 +165,7 @@
             // 
             this.comBoxTypeLense.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.comBoxTypeLense.FormattingEnabled = true;
-            this.comBoxTypeLense.Location = new System.Drawing.Point(209, 91);
+            this.comBoxTypeLense.Location = new System.Drawing.Point(205, 134);
             this.comBoxTypeLense.Name = "comBoxTypeLense";
             this.comBoxTypeLense.Size = new System.Drawing.Size(347, 36);
             this.comBoxTypeLense.TabIndex = 35;
@@ -171,7 +174,7 @@
             // 
             this.checkedListBoxFeaturesLense.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.checkedListBoxFeaturesLense.FormattingEnabled = true;
-            this.checkedListBoxFeaturesLense.Location = new System.Drawing.Point(247, 253);
+            this.checkedListBoxFeaturesLense.Location = new System.Drawing.Point(243, 296);
             this.checkedListBoxFeaturesLense.Name = "checkedListBoxFeaturesLense";
             this.checkedListBoxFeaturesLense.Size = new System.Drawing.Size(309, 149);
             this.checkedListBoxFeaturesLense.TabIndex = 36;
@@ -180,7 +183,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(78, 265);
+            this.label4.Location = new System.Drawing.Point(74, 308);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(85, 28);
             this.label4.TabIndex = 37;
@@ -190,17 +193,52 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(40, 216);
+            this.label5.Location = new System.Drawing.Point(36, 259);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(112, 28);
             this.label5.TabIndex = 38;
             this.label5.Text = "Description";
             // 
+            // GeneratePCodeLense
+            // 
+            this.GeneratePCodeLense.AutoSize = true;
+            this.GeneratePCodeLense.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.GeneratePCodeLense.LinkColor = System.Drawing.Color.Navy;
+            this.GeneratePCodeLense.Location = new System.Drawing.Point(486, 89);
+            this.GeneratePCodeLense.Name = "GeneratePCodeLense";
+            this.GeneratePCodeLense.Size = new System.Drawing.Size(103, 28);
+            this.GeneratePCodeLense.TabIndex = 41;
+            this.GeneratePCodeLense.TabStop = true;
+            this.GeneratePCodeLense.Text = "[Generate]";
+            // 
+            // txtPCodeLense
+            // 
+            this.txtPCodeLense.Enabled = false;
+            this.txtPCodeLense.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtPCodeLense.Location = new System.Drawing.Point(205, 83);
+            this.txtPCodeLense.Name = "txtPCodeLense";
+            this.txtPCodeLense.PlaceholderText = "P000000";
+            this.txtPCodeLense.Size = new System.Drawing.Size(256, 34);
+            this.txtPCodeLense.TabIndex = 40;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label8.Location = new System.Drawing.Point(36, 86);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(132, 28);
+            this.label8.TabIndex = 39;
+            this.label8.Text = "Product Code";
+            // 
             // frmAddLense
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(743, 514);
+            this.ClientSize = new System.Drawing.Size(743, 571);
+            this.Controls.Add(this.GeneratePCodeLense);
+            this.Controls.Add(this.txtPCodeLense);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.checkedListBoxFeaturesLense);
@@ -238,5 +276,8 @@
         private CheckedListBox checkedListBoxFeaturesLense;
         private Label label4;
         private Label label5;
+        private LinkLabel GeneratePCodeLense;
+        private TextBox txtPCodeLense;
+        private Label label8;
     }
 }

@@ -52,7 +52,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.dataGridViewProducts = new System.Windows.Forms.DataGridView();
+            this.dataGridViewPaymentStat = new System.Windows.Forms.DataGridView();
             this.NumPendingSet = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TransRefNoPendingSet = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CustomerNamePendingSet = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -76,7 +76,7 @@
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProducts)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPaymentStat)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
             this.SuspendLayout();
@@ -229,7 +229,7 @@
             this.dateTimePicker2.CalendarFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dateTimePicker2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker2.Location = new System.Drawing.Point(461, 70);
+            this.dateTimePicker2.Location = new System.Drawing.Point(461, 66);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(158, 34);
             this.dateTimePicker2.TabIndex = 30;
@@ -239,7 +239,7 @@
             this.dateTimePicker1.CalendarFont = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dateTimePicker1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(297, 70);
+            this.dateTimePicker1.Location = new System.Drawing.Point(297, 66);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(158, 34);
             this.dateTimePicker1.TabIndex = 29;
@@ -299,7 +299,7 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.dataGridViewProducts);
+            this.panel2.Controls.Add(this.dataGridViewPaymentStat);
             this.panel2.Controls.Add(this.panel1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
@@ -307,12 +307,12 @@
             this.panel2.Size = new System.Drawing.Size(1315, 531);
             this.panel2.TabIndex = 7;
             // 
-            // dataGridViewProducts
+            // dataGridViewPaymentStat
             // 
-            this.dataGridViewProducts.AllowUserToResizeColumns = false;
-            this.dataGridViewProducts.AllowUserToResizeRows = false;
-            this.dataGridViewProducts.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridViewProducts.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dataGridViewPaymentStat.AllowUserToResizeColumns = false;
+            this.dataGridViewPaymentStat.AllowUserToResizeRows = false;
+            this.dataGridViewPaymentStat.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridViewPaymentStat.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -320,10 +320,10 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewProducts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridViewProducts.ColumnHeadersHeight = 40;
-            this.dataGridViewProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dataGridViewProducts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewPaymentStat.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridViewPaymentStat.ColumnHeadersHeight = 40;
+            this.dataGridViewPaymentStat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridViewPaymentStat.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NumPendingSet,
             this.TransRefNoPendingSet,
             this.CustomerNamePendingSet,
@@ -339,19 +339,19 @@
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewProducts.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridViewProducts.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewProducts.EnableHeadersVisualStyles = false;
-            this.dataGridViewProducts.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.dataGridViewProducts.Location = new System.Drawing.Point(0, 105);
-            this.dataGridViewProducts.Name = "dataGridViewProducts";
-            this.dataGridViewProducts.RowHeadersVisible = false;
-            this.dataGridViewProducts.RowHeadersWidth = 51;
-            this.dataGridViewProducts.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dataGridViewProducts.RowTemplate.Height = 29;
-            this.dataGridViewProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewProducts.Size = new System.Drawing.Size(1315, 426);
-            this.dataGridViewProducts.TabIndex = 4;
+            this.dataGridViewPaymentStat.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridViewPaymentStat.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewPaymentStat.EnableHeadersVisualStyles = false;
+            this.dataGridViewPaymentStat.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.dataGridViewPaymentStat.Location = new System.Drawing.Point(0, 105);
+            this.dataGridViewPaymentStat.Name = "dataGridViewPaymentStat";
+            this.dataGridViewPaymentStat.RowHeadersVisible = false;
+            this.dataGridViewPaymentStat.RowHeadersWidth = 51;
+            this.dataGridViewPaymentStat.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dataGridViewPaymentStat.RowTemplate.Height = 29;
+            this.dataGridViewPaymentStat.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewPaymentStat.Size = new System.Drawing.Size(1315, 426);
+            this.dataGridViewPaymentStat.TabIndex = 4;
             // 
             // NumPendingSet
             // 
@@ -434,19 +434,21 @@
             // dateTimePicker3
             // 
             this.dateTimePicker3.CalendarFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dateTimePicker3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker3.Location = new System.Drawing.Point(461, 60);
+            this.dateTimePicker3.Location = new System.Drawing.Point(461, 56);
             this.dateTimePicker3.Name = "dateTimePicker3";
-            this.dateTimePicker3.Size = new System.Drawing.Size(158, 27);
+            this.dateTimePicker3.Size = new System.Drawing.Size(158, 34);
             this.dateTimePicker3.TabIndex = 34;
             // 
             // dateTimePicker4
             // 
             this.dateTimePicker4.CalendarFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dateTimePicker4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dateTimePicker4.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker4.Location = new System.Drawing.Point(297, 60);
+            this.dateTimePicker4.Location = new System.Drawing.Point(297, 56);
             this.dateTimePicker4.Name = "dateTimePicker4";
-            this.dateTimePicker4.Size = new System.Drawing.Size(158, 27);
+            this.dateTimePicker4.Size = new System.Drawing.Size(158, 34);
             this.dateTimePicker4.TabIndex = 33;
             // 
             // label4
@@ -521,7 +523,7 @@
             this.panel6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).EndInit();
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProducts)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPaymentStat)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel5.ResumeLayout(false);
@@ -542,7 +544,7 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn TRREFNO;
         private DataGridViewTextBoxColumn CUSTOMERNAME;
-        private DataGridView dataGridViewProducts;
+        private DataGridView dataGridViewPaymentStat;
         private DataGridView dataGridView1;
         private DataGridViewTextBoxColumn NumPendingSet;
         private DataGridViewTextBoxColumn TransRefNoPendingSet;
