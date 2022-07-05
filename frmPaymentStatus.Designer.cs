@@ -98,7 +98,7 @@
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -142,7 +142,7 @@
             this.NumSettled.HeaderText = "#";
             this.NumSettled.MinimumWidth = 6;
             this.NumSettled.Name = "NumSettled";
-            this.NumSettled.Width = 51;
+            this.NumSettled.Width = 50;
             // 
             // TransRefNoSettled
             // 
@@ -150,7 +150,7 @@
             this.TransRefNoSettled.HeaderText = "TRANS REF. NO.";
             this.TransRefNoSettled.MinimumWidth = 6;
             this.TransRefNoSettled.Name = "TransRefNoSettled";
-            this.TransRefNoSettled.Width = 190;
+            this.TransRefNoSettled.Width = 176;
             // 
             // CustNameSettled
             // 
@@ -165,7 +165,7 @@
             this.TotalPaymentSettled.HeaderText = "TOTAL PAYMENT";
             this.TotalPaymentSettled.MinimumWidth = 6;
             this.TotalPaymentSettled.Name = "TotalPaymentSettled";
-            this.TotalPaymentSettled.Width = 198;
+            this.TotalPaymentSettled.Width = 184;
             // 
             // InitialDepSettled
             // 
@@ -173,7 +173,7 @@
             this.InitialDepSettled.HeaderText = "INITIAL DEPOSIT";
             this.InitialDepSettled.MinimumWidth = 6;
             this.InitialDepSettled.Name = "InitialDepSettled";
-            this.InitialDepSettled.Width = 197;
+            this.InitialDepSettled.Width = 184;
             // 
             // SettledAmount
             // 
@@ -181,7 +181,7 @@
             this.SettledAmount.HeaderText = "SETTLED AMOUNT";
             this.SettledAmount.MinimumWidth = 6;
             this.SettledAmount.Name = "SettledAmount";
-            this.SettledAmount.Width = 217;
+            this.SettledAmount.Width = 200;
             // 
             // SettledDatePaymentStat
             // 
@@ -189,7 +189,7 @@
             this.SettledDatePaymentStat.HeaderText = "SETTLED DATE";
             this.SettledDatePaymentStat.MinimumWidth = 6;
             this.SettledDatePaymentStat.Name = "SettledDatePaymentStat";
-            this.SettledDatePaymentStat.Width = 178;
+            this.SettledDatePaymentStat.Width = 164;
             // 
             // CompletedBy
             // 
@@ -197,7 +197,7 @@
             this.CompletedBy.HeaderText = "COMPLETED BY";
             this.CompletedBy.MinimumWidth = 6;
             this.CompletedBy.Name = "CompletedBy";
-            this.CompletedBy.Width = 187;
+            this.CompletedBy.Width = 173;
             // 
             // label2
             // 
@@ -258,7 +258,7 @@
             // panel6
             // 
             this.panel6.Controls.Add(this.txtSearchSettled);
-            this.panel6.Location = new System.Drawing.Point(669, 54);
+            this.panel6.Location = new System.Drawing.Point(637, 54);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(631, 57);
             this.panel6.TabIndex = 6;
@@ -315,7 +315,7 @@
             this.dataGridViewPaymentStat.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -359,7 +359,7 @@
             this.NumPendingSet.HeaderText = "#";
             this.NumPendingSet.MinimumWidth = 6;
             this.NumPendingSet.Name = "NumPendingSet";
-            this.NumPendingSet.Width = 51;
+            this.NumPendingSet.Width = 50;
             // 
             // TransRefNoPendingSet
             // 
@@ -367,7 +367,7 @@
             this.TransRefNoPendingSet.HeaderText = "TRANS REF.NO.";
             this.TransRefNoPendingSet.MinimumWidth = 6;
             this.TransRefNoPendingSet.Name = "TransRefNoPendingSet";
-            this.TransRefNoPendingSet.Width = 184;
+            this.TransRefNoPendingSet.Width = 171;
             // 
             // CustomerNamePendingSet
             // 
@@ -382,7 +382,7 @@
             this.TotalPayment.HeaderText = "TOTAL PAYMENT";
             this.TotalPayment.MinimumWidth = 6;
             this.TotalPayment.Name = "TotalPayment";
-            this.TotalPayment.Width = 198;
+            this.TotalPayment.Width = 184;
             // 
             // InitialDeposit
             // 
@@ -390,7 +390,7 @@
             this.InitialDeposit.HeaderText = "INITIAL DEPOSIT";
             this.InitialDeposit.MinimumWidth = 6;
             this.InitialDeposit.Name = "InitialDeposit";
-            this.InitialDeposit.Width = 197;
+            this.InitialDeposit.Width = 184;
             // 
             // RemBalance
             // 
@@ -398,7 +398,7 @@
             this.RemBalance.HeaderText = "REM. BALANCE";
             this.RemBalance.MinimumWidth = 6;
             this.RemBalance.Name = "RemBalance";
-            this.RemBalance.Width = 183;
+            this.RemBalance.Width = 170;
             // 
             // DueDate
             // 
@@ -406,7 +406,7 @@
             this.DueDate.HeaderText = "DUE DATE";
             this.DueDate.MinimumWidth = 6;
             this.DueDate.Name = "DueDate";
-            this.DueDate.Width = 136;
+            this.DueDate.Width = 126;
             // 
             // Cashier
             // 
@@ -414,7 +414,7 @@
             this.Cashier.HeaderText = "CASHIER";
             this.Cashier.MinimumWidth = 6;
             this.Cashier.Name = "Cashier";
-            this.Cashier.Width = 121;
+            this.Cashier.Width = 115;
             // 
             // panel1
             // 
@@ -465,7 +465,7 @@
             // panel5
             // 
             this.panel5.Controls.Add(this.txtSearchPending);
-            this.panel5.Location = new System.Drawing.Point(669, 44);
+            this.panel5.Location = new System.Drawing.Point(637, 45);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(631, 57);
             this.panel5.TabIndex = 31;
@@ -507,7 +507,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1315, 950);
+            this.ClientSize = new System.Drawing.Size(1315, 930);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);

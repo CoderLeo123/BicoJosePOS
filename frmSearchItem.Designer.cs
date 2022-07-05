@@ -53,7 +53,7 @@
             this.DescSearchItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TypeSearchItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PriceSearchItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QuantitySearchItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AddSearchItem = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -254,7 +254,7 @@
             this.DescSearchItem,
             this.TypeSearchItem,
             this.PriceSearchItem,
-            this.QuantitySearchItem});
+            this.AddSearchItem});
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.Azure;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -315,13 +315,13 @@
             this.PriceSearchItem.Name = "PriceSearchItem";
             this.PriceSearchItem.Width = 93;
             // 
-            // QuantitySearchItem
+            // AddSearchItem
             // 
-            this.QuantitySearchItem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.QuantitySearchItem.HeaderText = "QUANTITY";
-            this.QuantitySearchItem.MinimumWidth = 6;
-            this.QuantitySearchItem.Name = "QuantitySearchItem";
-            this.QuantitySearchItem.Width = 140;
+            this.AddSearchItem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.AddSearchItem.HeaderText = "";
+            this.AddSearchItem.MinimumWidth = 6;
+            this.AddSearchItem.Name = "AddSearchItem";
+            this.AddSearchItem.Width = 24;
             // 
             // frmSearchItem
             // 
@@ -369,6 +369,6 @@
         private DataGridViewTextBoxColumn DescSearchItem;
         private DataGridViewTextBoxColumn TypeSearchItem;
         private DataGridViewTextBoxColumn PriceSearchItem;
-        private DataGridViewTextBoxColumn QuantitySearchItem;
+        private DataGridViewImageColumn AddSearchItem;
     }
 }
