@@ -45,7 +45,6 @@
             this.DESCRIPTION = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TYPE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PRICE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QUANTITY = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EDIT = new System.Windows.Forms.DataGridViewImageColumn();
             this.DELETE = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel1.SuspendLayout();
@@ -73,18 +72,18 @@
             // panel5
             // 
             this.panel5.Controls.Add(this.txtSearch);
-            this.panel5.Location = new System.Drawing.Point(151, 12);
+            this.panel5.Location = new System.Drawing.Point(163, 12);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(592, 57);
+            this.panel5.Size = new System.Drawing.Size(584, 57);
             this.panel5.TabIndex = 24;
             // 
             // txtSearch
             // 
             this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtSearch.Location = new System.Drawing.Point(19, 9);
+            this.txtSearch.Location = new System.Drawing.Point(18, 9);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.PlaceholderText = "Search Here";
-            this.txtSearch.Size = new System.Drawing.Size(559, 38);
+            this.txtSearch.Size = new System.Drawing.Size(546, 38);
             this.txtSearch.TabIndex = 0;
             // 
             // btnAddFrame
@@ -95,7 +94,7 @@
             this.btnAddFrame.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddFrame.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnAddFrame.ForeColor = System.Drawing.Color.White;
-            this.btnAddFrame.Location = new System.Drawing.Point(927, 15);
+            this.btnAddFrame.Location = new System.Drawing.Point(923, 15);
             this.btnAddFrame.Name = "btnAddFrame";
             this.btnAddFrame.Size = new System.Drawing.Size(153, 49);
             this.btnAddFrame.TabIndex = 23;
@@ -111,7 +110,7 @@
             this.btnAddLense.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddLense.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnAddLense.ForeColor = System.Drawing.Color.White;
-            this.btnAddLense.Location = new System.Drawing.Point(757, 15);
+            this.btnAddLense.Location = new System.Drawing.Point(753, 15);
             this.btnAddLense.Name = "btnAddLense";
             this.btnAddLense.Size = new System.Drawing.Size(153, 49);
             this.btnAddLense.TabIndex = 22;
@@ -127,7 +126,7 @@
             this.btnAddAccessories.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddAccessories.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnAddAccessories.ForeColor = System.Drawing.Color.White;
-            this.btnAddAccessories.Location = new System.Drawing.Point(1096, 15);
+            this.btnAddAccessories.Location = new System.Drawing.Point(1092, 15);
             this.btnAddAccessories.Name = "btnAddAccessories";
             this.btnAddAccessories.Size = new System.Drawing.Size(153, 49);
             this.btnAddAccessories.TabIndex = 21;
@@ -153,7 +152,7 @@
             this.pictureBox1.BackgroundImage = global::Capstone.Properties.Resources.CloseTab;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox1.Location = new System.Drawing.Point(1263, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(1259, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Padding = new System.Windows.Forms.Padding(3);
             this.pictureBox1.Size = new System.Drawing.Size(40, 38);
@@ -184,7 +183,6 @@
             this.DESCRIPTION,
             this.TYPE,
             this.PRICE,
-            this.QUANTITY,
             this.EDIT,
             this.DELETE});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -253,14 +251,6 @@
             this.PRICE.Name = "PRICE";
             this.PRICE.Width = 125;
             // 
-            // QUANTITY
-            // 
-            this.QUANTITY.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.QUANTITY.HeaderText = "QUANTITY";
-            this.QUANTITY.MinimumWidth = 6;
-            this.QUANTITY.Name = "QUANTITY";
-            this.QUANTITY.Width = 140;
-            // 
             // EDIT
             // 
             this.EDIT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -307,19 +297,18 @@
         private DataGridView dataGridViewItems;
         private Label label1;
         private PictureBox pictureBox1;
+        private Button btnAddAccessories;
+        private Button btnAddFrame;
+        private Button btnAddLense;
+        private Panel panel5;
+        private TextBox txtSearch;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn PCODE;
         private DataGridViewTextBoxColumn DESCRIPTION;
         private DataGridViewTextBoxColumn TYPE;
         private DataGridViewTextBoxColumn PRICE;
-        private DataGridViewTextBoxColumn QUANTITY;
         private DataGridViewImageColumn EDIT;
         private DataGridViewImageColumn DELETE;
-        private Button btnAddAccessories;
-        private Button btnAddFrame;
-        private Button btnAddLense;
-        private Panel panel5;
-        private TextBox txtSearch;
     }
 }

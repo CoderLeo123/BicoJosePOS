@@ -78,7 +78,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(365, 948);
+            this.panel2.Size = new System.Drawing.Size(281, 948);
             this.panel2.TabIndex = 1;
             // 
             // panel4
@@ -94,9 +94,9 @@
             this.panel4.Controls.Add(this.dropPanelPayment);
             this.panel4.Controls.Add(this.btnPatientR);
             this.panel4.Controls.Add(this.btnDashboard);
-            this.panel4.Location = new System.Drawing.Point(12, 227);
+            this.panel4.Location = new System.Drawing.Point(0, 215);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(334, 912);
+            this.panel4.Size = new System.Drawing.Size(278, 912);
             this.panel4.TabIndex = 6;
             // 
             // btnLogout
@@ -105,15 +105,15 @@
             this.btnLogout.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnLogout.FlatAppearance.BorderSize = 0;
             this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogout.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnLogout.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnLogout.ForeColor = System.Drawing.Color.White;
             this.btnLogout.Image = global::Capstone.Properties.Resources.Log_out;
             this.btnLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLogout.Location = new System.Drawing.Point(0, 881);
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(334, 52);
+            this.btnLogout.Size = new System.Drawing.Size(278, 52);
             this.btnLogout.TabIndex = 17;
-            this.btnLogout.Text = "Logout";
+            this.btnLogout.Text = "   Logout";
             this.btnLogout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnLogout.UseVisualStyleBackColor = false;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
@@ -124,15 +124,15 @@
             this.btnUserSettings.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnUserSettings.FlatAppearance.BorderSize = 0;
             this.btnUserSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUserSettings.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnUserSettings.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnUserSettings.ForeColor = System.Drawing.Color.White;
             this.btnUserSettings.Image = global::Capstone.Properties.Resources.User_Settings;
             this.btnUserSettings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnUserSettings.Location = new System.Drawing.Point(0, 829);
             this.btnUserSettings.Name = "btnUserSettings";
-            this.btnUserSettings.Size = new System.Drawing.Size(334, 52);
+            this.btnUserSettings.Size = new System.Drawing.Size(278, 52);
             this.btnUserSettings.TabIndex = 16;
-            this.btnUserSettings.Text = "UserSettings";
+            this.btnUserSettings.Text = "   UserSettings";
             this.btnUserSettings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnUserSettings.UseVisualStyleBackColor = false;
             this.btnUserSettings.Click += new System.EventHandler(this.btnUserSettings_Click);
@@ -143,15 +143,15 @@
             this.btnBackupArch.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnBackupArch.FlatAppearance.BorderSize = 0;
             this.btnBackupArch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBackupArch.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnBackupArch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnBackupArch.ForeColor = System.Drawing.Color.White;
             this.btnBackupArch.Image = global::Capstone.Properties.Resources.Back_up;
             this.btnBackupArch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnBackupArch.Location = new System.Drawing.Point(0, 777);
             this.btnBackupArch.Name = "btnBackupArch";
-            this.btnBackupArch.Size = new System.Drawing.Size(334, 52);
+            this.btnBackupArch.Size = new System.Drawing.Size(278, 52);
             this.btnBackupArch.TabIndex = 15;
-            this.btnBackupArch.Text = "Backup and Archive";
+            this.btnBackupArch.Text = "   Backup and Archive";
             this.btnBackupArch.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnBackupArch.UseVisualStyleBackColor = false;
             this.btnBackupArch.Click += new System.EventHandler(this.btnBackupArch_Click);
@@ -175,7 +175,7 @@
             this.btnInventoryReport.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnInventoryReport.FlatAppearance.BorderSize = 0;
             this.btnInventoryReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnInventoryReport.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnInventoryReport.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnInventoryReport.ForeColor = System.Drawing.Color.White;
             this.btnInventoryReport.Image = global::Capstone.Properties.Resources.Inventory;
             this.btnInventoryReport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -183,7 +183,7 @@
             this.btnInventoryReport.Name = "btnInventoryReport";
             this.btnInventoryReport.Size = new System.Drawing.Size(366, 52);
             this.btnInventoryReport.TabIndex = 2;
-            this.btnInventoryReport.Text = "Inventory Report";
+            this.btnInventoryReport.Text = "   Inventory Report";
             this.btnInventoryReport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnInventoryReport.UseVisualStyleBackColor = false;
             this.btnInventoryReport.Click += new System.EventHandler(this.btnInventoryReport_Click);
@@ -194,7 +194,7 @@
             this.btnSalesReport.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnSalesReport.FlatAppearance.BorderSize = 0;
             this.btnSalesReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSalesReport.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnSalesReport.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnSalesReport.ForeColor = System.Drawing.Color.White;
             this.btnSalesReport.Image = global::Capstone.Properties.Resources.Sales;
             this.btnSalesReport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -202,7 +202,7 @@
             this.btnSalesReport.Name = "btnSalesReport";
             this.btnSalesReport.Size = new System.Drawing.Size(366, 52);
             this.btnSalesReport.TabIndex = 1;
-            this.btnSalesReport.Text = "Sales Report";
+            this.btnSalesReport.Text = "   Sales Report";
             this.btnSalesReport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSalesReport.UseVisualStyleBackColor = false;
             this.btnSalesReport.Click += new System.EventHandler(this.button32_Click);
@@ -213,7 +213,7 @@
             this.dropBtnSales.Dock = System.Windows.Forms.DockStyle.Top;
             this.dropBtnSales.FlatAppearance.BorderSize = 0;
             this.dropBtnSales.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.dropBtnSales.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dropBtnSales.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dropBtnSales.ForeColor = System.Drawing.Color.White;
             this.dropBtnSales.Image = global::Capstone.Properties.Resources.Sales_Report;
             this.dropBtnSales.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -221,7 +221,7 @@
             this.dropBtnSales.Name = "dropBtnSales";
             this.dropBtnSales.Size = new System.Drawing.Size(366, 52);
             this.dropBtnSales.TabIndex = 0;
-            this.dropBtnSales.Text = "Sales and Inventory Report";
+            this.dropBtnSales.Text = "   Sales and Inventory Report";
             this.dropBtnSales.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.dropBtnSales.UseVisualStyleBackColor = false;
             this.dropBtnSales.Click += new System.EventHandler(this.dropBtnSales_Click_1);
@@ -232,15 +232,15 @@
             this.btnInventory.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnInventory.FlatAppearance.BorderSize = 0;
             this.btnInventory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnInventory.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnInventory.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnInventory.ForeColor = System.Drawing.Color.White;
             this.btnInventory.Image = global::Capstone.Properties.Resources.inventoryMonitor;
             this.btnInventory.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnInventory.Location = new System.Drawing.Point(0, 570);
             this.btnInventory.Name = "btnInventory";
-            this.btnInventory.Size = new System.Drawing.Size(334, 52);
+            this.btnInventory.Size = new System.Drawing.Size(278, 52);
             this.btnInventory.TabIndex = 13;
-            this.btnInventory.Text = "Inventory";
+            this.btnInventory.Text = "   Inventory";
             this.btnInventory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnInventory.UseVisualStyleBackColor = false;
             this.btnInventory.Click += new System.EventHandler(this.btnInventory_Click);
@@ -251,15 +251,15 @@
             this.btnStockDel.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnStockDel.FlatAppearance.BorderSize = 0;
             this.btnStockDel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStockDel.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnStockDel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnStockDel.ForeColor = System.Drawing.Color.White;
             this.btnStockDel.Image = global::Capstone.Properties.Resources.Stock_Delivery;
             this.btnStockDel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnStockDel.Location = new System.Drawing.Point(0, 518);
             this.btnStockDel.Name = "btnStockDel";
-            this.btnStockDel.Size = new System.Drawing.Size(334, 52);
+            this.btnStockDel.Size = new System.Drawing.Size(278, 52);
             this.btnStockDel.TabIndex = 12;
-            this.btnStockDel.Text = "Stock Delivery";
+            this.btnStockDel.Text = "   Stock Delivery";
             this.btnStockDel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnStockDel.UseVisualStyleBackColor = false;
             this.btnStockDel.Click += new System.EventHandler(this.btnStockDel_Click);
@@ -284,7 +284,7 @@
             this.btnServices.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnServices.FlatAppearance.BorderSize = 0;
             this.btnServices.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnServices.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnServices.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnServices.ForeColor = System.Drawing.Color.White;
             this.btnServices.Image = global::Capstone.Properties.Resources.Service;
             this.btnServices.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -292,7 +292,7 @@
             this.btnServices.Name = "btnServices";
             this.btnServices.Size = new System.Drawing.Size(366, 52);
             this.btnServices.TabIndex = 3;
-            this.btnServices.Text = "Services";
+            this.btnServices.Text = "   Services";
             this.btnServices.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnServices.UseVisualStyleBackColor = false;
             this.btnServices.Click += new System.EventHandler(this.btnServices_Click);
@@ -303,7 +303,7 @@
             this.btnItems.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnItems.FlatAppearance.BorderSize = 0;
             this.btnItems.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnItems.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnItems.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnItems.ForeColor = System.Drawing.Color.White;
             this.btnItems.Image = global::Capstone.Properties.Resources.Items;
             this.btnItems.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -311,7 +311,7 @@
             this.btnItems.Name = "btnItems";
             this.btnItems.Size = new System.Drawing.Size(366, 52);
             this.btnItems.TabIndex = 2;
-            this.btnItems.Text = "Items";
+            this.btnItems.Text = "   Items";
             this.btnItems.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnItems.UseVisualStyleBackColor = false;
             this.btnItems.Click += new System.EventHandler(this.btnItems_Click);
@@ -322,7 +322,7 @@
             this.btnProd.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnProd.FlatAppearance.BorderSize = 0;
             this.btnProd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnProd.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnProd.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnProd.ForeColor = System.Drawing.Color.White;
             this.btnProd.Image = global::Capstone.Properties.Resources.Products;
             this.btnProd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -330,7 +330,7 @@
             this.btnProd.Name = "btnProd";
             this.btnProd.Size = new System.Drawing.Size(366, 52);
             this.btnProd.TabIndex = 1;
-            this.btnProd.Text = "Products";
+            this.btnProd.Text = "   Products";
             this.btnProd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnProd.UseVisualStyleBackColor = false;
             this.btnProd.Click += new System.EventHandler(this.btnProd_Click);
@@ -341,7 +341,7 @@
             this.dropBtnProducts.Dock = System.Windows.Forms.DockStyle.Top;
             this.dropBtnProducts.FlatAppearance.BorderSize = 0;
             this.dropBtnProducts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.dropBtnProducts.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dropBtnProducts.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dropBtnProducts.ForeColor = System.Drawing.Color.White;
             this.dropBtnProducts.Image = global::Capstone.Properties.Resources.ProdItemServ;
             this.dropBtnProducts.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -349,7 +349,7 @@
             this.dropBtnProducts.Name = "dropBtnProducts";
             this.dropBtnProducts.Size = new System.Drawing.Size(366, 52);
             this.dropBtnProducts.TabIndex = 0;
-            this.dropBtnProducts.Text = "Product, Items, and Services";
+            this.dropBtnProducts.Text = "   Product and Items";
             this.dropBtnProducts.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.dropBtnProducts.UseVisualStyleBackColor = false;
             this.dropBtnProducts.Click += new System.EventHandler(this.dropBtnProducts_Click_1);
@@ -360,15 +360,15 @@
             this.btnTranscHist.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnTranscHist.FlatAppearance.BorderSize = 0;
             this.btnTranscHist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTranscHist.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnTranscHist.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnTranscHist.ForeColor = System.Drawing.Color.White;
             this.btnTranscHist.Image = global::Capstone.Properties.Resources.Transaction_History;
             this.btnTranscHist.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnTranscHist.Location = new System.Drawing.Point(0, 259);
             this.btnTranscHist.Name = "btnTranscHist";
-            this.btnTranscHist.Size = new System.Drawing.Size(334, 52);
+            this.btnTranscHist.Size = new System.Drawing.Size(278, 52);
             this.btnTranscHist.TabIndex = 8;
-            this.btnTranscHist.Text = "Transaction History";
+            this.btnTranscHist.Text = "   Transaction History";
             this.btnTranscHist.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnTranscHist.UseVisualStyleBackColor = false;
             this.btnTranscHist.Click += new System.EventHandler(this.btnTranscHist_Click);
@@ -392,7 +392,7 @@
             this.btnOrderStatus.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnOrderStatus.FlatAppearance.BorderSize = 0;
             this.btnOrderStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOrderStatus.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnOrderStatus.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnOrderStatus.ForeColor = System.Drawing.Color.White;
             this.btnOrderStatus.Image = global::Capstone.Properties.Resources.orderStat;
             this.btnOrderStatus.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -400,7 +400,7 @@
             this.btnOrderStatus.Name = "btnOrderStatus";
             this.btnOrderStatus.Size = new System.Drawing.Size(366, 52);
             this.btnOrderStatus.TabIndex = 2;
-            this.btnOrderStatus.Text = "Order Status";
+            this.btnOrderStatus.Text = "   Order Status";
             this.btnOrderStatus.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnOrderStatus.UseVisualStyleBackColor = false;
             this.btnOrderStatus.Click += new System.EventHandler(this.btnOrderStatus_Click);
@@ -411,7 +411,7 @@
             this.btnPayStatus.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnPayStatus.FlatAppearance.BorderSize = 0;
             this.btnPayStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPayStatus.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnPayStatus.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnPayStatus.ForeColor = System.Drawing.Color.White;
             this.btnPayStatus.Image = global::Capstone.Properties.Resources.payStat;
             this.btnPayStatus.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -419,7 +419,7 @@
             this.btnPayStatus.Name = "btnPayStatus";
             this.btnPayStatus.Size = new System.Drawing.Size(366, 52);
             this.btnPayStatus.TabIndex = 1;
-            this.btnPayStatus.Text = "Payment Status";
+            this.btnPayStatus.Text = "   Payment Status";
             this.btnPayStatus.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnPayStatus.UseVisualStyleBackColor = false;
             this.btnPayStatus.Click += new System.EventHandler(this.button25_Click);
@@ -430,7 +430,7 @@
             this.dropBtnPayment.Dock = System.Windows.Forms.DockStyle.Top;
             this.dropBtnPayment.FlatAppearance.BorderSize = 0;
             this.dropBtnPayment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.dropBtnPayment.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dropBtnPayment.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dropBtnPayment.ForeColor = System.Drawing.Color.White;
             this.dropBtnPayment.Image = global::Capstone.Properties.Resources.payment;
             this.dropBtnPayment.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -438,7 +438,7 @@
             this.dropBtnPayment.Name = "dropBtnPayment";
             this.dropBtnPayment.Size = new System.Drawing.Size(366, 52);
             this.dropBtnPayment.TabIndex = 0;
-            this.dropBtnPayment.Text = "Payment and Order Status";
+            this.dropBtnPayment.Text = "   Payment and Order Status";
             this.dropBtnPayment.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.dropBtnPayment.UseVisualStyleBackColor = false;
             this.dropBtnPayment.Click += new System.EventHandler(this.dropBtnPayment_Click_1);
@@ -449,15 +449,15 @@
             this.btnPatientR.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnPatientR.FlatAppearance.BorderSize = 0;
             this.btnPatientR.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPatientR.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnPatientR.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnPatientR.ForeColor = System.Drawing.Color.White;
             this.btnPatientR.Image = global::Capstone.Properties.Resources.Patient_s_Record;
             this.btnPatientR.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnPatientR.Location = new System.Drawing.Point(0, 52);
             this.btnPatientR.Name = "btnPatientR";
-            this.btnPatientR.Size = new System.Drawing.Size(334, 52);
+            this.btnPatientR.Size = new System.Drawing.Size(278, 52);
             this.btnPatientR.TabIndex = 0;
-            this.btnPatientR.Text = "Patient\'s Record";
+            this.btnPatientR.Text = "   Patient\'s Record";
             this.btnPatientR.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnPatientR.UseVisualStyleBackColor = false;
             this.btnPatientR.Click += new System.EventHandler(this.btnPatientR_Click);
@@ -468,15 +468,15 @@
             this.btnDashboard.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnDashboard.FlatAppearance.BorderSize = 0;
             this.btnDashboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDashboard.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnDashboard.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnDashboard.ForeColor = System.Drawing.Color.White;
             this.btnDashboard.Image = global::Capstone.Properties.Resources.Dashboard;
             this.btnDashboard.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDashboard.Location = new System.Drawing.Point(0, 0);
             this.btnDashboard.Name = "btnDashboard";
-            this.btnDashboard.Size = new System.Drawing.Size(334, 52);
+            this.btnDashboard.Size = new System.Drawing.Size(278, 52);
             this.btnDashboard.TabIndex = 0;
-            this.btnDashboard.Text = "Dashboard";
+            this.btnDashboard.Text = "   Dashboard";
             this.btnDashboard.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnDashboard.UseVisualStyleBackColor = false;
             this.btnDashboard.Click += new System.EventHandler(this.btnDashboard_Click);
@@ -485,7 +485,7 @@
             // 
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(31, 192);
+            this.label1.Location = new System.Drawing.Point(-8, 178);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(291, 51);
             this.label1.TabIndex = 2;
@@ -497,7 +497,7 @@
             this.lblName.BackColor = System.Drawing.Color.Transparent;
             this.lblName.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblName.ForeColor = System.Drawing.Color.Aqua;
-            this.lblName.Location = new System.Drawing.Point(31, 154);
+            this.lblName.Location = new System.Drawing.Point(-8, 140);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(291, 51);
             this.lblName.TabIndex = 1;
@@ -507,7 +507,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Capstone.Properties.Resources.User;
-            this.pictureBox1.Location = new System.Drawing.Point(107, 26);
+            this.pictureBox1.Location = new System.Drawing.Point(68, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(138, 125);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -532,9 +532,9 @@
             // panelLoad
             // 
             this.panelLoad.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelLoad.Location = new System.Drawing.Point(365, 0);
+            this.panelLoad.Location = new System.Drawing.Point(281, 0);
             this.panelLoad.Name = "panelLoad";
-            this.panelLoad.Size = new System.Drawing.Size(1333, 948);
+            this.panelLoad.Size = new System.Drawing.Size(1317, 948);
             this.panelLoad.TabIndex = 2;
             this.panelLoad.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
@@ -542,7 +542,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1698, 948);
+            this.ClientSize = new System.Drawing.Size(1598, 948);
             this.ControlBox = false;
             this.Controls.Add(this.panelLoad);
             this.Controls.Add(this.panel2);
