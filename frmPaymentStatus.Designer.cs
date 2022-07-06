@@ -203,16 +203,17 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(12, 9);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(251, 38);
+            this.label2.Size = new System.Drawing.Size(288, 41);
             this.label2.TabIndex = 4;
             this.label2.Text = "Completely Settled";
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.LightBlue;
+            this.panel3.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.panel3.Controls.Add(this.dateTimePicker2);
             this.panel3.Controls.Add(this.dateTimePicker1);
             this.panel3.Controls.Add(this.label3);
@@ -229,7 +230,7 @@
             this.dateTimePicker2.CalendarFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dateTimePicker2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker2.Location = new System.Drawing.Point(461, 66);
+            this.dateTimePicker2.Location = new System.Drawing.Point(520, 71);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(158, 34);
             this.dateTimePicker2.TabIndex = 30;
@@ -239,7 +240,7 @@
             this.dateTimePicker1.CalendarFont = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dateTimePicker1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(297, 66);
+            this.dateTimePicker1.Location = new System.Drawing.Point(356, 71);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(158, 34);
             this.dateTimePicker1.TabIndex = 29;
@@ -248,17 +249,18 @@
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(26, 66);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(265, 31);
+            this.label3.Size = new System.Drawing.Size(335, 38);
             this.label3.TabIndex = 28;
             this.label3.Text = "Filter By Date (From - To)";
             // 
             // panel6
             // 
             this.panel6.Controls.Add(this.txtSearchSettled);
-            this.panel6.Location = new System.Drawing.Point(637, 54);
+            this.panel6.Location = new System.Drawing.Point(684, 54);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(631, 57);
             this.panel6.TabIndex = 6;
@@ -276,10 +278,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(260, 38);
+            this.label1.Size = new System.Drawing.Size(297, 41);
             this.label1.TabIndex = 4;
             this.label1.Text = "Pending Settlement";
             // 
@@ -343,14 +346,14 @@
             this.dataGridViewPaymentStat.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewPaymentStat.EnableHeadersVisualStyles = false;
             this.dataGridViewPaymentStat.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.dataGridViewPaymentStat.Location = new System.Drawing.Point(0, 105);
+            this.dataGridViewPaymentStat.Location = new System.Drawing.Point(0, 114);
             this.dataGridViewPaymentStat.Name = "dataGridViewPaymentStat";
             this.dataGridViewPaymentStat.RowHeadersVisible = false;
             this.dataGridViewPaymentStat.RowHeadersWidth = 51;
             this.dataGridViewPaymentStat.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridViewPaymentStat.RowTemplate.Height = 29;
             this.dataGridViewPaymentStat.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewPaymentStat.Size = new System.Drawing.Size(1315, 426);
+            this.dataGridViewPaymentStat.Size = new System.Drawing.Size(1315, 417);
             this.dataGridViewPaymentStat.TabIndex = 4;
             // 
             // NumPendingSet
@@ -418,7 +421,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.LightBlue;
+            this.panel1.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.panel1.Controls.Add(this.dateTimePicker3);
             this.panel1.Controls.Add(this.dateTimePicker4);
             this.panel1.Controls.Add(this.label4);
@@ -428,7 +431,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1315, 105);
+            this.panel1.Size = new System.Drawing.Size(1315, 114);
             this.panel1.TabIndex = 2;
             // 
             // dateTimePicker3
@@ -436,7 +439,7 @@
             this.dateTimePicker3.CalendarFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dateTimePicker3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker3.Location = new System.Drawing.Point(461, 56);
+            this.dateTimePicker3.Location = new System.Drawing.Point(527, 65);
             this.dateTimePicker3.Name = "dateTimePicker3";
             this.dateTimePicker3.Size = new System.Drawing.Size(158, 34);
             this.dateTimePicker3.TabIndex = 34;
@@ -446,7 +449,7 @@
             this.dateTimePicker4.CalendarFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dateTimePicker4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dateTimePicker4.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker4.Location = new System.Drawing.Point(297, 56);
+            this.dateTimePicker4.Location = new System.Drawing.Point(363, 65);
             this.dateTimePicker4.Name = "dateTimePicker4";
             this.dateTimePicker4.Size = new System.Drawing.Size(158, 34);
             this.dateTimePicker4.TabIndex = 33;
@@ -455,19 +458,20 @@
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(26, 56);
+            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(26, 62);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(265, 31);
+            this.label4.Size = new System.Drawing.Size(335, 38);
             this.label4.TabIndex = 32;
             this.label4.Text = "Filter By Date (From - To)";
             // 
             // panel5
             // 
             this.panel5.Controls.Add(this.txtSearchPending);
-            this.panel5.Location = new System.Drawing.Point(637, 45);
+            this.panel5.Location = new System.Drawing.Point(703, 53);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(631, 57);
+            this.panel5.Size = new System.Drawing.Size(602, 52);
             this.panel5.TabIndex = 31;
             // 
             // txtSearchPending
@@ -476,7 +480,7 @@
             this.txtSearchPending.Location = new System.Drawing.Point(19, 9);
             this.txtSearchPending.Name = "txtSearchPending";
             this.txtSearchPending.PlaceholderText = "Search Here";
-            this.txtSearchPending.Size = new System.Drawing.Size(592, 38);
+            this.txtSearchPending.Size = new System.Drawing.Size(573, 38);
             this.txtSearchPending.TabIndex = 0;
             // 
             // dataGridViewTextBoxColumn1

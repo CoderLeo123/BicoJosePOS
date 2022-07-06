@@ -51,7 +51,7 @@
             // txtPriceLense
             // 
             this.txtPriceLense.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtPriceLense.Location = new System.Drawing.Point(205, 197);
+            this.txtPriceLense.Location = new System.Drawing.Point(241, 210);
             this.txtPriceLense.Name = "txtPriceLense";
             this.txtPriceLense.PlaceholderText = "0.00";
             this.txtPriceLense.Size = new System.Drawing.Size(347, 38);
@@ -60,10 +60,10 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(36, 202);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(45, 208);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(54, 28);
+            this.label3.Size = new System.Drawing.Size(78, 38);
             this.label3.TabIndex = 24;
             this.label3.Text = "Price";
             // 
@@ -75,7 +75,7 @@
             this.btnCancelLense.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelLense.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnCancelLense.ForeColor = System.Drawing.Color.White;
-            this.btnCancelLense.Location = new System.Drawing.Point(522, 473);
+            this.btnCancelLense.Location = new System.Drawing.Point(363, 489);
             this.btnCancelLense.Name = "btnCancelLense";
             this.btnCancelLense.Size = new System.Drawing.Size(153, 49);
             this.btnCancelLense.TabIndex = 23;
@@ -92,7 +92,7 @@
             this.btnUpdateLense.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdateLense.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnUpdateLense.ForeColor = System.Drawing.Color.White;
-            this.btnUpdateLense.Location = new System.Drawing.Point(363, 473);
+            this.btnUpdateLense.Location = new System.Drawing.Point(204, 489);
             this.btnUpdateLense.Name = "btnUpdateLense";
             this.btnUpdateLense.Size = new System.Drawing.Size(153, 49);
             this.btnUpdateLense.TabIndex = 22;
@@ -107,7 +107,7 @@
             this.btnSaveLense.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSaveLense.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnSaveLense.ForeColor = System.Drawing.Color.White;
-            this.btnSaveLense.Location = new System.Drawing.Point(204, 473);
+            this.btnSaveLense.Location = new System.Drawing.Point(45, 489);
             this.btnSaveLense.Name = "btnSaveLense";
             this.btnSaveLense.Size = new System.Drawing.Size(153, 49);
             this.btnSaveLense.TabIndex = 21;
@@ -118,32 +118,33 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(36, 142);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(36, 148);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(129, 28);
+            this.label2.Size = new System.Drawing.Size(187, 38);
             this.label2.TabIndex = 19;
             this.label2.Text = "Type of Lense";
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.LightBlue;
+            this.panel1.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.btnCloseLense);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(743, 57);
+            this.panel1.Size = new System.Drawing.Size(632, 57);
             this.panel1.TabIndex = 18;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(200, 38);
+            this.label1.Size = new System.Drawing.Size(222, 41);
             this.label1.TabIndex = 4;
             this.label1.Text = "Eyeglass Lense";
             // 
@@ -153,7 +154,7 @@
             this.btnCloseLense.BackgroundImage = global::Capstone.Properties.Resources.CloseTab;
             this.btnCloseLense.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnCloseLense.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCloseLense.Location = new System.Drawing.Point(691, 12);
+            this.btnCloseLense.Location = new System.Drawing.Point(574, 12);
             this.btnCloseLense.Name = "btnCloseLense";
             this.btnCloseLense.Padding = new System.Windows.Forms.Padding(3);
             this.btnCloseLense.Size = new System.Drawing.Size(40, 38);
@@ -165,7 +166,7 @@
             // 
             this.comBoxTypeLense.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.comBoxTypeLense.FormattingEnabled = true;
-            this.comBoxTypeLense.Location = new System.Drawing.Point(205, 134);
+            this.comBoxTypeLense.Location = new System.Drawing.Point(241, 147);
             this.comBoxTypeLense.Name = "comBoxTypeLense";
             this.comBoxTypeLense.Size = new System.Drawing.Size(347, 36);
             this.comBoxTypeLense.TabIndex = 35;
@@ -174,7 +175,7 @@
             // 
             this.checkedListBoxFeaturesLense.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.checkedListBoxFeaturesLense.FormattingEnabled = true;
-            this.checkedListBoxFeaturesLense.Location = new System.Drawing.Point(243, 296);
+            this.checkedListBoxFeaturesLense.Location = new System.Drawing.Point(241, 314);
             this.checkedListBoxFeaturesLense.Name = "checkedListBoxFeaturesLense";
             this.checkedListBoxFeaturesLense.Size = new System.Drawing.Size(309, 149);
             this.checkedListBoxFeaturesLense.TabIndex = 36;
@@ -182,20 +183,20 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(74, 308);
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(45, 309);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(85, 28);
+            this.label4.Size = new System.Drawing.Size(122, 38);
             this.label4.TabIndex = 37;
             this.label4.Text = "Features";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(36, 259);
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(313, 273);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(112, 28);
+            this.label5.Size = new System.Drawing.Size(158, 38);
             this.label5.TabIndex = 38;
             this.label5.Text = "Description";
             // 
@@ -204,7 +205,7 @@
             this.GeneratePCodeLense.AutoSize = true;
             this.GeneratePCodeLense.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.GeneratePCodeLense.LinkColor = System.Drawing.Color.Navy;
-            this.GeneratePCodeLense.Location = new System.Drawing.Point(486, 89);
+            this.GeneratePCodeLense.Location = new System.Drawing.Point(511, 102);
             this.GeneratePCodeLense.Name = "GeneratePCodeLense";
             this.GeneratePCodeLense.Size = new System.Drawing.Size(103, 28);
             this.GeneratePCodeLense.TabIndex = 41;
@@ -215,7 +216,7 @@
             // 
             this.txtPCodeLense.Enabled = false;
             this.txtPCodeLense.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtPCodeLense.Location = new System.Drawing.Point(205, 83);
+            this.txtPCodeLense.Location = new System.Drawing.Point(241, 96);
             this.txtPCodeLense.Name = "txtPCodeLense";
             this.txtPCodeLense.PlaceholderText = "P000000";
             this.txtPCodeLense.Size = new System.Drawing.Size(256, 34);
@@ -224,10 +225,10 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(36, 86);
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label8.Location = new System.Drawing.Point(36, 92);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(132, 28);
+            this.label8.Size = new System.Drawing.Size(185, 38);
             this.label8.TabIndex = 39;
             this.label8.Text = "Product Code";
             // 
@@ -235,7 +236,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(743, 571);
+            this.ClientSize = new System.Drawing.Size(632, 571);
             this.Controls.Add(this.GeneratePCodeLense);
             this.Controls.Add(this.txtPCodeLense);
             this.Controls.Add(this.label8);

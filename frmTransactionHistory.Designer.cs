@@ -57,7 +57,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.LightBlue;
+            this.panel1.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.panel1.Controls.Add(this.dateTimePicker2);
             this.panel1.Controls.Add(this.dateTimePicker1);
             this.panel1.Controls.Add(this.label3);
@@ -75,7 +75,7 @@
             this.dateTimePicker2.CalendarFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dateTimePicker2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker2.Location = new System.Drawing.Point(468, 58);
+            this.dateTimePicker2.Location = new System.Drawing.Point(527, 61);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(158, 34);
             this.dateTimePicker2.TabIndex = 34;
@@ -85,7 +85,7 @@
             this.dateTimePicker1.CalendarFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dateTimePicker1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(304, 58);
+            this.dateTimePicker1.Location = new System.Drawing.Point(363, 61);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(158, 34);
             this.dateTimePicker1.TabIndex = 33;
@@ -94,19 +94,20 @@
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(33, 57);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(265, 31);
+            this.label3.Size = new System.Drawing.Size(335, 38);
             this.label3.TabIndex = 32;
             this.label3.Text = "Filter By Date (From - To)";
             // 
             // panel6
             // 
             this.panel6.Controls.Add(this.txtSearchTransHist);
-            this.panel6.Location = new System.Drawing.Point(676, 45);
+            this.panel6.Location = new System.Drawing.Point(707, 50);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(631, 57);
+            this.panel6.Size = new System.Drawing.Size(566, 45);
             this.panel6.TabIndex = 31;
             // 
             // txtSearchTransHist
@@ -115,17 +116,18 @@
             this.txtSearchTransHist.Location = new System.Drawing.Point(19, 9);
             this.txtSearchTransHist.Name = "txtSearchTransHist";
             this.txtSearchTransHist.PlaceholderText = "Search Here";
-            this.txtSearchTransHist.Size = new System.Drawing.Size(592, 38);
+            this.txtSearchTransHist.Size = new System.Drawing.Size(534, 38);
             this.txtSearchTransHist.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(253, 38);
+            this.label1.Size = new System.Drawing.Size(292, 41);
             this.label1.TabIndex = 4;
             this.label1.Text = "Transaction History";
             // 

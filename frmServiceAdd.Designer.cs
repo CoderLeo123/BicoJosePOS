@@ -46,7 +46,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.LightBlue;
+            this.panel1.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.btnClose);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -59,10 +59,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(169, 38);
+            this.label1.Size = new System.Drawing.Size(191, 41);
             this.label1.TabIndex = 4;
             this.label1.Text = "New Service";
             // 
@@ -131,7 +132,7 @@
             // txtServName
             // 
             this.txtServName.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtServName.Location = new System.Drawing.Point(206, 105);
+            this.txtServName.Location = new System.Drawing.Point(241, 115);
             this.txtServName.Name = "txtServName";
             this.txtServName.PlaceholderText = "Ex. Refractor Machine";
             this.txtServName.Size = new System.Drawing.Size(582, 38);
@@ -140,10 +141,10 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label2.Location = new System.Drawing.Point(37, 110);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(131, 28);
+            this.label2.Size = new System.Drawing.Size(198, 41);
             this.label2.TabIndex = 9;
             this.label2.Text = "Service Name";
             this.label2.Click += new System.EventHandler(this.label2_Click);
@@ -151,7 +152,7 @@
             // txtServDesc
             // 
             this.txtServDesc.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtServDesc.Location = new System.Drawing.Point(206, 167);
+            this.txtServDesc.Location = new System.Drawing.Point(241, 177);
             this.txtServDesc.Name = "txtServDesc";
             this.txtServDesc.PlaceholderText = "Ex. Automated reading of eyeglass prescription";
             this.txtServDesc.Size = new System.Drawing.Size(582, 38);
@@ -160,17 +161,17 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label3.Location = new System.Drawing.Point(37, 172);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(112, 28);
+            this.label3.Size = new System.Drawing.Size(169, 41);
             this.label3.TabIndex = 14;
             this.label3.Text = "Description";
             // 
             // txtServPrice
             // 
             this.txtServPrice.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtServPrice.Location = new System.Drawing.Point(206, 225);
+            this.txtServPrice.Location = new System.Drawing.Point(241, 235);
             this.txtServPrice.Name = "txtServPrice";
             this.txtServPrice.PlaceholderText = "0.00";
             this.txtServPrice.Size = new System.Drawing.Size(199, 38);
@@ -179,10 +180,10 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label4.Location = new System.Drawing.Point(37, 230);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(54, 28);
+            this.label4.Size = new System.Drawing.Size(82, 41);
             this.label4.TabIndex = 16;
             this.label4.Text = "Price";
             // 

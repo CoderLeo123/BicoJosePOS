@@ -103,7 +103,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.LightBlue;
+            this.panel1.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.panel1.Controls.Add(this.dateTimePicker2);
             this.panel1.Controls.Add(this.dateTimePicker1);
             this.panel1.Controls.Add(this.label11);
@@ -122,7 +122,7 @@
             this.dateTimePicker2.CalendarFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dateTimePicker2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker2.Location = new System.Drawing.Point(472, 55);
+            this.dateTimePicker2.Location = new System.Drawing.Point(532, 55);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(158, 34);
             this.dateTimePicker2.TabIndex = 37;
@@ -132,7 +132,7 @@
             this.dateTimePicker1.CalendarFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dateTimePicker1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(300, 55);
+            this.dateTimePicker1.Location = new System.Drawing.Point(360, 55);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(158, 34);
             this.dateTimePicker1.TabIndex = 36;
@@ -141,25 +141,26 @@
             // 
             this.label11.AutoSize = true;
             this.label11.BackColor = System.Drawing.Color.Transparent;
-            this.label11.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label11.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label11.ForeColor = System.Drawing.Color.White;
             this.label11.Location = new System.Drawing.Point(29, 54);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(265, 31);
+            this.label11.Size = new System.Drawing.Size(335, 38);
             this.label11.TabIndex = 35;
             this.label11.Text = "Filter By Date (From - To)";
             // 
             // panel5
             // 
             this.panel5.Controls.Add(this.txtSearchPatientRecord);
-            this.panel5.Location = new System.Drawing.Point(656, 38);
+            this.panel5.Location = new System.Drawing.Point(696, 53);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(542, 57);
+            this.panel5.Size = new System.Drawing.Size(526, 39);
             this.panel5.TabIndex = 6;
             // 
             // txtSearchPatientRecord
             // 
             this.txtSearchPatientRecord.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtSearchPatientRecord.Location = new System.Drawing.Point(19, 9);
+            this.txtSearchPatientRecord.Location = new System.Drawing.Point(18, 0);
             this.txtSearchPatientRecord.Name = "txtSearchPatientRecord";
             this.txtSearchPatientRecord.PlaceholderText = "Search Here";
             this.txtSearchPatientRecord.Size = new System.Drawing.Size(498, 38);
@@ -182,10 +183,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(214, 38);
+            this.label1.Size = new System.Drawing.Size(245, 41);
             this.label1.TabIndex = 4;
             this.label1.Text = "Patient\'s Record";
             // 
