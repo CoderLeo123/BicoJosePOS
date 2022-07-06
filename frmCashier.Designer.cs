@@ -28,22 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.lblTotal = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.btnNewTransaction = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.btnBrowseItem = new System.Windows.Forms.Button();
-            this.btnAddDiscount = new System.Windows.Forms.Button();
-            this.btnSettlePayment = new System.Windows.Forms.Button();
-            this.btnClearCart = new System.Windows.Forms.Button();
-            this.btnDailySales = new System.Windows.Forms.Button();
-            this.btnChangePass = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
+            this.btnChangePass = new System.Windows.Forms.Button();
+            this.btnDailySales = new System.Windows.Forms.Button();
+            this.btnClearCart = new System.Windows.Forms.Button();
+            this.btnSettlePayment = new System.Windows.Forms.Button();
+            this.btnAddDiscount = new System.Windows.Forms.Button();
+            this.btnBrowseItem = new System.Windows.Forms.Button();
+            this.btnNewTransaction = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lblDate = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.lblTransactionNo = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.dataGridViewCart = new System.Windows.Forms.DataGridView();
             this.NumCart = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DescriptionCart = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,9 +61,11 @@
             this.PlusCart = new System.Windows.Forms.DataGridViewImageColumn();
             this.MinusCart = new System.Windows.Forms.DataGridViewImageColumn();
             this.DeleteCart = new System.Windows.Forms.DataGridViewImageColumn();
+            this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
-            this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCart)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,59 +74,64 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 787);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1700, 163);
+            this.panel2.Size = new System.Drawing.Size(1600, 163);
             this.panel2.TabIndex = 1;
             // 
             // panel3
             // 
+            this.panel3.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel3.BackgroundImage = global::Capstone.Properties.Resources.eye_glasses__1_;
+            this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panel3.Controls.Add(this.lblTotal);
+            this.panel3.Controls.Add(this.label2);
+            this.panel3.Controls.Add(this.label1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1700, 68);
+            this.panel3.Size = new System.Drawing.Size(1600, 78);
             this.panel3.TabIndex = 2;
+            // 
+            // lblTotal
+            // 
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Font = new System.Drawing.Font("Segoe UI", 28.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblTotal.ForeColor = System.Drawing.Color.Lime;
+            this.lblTotal.Location = new System.Drawing.Point(1462, 6);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(126, 62);
+            this.lblTotal.TabIndex = 2;
+            this.lblTotal.Text = "Total";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(87, 40);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(132, 28);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Cashier Name";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.label1.Location = new System.Drawing.Point(87, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(304, 38);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Bico-Jose Point of Sale ";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // panel4
             // 
             this.panel4.Controls.Add(this.panel6);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(1311, 68);
+            this.panel4.Location = new System.Drawing.Point(1211, 78);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(389, 719);
+            this.panel4.Size = new System.Drawing.Size(389, 709);
             this.panel4.TabIndex = 3;
-            // 
-            // panel1
-            // 
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 68);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1311, 213);
-            this.panel1.TabIndex = 4;
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.dataGridViewCart);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(0, 281);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1311, 506);
-            this.panel5.TabIndex = 5;
-            // 
-            // btnNewTransaction
-            // 
-            this.btnNewTransaction.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnNewTransaction.FlatAppearance.BorderSize = 0;
-            this.btnNewTransaction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNewTransaction.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnNewTransaction.ForeColor = System.Drawing.Color.Black;
-            this.btnNewTransaction.Image = global::Capstone.Properties.Resources.NewTransaction;
-            this.btnNewTransaction.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNewTransaction.Location = new System.Drawing.Point(0, 0);
-            this.btnNewTransaction.Name = "btnNewTransaction";
-            this.btnNewTransaction.Size = new System.Drawing.Size(389, 68);
-            this.btnNewTransaction.TabIndex = 0;
-            this.btnNewTransaction.Text = "    [ F1 ] NEW TRANSACTION";
-            this.btnNewTransaction.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnNewTransaction.UseVisualStyleBackColor = true;
             // 
             // panel6
             // 
@@ -133,117 +147,8 @@
             this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel6.Location = new System.Drawing.Point(0, 0);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(389, 550);
+            this.panel6.Size = new System.Drawing.Size(389, 561);
             this.panel6.TabIndex = 1;
-            // 
-            // btnBrowseItem
-            // 
-            this.btnBrowseItem.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnBrowseItem.FlatAppearance.BorderSize = 0;
-            this.btnBrowseItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBrowseItem.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnBrowseItem.ForeColor = System.Drawing.Color.Black;
-            this.btnBrowseItem.Image = global::Capstone.Properties.Resources.SearchCart;
-            this.btnBrowseItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBrowseItem.Location = new System.Drawing.Point(0, 68);
-            this.btnBrowseItem.Name = "btnBrowseItem";
-            this.btnBrowseItem.Size = new System.Drawing.Size(389, 68);
-            this.btnBrowseItem.TabIndex = 1;
-            this.btnBrowseItem.Text = "    [ F2 ] BROWSE ITEMS";
-            this.btnBrowseItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBrowseItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnBrowseItem.UseVisualStyleBackColor = true;
-            this.btnBrowseItem.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // btnAddDiscount
-            // 
-            this.btnAddDiscount.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAddDiscount.FlatAppearance.BorderSize = 0;
-            this.btnAddDiscount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddDiscount.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnAddDiscount.ForeColor = System.Drawing.Color.Black;
-            this.btnAddDiscount.Image = global::Capstone.Properties.Resources.Discount;
-            this.btnAddDiscount.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAddDiscount.Location = new System.Drawing.Point(0, 136);
-            this.btnAddDiscount.Name = "btnAddDiscount";
-            this.btnAddDiscount.Size = new System.Drawing.Size(389, 68);
-            this.btnAddDiscount.TabIndex = 2;
-            this.btnAddDiscount.Text = "    [ F1 ] ADD DISCOUNT";
-            this.btnAddDiscount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAddDiscount.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnAddDiscount.UseVisualStyleBackColor = true;
-            // 
-            // btnSettlePayment
-            // 
-            this.btnSettlePayment.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnSettlePayment.FlatAppearance.BorderSize = 0;
-            this.btnSettlePayment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSettlePayment.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnSettlePayment.ForeColor = System.Drawing.Color.Black;
-            this.btnSettlePayment.Image = global::Capstone.Properties.Resources.SettlePayment;
-            this.btnSettlePayment.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSettlePayment.Location = new System.Drawing.Point(0, 204);
-            this.btnSettlePayment.Name = "btnSettlePayment";
-            this.btnSettlePayment.Size = new System.Drawing.Size(389, 68);
-            this.btnSettlePayment.TabIndex = 3;
-            this.btnSettlePayment.Text = "    [ F1 ] SETTLE PAYMENT";
-            this.btnSettlePayment.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSettlePayment.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnSettlePayment.UseVisualStyleBackColor = true;
-            // 
-            // btnClearCart
-            // 
-            this.btnClearCart.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnClearCart.FlatAppearance.BorderSize = 0;
-            this.btnClearCart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClearCart.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnClearCart.ForeColor = System.Drawing.Color.Black;
-            this.btnClearCart.Image = global::Capstone.Properties.Resources.ClearCart;
-            this.btnClearCart.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClearCart.Location = new System.Drawing.Point(0, 272);
-            this.btnClearCart.Name = "btnClearCart";
-            this.btnClearCart.Size = new System.Drawing.Size(389, 68);
-            this.btnClearCart.TabIndex = 4;
-            this.btnClearCart.Text = "    [ F1 ] CLEAR CART";
-            this.btnClearCart.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClearCart.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnClearCart.UseVisualStyleBackColor = true;
-            // 
-            // btnDailySales
-            // 
-            this.btnDailySales.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnDailySales.FlatAppearance.BorderSize = 0;
-            this.btnDailySales.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDailySales.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnDailySales.ForeColor = System.Drawing.Color.Black;
-            this.btnDailySales.Image = global::Capstone.Properties.Resources.DailySales;
-            this.btnDailySales.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDailySales.Location = new System.Drawing.Point(0, 340);
-            this.btnDailySales.Name = "btnDailySales";
-            this.btnDailySales.Size = new System.Drawing.Size(389, 68);
-            this.btnDailySales.TabIndex = 5;
-            this.btnDailySales.Text = "    [ F1 ] DAILY SALES";
-            this.btnDailySales.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDailySales.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnDailySales.UseVisualStyleBackColor = true;
-            // 
-            // btnChangePass
-            // 
-            this.btnChangePass.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnChangePass.FlatAppearance.BorderSize = 0;
-            this.btnChangePass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnChangePass.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnChangePass.ForeColor = System.Drawing.Color.Black;
-            this.btnChangePass.Image = global::Capstone.Properties.Resources.Pass;
-            this.btnChangePass.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnChangePass.Location = new System.Drawing.Point(0, 408);
-            this.btnChangePass.Name = "btnChangePass";
-            this.btnChangePass.Size = new System.Drawing.Size(389, 68);
-            this.btnChangePass.TabIndex = 6;
-            this.btnChangePass.Text = "    [ F1 ] CHANGE PASSWORD";
-            this.btnChangePass.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnChangePass.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnChangePass.UseVisualStyleBackColor = true;
             // 
             // btnLogout
             // 
@@ -264,20 +169,211 @@
             this.btnLogout.UseVisualStyleBackColor = true;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
+            // btnChangePass
+            // 
+            this.btnChangePass.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnChangePass.FlatAppearance.BorderSize = 0;
+            this.btnChangePass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnChangePass.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnChangePass.ForeColor = System.Drawing.Color.Black;
+            this.btnChangePass.Image = global::Capstone.Properties.Resources.Pass;
+            this.btnChangePass.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnChangePass.Location = new System.Drawing.Point(0, 408);
+            this.btnChangePass.Name = "btnChangePass";
+            this.btnChangePass.Size = new System.Drawing.Size(389, 68);
+            this.btnChangePass.TabIndex = 6;
+            this.btnChangePass.Text = "    [ F1 ] CHANGE PASSWORD";
+            this.btnChangePass.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnChangePass.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnChangePass.UseVisualStyleBackColor = true;
+            // 
+            // btnDailySales
+            // 
+            this.btnDailySales.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnDailySales.FlatAppearance.BorderSize = 0;
+            this.btnDailySales.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDailySales.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnDailySales.ForeColor = System.Drawing.Color.Black;
+            this.btnDailySales.Image = global::Capstone.Properties.Resources.DailySales;
+            this.btnDailySales.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDailySales.Location = new System.Drawing.Point(0, 340);
+            this.btnDailySales.Name = "btnDailySales";
+            this.btnDailySales.Size = new System.Drawing.Size(389, 68);
+            this.btnDailySales.TabIndex = 5;
+            this.btnDailySales.Text = "    [ F1 ] DAILY SALES";
+            this.btnDailySales.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDailySales.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnDailySales.UseVisualStyleBackColor = true;
+            // 
+            // btnClearCart
+            // 
+            this.btnClearCart.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnClearCart.FlatAppearance.BorderSize = 0;
+            this.btnClearCart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClearCart.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnClearCart.ForeColor = System.Drawing.Color.Black;
+            this.btnClearCart.Image = global::Capstone.Properties.Resources.ClearCart;
+            this.btnClearCart.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClearCart.Location = new System.Drawing.Point(0, 272);
+            this.btnClearCart.Name = "btnClearCart";
+            this.btnClearCart.Size = new System.Drawing.Size(389, 68);
+            this.btnClearCart.TabIndex = 4;
+            this.btnClearCart.Text = "    [ F1 ] CLEAR CART";
+            this.btnClearCart.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClearCart.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnClearCart.UseVisualStyleBackColor = true;
+            // 
+            // btnSettlePayment
+            // 
+            this.btnSettlePayment.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnSettlePayment.FlatAppearance.BorderSize = 0;
+            this.btnSettlePayment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSettlePayment.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnSettlePayment.ForeColor = System.Drawing.Color.Black;
+            this.btnSettlePayment.Image = global::Capstone.Properties.Resources.SettlePayment;
+            this.btnSettlePayment.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSettlePayment.Location = new System.Drawing.Point(0, 204);
+            this.btnSettlePayment.Name = "btnSettlePayment";
+            this.btnSettlePayment.Size = new System.Drawing.Size(389, 68);
+            this.btnSettlePayment.TabIndex = 3;
+            this.btnSettlePayment.Text = "    [ F1 ] SETTLE PAYMENT";
+            this.btnSettlePayment.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSettlePayment.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSettlePayment.UseVisualStyleBackColor = true;
+            this.btnSettlePayment.Click += new System.EventHandler(this.btnSettlePayment_Click);
+            // 
+            // btnAddDiscount
+            // 
+            this.btnAddDiscount.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAddDiscount.FlatAppearance.BorderSize = 0;
+            this.btnAddDiscount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddDiscount.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnAddDiscount.ForeColor = System.Drawing.Color.Black;
+            this.btnAddDiscount.Image = global::Capstone.Properties.Resources.Discount;
+            this.btnAddDiscount.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAddDiscount.Location = new System.Drawing.Point(0, 136);
+            this.btnAddDiscount.Name = "btnAddDiscount";
+            this.btnAddDiscount.Size = new System.Drawing.Size(389, 68);
+            this.btnAddDiscount.TabIndex = 2;
+            this.btnAddDiscount.Text = "    [ F1 ] ADD DISCOUNT";
+            this.btnAddDiscount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAddDiscount.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnAddDiscount.UseVisualStyleBackColor = true;
+            this.btnAddDiscount.Click += new System.EventHandler(this.btnAddDiscount_Click);
+            // 
+            // btnBrowseItem
+            // 
+            this.btnBrowseItem.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnBrowseItem.FlatAppearance.BorderSize = 0;
+            this.btnBrowseItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBrowseItem.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnBrowseItem.ForeColor = System.Drawing.Color.Black;
+            this.btnBrowseItem.Image = global::Capstone.Properties.Resources.SearchCart;
+            this.btnBrowseItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBrowseItem.Location = new System.Drawing.Point(0, 68);
+            this.btnBrowseItem.Name = "btnBrowseItem";
+            this.btnBrowseItem.Size = new System.Drawing.Size(389, 68);
+            this.btnBrowseItem.TabIndex = 1;
+            this.btnBrowseItem.Text = "    [ F2 ] BROWSE ITEMS";
+            this.btnBrowseItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBrowseItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnBrowseItem.UseVisualStyleBackColor = true;
+            this.btnBrowseItem.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // btnNewTransaction
+            // 
+            this.btnNewTransaction.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnNewTransaction.FlatAppearance.BorderSize = 0;
+            this.btnNewTransaction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNewTransaction.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnNewTransaction.ForeColor = System.Drawing.Color.Black;
+            this.btnNewTransaction.Image = global::Capstone.Properties.Resources.NewTransaction;
+            this.btnNewTransaction.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNewTransaction.Location = new System.Drawing.Point(0, 0);
+            this.btnNewTransaction.Name = "btnNewTransaction";
+            this.btnNewTransaction.Size = new System.Drawing.Size(389, 68);
+            this.btnNewTransaction.TabIndex = 0;
+            this.btnNewTransaction.Text = "    [ F1 ] NEW TRANSACTION";
+            this.btnNewTransaction.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnNewTransaction.UseVisualStyleBackColor = true;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.lblDate);
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.lblTransactionNo);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 78);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1211, 136);
+            this.panel1.TabIndex = 4;
+            // 
+            // lblDate
+            // 
+            this.lblDate.AutoSize = true;
+            this.lblDate.Font = new System.Drawing.Font("Segoe UI Semibold", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblDate.ForeColor = System.Drawing.Color.Black;
+            this.lblDate.Location = new System.Drawing.Point(316, 75);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(38, 45);
+            this.lblDate.TabIndex = 3;
+            this.lblDate.Text = "  ";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label6.Location = new System.Drawing.Point(12, 68);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(261, 45);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "Transaction Date";
+            // 
+            // lblTransactionNo
+            // 
+            this.lblTransactionNo.AutoSize = true;
+            this.lblTransactionNo.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblTransactionNo.ForeColor = System.Drawing.Color.Red;
+            this.lblTransactionNo.Location = new System.Drawing.Point(316, 22);
+            this.lblTransactionNo.Name = "lblTransactionNo";
+            this.lblTransactionNo.Size = new System.Drawing.Size(47, 45);
+            this.lblTransactionNo.TabIndex = 1;
+            this.lblTransactionNo.Text = "   ";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(12, 18);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(244, 45);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Transaction No.";
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.dataGridViewCart);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.Location = new System.Drawing.Point(0, 214);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(1211, 573);
+            this.panel5.TabIndex = 5;
+            // 
             // dataGridViewCart
             // 
             this.dataGridViewCart.AllowUserToResizeColumns = false;
             this.dataGridViewCart.AllowUserToResizeRows = false;
             this.dataGridViewCart.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewCart.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewCart.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewCart.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewCart.ColumnHeadersHeight = 40;
             this.dataGridViewCart.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridViewCart.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -290,14 +386,14 @@
             this.PlusCart,
             this.MinusCart,
             this.DeleteCart});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Azure;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewCart.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Azure;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewCart.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewCart.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewCart.EnableHeadersVisualStyles = false;
             this.dataGridViewCart.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
@@ -308,7 +404,7 @@
             this.dataGridViewCart.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridViewCart.RowTemplate.Height = 29;
             this.dataGridViewCart.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewCart.Size = new System.Drawing.Size(1311, 506);
+            this.dataGridViewCart.Size = new System.Drawing.Size(1211, 573);
             this.dataGridViewCart.TabIndex = 3;
             // 
             // NumCart
@@ -386,7 +482,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1700, 950);
+            this.ClientSize = new System.Drawing.Size(1600, 950);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel4);
@@ -396,10 +492,15 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmCashier";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmCashier";
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.panel4.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCart)).EndInit();
             this.ResumeLayout(false);
 
@@ -431,5 +532,12 @@
         private DataGridViewImageColumn PlusCart;
         private DataGridViewImageColumn MinusCart;
         private DataGridViewImageColumn DeleteCart;
+        private Label label1;
+        private Label lblTotal;
+        private Label label2;
+        private Label label6;
+        private Label lblTransactionNo;
+        private Label label4;
+        private Label lblDate;
     }
 }

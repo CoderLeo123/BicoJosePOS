@@ -211,7 +211,8 @@ namespace Capstone
 
         private void btnServices_Click(object sender, EventArgs e)
         {
-            
+            frmCashier frm = new frmCashier();
+            frm.ShowDialog();
         }
 
         private void btnStockDel_Click(object sender, EventArgs e)

@@ -32,6 +32,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnClosePatientRecord = new System.Windows.Forms.PictureBox();
             this.panelAddInfo = new System.Windows.Forms.Panel();
+            this.GenerateCustID = new System.Windows.Forms.LinkLabel();
+            this.GeneratePrescNum = new System.Windows.Forms.LinkLabel();
             this.txtAddLName = new System.Windows.Forms.TextBox();
             this.label31 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
@@ -95,8 +97,6 @@
             this.label18 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
-            this.GeneratePrescNum = new System.Windows.Forms.LinkLabel();
-            this.GenerateCustID = new System.Windows.Forms.LinkLabel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClosePatientRecord)).BeginInit();
             this.panelAddInfo.SuspendLayout();
@@ -106,7 +106,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.LightBlue;
+            this.panel1.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.btnClosePatientRecord);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -119,10 +119,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(214, 38);
+            this.label1.Size = new System.Drawing.Size(245, 41);
             this.label1.TabIndex = 4;
             this.label1.Text = "Patient\'s Record";
             // 
@@ -171,6 +172,30 @@
             this.panelAddInfo.Name = "panelAddInfo";
             this.panelAddInfo.Size = new System.Drawing.Size(1315, 358);
             this.panelAddInfo.TabIndex = 6;
+            // 
+            // GenerateCustID
+            // 
+            this.GenerateCustID.AutoSize = true;
+            this.GenerateCustID.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.GenerateCustID.LinkColor = System.Drawing.Color.Navy;
+            this.GenerateCustID.Location = new System.Drawing.Point(970, 311);
+            this.GenerateCustID.Name = "GenerateCustID";
+            this.GenerateCustID.Size = new System.Drawing.Size(103, 28);
+            this.GenerateCustID.TabIndex = 65;
+            this.GenerateCustID.TabStop = true;
+            this.GenerateCustID.Text = "[Generate]";
+            // 
+            // GeneratePrescNum
+            // 
+            this.GeneratePrescNum.AutoSize = true;
+            this.GeneratePrescNum.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.GeneratePrescNum.LinkColor = System.Drawing.Color.Navy;
+            this.GeneratePrescNum.Location = new System.Drawing.Point(967, 192);
+            this.GeneratePrescNum.Name = "GeneratePrescNum";
+            this.GeneratePrescNum.Size = new System.Drawing.Size(103, 28);
+            this.GeneratePrescNum.TabIndex = 64;
+            this.GeneratePrescNum.TabStop = true;
+            this.GeneratePrescNum.Text = "[Generate]";
             // 
             // txtAddLName
             // 
@@ -865,30 +890,6 @@
             this.label17.Size = new System.Drawing.Size(100, 38);
             this.label17.TabIndex = 15;
             this.label17.Text = "Others";
-            // 
-            // GeneratePrescNum
-            // 
-            this.GeneratePrescNum.AutoSize = true;
-            this.GeneratePrescNum.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.GeneratePrescNum.LinkColor = System.Drawing.Color.Navy;
-            this.GeneratePrescNum.Location = new System.Drawing.Point(967, 192);
-            this.GeneratePrescNum.Name = "GeneratePrescNum";
-            this.GeneratePrescNum.Size = new System.Drawing.Size(103, 28);
-            this.GeneratePrescNum.TabIndex = 64;
-            this.GeneratePrescNum.TabStop = true;
-            this.GeneratePrescNum.Text = "[Generate]";
-            // 
-            // GenerateCustID
-            // 
-            this.GenerateCustID.AutoSize = true;
-            this.GenerateCustID.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.GenerateCustID.LinkColor = System.Drawing.Color.Navy;
-            this.GenerateCustID.Location = new System.Drawing.Point(970, 311);
-            this.GenerateCustID.Name = "GenerateCustID";
-            this.GenerateCustID.Size = new System.Drawing.Size(103, 28);
-            this.GenerateCustID.TabIndex = 65;
-            this.GenerateCustID.TabStop = true;
-            this.GenerateCustID.Text = "[Generate]";
             // 
             // frmAddPatientRecord
             // 

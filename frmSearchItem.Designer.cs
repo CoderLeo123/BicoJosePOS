@@ -81,7 +81,7 @@
             // panel5
             // 
             this.panel5.Controls.Add(this.txtSearchItem);
-            this.panel5.Location = new System.Drawing.Point(151, 12);
+            this.panel5.Location = new System.Drawing.Point(171, 12);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(592, 57);
             this.panel5.TabIndex = 24;
@@ -106,10 +106,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(12, 19);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(133, 38);
+            this.label1.Size = new System.Drawing.Size(153, 41);
             this.label1.TabIndex = 4;
             this.label1.Text = "Items List";
             // 
@@ -167,7 +168,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.LightBlue;
+            this.panel1.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.panel1.Controls.Add(this.panel5);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.pictureBox1);
