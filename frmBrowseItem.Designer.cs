@@ -35,7 +35,6 @@
             this.AddSearchItem = new System.Windows.Forms.DataGridViewImageColumn();
             this.TypeSearchItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DescSearchItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel5 = new System.Windows.Forms.Panel();
             this.txtBrowseItem = new System.Windows.Forms.TextBox();
             this.PCodeSearchItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NumSearchItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,11 +52,12 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.PriceSearchItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewSearchItem = new System.Windows.Forms.DataGridView();
-            this.panel5.SuspendLayout();
+            this.panel2 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewItems)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSearchItem)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // AddSearchItem
@@ -83,21 +83,13 @@
             this.DescSearchItem.MinimumWidth = 6;
             this.DescSearchItem.Name = "DescSearchItem";
             // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.txtBrowseItem);
-            this.panel5.Location = new System.Drawing.Point(211, 12);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(592, 57);
-            this.panel5.TabIndex = 24;
-            // 
             // txtBrowseItem
             // 
             this.txtBrowseItem.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtBrowseItem.Location = new System.Drawing.Point(19, 9);
+            this.txtBrowseItem.Location = new System.Drawing.Point(23, 10);
             this.txtBrowseItem.Name = "txtBrowseItem";
             this.txtBrowseItem.PlaceholderText = "Search Here";
-            this.txtBrowseItem.Size = new System.Drawing.Size(559, 38);
+            this.txtBrowseItem.Size = new System.Drawing.Size(619, 38);
             this.txtBrowseItem.TabIndex = 0;
             // 
             // PCodeSearchItem
@@ -121,7 +113,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(12, 19);
+            this.label1.Location = new System.Drawing.Point(12, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(193, 41);
             this.label1.TabIndex = 4;
@@ -163,14 +155,14 @@
             this.dataGridViewItems.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewItems.EnableHeadersVisualStyles = false;
             this.dataGridViewItems.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.dataGridViewItems.Location = new System.Drawing.Point(0, 78);
+            this.dataGridViewItems.Location = new System.Drawing.Point(0, 120);
             this.dataGridViewItems.Name = "dataGridViewItems";
             this.dataGridViewItems.RowHeadersVisible = false;
             this.dataGridViewItems.RowHeadersWidth = 51;
             this.dataGridViewItems.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridViewItems.RowTemplate.Height = 29;
             this.dataGridViewItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewItems.Size = new System.Drawing.Size(1315, 852);
+            this.dataGridViewItems.Size = new System.Drawing.Size(1315, 810);
             this.dataGridViewItems.TabIndex = 7;
             // 
             // NumBrowseItem
@@ -239,13 +231,13 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.panel1.Controls.Add(this.panel5);
+            this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1315, 78);
+            this.panel1.Size = new System.Drawing.Size(1315, 120);
             this.panel1.TabIndex = 6;
             // 
             // pictureBox1
@@ -314,6 +306,16 @@
             this.dataGridViewSearchItem.Size = new System.Drawing.Size(1315, 930);
             this.dataGridViewSearchItem.TabIndex = 8;
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.DimGray;
+            this.panel2.Controls.Add(this.txtBrowseItem);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(0, 66);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1315, 54);
+            this.panel2.TabIndex = 36;
+            // 
             // frmBrowseItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
@@ -328,13 +330,13 @@
             this.Name = "frmBrowseItem";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmBrowseItem";
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewItems)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSearchItem)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -344,7 +346,6 @@
         private DataGridViewImageColumn AddSearchItem;
         private DataGridViewTextBoxColumn TypeSearchItem;
         private DataGridViewTextBoxColumn DescSearchItem;
-        private Panel panel5;
         private TextBox txtBrowseItem;
         private DataGridViewTextBoxColumn PCodeSearchItem;
         private DataGridViewTextBoxColumn NumSearchItem;
@@ -362,5 +363,6 @@
         private DataGridViewTextBoxColumn PriceBrowseItem;
         private DataGridViewTextBoxColumn QuantityBrowseItem;
         private DataGridViewImageColumn AddToCart;
+        private Panel panel2;
     }
 }

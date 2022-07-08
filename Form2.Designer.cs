@@ -31,8 +31,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnAddFrame = new System.Windows.Forms.Button();
             this.btnAddLense = new System.Windows.Forms.Button();
             this.btnAddAccessories = new System.Windows.Forms.Button();
@@ -47,44 +45,26 @@
             this.PRICE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EDIT = new System.Windows.Forms.DataGridViewImageColumn();
             this.DELETE = new System.Windows.Forms.DataGridViewImageColumn();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.txtSearchTransHist = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
-            this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewItems)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.panel1.Controls.Add(this.panel5);
-            this.panel1.Controls.Add(this.btnAddFrame);
-            this.panel1.Controls.Add(this.btnAddLense);
-            this.panel1.Controls.Add(this.btnAddAccessories);
+            this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1315, 84);
+            this.panel1.Size = new System.Drawing.Size(1315, 116);
             this.panel1.TabIndex = 1;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint_1);
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.txtSearch);
-            this.panel5.Location = new System.Drawing.Point(163, 12);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(584, 57);
-            this.panel5.TabIndex = 24;
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtSearch.Location = new System.Drawing.Point(18, 9);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.PlaceholderText = "Search Here";
-            this.txtSearch.Size = new System.Drawing.Size(546, 38);
-            this.txtSearch.TabIndex = 0;
             // 
             // btnAddFrame
             // 
@@ -94,7 +74,7 @@
             this.btnAddFrame.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddFrame.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnAddFrame.ForeColor = System.Drawing.Color.White;
-            this.btnAddFrame.Location = new System.Drawing.Point(923, 15);
+            this.btnAddFrame.Location = new System.Drawing.Point(983, 8);
             this.btnAddFrame.Name = "btnAddFrame";
             this.btnAddFrame.Size = new System.Drawing.Size(153, 49);
             this.btnAddFrame.TabIndex = 23;
@@ -110,7 +90,7 @@
             this.btnAddLense.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddLense.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnAddLense.ForeColor = System.Drawing.Color.White;
-            this.btnAddLense.Location = new System.Drawing.Point(753, 15);
+            this.btnAddLense.Location = new System.Drawing.Point(813, 8);
             this.btnAddLense.Name = "btnAddLense";
             this.btnAddLense.Size = new System.Drawing.Size(153, 49);
             this.btnAddLense.TabIndex = 22;
@@ -126,7 +106,7 @@
             this.btnAddAccessories.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddAccessories.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnAddAccessories.ForeColor = System.Drawing.Color.White;
-            this.btnAddAccessories.Location = new System.Drawing.Point(1092, 15);
+            this.btnAddAccessories.Location = new System.Drawing.Point(1152, 8);
             this.btnAddAccessories.Name = "btnAddAccessories";
             this.btnAddAccessories.Size = new System.Drawing.Size(153, 49);
             this.btnAddAccessories.TabIndex = 21;
@@ -140,7 +120,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(12, 19);
+            this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(153, 41);
             this.label1.TabIndex = 4;
@@ -197,14 +177,14 @@
             this.dataGridViewItems.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewItems.EnableHeadersVisualStyles = false;
             this.dataGridViewItems.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.dataGridViewItems.Location = new System.Drawing.Point(0, 84);
+            this.dataGridViewItems.Location = new System.Drawing.Point(0, 116);
             this.dataGridViewItems.Name = "dataGridViewItems";
             this.dataGridViewItems.RowHeadersVisible = false;
             this.dataGridViewItems.RowHeadersWidth = 51;
             this.dataGridViewItems.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridViewItems.RowTemplate.Height = 29;
             this.dataGridViewItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewItems.Size = new System.Drawing.Size(1315, 846);
+            this.dataGridViewItems.Size = new System.Drawing.Size(1315, 814);
             this.dataGridViewItems.TabIndex = 2;
             this.dataGridViewItems.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -270,6 +250,28 @@
             this.DELETE.Name = "DELETE";
             this.DELETE.Width = 24;
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.DimGray;
+            this.panel2.Controls.Add(this.txtSearchTransHist);
+            this.panel2.Controls.Add(this.btnAddFrame);
+            this.panel2.Controls.Add(this.btnAddLense);
+            this.panel2.Controls.Add(this.btnAddAccessories);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(0, 53);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1315, 63);
+            this.panel2.TabIndex = 36;
+            // 
+            // txtSearchTransHist
+            // 
+            this.txtSearchTransHist.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtSearchTransHist.Location = new System.Drawing.Point(12, 14);
+            this.txtSearchTransHist.Name = "txtSearchTransHist";
+            this.txtSearchTransHist.PlaceholderText = "Search Here";
+            this.txtSearchTransHist.Size = new System.Drawing.Size(534, 38);
+            this.txtSearchTransHist.TabIndex = 0;
+            // 
             // frmItemsList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -284,10 +286,10 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewItems)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -301,8 +303,6 @@
         private Button btnAddAccessories;
         private Button btnAddFrame;
         private Button btnAddLense;
-        private Panel panel5;
-        private TextBox txtSearch;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn PCODE;
@@ -311,5 +311,7 @@
         private DataGridViewTextBoxColumn PRICE;
         private DataGridViewImageColumn EDIT;
         private DataGridViewImageColumn DELETE;
+        private Panel panel2;
+        private TextBox txtSearchTransHist;
     }
 }

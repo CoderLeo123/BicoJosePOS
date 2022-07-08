@@ -44,5 +44,17 @@ namespace Capstone
             frmSettlePayment frm = new frmSettlePayment();
             frm.ShowDialog();
         }
+
+        private void btnDailySales_Click(object sender, EventArgs e)
+        {
+            frmDailySales frm = new frmDailySales();
+            frm.ShowDialog();
+        }
+
+        private void btnChangePass_Click(object sender, EventArgs e)
+        {
+            frmChangePassword frm = new frmChangePassword();
+            frm.ShowDialog();
+        }
     }
 }

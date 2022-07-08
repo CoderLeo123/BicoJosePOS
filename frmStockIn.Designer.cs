@@ -106,7 +106,7 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(148, 46);
+            this.label1.Size = new System.Drawing.Size(144, 45);
             this.label1.TabIndex = 4;
             this.label1.Text = "Stock In";
             // 
@@ -293,6 +293,7 @@
             // 
             // panel2
             // 
+            this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.Controls.Add(this.ClickSearchItem);
             this.panel2.Controls.Add(this.GenerateRefNoStockIn);
             this.panel2.Controls.Add(this.txtQuantityStockIn);
@@ -523,6 +524,7 @@
             // 
             // panel4
             // 
+            this.panel4.BackColor = System.Drawing.Color.DimGray;
             this.panel4.Controls.Add(this.btnLoadRStockIn);
             this.panel4.Controls.Add(this.dateTimePicker3);
             this.panel4.Controls.Add(this.dateTimePicker2);
@@ -567,9 +569,11 @@
             // label7
             // 
             this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label7.ForeColor = System.Drawing.Color.White;
             this.label7.Location = new System.Drawing.Point(15, 23);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(326, 38);
+            this.label7.Size = new System.Drawing.Size(335, 38);
             this.label7.TabIndex = 2;
             this.label7.Text = "Filter By Date (From - To)";
             // 
