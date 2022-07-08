@@ -31,17 +31,17 @@
             this.components = new System.ComponentModel.Container();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.btnTransaction = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnUserSettings = new System.Windows.Forms.Button();
             this.btnBackupArch = new System.Windows.Forms.Button();
             this.dropPanelSales = new System.Windows.Forms.Panel();
             this.btnInventoryReport = new System.Windows.Forms.Button();
             this.btnSalesReport = new System.Windows.Forms.Button();
-            this.dropBtnSales = new System.Windows.Forms.Button();
+            this.dropBtnReports = new System.Windows.Forms.Button();
             this.btnInventory = new System.Windows.Forms.Button();
             this.btnStockDel = new System.Windows.Forms.Button();
             this.dropPanelProducts = new System.Windows.Forms.Panel();
+            this.btnTransaction = new System.Windows.Forms.Button();
             this.btnItems = new System.Windows.Forms.Button();
             this.btnProd = new System.Windows.Forms.Button();
             this.dropBtnProducts = new System.Windows.Forms.Button();
@@ -98,25 +98,6 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(278, 924);
             this.panel4.TabIndex = 6;
-            // 
-            // btnTransaction
-            // 
-            this.btnTransaction.BackColor = System.Drawing.Color.Transparent;
-            this.btnTransaction.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnTransaction.FlatAppearance.BorderSize = 0;
-            this.btnTransaction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTransaction.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnTransaction.ForeColor = System.Drawing.Color.White;
-            this.btnTransaction.Image = global::Capstone.Properties.Resources.Service;
-            this.btnTransaction.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnTransaction.Location = new System.Drawing.Point(0, 156);
-            this.btnTransaction.Name = "btnTransaction";
-            this.btnTransaction.Size = new System.Drawing.Size(366, 52);
-            this.btnTransaction.TabIndex = 3;
-            this.btnTransaction.Text = "   Transaction";
-            this.btnTransaction.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnTransaction.UseVisualStyleBackColor = false;
-            this.btnTransaction.Click += new System.EventHandler(this.btnServices_Click);
             // 
             // btnLogout
             // 
@@ -179,7 +160,7 @@
             // 
             this.dropPanelSales.Controls.Add(this.btnInventoryReport);
             this.dropPanelSales.Controls.Add(this.btnSalesReport);
-            this.dropPanelSales.Controls.Add(this.dropBtnSales);
+            this.dropPanelSales.Controls.Add(this.dropBtnReports);
             this.dropPanelSales.Dock = System.Windows.Forms.DockStyle.Top;
             this.dropPanelSales.Location = new System.Drawing.Point(0, 622);
             this.dropPanelSales.MaximumSize = new System.Drawing.Size(366, 155);
@@ -226,24 +207,24 @@
             this.btnSalesReport.UseVisualStyleBackColor = false;
             this.btnSalesReport.Click += new System.EventHandler(this.button32_Click);
             // 
-            // dropBtnSales
+            // dropBtnReports
             // 
-            this.dropBtnSales.BackColor = System.Drawing.Color.Transparent;
-            this.dropBtnSales.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dropBtnSales.FlatAppearance.BorderSize = 0;
-            this.dropBtnSales.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.dropBtnSales.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dropBtnSales.ForeColor = System.Drawing.Color.White;
-            this.dropBtnSales.Image = global::Capstone.Properties.Resources.Sales_Report;
-            this.dropBtnSales.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.dropBtnSales.Location = new System.Drawing.Point(0, 0);
-            this.dropBtnSales.Name = "dropBtnSales";
-            this.dropBtnSales.Size = new System.Drawing.Size(366, 52);
-            this.dropBtnSales.TabIndex = 0;
-            this.dropBtnSales.Text = "   Sales and Inventory Report";
-            this.dropBtnSales.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.dropBtnSales.UseVisualStyleBackColor = false;
-            this.dropBtnSales.Click += new System.EventHandler(this.dropBtnSales_Click_1);
+            this.dropBtnReports.BackColor = System.Drawing.Color.Transparent;
+            this.dropBtnReports.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dropBtnReports.FlatAppearance.BorderSize = 0;
+            this.dropBtnReports.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.dropBtnReports.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dropBtnReports.ForeColor = System.Drawing.Color.White;
+            this.dropBtnReports.Image = global::Capstone.Properties.Resources.Sales_Report;
+            this.dropBtnReports.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.dropBtnReports.Location = new System.Drawing.Point(0, 0);
+            this.dropBtnReports.Name = "dropBtnReports";
+            this.dropBtnReports.Size = new System.Drawing.Size(366, 52);
+            this.dropBtnReports.TabIndex = 0;
+            this.dropBtnReports.Text = "   Sales and Inventory Report";
+            this.dropBtnReports.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.dropBtnReports.UseVisualStyleBackColor = false;
+            this.dropBtnReports.Click += new System.EventHandler(this.dropBtnSales_Click_1);
             // 
             // btnInventory
             // 
@@ -296,6 +277,25 @@
             this.dropPanelProducts.Name = "dropPanelProducts";
             this.dropPanelProducts.Size = new System.Drawing.Size(366, 207);
             this.dropPanelProducts.TabIndex = 10;
+            // 
+            // btnTransaction
+            // 
+            this.btnTransaction.BackColor = System.Drawing.Color.Transparent;
+            this.btnTransaction.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnTransaction.FlatAppearance.BorderSize = 0;
+            this.btnTransaction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTransaction.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnTransaction.ForeColor = System.Drawing.Color.White;
+            this.btnTransaction.Image = global::Capstone.Properties.Resources.Service;
+            this.btnTransaction.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTransaction.Location = new System.Drawing.Point(0, 156);
+            this.btnTransaction.Name = "btnTransaction";
+            this.btnTransaction.Size = new System.Drawing.Size(366, 52);
+            this.btnTransaction.TabIndex = 3;
+            this.btnTransaction.Text = "   Transaction";
+            this.btnTransaction.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnTransaction.UseVisualStyleBackColor = false;
+            this.btnTransaction.Click += new System.EventHandler(this.btnServices_Click);
             // 
             // btnItems
             // 
@@ -582,7 +582,7 @@
         private Button btnPatientR;
         private Button btnDashboard;
         private Button btnSalesReport;
-        private Button dropBtnSales;
+        private Button dropBtnReports;
         private Button btnItems;
         private Button btnProd;
         private Button dropBtnProducts;

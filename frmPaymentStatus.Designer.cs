@@ -44,10 +44,6 @@
             this.CompletedBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label3 = new System.Windows.Forms.Label();
-            this.panel6 = new System.Windows.Forms.Panel();
             this.txtSearchSettled = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.PictureBox();
@@ -62,30 +58,34 @@
             this.DueDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cashier = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
-            this.label4 = new System.Windows.Forms.Label();
-            this.panel5 = new System.Windows.Forms.Panel();
             this.txtSearchPending = new System.Windows.Forms.TextBox();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TRREFNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CUSTOMERNAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.dateTimePicker5 = new System.Windows.Forms.DateTimePicker();
+            this.label5 = new System.Windows.Forms.Label();
+            this.dateTimePicker6 = new System.Windows.Forms.DateTimePicker();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.dateTimePicker7 = new System.Windows.Forms.DateTimePicker();
+            this.label6 = new System.Windows.Forms.Label();
+            this.dateTimePicker8 = new System.Windows.Forms.DateTimePicker();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel3.SuspendLayout();
-            this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPaymentStat)).BeginInit();
             this.panel1.SuspendLayout();
-            this.panel5.SuspendLayout();
+            this.panel7.SuspendLayout();
+            this.panel8.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel4
             // 
             this.panel4.Controls.Add(this.dataGridView1);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(0, 642);
+            this.panel4.Location = new System.Drawing.Point(0, 645);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1315, 400);
             this.panel4.TabIndex = 9;
@@ -214,61 +214,18 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.panel3.Controls.Add(this.dateTimePicker2);
-            this.panel3.Controls.Add(this.dateTimePicker1);
-            this.panel3.Controls.Add(this.label3);
-            this.panel3.Controls.Add(this.panel6);
+            this.panel3.Controls.Add(this.panel8);
             this.panel3.Controls.Add(this.label2);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 531);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1315, 111);
+            this.panel3.Size = new System.Drawing.Size(1315, 114);
             this.panel3.TabIndex = 8;
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.CalendarFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dateTimePicker2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker2.Location = new System.Drawing.Point(520, 71);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(158, 34);
-            this.dateTimePicker2.TabIndex = 30;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.CalendarFont = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dateTimePicker1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(356, 71);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(158, 34);
-            this.dateTimePicker1.TabIndex = 29;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(26, 66);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(335, 38);
-            this.label3.TabIndex = 28;
-            this.label3.Text = "Filter By Date (From - To)";
-            // 
-            // panel6
-            // 
-            this.panel6.Controls.Add(this.txtSearchSettled);
-            this.panel6.Location = new System.Drawing.Point(684, 54);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(631, 57);
-            this.panel6.TabIndex = 6;
             // 
             // txtSearchSettled
             // 
             this.txtSearchSettled.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtSearchSettled.Location = new System.Drawing.Point(19, 9);
+            this.txtSearchSettled.Location = new System.Drawing.Point(684, 9);
             this.txtSearchSettled.Name = "txtSearchSettled";
             this.txtSearchSettled.PlaceholderText = "Search Here";
             this.txtSearchSettled.Size = new System.Drawing.Size(592, 38);
@@ -346,14 +303,14 @@
             this.dataGridViewPaymentStat.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewPaymentStat.EnableHeadersVisualStyles = false;
             this.dataGridViewPaymentStat.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.dataGridViewPaymentStat.Location = new System.Drawing.Point(0, 114);
+            this.dataGridViewPaymentStat.Location = new System.Drawing.Point(0, 113);
             this.dataGridViewPaymentStat.Name = "dataGridViewPaymentStat";
             this.dataGridViewPaymentStat.RowHeadersVisible = false;
             this.dataGridViewPaymentStat.RowHeadersWidth = 51;
             this.dataGridViewPaymentStat.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridViewPaymentStat.RowTemplate.Height = 29;
             this.dataGridViewPaymentStat.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewPaymentStat.Size = new System.Drawing.Size(1315, 417);
+            this.dataGridViewPaymentStat.Size = new System.Drawing.Size(1315, 418);
             this.dataGridViewPaymentStat.TabIndex = 4;
             // 
             // NumPendingSet
@@ -422,62 +379,19 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.panel1.Controls.Add(this.dateTimePicker3);
-            this.panel1.Controls.Add(this.dateTimePicker4);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.panel5);
+            this.panel1.Controls.Add(this.panel7);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.btnClose);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1315, 114);
+            this.panel1.Size = new System.Drawing.Size(1315, 113);
             this.panel1.TabIndex = 2;
-            // 
-            // dateTimePicker3
-            // 
-            this.dateTimePicker3.CalendarFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dateTimePicker3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker3.Location = new System.Drawing.Point(527, 65);
-            this.dateTimePicker3.Name = "dateTimePicker3";
-            this.dateTimePicker3.Size = new System.Drawing.Size(158, 34);
-            this.dateTimePicker3.TabIndex = 34;
-            // 
-            // dateTimePicker4
-            // 
-            this.dateTimePicker4.CalendarFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dateTimePicker4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dateTimePicker4.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker4.Location = new System.Drawing.Point(363, 65);
-            this.dateTimePicker4.Name = "dateTimePicker4";
-            this.dateTimePicker4.Size = new System.Drawing.Size(158, 34);
-            this.dateTimePicker4.TabIndex = 33;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(26, 62);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(335, 38);
-            this.label4.TabIndex = 32;
-            this.label4.Text = "Filter By Date (From - To)";
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.txtSearchPending);
-            this.panel5.Location = new System.Drawing.Point(703, 53);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(602, 52);
-            this.panel5.TabIndex = 31;
             // 
             // txtSearchPending
             // 
             this.txtSearchPending.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtSearchPending.Location = new System.Drawing.Point(19, 9);
+            this.txtSearchPending.Location = new System.Drawing.Point(703, 9);
             this.txtSearchPending.Name = "txtSearchPending";
             this.txtSearchPending.PlaceholderText = "Search Here";
             this.txtSearchPending.Size = new System.Drawing.Size(573, 38);
@@ -507,6 +421,96 @@
             this.CUSTOMERNAME.Name = "CUSTOMERNAME";
             this.CUSTOMERNAME.Width = 125;
             // 
+            // panel7
+            // 
+            this.panel7.BackColor = System.Drawing.Color.DimGray;
+            this.panel7.Controls.Add(this.txtSearchPending);
+            this.panel7.Controls.Add(this.dateTimePicker5);
+            this.panel7.Controls.Add(this.label5);
+            this.panel7.Controls.Add(this.dateTimePicker6);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel7.Location = new System.Drawing.Point(0, 59);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(1315, 54);
+            this.panel7.TabIndex = 36;
+            // 
+            // dateTimePicker5
+            // 
+            this.dateTimePicker5.CalendarFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dateTimePicker5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dateTimePicker5.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker5.Location = new System.Drawing.Point(313, 9);
+            this.dateTimePicker5.Name = "dateTimePicker5";
+            this.dateTimePicker5.Size = new System.Drawing.Size(158, 34);
+            this.dateTimePicker5.TabIndex = 33;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(12, 12);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(277, 31);
+            this.label5.TabIndex = 32;
+            this.label5.Text = "Filter By Date (From - To)";
+            // 
+            // dateTimePicker6
+            // 
+            this.dateTimePicker6.CalendarFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dateTimePicker6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dateTimePicker6.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker6.Location = new System.Drawing.Point(486, 9);
+            this.dateTimePicker6.Name = "dateTimePicker6";
+            this.dateTimePicker6.Size = new System.Drawing.Size(158, 34);
+            this.dateTimePicker6.TabIndex = 34;
+            // 
+            // panel8
+            // 
+            this.panel8.BackColor = System.Drawing.Color.DimGray;
+            this.panel8.Controls.Add(this.txtSearchSettled);
+            this.panel8.Controls.Add(this.dateTimePicker7);
+            this.panel8.Controls.Add(this.label6);
+            this.panel8.Controls.Add(this.dateTimePicker8);
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel8.Location = new System.Drawing.Point(0, 60);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(1315, 54);
+            this.panel8.TabIndex = 36;
+            // 
+            // dateTimePicker7
+            // 
+            this.dateTimePicker7.CalendarFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dateTimePicker7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dateTimePicker7.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker7.Location = new System.Drawing.Point(313, 9);
+            this.dateTimePicker7.Name = "dateTimePicker7";
+            this.dateTimePicker7.Size = new System.Drawing.Size(158, 34);
+            this.dateTimePicker7.TabIndex = 33;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(12, 12);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(277, 31);
+            this.label6.TabIndex = 32;
+            this.label6.Text = "Filter By Date (From - To)";
+            // 
+            // dateTimePicker8
+            // 
+            this.dateTimePicker8.CalendarFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dateTimePicker8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dateTimePicker8.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker8.Location = new System.Drawing.Point(486, 9);
+            this.dateTimePicker8.Name = "dateTimePicker8";
+            this.dateTimePicker8.Size = new System.Drawing.Size(158, 34);
+            this.dateTimePicker8.TabIndex = 34;
+            // 
             // frmPaymentStatus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -523,15 +527,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).EndInit();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPaymentStat)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -558,15 +562,7 @@
         private DataGridViewTextBoxColumn RemBalance;
         private DataGridViewTextBoxColumn DueDate;
         private DataGridViewTextBoxColumn Cashier;
-        private Panel panel6;
         private TextBox txtSearchSettled;
-        private DateTimePicker dateTimePicker2;
-        private DateTimePicker dateTimePicker1;
-        private Label label3;
-        private DateTimePicker dateTimePicker3;
-        private DateTimePicker dateTimePicker4;
-        private Label label4;
-        private Panel panel5;
         private TextBox txtSearchPending;
         private DataGridViewTextBoxColumn NumSettled;
         private DataGridViewTextBoxColumn TransRefNoSettled;
@@ -576,5 +572,13 @@
         private DataGridViewTextBoxColumn SettledAmount;
         private DataGridViewTextBoxColumn SettledDatePaymentStat;
         private DataGridViewTextBoxColumn CompletedBy;
+        private Panel panel8;
+        private DateTimePicker dateTimePicker7;
+        private Label label6;
+        private DateTimePicker dateTimePicker8;
+        private Panel panel7;
+        private DateTimePicker dateTimePicker5;
+        private Label label5;
+        private DateTimePicker dateTimePicker6;
     }
 }

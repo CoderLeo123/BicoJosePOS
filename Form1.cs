@@ -65,7 +65,7 @@ namespace Capstone
         {
             if (isCollapsed3)
             {
-                dropBtnSales.Image = Properties.Resources.Down_Arrow;
+                dropBtnReports.Image = Properties.Resources.Down_Arrow;
                 dropPanelSales.Height += 10;
                 if (dropPanelSales.Size == dropPanelSales.MaximumSize)
                 {
@@ -75,7 +75,7 @@ namespace Capstone
             }
             else
             {
-                dropBtnSales.Image = Properties.Resources.Sales_Report;
+                dropBtnReports.Image = Properties.Resources.Sales_Report;
                 dropPanelSales.Height -= 10;
                 if (dropPanelSales.Size == dropPanelSales.MinimumSize)
                 {
@@ -117,6 +117,13 @@ namespace Capstone
        
         private void dropBtnSales_Click_1(object sender, EventArgs e)
         {//isCollapsed3
+            frmReports frm = new frmReports();
+            frm.TopLevel = false;
+            panelLoad.Controls.Clear();
+            panelLoad.Controls.Add(frm);
+            frm.BringToFront();
+            frm.Show();
+
             isCollapsed3 = true;
             isCollapsed2 = false;
             isCollapsed1 = false;
@@ -229,6 +236,12 @@ namespace Capstone
 
         private void btnInventory_Click(object sender, EventArgs e)
         {
+            frmInventory frm = new frmInventory();
+            frm.TopLevel = false;
+            panelLoad.Controls.Clear();
+            panelLoad.Controls.Add(frm);
+            frm.BringToFront();
+            frm.Show();
             btnCollapsed();
             timerStart();
         }
