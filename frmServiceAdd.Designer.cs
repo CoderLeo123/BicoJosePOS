@@ -33,13 +33,15 @@
             this.btnClose = new System.Windows.Forms.PictureBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.txtServName = new System.Windows.Forms.TextBox();
+            this.btnSaveService = new System.Windows.Forms.Button();
+            this.txtServiceName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtServDesc = new System.Windows.Forms.TextBox();
+            this.txtServiceDesc = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtServPrice = new System.Windows.Forms.TextBox();
+            this.txtServicePrice = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.txtServiceID = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             this.SuspendLayout();
@@ -89,7 +91,7 @@
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(524, 288);
+            this.btnCancel.Location = new System.Drawing.Point(527, 336);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(153, 49);
             this.btnCancel.TabIndex = 13;
@@ -106,100 +108,122 @@
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdate.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnUpdate.Location = new System.Drawing.Point(365, 288);
+            this.btnUpdate.Location = new System.Drawing.Point(368, 336);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(153, 49);
             this.btnUpdate.TabIndex = 12;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
-            // btnSave
+            // btnSaveService
             // 
-            this.btnSave.BackColor = System.Drawing.Color.LimeGreen;
-            this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSave.FlatAppearance.BorderSize = 0;
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(206, 288);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(153, 49);
-            this.btnSave.TabIndex = 11;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = false;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.btnSaveService.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnSaveService.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSaveService.FlatAppearance.BorderSize = 0;
+            this.btnSaveService.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSaveService.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnSaveService.ForeColor = System.Drawing.Color.White;
+            this.btnSaveService.Location = new System.Drawing.Point(209, 336);
+            this.btnSaveService.Name = "btnSaveService";
+            this.btnSaveService.Size = new System.Drawing.Size(153, 49);
+            this.btnSaveService.TabIndex = 11;
+            this.btnSaveService.Text = "Save";
+            this.btnSaveService.UseVisualStyleBackColor = false;
+            this.btnSaveService.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // txtServName
+            // txtServiceName
             // 
-            this.txtServName.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtServName.Location = new System.Drawing.Point(241, 115);
-            this.txtServName.Name = "txtServName";
-            this.txtServName.PlaceholderText = "Ex. Refractor Machine";
-            this.txtServName.Size = new System.Drawing.Size(582, 38);
-            this.txtServName.TabIndex = 10;
+            this.txtServiceName.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtServiceName.Location = new System.Drawing.Point(244, 163);
+            this.txtServiceName.Name = "txtServiceName";
+            this.txtServiceName.PlaceholderText = "Ex. Refractor Machine";
+            this.txtServiceName.Size = new System.Drawing.Size(582, 38);
+            this.txtServiceName.TabIndex = 10;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(37, 110);
+            this.label2.Location = new System.Drawing.Point(40, 158);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(198, 41);
             this.label2.TabIndex = 9;
             this.label2.Text = "Service Name";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
-            // txtServDesc
+            // txtServiceDesc
             // 
-            this.txtServDesc.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtServDesc.Location = new System.Drawing.Point(241, 177);
-            this.txtServDesc.Name = "txtServDesc";
-            this.txtServDesc.PlaceholderText = "Ex. Automated reading of eyeglass prescription";
-            this.txtServDesc.Size = new System.Drawing.Size(582, 38);
-            this.txtServDesc.TabIndex = 15;
+            this.txtServiceDesc.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtServiceDesc.Location = new System.Drawing.Point(244, 225);
+            this.txtServiceDesc.Name = "txtServiceDesc";
+            this.txtServiceDesc.PlaceholderText = "Ex. Automated reading of eyeglass prescription";
+            this.txtServiceDesc.Size = new System.Drawing.Size(582, 38);
+            this.txtServiceDesc.TabIndex = 15;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(37, 172);
+            this.label3.Location = new System.Drawing.Point(40, 220);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(169, 41);
             this.label3.TabIndex = 14;
             this.label3.Text = "Description";
             // 
-            // txtServPrice
+            // txtServicePrice
             // 
-            this.txtServPrice.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtServPrice.Location = new System.Drawing.Point(241, 235);
-            this.txtServPrice.Name = "txtServPrice";
-            this.txtServPrice.PlaceholderText = "0.00";
-            this.txtServPrice.Size = new System.Drawing.Size(199, 38);
-            this.txtServPrice.TabIndex = 17;
+            this.txtServicePrice.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtServicePrice.Location = new System.Drawing.Point(244, 283);
+            this.txtServicePrice.Name = "txtServicePrice";
+            this.txtServicePrice.PlaceholderText = "0.00";
+            this.txtServicePrice.Size = new System.Drawing.Size(199, 38);
+            this.txtServicePrice.TabIndex = 17;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(37, 230);
+            this.label4.Location = new System.Drawing.Point(40, 278);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(82, 41);
             this.label4.TabIndex = 16;
             this.label4.Text = "Price";
             // 
+            // txtServiceID
+            // 
+            this.txtServiceID.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtServiceID.Location = new System.Drawing.Point(244, 106);
+            this.txtServiceID.Name = "txtServiceID";
+            this.txtServiceID.PlaceholderText = "S00001";
+            this.txtServiceID.Size = new System.Drawing.Size(267, 38);
+            this.txtServiceID.TabIndex = 19;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(40, 101);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(148, 41);
+            this.label5.TabIndex = 18;
+            this.label5.Text = "Service ID";
+            // 
             // frmServiceAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(876, 382);
-            this.Controls.Add(this.txtServPrice);
+            this.ClientSize = new System.Drawing.Size(876, 446);
+            this.Controls.Add(this.txtServiceID);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.txtServicePrice);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.txtServDesc);
+            this.Controls.Add(this.txtServiceDesc);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnUpdate);
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.txtServName);
+            this.Controls.Add(this.btnSaveService);
+            this.Controls.Add(this.txtServiceName);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -220,13 +244,15 @@
         private Label label1;
         private PictureBox btnClose;
         private Button btnCancel;
-        private Button btnUpdate;
-        private Button btnSave;
-        private TextBox txtServName;
         private Label label2;
-        private TextBox txtServDesc;
         private Label label3;
-        private TextBox txtServPrice;
         private Label label4;
+        private Label label5;
+        public TextBox txtServiceName;
+        public TextBox txtServiceDesc;
+        public TextBox txtServicePrice;
+        public TextBox txtServiceID;
+        public Button btnUpdate;
+        public Button btnSaveService;
     }
 }

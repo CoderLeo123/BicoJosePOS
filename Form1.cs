@@ -1,13 +1,20 @@
+using System.Data.SqlClient;
+
 namespace Capstone
 {
     public partial class frmAdmin : Form
     {
-       
+        SqlConnection cn = new SqlConnection();
+        SqlCommand cm = new SqlCommand();
+        DBConnection dbcon = new DBConnection();
+
         Boolean isCollapsed1, isCollapsed2, isCollapsed3 = true;
         
         public frmAdmin()
         {
             InitializeComponent();
+            cn = new SqlConnection(dbcon.MyConnection());
+            
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
