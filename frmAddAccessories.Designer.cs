@@ -44,7 +44,9 @@
             this.txtID = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.comBoxProduct = new System.Windows.Forms.ComboBox();
+            this.txtProductID = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtProduct = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnCloseAccessories)).BeginInit();
             this.SuspendLayout();
@@ -57,7 +59,7 @@
             this.btnCancelAccessories.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelAccessories.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnCancelAccessories.ForeColor = System.Drawing.Color.White;
-            this.btnCancelAccessories.Location = new System.Drawing.Point(354, 379);
+            this.btnCancelAccessories.Location = new System.Drawing.Point(354, 425);
             this.btnCancelAccessories.Name = "btnCancelAccessories";
             this.btnCancelAccessories.Size = new System.Drawing.Size(153, 49);
             this.btnCancelAccessories.TabIndex = 23;
@@ -74,7 +76,7 @@
             this.btnUpdateAccessories.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdateAccessories.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnUpdateAccessories.ForeColor = System.Drawing.Color.White;
-            this.btnUpdateAccessories.Location = new System.Drawing.Point(195, 379);
+            this.btnUpdateAccessories.Location = new System.Drawing.Point(195, 425);
             this.btnUpdateAccessories.Name = "btnUpdateAccessories";
             this.btnUpdateAccessories.Size = new System.Drawing.Size(153, 49);
             this.btnUpdateAccessories.TabIndex = 22;
@@ -89,7 +91,7 @@
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(36, 379);
+            this.btnSave.Location = new System.Drawing.Point(36, 425);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(153, 49);
             this.btnSave.TabIndex = 21;
@@ -100,7 +102,7 @@
             // txtPrice
             // 
             this.txtPrice.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtPrice.Location = new System.Drawing.Point(237, 319);
+            this.txtPrice.Location = new System.Drawing.Point(237, 206);
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.PlaceholderText = "0.00";
             this.txtPrice.Size = new System.Drawing.Size(256, 38);
@@ -110,7 +112,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(31, 317);
+            this.label2.Location = new System.Drawing.Point(31, 204);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(78, 38);
             this.label2.TabIndex = 19;
@@ -156,7 +158,7 @@
             // txtDescription
             // 
             this.txtDescription.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtDescription.Location = new System.Drawing.Point(237, 262);
+            this.txtDescription.Location = new System.Drawing.Point(237, 149);
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.PlaceholderText = "Ex. Eyeglass Cleaning Solution Spray Bottle 50ml";
             this.txtDescription.Size = new System.Drawing.Size(566, 38);
@@ -166,7 +168,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(31, 260);
+            this.label3.Location = new System.Drawing.Point(31, 147);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(158, 38);
             this.label3.TabIndex = 24;
@@ -176,7 +178,7 @@
             // 
             this.comBoxType.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.comBoxType.FormattingEnabled = true;
-            this.comBoxType.Location = new System.Drawing.Point(237, 150);
+            this.comBoxType.Location = new System.Drawing.Point(237, 266);
             this.comBoxType.Name = "comBoxType";
             this.comBoxType.Size = new System.Drawing.Size(256, 36);
             this.comBoxType.TabIndex = 26;
@@ -187,7 +189,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(31, 146);
+            this.label4.Location = new System.Drawing.Point(31, 262);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(75, 38);
             this.label4.TabIndex = 27;
@@ -211,7 +213,7 @@
             this.txtID.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtID.Location = new System.Drawing.Point(237, 96);
             this.txtID.Name = "txtID";
-            this.txtID.PlaceholderText = "P000000";
+            this.txtID.PlaceholderText = "ITM0001";
             this.txtID.Size = new System.Drawing.Size(256, 34);
             this.txtID.TabIndex = 29;
             // 
@@ -229,28 +231,49 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(31, 200);
+            this.label6.Location = new System.Drawing.Point(31, 316);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(113, 38);
             this.label6.TabIndex = 32;
             this.label6.Text = "Product";
             // 
-            // comBoxProduct
+            // txtProductID
             // 
-            this.comBoxProduct.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.comBoxProduct.FormattingEnabled = true;
-            this.comBoxProduct.Location = new System.Drawing.Point(237, 204);
-            this.comBoxProduct.Name = "comBoxProduct";
-            this.comBoxProduct.Size = new System.Drawing.Size(256, 36);
-            this.comBoxProduct.TabIndex = 31;
+            this.txtProductID.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtProductID.Location = new System.Drawing.Point(237, 372);
+            this.txtProductID.Name = "txtProductID";
+            this.txtProductID.PlaceholderText = "P0001";
+            this.txtProductID.Size = new System.Drawing.Size(256, 38);
+            this.txtProductID.TabIndex = 34;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label7.Location = new System.Drawing.Point(31, 370);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(148, 38);
+            this.label7.TabIndex = 33;
+            this.label7.Text = "Product ID";
+            // 
+            // txtProduct
+            // 
+            this.txtProduct.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtProduct.Location = new System.Drawing.Point(237, 318);
+            this.txtProduct.Name = "txtProduct";
+            this.txtProduct.PlaceholderText = "0.00";
+            this.txtProduct.Size = new System.Drawing.Size(256, 38);
+            this.txtProduct.TabIndex = 35;
             // 
             // frmAddAccessories
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(820, 465);
+            this.ClientSize = new System.Drawing.Size(820, 505);
+            this.Controls.Add(this.txtProduct);
+            this.Controls.Add(this.txtProductID);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.comBoxProduct);
             this.Controls.Add(this.GeneratePCodeAccessories);
             this.Controls.Add(this.txtID);
             this.Controls.Add(this.label5);
@@ -269,6 +292,7 @@
             this.Name = "frmAddAccessories";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmAddAccessories";
+            this.Load += new System.EventHandler(this.frmAddAccessories_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnCloseAccessories)).EndInit();
@@ -294,6 +318,8 @@
         private TextBox txtID;
         private Label label5;
         private Label label6;
-        private ComboBox comBoxProduct;
+        private TextBox txtProductID;
+        private Label label7;
+        private TextBox txtProduct;
     }
 }

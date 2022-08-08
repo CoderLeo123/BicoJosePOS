@@ -38,20 +38,21 @@ namespace Capstone
                 if(MessageBox.Show("Are you sure you want to save this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     cn.Open();
-                    cm = new SqlCommand("INSERT INTO JoinItemProduct (Item_ID, Description, Price, Type, Product) VALUES(@ID, @Description, @Price, @Type, @Product,)");
+                    cm = new SqlCommand("INSERT INTO tblItems (Item_ID, Product_ID, Description, Price) VALUES(@ID, @ProductID, @Description, @Price)", cn);
                     cm.Parameters.AddWithValue("@ID", txtID.Text);
                     cm.Parameters.AddWithValue("@Description", txtDescription.Text);
-                    cm.Parameters.AddWithValue("@Type", comBoxType.Text);
-                    cm.Parameters.AddWithValue("@Product", comBoxProduct.Text);
+                    cm.Parameters.AddWithValue("@ProductID", txtProductID.Text);
                     cm.Parameters.AddWithValue("@Price", txtPrice.Text);
-
+                    cm.ExecuteNonQuery();
+                    cn.Close();
+                    MessageBox.Show("Record has been successfully saved.");
+                    Clear();
                 }
             }catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            MessageBox.Show("Record has been successfully saved.");
-            Clear();
+            
         }
 
         private void btnCancelAccessories_Click(object sender, EventArgs e)
@@ -72,6 +73,11 @@ namespace Capstone
         private void comBoxTypeAccessories_SelectedIndexChanged(object sender, EventArgs e)
         {
             
+        }
+
+        private void frmAddAccessories_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

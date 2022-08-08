@@ -42,6 +42,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtServiceID = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.GenerateID = new System.Windows.Forms.LinkLabel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             this.SuspendLayout();
@@ -140,6 +141,7 @@
             this.txtServiceName.PlaceholderText = "Ex. Refractor Machine";
             this.txtServiceName.Size = new System.Drawing.Size(582, 38);
             this.txtServiceName.TabIndex = 10;
+            this.txtServiceName.TextChanged += new System.EventHandler(this.txtServiceName_TextChanged);
             // 
             // label2
             // 
@@ -192,11 +194,12 @@
             // 
             // txtServiceID
             // 
+            this.txtServiceID.Enabled = false;
             this.txtServiceID.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtServiceID.Location = new System.Drawing.Point(244, 106);
             this.txtServiceID.Name = "txtServiceID";
-            this.txtServiceID.PlaceholderText = "S00001";
-            this.txtServiceID.Size = new System.Drawing.Size(267, 38);
+            this.txtServiceID.PlaceholderText = "S1001";
+            this.txtServiceID.Size = new System.Drawing.Size(164, 38);
             this.txtServiceID.TabIndex = 19;
             // 
             // label5
@@ -209,11 +212,27 @@
             this.label5.TabIndex = 18;
             this.label5.Text = "Service ID";
             // 
+            // GenerateID
+            // 
+            this.GenerateID.AutoSize = true;
+            this.GenerateID.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.GenerateID.LinkArea = new System.Windows.Forms.LinkArea(0, 14);
+            this.GenerateID.LinkColor = System.Drawing.Color.Navy;
+            this.GenerateID.Location = new System.Drawing.Point(435, 106);
+            this.GenerateID.Name = "GenerateID";
+            this.GenerateID.Size = new System.Drawing.Size(172, 43);
+            this.GenerateID.TabIndex = 32;
+            this.GenerateID.TabStop = true;
+            this.GenerateID.Text = "[Generate ID]";
+            this.GenerateID.UseCompatibleTextRendering = true;
+            this.GenerateID.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.GenerateID_LinkClicked);
+            // 
             // frmServiceAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(876, 446);
+            this.Controls.Add(this.GenerateID);
             this.Controls.Add(this.txtServiceID);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtServicePrice);
@@ -254,5 +273,6 @@
         public TextBox txtServiceID;
         public Button btnUpdate;
         public Button btnSaveService;
+        public LinkLabel GenerateID;
     }
 }

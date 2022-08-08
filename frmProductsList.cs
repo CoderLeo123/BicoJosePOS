@@ -94,6 +94,7 @@ namespace Capstone
                 frm.txtProduct.Text = dataGridViewProducts[3, e.RowIndex].Value.ToString();
                 frm.btnSave.Enabled = false;
                 frm.btnUpdate.Enabled = true;
+                frm.GenerateID.Enabled = false;
                 frm.ShowDialog();
             }
             else if (colName == "Delete")
@@ -122,6 +123,7 @@ namespace Capstone
                 frm.txtServicePrice.Text = dataGridViewService[4, e.RowIndex].Value.ToString();
                 frm.btnSaveService.Enabled = false;
                 frm.btnUpdate.Enabled = true;
+                frm.GenerateID.Enabled = false;
                 frm.ShowDialog();
             }
             else if (colName == "DeleteService")
