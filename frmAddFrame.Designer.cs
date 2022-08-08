@@ -44,7 +44,7 @@
             this.txtPriceFrame = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.GeneratePCodeFrame = new System.Windows.Forms.LinkLabel();
-            this.txtPCodeFrame = new System.Windows.Forms.TextBox();
+            this.txtIDFrame = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.comBoxMaterialFrame = new System.Windows.Forms.ComboBox();
             this.comBoxShapeFrame = new System.Windows.Forms.ComboBox();
@@ -235,15 +235,15 @@
             this.GeneratePCodeFrame.TabStop = true;
             this.GeneratePCodeFrame.Text = "[Generate]";
             // 
-            // txtPCodeFrame
+            // txtIDFrame
             // 
-            this.txtPCodeFrame.Enabled = false;
-            this.txtPCodeFrame.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtPCodeFrame.Location = new System.Drawing.Point(223, 91);
-            this.txtPCodeFrame.Name = "txtPCodeFrame";
-            this.txtPCodeFrame.PlaceholderText = "P000000";
-            this.txtPCodeFrame.Size = new System.Drawing.Size(256, 34);
-            this.txtPCodeFrame.TabIndex = 37;
+            this.txtIDFrame.Enabled = false;
+            this.txtIDFrame.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtIDFrame.Location = new System.Drawing.Point(223, 91);
+            this.txtIDFrame.Name = "txtIDFrame";
+            this.txtIDFrame.PlaceholderText = "P000000";
+            this.txtIDFrame.Size = new System.Drawing.Size(256, 34);
+            this.txtIDFrame.TabIndex = 37;
             // 
             // label8
             // 
@@ -280,7 +280,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(623, 549);
             this.Controls.Add(this.GeneratePCodeFrame);
-            this.Controls.Add(this.txtPCodeFrame);
+            this.Controls.Add(this.txtIDFrame);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.comBoxMaterialFrame);
             this.Controls.Add(this.comBoxShapeFrame);
@@ -327,7 +327,7 @@
         private TextBox txtPriceFrame;
         private Label label7;
         private LinkLabel GeneratePCodeFrame;
-        private TextBox txtPCodeFrame;
+        private TextBox txtIDFrame;
         private Label label8;
         private ComboBox comBoxMaterialFrame;
         private ComboBox comBoxShapeFrame;

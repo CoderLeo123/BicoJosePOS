@@ -38,11 +38,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnCloseLense = new System.Windows.Forms.PictureBox();
             this.comBoxTypeLense = new System.Windows.Forms.ComboBox();
-            this.checkedListBoxFeaturesLense = new System.Windows.Forms.CheckedListBox();
+            this.checkedListFeaturesLense = new System.Windows.Forms.CheckedListBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.GeneratePCodeLense = new System.Windows.Forms.LinkLabel();
-            this.txtPCodeLense = new System.Windows.Forms.TextBox();
+            this.txtIDLense = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnCloseLense)).BeginInit();
@@ -171,14 +171,14 @@
             this.comBoxTypeLense.Size = new System.Drawing.Size(347, 36);
             this.comBoxTypeLense.TabIndex = 35;
             // 
-            // checkedListBoxFeaturesLense
+            // checkedListFeaturesLense
             // 
-            this.checkedListBoxFeaturesLense.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.checkedListBoxFeaturesLense.FormattingEnabled = true;
-            this.checkedListBoxFeaturesLense.Location = new System.Drawing.Point(241, 314);
-            this.checkedListBoxFeaturesLense.Name = "checkedListBoxFeaturesLense";
-            this.checkedListBoxFeaturesLense.Size = new System.Drawing.Size(309, 149);
-            this.checkedListBoxFeaturesLense.TabIndex = 36;
+            this.checkedListFeaturesLense.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.checkedListFeaturesLense.FormattingEnabled = true;
+            this.checkedListFeaturesLense.Location = new System.Drawing.Point(241, 314);
+            this.checkedListFeaturesLense.Name = "checkedListFeaturesLense";
+            this.checkedListFeaturesLense.Size = new System.Drawing.Size(309, 149);
+            this.checkedListFeaturesLense.TabIndex = 36;
             // 
             // label4
             // 
@@ -212,15 +212,15 @@
             this.GeneratePCodeLense.TabStop = true;
             this.GeneratePCodeLense.Text = "[Generate]";
             // 
-            // txtPCodeLense
+            // txtIDLense
             // 
-            this.txtPCodeLense.Enabled = false;
-            this.txtPCodeLense.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtPCodeLense.Location = new System.Drawing.Point(241, 96);
-            this.txtPCodeLense.Name = "txtPCodeLense";
-            this.txtPCodeLense.PlaceholderText = "P000000";
-            this.txtPCodeLense.Size = new System.Drawing.Size(256, 34);
-            this.txtPCodeLense.TabIndex = 40;
+            this.txtIDLense.Enabled = false;
+            this.txtIDLense.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtIDLense.Location = new System.Drawing.Point(241, 96);
+            this.txtIDLense.Name = "txtIDLense";
+            this.txtIDLense.PlaceholderText = "P000000";
+            this.txtIDLense.Size = new System.Drawing.Size(256, 34);
+            this.txtIDLense.TabIndex = 40;
             // 
             // label8
             // 
@@ -238,11 +238,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(632, 571);
             this.Controls.Add(this.GeneratePCodeLense);
-            this.Controls.Add(this.txtPCodeLense);
+            this.Controls.Add(this.txtIDLense);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.checkedListBoxFeaturesLense);
+            this.Controls.Add(this.checkedListFeaturesLense);
             this.Controls.Add(this.comBoxTypeLense);
             this.Controls.Add(this.txtPriceLense);
             this.Controls.Add(this.label3);
@@ -274,11 +274,11 @@
         private Label label1;
         private PictureBox btnCloseLense;
         private ComboBox comBoxTypeLense;
-        private CheckedListBox checkedListBoxFeaturesLense;
+        private CheckedListBox checkedListFeaturesLense;
         private Label label4;
         private Label label5;
         private LinkLabel GeneratePCodeLense;
-        private TextBox txtPCodeLense;
+        private TextBox txtIDLense;
         private Label label8;
     }
 }

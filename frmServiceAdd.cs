@@ -7,14 +7,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Data.SqlClient;
 namespace Capstone
 {
     public partial class frmServiceAdd : Form
     {
-        public frmServiceAdd()
+        SqlConnection cn = new SqlConnection();
+        SqlCommand cm = new SqlCommand();
+        DBConnection dbcon = new DBConnection();
+        string title = "BICO-JOSE System";
+        frmProductsList frmList;
+        public frmServiceAdd(frmProductsList frmAdd)
         {
             InitializeComponent();
+            cn = new SqlConnection(dbcon.MyConnection());
+            frmList = frmAdd;
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -33,18 +40,35 @@ namespace Capstone
         }
         public void Clear()
         {
-            btnSave.Enabled = true;
+            btnSaveService.Enabled = true;
             btnUpdate.Enabled = false;
-            txtServName.Clear();
-            txtServDesc.Clear();
-            txtServPrice.Clear();
-            txtServName.Focus();
+            txtServiceName.Clear();
+            txtServiceDesc.Clear();
+            txtServicePrice.Clear();
+            txtServiceName.Focus();
 
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Record has been successfully saved.");
-            Clear();
+            try
+            {
+                if(MessageBox.Show("Are you sure you want to save this record?",title,MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes){
+                    cn.Open();
+                    cm = new SqlCommand("INSERT INTO tblService (Service_ID, Description, Price) VALUES(@ID, @Description, @Price)", cn);
+                    cm.Parameters.AddWithValue("@ID", txtServiceID.Text);
+                    cm.Parameters.AddWithValue("@Description", txtServiceDesc.Text);
+                    cm.Parameters.AddWithValue("@Price", txtServicePrice.Text);
+                    cm.ExecuteNonQuery();
+                    cn.Close();
+                    MessageBox.Show("Record has been successfully saved.");
+                    Clear();
+                    frmList.LoadRecordsService();
+                }
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
     }
 }

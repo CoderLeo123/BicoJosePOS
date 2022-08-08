@@ -7,27 +7,49 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Data.SqlClient;
 namespace Capstone
 {
     public partial class frmAddAccessories : Form
     {
+        SqlConnection cn = new SqlConnection();
+        SqlCommand cm = new SqlCommand();
+        DBConnection dbcon = new DBConnection();
+        string title = "BICO-JOSE System";
         public frmAddAccessories()
         {
+
             InitializeComponent();
-            
+            cn = new SqlConnection(dbcon.MyConnection());
         }
         public void Clear()
         {
-            btnSaveAccessories.Enabled = true;
+            btnSave.Enabled = true;
             btnUpdateAccessories.Enabled = false;
-            txtPriceAccessories.Clear();
-            txtDescAccessories.Clear();
-            txtPriceAccessories.Focus();
+            txtPrice.Clear();
+            txtDescription.Clear();
+            txtPrice.Focus();
 
         }
         private void btnSaveAccessories_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if(MessageBox.Show("Are you sure you want to save this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    cn.Open();
+                    cm = new SqlCommand("INSERT INTO JoinItemProduct (Item_ID, Description, Price, Type, Product) VALUES(@ID, @Description, @Price, @Type, @Product,)");
+                    cm.Parameters.AddWithValue("@ID", txtID.Text);
+                    cm.Parameters.AddWithValue("@Description", txtDescription.Text);
+                    cm.Parameters.AddWithValue("@Type", comBoxType.Text);
+                    cm.Parameters.AddWithValue("@Product", comBoxProduct.Text);
+                    cm.Parameters.AddWithValue("@Price", txtPrice.Text);
+
+                }
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             MessageBox.Show("Record has been successfully saved.");
             Clear();
         }
