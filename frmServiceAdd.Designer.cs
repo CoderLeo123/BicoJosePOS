@@ -114,6 +114,7 @@
             this.btnUpdate.TabIndex = 12;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnSaveService
             // 
@@ -243,15 +244,15 @@
         private Label label1;
         private PictureBox btnClose;
         private Button btnCancel;
-        private Button btnUpdate;
-        private Button btnSaveService;
-        private TextBox txtServiceName;
         private Label label2;
-        private TextBox txtServiceDesc;
         private Label label3;
-        private TextBox txtServicePrice;
         private Label label4;
-        private TextBox txtServiceID;
         private Label label5;
+        public TextBox txtServiceName;
+        public TextBox txtServiceDesc;
+        public TextBox txtServicePrice;
+        public TextBox txtServiceID;
+        public Button btnUpdate;
+        public Button btnSaveService;
     }
 }

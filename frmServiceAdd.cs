@@ -41,7 +41,8 @@ namespace Capstone
         public void Clear()
         {
             btnSaveService.Enabled = true;
-            btnUpdate.Enabled = false;
+
+            txtServiceID.Clear();
             txtServiceName.Clear();
             txtServiceDesc.Clear();
             txtServicePrice.Clear();
@@ -54,14 +55,16 @@ namespace Capstone
             {
                 if(MessageBox.Show("Are you sure you want to save this record?",title,MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes){
                     cn.Open();
-                    cm = new SqlCommand("INSERT INTO tblService (Service_ID, Description, Price) VALUES(@ID, @Description, @Price)", cn);
+                    cm = new SqlCommand("INSERT INTO tblServices (Service_ID, Name, Description, Price) VALUES(@ID, @Name, @Description, @Price)", cn);
                     cm.Parameters.AddWithValue("@ID", txtServiceID.Text);
+                    cm.Parameters.AddWithValue("@Name", txtServiceName.Text);
                     cm.Parameters.AddWithValue("@Description", txtServiceDesc.Text);
                     cm.Parameters.AddWithValue("@Price", txtServicePrice.Text);
                     cm.ExecuteNonQuery();
                     cn.Close();
                     MessageBox.Show("Record has been successfully saved.");
                     Clear();
+                    btnUpdate.Enabled = false;
                     frmList.LoadRecordsService();
                 }
             }catch(Exception ex)
@@ -69,6 +72,33 @@ namespace Capstone
                 MessageBox.Show(ex.Message);
             }
             
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (MessageBox.Show("Are you sure you want to update this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    cn.Open();
+                    cm = new SqlCommand("UPDATE tblServices SET Service_ID = @ID, Name = @Name, Description = @Description, Price = @Price WHERE Service_ID LIKE '" + txtServiceID.Text + "'", cn); 
+                    cm.Parameters.AddWithValue("@ID", txtServiceID.Text);
+                    cm.Parameters.AddWithValue("@Name", txtServiceName.Text);
+                    cm.Parameters.AddWithValue("@Description", txtServiceDesc.Text);
+                    cm.Parameters.AddWithValue("@Price", txtServicePrice.Text);
+                    cm.ExecuteNonQuery();
+                    cn.Close();
+                    MessageBox.Show("Record has been successfully updated.");
+                    Clear();
+                    btnSaveService.Enabled = false;
+                    frmList.LoadRecordsService();
+                    this.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

@@ -30,8 +30,6 @@ namespace Capstone
         }
         public void Clear()
         {
-            btnSave.Enabled = true;
-            btnUpdate.Enabled = false;
             txtProduct.Clear();
             txtType.Clear();
             txtProduct.Focus();
@@ -52,7 +50,7 @@ namespace Capstone
                     cn.Close();
                     MessageBox.Show("Record has been successfully saved.");
                     Clear();
-                    frmList.LoadRecordsService();
+                    frmList.LoadRecordsProducts();
                 }
             }
             catch(Exception ex)
@@ -79,6 +77,33 @@ namespace Capstone
         private void frmProductAdd_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (MessageBox.Show("Are you sure you want to update this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    cn.Open();
+                    cm = new SqlCommand("UPDATE tblProductType SET Product_ID = @ID, Type = @Type, Product = @Product WHERE Product_ID LIKE '" + txtProductID.Text + "'", cn);
+                    cm.Parameters.AddWithValue("@ID", txtProductID.Text);
+                    cm.Parameters.AddWithValue("@Product", txtProduct.Text);
+                    cm.Parameters.AddWithValue("@Type", txtType.Text);
+                    cm.ExecuteNonQuery();
+                    cn.Close();
+                    MessageBox.Show("Record has been successfully updated.");
+                    Clear();
+                    btnSave.Enabled = false;
+                    btnUpdate.Enabled = true;
+                    frmList.LoadRecordsProducts();
+                    this.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

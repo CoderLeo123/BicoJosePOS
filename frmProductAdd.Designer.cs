@@ -133,6 +133,7 @@
             this.btnUpdate.TabIndex = 7;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnCancel
             // 
@@ -223,13 +224,13 @@
         private Label label1;
         private PictureBox btnClose;
         private Label label2;
-        private TextBox txtProduct;
-        private Button btnSave;
-        private Button btnUpdate;
         private Button btnCancel;
-        private TextBox txtType;
         private Label label3;
-        private TextBox txtProductID;
         private Label label4;
+        public TextBox txtProduct;
+        public TextBox txtType;
+        public TextBox txtProductID;
+        public Button btnSave;
+        public Button btnUpdate;
     }
 }
