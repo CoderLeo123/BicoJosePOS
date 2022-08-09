@@ -40,13 +40,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.comBoxType = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.GeneratePCodeAccessories = new System.Windows.Forms.LinkLabel();
             this.txtID = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txtProductID = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtProduct = new System.Windows.Forms.TextBox();
+            this.GenerateID = new System.Windows.Forms.LinkLabel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnCloseAccessories)).BeginInit();
             this.SuspendLayout();
@@ -163,6 +163,7 @@
             this.txtDescription.PlaceholderText = "Ex. Eyeglass Cleaning Solution Spray Bottle 50ml";
             this.txtDescription.Size = new System.Drawing.Size(566, 38);
             this.txtDescription.TabIndex = 25;
+            this.txtDescription.TextChanged += new System.EventHandler(this.txtDescription_TextChanged);
             // 
             // label3
             // 
@@ -176,11 +177,11 @@
             // 
             // comBoxType
             // 
-            this.comBoxType.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.comBoxType.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.comBoxType.FormattingEnabled = true;
             this.comBoxType.Location = new System.Drawing.Point(237, 266);
             this.comBoxType.Name = "comBoxType";
-            this.comBoxType.Size = new System.Drawing.Size(256, 36);
+            this.comBoxType.Size = new System.Drawing.Size(256, 39);
             this.comBoxType.TabIndex = 26;
             this.comBoxType.SelectedIndexChanged += new System.EventHandler(this.comBoxTypeAccessories_SelectedIndexChanged);
             this.comBoxType.TextChanged += new System.EventHandler(this.comBoxTypeAccessories_TextChanged);
@@ -195,26 +196,14 @@
             this.label4.TabIndex = 27;
             this.label4.Text = "Type";
             // 
-            // GeneratePCodeAccessories
-            // 
-            this.GeneratePCodeAccessories.AutoSize = true;
-            this.GeneratePCodeAccessories.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.GeneratePCodeAccessories.LinkColor = System.Drawing.Color.Navy;
-            this.GeneratePCodeAccessories.Location = new System.Drawing.Point(518, 102);
-            this.GeneratePCodeAccessories.Name = "GeneratePCodeAccessories";
-            this.GeneratePCodeAccessories.Size = new System.Drawing.Size(103, 28);
-            this.GeneratePCodeAccessories.TabIndex = 30;
-            this.GeneratePCodeAccessories.TabStop = true;
-            this.GeneratePCodeAccessories.Text = "[Generate]";
-            // 
             // txtID
             // 
             this.txtID.Enabled = false;
-            this.txtID.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtID.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtID.Location = new System.Drawing.Point(237, 96);
             this.txtID.Name = "txtID";
             this.txtID.PlaceholderText = "ITM0001";
-            this.txtID.Size = new System.Drawing.Size(256, 34);
+            this.txtID.Size = new System.Drawing.Size(256, 38);
             this.txtID.TabIndex = 29;
             // 
             // label5
@@ -239,6 +228,7 @@
             // 
             // txtProductID
             // 
+            this.txtProductID.Enabled = false;
             this.txtProductID.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtProductID.Location = new System.Drawing.Point(237, 372);
             this.txtProductID.Name = "txtProductID";
@@ -258,23 +248,38 @@
             // 
             // txtProduct
             // 
+            this.txtProduct.Enabled = false;
             this.txtProduct.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtProduct.Location = new System.Drawing.Point(237, 318);
             this.txtProduct.Name = "txtProduct";
-            this.txtProduct.PlaceholderText = "0.00";
             this.txtProduct.Size = new System.Drawing.Size(256, 38);
             this.txtProduct.TabIndex = 35;
+            // 
+            // GenerateID
+            // 
+            this.GenerateID.AutoSize = true;
+            this.GenerateID.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.GenerateID.LinkArea = new System.Windows.Forms.LinkArea(0, 15);
+            this.GenerateID.LinkColor = System.Drawing.Color.Navy;
+            this.GenerateID.Location = new System.Drawing.Point(518, 96);
+            this.GenerateID.Name = "GenerateID";
+            this.GenerateID.Size = new System.Drawing.Size(172, 43);
+            this.GenerateID.TabIndex = 36;
+            this.GenerateID.TabStop = true;
+            this.GenerateID.Text = "[Generate ID]";
+            this.GenerateID.UseCompatibleTextRendering = true;
+            this.GenerateID.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.GenerateID_LinkClicked);
             // 
             // frmAddAccessories
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(820, 505);
+            this.Controls.Add(this.GenerateID);
             this.Controls.Add(this.txtProduct);
             this.Controls.Add(this.txtProductID);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.GeneratePCodeAccessories);
             this.Controls.Add(this.txtID);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -312,14 +317,14 @@
         private PictureBox btnCloseAccessories;
         private TextBox txtDescription;
         private Label label3;
-        private ComboBox comBoxType;
         private Label label4;
-        private LinkLabel GeneratePCodeAccessories;
         private TextBox txtID;
         private Label label5;
         private Label label6;
-        private TextBox txtProductID;
         private Label label7;
-        private TextBox txtProduct;
+        public LinkLabel GenerateID;
+        public ComboBox comBoxType;
+        public TextBox txtProductID;
+        public TextBox txtProduct;
     }
 }
