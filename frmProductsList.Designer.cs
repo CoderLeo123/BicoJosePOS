@@ -59,7 +59,6 @@
             this.btnAddService = new System.Windows.Forms.PictureBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.dataGridViewService = new System.Windows.Forms.DataGridView();
-            this.NumProducts = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NumService = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ServiceID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -67,6 +66,7 @@
             this.PriceService = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EditService = new System.Windows.Forms.DataGridViewImageColumn();
             this.DeleteService = new System.Windows.Forms.DataGridViewImageColumn();
+            this.NumProducts = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnAddProducts)).BeginInit();
@@ -435,14 +435,6 @@
             this.dataGridViewService.TabIndex = 5;
             this.dataGridViewService.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewService_CellContentClick);
             // 
-            // NumProducts
-            // 
-            this.NumProducts.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.NumProducts.HeaderText = "#";
-            this.NumProducts.MinimumWidth = 6;
-            this.NumProducts.Name = "NumProducts";
-            this.NumProducts.Width = 125;
-            // 
             // NumService
             // 
             this.NumService.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -499,6 +491,14 @@
             this.DeleteService.Name = "DeleteService";
             this.DeleteService.Width = 24;
             // 
+            // NumProducts
+            // 
+            this.NumProducts.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.NumProducts.HeaderText = "#";
+            this.NumProducts.MinimumWidth = 6;
+            this.NumProducts.Name = "NumProducts";
+            this.NumProducts.Width = 125;
+            // 
             // frmProductsList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -542,8 +542,6 @@
         private PictureBox btnAddService;
         private Panel panel4;
         private DataGridView dataGridViewService;
-        private TextBox txtSearchTypeProducts;
-        private TextBox txtSearchService;
         private Panel panel7;
         private DateTimePicker dateTimePicker1;
         private Label label3;
@@ -567,5 +565,7 @@
         private DataGridViewTextBoxColumn PriceService;
         private DataGridViewImageColumn EditService;
         private DataGridViewImageColumn DeleteService;
+        public TextBox txtSearchTypeProducts;
+        public TextBox txtSearchService;
     }
 }

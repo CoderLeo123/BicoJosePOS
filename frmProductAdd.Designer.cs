@@ -40,6 +40,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtProductID = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.GenerateID = new System.Windows.Forms.LinkLabel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             this.SuspendLayout();
@@ -172,11 +173,12 @@
             // 
             // txtProductID
             // 
+            this.txtProductID.Enabled = false;
             this.txtProductID.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtProductID.Location = new System.Drawing.Point(212, 118);
             this.txtProductID.Name = "txtProductID";
-            this.txtProductID.PlaceholderText = "P000001";
-            this.txtProductID.Size = new System.Drawing.Size(281, 38);
+            this.txtProductID.PlaceholderText = "P1001";
+            this.txtProductID.Size = new System.Drawing.Size(204, 38);
             this.txtProductID.TabIndex = 12;
             // 
             // label4
@@ -189,6 +191,21 @@
             this.label4.TabIndex = 11;
             this.label4.Text = "Product ID";
             // 
+            // GenerateID
+            // 
+            this.GenerateID.AutoSize = true;
+            this.GenerateID.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.GenerateID.LinkArea = new System.Windows.Forms.LinkArea(0, 15);
+            this.GenerateID.LinkColor = System.Drawing.Color.Navy;
+            this.GenerateID.Location = new System.Drawing.Point(438, 121);
+            this.GenerateID.Name = "GenerateID";
+            this.GenerateID.Size = new System.Drawing.Size(172, 43);
+            this.GenerateID.TabIndex = 35;
+            this.GenerateID.TabStop = true;
+            this.GenerateID.Text = "[Generate ID]";
+            this.GenerateID.UseCompatibleTextRendering = true;
+            this.GenerateID.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.GenerateID_LinkClicked);
+            // 
             // frmProductAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -196,6 +213,7 @@
             this.BackColor = System.Drawing.Color.Azure;
             this.ClientSize = new System.Drawing.Size(876, 407);
             this.ControlBox = false;
+            this.Controls.Add(this.GenerateID);
             this.Controls.Add(this.txtProductID);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtType);
@@ -232,5 +250,6 @@
         public TextBox txtProductID;
         public Button btnSave;
         public Button btnUpdate;
+        public LinkLabel GenerateID;
     }
 }

@@ -82,6 +82,7 @@ namespace Capstone
         private void btnAddAccessories_Click(object sender, EventArgs e)
         {
             frmAddAccessories frm = new frmAddAccessories();
+            frm.LoadType();
             frm.ShowDialog();
         }
     }

@@ -15,26 +15,56 @@ namespace Capstone
         SqlConnection cn = new SqlConnection();
         SqlCommand cm = new SqlCommand();
         DBConnection dbcon = new DBConnection();
+        SqlDataReader dr;
         string title = "BICO-JOSE System";
         frmProductsList frmList;
+        string GID; int count;
         public frmProductAdd(frmProductsList frmAdd)
         {
             InitializeComponent();
             cn = new SqlConnection(dbcon.MyConnection());
             frmList = frmAdd;
         }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
         public void Clear()
         {
             txtProduct.Clear();
             txtType.Clear();
             txtProduct.Focus();
-            
+
         }
+        private void Generate()
+        {
+            try
+            {
+                cn.Open();
+                cm = new SqlCommand("SELECT TOP 1 Product_ID FROM tblProductType ORDER BY Product_ID DESC", cn);
+                dr = cm.ExecuteReader();
+                dr.Read();
+                if (dr.HasRows)
+                {
+                    GID = dr[0].ToString(); //P1001
+                    count = int.Parse(GID.Substring(1, 4)); //1001
+                    txtProductID.Text = GID.Substring(0, 1) + (count + 1); //P1002
+                }
+                else
+                {
+                    GID = dr[0].ToString();
+                    txtProductID.Text = GID;
+                }
+                dr.Close();
+                cn.Close();
+            }
+            catch (Exception ex)
+            {
+                cn.Close();
+                MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+        
         private void btnSave_Click(object sender, EventArgs e)
         {
             try
@@ -104,6 +134,11 @@ namespace Capstone
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void GenerateID_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Generate();
         }
     }
 }

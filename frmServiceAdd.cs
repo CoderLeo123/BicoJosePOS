@@ -15,15 +15,56 @@ namespace Capstone
         SqlConnection cn = new SqlConnection();
         SqlCommand cm = new SqlCommand();
         DBConnection dbcon = new DBConnection();
+        SqlDataReader dr;
         string title = "BICO-JOSE System";
         frmProductsList frmList;
+        string ID; int count;
         public frmServiceAdd(frmProductsList frmAdd)
         {
             InitializeComponent();
             cn = new SqlConnection(dbcon.MyConnection());
             frmList = frmAdd;
-        }
 
+        }
+        public void Clear()
+        {
+            btnSaveService.Enabled = true;
+
+            txtServiceID.Clear();
+            txtServiceName.Clear();
+            txtServiceDesc.Clear();
+            txtServicePrice.Clear();
+            txtServiceName.Focus();
+
+        }
+        private void Generate()
+        {
+            try
+            {
+                cn.Open();
+                cm = new SqlCommand("SELECT TOP 1 Service_ID FROM tblServices ORDER BY Service_ID DESC", cn);
+                dr = cm.ExecuteReader();
+                dr.Read();
+                if (dr.HasRows)
+                {
+                    ID = dr[0].ToString(); //S1001
+                    count = int.Parse(ID.Substring(1, 4)); //1001
+                    txtServiceID.Text = ID.Substring(0, 1) + (count + 1); //S1002
+                }
+                else
+                {
+                    ID = dr[0].ToString();
+                    txtServiceID.Text = ID;
+                }
+                dr.Close();
+                cn.Close();
+            }
+            catch (Exception ex)
+            {
+                cn.Close();
+                MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
         private void label2_Click(object sender, EventArgs e)
         {
 
@@ -38,17 +79,7 @@ namespace Capstone
         {
             this.Dispose();
         }
-        public void Clear()
-        {
-            btnSaveService.Enabled = true;
-
-            txtServiceID.Clear();
-            txtServiceName.Clear();
-            txtServiceDesc.Clear();
-            txtServicePrice.Clear();
-            txtServiceName.Focus();
-
-        }
+        
         private void btnSave_Click(object sender, EventArgs e)
         {
             try
@@ -99,6 +130,16 @@ namespace Capstone
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void GenerateID_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Generate();
+        }
+
+        private void txtServiceName_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
