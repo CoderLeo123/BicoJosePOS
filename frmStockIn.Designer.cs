@@ -40,23 +40,14 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnSaveStockIn = new System.Windows.Forms.Button();
             this.dataGridViewStockItems = new System.Windows.Forms.DataGridView();
-            this.NumStockIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ReferenceNoStockIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PCodeStockIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DescStockIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TypeStockIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QuantityStockIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StockInDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StockInBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DeleteStockIn = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.dateExpiration = new System.Windows.Forms.DateTimePicker();
+            this.label6 = new System.Windows.Forms.Label();
             this.ClickSearchItem = new System.Windows.Forms.LinkLabel();
-            this.GenerateRefNoStockIn = new System.Windows.Forms.LinkLabel();
-            this.txtQuantityStockIn = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.GenerateStockID = new System.Windows.Forms.LinkLabel();
+            this.dateStockIn = new System.Windows.Forms.DateTimePicker();
             this.txtStockInBy = new System.Windows.Forms.TextBox();
-            this.txtRefNoStockIn = new System.Windows.Forms.TextBox();
+            this.txtStockID = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -75,6 +66,16 @@
             this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
+            this.NumStockIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.STOCK_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ITEM_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DescStockIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TypeStockIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QuantityStockIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StockInDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StockInBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EXPIRATION = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DeleteStockIn = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             this.tabControlStockIn.SuspendLayout();
@@ -191,13 +192,14 @@
             this.dataGridViewStockItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridViewStockItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NumStockIn,
-            this.ReferenceNoStockIn,
-            this.PCodeStockIn,
+            this.STOCK_ID,
+            this.ITEM_ID,
             this.DescStockIn,
             this.TypeStockIn,
             this.QuantityStockIn,
             this.StockInDate,
             this.StockInBy,
+            this.EXPIRATION,
             this.DeleteStockIn});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.Azure;
@@ -219,88 +221,18 @@
             this.dataGridViewStockItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewStockItems.Size = new System.Drawing.Size(1301, 550);
             this.dataGridViewStockItems.TabIndex = 3;
-            // 
-            // NumStockIn
-            // 
-            this.NumStockIn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.NumStockIn.HeaderText = "#";
-            this.NumStockIn.MinimumWidth = 6;
-            this.NumStockIn.Name = "NumStockIn";
-            this.NumStockIn.Width = 61;
-            // 
-            // ReferenceNoStockIn
-            // 
-            this.ReferenceNoStockIn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.ReferenceNoStockIn.HeaderText = "REFERENCE NO";
-            this.ReferenceNoStockIn.MinimumWidth = 6;
-            this.ReferenceNoStockIn.Name = "ReferenceNoStockIn";
-            this.ReferenceNoStockIn.Width = 236;
-            // 
-            // PCodeStockIn
-            // 
-            this.PCodeStockIn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.PCodeStockIn.HeaderText = "PCODE";
-            this.PCodeStockIn.MinimumWidth = 6;
-            this.PCodeStockIn.Name = "PCodeStockIn";
-            this.PCodeStockIn.Width = 131;
-            // 
-            // DescStockIn
-            // 
-            this.DescStockIn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.DescStockIn.HeaderText = "DESCRIPTION";
-            this.DescStockIn.MinimumWidth = 6;
-            this.DescStockIn.Name = "DescStockIn";
-            // 
-            // TypeStockIn
-            // 
-            this.TypeStockIn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.TypeStockIn.HeaderText = "TYPE";
-            this.TypeStockIn.MinimumWidth = 6;
-            this.TypeStockIn.Name = "TypeStockIn";
-            this.TypeStockIn.Width = 105;
-            // 
-            // QuantityStockIn
-            // 
-            this.QuantityStockIn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.QuantityStockIn.HeaderText = "QTY";
-            this.QuantityStockIn.MinimumWidth = 6;
-            this.QuantityStockIn.Name = "QuantityStockIn";
-            this.QuantityStockIn.Width = 95;
-            // 
-            // StockInDate
-            // 
-            this.StockInDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.StockInDate.HeaderText = "STOCK IN DATE";
-            this.StockInDate.MinimumWidth = 6;
-            this.StockInDate.Name = "StockInDate";
-            this.StockInDate.Width = 235;
-            // 
-            // StockInBy
-            // 
-            this.StockInBy.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.StockInBy.HeaderText = "STOCK IN BY";
-            this.StockInBy.MinimumWidth = 6;
-            this.StockInBy.Name = "StockInBy";
-            this.StockInBy.Width = 201;
-            // 
-            // DeleteStockIn
-            // 
-            this.DeleteStockIn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.DeleteStockIn.HeaderText = "";
-            this.DeleteStockIn.MinimumWidth = 6;
-            this.DeleteStockIn.Name = "DeleteStockIn";
-            this.DeleteStockIn.Width = 24;
+            this.dataGridViewStockItems.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewStockItems_CellContentClick);
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.dateExpiration);
+            this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.ClickSearchItem);
-            this.panel2.Controls.Add(this.GenerateRefNoStockIn);
-            this.panel2.Controls.Add(this.txtQuantityStockIn);
-            this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.dateTimePicker1);
+            this.panel2.Controls.Add(this.GenerateStockID);
+            this.panel2.Controls.Add(this.dateStockIn);
             this.panel2.Controls.Add(this.txtStockInBy);
-            this.panel2.Controls.Add(this.txtRefNoStockIn);
+            this.panel2.Controls.Add(this.txtStockID);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.label2);
@@ -309,6 +241,22 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1301, 209);
             this.panel2.TabIndex = 0;
+            // 
+            // dateExpiration
+            // 
+            this.dateExpiration.Location = new System.Drawing.Point(224, 79);
+            this.dateExpiration.Name = "dateExpiration";
+            this.dateExpiration.Size = new System.Drawing.Size(423, 43);
+            this.dateExpiration.TabIndex = 11;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(7, 81);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(205, 38);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "Expiration Date";
             // 
             // ClickSearchItem
             // 
@@ -322,40 +270,24 @@
             this.ClickSearchItem.Text = "[Click Here to Browse Item]";
             this.ClickSearchItem.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ClickSearchItem_LinkClicked);
             // 
-            // GenerateRefNoStockIn
+            // GenerateStockID
             // 
-            this.GenerateRefNoStockIn.AutoSize = true;
-            this.GenerateRefNoStockIn.LinkColor = System.Drawing.Color.Navy;
-            this.GenerateRefNoStockIn.Location = new System.Drawing.Point(515, 21);
-            this.GenerateRefNoStockIn.Name = "GenerateRefNoStockIn";
-            this.GenerateRefNoStockIn.Size = new System.Drawing.Size(146, 38);
-            this.GenerateRefNoStockIn.TabIndex = 8;
-            this.GenerateRefNoStockIn.TabStop = true;
-            this.GenerateRefNoStockIn.Text = "[Generate]";
+            this.GenerateStockID.AutoSize = true;
+            this.GenerateStockID.LinkColor = System.Drawing.Color.Navy;
+            this.GenerateStockID.Location = new System.Drawing.Point(515, 21);
+            this.GenerateStockID.Name = "GenerateStockID";
+            this.GenerateStockID.Size = new System.Drawing.Size(146, 38);
+            this.GenerateStockID.TabIndex = 8;
+            this.GenerateStockID.TabStop = true;
+            this.GenerateStockID.Text = "[Generate]";
+            this.GenerateStockID.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.GenerateStockID_LinkClicked);
             // 
-            // txtQuantityStockIn
+            // dateStockIn
             // 
-            this.txtQuantityStockIn.Location = new System.Drawing.Point(226, 76);
-            this.txtQuantityStockIn.Name = "txtQuantityStockIn";
-            this.txtQuantityStockIn.PlaceholderText = "0.00";
-            this.txtQuantityStockIn.Size = new System.Drawing.Size(123, 43);
-            this.txtQuantityStockIn.TabIndex = 7;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(25, 79);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(123, 38);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "Quantity";
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(870, 79);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(423, 43);
-            this.dateTimePicker1.TabIndex = 5;
+            this.dateStockIn.Location = new System.Drawing.Point(870, 79);
+            this.dateStockIn.Name = "dateStockIn";
+            this.dateStockIn.Size = new System.Drawing.Size(423, 43);
+            this.dateStockIn.TabIndex = 5;
             // 
             // txtStockInBy
             // 
@@ -365,14 +297,14 @@
             this.txtStockInBy.Size = new System.Drawing.Size(372, 43);
             this.txtStockInBy.TabIndex = 4;
             // 
-            // txtRefNoStockIn
+            // txtStockID
             // 
-            this.txtRefNoStockIn.Enabled = false;
-            this.txtRefNoStockIn.Location = new System.Drawing.Point(226, 21);
-            this.txtRefNoStockIn.Name = "txtRefNoStockIn";
-            this.txtRefNoStockIn.PlaceholderText = "S000000";
-            this.txtRefNoStockIn.Size = new System.Drawing.Size(279, 43);
-            this.txtRefNoStockIn.TabIndex = 3;
+            this.txtStockID.Enabled = false;
+            this.txtStockID.Location = new System.Drawing.Point(226, 21);
+            this.txtStockID.Name = "txtStockID";
+            this.txtStockID.PlaceholderText = "S000000";
+            this.txtStockID.Size = new System.Drawing.Size(279, 43);
+            this.txtStockID.TabIndex = 3;
             // 
             // label4
             // 
@@ -397,9 +329,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(22, 24);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(186, 38);
+            this.label2.Size = new System.Drawing.Size(118, 38);
             this.label2.TabIndex = 0;
-            this.label2.Text = "Reference No";
+            this.label2.Text = "Stock ID";
             // 
             // tabPage2
             // 
@@ -577,6 +509,86 @@
             this.label7.TabIndex = 2;
             this.label7.Text = "Filter By Date (From - To)";
             // 
+            // NumStockIn
+            // 
+            this.NumStockIn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.NumStockIn.HeaderText = "#";
+            this.NumStockIn.MinimumWidth = 6;
+            this.NumStockIn.Name = "NumStockIn";
+            this.NumStockIn.Width = 61;
+            // 
+            // STOCK_ID
+            // 
+            this.STOCK_ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.STOCK_ID.HeaderText = "STOCK ID";
+            this.STOCK_ID.MinimumWidth = 6;
+            this.STOCK_ID.Name = "STOCK_ID";
+            this.STOCK_ID.Width = 162;
+            // 
+            // ITEM_ID
+            // 
+            this.ITEM_ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ITEM_ID.HeaderText = "ITEM ID";
+            this.ITEM_ID.MinimumWidth = 6;
+            this.ITEM_ID.Name = "ITEM_ID";
+            this.ITEM_ID.Width = 140;
+            // 
+            // DescStockIn
+            // 
+            this.DescStockIn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.DescStockIn.HeaderText = "DESCRIPTION";
+            this.DescStockIn.MinimumWidth = 6;
+            this.DescStockIn.Name = "DescStockIn";
+            this.DescStockIn.Width = 214;
+            // 
+            // TypeStockIn
+            // 
+            this.TypeStockIn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.TypeStockIn.HeaderText = "TYPE";
+            this.TypeStockIn.MinimumWidth = 6;
+            this.TypeStockIn.Name = "TypeStockIn";
+            this.TypeStockIn.Width = 105;
+            // 
+            // QuantityStockIn
+            // 
+            this.QuantityStockIn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.QuantityStockIn.HeaderText = "QTY";
+            this.QuantityStockIn.MinimumWidth = 6;
+            this.QuantityStockIn.Name = "QuantityStockIn";
+            this.QuantityStockIn.Width = 95;
+            // 
+            // StockInDate
+            // 
+            this.StockInDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.StockInDate.HeaderText = "STOCK IN DATE";
+            this.StockInDate.MinimumWidth = 6;
+            this.StockInDate.Name = "StockInDate";
+            this.StockInDate.Width = 235;
+            // 
+            // StockInBy
+            // 
+            this.StockInBy.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.StockInBy.HeaderText = "STOCK IN BY";
+            this.StockInBy.MinimumWidth = 6;
+            this.StockInBy.Name = "StockInBy";
+            this.StockInBy.Width = 201;
+            // 
+            // EXPIRATION
+            // 
+            this.EXPIRATION.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.EXPIRATION.HeaderText = "EXPIRATION";
+            this.EXPIRATION.MinimumWidth = 6;
+            this.EXPIRATION.Name = "EXPIRATION";
+            this.EXPIRATION.Width = 195;
+            // 
+            // DeleteStockIn
+            // 
+            this.DeleteStockIn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.DeleteStockIn.HeaderText = "";
+            this.DeleteStockIn.MinimumWidth = 6;
+            this.DeleteStockIn.Name = "DeleteStockIn";
+            this.DeleteStockIn.Width = 24;
+            // 
             // frmStockIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -615,26 +627,11 @@
         private Panel panel2;
         private Label label2;
         private TabPage tabPage2;
-        private DateTimePicker dateTimePicker1;
-        private TextBox txtStockInBy;
-        private TextBox txtRefNoStockIn;
         private Label label4;
         private Label label3;
         private Panel panel3;
         private DataGridView dataGridViewStockItems;
-        private DataGridViewTextBoxColumn NumStockIn;
-        private DataGridViewTextBoxColumn ReferenceNoStockIn;
-        private DataGridViewTextBoxColumn PCodeStockIn;
-        private DataGridViewTextBoxColumn DescStockIn;
-        private DataGridViewTextBoxColumn TypeStockIn;
-        private DataGridViewTextBoxColumn QuantityStockIn;
-        private DataGridViewTextBoxColumn StockInDate;
-        private DataGridViewTextBoxColumn StockInBy;
-        private DataGridViewImageColumn DeleteStockIn;
         private LinkLabel ClickSearchItem;
-        private LinkLabel GenerateRefNoStockIn;
-        private TextBox txtQuantityStockIn;
-        private Label label5;
         private DataGridView dataGridViewStockHist;
         private Panel panel4;
         private DateTimePicker dateTimePicker3;
@@ -649,6 +646,22 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private Button btnLoadRStockIn;
-        private Button btnSaveStockIn;
+        public DateTimePicker dateStockIn;
+        public TextBox txtStockInBy;
+        public TextBox txtStockID;
+        public DateTimePicker dateExpiration;
+        private Label label6;
+        public Button btnSaveStockIn;
+        public LinkLabel GenerateStockID;
+        private DataGridViewTextBoxColumn NumStockIn;
+        private DataGridViewTextBoxColumn STOCK_ID;
+        private DataGridViewTextBoxColumn ITEM_ID;
+        private DataGridViewTextBoxColumn DescStockIn;
+        private DataGridViewTextBoxColumn TypeStockIn;
+        private DataGridViewTextBoxColumn QuantityStockIn;
+        private DataGridViewTextBoxColumn StockInDate;
+        private DataGridViewTextBoxColumn StockInBy;
+        private DataGridViewTextBoxColumn EXPIRATION;
+        private DataGridViewImageColumn DeleteStockIn;
     }
 }
