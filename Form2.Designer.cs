@@ -32,7 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.txtSearchTransHist = new System.Windows.Forms.TextBox();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnAddFrame = new System.Windows.Forms.Button();
             this.btnAddLense = new System.Windows.Forms.Button();
             this.btnAddAccessories = new System.Windows.Forms.Button();
@@ -45,6 +45,7 @@
             this.TypeItems = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductItems = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PriceItems = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PRODUCT_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EditItems = new System.Windows.Forms.DataGridViewImageColumn();
             this.DeleteItems = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel1.SuspendLayout();
@@ -69,7 +70,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.DimGray;
-            this.panel2.Controls.Add(this.txtSearchTransHist);
+            this.panel2.Controls.Add(this.txtSearch);
             this.panel2.Controls.Add(this.btnAddFrame);
             this.panel2.Controls.Add(this.btnAddLense);
             this.panel2.Controls.Add(this.btnAddAccessories);
@@ -79,14 +80,14 @@
             this.panel2.Size = new System.Drawing.Size(1315, 63);
             this.panel2.TabIndex = 36;
             // 
-            // txtSearchTransHist
+            // txtSearch
             // 
-            this.txtSearchTransHist.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtSearchTransHist.Location = new System.Drawing.Point(12, 14);
-            this.txtSearchTransHist.Name = "txtSearchTransHist";
-            this.txtSearchTransHist.PlaceholderText = "Search Here";
-            this.txtSearchTransHist.Size = new System.Drawing.Size(534, 38);
-            this.txtSearchTransHist.TabIndex = 0;
+            this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtSearch.Location = new System.Drawing.Point(12, 14);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.PlaceholderText = "Search Here";
+            this.txtSearch.Size = new System.Drawing.Size(534, 38);
+            this.txtSearch.TabIndex = 0;
             // 
             // btnAddFrame
             // 
@@ -186,6 +187,7 @@
             this.TypeItems,
             this.ProductItems,
             this.PriceItems,
+            this.PRODUCT_ID,
             this.EditItems,
             this.DeleteItems});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -257,10 +259,19 @@
             this.PriceItems.Name = "PriceItems";
             this.PriceItems.Width = 93;
             // 
+            // PRODUCT_ID
+            // 
+            this.PRODUCT_ID.HeaderText = "PRODUCT ID";
+            this.PRODUCT_ID.MinimumWidth = 6;
+            this.PRODUCT_ID.Name = "PRODUCT_ID";
+            this.PRODUCT_ID.Visible = false;
+            this.PRODUCT_ID.Width = 125;
+            // 
             // EditItems
             // 
             this.EditItems.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.EditItems.HeaderText = "";
+            this.EditItems.Image = global::Capstone.Properties.Resources.Edit;
             this.EditItems.MinimumWidth = 6;
             this.EditItems.Name = "EditItems";
             this.EditItems.Width = 24;
@@ -269,6 +280,7 @@
             // 
             this.DeleteItems.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.DeleteItems.HeaderText = "";
+            this.DeleteItems.Image = global::Capstone.Properties.Resources._Delete;
             this.DeleteItems.MinimumWidth = 6;
             this.DeleteItems.Name = "DeleteItems";
             this.DeleteItems.Width = 24;
@@ -305,13 +317,14 @@
         private Button btnAddFrame;
         private Button btnAddLense;
         private Panel panel2;
-        private TextBox txtSearchTransHist;
+        private TextBox txtSearch;
         private DataGridViewTextBoxColumn NumItems;
         private DataGridViewTextBoxColumn ItemID;
         private DataGridViewTextBoxColumn DescriptionItems;
         private DataGridViewTextBoxColumn TypeItems;
         private DataGridViewTextBoxColumn ProductItems;
         private DataGridViewTextBoxColumn PriceItems;
+        private DataGridViewTextBoxColumn PRODUCT_ID;
         private DataGridViewImageColumn EditItems;
         private DataGridViewImageColumn DeleteItems;
     }
