@@ -93,7 +93,7 @@ namespace Capstone
                     cm.Parameters.AddWithValue("@Price", txtServicePrice.Text);
                     cm.ExecuteNonQuery();
                     cn.Close();
-                    MessageBox.Show("Record has been successfully saved.");
+                    MessageBox.Show("Record has been successfully saved.", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Clear();
                     btnUpdate.Enabled = false;
                     frmList.LoadRecordsService();

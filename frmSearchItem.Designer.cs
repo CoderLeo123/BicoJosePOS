@@ -44,21 +44,22 @@
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EDIT = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewItems = new System.Windows.Forms.DataGridView();
             this.dataGridViewSearchItem = new System.Windows.Forms.DataGridView();
             this.NumSearchItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PCodeSearchItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DescSearchItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TypeSearchItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ITEM_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PRODUCT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PriceSearchItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AddSearchItem = new System.Windows.Forms.DataGridViewImageColumn();
-            this.panel2 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSearchItem)).BeginInit();
-            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // DELETE
@@ -170,6 +171,16 @@
             this.panel1.Size = new System.Drawing.Size(1315, 110);
             this.panel1.TabIndex = 3;
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.DimGray;
+            this.panel2.Controls.Add(this.txtSearchItem);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(0, 56);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1315, 54);
+            this.panel2.TabIndex = 36;
+            // 
             // ID
             // 
             this.ID.HeaderText = "ID";
@@ -243,9 +254,10 @@
             this.dataGridViewSearchItem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridViewSearchItem.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NumSearchItem,
-            this.PCodeSearchItem,
-            this.DescSearchItem,
-            this.TypeSearchItem,
+            this.ITEM_ID,
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.PRODUCT,
             this.PriceSearchItem,
             this.AddSearchItem});
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -268,6 +280,7 @@
             this.dataGridViewSearchItem.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewSearchItem.Size = new System.Drawing.Size(1315, 820);
             this.dataGridViewSearchItem.TabIndex = 5;
+            this.dataGridViewSearchItem.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSearchItem_CellContentClick);
             // 
             // NumSearchItem
             // 
@@ -277,32 +290,40 @@
             this.NumSearchItem.Name = "NumSearchItem";
             this.NumSearchItem.Width = 51;
             // 
-            // PCodeSearchItem
+            // ITEM_ID
             // 
-            this.PCodeSearchItem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.PCodeSearchItem.HeaderText = "PCODE";
-            this.PCodeSearchItem.MinimumWidth = 6;
-            this.PCodeSearchItem.Name = "PCodeSearchItem";
-            this.PCodeSearchItem.Width = 104;
+            this.ITEM_ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.ITEM_ID.HeaderText = "ITEM ID";
+            this.ITEM_ID.MinimumWidth = 6;
+            this.ITEM_ID.Name = "ITEM_ID";
+            this.ITEM_ID.Width = 114;
             // 
-            // DescSearchItem
+            // dataGridViewTextBoxColumn1
             // 
-            this.DescSearchItem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.DescSearchItem.HeaderText = "DESCRIPTION";
-            this.DescSearchItem.MinimumWidth = 6;
-            this.DescSearchItem.Name = "DescSearchItem";
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn1.HeaderText = "DESCRIPTION";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             // 
-            // TypeSearchItem
+            // dataGridViewTextBoxColumn2
             // 
-            this.TypeSearchItem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.TypeSearchItem.HeaderText = "TYPE";
-            this.TypeSearchItem.MinimumWidth = 6;
-            this.TypeSearchItem.Name = "TypeSearchItem";
-            this.TypeSearchItem.Width = 86;
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dataGridViewTextBoxColumn2.HeaderText = "TYPE";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Width = 86;
+            // 
+            // PRODUCT
+            // 
+            this.PRODUCT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.PRODUCT.HeaderText = "PRODUCT";
+            this.PRODUCT.MinimumWidth = 6;
+            this.PRODUCT.Name = "PRODUCT";
+            this.PRODUCT.Width = 132;
             // 
             // PriceSearchItem
             // 
-            this.PriceSearchItem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.PriceSearchItem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.PriceSearchItem.HeaderText = "PRICE";
             this.PriceSearchItem.MinimumWidth = 6;
             this.PriceSearchItem.Name = "PriceSearchItem";
@@ -312,19 +333,10 @@
             // 
             this.AddSearchItem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.AddSearchItem.HeaderText = "";
+            this.AddSearchItem.Image = global::Capstone.Properties.Resources.AddNew;
             this.AddSearchItem.MinimumWidth = 6;
             this.AddSearchItem.Name = "AddSearchItem";
             this.AddSearchItem.Width = 24;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.DimGray;
-            this.panel2.Controls.Add(this.txtSearchItem);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 56);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1315, 54);
-            this.panel2.TabIndex = 36;
             // 
             // frmSearchItem
             // 
@@ -341,10 +353,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewItems)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSearchItem)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewItems)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSearchItem)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -353,7 +365,6 @@
 
         private DataGridViewImageColumn DELETE;
         private DataGridViewTextBoxColumn QUANTITY;
-        private TextBox txtSearchItem;
         private DataGridViewTextBoxColumn PRICE;
         private Label label1;
         private DataGridViewTextBoxColumn TYPE;
@@ -366,12 +377,14 @@
         private DataGridViewTextBoxColumn ID;
         private DataGridView dataGridViewItems;
         private DataGridView dataGridViewSearchItem;
+        private Panel panel2;
         private DataGridViewTextBoxColumn NumSearchItem;
-        private DataGridViewTextBoxColumn PCodeSearchItem;
-        private DataGridViewTextBoxColumn DescSearchItem;
-        private DataGridViewTextBoxColumn TypeSearchItem;
+        private DataGridViewTextBoxColumn ITEM_ID;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn PRODUCT;
         private DataGridViewTextBoxColumn PriceSearchItem;
         private DataGridViewImageColumn AddSearchItem;
-        private Panel panel2;
+        public TextBox txtSearchItem;
     }
 }
