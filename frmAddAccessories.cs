@@ -18,12 +18,13 @@ namespace Capstone
         SqlDataReader dr;
         string title = "BICO-JOSE System";
         string ID; int count;
-        public frmAddAccessories()
+        frmItemsList frmList;
+        public frmAddAccessories(frmItemsList frmAdd)
         {
 
             InitializeComponent();
             cn = new SqlConnection(dbcon.MyConnection());
-            
+            frmList = frmAdd;
         }
         public void Clear()
         {
@@ -66,15 +67,13 @@ namespace Capstone
         {
             try
             {
-
-
                 cn.Open();
                 cm = new SqlCommand("SELECT Type FROM tblProductType", cn);
                 dr = cm.ExecuteReader();
                 while (dr.Read())
                 {
                     comBoxType.Items.Add(dr[0].ToString());
-                    comBoxType.Text = dr[0].ToString();
+                    
                 }
                 dr.Close();
                 cn.Close();
@@ -82,7 +81,6 @@ namespace Capstone
             }
             catch (Exception ex)
             {
-                
                 MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
@@ -127,6 +125,8 @@ namespace Capstone
                     cn.Close();
                     MessageBox.Show("Record has been successfully saved.");
                     Clear();
+                    btnUpdateAccessories.Enabled = false;
+                    frmList.LoadRecords();
                 }
             }catch(Exception ex)
             {
@@ -170,6 +170,33 @@ namespace Capstone
         {
             Generate();
             cn.Close();
+        }
+
+        private void btnUpdateAccessories_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (MessageBox.Show("Are you sure you want to update this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    cn.Open();
+                    cm = new SqlCommand("UPDATE tblItem SET Item_ID = @ItemID, Product_ID = @ProductID, Description = @Description, Price = @Price WHERE Item_ID LIKE '" + txtID.Text + "'", cn); 
+                    cm.Parameters.AddWithValue("@ItemID", txtID.Text);
+                    cm.Parameters.AddWithValue("@Description", txtDescription.Text);
+                    cm.Parameters.AddWithValue("@Price", txtPrice.Text);
+                    cm.Parameters.AddWithValue("@ProductID", txtProductID.Text);
+                    cm.ExecuteNonQuery();
+                    cn.Close();
+                    MessageBox.Show("Record has been successfully updated.");
+                    Clear();
+                    btnSave.Enabled = false;
+                    frmList.LoadRecords();
+                    this.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }

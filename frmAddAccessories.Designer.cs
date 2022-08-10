@@ -82,6 +82,7 @@
             this.btnUpdateAccessories.TabIndex = 22;
             this.btnUpdateAccessories.Text = "Update";
             this.btnUpdateAccessories.UseVisualStyleBackColor = false;
+            this.btnUpdateAccessories.Click += new System.EventHandler(this.btnUpdateAccessories_Click);
             // 
             // btnSave
             // 
@@ -308,17 +309,12 @@
 
         #endregion
         private Button btnCancelAccessories;
-        private Button btnUpdateAccessories;
-        private Button btnSave;
-        private TextBox txtPrice;
         private Label label2;
         private Panel panel1;
         private Label label1;
         private PictureBox btnCloseAccessories;
-        private TextBox txtDescription;
         private Label label3;
         private Label label4;
-        private TextBox txtID;
         private Label label5;
         private Label label6;
         private Label label7;
@@ -326,5 +322,10 @@
         public ComboBox comBoxType;
         public TextBox txtProductID;
         public TextBox txtProduct;
+        public Button btnUpdateAccessories;
+        public Button btnSave;
+        public TextBox txtPrice;
+        public TextBox txtDescription;
+        public TextBox txtID;
     }
 }
