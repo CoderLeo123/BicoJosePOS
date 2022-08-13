@@ -39,8 +39,7 @@ namespace Capstone
                 {                                  //                                                                                         4-DESCRIPTION / 2-Description                      6-EXPIRATION / 8-Expiration_Date                                                               8-STOCK IN BY / 7-Stock_In_By         10-TYPE / 3-Type
                                                    //  0-ID / 10-dbo.ID           1/Edit                    2/Delete           3-STOCK ID / 0-Stock_ID            5-QTY / 5-Quantity                                                                 7-STOCK IN DATE / 6-Stock_In_Date                            9-ITEM ID / 1-Item_ID
                     dataGridViewStockItems.Rows.Add(dr[10].ToString(), Properties.Resources.Edit, Properties.Resources._Delete, dr[0].ToString(), dr[2].ToString(), dr[5].ToString(), DateTime.Parse(dr[8].ToString()).ToShortDateString(), DateTime.Parse(dr[6].ToString()).ToShortDateString(), dr[7].ToString(), dr[1].ToString(), dr[3].ToString());
-                    rows = dataGridViewStockItems.Rows.Count;
-                    label5.Text = rows.ToString();
+                    
                 }
                 dr.Close();
                 cn.Close();
@@ -85,7 +84,33 @@ namespace Capstone
             }
         }
 
-        
+        public void LoadHistory()
+        {
+            try
+            {
+                int i = 0;
+                dataGridViewStockHist.Rows.Clear();
+                cn.Open();
+                cm = new SqlCommand("SELECT * from JoinStockItemProduct WHERE CAST(Stock_In_Date as DATE) BETWEEN '" + dateStart.Value.ToShortDateString() + "' AND '"+ dateEnd.Value.ToShortDateString() +"' AND Status LIKE 'DONE' ", cn);
+                dr = cm.ExecuteReader();
+                while (dr.Read())
+                {                                  //                    2-STOCK ID / 0-Stock_ID             4-QTY / 5-Quantity                                                                                                                            8-ITEM ID / 1-Item_ID                    
+                    i += 1;                    // 0-Num   1-ID / 10-dbo.ID               3-DESCRIPTION / 2-Description                      5-STOCK IN DATE / 6-Stock_In_Date                 6-EXPIRATION / 8-Expiration_Date           7-STOCK IN BY / 7-Stock_In_By           9-TYPE / 3-Type           
+                    dataGridViewStockHist.Rows.Add(i, dr[10].ToString(), dr[0].ToString(), dr[2].ToString(), dr[5].ToString(), DateTime.Parse(dr[6].ToString()).ToShortDateString(), DateTime.Parse(dr[8].ToString()).ToShortDateString(), dr[7].ToString(), dr[1].ToString(), dr[3].ToString());
+
+                }
+                dr.Close();
+                cn.Close();
+                
+
+
+            }
+            catch (Exception ex)
+            {
+                cn.Close();
+                MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
         public void Clear()
         {
             txtStockID.Clear();
@@ -138,6 +163,11 @@ namespace Capstone
                 }
             }
 
+        }
+
+        private void btnLoadHistory_Click(object sender, EventArgs e)
+        {
+            LoadHistory();
         }
 
         private void dataGridViewStockItems_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
