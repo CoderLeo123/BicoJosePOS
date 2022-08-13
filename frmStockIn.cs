@@ -101,8 +101,6 @@ namespace Capstone
                 }
                 dr.Close();
                 cn.Close();
-                
-
 
             }
             catch (Exception ex)
