@@ -31,7 +31,7 @@ namespace Capstone
             int i = 0;
             dataGridViewProducts.Rows.Clear();
             cn.Open();
-            cm = new SqlCommand("SELECT * FROM tblProductType WHERE Type LIKE '%" + txtSearchTypeProducts.Text + "%' OR Product LIKE '%" + txtSearchTypeProducts.Text + "%' Order by Product_ID", cn);
+            cm = new SqlCommand("SELECT * FROM tblProductType Order by Product_ID", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
@@ -46,7 +46,7 @@ namespace Capstone
             int i = 0;
             dataGridViewService.Rows.Clear();
             cn.Open();
-            cm = new SqlCommand("SELECT * FROM tblServices WHERE Name LIKE '%" + txtSearchService.Text + "%' OR Description LIKE '%" + txtSearchService.Text + "%' Order by Service_ID", cn);
+            cm = new SqlCommand("SELECT * FROM tblServices Order by Service_ID", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
@@ -137,6 +137,68 @@ namespace Capstone
                     MessageBox.Show("Record has been successfully deleted.", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LoadRecordsService();
                 }
+            }
+        }
+
+        private void txtSearchTypeProducts_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtSearchTypeProducts.Text == String.Empty)
+                {
+                    return;
+                }
+                else
+                {
+                    int i = 0;
+                    dataGridViewProducts.Rows.Clear();
+                    cn.Open();
+                    cm = new SqlCommand("SELECT * FROM tblProductType WHERE Type LIKE '%" + txtSearchTypeProducts.Text + "%' OR Product LIKE '%" + txtSearchTypeProducts.Text + "%' Order by Product_ID", cn);
+                    dr = cm.ExecuteReader();
+                    while (dr.Read())
+                    {
+                        i += 1;
+                        dataGridViewProducts.Rows.Add(i, dr[1].ToString(), dr[2].ToString(), dr[3].ToString());
+                    }
+                    dr.Close();
+                    cn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                cn.Close();
+                MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void txtSearchService_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtSearchService.Text == String.Empty)
+                {
+                    return;
+                }
+                else
+                {
+                    int i = 0;
+                    dataGridViewService.Rows.Clear();
+                    cn.Open();
+                    cm = new SqlCommand("SELECT * FROM tblServices WHERE Name LIKE '%" + txtSearchService.Text + "%' OR Description LIKE '%" + txtSearchService.Text + "%' Order by Service_ID", cn);
+                    dr = cm.ExecuteReader();
+                    while (dr.Read())
+                    {
+                        i += 1;
+                        dataGridViewService.Rows.Add(i, dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString());
+                    }
+                    dr.Close();
+                    cn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                cn.Close();
+                MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }

@@ -33,8 +33,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txtSearch = new System.Windows.Forms.TextBox();
-            this.btnAddFrame = new System.Windows.Forms.Button();
-            this.btnAddLense = new System.Windows.Forms.Button();
             this.btnAddAccessories = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -71,8 +69,6 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.DimGray;
             this.panel2.Controls.Add(this.txtSearch);
-            this.panel2.Controls.Add(this.btnAddFrame);
-            this.panel2.Controls.Add(this.btnAddLense);
             this.panel2.Controls.Add(this.btnAddAccessories);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 53);
@@ -88,38 +84,7 @@
             this.txtSearch.PlaceholderText = "Search Here";
             this.txtSearch.Size = new System.Drawing.Size(534, 38);
             this.txtSearch.TabIndex = 0;
-            // 
-            // btnAddFrame
-            // 
-            this.btnAddFrame.BackColor = System.Drawing.Color.LimeGreen;
-            this.btnAddFrame.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAddFrame.FlatAppearance.BorderSize = 0;
-            this.btnAddFrame.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddFrame.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnAddFrame.ForeColor = System.Drawing.Color.White;
-            this.btnAddFrame.Location = new System.Drawing.Point(983, 8);
-            this.btnAddFrame.Name = "btnAddFrame";
-            this.btnAddFrame.Size = new System.Drawing.Size(153, 49);
-            this.btnAddFrame.TabIndex = 23;
-            this.btnAddFrame.Text = "Frame";
-            this.btnAddFrame.UseVisualStyleBackColor = false;
-            this.btnAddFrame.Click += new System.EventHandler(this.btnAddFrame_Click);
-            // 
-            // btnAddLense
-            // 
-            this.btnAddLense.BackColor = System.Drawing.Color.LimeGreen;
-            this.btnAddLense.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAddLense.FlatAppearance.BorderSize = 0;
-            this.btnAddLense.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddLense.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnAddLense.ForeColor = System.Drawing.Color.White;
-            this.btnAddLense.Location = new System.Drawing.Point(813, 8);
-            this.btnAddLense.Name = "btnAddLense";
-            this.btnAddLense.Size = new System.Drawing.Size(153, 49);
-            this.btnAddLense.TabIndex = 22;
-            this.btnAddLense.Text = "Lense";
-            this.btnAddLense.UseVisualStyleBackColor = false;
-            this.btnAddLense.Click += new System.EventHandler(this.btnAddLense_Click);
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // btnAddAccessories
             // 
@@ -133,7 +98,7 @@
             this.btnAddAccessories.Name = "btnAddAccessories";
             this.btnAddAccessories.Size = new System.Drawing.Size(153, 49);
             this.btnAddAccessories.TabIndex = 21;
-            this.btnAddAccessories.Text = "Accessories";
+            this.btnAddAccessories.Text = "Add Item";
             this.btnAddAccessories.UseVisualStyleBackColor = false;
             this.btnAddAccessories.Click += new System.EventHandler(this.btnAddAccessories_Click);
             // 
@@ -314,8 +279,6 @@
         private Label label1;
         private PictureBox pictureBox1;
         private Button btnAddAccessories;
-        private Button btnAddFrame;
-        private Button btnAddLense;
         private Panel panel2;
         private TextBox txtSearch;
         private DataGridViewTextBoxColumn NumItems;

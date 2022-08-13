@@ -139,7 +139,22 @@ namespace Capstone
 
         private void txtServiceName_TextChanged(object sender, EventArgs e)
         {
+             
+        }
 
+        private void txtServicePrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 46)
+            {
+                //accept . character
+            }else if (e.KeyChar == 8)
+            {
+                //accept backspace
+            }else if ((e.KeyChar < 48) || (e.KeyChar > 57))
+            {
+                //ascii code 48 - 57 = characters between 0 - 9
+                e.Handled = true;
+            }
         }
     }
 }

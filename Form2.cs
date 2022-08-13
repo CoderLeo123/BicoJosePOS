@@ -22,14 +22,14 @@ namespace Capstone
             InitializeComponent();
             cn = new SqlConnection(dbcon.MyConnection());
             LoadRecords();
-             
+
         }
         public void LoadRecords()
         {
             int i = 0;
             dataGridViewItems.Rows.Clear();
             cn.Open();
-            cm = new SqlCommand("SELECT * FROM JoinItemProduct WHERE Description LIKE '%" + txtSearch.Text + "%' OR Type LIKE '%" + txtSearch.Text + "%' Order by Item_ID", cn);
+            cm = new SqlCommand("SELECT * FROM JoinItemProduct Order by Item_ID", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
@@ -110,23 +110,52 @@ namespace Capstone
 
         }
 
-        private void btnAddFrame_Click(object sender, EventArgs e)
-        {
-            frmAddFrame frm = new frmAddFrame();
-            frm.ShowDialog();
-        }
+        //private void btnAddFrame_Click(object sender, EventArgs e)
+        //{
+            
+        //}
 
-        private void btnAddLense_Click(object sender, EventArgs e)
-        {
-            frmAddLense frm = new frmAddLense();
-            frm.ShowDialog();
-        }
+        //private void btnAddLense_Click(object sender, EventArgs e)
+        //{
+            
+        //}
 
         private void btnAddAccessories_Click(object sender, EventArgs e)
         {
             frmAddAccessories frm = new frmAddAccessories(this);
             frm.LoadType();
             frm.ShowDialog();
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtSearch.Text == String.Empty)
+                {
+                    return;
+                }
+                else
+                {
+                    int i = 0;
+                    dataGridViewItems.Rows.Clear();
+                    cn.Open();
+                    cm = new SqlCommand("SELECT * FROM JoinItemProduct WHERE Description LIKE '%" + txtSearch.Text + "%' OR Type LIKE '%" + txtSearch.Text + "%' Order by Item_ID", cn);
+                    dr = cm.ExecuteReader();
+                    while (dr.Read())
+                    {
+                        i += 1;
+                        dataGridViewItems.Rows.Add(i, dr[0].ToString(), dr[2].ToString(), dr[4].ToString(), dr[5].ToString(), dr[3].ToString());
+                    }
+                    dr.Close();
+                    cn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                cn.Close();
+                MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }
