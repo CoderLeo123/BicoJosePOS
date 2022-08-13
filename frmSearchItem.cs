@@ -26,17 +26,17 @@ namespace Capstone
             cn = new SqlConnection(dbcon.MyConnection());
             frmList = frmAdd;
             LoadRecordsSearch();
-            
+
             num = AutoGenerateID(num);
-            
-            
+
+
         }
         public void LoadRecordsSearch()
         {
             int i = 0;
             dataGridViewSearchItem.Rows.Clear();
             cn.Open();
-            cm = new SqlCommand("SELECT * FROM JoinItemProduct WHERE Description LIKE '%" + txtSearchItem.Text + "%' ORDER BY Item_ID", cn);
+            cm = new SqlCommand("SELECT * FROM JoinItemProduct ORDER BY Item_ID", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {                                //                  1-DESCRIPTION / 2-Description          3-PRODUCT / 5-Product
@@ -49,7 +49,7 @@ namespace Capstone
 
         private string AutoGenerateID(string num)
         {
-            
+
             try
             {
                 cn.Open();
@@ -62,21 +62,21 @@ namespace Capstone
                     count2 = int.Parse(num.Substring(2, 5)); //1001
                     num = num.Substring(0, 2) + (count2 + 1); //STK1002
 
-                    
+
                     dr.Close();
                     cn.Close();
                 }
                 return num;
             }
-            
+
             catch (Exception ex)
             {
                 return num;
                 cn.Close();
                 MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                
+
             }
-            
+
         }
         private void pictureBox1_Click(object sender, EventArgs e)
         {
@@ -85,8 +85,9 @@ namespace Capstone
 
         private void dataGridViewSearchItem_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            try { 
-            string colName = dataGridViewSearchItem.Columns[e.ColumnIndex].Name;
+            try
+            {
+                string colName = dataGridViewSearchItem.Columns[e.ColumnIndex].Name;
                 if (colName == "AddSearchItem")
                 {
                     num = AutoGenerateID(num);
@@ -107,14 +108,14 @@ namespace Capstone
                     if (MessageBox.Show("Add this Item?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
 
-                        
+
                         cn.Open();
                         cm = new SqlCommand("INSERT INTO tblStock (Stock_ID, Item_ID, Stock_In_Date, Stock_In_By, Expiration_Date, Status, ID) VALUES(@StockID, @ItemID, @StockDate, @StockInBy, @Expiration, 'Pending', @Num)", cn);
                         cm.Parameters.AddWithValue("@StockID", frmList.txtStockID.Text);
                         cm.Parameters.AddWithValue("@ItemID", dataGridViewSearchItem[1, e.RowIndex].Value.ToString());
                         cm.Parameters.AddWithValue("@StockInBy", frmList.txtStockInBy.Text);
                         cm.Parameters.AddWithValue("@StockDate", frmList.dateStockIn.Value);
-                        
+
                         cm.Parameters.AddWithValue("@Num", num.ToString());
                         cm.Parameters.AddWithValue("@Expiration", DateTime.Now);
                         cm.ExecuteNonQuery();
@@ -124,7 +125,8 @@ namespace Capstone
 
                     }
                 }
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 cn.Close();
                 MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -133,7 +135,38 @@ namespace Capstone
 
         private void dataGridViewSearchItem_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            
+
+        }
+
+        private void txtSearchItem_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtSearchItem.Text == String.Empty)
+                {
+                    return;
+                }
+                else
+                {
+                    int i = 0;
+                    dataGridViewSearchItem.Rows.Clear();
+                    cn.Open();
+                    cm = new SqlCommand("SELECT * FROM JoinItemProduct WHERE Description LIKE '%" + txtSearchItem.Text + "%' OR Type LIKE '%" + txtSearchItem.Text + "%' ORDER BY Item_ID", cn);
+                    dr = cm.ExecuteReader();
+                    while (dr.Read())
+                    {                                //                  1-DESCRIPTION / 2-Description          3-PRODUCT / 5-Product
+                        i += 1;                      //  0-ITEM ID / 0-Item_ID                 2-TYPE / 4-Type                    4-PRICE / 3-Price
+                        dataGridViewSearchItem.Rows.Add(i, dr[0].ToString(), dr[2].ToString(), dr[4].ToString(), dr[5].ToString(), dr[3].ToString());
+                    }
+                    dr.Close();
+                    cn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                cn.Close();
+                MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

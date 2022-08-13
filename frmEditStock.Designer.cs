@@ -86,6 +86,7 @@
             this.txtQuantity.PlaceholderText = "0";
             this.txtQuantity.Size = new System.Drawing.Size(199, 38);
             this.txtQuantity.TabIndex = 42;
+            this.txtQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuantity_KeyPress);
             // 
             // label4
             // 
@@ -158,7 +159,7 @@
             this.Controls.Add(this.btnUpdate);
             this.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "frmEditStock";
             this.Text = "frmEditStock";
             this.panel1.ResumeLayout(false);

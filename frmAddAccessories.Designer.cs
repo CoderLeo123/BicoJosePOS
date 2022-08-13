@@ -108,6 +108,7 @@
             this.txtPrice.PlaceholderText = "0.00";
             this.txtPrice.Size = new System.Drawing.Size(256, 38);
             this.txtPrice.TabIndex = 20;
+            this.txtPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrice_KeyPress);
             // 
             // label2
             // 

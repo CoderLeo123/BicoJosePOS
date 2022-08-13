@@ -87,6 +87,7 @@
             this.txtSearchItem.PlaceholderText = "Search Here";
             this.txtSearchItem.Size = new System.Drawing.Size(559, 38);
             this.txtSearchItem.TabIndex = 0;
+            this.txtSearchItem.TextChanged += new System.EventHandler(this.txtSearchItem_TextChanged);
             // 
             // PRICE
             // 
@@ -238,6 +239,7 @@
             // 
             // dataGridViewSearchItem
             // 
+            this.dataGridViewSearchItem.AllowUserToAddRows = false;
             this.dataGridViewSearchItem.AllowUserToResizeColumns = false;
             this.dataGridViewSearchItem.AllowUserToResizeRows = false;
             this.dataGridViewSearchItem.BackgroundColor = System.Drawing.Color.White;
@@ -336,7 +338,7 @@
             this.AddSearchItem.Image = global::Capstone.Properties.Resources.AddNew;
             this.AddSearchItem.MinimumWidth = 6;
             this.AddSearchItem.Name = "AddSearchItem";
-            this.AddSearchItem.Width = 24;
+            this.AddSearchItem.Width = 6;
             // 
             // frmSearchItem
             // 
