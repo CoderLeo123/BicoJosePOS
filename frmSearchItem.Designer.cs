@@ -281,6 +281,7 @@
             this.dataGridViewSearchItem.Size = new System.Drawing.Size(1315, 820);
             this.dataGridViewSearchItem.TabIndex = 5;
             this.dataGridViewSearchItem.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSearchItem_CellContentClick);
+            this.dataGridViewSearchItem.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewSearchItem_CellMouseClick);
             // 
             // NumSearchItem
             // 
@@ -307,11 +308,10 @@
             // 
             // dataGridViewTextBoxColumn2
             // 
-            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.dataGridViewTextBoxColumn2.HeaderText = "TYPE";
             this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.Width = 86;
             // 
             // PRODUCT
             // 
@@ -378,6 +378,7 @@
         private DataGridView dataGridViewItems;
         private DataGridView dataGridViewSearchItem;
         private Panel panel2;
+        public TextBox txtSearchItem;
         private DataGridViewTextBoxColumn NumSearchItem;
         private DataGridViewTextBoxColumn ITEM_ID;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
@@ -385,6 +386,5 @@
         private DataGridViewTextBoxColumn PRODUCT;
         private DataGridViewTextBoxColumn PriceSearchItem;
         private DataGridViewImageColumn AddSearchItem;
-        public TextBox txtSearchItem;
     }
 }
