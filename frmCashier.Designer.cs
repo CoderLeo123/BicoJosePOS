@@ -62,6 +62,7 @@
             this.PlusCart = new System.Windows.Forms.DataGridViewImageColumn();
             this.MinusCart = new System.Windows.Forms.DataGridViewImageColumn();
             this.DeleteCart = new System.Windows.Forms.DataGridViewImageColumn();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -390,7 +391,8 @@
             this.TotalCart,
             this.PlusCart,
             this.MinusCart,
-            this.DeleteCart});
+            this.DeleteCart,
+            this.ID});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.Azure;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -411,6 +413,7 @@
             this.dataGridViewCart.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewCart.Size = new System.Drawing.Size(1211, 573);
             this.dataGridViewCart.TabIndex = 3;
+            this.dataGridViewCart.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewCart_CellContentClick);
             // 
             // NumCart
             // 
@@ -445,11 +448,11 @@
             // 
             // QuantityCart
             // 
-            this.QuantityCart.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.QuantityCart.HeaderText = "QUANTITY";
+            this.QuantityCart.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.QuantityCart.HeaderText = "QTY";
             this.QuantityCart.MinimumWidth = 6;
             this.QuantityCart.Name = "QuantityCart";
-            this.QuantityCart.Width = 132;
+            this.QuantityCart.Width = 74;
             // 
             // DiscountCart
             // 
@@ -494,6 +497,14 @@
             this.DeleteCart.MinimumWidth = 6;
             this.DeleteCart.Name = "DeleteCart";
             this.DeleteCart.Width = 6;
+            // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.MinimumWidth = 6;
+            this.ID.Name = "ID";
+            this.ID.Visible = false;
+            this.ID.Width = 125;
             // 
             // frmCashier
             // 
@@ -546,6 +557,7 @@
         private Label label4;
         private Label lblDate;
         public Label lblTransactionNo;
+        public DataGridView dataGridViewCart;
         private DataGridViewTextBoxColumn NumCart;
         private DataGridViewTextBoxColumn DescriptionCart;
         private DataGridViewTextBoxColumn Expiration;
@@ -556,6 +568,6 @@
         private DataGridViewImageColumn PlusCart;
         private DataGridViewImageColumn MinusCart;
         private DataGridViewImageColumn DeleteCart;
-        public DataGridView dataGridViewCart;
+        private DataGridViewTextBoxColumn ID;
     }
 }
