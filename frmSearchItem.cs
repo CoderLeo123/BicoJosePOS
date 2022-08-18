@@ -16,9 +16,10 @@ namespace Capstone
         SqlCommand cm = new SqlCommand();
         DBConnection dbcon = new DBConnection();
         SqlDataReader dr;
+        string title = "BICO-JOSE System";
         frmStockIn frmList;
         string num = ""; int count2;
-        string title = "BICO-JOSE System";
+        
 
         public frmSearchItem(frmStockIn frmAdd)
         {

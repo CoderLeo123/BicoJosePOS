@@ -38,6 +38,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtDiscount = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.lblID = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnCloseDiscount)).BeginInit();
             this.SuspendLayout();
@@ -56,6 +57,7 @@
             this.btnConfirmDiscount.TabIndex = 33;
             this.btnConfirmDiscount.Text = "Confirm";
             this.btnConfirmDiscount.UseVisualStyleBackColor = false;
+            this.btnConfirmDiscount.Click += new System.EventHandler(this.btnConfirmDiscount_Click);
             // 
             // txtDiscountedAmount
             // 
@@ -66,12 +68,13 @@
             this.txtDiscountedAmount.PlaceholderText = "0.00";
             this.txtDiscountedAmount.Size = new System.Drawing.Size(256, 38);
             this.txtDiscountedAmount.TabIndex = 32;
+            this.txtDiscountedAmount.Text = "0.00";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(31, 192);
+            this.label2.Location = new System.Drawing.Point(21, 192);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(233, 38);
             this.label2.TabIndex = 31;
@@ -128,36 +131,50 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(31, 84);
+            this.label5.Location = new System.Drawing.Point(21, 84);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(78, 38);
+            this.label5.Size = new System.Drawing.Size(75, 38);
             this.label5.TabIndex = 36;
-            this.label5.Text = "Price";
+            this.label5.Text = "Total";
             // 
             // txtDiscount
             // 
             this.txtDiscount.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtDiscount.Location = new System.Drawing.Point(260, 137);
+            this.txtDiscount.MaxLength = 3;
             this.txtDiscount.Name = "txtDiscount";
             this.txtDiscount.PlaceholderText = "0.00";
             this.txtDiscount.Size = new System.Drawing.Size(256, 38);
             this.txtDiscount.TabIndex = 35;
+            this.txtDiscount.TextChanged += new System.EventHandler(this.txtDiscount_TextChanged);
+            this.txtDiscount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDiscount_KeyPress);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(31, 135);
+            this.label3.Location = new System.Drawing.Point(21, 135);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(165, 38);
             this.label3.TabIndex = 34;
             this.label3.Text = "Discount(%)";
+            // 
+            // lblID
+            // 
+            this.lblID.AutoSize = true;
+            this.lblID.Location = new System.Drawing.Point(37, 264);
+            this.lblID.Name = "lblID";
+            this.lblID.Size = new System.Drawing.Size(42, 28);
+            this.lblID.TabIndex = 38;
+            this.lblID.Text = "      ";
+            this.lblID.Visible = false;
             // 
             // frmDiscount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(543, 324);
+            this.Controls.Add(this.lblID);
             this.Controls.Add(this.btnConfirmDiscount);
             this.Controls.Add(this.txtDiscountedAmount);
             this.Controls.Add(this.label2);
@@ -181,16 +198,16 @@
         }
 
         #endregion
-
-        private Button btnConfirmDiscount;
-        private TextBox txtDiscountedAmount;
         private Label label2;
         private Panel panel1;
         private Label label1;
         private PictureBox btnCloseDiscount;
-        private TextBox txtPriceDiscount;
         private Label label5;
-        private TextBox txtDiscount;
         private Label label3;
+        public Button btnConfirmDiscount;
+        public TextBox txtDiscountedAmount;
+        public TextBox txtPriceDiscount;
+        public TextBox txtDiscount;
+        public Label lblID;
     }
 }

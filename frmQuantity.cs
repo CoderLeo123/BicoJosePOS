@@ -17,7 +17,7 @@ namespace Capstone
         DBConnection dbcon = new DBConnection();
         SqlDataReader dr;
         string title = "BICO-JOSE System";
-        int i; String ID; float total;
+        int i; String ID;
         
         frmBrowseItem frmB;
         public frmQuantity(frmBrowseItem frmAdd)
@@ -33,7 +33,7 @@ namespace Capstone
         {
             try
             {
-                total = float.Parse(lblPrice.Text) * float.Parse(txtQuantity.Text);
+                float total = float.Parse(lblPrice.Text) * float.Parse(txtQuantity.Text);
                 lblTotal.Text = total.ToString("#.##");
                 
             }

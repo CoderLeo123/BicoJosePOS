@@ -7,19 +7,101 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Data.SqlClient;
 namespace Capstone
 {
+    
     public partial class frmDiscount : Form
     {
-        public frmDiscount()
+        SqlConnection cn = new SqlConnection();
+        SqlCommand cm = new SqlCommand();
+        DBConnection dbcon = new DBConnection();
+        SqlDataReader dr;
+        string title = "BICO-JOSE System";
+        frmCashier frmC;
+        public frmDiscount(frmCashier frmC)
         {
             InitializeComponent();
+            cn = new SqlConnection(dbcon.MyConnection());
+            this.frmC = frmC;
         }
 
         private void btnCloseDiscount_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+        public void ComputeDiscount()
+        {
+            double discount = double.Parse(txtDiscount.Text) * .01;
+            double result = double.Parse(txtPriceDiscount.Text) * discount;
+            txtDiscountedAmount.Text = result.ToString();
+        }
+        private void txtDiscount_TextChanged(object sender, EventArgs e)
+        {
+            if (txtDiscount.Text == string.Empty)
+            {
+                txtDiscount.Text = "0";
+                txtDiscount.SelectAll();
+            }
+            int value = int.Parse(txtDiscount.Text);
+            if (value < 100){
+                ComputeDiscount();
+            }
+            else
+            {
+                txtDiscount.Text = "0";
+                txtDiscount.SelectAll();
+                return;
+            }
+           
+        }
+
+        private void txtDiscount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 8)
+            {
+                //accept backspace
+            }
+
+            else if ((e.KeyChar < 48) || (e.KeyChar > 57))
+            {
+                //ascii code 48 - 57 = characters between 0 - 9
+                e.Handled = true;
+                
+            }
+        }
+
+        private void btnConfirmDiscount_Click(object sender, EventArgs e)
+        {
+            
+            if (txtDiscount.Text == string.Empty)
+            {
+                MessageBox.Show("Please input discount first. Otherwise, close this form", title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else
+            {
+                
+                if (MessageBox.Show("Are you sure you want to confirm this discount?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    try
+                    {
+                        cn.Open();
+                        cm = new SqlCommand("UPDATE tblCart SET Discount = '" + txtDiscountedAmount.Text + "' WHERE ID LIKE '%" + lblID.Text + "'", cn);
+                        cm.ExecuteNonQuery();
+                        cn.Close();
+                        frmC.LoadCart();
+                        this.Close();
+
+                    }
+                    catch (Exception ex)
+                    {
+                        cn.Close();
+                        MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            
         }
     }
 }
