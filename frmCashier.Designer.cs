@@ -421,6 +421,7 @@
             this.NumCart.HeaderText = "#";
             this.NumCart.MinimumWidth = 6;
             this.NumCart.Name = "NumCart";
+            this.NumCart.ReadOnly = true;
             this.NumCart.Width = 51;
             // 
             // DescriptionCart
@@ -429,6 +430,7 @@
             this.DescriptionCart.HeaderText = "DESCRIPTION";
             this.DescriptionCart.MinimumWidth = 6;
             this.DescriptionCart.Name = "DescriptionCart";
+            this.DescriptionCart.ReadOnly = true;
             // 
             // Expiration
             // 
@@ -436,6 +438,7 @@
             this.Expiration.HeaderText = "EXPIRATION";
             this.Expiration.MinimumWidth = 6;
             this.Expiration.Name = "Expiration";
+            this.Expiration.ReadOnly = true;
             this.Expiration.Width = 146;
             // 
             // PriceCart
@@ -444,6 +447,7 @@
             this.PriceCart.HeaderText = "PRICE";
             this.PriceCart.MinimumWidth = 6;
             this.PriceCart.Name = "PriceCart";
+            this.PriceCart.ReadOnly = true;
             this.PriceCart.Width = 89;
             // 
             // QuantityCart
@@ -452,6 +456,7 @@
             this.QuantityCart.HeaderText = "QTY";
             this.QuantityCart.MinimumWidth = 6;
             this.QuantityCart.Name = "QuantityCart";
+            this.QuantityCart.ReadOnly = true;
             this.QuantityCart.Width = 74;
             // 
             // DiscountCart
@@ -460,6 +465,7 @@
             this.DiscountCart.HeaderText = "DISCOUNT";
             this.DiscountCart.MinimumWidth = 6;
             this.DiscountCart.Name = "DiscountCart";
+            this.DiscountCart.ReadOnly = true;
             this.DiscountCart.Width = 134;
             // 
             // TotalCart
@@ -468,6 +474,7 @@
             this.TotalCart.HeaderText = "TOTAL";
             this.TotalCart.MinimumWidth = 6;
             this.TotalCart.Name = "TotalCart";
+            this.TotalCart.ReadOnly = true;
             this.TotalCart.Width = 93;
             // 
             // PlusCart

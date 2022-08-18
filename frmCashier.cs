@@ -23,8 +23,8 @@ namespace Capstone
         {
             InitializeComponent();
             cn = new SqlConnection(dbcon.MyConnection());
-            lblDate.Text = DateTime.Now.ToString();
-            
+            lblDate.Text = DateTime.Parse(DateTime.Now.ToString()).ToShortDateString();
+
         }
 
         private void button2_Click(object sender, EventArgs e) //Browse Item btn
@@ -41,7 +41,7 @@ namespace Capstone
                 frm.lblTrans.Text = lblTransactionNo.Text;
                 frm.ShowDialog();
             }
-            
+
         }
 
         public void LoadCart()
@@ -103,7 +103,7 @@ namespace Capstone
                 MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-        
+
         private void label1_Click(object sender, EventArgs e)
         {
 
@@ -111,7 +111,7 @@ namespace Capstone
 
         private void btnAddDiscount_Click(object sender, EventArgs e)
         {
-            
+
             if (dataGridViewCart.Rows.Count == 0)
             {
                 MessageBox.Show("Select item on the Cart first", title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -125,7 +125,7 @@ namespace Capstone
                 frm.lblID.Text = dataGridViewCart[10, i].Value.ToString();
                 frm.ShowDialog();
             }
-            
+
         }
 
         private void btnSettlePayment_Click(object sender, EventArgs e)
@@ -166,24 +166,25 @@ namespace Capstone
                     LoadCart();
 
                 }
-                else if (colName == "PlusCart")
-                {
-                    cn.Open();
-                    cm = new SqlCommand("UPDATE tblCart SET Quantity = Quantity + 1 WHERE ID LIKE '" + dataGridViewCart.Rows[e.RowIndex].Cells[10].Value.ToString() + "'", cn);
-                    cm.ExecuteNonQuery();
-                    cn.Close();
-                    LoadCart();
-                }
-                else if (colName == "MinusCart")
-                {
-                    cn.Open();
-                    cm = new SqlCommand("UPDATE tblCart SET Quantity = Quantity - 1 WHERE ID LIKE '" + dataGridViewCart.Rows[e.RowIndex].Cells[10].Value.ToString() + "'", cn);
-                    cm.ExecuteNonQuery();
-                    cn.Close();
-                    LoadCart();
-                }
-
             }
+            else if (colName == "PlusCart")
+            {
+                cn.Open();
+                cm = new SqlCommand("UPDATE tblCart SET Quantity = Quantity + 1 WHERE ID LIKE '" + dataGridViewCart.Rows[e.RowIndex].Cells[10].Value.ToString() + "'", cn);
+                cm.ExecuteNonQuery();
+                cn.Close();
+                LoadCart();
+            }
+            else if (colName == "MinusCart")
+            {
+                cn.Open();
+                cm = new SqlCommand("UPDATE tblCart SET Quantity = Quantity - 1 WHERE ID LIKE '" + dataGridViewCart.Rows[e.RowIndex].Cells[10].Value.ToString() + "'", cn);
+                cm.ExecuteNonQuery();
+                cn.Close();
+                LoadCart();
+            }
+
         }
     }
+
 }

@@ -37,6 +37,9 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.dateExpiration = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
+            this.btnPerishable = new System.Windows.Forms.Button();
+            this.btnNonPerishable = new System.Windows.Forms.Button();
+            this.lblCheck = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             this.SuspendLayout();
@@ -81,7 +84,7 @@
             // txtQuantity
             // 
             this.txtQuantity.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtQuantity.Location = new System.Drawing.Point(258, 176);
+            this.txtQuantity.Location = new System.Drawing.Point(258, 232);
             this.txtQuantity.Name = "txtQuantity";
             this.txtQuantity.PlaceholderText = "0";
             this.txtQuantity.Size = new System.Drawing.Size(199, 38);
@@ -92,7 +95,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(41, 171);
+            this.label4.Location = new System.Drawing.Point(41, 227);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(132, 41);
             this.label4.TabIndex = 41;
@@ -106,7 +109,7 @@
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(417, 233);
+            this.btnCancel.Location = new System.Drawing.Point(417, 289);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(153, 49);
             this.btnCancel.TabIndex = 38;
@@ -121,7 +124,7 @@
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdate.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnUpdate.Location = new System.Drawing.Point(258, 233);
+            this.btnUpdate.Location = new System.Drawing.Point(258, 289);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(153, 49);
             this.btnUpdate.TabIndex = 37;
@@ -145,11 +148,56 @@
             this.label6.TabIndex = 43;
             this.label6.Text = "Expiration Date";
             // 
+            // btnPerishable
+            // 
+            this.btnPerishable.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnPerishable.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPerishable.FlatAppearance.BorderSize = 0;
+            this.btnPerishable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPerishable.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnPerishable.ForeColor = System.Drawing.Color.White;
+            this.btnPerishable.Location = new System.Drawing.Point(258, 163);
+            this.btnPerishable.Name = "btnPerishable";
+            this.btnPerishable.Size = new System.Drawing.Size(153, 49);
+            this.btnPerishable.TabIndex = 45;
+            this.btnPerishable.Text = "Perishable";
+            this.btnPerishable.UseVisualStyleBackColor = false;
+            this.btnPerishable.Click += new System.EventHandler(this.btnPerishable_Click);
+            // 
+            // btnNonPerishable
+            // 
+            this.btnNonPerishable.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnNonPerishable.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnNonPerishable.FlatAppearance.BorderSize = 0;
+            this.btnNonPerishable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNonPerishable.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnNonPerishable.ForeColor = System.Drawing.Color.White;
+            this.btnNonPerishable.Location = new System.Drawing.Point(429, 163);
+            this.btnNonPerishable.Name = "btnNonPerishable";
+            this.btnNonPerishable.Size = new System.Drawing.Size(202, 49);
+            this.btnNonPerishable.TabIndex = 46;
+            this.btnNonPerishable.Text = "Non-Perishable";
+            this.btnNonPerishable.UseVisualStyleBackColor = false;
+            this.btnNonPerishable.Click += new System.EventHandler(this.btnNonPerishable_Click);
+            // 
+            // lblCheck
+            // 
+            this.lblCheck.AutoSize = true;
+            this.lblCheck.Location = new System.Drawing.Point(41, 167);
+            this.lblCheck.Name = "lblCheck";
+            this.lblCheck.Size = new System.Drawing.Size(81, 38);
+            this.lblCheck.TabIndex = 47;
+            this.lblCheck.Text = "        ";
+            this.lblCheck.Visible = false;
+            // 
             // frmEditStock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 37F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(726, 307);
+            this.ClientSize = new System.Drawing.Size(726, 369);
+            this.Controls.Add(this.lblCheck);
+            this.Controls.Add(this.btnNonPerishable);
+            this.Controls.Add(this.btnPerishable);
             this.Controls.Add(this.dateExpiration);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.panel1);
@@ -181,5 +229,8 @@
         public Button btnUpdate;
         public DateTimePicker dateExpiration;
         private Label label6;
+        public Button btnPerishable;
+        public Button btnNonPerishable;
+        private Label lblCheck;
     }
 }
