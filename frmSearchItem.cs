@@ -24,12 +24,11 @@ namespace Capstone
         {
             InitializeComponent();
             cn = new SqlConnection(dbcon.MyConnection());
-            frmList = frmAdd;
+
             LoadRecordsSearch();
 
             num = AutoGenerateID(num);
-
-
+            frmList = frmAdd;
         }
         public void LoadRecordsSearch()
         {
@@ -85,20 +84,21 @@ namespace Capstone
 
         private void dataGridViewSearchItem_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            
             try
             {
                 string colName = dataGridViewSearchItem.Columns[e.ColumnIndex].Name;
                 if (colName == "AddSearchItem")
                 {
                     num = AutoGenerateID(num);
-                    if (frmList.txtStockID.Text == string.Empty)
+                    if (frmList.txtStockID.Text == "")
                     {
                         MessageBox.Show("Please generate a Stock ID", title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         this.Close();
                         frmList.txtStockID.Focus();
                         return;
                     }
-                    if (frmList.txtStockInBy.Text == string.Empty)
+                    if (frmList.txtStockInBy.Text == "")
                     {
                         MessageBox.Show("Please enter a name in Stock In By", title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         this.Close();

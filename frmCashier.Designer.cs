@@ -54,6 +54,7 @@
             this.dataGridViewCart = new System.Windows.Forms.DataGridView();
             this.NumCart = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DescriptionCart = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Expiration = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PriceCart = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QuantityCart = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DiscountCart = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -298,6 +299,7 @@
             this.btnNewTransaction.Text = "    [ F1 ] NEW TRANSACTION";
             this.btnNewTransaction.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnNewTransaction.UseVisualStyleBackColor = true;
+            this.btnNewTransaction.Click += new System.EventHandler(this.btnNewTransaction_Click);
             // 
             // panel1
             // 
@@ -339,9 +341,8 @@
             this.lblTransactionNo.ForeColor = System.Drawing.Color.Red;
             this.lblTransactionNo.Location = new System.Drawing.Point(316, 22);
             this.lblTransactionNo.Name = "lblTransactionNo";
-            this.lblTransactionNo.Size = new System.Drawing.Size(47, 45);
+            this.lblTransactionNo.Size = new System.Drawing.Size(0, 45);
             this.lblTransactionNo.TabIndex = 1;
-            this.lblTransactionNo.Text = "   ";
             // 
             // label4
             // 
@@ -364,6 +365,7 @@
             // 
             // dataGridViewCart
             // 
+            this.dataGridViewCart.AllowUserToAddRows = false;
             this.dataGridViewCart.AllowUserToResizeColumns = false;
             this.dataGridViewCart.AllowUserToResizeRows = false;
             this.dataGridViewCart.BackgroundColor = System.Drawing.Color.White;
@@ -381,6 +383,7 @@
             this.dataGridViewCart.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NumCart,
             this.DescriptionCart,
+            this.Expiration,
             this.PriceCart,
             this.QuantityCart,
             this.DiscountCart,
@@ -424,6 +427,14 @@
             this.DescriptionCart.MinimumWidth = 6;
             this.DescriptionCart.Name = "DescriptionCart";
             // 
+            // Expiration
+            // 
+            this.Expiration.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Expiration.HeaderText = "EXPIRATION";
+            this.Expiration.MinimumWidth = 6;
+            this.Expiration.Name = "Expiration";
+            this.Expiration.Width = 146;
+            // 
             // PriceCart
             // 
             this.PriceCart.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
@@ -460,25 +471,29 @@
             // 
             this.PlusCart.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.PlusCart.HeaderText = "";
+            this.PlusCart.Image = global::Capstone.Properties.Resources._Add;
             this.PlusCart.MinimumWidth = 6;
             this.PlusCart.Name = "PlusCart";
-            this.PlusCart.Width = 24;
+            this.PlusCart.Width = 6;
             // 
             // MinusCart
             // 
             this.MinusCart.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.MinusCart.HeaderText = "";
+            this.MinusCart.Image = global::Capstone.Properties.Resources.Minus;
+            this.MinusCart.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.MinusCart.MinimumWidth = 6;
             this.MinusCart.Name = "MinusCart";
-            this.MinusCart.Width = 24;
+            this.MinusCart.Width = 6;
             // 
             // DeleteCart
             // 
             this.DeleteCart.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.DeleteCart.HeaderText = "";
+            this.DeleteCart.Image = global::Capstone.Properties.Resources._Delete;
             this.DeleteCart.MinimumWidth = 6;
             this.DeleteCart.Name = "DeleteCart";
-            this.DeleteCart.Width = 24;
+            this.DeleteCart.Width = 6;
             // 
             // frmCashier
             // 
@@ -524,9 +539,16 @@
         private Button btnSettlePayment;
         private Button btnAddDiscount;
         private Button btnBrowseItem;
-        private DataGridView dataGridViewCart;
+        private Label label1;
+        private Label lblTotal;
+        private Label label2;
+        private Label label6;
+        private Label label4;
+        private Label lblDate;
+        public Label lblTransactionNo;
         private DataGridViewTextBoxColumn NumCart;
         private DataGridViewTextBoxColumn DescriptionCart;
+        private DataGridViewTextBoxColumn Expiration;
         private DataGridViewTextBoxColumn PriceCart;
         private DataGridViewTextBoxColumn QuantityCart;
         private DataGridViewTextBoxColumn DiscountCart;
@@ -534,12 +556,6 @@
         private DataGridViewImageColumn PlusCart;
         private DataGridViewImageColumn MinusCart;
         private DataGridViewImageColumn DeleteCart;
-        private Label label1;
-        private Label lblTotal;
-        private Label label2;
-        private Label label6;
-        private Label lblTransactionNo;
-        private Label label4;
-        private Label lblDate;
+        public DataGridView dataGridViewCart;
     }
 }
