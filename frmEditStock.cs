@@ -18,12 +18,13 @@ namespace Capstone
         SqlDataReader dr;
         frmStockIn frmList;
         string title = "BICO-JOSE System";
-
+        
         public frmEditStock(frmStockIn frmAdd)
         {
             InitializeComponent();
             cn = new SqlConnection(dbcon.MyConnection());
             frmList = frmAdd;
+            lblCheck.Text = "Yes";
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -35,14 +36,26 @@ namespace Capstone
         {
             try
             {
-                if (MessageBox.Show("Are you sure you want to update this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (lblCheck.Text == "Yes")
                 {
-                    int i = frmList.dataGridViewStockItems.CurrentRow.Index;
-                    frmList.dataGridViewStockItems[6, i].Value = DateTime.Parse(dateExpiration.Value.ToString()).ToShortDateString();
-                    frmList.dataGridViewStockItems[5, i].Value = txtQuantity.Text;
+                    if (MessageBox.Show("Are you sure you want to update this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        int i = frmList.dataGridViewStockItems.CurrentRow.Index;
+                        frmList.dataGridViewStockItems[6, i].Value = DateTime.Parse(dateExpiration.Value.ToString()).ToShortDateString();
+                        frmList.dataGridViewStockItems[5, i].Value = txtQuantity.Text;
 
-                    this.Close();
+                        this.Close();
 
+                    }
+                }
+                else if(lblCheck.Text == "No")
+                {
+                    if (MessageBox.Show("Are you sure you want to update this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        int i = frmList.dataGridViewStockItems.CurrentRow.Index;
+                        frmList.dataGridViewStockItems[6, i].Value = "Non-Perishable";
+                        frmList.dataGridViewStockItems[5, i].Value = txtQuantity.Text;
+                    }
                 }
             }
             catch (Exception ex)
@@ -67,6 +80,18 @@ namespace Capstone
                 //ascii code 48 - 57 = characters between 0 - 9
                 e.Handled = true;
             }
+        }
+
+        private void btnPerishable_Click(object sender, EventArgs e)
+        {
+            dateExpiration.Enabled = true;
+            lblCheck.Text = "Yes";
+        }
+
+        private void btnNonPerishable_Click(object sender, EventArgs e)
+        {
+            dateExpiration.Enabled = false;
+            lblCheck.Text = "No";
         }
     }
 }
