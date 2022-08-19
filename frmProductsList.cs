@@ -31,11 +31,11 @@ namespace Capstone
             int i = 0;
             dataGridViewProducts.Rows.Clear();
             cn.Open();
-            cm = new SqlCommand("SELECT * FROM tblProductType Order by Product_ID", cn);
+            cm = new SqlCommand("SELECT * FROM tblProductType WHERE Type LIKE '%" + txtSearchTypeProducts.Text + "%' OR Product LIKE '%" + txtSearchTypeProducts.Text + "%' Order by Product_ID", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
-            {
-                i += 1;
+            {                             //                       2-TYPE / 2-Type                
+                i += 1;                   //0-#  1-PRODUCT ID / 1-Product_ID       3-PRODUCT / 3-Product
                 dataGridViewProducts.Rows.Add(i, dr[1].ToString(), dr[2].ToString(), dr[3].ToString());
             }
             dr.Close();
@@ -46,11 +46,11 @@ namespace Capstone
             int i = 0;
             dataGridViewService.Rows.Clear();
             cn.Open();
-            cm = new SqlCommand("SELECT * FROM tblServices Order by Service_ID", cn);
+            cm = new SqlCommand("SELECT * FROM tblServices WHERE Name LIKE '%" + txtSearchService.Text + "%' OR Description LIKE '%" + txtSearchService.Text + "%' Order by Service_ID", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
-            {
-                i += 1;
+            {                            //                       2-NAME / 2-Name                   4-PRICE / 4-Price
+                i += 1;                //0-#  1-SERVICE ID / 1-Service_ID       3-DESCRIPTION / 3-Description
                 dataGridViewService.Rows.Add(i, dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString());
             }
             dr.Close();
@@ -146,22 +146,12 @@ namespace Capstone
             {
                 if (txtSearchTypeProducts.Text == String.Empty)
                 {
+                    LoadRecordsProducts();
                     return;
                 }
                 else
                 {
-                    int i = 0;
-                    dataGridViewProducts.Rows.Clear();
-                    cn.Open();
-                    cm = new SqlCommand("SELECT * FROM tblProductType WHERE Type LIKE '%" + txtSearchTypeProducts.Text + "%' OR Product LIKE '%" + txtSearchTypeProducts.Text + "%' Order by Product_ID", cn);
-                    dr = cm.ExecuteReader();
-                    while (dr.Read())
-                    {
-                        i += 1;
-                        dataGridViewProducts.Rows.Add(i, dr[1].ToString(), dr[2].ToString(), dr[3].ToString());
-                    }
-                    dr.Close();
-                    cn.Close();
+                    LoadRecordsProducts();
                 }
             }
             catch (Exception ex)
@@ -177,22 +167,12 @@ namespace Capstone
             {
                 if (txtSearchService.Text == String.Empty)
                 {
+                    LoadRecordsService();
                     return;
                 }
                 else
                 {
-                    int i = 0;
-                    dataGridViewService.Rows.Clear();
-                    cn.Open();
-                    cm = new SqlCommand("SELECT * FROM tblServices WHERE Name LIKE '%" + txtSearchService.Text + "%' OR Description LIKE '%" + txtSearchService.Text + "%' Order by Service_ID", cn);
-                    dr = cm.ExecuteReader();
-                    while (dr.Read())
-                    {
-                        i += 1;
-                        dataGridViewService.Rows.Add(i, dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString());
-                    }
-                    dr.Close();
-                    cn.Close();
+                    LoadRecordsService();
                 }
             }
             catch (Exception ex)

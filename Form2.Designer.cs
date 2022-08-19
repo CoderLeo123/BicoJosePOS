@@ -43,6 +43,7 @@
             this.TypeItems = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductItems = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PriceItems = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PRODUCT_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EditItems = new System.Windows.Forms.DataGridViewImageColumn();
             this.DeleteItems = new System.Windows.Forms.DataGridViewImageColumn();
@@ -152,6 +153,7 @@
             this.TypeItems,
             this.ProductItems,
             this.PriceItems,
+            this.Quantity,
             this.PRODUCT_ID,
             this.EditItems,
             this.DeleteItems});
@@ -180,33 +182,39 @@
             // NumItems
             // 
             this.NumItems.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.NumItems.Frozen = true;
             this.NumItems.HeaderText = "#";
             this.NumItems.MinimumWidth = 6;
             this.NumItems.Name = "NumItems";
+            this.NumItems.ReadOnly = true;
             this.NumItems.Width = 51;
             // 
             // ItemID
             // 
             this.ItemID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.ItemID.Frozen = true;
             this.ItemID.HeaderText = "ITEM ID";
             this.ItemID.MinimumWidth = 6;
             this.ItemID.Name = "ItemID";
+            this.ItemID.ReadOnly = true;
             this.ItemID.Width = 114;
             // 
             // DescriptionItems
             // 
-            this.DescriptionItems.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.DescriptionItems.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.DescriptionItems.HeaderText = "DESCRIPTION";
             this.DescriptionItems.MinimumWidth = 6;
             this.DescriptionItems.Name = "DescriptionItems";
+            this.DescriptionItems.ReadOnly = true;
+            this.DescriptionItems.Width = 168;
             // 
             // TypeItems
             // 
-            this.TypeItems.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.TypeItems.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.TypeItems.HeaderText = "TYPE";
             this.TypeItems.MinimumWidth = 6;
             this.TypeItems.Name = "TypeItems";
-            this.TypeItems.Width = 86;
+            this.TypeItems.ReadOnly = true;
             // 
             // ProductItems
             // 
@@ -214,6 +222,7 @@
             this.ProductItems.HeaderText = "PRODUCT";
             this.ProductItems.MinimumWidth = 6;
             this.ProductItems.Name = "ProductItems";
+            this.ProductItems.ReadOnly = true;
             this.ProductItems.Width = 132;
             // 
             // PriceItems
@@ -222,13 +231,24 @@
             this.PriceItems.HeaderText = "PRICE";
             this.PriceItems.MinimumWidth = 6;
             this.PriceItems.Name = "PriceItems";
+            this.PriceItems.ReadOnly = true;
             this.PriceItems.Width = 93;
+            // 
+            // Quantity
+            // 
+            this.Quantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Quantity.HeaderText = "QUANTITY";
+            this.Quantity.MinimumWidth = 6;
+            this.Quantity.Name = "Quantity";
+            this.Quantity.ReadOnly = true;
+            this.Quantity.Width = 140;
             // 
             // PRODUCT_ID
             // 
             this.PRODUCT_ID.HeaderText = "PRODUCT ID";
             this.PRODUCT_ID.MinimumWidth = 6;
             this.PRODUCT_ID.Name = "PRODUCT_ID";
+            this.PRODUCT_ID.ReadOnly = true;
             this.PRODUCT_ID.Visible = false;
             this.PRODUCT_ID.Width = 125;
             // 
@@ -287,6 +307,7 @@
         private DataGridViewTextBoxColumn TypeItems;
         private DataGridViewTextBoxColumn ProductItems;
         private DataGridViewTextBoxColumn PriceItems;
+        private DataGridViewTextBoxColumn Quantity;
         private DataGridViewTextBoxColumn PRODUCT_ID;
         private DataGridViewImageColumn EditItems;
         private DataGridViewImageColumn DeleteItems;
