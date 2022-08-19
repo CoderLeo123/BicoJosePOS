@@ -29,12 +29,12 @@ namespace Capstone
             int i = 0;
             dataGridViewItems.Rows.Clear();
             cn.Open();
-            cm = new SqlCommand("SELECT * FROM JoinItemProduct Order by Item_ID", cn);
+            cm = new SqlCommand("SELECT * FROM JoinItemProduct WHERE Description LIKE '%" + txtSearch.Text + "%' OR Type LIKE '%" + txtSearch.Text + "%' Order by Item_ID", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
-            {
-                i += 1;
-                dataGridViewItems.Rows.Add(i, dr[0].ToString(), dr[2].ToString(), dr[4].ToString(), dr[5].ToString(), dr[3].ToString());
+            {                         //                    2-DESCRIPTION / 2-Description       4-PRODUCT / 5-Product                  6-QUANTITY / 6-Quantity
+                i += 1;              // 0-#   1-ITEM ID / 0-Item_ID             3-TYPE / 4-Type                     5-PRICE / 3-Price
+                dataGridViewItems.Rows.Add(i, dr[0].ToString(), dr[2].ToString(), dr[4].ToString(), dr[5].ToString(), dr[3].ToString(), dr[6].ToString());
             }
             dr.Close();
             cn.Close();
@@ -133,22 +133,12 @@ namespace Capstone
             {
                 if (txtSearch.Text == String.Empty)
                 {
+                    LoadRecords();
                     return;
                 }
                 else
                 {
-                    int i = 0;
-                    dataGridViewItems.Rows.Clear();
-                    cn.Open();
-                    cm = new SqlCommand("SELECT * FROM JoinItemProduct WHERE Description LIKE '%" + txtSearch.Text + "%' OR Type LIKE '%" + txtSearch.Text + "%' Order by Item_ID", cn);
-                    dr = cm.ExecuteReader();
-                    while (dr.Read())
-                    {
-                        i += 1;
-                        dataGridViewItems.Rows.Add(i, dr[0].ToString(), dr[2].ToString(), dr[4].ToString(), dr[5].ToString(), dr[3].ToString());
-                    }
-                    dr.Close();
-                    cn.Close();
+                    LoadRecords();
                 }
             }
             catch (Exception ex)

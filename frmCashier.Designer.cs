@@ -46,6 +46,7 @@
             this.btnBrowseItem = new System.Windows.Forms.Button();
             this.btnNewTransaction = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             this.lblDate = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.lblTransactionNo = new System.Windows.Forms.Label();
@@ -304,6 +305,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.txtSearch);
             this.panel1.Controls.Add(this.lblDate);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.lblTransactionNo);
@@ -313,6 +315,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1211, 136);
             this.panel1.TabIndex = 4;
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtSearch.Location = new System.Drawing.Point(578, 71);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.PlaceholderText = "Search Here";
+            this.txtSearch.Size = new System.Drawing.Size(615, 43);
+            this.txtSearch.TabIndex = 4;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // lblDate
             // 
@@ -576,5 +588,6 @@
         private DataGridViewImageColumn MinusCart;
         private DataGridViewImageColumn DeleteCart;
         private DataGridViewTextBoxColumn ID;
+        public TextBox txtSearch;
     }
 }

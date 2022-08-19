@@ -36,17 +36,37 @@ namespace Capstone
                 int i = 0;
                 dataGridViewBrowse.Rows.Clear();
                 cn.Open();
-                cm = new SqlCommand("SELECT * from JoinStockItemProduct WHERE Quantity > 0 ORDER BY ID", cn);
+                cm = new SqlCommand("SELECT * from JoinStockItemProduct WHERE (Description LIKE '%" + txtSearch.Text + "%' OR Type LIKE '%" + txtSearch.Text + "%') AND Status LIKE 'DONE' AND Quantity > 0 ORDER BY ID", cn);
                 dr = cm.ExecuteReader();
                 while (dr.Read())
-                {                                 //                2-DESCRIPTION / 2-Description       4-PRODUCT / 4-Product               6-QTY / 5-Quantity                                                                                                                                      
-                    i += 1;                    // 0-Num   1-ID / 10-dbo.ID              3-TYPE / 3-Type                    5-PRICE / 11-Price                   7-EXPIRATION / 8-Expiration_Date                           
-                    dataGridViewBrowse.Rows.Add(i, dr[10].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), dr[11].ToString(), dr[5].ToString(), dr[8].ToString());
+                {
+                    string ExpirationDate = dr[8].ToString();
+                    if (string.IsNullOrEmpty(ExpirationDate))
+                    {
+                        ExpirationDate = "Non-Perishable";
+
+                    }
+                    else
+                    {
+                        if (ExpirationDate.Substring(0, 10) != "")
+                        {
+                            ExpirationDate = dr[8].ToString().Substring(0, 9);
+                        }
+                        else
+                        {
+                            ExpirationDate = dr[8].ToString().Substring(0, 10);
+                        }
+
+                    }
+
+                                                    //                2-DESCRIPTION / 2-Description       4-PRODUCT / 4-Product               6-QTY / 5-Quantity                                                                                                                                      
+                    i += 1;                  // 0-Num   1-ID / 10-dbo.ID                3-TYPE / 3-Type                      5-PRICE / 11-Price                 7-EXPIRATION / 8-Expiration_Date                           
+                    dataGridViewBrowse.Rows.Add(i, dr[10].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), dr[11].ToString(), dr[5].ToString(), ExpirationDate);
 
                 }
                 dr.Close();
                 cn.Close();
-                NonPerish();
+               
             }
             catch (Exception ex)
             {
@@ -54,17 +74,7 @@ namespace Capstone
                 MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        public void NonPerish()
-        {
-            for (int i = 0; i < dataGridViewBrowse.Rows.Count; i++)
-            {
-                string scan = dataGridViewBrowse.Rows[i].Cells[7].Value.ToString();
-                if (string.IsNullOrEmpty(scan))
-                {
-                    dataGridViewBrowse.Rows[i].Cells[7].Value = "Non-Perishable";
-                }
-            }
-        }
+        
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -79,9 +89,29 @@ namespace Capstone
                 cm = new SqlCommand("SELECT * from JoinCartStockItem WHERE Status LIKE 'Cart'", cn);
                 dr = cm.ExecuteReader();
                 while (dr.Read())
-                {                        // 0-Num                                    2-EXPIRATION / 2-Expiration_Date                           4-QUANTITY / 3-Quantity              6-TOTAL / 5-TOTAL                                                                
-                    i += 1;                 // 1-DESCRIPTION / 1-Description                                                3-PRICE / 4-Price                 5-DISCOUNT / 11-Discount                      7-Plus                         8-Minus                 9-Delete               10-TOTAL / 5-TOTAL
-                    frmC.dataGridViewCart.Rows.Add(i, dr[1].ToString(), DateTime.Parse(dr[2].ToString()).ToShortDateString(), dr[4].ToString(), dr[3].ToString(), dr[11].ToString(), dr[5].ToString(), Properties.Resources._Add, Properties.Resources.Minus, Properties.Resources._Delete, dr[0].ToString());
+                {
+                    string ExpirationDate = dr[2].ToString();
+                    if (string.IsNullOrEmpty(ExpirationDate))
+                    {
+                        ExpirationDate = "Non-Perishable";
+
+                    }
+                    else
+                    {
+                        if (ExpirationDate.Substring(0, 10) != "")
+                        {
+                            ExpirationDate = dr[2].ToString().Substring(0, 9);
+                        }
+                        else
+                        {
+                            ExpirationDate = dr[2].ToString().Substring(0, 10);
+                        }
+
+                    }
+
+                                            // 0-Num                2-EXPIRATION / 2-Expiration_Date     4-QUANTITY / 3-Quantity              6-TOTAL / 5-TOTAL                                                                
+                    i += 1;                 // 1-DESCRIPTION / 1-Description           3-PRICE / 4-Price                 5-DISCOUNT / 11-Discount                      7-Plus                         8-Minus                 9-Delete               10-TOTAL / 5-TOTAL
+                    frmC.dataGridViewCart.Rows.Add(i, dr[1].ToString(), ExpirationDate, dr[4].ToString(), dr[3].ToString(), dr[11].ToString(), dr[5].ToString(), Properties.Resources._Add, Properties.Resources.Minus, Properties.Resources._Delete, dr[0].ToString());
 
                 }
                 dr.Close();
@@ -101,24 +131,12 @@ namespace Capstone
             {
                 if (txtSearch.Text == String.Empty)
                 {
+                    LoadRecordsBrowse();
                     return;
                 }
                 else
                 {
-                    int i = 0;
-                    dataGridViewBrowse.Rows.Clear();
-                    cn.Open();
-                    cm = new SqlCommand("SELECT * from JoinStockItemProduct WHERE (Description LIKE '%" + txtSearch.Text + "%' OR Type LIKE '%" + txtSearch.Text + "%') AND Status LIKE 'DONE' AND Quantity > 0 ORDER BY ID", cn);
-                    dr = cm.ExecuteReader();
-                    while (dr.Read())
-                    {                                  //                2-DESCRIPTION / 2-Description       4-PRODUCT / 4-Product               6-STOCK / 5-Quantity                                                                                                                                      
-                        i += 1;                // 0-Num   1-ID / 10-dbo.ID                  3-TYPE / 3-Type                    5-PRICE / 11-Price                   7-EXPIRATION / 8-Expiration_Date                           
-                        dataGridViewBrowse.Rows.Add(i, dr[10].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), dr[11].ToString(), dr[5].ToString(), DateTime.Parse(dr[8].ToString()).ToShortDateString());
-
-                       
-                    }
-                    dr.Close();
-                    cn.Close();
+                    LoadRecordsBrowse();
                 }
             }
             catch (Exception ex)

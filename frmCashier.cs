@@ -51,12 +51,31 @@ namespace Capstone
                 int i = 0;
                 dataGridViewCart.Rows.Clear();
                 cn.Open();
-                cm = new SqlCommand("SELECT * from JoinCartStockItem WHERE Status LIKE 'Cart'", cn);
+                cm = new SqlCommand("SELECT * from JoinCartStockItem WHERE Description Like '%" + txtSearch.Text + "%' AND Status LIKE 'Cart'", cn);
                 dr = cm.ExecuteReader();
                 while (dr.Read())
-                {                        // 0-Num                             2-EXPIRATION / 2-Expiration_Date                              4-QUANTITY / 3-Quantity              6-TOTAL / 5-TOTAL                                                                
-                    i += 1;                 // 1-DESCRIPTION / 1-Description                                             3-PRICE / 4-Price                 5-DISCOUNT / 11-Discount                      7-Plus                         8-Minus                 9-Delete              10-TOTAL / 5-TOTAL
-                    dataGridViewCart.Rows.Add(i, dr[1].ToString(), DateTime.Parse(dr[2].ToString()).ToShortDateString(), dr[4].ToString(), dr[3].ToString(), dr[11].ToString(), dr[5].ToString(), Properties.Resources._Add, Properties.Resources.Minus, Properties.Resources._Delete, dr[0].ToString());
+                {
+                    string ExpirationDate = dr[2].ToString();
+                    if (string.IsNullOrEmpty(ExpirationDate))
+                    {
+                        ExpirationDate = "Non-Perishable";
+
+                    }
+                    else
+                    {
+                        if (ExpirationDate.Substring(0, 10) != "")
+                        {
+                            ExpirationDate = dr[2].ToString().Substring(0, 9);
+                        }
+                        else
+                        {
+                            ExpirationDate = dr[2].ToString().Substring(0, 10);
+                        }
+
+                    }
+                                            // 0-Num            2-EXPIRATION / 2-Expiration_Date      4-QUANTITY / 3-Quantity              6-TOTAL / 5-TOTAL                                                                
+                    i += 1;                 // 1-DESCRIPTION / 1-Description        3-PRICE / 4-Price                 5-DISCOUNT / 11-Discount                      7-Plus                         8-Minus                 9-Delete              10-TOTAL / 5-TOTAL
+                    dataGridViewCart.Rows.Add(i, dr[1].ToString(), dr[2].ToString(), dr[4].ToString(), dr[3].ToString(), dr[11].ToString(), dr[5].ToString(), Properties.Resources._Add, Properties.Resources.Minus, Properties.Resources._Delete, dr[0].ToString());
 
                 }
                 dr.Close();
@@ -184,6 +203,27 @@ namespace Capstone
                 LoadCart();
             }
 
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtSearch.Text == String.Empty)
+                {
+                    LoadCart();
+                    return;
+                }
+                else
+                {
+                    LoadCart();
+                }
+            }
+            catch (Exception ex)
+            {
+                cn.Close();
+                MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 

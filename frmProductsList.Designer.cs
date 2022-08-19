@@ -40,12 +40,6 @@
             this.btnClose = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridViewProducts = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Edit = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Delete = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.txtSearchService = new System.Windows.Forms.TextBox();
@@ -53,6 +47,7 @@
             this.btnAddService = new System.Windows.Forms.PictureBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.dataGridViewService = new System.Windows.Forms.DataGridView();
+            this.NumProducts = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NumService = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ServiceID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,7 +55,12 @@
             this.PriceService = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EditService = new System.Windows.Forms.DataGridViewImageColumn();
             this.DeleteService = new System.Windows.Forms.DataGridViewImageColumn();
-            this.NumProducts = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Edit = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Delete = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel1.SuspendLayout();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnAddProducts)).BeginInit();
@@ -158,6 +158,7 @@
             // 
             // dataGridViewProducts
             // 
+            this.dataGridViewProducts.AllowUserToAddRows = false;
             this.dataGridViewProducts.AllowUserToResizeColumns = false;
             this.dataGridViewProducts.AllowUserToResizeRows = false;
             this.dataGridViewProducts.BackgroundColor = System.Drawing.Color.White;
@@ -200,54 +201,6 @@
             this.dataGridViewProducts.Size = new System.Drawing.Size(1315, 493);
             this.dataGridViewProducts.TabIndex = 6;
             this.dataGridViewProducts.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewProducts_CellContentClick_1);
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataGridViewTextBoxColumn1.HeaderText = "#";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 51;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dataGridViewTextBoxColumn2.HeaderText = "PRODUCT ID";
-            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.Width = 159;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn3.HeaderText = "TYPE";
-            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn4.HeaderText = "PRODUCT";
-            this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            // 
-            // Edit
-            // 
-            this.Edit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Edit.HeaderText = "";
-            this.Edit.Image = global::Capstone.Properties.Resources.Edit;
-            this.Edit.MinimumWidth = 6;
-            this.Edit.Name = "Edit";
-            this.Edit.Width = 24;
-            // 
-            // Delete
-            // 
-            this.Delete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Delete.HeaderText = "";
-            this.Delete.Image = global::Capstone.Properties.Resources._Delete;
-            this.Delete.MinimumWidth = 6;
-            this.Delete.Name = "Delete";
-            this.Delete.Width = 24;
             // 
             // panel3
             // 
@@ -317,6 +270,7 @@
             // 
             // dataGridViewService
             // 
+            this.dataGridViewService.AllowUserToAddRows = false;
             this.dataGridViewService.AllowUserToResizeColumns = false;
             this.dataGridViewService.AllowUserToResizeRows = false;
             this.dataGridViewService.BackgroundColor = System.Drawing.Color.White;
@@ -361,12 +315,21 @@
             this.dataGridViewService.TabIndex = 5;
             this.dataGridViewService.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewService_CellContentClick);
             // 
+            // NumProducts
+            // 
+            this.NumProducts.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.NumProducts.HeaderText = "#";
+            this.NumProducts.MinimumWidth = 6;
+            this.NumProducts.Name = "NumProducts";
+            this.NumProducts.Width = 125;
+            // 
             // NumService
             // 
             this.NumService.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.NumService.HeaderText = "#";
             this.NumService.MinimumWidth = 6;
             this.NumService.Name = "NumService";
+            this.NumService.ReadOnly = true;
             this.NumService.Width = 51;
             // 
             // ServiceID
@@ -375,6 +338,7 @@
             this.ServiceID.HeaderText = "SERVICE ID";
             this.ServiceID.MinimumWidth = 6;
             this.ServiceID.Name = "ServiceID";
+            this.ServiceID.ReadOnly = true;
             this.ServiceID.Width = 143;
             // 
             // NAME
@@ -383,6 +347,7 @@
             this.NAME.HeaderText = "NAME";
             this.NAME.MinimumWidth = 6;
             this.NAME.Name = "NAME";
+            this.NAME.ReadOnly = true;
             // 
             // DescriptionService
             // 
@@ -390,6 +355,7 @@
             this.DescriptionService.HeaderText = "DESCRIPTION";
             this.DescriptionService.MinimumWidth = 6;
             this.DescriptionService.Name = "DescriptionService";
+            this.DescriptionService.ReadOnly = true;
             // 
             // PriceService
             // 
@@ -397,6 +363,7 @@
             this.PriceService.HeaderText = "PRICE";
             this.PriceService.MinimumWidth = 6;
             this.PriceService.Name = "PriceService";
+            this.PriceService.ReadOnly = true;
             this.PriceService.Width = 93;
             // 
             // EditService
@@ -406,7 +373,7 @@
             this.EditService.Image = global::Capstone.Properties.Resources.Edit;
             this.EditService.MinimumWidth = 6;
             this.EditService.Name = "EditService";
-            this.EditService.Width = 24;
+            this.EditService.Width = 6;
             // 
             // DeleteService
             // 
@@ -415,15 +382,59 @@
             this.DeleteService.Image = global::Capstone.Properties.Resources._Delete;
             this.DeleteService.MinimumWidth = 6;
             this.DeleteService.Name = "DeleteService";
-            this.DeleteService.Width = 24;
+            this.DeleteService.Width = 6;
             // 
-            // NumProducts
+            // dataGridViewTextBoxColumn1
             // 
-            this.NumProducts.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.NumProducts.HeaderText = "#";
-            this.NumProducts.MinimumWidth = 6;
-            this.NumProducts.Name = "NumProducts";
-            this.NumProducts.Width = 125;
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewTextBoxColumn1.HeaderText = "#";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 51;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dataGridViewTextBoxColumn2.HeaderText = "PRODUCT ID";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 159;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn3.HeaderText = "TYPE";
+            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn4.HeaderText = "PRODUCT";
+            this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // Edit
+            // 
+            this.Edit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Edit.HeaderText = "";
+            this.Edit.Image = global::Capstone.Properties.Resources.Edit;
+            this.Edit.MinimumWidth = 6;
+            this.Edit.Name = "Edit";
+            this.Edit.Width = 6;
+            // 
+            // Delete
+            // 
+            this.Delete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Delete.HeaderText = "";
+            this.Delete.Image = global::Capstone.Properties.Resources._Delete;
+            this.Delete.MinimumWidth = 6;
+            this.Delete.Name = "Delete";
+            this.Delete.Width = 6;
             // 
             // frmProductsList
             // 
@@ -472,6 +483,8 @@
         private Panel panel8;
         private DataGridViewTextBoxColumn NumProducts;
         private DataGridView dataGridViewProducts;
+        public TextBox txtSearchTypeProducts;
+        public TextBox txtSearchService;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
@@ -485,7 +498,5 @@
         private DataGridViewTextBoxColumn PriceService;
         private DataGridViewImageColumn EditService;
         private DataGridViewImageColumn DeleteService;
-        public TextBox txtSearchTypeProducts;
-        public TextBox txtSearchService;
     }
 }
