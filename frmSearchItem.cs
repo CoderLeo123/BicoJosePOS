@@ -111,7 +111,7 @@ namespace Capstone
 
 
                         cn.Open();
-                        cm = new SqlCommand("INSERT INTO tblStock (Stock_ID, Item_ID, Stock_In_Date, Stock_In_By, Expiration_Date, Status, ID) VALUES(@StockID, @ItemID, @StockDate, @StockInBy, @Expiration, 'Pending', @Num)", cn);
+                        cm = new SqlCommand("INSERT INTO tblStock (Stock_ID, Item_ID, Stock_In_Date, Stock_In_By, Status, ID) VALUES(@StockID, @ItemID, @StockDate, @StockInBy, 'Pending', @Num)", cn);
                         cm.Parameters.AddWithValue("@StockID", frmList.txtStockID.Text);
                         cm.Parameters.AddWithValue("@ItemID", dataGridViewSearchItem[1, e.RowIndex].Value.ToString());
                         cm.Parameters.AddWithValue("@StockInBy", frmList.txtStockInBy.Text);

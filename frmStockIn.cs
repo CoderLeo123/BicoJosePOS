@@ -16,16 +16,18 @@ namespace Capstone
         SqlCommand cm = new SqlCommand();
         DBConnection dbcon = new DBConnection();
         SqlDataReader dr;
-        
-        string ID, num = "", pass; int count, count2, rows;
         string title = "BICO-JOSE System";
+        string ID, num = "", pass; int count, count2, rows;
+        string check = null;
+        //Nullable<DateTime> check = null;
+        //Nullable<string> check = null;
         public frmStockIn()
         {
             InitializeComponent();
             cn = new SqlConnection(dbcon.MyConnection());
             LoadStock();
             dataGridViewStockItems.AllowUserToAddRows = false;
-
+            //txtSearch.Text = dataGridViewStockHist.Rows.Count.ToString();
         }
         public void LoadStock()
         {
@@ -36,16 +38,35 @@ namespace Capstone
                 cm = new SqlCommand("SELECT * from JoinStockItemProduct WHERE Stock_ID LIKE '" + txtStockID.Text + "' AND Status LIKE 'Pending' ", cn);
                 dr = cm.ExecuteReader();
                 while (dr.Read())
-                {                                  //                                                                                         4-DESCRIPTION / 2-Description                      6-EXPIRATION / 8-Expiration_Date                                                               8-STOCK IN BY / 7-Stock_In_By         10-TYPE / 3-Type
-                                                   //  0-ID / 10-dbo.ID           1/Edit                    2/Delete           3-STOCK ID / 0-Stock_ID            5-QTY / 5-Quantity                                                                 7-STOCK IN DATE / 6-Stock_In_Date                            9-ITEM ID / 1-Item_ID
-                    dataGridViewStockItems.Rows.Add(dr[10].ToString(), Properties.Resources.Edit, Properties.Resources._Delete, dr[0].ToString(), dr[2].ToString(), dr[5].ToString(), DateTime.Parse(dr[8].ToString()).ToShortDateString(), DateTime.Parse(dr[6].ToString()).ToShortDateString(), dr[7].ToString(), dr[1].ToString(), dr[3].ToString());
+                {
+                    string ExpirationDate = dr[8].ToString();
+                    if (string.IsNullOrEmpty(ExpirationDate))
+                    {
+                        ExpirationDate = "Non-Perishable";
+
+                    }
+                    else
+                    {
+                        if (ExpirationDate.Substring(0, 10) != "")
+                        {
+                            ExpirationDate = dr[8].ToString().Substring(0, 9);
+                        }
+                        else
+                        {
+                            ExpirationDate = dr[8].ToString().Substring(0, 10);
+                        }
+
+                    }
+                                                     //                                                                                         4-DESCRIPTION / 2-Description       6-EXPIRATION / 8-Expiration_Date                                           8-STOCK IN BY / 7-Stock_In_By         10-TYPE / 3-Type
+                                                //  0-ID / 10-dbo.ID           1/Edit                    2/Delete           3-STOCK ID / 0-Stock_ID            5-QTY / 5-Quantity                              7-STOCK IN DATE / 6-Stock_In_Date                            9-ITEM ID / 1-Item_ID
+                    dataGridViewStockItems.Rows.Add(dr[10].ToString(), Properties.Resources.Edit, Properties.Resources._Delete, dr[0].ToString(), dr[2].ToString(), dr[5].ToString(), ExpirationDate, DateTime.Parse(dr[6].ToString()).ToShortDateString(), dr[7].ToString(), dr[1].ToString(), dr[3].ToString());
                     
                 }
                 dr.Close();
                 cn.Close();
                 btnSaveStockIn.Show();
+                NonPerish();
 
-    
             }
             catch (Exception ex)
             {
@@ -53,7 +74,18 @@ namespace Capstone
                 MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
+        public void NonPerish()
+        {
+            for (int i = 0; i < dataGridViewStockItems.Rows.Count; i++)
+            {
+                string scan = dataGridViewStockItems.Rows[i].Cells[6].Value.ToString();
+                ((DataGridViewTextBoxColumn)dataGridViewStockItems.Columns[6]).MaxInputLength = 6;
+                if (string.IsNullOrEmpty(scan))
+                {
+                    dataGridViewStockItems.Rows[i].Cells[6].Value = "Non-Perishable";
+                }
+            }
+        }
         private void Generate()
         {
             try
@@ -76,6 +108,7 @@ namespace Capstone
                 }
                 dr.Close();
                 cn.Close();
+
             }
             catch (Exception ex)
             {
@@ -91,17 +124,38 @@ namespace Capstone
                 int i = 0;
                 dataGridViewStockHist.Rows.Clear();
                 cn.Open();
-                cm = new SqlCommand("SELECT * from JoinStockItemProduct WHERE CAST(Stock_In_Date as DATE) BETWEEN '" + dateStart.Value.ToShortDateString() + "' AND '"+ dateEnd.Value.ToShortDateString() +"' AND Status LIKE 'DONE' ", cn);
+                cm = new SqlCommand("SELECT * from JoinStockItemProduct WHERE (Description LIKE '%" + txtSearch.Text + "%' OR Type LIKE '%" + txtSearch.Text + "%') AND Stock_In_Date BETWEEN '" + dateStart.Value.ToShortDateString() + "' AND '"+ dateEnd.Value.ToShortDateString() +"' AND Status LIKE 'DONE' ", cn);
                 dr = cm.ExecuteReader();
                 while (dr.Read())
-                {                                  //                    2-STOCK ID / 0-Stock_ID             4-QTY / 5-Quantity                                                    6-EXPIRATION / 8-Expiration_Date       8-ITEM ID / 1-Item_ID                    
-                    i += 1;                    // 0-Num   1-ID / 10-dbo.ID               3-DESCRIPTION / 2-Description                      5-STOCK IN DATE / 6-Stock_In_Date                        7-STOCK IN BY / 7-Stock_In_By           9-TYPE / 3-Type           
-                    dataGridViewStockHist.Rows.Add(i, dr[10].ToString(), dr[0].ToString(), dr[2].ToString(), dr[5].ToString(), DateTime.Parse(dr[6].ToString()).ToShortDateString(), dr[8].ToString(), dr[7].ToString(), dr[1].ToString(), dr[3].ToString());
+                {
+                    string ExpirationDate = dr[8].ToString();
+                    if (string.IsNullOrEmpty(ExpirationDate))
+                    {
+                        ExpirationDate = "Non-Perishable";
 
+                    }
+                    else
+                    {               
+                        if(ExpirationDate.Substring(0, 10) != "")
+                        {
+                            ExpirationDate = dr[8].ToString().Substring(0, 9);
+                        }
+                        else
+                        {
+                            ExpirationDate = dr[8].ToString().Substring(0, 10);
+                        }
+                        
+                    }
+                        //string CuttedExpirationDate = ExpirationDate.Substring(0, 10);
+                        // dr[8].ToString().Substring(0, 10)
+                        //                                                 2-STOCK ID / 0-Stock_ID               4-QTY / 5-Quantity                                                     6-EXPIRATION / 8-Expiration_Date                             8-ITEM ID / 1-Item_ID                    
+                        i += 1;                    // 0-Num   1-ID / 10-dbo.ID              3-DESCRIPTION / 2-Description                      5-STOCK IN DATE / 6-Stock_In_Date                                         7-STOCK IN BY / 7-Stock_In_By           9-TYPE / 3-Type           
+                    dataGridViewStockHist.Rows.Add(i, dr[10].ToString(), dr[0].ToString(), dr[2].ToString(), dr[5].ToString(), DateTime.Parse(dr[6].ToString()).ToShortDateString(), ExpirationDate, dr[7].ToString(), dr[1].ToString(), dr[3].ToString());
+                    //dataGridViewStockHist.DefaultCellStyle.Font = new Font("Tahoma", 12);
                 }
                 dr.Close();
                 cn.Close();
-
+                //NonPerishHistory();
             }
             catch (Exception ex)
             {
@@ -109,6 +163,7 @@ namespace Capstone
                 MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+        
         public void Clear()
         {
             txtStockID.Clear();
@@ -150,7 +205,7 @@ namespace Capstone
                 try
                 {
                     frmEditStock frm = new frmEditStock(this);
-                    frm.dateExpiration.Value = DateTime.Parse(dataGridViewStockItems[6, e.RowIndex].Value.ToString());
+                    frm.lblID.Text = dataGridViewStockItems.Rows[e.RowIndex].Cells[0].Value.ToString();
                     frm.txtQuantity.Text = dataGridViewStockItems[5, e.RowIndex].Value.ToString();
                     frm.ShowDialog(this);
                 }
@@ -178,19 +233,7 @@ namespace Capstone
                 }
                 else
                 {
-                    int i = 0;
-                    dataGridViewStockHist.Rows.Clear();
-                    cn.Open();
-                    cm = new SqlCommand("SELECT * from JoinStockItemProduct WHERE Description LIKE '%"+ txtSearch.Text + "%' OR Type LIKE '%" + txtSearch.Text + "%' AND Status LIKE 'DONE' ", cn);
-                    dr = cm.ExecuteReader();
-                    while (dr.Read())
-                    {                                  //                    2-STOCK ID / 0-Stock_ID             4-QTY / 5-Quantity                                                                                                                            8-ITEM ID / 1-Item_ID                    
-                        i += 1;                    // 0-Num   1-ID / 10-dbo.ID               3-DESCRIPTION / 2-Description                      5-STOCK IN DATE / 6-Stock_In_Date                 6-EXPIRATION / 8-Expiration_Date           7-STOCK IN BY / 7-Stock_In_By           9-TYPE / 3-Type           
-                        dataGridViewStockHist.Rows.Add(i, dr[10].ToString(), dr[0].ToString(), dr[2].ToString(), dr[5].ToString(), DateTime.Parse(dr[6].ToString()).ToShortDateString(), DateTime.Parse(dr[8].ToString()).ToShortDateString(), dr[7].ToString(), dr[1].ToString(), dr[3].ToString());
-
-                    }
-                    dr.Close();
-                    cn.Close();
+                    LoadHistory();
                 }
             }
             catch (Exception ex)
@@ -200,11 +243,12 @@ namespace Capstone
             }
         }
 
-            private void dataGridViewStockItems_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        private void dataGridViewStockItems_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             
         }
-
+        
+        
         private void GenerateStockID_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Generate();
@@ -224,14 +268,37 @@ namespace Capstone
                         
                         try
                         {
-                            
-                            
+                            cn.Open();
+                            cm = new SqlCommand("SELECT Expiration_Date FROM tblStock WHERE ID LIKE '" + dataGridViewStockItems.Rows[i].Cells[0].Value?.ToString() + "' ", cn);
+                            dr = cm.ExecuteReader();
+                            dr.Read();
+                            //Nullable<DateTime> check = DateTime.TryParse(dr[0].ToString(), out DateTime empty) ? empty : null;
+                            // DateTime.Parse(dataGridViewStockItems.Rows[i].Cells[9].Value?.ToString()).ToShortDateString();
+                            // lblCheck.Text = check;
+                            check = dr[0].ToString();
+                            cn.Close();
+                            if (string.IsNullOrEmpty(check))
+                            {
+                                cn.Open();
+                                cm = new SqlCommand("UPDATE tblStock SET Expiration_Date = null, Quantity = Quantity + " + int.Parse(dataGridViewStockItems.Rows[i].Cells[5].Value?.ToString()) + ", ID = '" + dataGridViewStockItems.Rows[i].Cells[0].Value?.ToString() + "', Status = 'Done' WHERE ID LIKE '" + dataGridViewStockItems.Rows[i].Cells[0].Value?.ToString() + "' ", cn);
+                                cm.ExecuteNonQuery();
+                                cn.Close();
+
+                            }
+                            else
+                            {
+                                cn.Open();
+                                cm = new SqlCommand("UPDATE tblStock SET Expiration_Date = '" + DateTime.Parse(dataGridViewStockItems.Rows[i].Cells[6].Value?.ToString()).ToShortDateString() + "', Quantity = Quantity + " + int.Parse(dataGridViewStockItems.Rows[i].Cells[5].Value?.ToString()) + ", ID = '" + dataGridViewStockItems.Rows[i].Cells[0].Value?.ToString() + "', Status = 'Done' WHERE ID LIKE '" + dataGridViewStockItems.Rows[i].Cells[0].Value?.ToString() + "' ", cn);
+                                cm.ExecuteNonQuery();
+                                cn.Close();
+
+                            }
 
                             cn.Open();
-                            cm = new SqlCommand("UPDATE tblStock SET Expiration_Date = '" + DateTime.Parse(dataGridViewStockItems.Rows[i].Cells[6].Value?.ToString()).ToShortDateString() + "', Quantity = Quantity + " + int.Parse(dataGridViewStockItems.Rows[i].Cells[5].Value?.ToString()) + ", ID = '"+ dataGridViewStockItems.Rows[i].Cells[0].Value?.ToString() + "', Status = 'Done' WHERE ID LIKE '"+ dataGridViewStockItems.Rows[i].Cells[0].Value?.ToString() + "' ", cn);
+                            cm = new SqlCommand("UPDATE tblItem SET Quantity = Quantity + " + int.Parse(dataGridViewStockItems.Rows[i].Cells[5].Value?.ToString()) + " WHERE Item_ID LIKE '" + dataGridViewStockItems.Rows[i].Cells[9].Value?.ToString() + "' ", cn);
                             cm.ExecuteNonQuery();
                             cn.Close();
-                            
+
 
                         }
                         catch (Exception ex)

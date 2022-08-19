@@ -41,6 +41,15 @@
             this.NumSearchItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridViewBrowse = new System.Windows.Forms.DataGridView();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.lblCheck = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblTrans = new System.Windows.Forms.Label();
+            this.lblTransNo = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.PriceSearchItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewSearchItem = new System.Windows.Forms.DataGridView();
             this.NumBrowseItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DescBrowseItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,15 +59,6 @@
             this.Stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Expiration = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AddToCart = new System.Windows.Forms.DataGridViewImageColumn();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.lblTrans = new System.Windows.Forms.Label();
-            this.lblTransNo = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.PriceSearchItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewSearchItem = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lblCheck = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBrowse)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -183,78 +183,6 @@
             this.dataGridViewBrowse.TabIndex = 7;
             this.dataGridViewBrowse.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewBrowse_CellContentClick);
             // 
-            // NumBrowseItem
-            // 
-            this.NumBrowseItem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.NumBrowseItem.HeaderText = "#";
-            this.NumBrowseItem.MinimumWidth = 6;
-            this.NumBrowseItem.Name = "NumBrowseItem";
-            this.NumBrowseItem.Width = 51;
-            // 
-            // ID
-            // 
-            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ID.HeaderText = "ID";
-            this.ID.MinimumWidth = 6;
-            this.ID.Name = "ID";
-            this.ID.Width = 58;
-            // 
-            // DescBrowseItem
-            // 
-            this.DescBrowseItem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.DescBrowseItem.HeaderText = "DESCRIPTION";
-            this.DescBrowseItem.MinimumWidth = 6;
-            this.DescBrowseItem.Name = "DescBrowseItem";
-            // 
-            // TypeBrowseItem
-            // 
-            this.TypeBrowseItem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.TypeBrowseItem.HeaderText = "TYPE";
-            this.TypeBrowseItem.MinimumWidth = 6;
-            this.TypeBrowseItem.Name = "TypeBrowseItem";
-            this.TypeBrowseItem.Width = 81;
-            // 
-            // ProductBrowseItem
-            // 
-            this.ProductBrowseItem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.ProductBrowseItem.HeaderText = "PRODUCT";
-            this.ProductBrowseItem.MinimumWidth = 6;
-            this.ProductBrowseItem.Name = "ProductBrowseItem";
-            this.ProductBrowseItem.Width = 127;
-            // 
-            // PriceBrowseItem
-            // 
-            this.PriceBrowseItem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.PriceBrowseItem.HeaderText = "PRICE";
-            this.PriceBrowseItem.MinimumWidth = 6;
-            this.PriceBrowseItem.Name = "PriceBrowseItem";
-            this.PriceBrowseItem.Width = 89;
-            // 
-            // Stock
-            // 
-            this.Stock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Stock.HeaderText = "STOCK";
-            this.Stock.MinimumWidth = 6;
-            this.Stock.Name = "Stock";
-            this.Stock.Width = 98;
-            // 
-            // Expiration
-            // 
-            this.Expiration.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Expiration.HeaderText = "EXPIRATION";
-            this.Expiration.MinimumWidth = 6;
-            this.Expiration.Name = "Expiration";
-            this.Expiration.Width = 146;
-            // 
-            // AddToCart
-            // 
-            this.AddToCart.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.AddToCart.HeaderText = "";
-            this.AddToCart.Image = global::Capstone.Properties.Resources.addToCart;
-            this.AddToCart.MinimumWidth = 6;
-            this.AddToCart.Name = "AddToCart";
-            this.AddToCart.Width = 6;
-            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.MenuHighlight;
@@ -280,6 +208,24 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1315, 54);
             this.panel2.TabIndex = 36;
+            // 
+            // lblCheck
+            // 
+            this.lblCheck.AutoSize = true;
+            this.lblCheck.Location = new System.Drawing.Point(991, 15);
+            this.lblCheck.Name = "lblCheck";
+            this.lblCheck.Size = new System.Drawing.Size(57, 28);
+            this.lblCheck.TabIndex = 4;
+            this.lblCheck.Text = "         ";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(1153, 49);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(65, 28);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "label2";
             // 
             // lblTrans
             // 
@@ -365,23 +311,86 @@
             this.dataGridViewSearchItem.Size = new System.Drawing.Size(1315, 930);
             this.dataGridViewSearchItem.TabIndex = 8;
             // 
-            // label2
+            // NumBrowseItem
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1153, 49);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 28);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "label2";
+            this.NumBrowseItem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.NumBrowseItem.HeaderText = "#";
+            this.NumBrowseItem.MinimumWidth = 6;
+            this.NumBrowseItem.Name = "NumBrowseItem";
+            this.NumBrowseItem.ReadOnly = true;
+            this.NumBrowseItem.Width = 51;
             // 
-            // lblCheck
+            // ID
             // 
-            this.lblCheck.AutoSize = true;
-            this.lblCheck.Location = new System.Drawing.Point(991, 15);
-            this.lblCheck.Name = "lblCheck";
-            this.lblCheck.Size = new System.Drawing.Size(57, 28);
-            this.lblCheck.TabIndex = 4;
-            this.lblCheck.Text = "         ";
+            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ID.HeaderText = "ID";
+            this.ID.MinimumWidth = 6;
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Width = 58;
+            // 
+            // DescBrowseItem
+            // 
+            this.DescBrowseItem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.DescBrowseItem.HeaderText = "DESCRIPTION";
+            this.DescBrowseItem.MinimumWidth = 6;
+            this.DescBrowseItem.Name = "DescBrowseItem";
+            this.DescBrowseItem.ReadOnly = true;
+            // 
+            // TypeBrowseItem
+            // 
+            this.TypeBrowseItem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.TypeBrowseItem.HeaderText = "TYPE";
+            this.TypeBrowseItem.MinimumWidth = 6;
+            this.TypeBrowseItem.Name = "TypeBrowseItem";
+            this.TypeBrowseItem.ReadOnly = true;
+            this.TypeBrowseItem.Width = 81;
+            // 
+            // ProductBrowseItem
+            // 
+            this.ProductBrowseItem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.ProductBrowseItem.HeaderText = "PRODUCT";
+            this.ProductBrowseItem.MinimumWidth = 6;
+            this.ProductBrowseItem.Name = "ProductBrowseItem";
+            this.ProductBrowseItem.ReadOnly = true;
+            this.ProductBrowseItem.Width = 127;
+            // 
+            // PriceBrowseItem
+            // 
+            this.PriceBrowseItem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.PriceBrowseItem.HeaderText = "PRICE";
+            this.PriceBrowseItem.MinimumWidth = 6;
+            this.PriceBrowseItem.Name = "PriceBrowseItem";
+            this.PriceBrowseItem.ReadOnly = true;
+            this.PriceBrowseItem.Width = 89;
+            // 
+            // Stock
+            // 
+            this.Stock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Stock.HeaderText = "STOCK";
+            this.Stock.MinimumWidth = 6;
+            this.Stock.Name = "Stock";
+            this.Stock.ReadOnly = true;
+            this.Stock.Width = 98;
+            // 
+            // Expiration
+            // 
+            this.Expiration.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Expiration.HeaderText = "EXPIRATION";
+            this.Expiration.MaxInputLength = 7;
+            this.Expiration.MinimumWidth = 6;
+            this.Expiration.Name = "Expiration";
+            this.Expiration.ReadOnly = true;
+            this.Expiration.Width = 146;
+            // 
+            // AddToCart
+            // 
+            this.AddToCart.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.AddToCart.HeaderText = "";
+            this.AddToCart.Image = global::Capstone.Properties.Resources.addToCart;
+            this.AddToCart.MinimumWidth = 6;
+            this.AddToCart.Name = "AddToCart";
+            this.AddToCart.Width = 6;
             // 
             // frmBrowseItem
             // 
@@ -423,6 +432,10 @@
         private DataGridView dataGridViewSearchItem;
         private Panel panel2;
         public DataGridView dataGridViewBrowse;
+        private Label lblTransNo;
+        public Label lblTrans;
+        public Label lblCheck;
+        private Label label2;
         private DataGridViewTextBoxColumn NumBrowseItem;
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn DescBrowseItem;
@@ -432,9 +445,5 @@
         private DataGridViewTextBoxColumn Stock;
         private DataGridViewTextBoxColumn Expiration;
         private DataGridViewImageColumn AddToCart;
-        private Label lblTransNo;
-        public Label lblTrans;
-        public Label lblCheck;
-        private Label label2;
     }
 }

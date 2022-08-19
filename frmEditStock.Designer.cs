@@ -40,6 +40,7 @@
             this.btnPerishable = new System.Windows.Forms.Button();
             this.btnNonPerishable = new System.Windows.Forms.Button();
             this.lblCheck = new System.Windows.Forms.Label();
+            this.lblID = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             this.SuspendLayout();
@@ -89,6 +90,7 @@
             this.txtQuantity.PlaceholderText = "0";
             this.txtQuantity.Size = new System.Drawing.Size(199, 38);
             this.txtQuantity.TabIndex = 42;
+            this.txtQuantity.TextChanged += new System.EventHandler(this.txtQuantity_TextChanged);
             this.txtQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuantity_KeyPress);
             // 
             // label4
@@ -115,6 +117,7 @@
             this.btnCancel.TabIndex = 38;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnUpdate
             // 
@@ -190,11 +193,22 @@
             this.lblCheck.Text = "        ";
             this.lblCheck.Visible = false;
             // 
+            // lblID
+            // 
+            this.lblID.AutoSize = true;
+            this.lblID.Location = new System.Drawing.Point(41, 289);
+            this.lblID.Name = "lblID";
+            this.lblID.Size = new System.Drawing.Size(81, 38);
+            this.lblID.TabIndex = 48;
+            this.lblID.Text = "        ";
+            this.lblID.Visible = false;
+            // 
             // frmEditStock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 37F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(726, 369);
+            this.Controls.Add(this.lblID);
             this.Controls.Add(this.lblCheck);
             this.Controls.Add(this.btnNonPerishable);
             this.Controls.Add(this.btnPerishable);
@@ -232,5 +246,6 @@
         public Button btnPerishable;
         public Button btnNonPerishable;
         private Label lblCheck;
+        public Label lblID;
     }
 }
