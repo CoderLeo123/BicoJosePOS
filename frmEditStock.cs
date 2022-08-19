@@ -35,26 +35,38 @@ namespace Capstone
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             try
-            {
+            {        //Perishable
                 if (lblCheck.Text == "Yes")
                 {
                     if (MessageBox.Show("Are you sure you want to update this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         int i = frmList.dataGridViewStockItems.CurrentRow.Index;
+
+                        cn.Open();
+                        cm = new SqlCommand("UPDATE tblStock SET Expiration_Date = '" + DateTime.Parse(dateExpiration.Value.ToString()).ToShortDateString() + "', Quantity = Quantity + " + int.Parse(txtQuantity.Text) + " WHERE ID LIKE '" + lblID.Text + "' ", cn);
+                        cm.ExecuteNonQuery();
+                        cn.Close();
+
                         frmList.dataGridViewStockItems[6, i].Value = DateTime.Parse(dateExpiration.Value.ToString()).ToShortDateString();
                         frmList.dataGridViewStockItems[5, i].Value = txtQuantity.Text;
 
                         this.Close();
 
                     }
-                }
+                }    //Non-Perishable
                 else if(lblCheck.Text == "No")
                 {
                     if (MessageBox.Show("Are you sure you want to update this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         int i = frmList.dataGridViewStockItems.CurrentRow.Index;
+
+                        cn.Open();
+                        cm = new SqlCommand("UPDATE tblStock SET Expiration_Date = null, Quantity = Quantity + " + int.Parse(txtQuantity.Text) + " WHERE ID LIKE '" + lblID.Text + "' ", cn);
+                        cm.ExecuteNonQuery();
+                        cn.Close();
                         frmList.dataGridViewStockItems[6, i].Value = "Non-Perishable";
                         frmList.dataGridViewStockItems[5, i].Value = txtQuantity.Text;
+                        this.Close();
                     }
                 }
             }
@@ -92,6 +104,20 @@ namespace Capstone
         {
             dateExpiration.Enabled = false;
             lblCheck.Text = "No";
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void txtQuantity_TextChanged(object sender, EventArgs e)
+        {
+            if (txtQuantity.Text == string.Empty)
+            {
+                txtQuantity.Text = "0";
+                txtQuantity.SelectAll();
+            }
         }
     }
 }

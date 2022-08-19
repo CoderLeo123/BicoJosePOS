@@ -41,16 +41,28 @@ namespace Capstone
                 while (dr.Read())
                 {                                 //                2-DESCRIPTION / 2-Description       4-PRODUCT / 4-Product               6-QTY / 5-Quantity                                                                                                                                      
                     i += 1;                    // 0-Num   1-ID / 10-dbo.ID              3-TYPE / 3-Type                    5-PRICE / 11-Price                   7-EXPIRATION / 8-Expiration_Date                           
-                    dataGridViewBrowse.Rows.Add(i, dr[10].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), dr[11].ToString(), dr[5].ToString(), DateTime.Parse(dr[8].ToString()).ToShortDateString());
+                    dataGridViewBrowse.Rows.Add(i, dr[10].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), dr[11].ToString(), dr[5].ToString(), dr[8].ToString());
 
                 }
                 dr.Close();
                 cn.Close();
+                NonPerish();
             }
             catch (Exception ex)
             {
                 cn.Close();
                 MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        public void NonPerish()
+        {
+            for (int i = 0; i < dataGridViewBrowse.Rows.Count; i++)
+            {
+                string scan = dataGridViewBrowse.Rows[i].Cells[7].Value.ToString();
+                if (string.IsNullOrEmpty(scan))
+                {
+                    dataGridViewBrowse.Rows[i].Cells[7].Value = "Non-Perishable";
+                }
             }
         }
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -82,6 +94,7 @@ namespace Capstone
                 MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             try

@@ -55,6 +55,7 @@
             this.TypeStockIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lblCheck = new System.Windows.Forms.Label();
             this.ClickSearchItem = new System.Windows.Forms.LinkLabel();
             this.GenerateStockID = new System.Windows.Forms.LinkLabel();
             this.dateStockIn = new System.Windows.Forms.DateTimePicker();
@@ -65,6 +66,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dataGridViewStockHist = new System.Windows.Forms.DataGridView();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.btnLoadHistory = new System.Windows.Forms.Button();
+            this.dateEnd = new System.Windows.Forms.DateTimePicker();
+            this.dateStart = new System.Windows.Forms.DateTimePicker();
+            this.label7 = new System.Windows.Forms.Label();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.INVENTORYID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StockID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -75,12 +82,6 @@
             this.StockBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemIDHistory = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TypeHistory = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.txtSearch = new System.Windows.Forms.TextBox();
-            this.btnLoadHistory = new System.Windows.Forms.Button();
-            this.dateEnd = new System.Windows.Forms.DateTimePicker();
-            this.dateStart = new System.Windows.Forms.DateTimePicker();
-            this.label7 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             this.tabControlStockIn.SuspendLayout();
@@ -245,6 +246,7 @@
             // NumStockIn
             // 
             this.NumStockIn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.NumStockIn.Frozen = true;
             this.NumStockIn.HeaderText = "ID";
             this.NumStockIn.MinimumWidth = 6;
             this.NumStockIn.Name = "NumStockIn";
@@ -254,6 +256,7 @@
             // EDIT
             // 
             this.EDIT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.EDIT.Frozen = true;
             this.EDIT.HeaderText = "";
             this.EDIT.Image = global::Capstone.Properties.Resources.Edit;
             this.EDIT.MinimumWidth = 6;
@@ -263,6 +266,7 @@
             // DeleteStockIn
             // 
             this.DeleteStockIn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.DeleteStockIn.Frozen = true;
             this.DeleteStockIn.HeaderText = "";
             this.DeleteStockIn.MinimumWidth = 6;
             this.DeleteStockIn.Name = "DeleteStockIn";
@@ -271,6 +275,7 @@
             // STOCK_ID
             // 
             this.STOCK_ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.STOCK_ID.Frozen = true;
             this.STOCK_ID.HeaderText = "STOCK ID";
             this.STOCK_ID.MinimumWidth = 6;
             this.STOCK_ID.Name = "STOCK_ID";
@@ -280,6 +285,7 @@
             // DescStockIn
             // 
             this.DescStockIn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.DescStockIn.Frozen = true;
             this.DescStockIn.HeaderText = "DESCRIPTION";
             this.DescStockIn.MinimumWidth = 6;
             this.DescStockIn.Name = "DescStockIn";
@@ -299,6 +305,7 @@
             // 
             this.EXPIRATION.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.EXPIRATION.HeaderText = "EXPIRATION";
+            this.EXPIRATION.MaxInputLength = 7;
             this.EXPIRATION.MinimumWidth = 6;
             this.EXPIRATION.Name = "EXPIRATION";
             this.EXPIRATION.ReadOnly = true;
@@ -350,6 +357,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.lblCheck);
             this.panel2.Controls.Add(this.ClickSearchItem);
             this.panel2.Controls.Add(this.GenerateStockID);
             this.panel2.Controls.Add(this.dateStockIn);
@@ -363,6 +371,15 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1301, 209);
             this.panel2.TabIndex = 0;
+            // 
+            // lblCheck
+            // 
+            this.lblCheck.AutoSize = true;
+            this.lblCheck.Location = new System.Drawing.Point(54, 150);
+            this.lblCheck.Name = "lblCheck";
+            this.lblCheck.Size = new System.Drawing.Size(81, 38);
+            this.lblCheck.TabIndex = 10;
+            this.lblCheck.Text = "        ";
             // 
             // ClickSearchItem
             // 
@@ -454,7 +471,6 @@
             // 
             // dataGridViewStockHist
             // 
-            this.dataGridViewStockHist.AllowUserToAddRows = false;
             this.dataGridViewStockHist.AllowUserToResizeColumns = false;
             this.dataGridViewStockHist.AllowUserToResizeRows = false;
             this.dataGridViewStockHist.BackgroundColor = System.Drawing.Color.White;
@@ -482,7 +498,7 @@
             this.TypeHistory});
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.Azure;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.ControlText;
@@ -508,86 +524,6 @@
             this.dataGridViewStockHist.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewStockHist.Size = new System.Drawing.Size(1301, 689);
             this.dataGridViewStockHist.TabIndex = 4;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataGridViewTextBoxColumn1.HeaderText = "#";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 61;
-            // 
-            // INVENTORYID
-            // 
-            this.INVENTORYID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.INVENTORYID.HeaderText = "ID";
-            this.INVENTORYID.MinimumWidth = 6;
-            this.INVENTORYID.Name = "INVENTORYID";
-            this.INVENTORYID.Width = 71;
-            // 
-            // StockID
-            // 
-            this.StockID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.StockID.HeaderText = "STOCK ID";
-            this.StockID.MinimumWidth = 6;
-            this.StockID.Name = "StockID";
-            this.StockID.Width = 162;
-            // 
-            // Description
-            // 
-            this.Description.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Description.HeaderText = "DESCRIPTION";
-            this.Description.MinimumWidth = 6;
-            this.Description.Name = "Description";
-            this.Description.Width = 214;
-            // 
-            // QuantityHistory
-            // 
-            this.QuantityHistory.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.QuantityHistory.HeaderText = "QTY";
-            this.QuantityHistory.MinimumWidth = 6;
-            this.QuantityHistory.Name = "QuantityHistory";
-            this.QuantityHistory.Width = 95;
-            // 
-            // StockDate
-            // 
-            this.StockDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.StockDate.HeaderText = "STOCK IN DATE";
-            this.StockDate.MinimumWidth = 6;
-            this.StockDate.Name = "StockDate";
-            this.StockDate.Width = 235;
-            // 
-            // ExpirationHistory
-            // 
-            this.ExpirationHistory.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ExpirationHistory.HeaderText = "EXPIRATION";
-            this.ExpirationHistory.MinimumWidth = 6;
-            this.ExpirationHistory.Name = "ExpirationHistory";
-            this.ExpirationHistory.Width = 195;
-            // 
-            // StockBy
-            // 
-            this.StockBy.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.StockBy.HeaderText = "STOCK IN BY";
-            this.StockBy.MinimumWidth = 6;
-            this.StockBy.Name = "StockBy";
-            this.StockBy.Width = 201;
-            // 
-            // ItemIDHistory
-            // 
-            this.ItemIDHistory.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ItemIDHistory.HeaderText = "ITEM ID";
-            this.ItemIDHistory.MinimumWidth = 6;
-            this.ItemIDHistory.Name = "ItemIDHistory";
-            this.ItemIDHistory.Width = 140;
-            // 
-            // TypeHistory
-            // 
-            this.TypeHistory.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.TypeHistory.HeaderText = "TYPE";
-            this.TypeHistory.MinimumWidth = 6;
-            this.TypeHistory.Name = "TypeHistory";
-            this.TypeHistory.Width = 105;
             // 
             // panel4
             // 
@@ -656,6 +592,91 @@
             this.label7.TabIndex = 2;
             this.label7.Text = "Filter By Date (From - To)";
             // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewTextBoxColumn1.Frozen = true;
+            this.dataGridViewTextBoxColumn1.HeaderText = "#";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 61;
+            // 
+            // INVENTORYID
+            // 
+            this.INVENTORYID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.INVENTORYID.Frozen = true;
+            this.INVENTORYID.HeaderText = "ID";
+            this.INVENTORYID.MinimumWidth = 6;
+            this.INVENTORYID.Name = "INVENTORYID";
+            this.INVENTORYID.Width = 71;
+            // 
+            // StockID
+            // 
+            this.StockID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.StockID.Frozen = true;
+            this.StockID.HeaderText = "STOCK ID";
+            this.StockID.MinimumWidth = 6;
+            this.StockID.Name = "StockID";
+            this.StockID.Width = 162;
+            // 
+            // Description
+            // 
+            this.Description.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Description.Frozen = true;
+            this.Description.HeaderText = "DESCRIPTION";
+            this.Description.MinimumWidth = 6;
+            this.Description.Name = "Description";
+            this.Description.Width = 214;
+            // 
+            // QuantityHistory
+            // 
+            this.QuantityHistory.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.QuantityHistory.HeaderText = "QTY";
+            this.QuantityHistory.MinimumWidth = 6;
+            this.QuantityHistory.Name = "QuantityHistory";
+            this.QuantityHistory.Width = 95;
+            // 
+            // StockDate
+            // 
+            this.StockDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.StockDate.HeaderText = "STOCK IN DATE";
+            this.StockDate.MinimumWidth = 6;
+            this.StockDate.Name = "StockDate";
+            this.StockDate.Width = 235;
+            // 
+            // ExpirationHistory
+            // 
+            this.ExpirationHistory.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ExpirationHistory.HeaderText = "EXPIRATION";
+            this.ExpirationHistory.MaxInputLength = 7;
+            this.ExpirationHistory.MinimumWidth = 6;
+            this.ExpirationHistory.Name = "ExpirationHistory";
+            this.ExpirationHistory.Width = 195;
+            // 
+            // StockBy
+            // 
+            this.StockBy.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.StockBy.HeaderText = "STOCK IN BY";
+            this.StockBy.MinimumWidth = 6;
+            this.StockBy.Name = "StockBy";
+            this.StockBy.Width = 201;
+            // 
+            // ItemIDHistory
+            // 
+            this.ItemIDHistory.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ItemIDHistory.HeaderText = "ITEM ID";
+            this.ItemIDHistory.MinimumWidth = 6;
+            this.ItemIDHistory.Name = "ItemIDHistory";
+            this.ItemIDHistory.Width = 140;
+            // 
+            // TypeHistory
+            // 
+            this.TypeHistory.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.TypeHistory.HeaderText = "TYPE";
+            this.TypeHistory.MinimumWidth = 6;
+            this.TypeHistory.Name = "TypeHistory";
+            this.TypeHistory.Width = 105;
+            // 
             // frmStockIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -710,6 +731,8 @@
         public Button btnSaveStockIn;
         public LinkLabel GenerateStockID;
         public DataGridView dataGridViewStockItems;
+        private TextBox txtSearch;
+        public Label lblCheck;
         private DataGridViewTextBoxColumn NumStockIn;
         private DataGridViewImageColumn EDIT;
         private DataGridViewImageColumn DeleteStockIn;
@@ -732,6 +755,5 @@
         private DataGridViewTextBoxColumn StockBy;
         private DataGridViewTextBoxColumn ItemIDHistory;
         private DataGridViewTextBoxColumn TypeHistory;
-        private TextBox txtSearch;
     }
 }
