@@ -54,6 +54,7 @@
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PRODUCT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PriceSearchItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Classification = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AddSearchItem = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -261,6 +262,7 @@
             this.dataGridViewTextBoxColumn2,
             this.PRODUCT,
             this.PriceSearchItem,
+            this.Classification,
             this.AddSearchItem});
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.Azure;
@@ -331,6 +333,15 @@
             this.PriceSearchItem.Name = "PriceSearchItem";
             this.PriceSearchItem.Width = 93;
             // 
+            // Classification
+            // 
+            this.Classification.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Classification.HeaderText = "CLASSIFICATION";
+            this.Classification.MinimumWidth = 6;
+            this.Classification.Name = "Classification";
+            this.Classification.ReadOnly = true;
+            this.Classification.Width = 193;
+            // 
             // AddSearchItem
             // 
             this.AddSearchItem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -387,6 +398,7 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private DataGridViewTextBoxColumn PRODUCT;
         private DataGridViewTextBoxColumn PriceSearchItem;
+        private DataGridViewTextBoxColumn Classification;
         private DataGridViewImageColumn AddSearchItem;
     }
 }

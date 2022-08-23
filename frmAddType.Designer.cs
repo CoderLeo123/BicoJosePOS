@@ -1,6 +1,6 @@
 ﻿namespace Capstone
 {
-    partial class frmProductAdd
+    partial class frmAddType
     {
         /// <summary>
         /// Required designer variable.
@@ -32,15 +32,17 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtProduct = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.txtType = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtProductID = new System.Windows.Forms.TextBox();
+            this.txtTypeID = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.GenerateID = new System.Windows.Forms.LinkLabel();
+            this.comBoxProduct = new System.Windows.Forms.ComboBox();
+            this.txtProductID = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             this.SuspendLayout();
@@ -86,22 +88,12 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(32, 171);
+            this.label2.Location = new System.Drawing.Point(32, 228);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(122, 41);
             this.label2.TabIndex = 4;
             this.label2.Text = "Product";
             this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // txtProduct
-            // 
-            this.txtProduct.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtProduct.Location = new System.Drawing.Point(212, 171);
-            this.txtProduct.Name = "txtProduct";
-            this.txtProduct.PlaceholderText = "Ex. Eyeglass Frame";
-            this.txtProduct.Size = new System.Drawing.Size(582, 38);
-            this.txtProduct.TabIndex = 5;
-            this.txtProduct.TextChanged += new System.EventHandler(this.txtAddProd_TextChanged);
             // 
             // btnSave
             // 
@@ -111,7 +103,7 @@
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(212, 291);
+            this.btnSave.Location = new System.Drawing.Point(212, 348);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(153, 49);
             this.btnSave.TabIndex = 6;
@@ -128,7 +120,7 @@
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdate.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnUpdate.Location = new System.Drawing.Point(371, 291);
+            this.btnUpdate.Location = new System.Drawing.Point(371, 348);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(153, 49);
             this.btnUpdate.TabIndex = 7;
@@ -144,7 +136,7 @@
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(530, 291);
+            this.btnCancel.Location = new System.Drawing.Point(530, 348);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(153, 49);
             this.btnCancel.TabIndex = 8;
@@ -155,7 +147,7 @@
             // txtType
             // 
             this.txtType.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtType.Location = new System.Drawing.Point(212, 226);
+            this.txtType.Location = new System.Drawing.Point(212, 283);
             this.txtType.Name = "txtType";
             this.txtType.PlaceholderText = "Ex. Semi-Rimless Frames";
             this.txtType.Size = new System.Drawing.Size(582, 38);
@@ -165,21 +157,21 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(32, 226);
+            this.label3.Location = new System.Drawing.Point(32, 283);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(81, 41);
             this.label3.TabIndex = 9;
             this.label3.Text = "Type";
             // 
-            // txtProductID
+            // txtTypeID
             // 
-            this.txtProductID.Enabled = false;
-            this.txtProductID.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtProductID.Location = new System.Drawing.Point(212, 118);
-            this.txtProductID.Name = "txtProductID";
-            this.txtProductID.PlaceholderText = "P1001";
-            this.txtProductID.Size = new System.Drawing.Size(204, 38);
-            this.txtProductID.TabIndex = 12;
+            this.txtTypeID.Enabled = false;
+            this.txtTypeID.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtTypeID.Location = new System.Drawing.Point(212, 118);
+            this.txtTypeID.Name = "txtTypeID";
+            this.txtTypeID.PlaceholderText = "T1001";
+            this.txtTypeID.Size = new System.Drawing.Size(204, 38);
+            this.txtTypeID.TabIndex = 12;
             // 
             // label4
             // 
@@ -187,9 +179,9 @@
             this.label4.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label4.Location = new System.Drawing.Point(32, 118);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(159, 41);
+            this.label4.Size = new System.Drawing.Size(118, 41);
             this.label4.TabIndex = 11;
-            this.label4.Text = "Product ID";
+            this.label4.Text = "Type ID";
             // 
             // GenerateID
             // 
@@ -206,28 +198,64 @@
             this.GenerateID.UseCompatibleTextRendering = true;
             this.GenerateID.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.GenerateID_LinkClicked);
             // 
-            // frmProductAdd
+            // comBoxProduct
+            // 
+            this.comBoxProduct.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comBoxProduct.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.comBoxProduct.Location = new System.Drawing.Point(212, 228);
+            this.comBoxProduct.Name = "comBoxProduct";
+            this.comBoxProduct.Size = new System.Drawing.Size(425, 39);
+            this.comBoxProduct.TabIndex = 36;
+            this.comBoxProduct.SelectedIndexChanged += new System.EventHandler(this.comBoxProduct_SelectedIndexChanged);
+            this.comBoxProduct.TextUpdate += new System.EventHandler(this.comBoxProduct_TextUpdate);
+            this.comBoxProduct.MouseClick += new System.Windows.Forms.MouseEventHandler(this.comBoxProduct_MouseClick);
+            this.comBoxProduct.MouseHover += new System.EventHandler(this.comBoxProduct_MouseHover);
+            // 
+            // txtProductID
+            // 
+            this.txtProductID.Enabled = false;
+            this.txtProductID.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtProductID.Location = new System.Drawing.Point(212, 173);
+            this.txtProductID.Name = "txtProductID";
+            this.txtProductID.PlaceholderText = "P1001";
+            this.txtProductID.Size = new System.Drawing.Size(204, 38);
+            this.txtProductID.TabIndex = 38;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(32, 173);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(159, 41);
+            this.label5.TabIndex = 37;
+            this.label5.Text = "Product ID";
+            // 
+            // frmAddType
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
-            this.ClientSize = new System.Drawing.Size(876, 407);
+            this.ClientSize = new System.Drawing.Size(876, 467);
             this.ControlBox = false;
-            this.Controls.Add(this.GenerateID);
             this.Controls.Add(this.txtProductID);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.comBoxProduct);
+            this.Controls.Add(this.GenerateID);
+            this.Controls.Add(this.txtTypeID);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtType);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.txtProduct);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "frmProductAdd";
+            this.Name = "frmAddType";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Load += new System.EventHandler(this.frmProductAdd_Load);
+            this.Load += new System.EventHandler(this.frmAddType_Load);
+            this.DoubleClick += new System.EventHandler(this.frmAddType_DoubleClick);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).EndInit();
@@ -245,11 +273,13 @@
         private Button btnCancel;
         private Label label3;
         private Label label4;
-        public TextBox txtProduct;
         public TextBox txtType;
-        public TextBox txtProductID;
+        public TextBox txtTypeID;
         public Button btnSave;
         public Button btnUpdate;
         public LinkLabel GenerateID;
+        public ComboBox comBoxProduct;
+        public TextBox txtProductID;
+        private Label label5;
     }
 }

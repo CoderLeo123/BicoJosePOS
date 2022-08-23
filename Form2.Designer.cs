@@ -30,6 +30,8 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txtSearch = new System.Windows.Forms.TextBox();
@@ -37,6 +39,20 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dataGridViewItems = new System.Windows.Forms.DataGridView();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.dataGridViewService = new System.Windows.Forms.DataGridView();
+            this.NumService = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ServiceID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DescriptionService = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PriceService = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EditService = new System.Windows.Forms.DataGridViewImageColumn();
+            this.DeleteService = new System.Windows.Forms.DataGridViewImageColumn();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.txtSearchService = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnAddService = new System.Windows.Forms.PictureBox();
             this.NumItems = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DescriptionItems = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,13 +60,19 @@
             this.ProductItems = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PriceItems = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PRODUCT_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Classification = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Type_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EditItems = new System.Windows.Forms.DataGridViewImageColumn();
             this.DeleteItems = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewItems)).BeginInit();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewService)).BeginInit();
+            this.panel4.SuspendLayout();
+            this.panel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnAddService)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -154,7 +176,8 @@
             this.ProductItems,
             this.PriceItems,
             this.Quantity,
-            this.PRODUCT_ID,
+            this.Classification,
+            this.Type_ID,
             this.EditItems,
             this.DeleteItems});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -178,6 +201,181 @@
             this.dataGridViewItems.Size = new System.Drawing.Size(1315, 814);
             this.dataGridViewItems.TabIndex = 2;
             this.dataGridViewItems.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.dataGridViewService);
+            this.panel3.Controls.Add(this.panel4);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel3.Location = new System.Drawing.Point(0, 603);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1315, 327);
+            this.panel3.TabIndex = 3;
+            // 
+            // dataGridViewService
+            // 
+            this.dataGridViewService.AllowUserToAddRows = false;
+            this.dataGridViewService.AllowUserToResizeColumns = false;
+            this.dataGridViewService.AllowUserToResizeRows = false;
+            this.dataGridViewService.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridViewService.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewService.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridViewService.ColumnHeadersHeight = 40;
+            this.dataGridViewService.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridViewService.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.NumService,
+            this.ServiceID,
+            this.NAME,
+            this.DescriptionService,
+            this.PriceService,
+            this.EditService,
+            this.DeleteService});
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Azure;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewService.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridViewService.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewService.EnableHeadersVisualStyles = false;
+            this.dataGridViewService.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.dataGridViewService.Location = new System.Drawing.Point(0, 115);
+            this.dataGridViewService.Name = "dataGridViewService";
+            this.dataGridViewService.RowHeadersVisible = false;
+            this.dataGridViewService.RowHeadersWidth = 51;
+            this.dataGridViewService.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dataGridViewService.RowTemplate.Height = 29;
+            this.dataGridViewService.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewService.Size = new System.Drawing.Size(1315, 212);
+            this.dataGridViewService.TabIndex = 6;
+            this.dataGridViewService.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewService_CellContentClick);
+            // 
+            // NumService
+            // 
+            this.NumService.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.NumService.HeaderText = "#";
+            this.NumService.MinimumWidth = 6;
+            this.NumService.Name = "NumService";
+            this.NumService.ReadOnly = true;
+            this.NumService.Width = 51;
+            // 
+            // ServiceID
+            // 
+            this.ServiceID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.ServiceID.HeaderText = "SERVICE ID";
+            this.ServiceID.MinimumWidth = 6;
+            this.ServiceID.Name = "ServiceID";
+            this.ServiceID.ReadOnly = true;
+            this.ServiceID.Width = 143;
+            // 
+            // NAME
+            // 
+            this.NAME.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.NAME.HeaderText = "NAME";
+            this.NAME.MinimumWidth = 6;
+            this.NAME.Name = "NAME";
+            this.NAME.ReadOnly = true;
+            // 
+            // DescriptionService
+            // 
+            this.DescriptionService.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.DescriptionService.HeaderText = "DESCRIPTION";
+            this.DescriptionService.MinimumWidth = 6;
+            this.DescriptionService.Name = "DescriptionService";
+            this.DescriptionService.ReadOnly = true;
+            // 
+            // PriceService
+            // 
+            this.PriceService.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.PriceService.HeaderText = "PRICE";
+            this.PriceService.MinimumWidth = 6;
+            this.PriceService.Name = "PriceService";
+            this.PriceService.ReadOnly = true;
+            this.PriceService.Width = 93;
+            // 
+            // EditService
+            // 
+            this.EditService.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.EditService.HeaderText = "";
+            this.EditService.Image = global::Capstone.Properties.Resources.Edit;
+            this.EditService.MinimumWidth = 6;
+            this.EditService.Name = "EditService";
+            this.EditService.Width = 6;
+            // 
+            // DeleteService
+            // 
+            this.DeleteService.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.DeleteService.HeaderText = "";
+            this.DeleteService.Image = global::Capstone.Properties.Resources._Delete;
+            this.DeleteService.MinimumWidth = 6;
+            this.DeleteService.Name = "DeleteService";
+            this.DeleteService.Width = 6;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.panel4.Controls.Add(this.panel8);
+            this.panel4.Controls.Add(this.label2);
+            this.panel4.Controls.Add(this.btnAddService);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1315, 115);
+            this.panel4.TabIndex = 7;
+            // 
+            // panel8
+            // 
+            this.panel8.BackColor = System.Drawing.Color.DimGray;
+            this.panel8.Controls.Add(this.txtSearchService);
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel8.Location = new System.Drawing.Point(0, 61);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(1315, 54);
+            this.panel8.TabIndex = 36;
+            // 
+            // txtSearchService
+            // 
+            this.txtSearchService.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtSearchService.Location = new System.Drawing.Point(692, 9);
+            this.txtSearchService.Name = "txtSearchService";
+            this.txtSearchService.PlaceholderText = "Search Here";
+            this.txtSearchService.Size = new System.Drawing.Size(599, 38);
+            this.txtSearchService.TabIndex = 0;
+            this.txtSearchService.TextChanged += new System.EventHandler(this.txtSearchService_TextChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(12, 9);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(189, 41);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Services List";
+            // 
+            // btnAddService
+            // 
+            this.btnAddService.BackColor = System.Drawing.Color.Transparent;
+            this.btnAddService.BackgroundImage = global::Capstone.Properties.Resources.AddNew;
+            this.btnAddService.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAddService.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddService.Location = new System.Drawing.Point(1260, 9);
+            this.btnAddService.Name = "btnAddService";
+            this.btnAddService.Size = new System.Drawing.Size(39, 38);
+            this.btnAddService.TabIndex = 3;
+            this.btnAddService.TabStop = false;
+            this.btnAddService.Click += new System.EventHandler(this.btnAddService_Click);
             // 
             // NumItems
             // 
@@ -243,14 +441,23 @@
             this.Quantity.ReadOnly = true;
             this.Quantity.Width = 140;
             // 
-            // PRODUCT_ID
+            // Classification
             // 
-            this.PRODUCT_ID.HeaderText = "PRODUCT ID";
-            this.PRODUCT_ID.MinimumWidth = 6;
-            this.PRODUCT_ID.Name = "PRODUCT_ID";
-            this.PRODUCT_ID.ReadOnly = true;
-            this.PRODUCT_ID.Visible = false;
-            this.PRODUCT_ID.Width = 125;
+            this.Classification.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Classification.HeaderText = "CLASSIFICATION";
+            this.Classification.MinimumWidth = 6;
+            this.Classification.Name = "Classification";
+            this.Classification.ReadOnly = true;
+            this.Classification.Width = 193;
+            // 
+            // Type_ID
+            // 
+            this.Type_ID.HeaderText = "TYPE ID";
+            this.Type_ID.MinimumWidth = 6;
+            this.Type_ID.Name = "Type_ID";
+            this.Type_ID.ReadOnly = true;
+            this.Type_ID.Visible = false;
+            this.Type_ID.Width = 125;
             // 
             // EditItems
             // 
@@ -276,6 +483,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1315, 930);
             this.ControlBox = false;
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.dataGridViewItems);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -288,6 +496,13 @@
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewItems)).EndInit();
+            this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewService)).EndInit();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnAddService)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -301,6 +516,20 @@
         private Button btnAddAccessories;
         private Panel panel2;
         private TextBox txtSearch;
+        private Panel panel3;
+        private DataGridView dataGridViewService;
+        private DataGridViewTextBoxColumn NumService;
+        private DataGridViewTextBoxColumn ServiceID;
+        private DataGridViewTextBoxColumn NAME;
+        private DataGridViewTextBoxColumn DescriptionService;
+        private DataGridViewTextBoxColumn PriceService;
+        private DataGridViewImageColumn EditService;
+        private DataGridViewImageColumn DeleteService;
+        private Panel panel4;
+        private Panel panel8;
+        public TextBox txtSearchService;
+        private Label label2;
+        private PictureBox btnAddService;
         private DataGridViewTextBoxColumn NumItems;
         private DataGridViewTextBoxColumn ItemID;
         private DataGridViewTextBoxColumn DescriptionItems;
@@ -308,7 +537,8 @@
         private DataGridViewTextBoxColumn ProductItems;
         private DataGridViewTextBoxColumn PriceItems;
         private DataGridViewTextBoxColumn Quantity;
-        private DataGridViewTextBoxColumn PRODUCT_ID;
+        private DataGridViewTextBoxColumn Classification;
+        private DataGridViewTextBoxColumn Type_ID;
         private DataGridViewImageColumn EditItems;
         private DataGridViewImageColumn DeleteItems;
     }

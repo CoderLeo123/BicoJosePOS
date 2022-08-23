@@ -36,12 +36,12 @@ namespace Capstone
             int i = 0;
             dataGridViewSearchItem.Rows.Clear();
             cn.Open();
-            cm = new SqlCommand("SELECT * FROM JoinItemProduct ORDER BY Item_ID", cn);
+            cm = new SqlCommand("SELECT * FROM ViewItemProductType ORDER BY Item_ID", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
-            {                                //                  1-DESCRIPTION / 2-Description          3-PRODUCT / 5-Product
-                i += 1;                      //  0-ITEM ID / 0-Item_ID                 2-TYPE / 4-Type                    4-PRICE / 3-Price
-                dataGridViewSearchItem.Rows.Add(i, dr[0].ToString(), dr[2].ToString(), dr[4].ToString(), dr[5].ToString(), dr[3].ToString());
+            {                                //                  1-DESCRIPTION / 2-Description          3-PRODUCT / 4-Product              5-CLASSIFICATION / 7-Classification
+                i += 1;                      //  0-ITEM ID / 0-Item_ID                 2-TYPE / 3-Type                    4-PRICE / 5-Price
+                dataGridViewSearchItem.Rows.Add(i, dr[0].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), dr[5].ToString(), dr[6].ToString());
             }
             dr.Close();
             cn.Close();
@@ -60,12 +60,22 @@ namespace Capstone
                 {
                     num = dr[0].ToString(); //ID10001
                     count2 = int.Parse(num.Substring(2, 5)); //1001
-                    num = num.Substring(0, 2) + (count2 + 1); //STK1002
+                    num = num.Substring(0, 2) + (count2 + 1); //ID10001
 
 
-                    dr.Close();
-                    cn.Close();
                 }
+                else
+                {
+                    cn.Close();
+                    cn.Open();
+                    cm = new SqlCommand("INSERT INTO tblStock (id) VALUES ('ID10001')", cn);
+                    cm.ExecuteNonQuery();
+                    cn.Close();
+                    AutoGenerateID(num);
+                }
+
+                dr.Close();
+                cn.Close();
                 return num;
             }
 
@@ -111,7 +121,7 @@ namespace Capstone
 
 
                         cn.Open();
-                        cm = new SqlCommand("INSERT INTO tblStock (Stock_ID, Item_ID, Stock_In_Date, Stock_In_By, Status, ID) VALUES(@StockID, @ItemID, @StockDate, @StockInBy, 'Pending', @Num)", cn);
+                        cm = new SqlCommand("INSERT INTO tblStock (Stock_ID, Item_ID, Stock_In_Date, Stock_In_By, Status) VALUES(@StockID, @ItemID, @StockDate, @StockInBy, 'Pending')", cn);
                         cm.Parameters.AddWithValue("@StockID", frmList.txtStockID.Text);
                         cm.Parameters.AddWithValue("@ItemID", dataGridViewSearchItem[1, e.RowIndex].Value.ToString());
                         cm.Parameters.AddWithValue("@StockInBy", frmList.txtStockInBy.Text);
@@ -145,22 +155,13 @@ namespace Capstone
             {
                 if (txtSearchItem.Text == String.Empty)
                 {
+                    LoadRecordsSearch();
                     return;
                 }
                 else
                 {
-                    int i = 0;
-                    dataGridViewSearchItem.Rows.Clear();
-                    cn.Open();
-                    cm = new SqlCommand("SELECT * FROM JoinItemProduct WHERE Description LIKE '%" + txtSearchItem.Text + "%' OR Type LIKE '%" + txtSearchItem.Text + "%' ORDER BY Item_ID", cn);
-                    dr = cm.ExecuteReader();
-                    while (dr.Read())
-                    {                                //                  1-DESCRIPTION / 2-Description          3-PRODUCT / 5-Product
-                        i += 1;                      //  0-ITEM ID / 0-Item_ID                 2-TYPE / 4-Type                    4-PRICE / 3-Price
-                        dataGridViewSearchItem.Rows.Add(i, dr[0].ToString(), dr[2].ToString(), dr[4].ToString(), dr[5].ToString(), dr[3].ToString());
-                    }
-                    dr.Close();
-                    cn.Close();
+
+                    LoadRecordsSearch();
                 }
             }
             catch (Exception ex)

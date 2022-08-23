@@ -35,11 +35,11 @@ namespace Capstone
             {
                 dataGridViewStockItems.Rows.Clear();
                 cn.Open();
-                cm = new SqlCommand("SELECT * from JoinStockItemProduct WHERE Stock_ID LIKE '" + txtStockID.Text + "' AND Status LIKE 'Pending' ", cn);
+                cm = new SqlCommand("SELECT * from ViewStockItemType WHERE Stock_ID LIKE '" + txtStockID.Text + "' AND Status LIKE 'Pending' ", cn);
                 dr = cm.ExecuteReader();
                 while (dr.Read())
                 {
-                    string ExpirationDate = dr[8].ToString();
+                    string ExpirationDate = dr[4].ToString();
                     if (string.IsNullOrEmpty(ExpirationDate))
                     {
                         ExpirationDate = "Non-Perishable";
@@ -49,17 +49,17 @@ namespace Capstone
                     {
                         if (ExpirationDate.Substring(0, 10) != "")
                         {
-                            ExpirationDate = dr[8].ToString().Substring(0, 9);
+                            ExpirationDate = dr[4].ToString().Substring(0, 9);
                         }
                         else
                         {
-                            ExpirationDate = dr[8].ToString().Substring(0, 10);
+                            ExpirationDate = dr[4].ToString().Substring(0, 10);
                         }
 
                     }
-                                                     //                                                                                         4-DESCRIPTION / 2-Description       6-EXPIRATION / 8-Expiration_Date                                           8-STOCK IN BY / 7-Stock_In_By         10-TYPE / 3-Type
-                                                //  0-ID / 10-dbo.ID           1/Edit                    2/Delete           3-STOCK ID / 0-Stock_ID            5-QTY / 5-Quantity                              7-STOCK IN DATE / 6-Stock_In_Date                            9-ITEM ID / 1-Item_ID
-                    dataGridViewStockItems.Rows.Add(dr[10].ToString(), Properties.Resources.Edit, Properties.Resources._Delete, dr[0].ToString(), dr[2].ToString(), dr[5].ToString(), ExpirationDate, DateTime.Parse(dr[6].ToString()).ToShortDateString(), dr[7].ToString(), dr[1].ToString(), dr[3].ToString());
+                                                     //                                                                                         4-DESCRIPTION / 2-Description       6-EXPIRATION / 4-Expiration_Date                                      8-STOCK IN BY / 6-Stock_In_By         10-TYPE / 3-Type
+                                                //  0-ID / 1-dbo.num           1/Edit                    2/Delete           3-STOCK ID / 0-Stock_ID            5-QTY / 3-Quantity                              7-STOCK IN DATE / 5-Stock_In_Date                            9-ITEM ID / 7-Item_ID
+                    dataGridViewStockItems.Rows.Add(dr[11].ToString(), Properties.Resources.Edit, Properties.Resources._Delete, dr[0].ToString(), dr[2].ToString(), dr[3].ToString(), ExpirationDate, DateTime.Parse(dr[5].ToString()).ToShortDateString(), dr[6].ToString(), dr[7].ToString(), dr[8].ToString());
                     
                 }
                 dr.Close();
@@ -103,8 +103,12 @@ namespace Capstone
                 }
                 else
                 {
-                    ID = dr[0].ToString();
-                    txtStockID.Text = ID;
+                    cn.Close();
+                    cn.Open();
+                    cm = new SqlCommand("INSERT INTO tblStock (Stock_ID) VALUES('STK1001')", cn);
+                    cm.ExecuteNonQuery();
+                    cn.Close();
+                    Generate();
                 }
                 dr.Close();
                 cn.Close();
@@ -124,11 +128,11 @@ namespace Capstone
                 int i = 0;
                 dataGridViewStockHist.Rows.Clear();
                 cn.Open();
-                cm = new SqlCommand("SELECT * from JoinStockItemProduct WHERE (Description LIKE '%" + txtSearch.Text + "%' OR Type LIKE '%" + txtSearch.Text + "%') AND Stock_In_Date BETWEEN '" + dateStart.Value.ToShortDateString() + "' AND '"+ dateEnd.Value.ToShortDateString() +"' AND Status LIKE 'DONE' ", cn);
+                cm = new SqlCommand("SELECT * from ViewStockItemType WHERE (Description LIKE '%" + txtSearch.Text + "%' OR Type LIKE '%" + txtSearch.Text + "%') AND Stock_In_Date BETWEEN '" + dateStart.Value.ToShortDateString() + "' AND '"+ dateEnd.Value.ToShortDateString() +"' AND Status LIKE 'DONE' ", cn);
                 dr = cm.ExecuteReader();
                 while (dr.Read())
                 {
-                    string ExpirationDate = dr[8].ToString();
+                    string ExpirationDate = dr[4].ToString();
                     if (string.IsNullOrEmpty(ExpirationDate))
                     {
                         ExpirationDate = "Non-Perishable";
@@ -138,19 +142,19 @@ namespace Capstone
                     {               
                         if(ExpirationDate.Substring(0, 10) != "")
                         {
-                            ExpirationDate = dr[8].ToString().Substring(0, 9);
+                            ExpirationDate = dr[4].ToString().Substring(0, 9);
                         }
                         else
                         {
-                            ExpirationDate = dr[8].ToString().Substring(0, 10);
+                            ExpirationDate = dr[4].ToString().Substring(0, 10);
                         }
                         
                     }
                         //string CuttedExpirationDate = ExpirationDate.Substring(0, 10);
                         // dr[8].ToString().Substring(0, 10)
-                        //                                                 2-STOCK ID / 0-Stock_ID               4-QTY / 5-Quantity                                                     6-EXPIRATION / 8-Expiration_Date                             8-ITEM ID / 1-Item_ID                    
-                        i += 1;                    // 0-Num   1-ID / 10-dbo.ID              3-DESCRIPTION / 2-Description                      5-STOCK IN DATE / 6-Stock_In_Date                                         7-STOCK IN BY / 7-Stock_In_By           9-TYPE / 3-Type           
-                    dataGridViewStockHist.Rows.Add(i, dr[10].ToString(), dr[0].ToString(), dr[2].ToString(), dr[5].ToString(), DateTime.Parse(dr[6].ToString()).ToShortDateString(), ExpirationDate, dr[7].ToString(), dr[1].ToString(), dr[3].ToString());
+                        //                                                 2-STOCK ID / 0-Stock_ID               4-QTY / 3-Quantity                                         6-EXPIRATION / 4-Expiration_Date         8-ITEM ID / 1-Item_ID                    
+                        i += 1;                    // 0-Num   1-ID / 1-dbo.ID              3-DESCRIPTION / 2-Description                      5-STOCK IN DATE / 5-Stock_In_Date                  7-STOCK IN BY / 7-Stock_In_By           9-TYPE / 3-Type           
+                    dataGridViewStockHist.Rows.Add(i, dr[1].ToString(), dr[0].ToString(), dr[2].ToString(), dr[3].ToString(), DateTime.Parse(dr[5].ToString()).ToShortDateString(), ExpirationDate, dr[6].ToString(), dr[7].ToString(), dr[8].ToString());
                     //dataGridViewStockHist.DefaultCellStyle.Font = new Font("Tahoma", 12);
                 }
                 dr.Close();
@@ -191,7 +195,7 @@ namespace Capstone
                 if (MessageBox.Show("Remove this Item?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     cn.Open();
-                    cm = new SqlCommand("DELETE FROM tblStock WHERE id LIKE '" + dataGridViewStockItems.Rows[e.RowIndex].Cells[0].Value.ToString() + "'", cn);
+                    cm = new SqlCommand("DELETE FROM tblStock WHERE num LIKE '" + dataGridViewStockItems.Rows[e.RowIndex].Cells[0].Value.ToString() + "'", cn);
                     cm.ExecuteNonQuery();
                     cn.Close();
                     MessageBox.Show("Record has been successfully deleted.", title, MessageBoxButtons.OK, MessageBoxIcon.Information);

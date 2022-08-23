@@ -36,32 +36,14 @@ namespace Capstone
                 int i = 0;
                 dataGridViewBrowse.Rows.Clear();
                 cn.Open();
-                cm = new SqlCommand("SELECT * from JoinStockItemProduct WHERE (Description LIKE '%" + txtSearch.Text + "%' OR Type LIKE '%" + txtSearch.Text + "%') AND Status LIKE 'DONE' AND Quantity > 0 ORDER BY ID", cn);
+                cm = new SqlCommand("SELECT * from JoinItemProduct WHERE (Description LIKE '%" + txtSearch.Text + "%' OR Type LIKE '%" + txtSearch.Text + "%') AND Quantity > 0 ORDER BY ID", cn);
                 dr = cm.ExecuteReader();
                 while (dr.Read())
                 {
-                    string ExpirationDate = dr[8].ToString();
-                    if (string.IsNullOrEmpty(ExpirationDate))
-                    {
-                        ExpirationDate = "Non-Perishable";
 
-                    }
-                    else
-                    {
-                        if (ExpirationDate.Substring(0, 10) != "")
-                        {
-                            ExpirationDate = dr[8].ToString().Substring(0, 9);
-                        }
-                        else
-                        {
-                            ExpirationDate = dr[8].ToString().Substring(0, 10);
-                        }
-
-                    }
-
-                                                    //                2-DESCRIPTION / 2-Description       4-PRODUCT / 4-Product               6-QTY / 5-Quantity                                                                                                                                      
+                               //                               2-DESCRIPTION / 2-Description       4-PRODUCT / 4-Product               6-QTY / 5-Quantity                                                                                                                                      
                     i += 1;                  // 0-Num   1-ID / 10-dbo.ID                3-TYPE / 3-Type                      5-PRICE / 11-Price                 7-EXPIRATION / 8-Expiration_Date                           
-                    dataGridViewBrowse.Rows.Add(i, dr[10].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), dr[11].ToString(), dr[5].ToString(), ExpirationDate);
+                    dataGridViewBrowse.Rows.Add(i, dr[0].ToString(), dr[2].ToString(), dr[4].ToString(), dr[5].ToString(), dr[3].ToString(), dr[6].ToString(), dr[7].ToString());
 
                 }
                 dr.Close();
