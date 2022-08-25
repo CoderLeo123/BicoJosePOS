@@ -63,7 +63,7 @@ namespace Capstone
                 frmAddAccessories frm = new frmAddAccessories(this);
                 frm.txtID.Text = dataGridViewItems[1, e.RowIndex].Value.ToString();
                 frm.txtDescription.Text = dataGridViewItems[2, e.RowIndex].Value.ToString();
-                frm.comBoxType.Text = dataGridViewItems[3, e.RowIndex].Value.ToString();
+                frm.comBoxType.SelectedItem = dataGridViewItems[3, e.RowIndex].Value.ToString();
                 frm.txtProduct.Text = dataGridViewItems[4, e.RowIndex].Value.ToString();
                 frm.txtPrice.Text = dataGridViewItems[5, e.RowIndex].Value.ToString();
                 frm.comBoxClassification.Text = dataGridViewItems[7, e.RowIndex].Value.ToString();

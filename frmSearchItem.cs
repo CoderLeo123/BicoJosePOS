@@ -28,7 +28,7 @@ namespace Capstone
 
             LoadRecordsSearch();
 
-            num = AutoGenerateID(num);
+            //num = AutoGenerateID(num);
             frmList = frmAdd;
         }
         public void LoadRecordsSearch()
@@ -39,55 +39,55 @@ namespace Capstone
             cm = new SqlCommand("SELECT * FROM ViewItemProductType ORDER BY Item_ID", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
-            {                                //                  1-DESCRIPTION / 2-Description          3-PRODUCT / 4-Product              5-CLASSIFICATION / 7-Classification
-                i += 1;                      //  0-ITEM ID / 0-Item_ID                 2-TYPE / 3-Type                    4-PRICE / 5-Price
-                dataGridViewSearchItem.Rows.Add(i, dr[0].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), dr[5].ToString(), dr[6].ToString());
+            {                                //                  2-DESCRIPTION / 1-Description          4-PRODUCT / 4-Product              6-CLASSIFICATION / 7-Classification
+                i += 1;                      //  1-ITEM ID / 0-Item_ID                 3-TYPE / 2-Type                    5-PRICE / 5-Price
+                dataGridViewSearchItem.Rows.Add(i, dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), dr[6].ToString());
             }
             dr.Close();
             cn.Close();
         }
 
-        private string AutoGenerateID(string num)
-        {
+        //private string AutoGenerateID(string num)
+        //{
 
-            try
-            {
-                cn.Open();
-                cm = new SqlCommand("SELECT TOP 1 id FROM tblStock ORDER BY id DESC", cn);
-                dr = cm.ExecuteReader();
-                dr.Read();
-                if (dr.HasRows)
-                {
-                    num = dr[0].ToString(); //ID10001
-                    count2 = int.Parse(num.Substring(2, 5)); //1001
-                    num = num.Substring(0, 2) + (count2 + 1); //ID10001
+        //    try
+        //    {
+        //        cn.Open();
+        //        cm = new SqlCommand("SELECT TOP 1 id FROM tblStock ORDER BY id DESC", cn);
+        //        dr = cm.ExecuteReader();
+        //        dr.Read();
+        //        if (dr.HasRows)
+        //        {
+        //            num = dr[0].ToString(); //ID10001
+        //            count2 = int.Parse(num.Substring(2, 5)); //1001
+        //            num = num.Substring(0, 2) + (count2 + 1); //ID10001
 
 
-                }
-                else
-                {
-                    cn.Close();
-                    cn.Open();
-                    cm = new SqlCommand("INSERT INTO tblStock (id) VALUES ('ID10001')", cn);
-                    cm.ExecuteNonQuery();
-                    cn.Close();
-                    AutoGenerateID(num);
-                }
+        //        }
+        //        else
+        //        {
+        //            cn.Close();
+        //            cn.Open();
+        //            cm = new SqlCommand("INSERT INTO tblStock (id) VALUES ('ID10001')", cn);
+        //            cm.ExecuteNonQuery();
+        //            cn.Close();
+        //            AutoGenerateID(num);
+        //        }
 
-                dr.Close();
-                cn.Close();
-                return num;
-            }
+        //        dr.Close();
+        //        cn.Close();
+        //        return num;
+        //    }
 
-            catch (Exception ex)
-            {
-                return num;
-                cn.Close();
-                MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        //    catch (Exception ex)
+        //    {
+        //        return num;
+        //        cn.Close();
+        //        MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
-            }
+        //    }
 
-        }
+        //}
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -101,7 +101,7 @@ namespace Capstone
                 string colName = dataGridViewSearchItem.Columns[e.ColumnIndex].Name;
                 if (colName == "AddSearchItem")
                 {
-                    num = AutoGenerateID(num);
+                    //num = AutoGenerateID(num);
                     if (frmList.txtStockID.Text == "")
                     {
                         MessageBox.Show("Please generate a Stock ID", title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -127,8 +127,8 @@ namespace Capstone
                         cm.Parameters.AddWithValue("@StockInBy", frmList.txtStockInBy.Text);
                         cm.Parameters.AddWithValue("@StockDate", frmList.dateStockIn.Value);
 
-                        cm.Parameters.AddWithValue("@Num", num.ToString());
-                        cm.Parameters.AddWithValue("@Expiration", DateTime.Now);
+                        //cm.Parameters.AddWithValue("@Num", num.ToString());
+                        //cm.Parameters.AddWithValue("@Expiration", DateTime.Now);
                         cm.ExecuteNonQuery();
                         cn.Close();
                         MessageBox.Show("Successfully Added!", title, MessageBoxButtons.OK, MessageBoxIcon.Information);

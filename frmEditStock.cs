@@ -43,7 +43,7 @@ namespace Capstone
                         int i = frmList.dataGridViewStockItems.CurrentRow.Index;
 
                         cn.Open();
-                        cm = new SqlCommand("UPDATE tblStock SET Expiration_Date = '" + DateTime.Parse(dateExpiration.Value.ToString()).ToShortDateString() + "', Quantity = Quantity + " + int.Parse(txtQuantity.Text) + " WHERE ID LIKE '" + lblID.Text + "' ", cn);
+                        cm = new SqlCommand("UPDATE tblStock SET Expiration_Date = '" + DateTime.Parse(dateExpiration.Value.ToString()).ToShortDateString() + "', Quantity = Quantity + " + int.Parse(txtQuantity.Text) + " WHERE num LIKE '" + lblID.Text + "' ", cn);
                         cm.ExecuteNonQuery();
                         cn.Close();
 
@@ -61,7 +61,7 @@ namespace Capstone
                         int i = frmList.dataGridViewStockItems.CurrentRow.Index;
 
                         cn.Open();
-                        cm = new SqlCommand("UPDATE tblStock SET Expiration_Date = null, Quantity = Quantity + " + int.Parse(txtQuantity.Text) + " WHERE ID LIKE '" + lblID.Text + "' ", cn);
+                        cm = new SqlCommand("UPDATE tblStock SET Expiration_Date = null, Quantity = Quantity + " + int.Parse(txtQuantity.Text) + " WHERE num LIKE '" + lblID.Text + "' ", cn);
                         cm.ExecuteNonQuery();
                         cn.Close();
                         frmList.dataGridViewStockItems[6, i].Value = "Non-Perishable";
