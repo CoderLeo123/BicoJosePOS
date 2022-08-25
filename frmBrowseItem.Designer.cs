@@ -57,7 +57,7 @@
             this.ProductBrowseItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PriceBrowseItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Expiration = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Classification = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AddToCart = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBrowse)).BeginInit();
             this.panel1.SuspendLayout();
@@ -151,7 +151,7 @@
             this.ProductBrowseItem,
             this.PriceBrowseItem,
             this.Stock,
-            this.Expiration,
+            this.Classification,
             this.AddToCart});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.Azure;
@@ -373,15 +373,14 @@
             this.Stock.ReadOnly = true;
             this.Stock.Width = 98;
             // 
-            // Expiration
+            // Classification
             // 
-            this.Expiration.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Expiration.HeaderText = "EXPIRATION";
-            this.Expiration.MaxInputLength = 7;
-            this.Expiration.MinimumWidth = 6;
-            this.Expiration.Name = "Expiration";
-            this.Expiration.ReadOnly = true;
-            this.Expiration.Width = 146;
+            this.Classification.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Classification.HeaderText = "CLASSIFICATION";
+            this.Classification.MinimumWidth = 6;
+            this.Classification.Name = "Classification";
+            this.Classification.ReadOnly = true;
+            this.Classification.Width = 185;
             // 
             // AddToCart
             // 
@@ -443,7 +442,7 @@
         private DataGridViewTextBoxColumn ProductBrowseItem;
         private DataGridViewTextBoxColumn PriceBrowseItem;
         private DataGridViewTextBoxColumn Stock;
-        private DataGridViewTextBoxColumn Expiration;
+        private DataGridViewTextBoxColumn Classification;
         private DataGridViewImageColumn AddToCart;
     }
 }

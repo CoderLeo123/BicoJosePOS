@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.comBoxType = new System.Windows.Forms.ComboBox();
+            this.comBoxClassification = new System.Windows.Forms.ComboBox();
             this.btnCancelAccessories = new System.Windows.Forms.Button();
             this.btnUpdateAccessories = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
@@ -38,18 +40,43 @@
             this.btnCloseAccessories = new System.Windows.Forms.PictureBox();
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.comBoxType = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtID = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtProductID = new System.Windows.Forms.TextBox();
+            this.txtTypeID = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtProduct = new System.Windows.Forms.TextBox();
             this.GenerateID = new System.Windows.Forms.LinkLabel();
+            this.label8 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnCloseAccessories)).BeginInit();
             this.SuspendLayout();
+            // 
+            // comBoxType
+            // 
+            this.comBoxType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comBoxType.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.comBoxType.Location = new System.Drawing.Point(237, 329);
+            this.comBoxType.Name = "comBoxType";
+            this.comBoxType.Size = new System.Drawing.Size(256, 39);
+            this.comBoxType.TabIndex = 26;
+            this.comBoxType.SelectedIndexChanged += new System.EventHandler(this.comBoxTypeAccessories_SelectedIndexChanged);
+            this.comBoxType.TextUpdate += new System.EventHandler(this.comBoxType_TextUpdate);
+            this.comBoxType.TextChanged += new System.EventHandler(this.comBoxTypeAccessories_TextChanged);
+            this.comBoxType.MouseClick += new System.Windows.Forms.MouseEventHandler(this.comBoxType_MouseClick);
+            // 
+            // comBoxClassification
+            // 
+            this.comBoxClassification.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comBoxClassification.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.comBoxClassification.Items.AddRange(new object[] {
+            "Consumable",
+            "Non-Consumable"});
+            this.comBoxClassification.Location = new System.Drawing.Point(237, 261);
+            this.comBoxClassification.Name = "comBoxClassification";
+            this.comBoxClassification.Size = new System.Drawing.Size(256, 39);
+            this.comBoxClassification.TabIndex = 37;
             // 
             // btnCancelAccessories
             // 
@@ -59,7 +86,7 @@
             this.btnCancelAccessories.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelAccessories.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnCancelAccessories.ForeColor = System.Drawing.Color.White;
-            this.btnCancelAccessories.Location = new System.Drawing.Point(354, 425);
+            this.btnCancelAccessories.Location = new System.Drawing.Point(354, 488);
             this.btnCancelAccessories.Name = "btnCancelAccessories";
             this.btnCancelAccessories.Size = new System.Drawing.Size(153, 49);
             this.btnCancelAccessories.TabIndex = 23;
@@ -76,7 +103,7 @@
             this.btnUpdateAccessories.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdateAccessories.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnUpdateAccessories.ForeColor = System.Drawing.Color.White;
-            this.btnUpdateAccessories.Location = new System.Drawing.Point(195, 425);
+            this.btnUpdateAccessories.Location = new System.Drawing.Point(195, 488);
             this.btnUpdateAccessories.Name = "btnUpdateAccessories";
             this.btnUpdateAccessories.Size = new System.Drawing.Size(153, 49);
             this.btnUpdateAccessories.TabIndex = 22;
@@ -92,7 +119,7 @@
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(36, 425);
+            this.btnSave.Location = new System.Drawing.Point(36, 488);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(153, 49);
             this.btnSave.TabIndex = 21;
@@ -139,9 +166,9 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(177, 41);
+            this.label1.Size = new System.Drawing.Size(256, 41);
             this.label1.TabIndex = 4;
-            this.label1.Text = "Accessories";
+            this.label1.Text = "Define New Item";
             // 
             // btnCloseAccessories
             // 
@@ -177,22 +204,11 @@
             this.label3.TabIndex = 24;
             this.label3.Text = "Description";
             // 
-            // comBoxType
-            // 
-            this.comBoxType.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.comBoxType.FormattingEnabled = true;
-            this.comBoxType.Location = new System.Drawing.Point(237, 266);
-            this.comBoxType.Name = "comBoxType";
-            this.comBoxType.Size = new System.Drawing.Size(256, 39);
-            this.comBoxType.TabIndex = 26;
-            this.comBoxType.SelectedIndexChanged += new System.EventHandler(this.comBoxTypeAccessories_SelectedIndexChanged);
-            this.comBoxType.TextChanged += new System.EventHandler(this.comBoxTypeAccessories_TextChanged);
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(31, 262);
+            this.label4.Location = new System.Drawing.Point(31, 325);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(75, 38);
             this.label4.TabIndex = 27;
@@ -204,7 +220,7 @@
             this.txtID.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtID.Location = new System.Drawing.Point(237, 96);
             this.txtID.Name = "txtID";
-            this.txtID.PlaceholderText = "ITM0001";
+            this.txtID.PlaceholderText = "ITM1001";
             this.txtID.Size = new System.Drawing.Size(256, 38);
             this.txtID.TabIndex = 29;
             // 
@@ -222,27 +238,27 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(31, 316);
+            this.label6.Location = new System.Drawing.Point(31, 379);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(113, 38);
             this.label6.TabIndex = 32;
             this.label6.Text = "Product";
             // 
-            // txtProductID
+            // txtTypeID
             // 
-            this.txtProductID.Enabled = false;
-            this.txtProductID.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtProductID.Location = new System.Drawing.Point(237, 372);
-            this.txtProductID.Name = "txtProductID";
-            this.txtProductID.PlaceholderText = "P0001";
-            this.txtProductID.Size = new System.Drawing.Size(256, 38);
-            this.txtProductID.TabIndex = 34;
+            this.txtTypeID.Enabled = false;
+            this.txtTypeID.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtTypeID.Location = new System.Drawing.Point(237, 435);
+            this.txtTypeID.Name = "txtTypeID";
+            this.txtTypeID.PlaceholderText = "T1001";
+            this.txtTypeID.Size = new System.Drawing.Size(256, 38);
+            this.txtTypeID.TabIndex = 34;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(31, 370);
+            this.label7.Location = new System.Drawing.Point(31, 433);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(148, 38);
             this.label7.TabIndex = 33;
@@ -252,7 +268,7 @@
             // 
             this.txtProduct.Enabled = false;
             this.txtProduct.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtProduct.Location = new System.Drawing.Point(237, 318);
+            this.txtProduct.Location = new System.Drawing.Point(237, 381);
             this.txtProduct.Name = "txtProduct";
             this.txtProduct.Size = new System.Drawing.Size(256, 38);
             this.txtProduct.TabIndex = 35;
@@ -272,14 +288,26 @@
             this.GenerateID.UseCompatibleTextRendering = true;
             this.GenerateID.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.GenerateID_LinkClicked);
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label8.Location = new System.Drawing.Point(31, 257);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(177, 38);
+            this.label8.TabIndex = 38;
+            this.label8.Text = "Classification";
+            // 
             // frmAddAccessories
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(820, 505);
+            this.ClientSize = new System.Drawing.Size(820, 554);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.comBoxClassification);
             this.Controls.Add(this.GenerateID);
             this.Controls.Add(this.txtProduct);
-            this.Controls.Add(this.txtProductID);
+            this.Controls.Add(this.txtTypeID);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtID);
@@ -321,12 +349,14 @@
         private Label label7;
         public LinkLabel GenerateID;
         public ComboBox comBoxType;
-        public TextBox txtProductID;
+        public TextBox txtTypeID;
         public TextBox txtProduct;
         public Button btnUpdateAccessories;
         public Button btnSave;
         public TextBox txtPrice;
         public TextBox txtDescription;
         public TextBox txtID;
+        private Label label8;
+        public ComboBox comBoxClassification;
     }
 }

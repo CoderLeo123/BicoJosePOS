@@ -17,9 +17,9 @@ namespace Capstone
         DBConnection dbcon = new DBConnection();
         SqlDataReader dr;
         string title = "BICO-JOSE System";
-        frmProductsList frmList;
+        frmItemsList frmList;
         string ID; int count;
-        public frmServiceAdd(frmProductsList frmAdd)
+        public frmServiceAdd(frmItemsList frmAdd)
         {
             InitializeComponent();
             cn = new SqlConnection(dbcon.MyConnection());
@@ -53,8 +53,12 @@ namespace Capstone
                 }
                 else
                 {
-                    ID = dr[0].ToString();
-                    txtServiceID.Text = ID;
+                    cn.Close();
+                    cn.Open();
+                    cm = new SqlCommand("INSERT INTO tblServices (Service_ID) VALUES('S1001')", cn);
+                    cm.ExecuteNonQuery();
+                    cn.Close();
+                    Generate();
                 }
                 dr.Close();
                 cn.Close();

@@ -54,6 +54,7 @@
             this.ITEM_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TypeStockIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.individualID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblCheck = new System.Windows.Forms.Label();
             this.ClickSearchItem = new System.Windows.Forms.LinkLabel();
@@ -73,7 +74,6 @@
             this.dateStart = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.INVENTORYID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StockID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QuantityHistory = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -210,7 +210,8 @@
             this.StockInBy,
             this.ITEM_ID,
             this.TypeStockIn,
-            this.Column1});
+            this.Column1,
+            this.individualID});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.Azure;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -247,11 +248,11 @@
             // 
             this.NumStockIn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.NumStockIn.Frozen = true;
-            this.NumStockIn.HeaderText = "ID";
+            this.NumStockIn.HeaderText = "#";
             this.NumStockIn.MinimumWidth = 6;
             this.NumStockIn.Name = "NumStockIn";
             this.NumStockIn.ReadOnly = true;
-            this.NumStockIn.Width = 63;
+            this.NumStockIn.Width = 55;
             // 
             // EDIT
             // 
@@ -353,6 +354,15 @@
             this.Column1.HeaderText = "";
             this.Column1.MinimumWidth = 6;
             this.Column1.Name = "Column1";
+            // 
+            // individualID
+            // 
+            this.individualID.HeaderText = "num";
+            this.individualID.MinimumWidth = 6;
+            this.individualID.Name = "individualID";
+            this.individualID.ReadOnly = true;
+            this.individualID.Visible = false;
+            this.individualID.Width = 125;
             // 
             // panel2
             // 
@@ -487,7 +497,6 @@
             this.dataGridViewStockHist.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridViewStockHist.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
-            this.INVENTORYID,
             this.StockID,
             this.Description,
             this.QuantityHistory,
@@ -599,16 +608,8 @@
             this.dataGridViewTextBoxColumn1.HeaderText = "#";
             this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
             this.dataGridViewTextBoxColumn1.Width = 61;
-            // 
-            // INVENTORYID
-            // 
-            this.INVENTORYID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.INVENTORYID.Frozen = true;
-            this.INVENTORYID.HeaderText = "ID";
-            this.INVENTORYID.MinimumWidth = 6;
-            this.INVENTORYID.Name = "INVENTORYID";
-            this.INVENTORYID.Width = 71;
             // 
             // StockID
             // 
@@ -617,6 +618,7 @@
             this.StockID.HeaderText = "STOCK ID";
             this.StockID.MinimumWidth = 6;
             this.StockID.Name = "StockID";
+            this.StockID.ReadOnly = true;
             this.StockID.Width = 162;
             // 
             // Description
@@ -626,6 +628,7 @@
             this.Description.HeaderText = "DESCRIPTION";
             this.Description.MinimumWidth = 6;
             this.Description.Name = "Description";
+            this.Description.ReadOnly = true;
             this.Description.Width = 214;
             // 
             // QuantityHistory
@@ -634,6 +637,7 @@
             this.QuantityHistory.HeaderText = "QTY";
             this.QuantityHistory.MinimumWidth = 6;
             this.QuantityHistory.Name = "QuantityHistory";
+            this.QuantityHistory.ReadOnly = true;
             this.QuantityHistory.Width = 95;
             // 
             // StockDate
@@ -642,6 +646,7 @@
             this.StockDate.HeaderText = "STOCK IN DATE";
             this.StockDate.MinimumWidth = 6;
             this.StockDate.Name = "StockDate";
+            this.StockDate.ReadOnly = true;
             this.StockDate.Width = 235;
             // 
             // ExpirationHistory
@@ -651,6 +656,7 @@
             this.ExpirationHistory.MaxInputLength = 7;
             this.ExpirationHistory.MinimumWidth = 6;
             this.ExpirationHistory.Name = "ExpirationHistory";
+            this.ExpirationHistory.ReadOnly = true;
             this.ExpirationHistory.Width = 195;
             // 
             // StockBy
@@ -659,6 +665,7 @@
             this.StockBy.HeaderText = "STOCK IN BY";
             this.StockBy.MinimumWidth = 6;
             this.StockBy.Name = "StockBy";
+            this.StockBy.ReadOnly = true;
             this.StockBy.Width = 201;
             // 
             // ItemIDHistory
@@ -667,6 +674,7 @@
             this.ItemIDHistory.HeaderText = "ITEM ID";
             this.ItemIDHistory.MinimumWidth = 6;
             this.ItemIDHistory.Name = "ItemIDHistory";
+            this.ItemIDHistory.ReadOnly = true;
             this.ItemIDHistory.Width = 140;
             // 
             // TypeHistory
@@ -675,6 +683,7 @@
             this.TypeHistory.HeaderText = "TYPE";
             this.TypeHistory.MinimumWidth = 6;
             this.TypeHistory.Name = "TypeHistory";
+            this.TypeHistory.ReadOnly = true;
             this.TypeHistory.Width = 105;
             // 
             // frmStockIn
@@ -745,8 +754,8 @@
         private DataGridViewTextBoxColumn ITEM_ID;
         private DataGridViewTextBoxColumn TypeStockIn;
         private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn individualID;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn INVENTORYID;
         private DataGridViewTextBoxColumn StockID;
         private DataGridViewTextBoxColumn Description;
         private DataGridViewTextBoxColumn QuantityHistory;

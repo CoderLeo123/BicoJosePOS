@@ -22,50 +22,48 @@ namespace Capstone
         {
             InitializeComponent();
             cn = new SqlConnection(dbcon.MyConnection());
-            LoadRecordsProducts();
-            LoadRecordsService();
+            LoadRecordsType();
+            LoadRecordsProduct();
 
         }
-        public void LoadRecordsProducts()
+        public void LoadRecordsType()
         {
             int i = 0;
-            dataGridViewProducts.Rows.Clear();
+           dataGridViewType.Rows.Clear();
             cn.Open();
-            cm = new SqlCommand("SELECT * FROM tblProductType WHERE Type LIKE '%" + txtSearchTypeProducts.Text + "%' OR Product LIKE '%" + txtSearchTypeProducts.Text + "%' Order by Product_ID", cn);
+            cm = new SqlCommand("SELECT * FROM JoinProductType WHERE Type LIKE '%" + txtSearchTypeProducts.Text + "%' OR Product LIKE '%" + txtSearchTypeProducts.Text + "%' Order by Type_ID", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
-            {                             //                       2-TYPE / 2-Type                
-                i += 1;                   //0-#  1-PRODUCT ID / 1-Product_ID       3-PRODUCT / 3-Product
-                dataGridViewProducts.Rows.Add(i, dr[1].ToString(), dr[2].ToString(), dr[3].ToString());
+            {                             //                       2-TYPE / 2-Type              4-PRODUCT / 3-Product         
+                i += 1;                   //0-#  1-TYPE ID / 1-Type_ID          3-PRODUCT ID / 0-Product_ID                  
+                dataGridViewType.Rows.Add(i, dr[1].ToString(), dr[2].ToString(), dr[0].ToString(), dr[3].ToString());
             }
             dr.Close();
             cn.Close();
         }
-        public void LoadRecordsService()
+        public void LoadRecordsProduct()
         {
             int i = 0;
-            dataGridViewService.Rows.Clear();
+            dataGridViewProduct.Rows.Clear();
             cn.Open();
-            cm = new SqlCommand("SELECT * FROM tblServices WHERE Name LIKE '%" + txtSearchService.Text + "%' OR Description LIKE '%" + txtSearchService.Text + "%' Order by Service_ID", cn);
+            cm = new SqlCommand("SELECT * FROM tblProduct WHERE Product LIKE '%" + txtSearchProduct.Text + "%' Order by Product_ID", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
-            {                            //                       2-NAME / 2-Name                   4-PRICE / 4-Price
-                i += 1;                //0-#  1-SERVICE ID / 1-Service_ID       3-DESCRIPTION / 3-Description
-                dataGridViewService.Rows.Add(i, dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString());
+            {                             //                     3-PRODUCT / 3-Product              
+                i += 1;                   //0-#  1-PRODUCT ID / 1-Product_ID       
+                dataGridViewProduct.Rows.Add(i, dr[1].ToString(), dr[2].ToString());
             }
             dr.Close();
             cn.Close();
         }
+
+
         private void label1_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-            frmProductAdd frm = new frmProductAdd(this);
-            frm.ShowDialog();
-        }
+        
 
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -77,24 +75,22 @@ namespace Capstone
 
         }
 
-        private void btnAddService_Click(object sender, EventArgs e)
-        {
-            frmServiceAdd frm = new frmServiceAdd(this);
-            frm.ShowDialog();
-        }
+       
 
         private void dataGridViewProducts_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            string colName = dataGridViewProducts.Columns[e.ColumnIndex].Name;
+             string colName = dataGridViewType.Columns[e.ColumnIndex].Name;
             if (colName == "Edit")
             {
-                frmProductAdd frm = new frmProductAdd(this);
-                frm.txtProductID.Text = dataGridViewProducts[1, e.RowIndex].Value.ToString();
-                frm.txtType.Text = dataGridViewProducts[2, e.RowIndex].Value.ToString();
-                frm.txtProduct.Text = dataGridViewProducts[3, e.RowIndex].Value.ToString();
+                frmAddType frm = new frmAddType(this);
+                frm.txtTypeID.Text = dataGridViewType[1, e.RowIndex].Value.ToString();
+                frm.txtProductID.Text = dataGridViewType[3, e.RowIndex].Value.ToString();
+                frm.txtType.Text = dataGridViewType[2, e.RowIndex].Value.ToString();
+                frm.comBoxProduct.Text = dataGridViewType[4, e.RowIndex].Value.ToString();
                 frm.btnSave.Enabled = false;
                 frm.btnUpdate.Enabled = true;
                 frm.GenerateID.Enabled = false;
+                frm.LoadProduct();
                 frm.ShowDialog();
             }
             else if (colName == "Delete")
@@ -102,40 +98,38 @@ namespace Capstone
                 if (MessageBox.Show("Are you sure you want to delete this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     cn.Open();
-                    cm = new SqlCommand("DELETE FROM tblProductType WHERE Product_ID LIKE '" + dataGridViewProducts[1, e.RowIndex].Value.ToString() + "'", cn);
+                    cm = new SqlCommand("DELETE FROM tblProductType WHERE Type_ID LIKE '" + dataGridViewType[1, e.RowIndex].Value.ToString() + "'", cn);
                     cm.ExecuteNonQuery();
                     cn.Close();
                     MessageBox.Show("Record has been successfully deleted.", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoadRecordsProducts();
+                    LoadRecordsType();
                 }
             }
         }
 
-        private void dataGridViewService_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewService_CellContentClick(object sender, DataGridViewCellEventArgs e) //dataGridViewProduct
         {
-            string colName = dataGridViewService.Columns[e.ColumnIndex].Name;
-            if (colName == "EditService")
+            string colName = dataGridViewProduct.Columns[e.ColumnIndex].Name;
+            if (colName == "EditProduct")
             {
-                frmServiceAdd frm = new frmServiceAdd(this);
-                frm.txtServiceID.Text = dataGridViewService[1, e.RowIndex].Value.ToString();
-                frm.txtServiceName.Text = dataGridViewService[2, e.RowIndex].Value.ToString();
-                frm.txtServiceDesc.Text = dataGridViewService[3, e.RowIndex].Value.ToString();
-                frm.txtServicePrice.Text = dataGridViewService[4, e.RowIndex].Value.ToString();
-                frm.btnSaveService.Enabled = false;
+                frmAddProduct frm = new frmAddProduct(this);
+                frm.txtProductID.Text = dataGridViewProduct[1, e.RowIndex].Value.ToString();
+                frm.txtProduct.Text = dataGridViewProduct[2, e.RowIndex].Value.ToString();
+                frm.btnSave.Enabled = false;
                 frm.btnUpdate.Enabled = true;
                 frm.GenerateID.Enabled = false;
                 frm.ShowDialog();
             }
-            else if (colName == "DeleteService")
+            else if (colName == "DeleteProduct")
             {
                 if (MessageBox.Show("Are you sure you want to delete this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     cn.Open();
-                    cm = new SqlCommand("DELETE FROM tblServices WHERE Service_ID LIKE '" + dataGridViewService[1, e.RowIndex].Value.ToString() + "'", cn);
+                    cm = new SqlCommand("DELETE FROM tblProduct WHERE Product_ID LIKE '" + dataGridViewProduct[1, e.RowIndex].Value.ToString() + "'", cn);
                     cm.ExecuteNonQuery();
                     cn.Close();
                     MessageBox.Show("Record has been successfully deleted.", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoadRecordsService();
+                    LoadRecordsProduct();
                 }
             }
         }
@@ -146,12 +140,12 @@ namespace Capstone
             {
                 if (txtSearchTypeProducts.Text == String.Empty)
                 {
-                    LoadRecordsProducts();
+                    LoadRecordsType();
                     return;
                 }
                 else
                 {
-                    LoadRecordsProducts();
+                    LoadRecordsType();
                 }
             }
             catch (Exception ex)
@@ -161,18 +155,33 @@ namespace Capstone
             }
         }
 
-        private void txtSearchService_TextChanged(object sender, EventArgs e)
+        
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            frmAddProduct frm = new frmAddProduct(this);
+            frm.ShowDialog();
+        }
+
+        private void btnAddType_Click(object sender, EventArgs e)
+        {
+            frmAddType frm = new frmAddType(this);
+            frm.LoadProduct();
+            frm.ShowDialog();
+        }
+
+        private void txtSearchProduct_TextChanged(object sender, EventArgs e)
         {
             try
             {
-                if (txtSearchService.Text == String.Empty)
+                if (txtSearchTypeProducts.Text == String.Empty)
                 {
-                    LoadRecordsService();
+                    LoadRecordsProduct();
                     return;
                 }
                 else
                 {
-                    LoadRecordsService();
+                    LoadRecordsProduct();
                 }
             }
             catch (Exception ex)

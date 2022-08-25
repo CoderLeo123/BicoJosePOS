@@ -51,8 +51,12 @@ namespace Capstone
                 }
                 else
                 {
-                    ID = dr[0].ToString();
-                    txtID.Text = ID;
+                    cn.Close();
+                    cn.Open();
+                    cm = new SqlCommand("INSERT INTO tblItem (Item_ID) VALUES('ITM1001')", cn);
+                    cm.ExecuteNonQuery();
+                    cn.Close();
+                    Generate();
                 }
                 dr.Close();
                 cn.Close();
@@ -87,15 +91,16 @@ namespace Capstone
         public void LoadProduct()
         {
             txtProduct.Clear();
-            txtProductID.Clear();
+            txtTypeID.Clear();
             try
             {
                 cn.Open();
-                cm = new SqlCommand("SELECT Product_ID, Product FROM tblProductType WHERE Type LIKE '" + comBoxType.Text + "'", cn);
+                cm = new SqlCommand("SELECT Type_ID, Product FROM tblProductType WHERE Type LIKE '" + comBoxType.Text + "'", cn);
                 dr = cm.ExecuteReader();
                 while (dr.Read())
                 {
-                    txtProductID.Text = dr[0].ToString();
+                    
+                    txtTypeID.Text = dr[0].ToString();
                     txtProduct.Text = dr[1].ToString();
                 }
                 dr.Close();
@@ -116,11 +121,12 @@ namespace Capstone
                 if(MessageBox.Show("Are you sure you want to save this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     cn.Open();
-                    cm = new SqlCommand("INSERT INTO tblItem (Item_ID, Product_ID, Description, Price) VALUES(@ID, @ProductID, @Description, @Price)", cn);
+                    cm = new SqlCommand("INSERT INTO tblItem (Item_ID, Type_ID, Description, Price, Classification) VALUES(@ID, @TypeID, @Description, @Price, @Classification)", cn);
                     cm.Parameters.AddWithValue("@ID", txtID.Text);
                     cm.Parameters.AddWithValue("@Description", txtDescription.Text);
-                    cm.Parameters.AddWithValue("@ProductID", txtProductID.Text);
+                    cm.Parameters.AddWithValue("@TypeID", txtTypeID.Text);
                     cm.Parameters.AddWithValue("@Price", txtPrice.Text);
+                    cm.Parameters.AddWithValue("@Classification", comBoxClassification.Text);
                     cm.ExecuteNonQuery();
                     cn.Close();
                     MessageBox.Show("Record has been successfully saved.");
@@ -147,13 +153,14 @@ namespace Capstone
 
         private void comBoxTypeAccessories_TextChanged(object sender, EventArgs e)
         {
-            LoadProduct();
-           
+            
+            
+            
         }
 
         private void comBoxTypeAccessories_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            LoadProduct();
         }
 
         private void frmAddAccessories_Load(object sender, EventArgs e)
@@ -179,11 +186,12 @@ namespace Capstone
                 if (MessageBox.Show("Are you sure you want to update this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     cn.Open();
-                    cm = new SqlCommand("UPDATE tblItem SET Item_ID = @ItemID, Product_ID = @ProductID, Description = @Description, Price = @Price WHERE Item_ID LIKE '" + txtID.Text + "'", cn); 
+                    cm = new SqlCommand("UPDATE tblItem SET Item_ID = @ItemID, Type_ID = @TypeID, Description = @Description, Price = @Price, Classification = @Classification WHERE Item_ID LIKE '" + txtID.Text + "'", cn); 
                     cm.Parameters.AddWithValue("@ItemID", txtID.Text);
                     cm.Parameters.AddWithValue("@Description", txtDescription.Text);
                     cm.Parameters.AddWithValue("@Price", txtPrice.Text);
-                    cm.Parameters.AddWithValue("@ProductID", txtProductID.Text);
+                    cm.Parameters.AddWithValue("@TypeID", txtTypeID.Text);
+                    cm.Parameters.AddWithValue("@Classification", comBoxClassification.Text);
                     cm.ExecuteNonQuery();
                     cn.Close();
                     MessageBox.Show("Record has been successfully updated.");
@@ -214,6 +222,16 @@ namespace Capstone
                 //ascii code 48 - 57 = characters between 0 - 9
                 e.Handled = true;
             }
+        }
+
+        private void comBoxType_TextUpdate(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void comBoxType_MouseClick(object sender, MouseEventArgs e)
+        {
+            
         }
     }
 }
