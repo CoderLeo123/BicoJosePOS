@@ -323,11 +323,11 @@
             // ID
             // 
             this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ID.HeaderText = "ID";
+            this.ID.HeaderText = "Item ID";
             this.ID.MinimumWidth = 6;
             this.ID.Name = "ID";
             this.ID.ReadOnly = true;
-            this.ID.Width = 58;
+            this.ID.Width = 102;
             // 
             // DescBrowseItem
             // 
