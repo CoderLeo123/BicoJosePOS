@@ -33,7 +33,7 @@ namespace Capstone
         {
             try
             {
-                float total = float.Parse(lblPrice.Text) * float.Parse(txtQuantity.Text);
+                float total = float.Parse(lblPricesd.Text) * float.Parse(txtQuantity.Text);
                 lblTotal.Text = total.ToString("#.##");
                 
             }
@@ -56,9 +56,17 @@ namespace Capstone
 
         private void txtQuantity_TextChanged(object sender, EventArgs e)
         {
+            i = frmB.dataGridViewBrowse.SelectedRows[0].Index;
+            int Stock = int.Parse(frmB.dataGridViewBrowse[6, i].Value.ToString());
+            int input = int.Parse(txtQuantity.Text);
             if (txtQuantity.Text == string.Empty)
             {
                 txtQuantity.Text = "0";
+                txtQuantity.SelectAll();
+            }
+            if((input < 1) || (input > Stock))
+            {
+                txtQuantity.Text = Stock.ToString();
                 txtQuantity.SelectAll();
             }
             Compute();
@@ -89,19 +97,21 @@ namespace Capstone
 
                     
                     cn.Open();
-                    cm = new SqlCommand("INSERT INTO tblCart (ID, Transaction_No, Quantity, Price, Total, Date, Status) VALUES (@ID, @TransactionNo, @Quantity, @Price, @Total, @Date, 'Cart')", cn);
-                    cm.Parameters.AddWithValue("@ID", frmB.dataGridViewBrowse[1, i].Value.ToString());
+                    cm = new SqlCommand("INSERT INTO tblCart (Item_ID, Transaction_No, Quantity, Price, Total, Date, Status) VALUES (@Item_ID, @TransactionNo, @Quantity, @Price, @Total, @Date, 'Cart')", cn);
+                    //cm.Parameters.AddWithValue("@Stock_ID", frmB.dataGridViewBrowse[1, i].Value.ToString());
+                    //cm.Parameters.AddWithValue("@Stock_Num", frmB.dataGridViewBrowse[1, i].Value.ToString());
+                    cm.Parameters.AddWithValue("@Item_ID", frmB.dataGridViewBrowse[1, i].Value.ToString());
                     cm.Parameters.AddWithValue("@TransactionNo", frmB.lblTrans.Text);
                     cm.Parameters.AddWithValue("@Quantity", txtQuantity.Text);
-                    cm.Parameters.AddWithValue("@Price", lblPrice.Text);
+                    cm.Parameters.AddWithValue("@Price", lblPricesd.Text);
                     cm.Parameters.AddWithValue("@Date", DateTime.Now);
                     cm.Parameters.AddWithValue("@Total", lblTotal.Text);
                     cm.ExecuteNonQuery();
                     cn.Close();
                     MessageBox.Show("Successfully Added!", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    frmB.LoadCart();
+                    frmB.LoadCartItem();
                 }
-                frmB.LoadCart();
+                frmB.LoadCartItem();
             }
             catch (Exception ex)
             {
