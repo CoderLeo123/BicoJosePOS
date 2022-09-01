@@ -34,7 +34,7 @@
             this.btnClose = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.lblPrice = new System.Windows.Forms.Label();
+            this.lblPricesd = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
@@ -111,16 +111,16 @@
             this.label3.Text = "Total:";
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
-            // lblPrice
+            // lblPricesd
             // 
-            this.lblPrice.AutoSize = true;
-            this.lblPrice.Font = new System.Drawing.Font("Segoe UI", 28.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblPrice.Location = new System.Drawing.Point(238, 257);
-            this.lblPrice.Name = "lblPrice";
-            this.lblPrice.Size = new System.Drawing.Size(78, 62);
-            this.lblPrice.TabIndex = 38;
-            this.lblPrice.Text = "  0";
-            this.lblPrice.Click += new System.EventHandler(this.label4_Click);
+            this.lblPricesd.AutoSize = true;
+            this.lblPricesd.Font = new System.Drawing.Font("Segoe UI", 28.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblPricesd.Location = new System.Drawing.Point(238, 257);
+            this.lblPricesd.Name = "lblPricesd";
+            this.lblPricesd.Size = new System.Drawing.Size(78, 62);
+            this.lblPricesd.TabIndex = 38;
+            this.lblPricesd.Text = "  0";
+            this.lblPricesd.Click += new System.EventHandler(this.label4_Click);
             // 
             // lblTotal
             // 
@@ -137,7 +137,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(18F, 45F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(428, 416);
-            this.Controls.Add(this.lblPrice);
+            this.Controls.Add(this.lblPricesd);
             this.Controls.Add(this.lblTotal);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -163,7 +163,7 @@
         private PictureBox btnClose;
         private Label label2;
         private Label label3;
-        public Label lblPrice;
+        public Label lblPricesd;
         public Label lblTotal;
         public TextBox txtQuantity;
     }

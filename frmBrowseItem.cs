@@ -21,13 +21,15 @@ namespace Capstone
         string title = "BICO-JOSE System";
         frmCashier frmC;
         string check = "";
+        
+
         public frmBrowseItem(frmCashier frmC)
         {
             InitializeComponent();
             cn = new SqlConnection(dbcon.MyConnection());
             LoadRecordsBrowse();
             this.frmC = frmC;
-            LoadCart();
+            LoadCartItem();
         }
         public void LoadRecordsBrowse()
         {
@@ -56,7 +58,52 @@ namespace Capstone
                 MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        
+        public void LoadCartItem()
+        {
+            try
+            {
+                int i = 0;
+                frmC.dataGridViewCart.Rows.Clear();
+                cn.Open();
+                cm = new SqlCommand("SELECT * from ViewCartItem WHERE Status LIKE 'Cart'", cn);
+                dr = cm.ExecuteReader();
+                while (dr.Read())
+                {
+                    string ExpirationDate = dr[2].ToString();
+                    //if (string.IsNullOrEmpty(ExpirationDate))
+                    //{
+                    //    ExpirationDate = "Non-Perishable";
+
+                    //}
+                    //else
+                    //{
+                    //    if (ExpirationDate.Substring(0, 10) != "")
+                    //    {
+                    //        ExpirationDate = dr[2].ToString().Substring(0, 9);
+                    //    }
+                    //    else
+                    //    {
+                    //        ExpirationDate = dr[2].ToString().Substring(0, 10);
+                    //    }
+
+                    //}
+
+                                             // 0-Num                2-EXPIRATION / 2-Classification     4-QUANTITY / 3-Quantity              6-TOTAL / 5-TOTAL                                                                
+                    i += 1;                 // 1-DESCRIPTION / 1-Description           3-PRICE / 4-Price                 5-DISCOUNT / 11-Discount                      7-Plus                         8-Minus                 9-Delete               10-ID / 0 -Stock_Num
+                    frmC.dataGridViewCart.Rows.Add(i, dr[1].ToString(), ExpirationDate, dr[3].ToString(), dr[4].ToString(), dr[5].ToString(), dr[6].ToString(), Properties.Resources._Add, Properties.Resources.Minus, Properties.Resources._Delete, dr[11].ToString());
+
+                }
+                dr.Close();
+                cn.Close();
+
+            }
+            catch (Exception ex)
+            {
+                cn.Close();
+                MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -68,7 +115,7 @@ namespace Capstone
                 int i = 0;
                 frmC.dataGridViewCart.Rows.Clear();
                 cn.Open();
-                cm = new SqlCommand("SELECT * from JoinCartStockItem WHERE Status LIKE 'Cart'", cn);
+                cm = new SqlCommand("SELECT * from ViewCartStockItem WHERE Status LIKE 'Cart'", cn);
                 dr = cm.ExecuteReader();
                 while (dr.Read())
                 {
@@ -92,7 +139,7 @@ namespace Capstone
                     }
 
                                             // 0-Num                2-EXPIRATION / 2-Expiration_Date     4-QUANTITY / 3-Quantity              6-TOTAL / 5-TOTAL                                                                
-                    i += 1;                 // 1-DESCRIPTION / 1-Description           3-PRICE / 4-Price                 5-DISCOUNT / 11-Discount                      7-Plus                         8-Minus                 9-Delete               10-TOTAL / 5-TOTAL
+                    i += 1;                 // 1-DESCRIPTION / 1-Description           3-PRICE / 4-Price                 5-DISCOUNT / 11-Discount                      7-Plus                         8-Minus                 9-Delete               10-ID / 0 -Stock_Num
                     frmC.dataGridViewCart.Rows.Add(i, dr[1].ToString(), ExpirationDate, dr[4].ToString(), dr[3].ToString(), dr[11].ToString(), dr[5].ToString(), Properties.Resources._Add, Properties.Resources.Minus, Properties.Resources._Delete, dr[0].ToString());
 
                 }
@@ -135,10 +182,10 @@ namespace Capstone
                 string colName = dataGridViewBrowse.Columns[e.ColumnIndex].Name;
                 string id = dataGridViewBrowse[1, e.RowIndex].Value.ToString();
                 string classification = dataGridViewBrowse[7, e.RowIndex].Value.ToString();
-                frmQuantity frmQ = new frmQuantity(this);
-                frmExpiration frmE = new frmExpiration();
+                
+                frmExpiration frmE = new frmExpiration(this);
                 int i = 0;
-                if ((colName == "AddToCart") && (classification == "Consumable"))
+                if ((classification == "Consumable") && (colName == "AddToCart"))
                 {
                     cn.Open();
                     cm = new SqlCommand("SELECT Expiration_Date, num, Quantity FROM ViewStockItemType WHERE Item_ID LIKE '" + id.ToString() + "' ", cn);
@@ -153,12 +200,18 @@ namespace Capstone
                     
                     frmE.lblName.Text = dataGridViewBrowse[2, e.RowIndex].Value.ToString();
                     frmE.lblPrice.Text = dataGridViewBrowse[5, e.RowIndex].Value.ToString();
+                    frmE.tabControl1.TabPages.Clear();
+                    TabPage tab2 = new TabPage("Consumable");
+                    frmE.tabControl1.TabPages.Add(tab2);
+                    tab2.Controls.Add(frmE.panelC);
+                    frmE.panelC.Dock = DockStyle.Fill;
                     frmE.ShowDialog();
+                    
                 }
                 else
                 {
                     cn.Open();
-                    cm = new SqlCommand("SELECT ID FROM tblCart WHERE ID LIKE '" + id.ToString() + "' ", cn);
+                    cm = new SqlCommand("SELECT Item_ID FROM tblCart WHERE Item_ID LIKE '" + id.ToString() + "' ", cn);
                     dr = cm.ExecuteReader();
                     if (dr.Read())
                     {
@@ -172,10 +225,17 @@ namespace Capstone
                     lblCheck.Text = check;
                     if (check == string.Empty)
                     {
-                        frmQ.lblPrice.Text = dataGridViewBrowse[5, e.RowIndex].Value.ToString();
-                        frmQ.lblTotal.Text = "0";
-                        frmQ.txtQuantity.Text = "0";
-                        frmQ.ShowDialog();
+                        frmE.lblName2.Text = dataGridViewBrowse[2, e.RowIndex].Value.ToString();
+                        frmE.lblPrice2.Text = dataGridViewBrowse[5, e.RowIndex].Value.ToString();
+                        frmE.lblTotal.Text = "0";
+                        frmE.txtQuantity.Text = "0";
+                        frmE.tabControl1.SelectedIndex = 1;
+                        frmE.tabControl1.TabPages.Clear();
+                        TabPage tab = new TabPage("Non Consumable");
+                        frmE.tabControl1.TabPages.Add(tab);
+                        tab.Controls.Add(frmE.panelNC);
+                        
+                        frmE.ShowDialog();
                     }
                     else
                     {
