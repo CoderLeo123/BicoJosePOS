@@ -225,6 +225,19 @@ namespace Capstone
                     lblCheck.Text = check;
                     if (check == string.Empty)
                     {
+
+                        cn.Open();
+                        cm = new SqlCommand("SELECT Num, Quantity, Item_ID, Stock_ID FROM ViewStockItemType WHERE Item_ID LIKE '" + id.ToString() + "' ", cn);
+                        dr = cm.ExecuteReader();
+                        while (dr.Read())
+                        {
+                            i += 1;
+                            frmE.dataGridViewNC.Rows.Add(i, dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString());
+                        }
+                        dr.Close();
+                        cn.Close();
+
+
                         frmE.lblName2.Text = dataGridViewBrowse[2, e.RowIndex].Value.ToString();
                         frmE.lblPrice2.Text = dataGridViewBrowse[5, e.RowIndex].Value.ToString();
                         frmE.lblTotal.Text = "0";
@@ -234,7 +247,9 @@ namespace Capstone
                         TabPage tab = new TabPage("Non Consumable");
                         frmE.tabControl1.TabPages.Add(tab);
                         tab.Controls.Add(frmE.panelNC);
-                        
+                        tab.Controls.Add(frmE.lblName2);
+                        tab.Controls.Add(frmE.dataGridViewNC);
+
                         frmE.ShowDialog();
                     }
                     else
