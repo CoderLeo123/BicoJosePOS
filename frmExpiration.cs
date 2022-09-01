@@ -267,14 +267,15 @@ namespace Capstone
 
 
                  r = frmB.dataGridViewBrowse.SelectedRows[0].Index;
+                int y = dataGridViewNC.SelectedRows[0].Index;
                 if ((e.KeyChar == 13) && (txtQuantity.Text != String.Empty))
                 {
 
 
                     cn.Open();
-                    cm = new SqlCommand("INSERT INTO tblCart (Item_ID, Transaction_No, Quantity, Price, Total, Date, Status) VALUES (@Item_ID, @TransactionNo, @Quantity, @Price, @Total, @Date, 'Cart')", cn);
+                    cm = new SqlCommand("INSERT INTO tblCart (Stock_Num, Item_ID, Transaction_No, Quantity, Price, Total, Date, Status) VALUES (@Stock_Num, @Item_ID, @TransactionNo, @Quantity, @Price, @Total, @Date, 'Cart')", cn);
                     //cm.Parameters.AddWithValue("@Stock_ID", frmB.dataGridViewBrowse[1, i].Value.ToString());
-                    //cm.Parameters.AddWithValue("@Stock_Num", frmB.dataGridViewBrowse[1, i].Value.ToString());
+                    cm.Parameters.AddWithValue("@Stock_Num", dataGridViewNC[1, y].Value.ToString());
                     cm.Parameters.AddWithValue("@Item_ID", frmB.dataGridViewBrowse[1, r].Value.ToString());
                     cm.Parameters.AddWithValue("@TransactionNo", frmB.lblTrans.Text);
                     cm.Parameters.AddWithValue("@Quantity", txtQuantity.Text);

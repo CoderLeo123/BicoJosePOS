@@ -32,6 +32,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnClose = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
@@ -63,6 +65,12 @@
             this.panelC = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.NONCONSUMABLE = new System.Windows.Forms.TabPage();
+            this.dataGridViewNC = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.number = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stocks = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StockID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblName2 = new System.Windows.Forms.Label();
             this.panelNC = new System.Windows.Forms.Panel();
             this.lblPrice2 = new System.Windows.Forms.Label();
@@ -82,6 +90,7 @@
             this.panelC.SuspendLayout();
             this.panel6.SuspendLayout();
             this.NONCONSUMABLE.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewNC)).BeginInit();
             this.panelNC.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -465,6 +474,7 @@
             // 
             // NONCONSUMABLE
             // 
+            this.NONCONSUMABLE.Controls.Add(this.dataGridViewNC);
             this.NONCONSUMABLE.Controls.Add(this.lblName2);
             this.NONCONSUMABLE.Controls.Add(this.panelNC);
             this.NONCONSUMABLE.Location = new System.Drawing.Point(4, 46);
@@ -475,11 +485,95 @@
             this.NONCONSUMABLE.Text = "Non-Consumable";
             this.NONCONSUMABLE.UseVisualStyleBackColor = true;
             // 
+            // dataGridViewNC
+            // 
+            this.dataGridViewNC.AllowUserToAddRows = false;
+            this.dataGridViewNC.AllowUserToResizeColumns = false;
+            this.dataGridViewNC.AllowUserToResizeRows = false;
+            this.dataGridViewNC.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridViewNC.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewNC.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.dataGridViewNC.ColumnHeadersHeight = 40;
+            this.dataGridViewNC.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridViewNC.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn5,
+            this.number,
+            this.stocks,
+            this.ItemID,
+            this.StockID});
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Azure;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewNC.DefaultCellStyle = dataGridViewCellStyle6;
+            this.dataGridViewNC.EnableHeadersVisualStyles = false;
+            this.dataGridViewNC.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.dataGridViewNC.Location = new System.Drawing.Point(40, 468);
+            this.dataGridViewNC.Name = "dataGridViewNC";
+            this.dataGridViewNC.RowHeadersVisible = false;
+            this.dataGridViewNC.RowHeadersWidth = 51;
+            this.dataGridViewNC.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dataGridViewNC.RowTemplate.Height = 29;
+            this.dataGridViewNC.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewNC.Size = new System.Drawing.Size(682, 165);
+            this.dataGridViewNC.TabIndex = 9;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewTextBoxColumn5.HeaderText = "#";
+            this.dataGridViewTextBoxColumn5.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Width = 61;
+            // 
+            // number
+            // 
+            this.number.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.number.HeaderText = "Num";
+            this.number.MinimumWidth = 6;
+            this.number.Name = "number";
+            this.number.Width = 105;
+            // 
+            // stocks
+            // 
+            this.stocks.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.stocks.HeaderText = "Available Stocks";
+            this.stocks.MinimumWidth = 6;
+            this.stocks.Name = "stocks";
+            this.stocks.ReadOnly = true;
+            // 
+            // ItemID
+            // 
+            this.ItemID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ItemID.HeaderText = "ItemID";
+            this.ItemID.MinimumWidth = 6;
+            this.ItemID.Name = "ItemID";
+            this.ItemID.Width = 126;
+            // 
+            // StockID
+            // 
+            this.StockID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.StockID.HeaderText = "StockID";
+            this.StockID.MinimumWidth = 6;
+            this.StockID.Name = "StockID";
+            this.StockID.Width = 137;
+            // 
             // lblName2
             // 
             this.lblName2.AutoSize = true;
             this.lblName2.ForeColor = System.Drawing.Color.Red;
-            this.lblName2.Location = new System.Drawing.Point(142, 81);
+            this.lblName2.Location = new System.Drawing.Point(227, 31);
             this.lblName2.Name = "lblName2";
             this.lblName2.Size = new System.Drawing.Size(81, 38);
             this.lblName2.TabIndex = 8;
@@ -493,7 +587,7 @@
             this.panelNC.Controls.Add(this.label6);
             this.panelNC.Controls.Add(this.label7);
             this.panelNC.Controls.Add(this.txtQuantity);
-            this.panelNC.Location = new System.Drawing.Point(117, 152);
+            this.panelNC.Location = new System.Drawing.Point(118, 81);
             this.panelNC.Name = "panelNC";
             this.panelNC.Size = new System.Drawing.Size(538, 357);
             this.panelNC.TabIndex = 0;
@@ -579,6 +673,7 @@
             this.panel6.ResumeLayout(false);
             this.NONCONSUMABLE.ResumeLayout(false);
             this.NONCONSUMABLE.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewNC)).EndInit();
             this.panelNC.ResumeLayout(false);
             this.panelNC.PerformLayout();
             this.ResumeLayout(false);
@@ -625,5 +720,11 @@
         public TabPage NONCONSUMABLE;
         public Panel panelC;
         public Panel panelNC;
+        public DataGridView dataGridViewNC;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private DataGridViewTextBoxColumn number;
+        private DataGridViewTextBoxColumn stocks;
+        private DataGridViewTextBoxColumn ItemID;
+        private DataGridViewTextBoxColumn StockID;
     }
 }
