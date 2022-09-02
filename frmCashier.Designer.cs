@@ -64,6 +64,7 @@
             this.MinusCart = new System.Windows.Forms.DataGridViewImageColumn();
             this.DeleteCart = new System.Windows.Forms.DataGridViewImageColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -404,7 +405,8 @@
             this.PlusCart,
             this.MinusCart,
             this.DeleteCart,
-            this.ID});
+            this.ID,
+            this.sd});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.Azure;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -525,6 +527,14 @@
             this.ID.Visible = false;
             this.ID.Width = 125;
             // 
+            // sd
+            // 
+            this.sd.HeaderText = "sd";
+            this.sd.MinimumWidth = 6;
+            this.sd.Name = "sd";
+            this.sd.Visible = false;
+            this.sd.Width = 125;
+            // 
             // frmCashier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
@@ -577,6 +587,7 @@
         private Label lblDate;
         public Label lblTransactionNo;
         public DataGridView dataGridViewCart;
+        public TextBox txtSearch;
         private DataGridViewTextBoxColumn NumCart;
         private DataGridViewTextBoxColumn DescriptionCart;
         private DataGridViewTextBoxColumn Expiration;
@@ -588,6 +599,6 @@
         private DataGridViewImageColumn MinusCart;
         private DataGridViewImageColumn DeleteCart;
         private DataGridViewTextBoxColumn ID;
-        public TextBox txtSearch;
+        private DataGridViewTextBoxColumn sd;
     }
 }
