@@ -87,7 +87,7 @@ namespace Capstone
                     try
                     {
                         cn.Open();
-                        cm = new SqlCommand("UPDATE tblCart SET Discount = '" + txtDiscountedAmount.Text + "' WHERE ID LIKE '%" + lblID.Text + "'", cn);
+                        cm = new SqlCommand("UPDATE tblCart SET Discount = '" + txtDiscountedAmount.Text + "' WHERE num LIKE '%" + lblID.Text + "'", cn);
                         cm.ExecuteNonQuery();
                         cn.Close();
                         frmC.LoadCart();

@@ -190,6 +190,7 @@ namespace Capstone
         {
             if (dataGridViewSelected.Rows.Count > 0)
             {
+                
                 r = dataGridViewSelected.SelectedRows[0].Index;
                 int y = frmB.dataGridViewBrowse.SelectedRows[0].Index;
                 if (MessageBox.Show("Are you sure you want to save this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -264,7 +265,7 @@ namespace Capstone
                     e.Handled = true;
                     Compute();
                 }
-
+                
 
                  r = frmB.dataGridViewBrowse.SelectedRows[0].Index;
                 int y = dataGridViewNC.SelectedRows[0].Index;
