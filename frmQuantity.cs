@@ -109,9 +109,9 @@ namespace Capstone
                     cm.ExecuteNonQuery();
                     cn.Close();
                     MessageBox.Show("Successfully Added!", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    frmB.LoadCartItem();
+                    
                 }
-                frmB.LoadCartItem();
+                
             }
             catch (Exception ex)
             {

@@ -121,9 +121,9 @@ namespace Capstone
                     }
                     total += Double.Parse(dr[5].ToString());
                     discount += Double.Parse(dr[11].ToString());
-                                            // 0-Num            2-EXPIRATION / 2-Expiration_Date      4-QUANTITY / 3-Quantity              6-TOTAL / 5-TOTAL                                                                
-                    i += 1;                 // 1-DESCRIPTION / 1-Description        3-PRICE / 4-Price                 5-DISCOUNT / 11-Discount                      7-Plus                         8-Minus                 9-Delete              10-ID / 5-Stock_Num
-                    dataGridViewCart.Rows.Add(i, dr[1].ToString(), ExpirationDate, dr[4].ToString(), dr[3].ToString(), dr[11].ToString(), dr[5].ToString(), Properties.Resources._Add, Properties.Resources.Minus, Properties.Resources._Delete, dr[0].ToString(), dr[12].ToString());
+                                            // 0-Num            2-EXPIRATION / 2-Expiration_Date      4-QUANTITY / 3-Quantity              6-TOTAL / 5-TOTAL                                                                                                     10-CartID / 12-Num
+                    i += 1;                 // 1-DESCRIPTION / 1-Description        3-PRICE / 4-Price                 5-DISCOUNT / 11-Discount                      7-Plus                         8-Minus                 9-Delete              10-StockID / 0-Stock_Num           10-ItemID / 9-Item_ID 
+                    dataGridViewCart.Rows.Add(i, dr[1].ToString(), ExpirationDate, dr[4].ToString(), dr[3].ToString(), dr[11].ToString(), dr[5].ToString(), Properties.Resources._Add, Properties.Resources.Minus, Properties.Resources._Delete, dr[0].ToString(), dr[12].ToString(), dr[9].ToString());
                     hasRecord = true;   
                 }
                 dr.Close();
@@ -224,6 +224,7 @@ namespace Capstone
         private void btnSettlePayment_Click(object sender, EventArgs e)
         {
             frmSettlePayment frm = new frmSettlePayment();
+            frm.txtTotal.Text = lblNetTotal.Text;
             frm.ShowDialog();
         }
 
