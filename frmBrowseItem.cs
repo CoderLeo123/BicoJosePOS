@@ -29,7 +29,7 @@ namespace Capstone
             cn = new SqlConnection(dbcon.MyConnection());
             LoadRecordsBrowse();
             this.frmC = frmC;
-            LoadCart();
+            frmC.LoadCart();
         }
         public void LoadRecordsBrowse()
         {
@@ -58,61 +58,20 @@ namespace Capstone
                 MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        public void LoadCartItem()
-        {
-            try
-            {
-                int i = 0;
-                frmC.dataGridViewCart.Rows.Clear();
-                cn.Open();
-                cm = new SqlCommand("SELECT * from ViewCartItem WHERE Status LIKE 'Cart'", cn);
-                dr = cm.ExecuteReader();
-                while (dr.Read())
-                {
-                    string ExpirationDate = dr[2].ToString();
-                    //if (string.IsNullOrEmpty(ExpirationDate))
-                    //{
-                    //    ExpirationDate = "Non-Perishable";
-
-                    //}
-                    //else
-                    //{
-                    //    if (ExpirationDate.Substring(0, 10) != "")
-                    //    {
-                    //        ExpirationDate = dr[2].ToString().Substring(0, 9);
-                    //    }
-                    //    else
-                    //    {
-                    //        ExpirationDate = dr[2].ToString().Substring(0, 10);
-                    //    }
-
-                    //}
-
-                                             // 0-Num                2-EXPIRATION / 2-Classification     4-QUANTITY / 3-Quantity              6-TOTAL / 5-TOTAL                                                                
-                    i += 1;                 // 1-DESCRIPTION / 1-Description           3-PRICE / 4-Price                 5-DISCOUNT / 11-Discount                      7-Plus                         8-Minus                 9-Delete               10-ID / 0 -Stock_Num
-                    frmC.dataGridViewCart.Rows.Add(i, dr[1].ToString(), ExpirationDate, dr[3].ToString(), dr[4].ToString(), dr[5].ToString(), dr[6].ToString(), Properties.Resources._Add, Properties.Resources.Minus, Properties.Resources._Delete, dr[11].ToString());
-
-                }
-                dr.Close();
-                cn.Close();
-
-            }
-            catch (Exception ex)
-            {
-                cn.Close();
-                MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-
+       
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+        
         public void LoadCart()
         {
             try
             {
+                Boolean hasRecord = false;
                 int i = 0;
+                double total = 0;
+                double discount = 0;
                 frmC.dataGridViewCart.Rows.Clear();
                 cn.Open();
                 cm = new SqlCommand("SELECT * from ViewCartStockItem WHERE Status LIKE 'Cart'", cn);
@@ -138,14 +97,25 @@ namespace Capstone
 
                     }
 
-                                            // 0-Num                2-EXPIRATION / 2-Expiration_Date     4-QUANTITY / 3-Quantity              6-TOTAL / 5-TOTAL                                                                
-                    i += 1;                 // 1-DESCRIPTION / 1-Description           3-PRICE / 4-Price                 5-DISCOUNT / 11-Discount                      7-Plus                         8-Minus                 9-Delete               10-ID / 0 -Stock_Num
-                    frmC.dataGridViewCart.Rows.Add(i, dr[1].ToString(), ExpirationDate, dr[4].ToString(), dr[3].ToString(), dr[11].ToString(), dr[5].ToString(), Properties.Resources._Add, Properties.Resources.Minus, Properties.Resources._Delete, dr[0].ToString(), dr[12].ToString());
+                    total += Double.Parse(dr[5].ToString());
+                    discount += Double.Parse(dr[11].ToString());
 
+                                             // 0-Num                2-EXPIRATION / 2-Expiration_Date     4-QUANTITY / 3-Quantity              6-TOTAL / 5-TOTAL                                                                                                       10-CartID / 12-Num
+                    i += 1;                 // 1-DESCRIPTION / 1-Description           3-PRICE / 4-Price                 5-DISCOUNT / 11-Discount                      7-Plus                         8-Minus                 9-Delete              10-StockID / 0-Stock_Num           10-ItemID / 9-Item_ID
+                    frmC.dataGridViewCart.Rows.Add(i, dr[1].ToString(), ExpirationDate, dr[4].ToString(), dr[3].ToString(), dr[11].ToString(), dr[5].ToString(), Properties.Resources._Add, Properties.Resources.Minus, Properties.Resources._Delete, dr[0].ToString(), dr[12].ToString(), dr[9].ToString());
+                    hasRecord = true;
                 }
                 dr.Close();
                 cn.Close();
-
+                frmC.lblDiscount.Text = discount.ToString("#,##0.00");
+                frmC.lblSalesTotal.Text = total.ToString("#,##0.00");
+                frmC.GetCartTotal();
+                if (hasRecord == true)
+                {
+                    frmC.btnSettlePayment.Enabled = true; frmC.btnAddDiscount.Enabled = true; frmC.btnClearCart.Enabled = true;
+                }
+                else
+                { frmC.btnSettlePayment.Enabled = false; frmC.btnAddDiscount.Enabled = false; frmC.btnClearCart.Enabled = false; }
             }
             catch (Exception ex)
             {

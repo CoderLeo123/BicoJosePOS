@@ -91,7 +91,10 @@ namespace Capstone
         {
             try
             {
+                Boolean hasRecord = false;
                 int i = 0;
+                double total = 0;
+                double discount = 0;
                 dataGridViewCart.Rows.Clear();
                 cn.Open();
                 cm = new SqlCommand("SELECT * from ViewCartStockItem WHERE Description Like '%" + txtSearch.Text + "%' AND Status LIKE 'Cart'", cn);
@@ -116,20 +119,38 @@ namespace Capstone
                         }
 
                     }
-                                            // 0-Num            2-EXPIRATION / 2-Expiration_Date      4-QUANTITY / 3-Quantity              6-TOTAL / 5-TOTAL                                                                
-                    i += 1;                 // 1-DESCRIPTION / 1-Description        3-PRICE / 4-Price                 5-DISCOUNT / 11-Discount                      7-Plus                         8-Minus                 9-Delete              10-ID / 5-Stock_Num
-                    dataGridViewCart.Rows.Add(i, dr[1].ToString(), ExpirationDate, dr[4].ToString(), dr[3].ToString(), dr[11].ToString(), dr[5].ToString(), Properties.Resources._Add, Properties.Resources.Minus, Properties.Resources._Delete, dr[0].ToString(), dr[12].ToString());
-
+                    total += Double.Parse(dr[5].ToString());
+                    discount += Double.Parse(dr[11].ToString());
+                                            // 0-Num            2-EXPIRATION / 2-Expiration_Date      4-QUANTITY / 3-Quantity              6-TOTAL / 5-TOTAL                                                                                                     10-CartID / 12-Num
+                    i += 1;                 // 1-DESCRIPTION / 1-Description        3-PRICE / 4-Price                 5-DISCOUNT / 11-Discount                      7-Plus                         8-Minus                 9-Delete              10-StockID / 0-Stock_Num           10-ItemID / 9-Item_ID 
+                    dataGridViewCart.Rows.Add(i, dr[1].ToString(), ExpirationDate, dr[4].ToString(), dr[3].ToString(), dr[11].ToString(), dr[5].ToString(), Properties.Resources._Add, Properties.Resources.Minus, Properties.Resources._Delete, dr[0].ToString(), dr[12].ToString(), dr[9].ToString());
+                    hasRecord = true;   
                 }
                 dr.Close();
                 cn.Close();
-
+                lblDiscount.Text = discount.ToString("#,##0.00");
+                lblSalesTotal.Text = total.ToString("#,##0.00");
+                GetCartTotal();
+                if (hasRecord == true) 
+                { btnSettlePayment.Enabled = true; btnAddDiscount.Enabled = true; btnClearCart.Enabled = true; 
+                } else 
+                { btnSettlePayment.Enabled = false; btnAddDiscount.Enabled = false; btnClearCart.Enabled = false; }
             }
             catch (Exception ex)
             {
                 cn.Close();
                 MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+        public void GetCartTotal()
+        {
+            double discount = double.Parse(lblDiscount.Text);
+            double grossSales = double.Parse(lblSalesTotal.Text);
+            double payment = double.Parse(lblPayment.Text);
+            double netTotal = grossSales - discount;
+            //double change = netTotal - payment;
+
+            lblNetTotal.Text = netTotal.ToString("#,##0.00");
         }
         private void btnLogout_Click(object sender, EventArgs e)
         {
@@ -194,7 +215,7 @@ namespace Capstone
                 int i = dataGridViewCart.SelectedRows[0].Index;
                 frmDiscount frm = new frmDiscount(this);
                 frm.txtPriceDiscount.Text = dataGridViewCart[6, i].Value.ToString();
-                frm.lblID.Text = dataGridViewCart[10, i].Value.ToString();
+                frm.lblID.Text = dataGridViewCart[11, i].Value.ToString();
                 frm.ShowDialog();
             }
 
@@ -203,6 +224,7 @@ namespace Capstone
         private void btnSettlePayment_Click(object sender, EventArgs e)
         {
             frmSettlePayment frm = new frmSettlePayment();
+            frm.txtTotal.Text = lblNetTotal.Text;
             frm.ShowDialog();
         }
 
@@ -222,7 +244,30 @@ namespace Capstone
         {
             GenerateTransactionNo();
         }
+        public void ComputeUnitTotal()
+        {
+            if (dataGridViewCart.Rows.Count > 0)
+            {
+                for (int i = 0; i < dataGridViewCart.Rows.Count; i++)
+                {
+                    //int i = dataGridViewCart.SelectedRows[0].Index;
+                    float price = float.Parse(dataGridViewCart.Rows[i].Cells[3].Value.ToString());
+                    int qty = int.Parse(dataGridViewCart.Rows[i].Cells[4].Value.ToString());
+                    float total;
+                    try
+                    {
+                        total = float.Parse(price.ToString()) * int.Parse(qty.ToString());
+                        dataGridViewCart.Rows[i].Cells[6].Value = total.ToString("00.00");
 
+                    }
+                    catch (Exception ex)
+                    {
+                        cn.Close();
+                        MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
         private void dataGridViewCart_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             string colName = dataGridViewCart.Columns[e.ColumnIndex].Name;
@@ -246,6 +291,7 @@ namespace Capstone
                 cm.ExecuteNonQuery();
                 cn.Close();
                 LoadCart();
+                ComputeUnitTotal();
             }
             else if (colName == "MinusCart")
             {
@@ -254,6 +300,7 @@ namespace Capstone
                 cm.ExecuteNonQuery();
                 cn.Close();
                 LoadCart();
+                ComputeUnitTotal();
             }
 
         }
@@ -277,6 +324,11 @@ namespace Capstone
                 cn.Close();
                 MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnClearCart_Click(object sender, EventArgs e)
+        {
+            dataGridViewCart.Rows.Clear();
         }
     }
 

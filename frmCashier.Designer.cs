@@ -31,6 +31,23 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.label12 = new System.Windows.Forms.Label();
+            this.lblTerms = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.lblMethod = new System.Windows.Forms.Label();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lblSalesTotal = new System.Windows.Forms.Label();
+            this.lblNetTotal = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.lblChange = new System.Windows.Forms.Label();
+            this.lblDiscount = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.lblPayment = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.lblTotal = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -65,6 +82,10 @@
             this.DeleteCart = new System.Windows.Forms.DataGridViewImageColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel2.SuspendLayout();
+            this.panel8.SuspendLayout();
+            this.panel7.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -75,11 +96,194 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.panel8);
+            this.panel2.Controls.Add(this.panel7);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 787);
+            this.panel2.Location = new System.Drawing.Point(0, 679);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1600, 163);
+            this.panel2.Size = new System.Drawing.Size(1600, 271);
             this.panel2.TabIndex = 1;
+            // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.label12);
+            this.panel8.Controls.Add(this.lblTerms);
+            this.panel8.Controls.Add(this.label7);
+            this.panel8.Controls.Add(this.lblMethod);
+            this.panel8.Location = new System.Drawing.Point(1175, 6);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(422, 246);
+            this.panel8.TabIndex = 1;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label12.Location = new System.Drawing.Point(3, 122);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(227, 41);
+            this.label12.TabIndex = 12;
+            this.label12.Text = "Payment Terms";
+            // 
+            // lblTerms
+            // 
+            this.lblTerms.AutoSize = true;
+            this.lblTerms.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblTerms.Location = new System.Drawing.Point(24, 185);
+            this.lblTerms.Name = "lblTerms";
+            this.lblTerms.Size = new System.Drawing.Size(102, 41);
+            this.lblTerms.TabIndex = 13;
+            this.lblTerms.Text = "Select";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label7.Location = new System.Drawing.Point(3, 9);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(290, 41);
+            this.label7.TabIndex = 10;
+            this.label7.Text = "Method of Payment";
+            // 
+            // lblMethod
+            // 
+            this.lblMethod.AutoSize = true;
+            this.lblMethod.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblMethod.Location = new System.Drawing.Point(24, 50);
+            this.lblMethod.Name = "lblMethod";
+            this.lblMethod.Size = new System.Drawing.Size(102, 41);
+            this.lblMethod.TabIndex = 11;
+            this.lblMethod.Text = "Select";
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.label14);
+            this.panel7.Controls.Add(this.label3);
+            this.panel7.Controls.Add(this.lblSalesTotal);
+            this.panel7.Controls.Add(this.lblNetTotal);
+            this.panel7.Controls.Add(this.label10);
+            this.panel7.Controls.Add(this.lblChange);
+            this.panel7.Controls.Add(this.lblDiscount);
+            this.panel7.Controls.Add(this.label9);
+            this.panel7.Controls.Add(this.lblPayment);
+            this.panel7.Controls.Add(this.label5);
+            this.panel7.Controls.Add(this.label8);
+            this.panel7.Location = new System.Drawing.Point(675, 6);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(494, 262);
+            this.panel7.TabIndex = 0;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label14.Location = new System.Drawing.Point(34, 132);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(402, 41);
+            this.label14.TabIndex = 10;
+            this.label14.Text = "--------------------------------";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(20, 9);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(246, 41);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Gross Sales Total";
+            // 
+            // lblSalesTotal
+            // 
+            this.lblSalesTotal.AutoSize = true;
+            this.lblSalesTotal.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblSalesTotal.Location = new System.Drawing.Point(356, 9);
+            this.lblSalesTotal.Name = "lblSalesTotal";
+            this.lblSalesTotal.Size = new System.Drawing.Size(94, 41);
+            this.lblSalesTotal.TabIndex = 2;
+            this.lblSalesTotal.Text = "00.00";
+            // 
+            // lblNetTotal
+            // 
+            this.lblNetTotal.AutoSize = true;
+            this.lblNetTotal.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblNetTotal.ForeColor = System.Drawing.Color.Red;
+            this.lblNetTotal.Location = new System.Drawing.Point(356, 91);
+            this.lblNetTotal.Name = "lblNetTotal";
+            this.lblNetTotal.Size = new System.Drawing.Size(94, 41);
+            this.lblNetTotal.TabIndex = 6;
+            this.lblNetTotal.Text = "00.00";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label10.Location = new System.Drawing.Point(20, 91);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(143, 41);
+            this.label10.TabIndex = 4;
+            this.label10.Text = "Net Total";
+            // 
+            // lblChange
+            // 
+            this.lblChange.AutoSize = true;
+            this.lblChange.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblChange.ForeColor = System.Drawing.Color.Red;
+            this.lblChange.Location = new System.Drawing.Point(356, 214);
+            this.lblChange.Name = "lblChange";
+            this.lblChange.Size = new System.Drawing.Size(94, 41);
+            this.lblChange.TabIndex = 9;
+            this.lblChange.Text = "00.00";
+            // 
+            // lblDiscount
+            // 
+            this.lblDiscount.AutoSize = true;
+            this.lblDiscount.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblDiscount.Location = new System.Drawing.Point(356, 50);
+            this.lblDiscount.Name = "lblDiscount";
+            this.lblDiscount.Size = new System.Drawing.Size(94, 41);
+            this.lblDiscount.TabIndex = 3;
+            this.lblDiscount.Text = "00.00";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label9.Location = new System.Drawing.Point(22, 173);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(138, 41);
+            this.label9.TabIndex = 5;
+            this.label9.Text = "Payment";
+            // 
+            // lblPayment
+            // 
+            this.lblPayment.AutoSize = true;
+            this.lblPayment.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblPayment.Location = new System.Drawing.Point(356, 173);
+            this.lblPayment.Name = "lblPayment";
+            this.lblPayment.Size = new System.Drawing.Size(94, 41);
+            this.lblPayment.TabIndex = 7;
+            this.lblPayment.Text = "00.00";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(20, 50);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(140, 41);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Discount";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label8.Location = new System.Drawing.Point(22, 214);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(122, 41);
+            this.label8.TabIndex = 8;
+            this.label8.Text = "Change";
             // 
             // panel3
             // 
@@ -134,7 +338,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel4.Location = new System.Drawing.Point(1211, 78);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(389, 709);
+            this.panel4.Size = new System.Drawing.Size(389, 601);
             this.panel4.TabIndex = 3;
             // 
             // panel6
@@ -214,6 +418,7 @@
             // btnClearCart
             // 
             this.btnClearCart.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnClearCart.Enabled = false;
             this.btnClearCart.FlatAppearance.BorderSize = 0;
             this.btnClearCart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClearCart.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -228,10 +433,12 @@
             this.btnClearCart.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnClearCart.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnClearCart.UseVisualStyleBackColor = true;
+            this.btnClearCart.Click += new System.EventHandler(this.btnClearCart_Click);
             // 
             // btnSettlePayment
             // 
             this.btnSettlePayment.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnSettlePayment.Enabled = false;
             this.btnSettlePayment.FlatAppearance.BorderSize = 0;
             this.btnSettlePayment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSettlePayment.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -251,6 +458,7 @@
             // btnAddDiscount
             // 
             this.btnAddDiscount.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAddDiscount.Enabled = false;
             this.btnAddDiscount.FlatAppearance.BorderSize = 0;
             this.btnAddDiscount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddDiscount.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -374,7 +582,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(0, 214);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1211, 573);
+            this.panel5.Size = new System.Drawing.Size(1211, 465);
             this.panel5.TabIndex = 5;
             // 
             // dataGridViewCart
@@ -406,7 +614,8 @@
             this.MinusCart,
             this.DeleteCart,
             this.ID,
-            this.sd});
+            this.sd,
+            this.ItemID});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.Azure;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -425,7 +634,7 @@
             this.dataGridViewCart.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridViewCart.RowTemplate.Height = 29;
             this.dataGridViewCart.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewCart.Size = new System.Drawing.Size(1211, 573);
+            this.dataGridViewCart.Size = new System.Drawing.Size(1211, 465);
             this.dataGridViewCart.TabIndex = 3;
             this.dataGridViewCart.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewCart_CellContentClick);
             // 
@@ -521,7 +730,7 @@
             // 
             // ID
             // 
-            this.ID.HeaderText = "ID";
+            this.ID.HeaderText = "StockID";
             this.ID.MinimumWidth = 6;
             this.ID.Name = "ID";
             this.ID.Visible = false;
@@ -529,11 +738,19 @@
             // 
             // sd
             // 
-            this.sd.HeaderText = "sd";
+            this.sd.HeaderText = "CartID";
             this.sd.MinimumWidth = 6;
             this.sd.Name = "sd";
             this.sd.Visible = false;
             this.sd.Width = 125;
+            // 
+            // ItemID
+            // 
+            this.ItemID.HeaderText = "ItemID";
+            this.ItemID.MinimumWidth = 6;
+            this.ItemID.Name = "ItemID";
+            this.ItemID.Visible = false;
+            this.ItemID.Width = 125;
             // 
             // frmCashier
             // 
@@ -551,6 +768,11 @@
             this.Name = "frmCashier";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmCashier";
+            this.panel2.ResumeLayout(false);
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel4.ResumeLayout(false);
@@ -569,16 +791,8 @@
         private Panel panel3;
         private Panel panel4;
         private Panel panel6;
-        private Button btnNewTransaction;
         private Panel panel1;
         private Panel panel5;
-        private Button btnLogout;
-        private Button btnChangePass;
-        private Button btnDailySales;
-        private Button btnClearCart;
-        private Button btnSettlePayment;
-        private Button btnAddDiscount;
-        private Button btnBrowseItem;
         private Label label1;
         private Label lblTotal;
         private Label label2;
@@ -588,6 +802,31 @@
         public Label lblTransactionNo;
         public DataGridView dataGridViewCart;
         public TextBox txtSearch;
+        private Panel panel7;
+        private Label label5;
+        private Label label3;
+        public Label lblDiscount;
+        public Label lblSalesTotal;
+        public Button btnNewTransaction;
+        public Button btnLogout;
+        public Button btnChangePass;
+        public Button btnDailySales;
+        public Button btnClearCart;
+        public Button btnSettlePayment;
+        public Button btnAddDiscount;
+        public Button btnBrowseItem;
+        public Label lblPayment;
+        public Label lblNetTotal;
+        private Label label9;
+        private Label label10;
+        private Panel panel8;
+        private Label label12;
+        public Label lblTerms;
+        private Label label7;
+        public Label lblMethod;
+        private Label label14;
+        public Label lblChange;
+        private Label label8;
         private DataGridViewTextBoxColumn NumCart;
         private DataGridViewTextBoxColumn DescriptionCart;
         private DataGridViewTextBoxColumn Expiration;
@@ -600,5 +839,6 @@
         private DataGridViewImageColumn DeleteCart;
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn sd;
+        private DataGridViewTextBoxColumn ItemID;
     }
 }
