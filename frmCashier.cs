@@ -222,7 +222,30 @@ namespace Capstone
         {
             GenerateTransactionNo();
         }
+        public void ComputeUnitTotal()
+        {
+            if (dataGridViewCart.Rows.Count > 0)
+            {
+                for (int i = 0; i < dataGridViewCart.Rows.Count; i++)
+                {
+                    //int i = dataGridViewCart.SelectedRows[0].Index;
+                    float price = float.Parse(dataGridViewCart.Rows[i].Cells[3].Value.ToString());
+                    int qty = int.Parse(dataGridViewCart.Rows[i].Cells[4].Value.ToString());
+                    float total;
+                    try
+                    {
+                        total = float.Parse(price.ToString()) * int.Parse(qty.ToString());
+                        dataGridViewCart.Rows[i].Cells[6].Value = total.ToString("00.00");
 
+                    }
+                    catch (Exception ex)
+                    {
+                        cn.Close();
+                        MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
         private void dataGridViewCart_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             string colName = dataGridViewCart.Columns[e.ColumnIndex].Name;
@@ -246,6 +269,7 @@ namespace Capstone
                 cm.ExecuteNonQuery();
                 cn.Close();
                 LoadCart();
+                ComputeUnitTotal();
             }
             else if (colName == "MinusCart")
             {
@@ -254,6 +278,7 @@ namespace Capstone
                 cm.ExecuteNonQuery();
                 cn.Close();
                 LoadCart();
+                ComputeUnitTotal();
             }
 
         }
