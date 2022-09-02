@@ -118,7 +118,7 @@ namespace Capstone
                     }
                                             // 0-Num            2-EXPIRATION / 2-Expiration_Date      4-QUANTITY / 3-Quantity              6-TOTAL / 5-TOTAL                                                                
                     i += 1;                 // 1-DESCRIPTION / 1-Description        3-PRICE / 4-Price                 5-DISCOUNT / 11-Discount                      7-Plus                         8-Minus                 9-Delete              10-ID / 5-Stock_Num
-                    dataGridViewCart.Rows.Add(i, dr[1].ToString(), dr[2].ToString(), dr[4].ToString(), dr[3].ToString(), dr[11].ToString(), dr[5].ToString(), Properties.Resources._Add, Properties.Resources.Minus, Properties.Resources._Delete, dr[0].ToString());
+                    dataGridViewCart.Rows.Add(i, dr[1].ToString(), ExpirationDate, dr[4].ToString(), dr[3].ToString(), dr[11].ToString(), dr[5].ToString(), Properties.Resources._Add, Properties.Resources.Minus, Properties.Resources._Delete, dr[0].ToString(), dr[12].ToString());
 
                 }
                 dr.Close();
@@ -231,29 +231,29 @@ namespace Capstone
                 if (MessageBox.Show("Remove this Item?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     cn.Open();
-                    cm = new SqlCommand("DELETE FROM tblCart WHERE Num LIKE '" + dataGridViewCart.Rows[e.RowIndex].Cells[10].Value.ToString() + "'", cn);
+                    cm = new SqlCommand("DELETE FROM tblCart WHERE Num LIKE '" + dataGridViewCart.Rows[e.RowIndex].Cells[11].Value.ToString() + "'", cn);
                     cm.ExecuteNonQuery();
                     cn.Close();
                     MessageBox.Show("Record has been successfully deleted.", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoadCartItem();
+                    LoadCart();
 
                 }
             }
             else if (colName == "PlusCart")
             {
                 cn.Open();
-                cm = new SqlCommand("UPDATE tblCart SET Quantity = Quantity + 1 WHERE Num LIKE '" + dataGridViewCart.Rows[e.RowIndex].Cells[10].Value.ToString() + "'", cn);
+                cm = new SqlCommand("UPDATE tblCart SET Quantity = Quantity + 1 WHERE Num LIKE '" + dataGridViewCart.Rows[e.RowIndex].Cells[11].Value.ToString() + "'", cn);
                 cm.ExecuteNonQuery();
                 cn.Close();
-                LoadCartItem();
+                LoadCart();
             }
             else if (colName == "MinusCart")
             {
                 cn.Open();
-                cm = new SqlCommand("UPDATE tblCart SET Quantity = Quantity - 1 WHERE Num LIKE '" + dataGridViewCart.Rows[e.RowIndex].Cells[10].Value.ToString() + "'", cn);
+                cm = new SqlCommand("UPDATE tblCart SET Quantity = Quantity - 1 WHERE Num LIKE '" + dataGridViewCart.Rows[e.RowIndex].Cells[11].Value.ToString() + "'", cn);
                 cm.ExecuteNonQuery();
                 cn.Close();
-                LoadCartItem();
+                LoadCart();
             }
 
         }
@@ -264,12 +264,12 @@ namespace Capstone
             {
                 if (txtSearch.Text == String.Empty)
                 {
-                    LoadCartItem();
+                    LoadCart();
                     return;
                 }
                 else
                 {
-                    LoadCartItem();
+                    LoadCart();
                 }
             }
             catch (Exception ex)
