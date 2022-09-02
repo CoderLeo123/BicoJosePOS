@@ -20,7 +20,7 @@ namespace Capstone
         SqlDataReader dr;
         string title = "BICO-JOSE System";
         frmCashier frmC;
-        string check = "";
+        string check = "", status = "";
         
 
         public frmBrowseItem(frmCashier frmC)
@@ -153,6 +153,7 @@ namespace Capstone
                 string id = dataGridViewBrowse[1, e.RowIndex].Value.ToString();
                 string classification = dataGridViewBrowse[7, e.RowIndex].Value.ToString();
                 
+
                 frmExpiration frmE = new frmExpiration(this);
                 int i = 0;
                 if ((classification == "Consumable") && (colName == "AddToCart"))
@@ -181,18 +182,22 @@ namespace Capstone
                 else
                 {
                     cn.Open();
-                    cm = new SqlCommand("SELECT Item_ID FROM tblCart WHERE Item_ID LIKE '" + id.ToString() + "' ", cn);
+                    cm = new SqlCommand("SELECT Item_ID, Status FROM tblCart WHERE Item_ID LIKE '" + id.ToString() + "' ", cn);
                     dr = cm.ExecuteReader();
                     if (dr.Read())
                     {
                         check = dr[0].ToString();
+                        status = dr[1].ToString();
                     }
                     else
                     {
                         check = "";
+                        status = "";
                     }
                     cn.Close();
                     lblCheck.Text = check;
+                    //check == string.Empty
+                    //status == "Sold"
                     if (check == string.Empty)
                     {
 
@@ -222,7 +227,7 @@ namespace Capstone
 
                         frmE.ShowDialog();
                     }
-                    else
+                    else //if (status == "Cart")
                     {
 
                         MessageBox.Show("Selected Item is already in the Cart", title, MessageBoxButtons.OK, MessageBoxIcon.Warning);

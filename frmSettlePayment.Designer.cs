@@ -47,6 +47,7 @@
             this.comBoxMethodPayment = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.lblTest = new System.Windows.Forms.Label();
             this.btnTwoH = new System.Windows.Forms.Button();
             this.btnTwenty = new System.Windows.Forms.Button();
             this.btnFifty = new System.Windows.Forms.Button();
@@ -297,6 +298,7 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.White;
+            this.panel4.Controls.Add(this.lblTest);
             this.panel4.Controls.Add(this.btnTwoH);
             this.panel4.Controls.Add(this.btnTwenty);
             this.panel4.Controls.Add(this.btnFifty);
@@ -321,6 +323,15 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(539, 622);
             this.panel4.TabIndex = 32;
+            // 
+            // lblTest
+            // 
+            this.lblTest.AutoSize = true;
+            this.lblTest.Location = new System.Drawing.Point(408, 43);
+            this.lblTest.Name = "lblTest";
+            this.lblTest.Size = new System.Drawing.Size(74, 31);
+            this.lblTest.TabIndex = 19;
+            this.lblTest.Text = "          ";
             // 
             // btnTwoH
             // 
@@ -567,6 +578,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -607,5 +619,6 @@
         private Button btnFiveH;
         private Button btnOneH;
         private Button btnThousand;
+        public Label lblTest;
     }
 }

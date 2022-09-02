@@ -82,6 +82,7 @@ namespace Capstone
 
                 frmBrowseItem frm = new frmBrowseItem(this);
                 frm.lblTrans.Text = lblTransactionNo.Text;
+                
                 frm.ShowDialog();
             }
 
@@ -223,8 +224,9 @@ namespace Capstone
 
         private void btnSettlePayment_Click(object sender, EventArgs e)
         {
-            frmSettlePayment frm = new frmSettlePayment();
+            frmSettlePayment frm = new frmSettlePayment(this);
             frm.txtTotal.Text = lblNetTotal.Text;
+            frm.lblTest.Text = dataGridViewCart.Rows.Count.ToString();
             frm.ShowDialog();
         }
 

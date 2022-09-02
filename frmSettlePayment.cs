@@ -18,10 +18,12 @@ namespace Capstone
         SqlDataReader dr;
         string title = "BICO-JOSE System";
         int num = 0;
-        public frmSettlePayment()
+        frmCashier frmC;
+        public frmSettlePayment(frmCashier frmAdd)
         {
             InitializeComponent();
             cn = new SqlConnection(dbcon.MyConnection());
+            frmC = frmAdd;
         }
 
         private void label5_Click(object sender, EventArgs e)
@@ -49,7 +51,11 @@ namespace Capstone
                     txtPayment.Text = "0";
                     txtPayment.SelectAll();
                 }
-                
+                if (change < 0)
+                {
+                    txtChange.Text = "0";
+                }
+
             }
             catch(Exception ex)
             {
@@ -60,7 +66,7 @@ namespace Capstone
         private void btnClear_Click(object sender, EventArgs e)
         {
             
-            txtPayment.Clear();
+            txtPayment.Text = "0";
             txtPayment.Focus();
         }
 
@@ -118,17 +124,18 @@ namespace Capstone
         {
             try
             {
-                frmCashier frmC = new frmCashier();
-                if (double.Parse(txtChange.Text) < 0 || (txtChange.Text == String.Empty))
+                
+                if ((double.Parse(txtChange.Text) < 0) || (txtPayment.Text == "0") || (txtPayment.Text == String.Empty))
                 {
                     MessageBox.Show("Insufficient amount. Please enter the correct amount!", title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
                 else
                 {
-                    comBoxMethodPayment.Text = frmC.lblMethod.Text;
+                    comBoxMethodPayment.SelectedItem = frmC.lblMethod.Text;
                     comBoxPaymentTerms.Text = frmC.lblTerms.Text;
-                    for (int i = 0; i < frmC.dataGridViewCart.Rows.Count; i++)
+                    
+                    for (int i = 0; i < int.Parse(lblTest.Text); i++)
                     {
                         cn.Open();
                         cm = new SqlCommand("UPDATE tblItem SET Quantity = Quantity - " + int.Parse(frmC.dataGridViewCart.Rows[i].Cells[4].Value.ToString()) + " WHERE Item_ID LIKE '" + frmC.dataGridViewCart.Rows[i].Cells[12].Value.ToString() + "'", cn);
@@ -136,7 +143,7 @@ namespace Capstone
                         cn.Close();
 
                         cn.Open();
-                        cm = new SqlCommand("UPDATE tblCart SET Status = 'Sold' WHERE num LIKE '" + frmC.dataGridViewCart.Rows[i].Cells[11].Value.ToString() + "'", cn);
+                        cm = new SqlCommand("UPDATE tblCart SET Status = 'Sold' WHERE Num LIKE '" + frmC.dataGridViewCart.Rows[i].Cells[11].Value.ToString() + "'", cn);
                         cm.ExecuteNonQuery();
                         cn.Close();
                     }
