@@ -18,7 +18,9 @@ namespace Capstone
         SqlDataReader dr;
         frmStockIn frmList;
         string title = "BICO-JOSE System";
-        
+        private bool mouseDown;
+        private Point lastLocation;
+
         public frmEditStock(frmStockIn frmAdd)
         {
             InitializeComponent();
@@ -120,6 +122,110 @@ namespace Capstone
                 txtQuantity.Text = "0";
                 txtQuantity.SelectAll();
             }
+        }
+
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseDown = true;
+            lastLocation = e.Location;
+
+        }
+
+        private void panel1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseDown)
+            {
+                this.Location = new Point(
+                    (this.Location.X - lastLocation.X) + e.X, (this.Location.Y - lastLocation.Y) + e.Y);
+
+                this.Update();
+            }
+
+        }
+        private void panel1_MouseUp(object sender, MouseEventArgs e)
+        {
+            mouseDown = false;
+        }
+        public void switchToEdit()
+        {
+            tabControl1.TabPages.Clear();
+            TabPage tab = new TabPage("Edit Stock");
+            tabControl1.TabPages.Add(tab);
+            tab.Controls.Add(panel2);
+        }
+        public void switchToAdd()
+        {
+            tabControl1.TabPages.Clear();
+            TabPage tab = new TabPage("Add Unit Measure");
+            tabControl1.TabPages.Add(tab);
+            tab.Controls.Add(panel3);
+        }
+
+        
+
+        private void button1_Click(object sender, EventArgs e) //add button
+        {
+            switchToAdd();
+ 
+        }
+
+        private void btnCancelUnit_Click(object sender, EventArgs e)
+        {
+            switchToEdit();
+            
+        }
+        public void LoadUnitMeasure()
+        {
+            comBoxUnit.Items.Clear();
+                cn.Open();
+                cm = new SqlCommand("SELECT UnitMeasure FROM tblUnitMeasure", cn);
+                dr = cm.ExecuteReader();
+                while (dr.Read())
+                {
+                comBoxUnit.Items.Add(dr[0].ToString());
+
+                }
+                dr.Close();
+                cn.Close();
+            }
+        private void btnSaveUnit_Click(object sender, EventArgs e)
+        {
+            
+            if (comBoxUnit.Items.Contains(txtUnit.Text))
+            {
+                MessageBox.Show("Unit is already in the list", title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                cn.Open();
+                cm = new SqlCommand("INSERT INTO tblUnitMeasure (UnitMeasure) VALUES(@Unit)", cn);
+                cm.Parameters.AddWithValue("@Unit", txtUnit.Text);
+                cm.ExecuteNonQuery();
+                cn.Close();
+                switchToEdit();
+                LoadUnitMeasure();
+            }
+        }
+
+        private void btnDeleteUnit_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnDeleteUnit_Click_1(object sender, EventArgs e)
+        {
+            string unit = comBoxUnit.SelectedItem.ToString();
+            cn.Open();
+            cm = new SqlCommand("DELETE FROM tblUnitMeasure WHERE UnitMeasure LIKE '" + unit + "'", cn);
+            cm.ExecuteNonQuery();
+            cn.Close();
+            
+            LoadUnitMeasure();
         }
     }
 }

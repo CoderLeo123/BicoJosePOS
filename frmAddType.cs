@@ -19,6 +19,8 @@ namespace Capstone
         string title = "BICO-JOSE System";
         frmProductsList frmList;
         string GID, initial = "T1001"; int count;
+        private bool mouseDown;
+        private Point lastLocation;
         public frmAddType(frmProductsList frmAdd)
         {
             InitializeComponent();
@@ -79,9 +81,6 @@ namespace Capstone
                 }
                 dr.Close();
                 cn.Close();
-
-                
-
             }
             catch (Exception ex)
             {
@@ -222,6 +221,30 @@ namespace Capstone
         private void comBoxProduct_SelectedIndexChanged(object sender, EventArgs e)
         {
             LoadProductID();
+        }
+
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseDown = true;
+            lastLocation = e.Location;
+
+        }
+
+        private void panel1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseDown)
+            {
+                this.Location = new Point(
+                    (this.Location.X - lastLocation.X) + e.X, (this.Location.Y - lastLocation.Y) + e.Y);
+
+                this.Update();
+            }
+
+        }
+
+        private void panel1_MouseUp(object sender, MouseEventArgs e)
+        {
+            mouseDown = false;
         }
 
         private void frmAddType_Load(object sender, EventArgs e)

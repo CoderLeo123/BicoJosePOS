@@ -133,7 +133,7 @@ namespace Capstone
                         cn.Close();
                         MessageBox.Show("Successfully Added!", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
                         frmList.LoadStock();
-
+                        this.Close();
                     }
                 }
             }
