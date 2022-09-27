@@ -212,8 +212,14 @@ namespace Capstone
                 try
                 {
                     frmEditStock frm = new frmEditStock(this);
+                    
+                    frm.tabControl1.TabPages.Clear();
+                    TabPage tab = new TabPage("Edit Stock");
+                    frm.tabControl1.TabPages.Add(tab);
+                    tab.Controls.Add(frm.panel2);
                     frm.lblID.Text = dataGridViewStockItems.Rows[e.RowIndex].Cells[11].Value.ToString();
                     frm.txtQuantity.Text = dataGridViewStockItems[5, e.RowIndex].Value.ToString();
+                    frm.LoadUnitMeasure();
                     frm.ShowDialog(this);
                 }
                 catch (Exception ex)

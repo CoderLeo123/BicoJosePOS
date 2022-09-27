@@ -18,8 +18,11 @@ namespace Capstone
         SqlDataReader dr;
         string title = "BICO-JOSE System";
         string ID; int count;
-        frmItemsList frmList;
-        public frmAddAccessories(frmItemsList frmAdd)
+        frmProductsList frmList;
+        private bool mouseDown;
+        private Point lastLocation;
+
+        public frmAddAccessories(frmProductsList frmAdd)
         {
 
             InitializeComponent();
@@ -132,7 +135,7 @@ namespace Capstone
                     MessageBox.Show("Record has been successfully saved.");
                     Clear();
                     btnUpdateAccessories.Enabled = false;
-                    frmList.LoadRecords();
+                    frmList.LoadRecordsItem();
                 }
             }catch(Exception ex)
             {
@@ -196,7 +199,7 @@ namespace Capstone
                     MessageBox.Show("Record has been successfully updated.");
                     Clear();
                     btnSave.Enabled = false;
-                    frmList.LoadRecords();
+                    frmList.LoadRecordsItem();
                     this.Close();
                 }
             }
@@ -231,6 +234,30 @@ namespace Capstone
         private void comBoxType_MouseClick(object sender, MouseEventArgs e)
         {
             
+        }
+
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseDown = true;
+            lastLocation = e.Location;
+
+        }
+
+        private void panel1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseDown)
+            {
+                this.Location = new Point(
+                    (this.Location.X - lastLocation.X) + e.X, (this.Location.Y - lastLocation.Y) + e.Y);
+
+                this.Update();
+            }
+
+        }
+
+        private void panel1_MouseUp(object sender, MouseEventArgs e)
+        {
+            mouseDown = false;
         }
     }
 }

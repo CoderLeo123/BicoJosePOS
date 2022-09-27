@@ -18,6 +18,9 @@ namespace Capstone
         SqlDataReader dr;
         string title = "BICO-JOSE System";
         int num = 0;
+        private bool mouseDown;
+        private Point lastLocation;
+
         public frmSettlePayment()
         {
             InitializeComponent();
@@ -203,6 +206,30 @@ namespace Capstone
         {
             num = int.Parse(txtPayment.Text) + 1000;
             txtPayment.Text = num.ToString();
+        }
+
+        private void panel2_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseDown = true;
+            lastLocation = e.Location;
+
+        }
+
+        private void panel2_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseDown)
+            {
+                this.Location = new Point(
+                    (this.Location.X - lastLocation.X) + e.X, (this.Location.Y - lastLocation.Y) + e.Y);
+
+                this.Update();
+            }
+
+        }
+
+        private void panel2_MouseUp(object sender, MouseEventArgs e)
+        {
+            mouseDown = false;
         }
     }
 }

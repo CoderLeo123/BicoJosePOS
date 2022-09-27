@@ -47,7 +47,6 @@
             this.txtTypeID = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtProduct = new System.Windows.Forms.TextBox();
-            
             this.label8 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnCloseAccessories)).BeginInit();
@@ -157,6 +156,9 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(820, 57);
             this.panel1.TabIndex = 18;
+            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
+            this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
+            this.panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseUp);
             // 
             // label1
             // 
@@ -273,10 +275,6 @@
             this.txtProduct.Size = new System.Drawing.Size(256, 38);
             this.txtProduct.TabIndex = 35;
             // 
-            // GenerateID
-            // 
-            
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -294,7 +292,6 @@
             this.ClientSize = new System.Drawing.Size(820, 554);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.comBoxClassification);
-            
             this.Controls.Add(this.txtProduct);
             this.Controls.Add(this.txtTypeID);
             this.Controls.Add(this.label7);
