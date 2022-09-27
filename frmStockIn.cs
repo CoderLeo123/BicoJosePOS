@@ -170,7 +170,54 @@ namespace Capstone
                 MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-        
+
+        public void LoadStockOnHand()
+        {
+            try
+            {
+                int i = 0;
+                dataGridViewStockHist.Rows.Clear();
+                cn.Open();
+                cm = new SqlCommand("SELECT * from ViewItemProductType WHERE (Description LIKE '%" + txtSearch.Text + "%' OR Type LIKE '%" + txtSearch.Text + "%')", cn);
+                dr = cm.ExecuteReader();
+                while (dr.Read())
+                {
+                    string ExpirationDate = dr[2].ToString();
+                    if (string.IsNullOrEmpty(ExpirationDate))
+                    {
+                        ExpirationDate = "Non-Perishable";
+
+                    }
+                    else
+                    {
+                        if (ExpirationDate.Substring(0, 10) != "")
+                        {
+                            ExpirationDate = dr[2].ToString().Substring(0, 9);
+                        }
+                        else
+                        {
+                            ExpirationDate = dr[2].ToString().Substring(0, 10);
+                        }
+
+                    }
+                    //string CuttedExpirationDate = ExpirationDate.Substring(0, 10);
+                    // dr[8].ToString().Substring(0, 10)
+                    //                             1-STOCK ID / 0-Stock_ID               3-QTY / 10-Quantity                                         5-EXPIRATION / 2-Expiration_Date         8-ITEM ID / 5-Item_ID                    
+                    i += 1;               // 0-Num            2-DESCRIPTION / 1-Description                      4-STOCK IN DATE / 3-Stock_In_Date                  6-STOCK IN BY / 4-Stock_In_By           9-TYPE / 6-Type           
+                    dataGridViewStockHist.Rows.Add(i, dr[0].ToString(), dr[1].ToString(), dr[10].ToString(), DateTime.Parse(dr[3].ToString()).ToShortDateString(), ExpirationDate, dr[4].ToString(), dr[5].ToString(), dr[6].ToString());
+                    //dataGridViewStockHist.DefaultCellStyle.Font = new Font("Tahoma", 12);
+                }
+                dr.Close();
+                cn.Close();
+                //NonPerishHistory();
+            }
+            catch (Exception ex)
+            {
+                cn.Close();
+                MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
         public void Clear()
         {
             txtStockID.Clear();
