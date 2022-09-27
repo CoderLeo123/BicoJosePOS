@@ -35,7 +35,7 @@ namespace Capstone
             txtPrice.Focus();
 
         }
-        private void Generate()
+        public void Generate()
         {
             try
             {
@@ -173,11 +173,10 @@ namespace Capstone
 
         }
 
-        private void GenerateID_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Generate();
-            cn.Close();
-        }
+        //private void GenerateID_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        //{
+            
+        //}
 
         private void btnUpdateAccessories_Click(object sender, EventArgs e)
         {

@@ -69,7 +69,7 @@ namespace Capstone
                 frm.comBoxClassification.Text = dataGridViewItems[7, e.RowIndex].Value.ToString();
                 frm.btnSave.Enabled = false;
                 frm.btnUpdateAccessories.Enabled = true;
-                frm.GenerateID.Enabled = false;
+                
                 frm.LoadType();
                 frm.ShowDialog();
             }
@@ -141,6 +141,7 @@ namespace Capstone
         {
             frmAddAccessories frm = new frmAddAccessories(this);
             frm.LoadType();
+            frm.Generate();
             frm.ShowDialog();
         }
 
@@ -168,6 +169,7 @@ namespace Capstone
         private void btnAddService_Click(object sender, EventArgs e)
         {
             frmServiceAdd frm = new frmServiceAdd(this);
+            frm.Generate();
             frm.ShowDialog();
         }
 
@@ -204,7 +206,7 @@ namespace Capstone
                 frm.txtServicePrice.Text = dataGridViewService[4, e.RowIndex].Value.ToString();
                 frm.btnSaveService.Enabled = false;
                 frm.btnUpdate.Enabled = true;
-                frm.GenerateID.Enabled = false;
+                
                 frm.ShowDialog();
             }
             else if (colName == "DeleteService")

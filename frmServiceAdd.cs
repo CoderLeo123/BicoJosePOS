@@ -37,7 +37,7 @@ namespace Capstone
             txtServiceName.Focus();
 
         }
-        private void Generate()
+        public void Generate()
         {
             try
             {
@@ -136,10 +136,10 @@ namespace Capstone
             }
         }
 
-        private void GenerateID_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Generate();
-        }
+        //private void GenerateID_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        //{
+        //    Generate();
+        //}
 
         private void txtServiceName_TextChanged(object sender, EventArgs e)
         {

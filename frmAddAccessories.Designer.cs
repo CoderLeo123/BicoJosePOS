@@ -47,7 +47,7 @@
             this.txtTypeID = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtProduct = new System.Windows.Forms.TextBox();
-            this.GenerateID = new System.Windows.Forms.LinkLabel();
+            
             this.label8 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnCloseAccessories)).BeginInit();
@@ -275,18 +275,7 @@
             // 
             // GenerateID
             // 
-            this.GenerateID.AutoSize = true;
-            this.GenerateID.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.GenerateID.LinkArea = new System.Windows.Forms.LinkArea(0, 15);
-            this.GenerateID.LinkColor = System.Drawing.Color.Navy;
-            this.GenerateID.Location = new System.Drawing.Point(518, 96);
-            this.GenerateID.Name = "GenerateID";
-            this.GenerateID.Size = new System.Drawing.Size(172, 43);
-            this.GenerateID.TabIndex = 36;
-            this.GenerateID.TabStop = true;
-            this.GenerateID.Text = "[Generate ID]";
-            this.GenerateID.UseCompatibleTextRendering = true;
-            this.GenerateID.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.GenerateID_LinkClicked);
+            
             // 
             // label8
             // 
@@ -305,7 +294,7 @@
             this.ClientSize = new System.Drawing.Size(820, 554);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.comBoxClassification);
-            this.Controls.Add(this.GenerateID);
+            
             this.Controls.Add(this.txtProduct);
             this.Controls.Add(this.txtTypeID);
             this.Controls.Add(this.label7);
@@ -347,7 +336,7 @@
         private Label label5;
         private Label label6;
         private Label label7;
-        public LinkLabel GenerateID;
+        
         public ComboBox comBoxType;
         public TextBox txtTypeID;
         public TextBox txtProduct;

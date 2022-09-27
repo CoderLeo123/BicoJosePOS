@@ -32,7 +32,7 @@ namespace Capstone
             txtType.Focus();
 
         }
-        private void Generate()
+        public void Generate()
         {
             try
             {
@@ -194,10 +194,10 @@ namespace Capstone
             }
         }
 
-        private void GenerateID_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Generate();
-        }
+        //private void GenerateID_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        //{
+        //    Generate();
+        //}
 
         private void comBoxProduct_MouseClick(object sender, MouseEventArgs e)
         {

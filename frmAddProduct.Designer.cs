@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.GenerateID = new System.Windows.Forms.LinkLabel();
+            
             this.txtProductID = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -45,18 +45,7 @@
             // 
             // GenerateID
             // 
-            this.GenerateID.AutoSize = true;
-            this.GenerateID.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.GenerateID.LinkArea = new System.Windows.Forms.LinkArea(0, 15);
-            this.GenerateID.LinkColor = System.Drawing.Color.Navy;
-            this.GenerateID.Location = new System.Drawing.Point(447, 113);
-            this.GenerateID.Name = "GenerateID";
-            this.GenerateID.Size = new System.Drawing.Size(172, 43);
-            this.GenerateID.TabIndex = 46;
-            this.GenerateID.TabStop = true;
-            this.GenerateID.Text = "[Generate ID]";
-            this.GenerateID.UseCompatibleTextRendering = true;
-            this.GenerateID.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.GenerateID_LinkClicked);
+           
             // 
             // txtProductID
             // 
@@ -189,7 +178,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(662, 340);
             this.ControlBox = false;
-            this.Controls.Add(this.GenerateID);
+            
             this.Controls.Add(this.txtProductID);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnCancel);
@@ -213,7 +202,7 @@
 
         #endregion
 
-        public LinkLabel GenerateID;
+        
         public TextBox txtProductID;
         private Label label4;
         private Button btnCancel;

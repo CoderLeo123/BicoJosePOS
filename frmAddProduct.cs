@@ -25,7 +25,7 @@ namespace Capstone
             cn = new SqlConnection(dbcon.MyConnection());
             frmList = frmAdd;
         }
-        private void Generate()
+        public void Generate()
         {
             try
             {
@@ -53,10 +53,10 @@ namespace Capstone
                 MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-        private void GenerateID_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Generate();
-        }
+        //private void GenerateID_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        //{
+        //    Generate();
+        //}
 
         private void btnCancel_Click(object sender, EventArgs e)
         {

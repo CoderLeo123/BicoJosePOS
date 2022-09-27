@@ -89,7 +89,7 @@ namespace Capstone
                 frm.comBoxProduct.Text = dataGridViewType[4, e.RowIndex].Value.ToString();
                 frm.btnSave.Enabled = false;
                 frm.btnUpdate.Enabled = true;
-                frm.GenerateID.Enabled = false;
+                
                 frm.LoadProduct();
                 frm.ShowDialog();
             }
@@ -117,7 +117,7 @@ namespace Capstone
                 frm.txtProduct.Text = dataGridViewProduct[2, e.RowIndex].Value.ToString();
                 frm.btnSave.Enabled = false;
                 frm.btnUpdate.Enabled = true;
-                frm.GenerateID.Enabled = false;
+                
                 frm.ShowDialog();
             }
             else if (colName == "DeleteProduct")
@@ -157,9 +157,10 @@ namespace Capstone
 
         
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)//btnAddProduct
         {
             frmAddProduct frm = new frmAddProduct(this);
+            frm.Generate();
             frm.ShowDialog();
         }
 
@@ -167,6 +168,7 @@ namespace Capstone
         {
             frmAddType frm = new frmAddType(this);
             frm.LoadProduct();
+            frm.Generate();
             frm.ShowDialog();
         }
 

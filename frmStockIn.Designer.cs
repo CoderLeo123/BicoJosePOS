@@ -67,12 +67,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dataGridViewStockHist = new System.Windows.Forms.DataGridView();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.txtSearch = new System.Windows.Forms.TextBox();
-            this.btnLoadHistory = new System.Windows.Forms.Button();
-            this.dateEnd = new System.Windows.Forms.DateTimePicker();
-            this.dateStart = new System.Windows.Forms.DateTimePicker();
-            this.label7 = new System.Windows.Forms.Label();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StockID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -82,6 +76,12 @@
             this.StockBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemIDHistory = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TypeHistory = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.btnLoadHistory = new System.Windows.Forms.Button();
+            this.dateEnd = new System.Windows.Forms.DateTimePicker();
+            this.dateStart = new System.Windows.Forms.DateTimePicker();
+            this.label7 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             this.tabControlStockIn.SuspendLayout();
@@ -476,7 +476,7 @@
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(1307, 823);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Stock In History";
+            this.tabPage2.Text = "Stock On Hand";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // dataGridViewStockHist
@@ -533,73 +533,6 @@
             this.dataGridViewStockHist.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewStockHist.Size = new System.Drawing.Size(1301, 689);
             this.dataGridViewStockHist.TabIndex = 4;
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.DimGray;
-            this.panel4.Controls.Add(this.txtSearch);
-            this.panel4.Controls.Add(this.btnLoadHistory);
-            this.panel4.Controls.Add(this.dateEnd);
-            this.panel4.Controls.Add(this.dateStart);
-            this.panel4.Controls.Add(this.label7);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(3, 3);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1301, 128);
-            this.panel4.TabIndex = 1;
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtSearch.Location = new System.Drawing.Point(15, 75);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.PlaceholderText = "Search Here";
-            this.txtSearch.Size = new System.Drawing.Size(717, 43);
-            this.txtSearch.TabIndex = 23;
-            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
-            // 
-            // btnLoadHistory
-            // 
-            this.btnLoadHistory.BackColor = System.Drawing.Color.LimeGreen;
-            this.btnLoadHistory.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnLoadHistory.FlatAppearance.BorderSize = 0;
-            this.btnLoadHistory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLoadHistory.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnLoadHistory.ForeColor = System.Drawing.Color.White;
-            this.btnLoadHistory.Location = new System.Drawing.Point(815, 18);
-            this.btnLoadHistory.Name = "btnLoadHistory";
-            this.btnLoadHistory.Size = new System.Drawing.Size(186, 49);
-            this.btnLoadHistory.TabIndex = 22;
-            this.btnLoadHistory.Text = "Load Record";
-            this.btnLoadHistory.UseVisualStyleBackColor = false;
-            this.btnLoadHistory.Click += new System.EventHandler(this.btnLoadHistory_Click);
-            // 
-            // dateEnd
-            // 
-            this.dateEnd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateEnd.Location = new System.Drawing.Point(579, 18);
-            this.dateEnd.Name = "dateEnd";
-            this.dateEnd.Size = new System.Drawing.Size(214, 43);
-            this.dateEnd.TabIndex = 6;
-            // 
-            // dateStart
-            // 
-            this.dateStart.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateStart.Location = new System.Drawing.Point(347, 18);
-            this.dateStart.Name = "dateStart";
-            this.dateStart.Size = new System.Drawing.Size(214, 43);
-            this.dateStart.TabIndex = 5;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(15, 23);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(335, 38);
-            this.label7.TabIndex = 2;
-            this.label7.Text = "Filter By Date (From - To)";
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -685,6 +618,73 @@
             this.TypeHistory.Name = "TypeHistory";
             this.TypeHistory.ReadOnly = true;
             this.TypeHistory.Width = 105;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.DimGray;
+            this.panel4.Controls.Add(this.txtSearch);
+            this.panel4.Controls.Add(this.btnLoadHistory);
+            this.panel4.Controls.Add(this.dateEnd);
+            this.panel4.Controls.Add(this.dateStart);
+            this.panel4.Controls.Add(this.label7);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(3, 3);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1301, 128);
+            this.panel4.TabIndex = 1;
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtSearch.Location = new System.Drawing.Point(15, 75);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.PlaceholderText = "Search Here";
+            this.txtSearch.Size = new System.Drawing.Size(717, 43);
+            this.txtSearch.TabIndex = 23;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            // 
+            // btnLoadHistory
+            // 
+            this.btnLoadHistory.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnLoadHistory.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLoadHistory.FlatAppearance.BorderSize = 0;
+            this.btnLoadHistory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLoadHistory.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnLoadHistory.ForeColor = System.Drawing.Color.White;
+            this.btnLoadHistory.Location = new System.Drawing.Point(815, 18);
+            this.btnLoadHistory.Name = "btnLoadHistory";
+            this.btnLoadHistory.Size = new System.Drawing.Size(186, 49);
+            this.btnLoadHistory.TabIndex = 22;
+            this.btnLoadHistory.Text = "Load Record";
+            this.btnLoadHistory.UseVisualStyleBackColor = false;
+            this.btnLoadHistory.Click += new System.EventHandler(this.btnLoadHistory_Click);
+            // 
+            // dateEnd
+            // 
+            this.dateEnd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateEnd.Location = new System.Drawing.Point(579, 18);
+            this.dateEnd.Name = "dateEnd";
+            this.dateEnd.Size = new System.Drawing.Size(214, 43);
+            this.dateEnd.TabIndex = 6;
+            // 
+            // dateStart
+            // 
+            this.dateStart.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateStart.Location = new System.Drawing.Point(347, 18);
+            this.dateStart.Name = "dateStart";
+            this.dateStart.Size = new System.Drawing.Size(214, 43);
+            this.dateStart.TabIndex = 5;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(15, 23);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(335, 38);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "Filter By Date (From - To)";
             // 
             // frmStockIn
             // 

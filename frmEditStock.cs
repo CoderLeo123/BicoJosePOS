@@ -98,12 +98,14 @@ namespace Capstone
         {
             dateExpiration.Enabled = true;
             lblCheck.Text = "Yes";
+            btnNonPerishable.Enabled = false;
         }
 
         private void btnNonPerishable_Click(object sender, EventArgs e)
         {
             dateExpiration.Enabled = false;
             lblCheck.Text = "No";
+            btnPerishable.Enabled = false;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
