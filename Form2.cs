@@ -206,7 +206,7 @@ namespace Capstone
                 frm.txtServicePrice.Text = dataGridViewService[4, e.RowIndex].Value.ToString();
                 frm.btnSaveService.Enabled = false;
                 frm.btnUpdate.Enabled = true;
-                
+                  
                 frm.ShowDialog();
             }
             else if (colName == "DeleteService")
