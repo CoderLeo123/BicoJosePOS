@@ -47,47 +47,7 @@ namespace Capstone
             cn.Close();
         }
 
-        //private string AutoGenerateID(string num)
-        //{
-
-        //    try
-        //    {
-        //        cn.Open();
-        //        cm = new SqlCommand("SELECT TOP 1 id FROM tblStock ORDER BY id DESC", cn);
-        //        dr = cm.ExecuteReader();
-        //        dr.Read();
-        //        if (dr.HasRows)
-        //        {
-        //            num = dr[0].ToString(); //ID10001
-        //            count2 = int.Parse(num.Substring(2, 5)); //1001
-        //            num = num.Substring(0, 2) + (count2 + 1); //ID10001
-
-
-        //        }
-        //        else
-        //        {
-        //            cn.Close();
-        //            cn.Open();
-        //            cm = new SqlCommand("INSERT INTO tblStock (id) VALUES ('ID10001')", cn);
-        //            cm.ExecuteNonQuery();
-        //            cn.Close();
-        //            AutoGenerateID(num);
-        //        }
-
-        //        dr.Close();
-        //        cn.Close();
-        //        return num;
-        //    }
-
-        //    catch (Exception ex)
-        //    {
-        //        return num;
-        //        cn.Close();
-        //        MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-        //    }
-
-        //}
+       
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             this.Close();

@@ -183,22 +183,22 @@ namespace Capstone
 
         private void btnOrderStatus_Click(object sender, EventArgs e)
         {
-            frmOrderStatus frm = new frmOrderStatus();
-            frm.TopLevel = false;
-            panelLoad.Controls.Clear();
-            panelLoad.Controls.Add(frm);
-            frm.BringToFront();
-            frm.Show();
+            //frmOrderStatus frm = new frmOrderStatus();
+            //frm.TopLevel = false;
+            //panelLoad.Controls.Clear();
+            //panelLoad.Controls.Add(frm);
+            //frm.BringToFront();
+            //frm.Show();
         }
 
         private void btnTranscHist_Click(object sender, EventArgs e)
         {
-            frmTransactionHistory frm = new frmTransactionHistory();
-            frm.TopLevel = false;
-            panelLoad.Controls.Clear();
-            panelLoad.Controls.Add(frm);
-            frm.BringToFront();
-            frm.Show();
+            //frmTransactionHistory frm = new frmTransactionHistory();
+            //frm.TopLevel = false;
+            //panelLoad.Controls.Clear();
+            //panelLoad.Controls.Add(frm);
+            //frm.BringToFront();
+            //frm.Show();
             btnCollapsed();
             timerStart();
         }
@@ -215,12 +215,12 @@ namespace Capstone
 
         private void btnItems_Click(object sender, EventArgs e)
         {
-            frmItemsList frm = new frmItemsList();
-            frm.TopLevel = false;
-            panelLoad.Controls.Clear();
-            panelLoad.Controls.Add(frm);
-            frm.BringToFront();
-            frm.Show();
+            //frmItemsList frm = new frmItemsList();
+            //frm.TopLevel = false;
+            //panelLoad.Controls.Clear();
+            //panelLoad.Controls.Add(frm);
+            //frm.BringToFront();
+            //frm.Show();
         }
 
         private void btnServices_Click(object sender, EventArgs e)
