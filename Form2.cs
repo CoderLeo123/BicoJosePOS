@@ -22,7 +22,7 @@ namespace Capstone
             InitializeComponent();
             cn = new SqlConnection(dbcon.MyConnection());
             //LoadRecords();
-            LoadRecordsService();
+            //LoadRecordsService();
 
         }
         //public void LoadRecords()
@@ -40,21 +40,21 @@ namespace Capstone
         //    dr.Close();
         //    cn.Close();
         //}
-        public void LoadRecordsService()
-        {
-            int i = 0;
-            dataGridViewService.Rows.Clear();
-            cn.Open();
-            cm = new SqlCommand("SELECT * FROM tblServices WHERE Name LIKE '%" + txtSearchService.Text + "%' OR Description LIKE '%" + txtSearchService.Text + "%' Order by Service_ID", cn);
-            dr = cm.ExecuteReader();
-            while (dr.Read())
-            {                            //                       2-NAME / 2-Name                   4-PRICE / 4-Price
-                i += 1;                //0-#  1-SERVICE ID / 1-Service_ID       3-DESCRIPTION / 3-Description
-                dataGridViewService.Rows.Add(i, dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString());
-            }
-            dr.Close();
-            cn.Close();
-        }
+        //public void LoadRecordsService()
+        //{
+        //    int i = 0;
+        //    dataGridViewService.Rows.Clear();
+        //    cn.Open();
+        //    cm = new SqlCommand("SELECT * FROM tblServices WHERE Name LIKE '%" + txtSearchService.Text + "%' OR Description LIKE '%" + txtSearchService.Text + "%' Order by Service_ID", cn);
+        //    dr = cm.ExecuteReader();
+        //    while (dr.Read())
+        //    {                            //                       2-NAME / 2-Name                   4-PRICE / 4-Price
+        //        i += 1;                //0-#  1-SERVICE ID / 1-Service_ID       3-DESCRIPTION / 3-Description
+        //        dataGridViewService.Rows.Add(i, dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString());
+        //    }
+        //    dr.Close();
+        //    cn.Close();
+        //}
         //private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) //dataGridViewItems
         //{
         //    string colName = dataGridViewItems.Columns[e.ColumnIndex].Name;
@@ -168,59 +168,59 @@ namespace Capstone
 
         private void btnAddService_Click(object sender, EventArgs e)
         {
-            frmServiceAdd frm = new frmServiceAdd(this);
-            frm.Generate();
-            frm.ShowDialog();
+            //frmServiceAdd frm = new frmServiceAdd(this);
+            //frm.Generate();
+            //frm.ShowDialog();
         }
 
         private void txtSearchService_TextChanged(object sender, EventArgs e)
         {
-            try
-            {
-                if (txtSearchService.Text == String.Empty)
-                {
-                    LoadRecordsService();
-                    return;
-                }
-                else
-                {
-                    LoadRecordsService();
-                }
-            }
-            catch (Exception ex)
-            {
-                cn.Close();
-                MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            //try
+            //{
+            //    if (txtSearchService.Text == String.Empty)
+            //    {
+            //        LoadRecordsService();
+            //        return;
+            //    }
+            //    else
+            //    {
+            //        LoadRecordsService();
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    cn.Close();
+            //    MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //}
         }
 
         private void dataGridViewService_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            string colName = dataGridViewService.Columns[e.ColumnIndex].Name;
-            if (colName == "EditService")
-            {
-                frmServiceAdd frm = new frmServiceAdd(this);
-                frm.txtServiceID.Text = dataGridViewService[1, e.RowIndex].Value.ToString();
-                frm.txtServiceName.Text = dataGridViewService[2, e.RowIndex].Value.ToString();
-                frm.txtServiceDesc.Text = dataGridViewService[3, e.RowIndex].Value.ToString();
-                frm.txtServicePrice.Text = dataGridViewService[4, e.RowIndex].Value.ToString();
-                frm.btnSaveService.Enabled = false;
-                frm.btnUpdate.Enabled = true;
+            //string colName = dataGridViewService.Columns[e.ColumnIndex].Name;
+            //if (colName == "EditService")
+            //{
+            //    frmServiceAdd frm = new frmServiceAdd(this);
+            //    frm.txtServiceID.Text = dataGridViewService[1, e.RowIndex].Value.ToString();
+            //    frm.txtServiceName.Text = dataGridViewService[2, e.RowIndex].Value.ToString();
+            //    frm.txtServiceDesc.Text = dataGridViewService[3, e.RowIndex].Value.ToString();
+            //    frm.txtServicePrice.Text = dataGridViewService[4, e.RowIndex].Value.ToString();
+            //    frm.btnSaveService.Enabled = false;
+            //    frm.btnUpdate.Enabled = true;
                   
-                frm.ShowDialog();
-            }
-            else if (colName == "DeleteService")
-            {
-                if (MessageBox.Show("Are you sure you want to delete this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    cn.Open();
-                    cm = new SqlCommand("DELETE FROM tblServices WHERE Service_ID LIKE '" + dataGridViewService[1, e.RowIndex].Value.ToString() + "'", cn);
-                    cm.ExecuteNonQuery();
-                    cn.Close();
-                    MessageBox.Show("Record has been successfully deleted.", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoadRecordsService();
-                }
-            }
+            //    frm.ShowDialog();
+            //}
+            //else if (colName == "DeleteService")
+            //{
+            //    if (MessageBox.Show("Are you sure you want to delete this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            //    {
+            //        cn.Open();
+            //        cm = new SqlCommand("DELETE FROM tblServices WHERE Service_ID LIKE '" + dataGridViewService[1, e.RowIndex].Value.ToString() + "'", cn);
+            //        cm.ExecuteNonQuery();
+            //        cn.Close();
+            //        MessageBox.Show("Record has been successfully deleted.", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //        LoadRecordsService();
+            //    }
+            //}
         }
     }
 }

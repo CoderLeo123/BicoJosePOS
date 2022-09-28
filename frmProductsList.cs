@@ -24,7 +24,8 @@ namespace Capstone
             cn = new SqlConnection(dbcon.MyConnection());
             LoadRecordsType();
             LoadRecordsProduct();
-            LoadRecordsItem();//items
+            LoadRecordsItem();
+            LoadRecordsService();
 
         }
         public void LoadRecordsType()
@@ -92,18 +93,24 @@ namespace Capstone
 
        
 
-        private void dataGridViewProducts_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewProducts_CellContentClick_1(object sender, DataGridViewCellEventArgs e) //dataGridViewType
         {
              string colName = dataGridViewType.Columns[e.ColumnIndex].Name;
             if (colName == "Edit")
             {
-                frmAddType frm = new frmAddType(this);
-                frm.txtTypeID.Text = dataGridViewType[1, e.RowIndex].Value.ToString();
-                frm.txtProductID.Text = dataGridViewType[3, e.RowIndex].Value.ToString();
+                frmAddAccessories frm = new frmAddAccessories(this);
+
+                frm.tabControlCreateNew.TabPages.Clear();
+                TabPage tab = new TabPage("Type");
+                frm.tabControlCreateNew.TabPages.Add(tab);
+                tab.Controls.Add(frm.panelType);
+
+                frm.txtTypID.Text = dataGridViewType[1, e.RowIndex].Value.ToString();
+                frm.txtProductIDType.Text = dataGridViewType[3, e.RowIndex].Value.ToString();
                 frm.txtType.Text = dataGridViewType[2, e.RowIndex].Value.ToString();
-                frm.comBoxProduct.Text = dataGridViewType[4, e.RowIndex].Value.ToString();
-                frm.btnSave.Enabled = false;
-                frm.btnUpdate.Enabled = true;
+                frm.comBoxProductType.Text = dataGridViewType[4, e.RowIndex].Value.ToString();
+                frm.btnSaveType.Enabled = false;
+                frm.btnUpdateType.Enabled = true;
                 
                 frm.LoadProduct();
                 frm.ShowDialog();
@@ -127,12 +134,16 @@ namespace Capstone
             string colName = dataGridViewProduct.Columns[e.ColumnIndex].Name;
             if (colName == "EditProduct")
             {
-                frmAddProduct frm = new frmAddProduct(this);
-                frm.txtProductID.Text = dataGridViewProduct[1, e.RowIndex].Value.ToString();
-                frm.txtProduct.Text = dataGridViewProduct[2, e.RowIndex].Value.ToString();
-                frm.btnSave.Enabled = false;
-                frm.btnUpdate.Enabled = true;
-                
+                frmAddAccessories frm = new frmAddAccessories(this);
+                frm.tabControlCreateNew.TabPages.Clear();
+                TabPage tab = new TabPage("Product");
+                frm.tabControlCreateNew.TabPages.Add(tab);
+                tab.Controls.Add(frm.panelProduct);
+
+                frm.txtProdID.Text = dataGridViewProduct[1, e.RowIndex].Value.ToString();
+                frm.txtProdName.Text = dataGridViewProduct[2, e.RowIndex].Value.ToString();
+                frm.btnSaveProduct.Enabled = false;
+                frm.btnUpdateProduct.Enabled = true;
                 frm.ShowDialog();
             }
             else if (colName == "DeleteProduct")
@@ -174,16 +185,27 @@ namespace Capstone
 
         private void button1_Click(object sender, EventArgs e)//btnAddProduct
         {
-            frmAddProduct frm = new frmAddProduct(this);
-            frm.Generate();
+            frmAddAccessories frm = new frmAddAccessories(this);
+            
+            frm.tabControlCreateNew.TabPages.Clear();
+            TabPage tab = new TabPage("Product");
+            frm.tabControlCreateNew.TabPages.Add(tab);
+            tab.Controls.Add(frm.panelProduct);
+            frm.GenerateProductID();
+            frm.LoadProduct();
             frm.ShowDialog();
         }
 
         private void btnAddType_Click(object sender, EventArgs e)
         {
-            frmAddType frm = new frmAddType(this);
+            frmAddAccessories frm = new frmAddAccessories(this);
+            
+            frm.tabControlCreateNew.TabPages.Clear();
+            TabPage tab = new TabPage("Type");
+            frm.tabControlCreateNew.TabPages.Add(tab);
+            tab.Controls.Add(frm.panelType);
             frm.LoadProduct();
-            frm.Generate();
+            frm.GenerateTypeID();
             frm.ShowDialog();
         }
 
@@ -219,14 +241,20 @@ namespace Capstone
             if (colName == "EditItems")
             {
                 frmAddAccessories frm = new frmAddAccessories(this);
+
+                frm.tabControlCreateNew.TabPages.Clear();
+                TabPage tab = new TabPage("Item");
+                frm.tabControlCreateNew.TabPages.Add(tab);
+                tab.Controls.Add(frm.panelItem);
+
                 frm.txtID.Text = dataGridViewItems[7, e.RowIndex].Value.ToString();
                 frm.txtDescription.Text = dataGridViewItems[1, e.RowIndex].Value.ToString();
                 frm.comBoxType.SelectedItem = dataGridViewItems[2, e.RowIndex].Value.ToString();
                 frm.txtProduct.Text = dataGridViewItems[3, e.RowIndex].Value.ToString();
                 frm.txtPrice.Text = dataGridViewItems[4, e.RowIndex].Value.ToString();
                 frm.comBoxClassification.Text = dataGridViewItems[6, e.RowIndex].Value.ToString();
-                frm.btnSave.Enabled = false;
-                frm.btnUpdateAccessories.Enabled = true;
+                frm.btnSaveItem.Enabled = false;
+                frm.btnUpdateItem.Enabled = true;
 
                 frm.LoadType();
                 frm.ShowDialog();
@@ -249,8 +277,14 @@ namespace Capstone
         private void btnAddItem_Click(object sender, EventArgs e)
         {
             frmAddAccessories frm = new frmAddAccessories(this);
+            
+            frm.tabControlCreateNew.TabPages.Clear();
+            TabPage tab = new TabPage("Item");
+            frm.tabControlCreateNew.TabPages.Add(tab);
+            tab.Controls.Add(frm.panelItem);
             frm.LoadType();
-            frm.Generate();
+            frm.LoadProductItem();
+            frm.GenerateItemID();
             frm.ShowDialog();
         }
 
@@ -273,6 +307,104 @@ namespace Capstone
                 cn.Close();
                 MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel3_Paint_1(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        public void LoadRecordsService()
+        {
+            int i = 0;
+            dataGridViewService.Rows.Clear();
+            cn.Open();
+            cm = new SqlCommand("SELECT * FROM tblServices WHERE Name LIKE '%" + txtSearchService.Text + "%' OR Description LIKE '%" + txtSearchService.Text + "%' Order by Service_ID", cn);
+            dr = cm.ExecuteReader();
+            while (dr.Read())
+            {                            //                       2-NAME / 2-Name                   4-PRICE / 4-Price
+                i += 1;                //0-#  1-SERVICE ID / 1-Service_ID       3-DESCRIPTION / 3-Description
+                dataGridViewService.Rows.Add(i, dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString());
+            }
+            dr.Close();
+            cn.Close();
+        }
+
+        private void dataGridViewService_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            string colName = dataGridViewService.Columns[e.ColumnIndex].Name;
+            if (colName == "EditService")
+            {
+                frmAddAccessories frm = new frmAddAccessories(this);
+
+                frm.tabControlCreateNew.TabPages.Clear();
+                TabPage tab = new TabPage("Service");
+                frm.tabControlCreateNew.TabPages.Add(tab);
+                tab.Controls.Add(frm.panelService);
+
+                frm.txtServiceID.Text = dataGridViewService[1, e.RowIndex].Value.ToString();
+                frm.txtServiceName.Text = dataGridViewService[2, e.RowIndex].Value.ToString();
+                frm.txtServiceDesc.Text = dataGridViewService[3, e.RowIndex].Value.ToString();
+                frm.txtServicePrice.Text = dataGridViewService[4, e.RowIndex].Value.ToString();
+                frm.btnSaveService.Enabled = false;
+                frm.btnUpdateService.Enabled = true;
+
+                frm.ShowDialog();
+            }
+            else if (colName == "DeleteService")
+            {
+                if (MessageBox.Show("Are you sure you want to delete this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    cn.Open();
+                    cm = new SqlCommand("DELETE FROM tblServices WHERE Service_ID LIKE '" + dataGridViewService[1, e.RowIndex].Value.ToString() + "'", cn);
+                    cm.ExecuteNonQuery();
+                    cn.Close();
+                    MessageBox.Show("Record has been successfully deleted.", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadRecordsService();
+                }
+            }
+        }
+
+        private void txtSearchService_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtSearchService.Text == String.Empty)
+                {
+                    LoadRecordsService();
+                    return;
+                }
+                else
+                {
+                    LoadRecordsService();
+                }
+            }
+            catch (Exception ex)
+            {
+                cn.Close();
+                MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void btnAddService_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnServiceAdd_Click(object sender, EventArgs e)
+        {
+            frmAddAccessories frm = new frmAddAccessories(this);
+            frm.tabControlCreateNew.TabPages.Clear();
+            TabPage tab = new TabPage("Service");
+            frm.tabControlCreateNew.TabPages.Add(tab);
+            tab.Controls.Add(frm.panelService);
+            frm.GenerateServiceID();
+            frm.ShowDialog();
         }
     }
 }
