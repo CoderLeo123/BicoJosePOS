@@ -28,7 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
             this.btnClose = new System.Windows.Forms.PictureBox();
             this.txtQuantity = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -43,29 +46,48 @@
             this.comBoxUnit = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabControlStock = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.panelEditStock = new System.Windows.Forms.Panel();
             this.btnDeleteUnit = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.panelAddUnit = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.btnSaveUnit = new System.Windows.Forms.Button();
             this.txtUnit = new System.Windows.Forms.TextBox();
             this.btnCancelUnit = new System.Windows.Forms.Button();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.panelStockDetail = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.dataGridViewDetails = new System.Windows.Forms.DataGridView();
+            this.NumService = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DeliveryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Expiration = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StockBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StockID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.labelItemID = new System.Windows.Forms.Label();
+            this.labelItemName = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
-            this.tabControl1.SuspendLayout();
+            this.tabControlStock.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.panelEditStock.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            this.panel3.SuspendLayout();
+            this.panelAddUnit.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            this.panelStockDetail.SuspendLayout();
+            this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDetails)).BeginInit();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.panel1.Controls.Add(this.btnClose);
+            this.panel1.Controls.Add(this.panel6);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -75,13 +97,22 @@
             this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
             this.panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseUp);
             // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.btnClose);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel6.Location = new System.Drawing.Point(665, 0);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(61, 57);
+            this.panel6.TabIndex = 1;
+            // 
             // btnClose
             // 
             this.btnClose.BackColor = System.Drawing.Color.Transparent;
             this.btnClose.BackgroundImage = global::Capstone.Properties.Resources.CloseTab;
             this.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnClose.Location = new System.Drawing.Point(674, 12);
+            this.btnClose.Location = new System.Drawing.Point(12, 12);
             this.btnClose.Name = "btnClose";
             this.btnClose.Padding = new System.Windows.Forms.Padding(3);
             this.btnClose.Size = new System.Drawing.Size(40, 38);
@@ -245,20 +276,21 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // tabControl1
+            // tabControlStock
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 57);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(726, 439);
-            this.tabControl1.TabIndex = 52;
+            this.tabControlStock.Controls.Add(this.tabPage1);
+            this.tabControlStock.Controls.Add(this.tabPage2);
+            this.tabControlStock.Controls.Add(this.tabPage3);
+            this.tabControlStock.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControlStock.Location = new System.Drawing.Point(0, 57);
+            this.tabControlStock.Name = "tabControlStock";
+            this.tabControlStock.SelectedIndex = 0;
+            this.tabControlStock.Size = new System.Drawing.Size(726, 439);
+            this.tabControlStock.TabIndex = 52;
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.panel2);
+            this.tabPage1.Controls.Add(this.panelEditStock);
             this.tabPage1.Location = new System.Drawing.Point(4, 46);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -267,27 +299,27 @@
             this.tabPage1.Text = "Edit Stocks";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // panel2
+            // panelEditStock
             // 
-            this.panel2.Controls.Add(this.btnDeleteUnit);
-            this.panel2.Controls.Add(this.dateExpiration);
-            this.panel2.Controls.Add(this.button1);
-            this.panel2.Controls.Add(this.btnUpdate);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.btnCancel);
-            this.panel2.Controls.Add(this.comBoxUnit);
-            this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.lblID);
-            this.panel2.Controls.Add(this.txtQuantity);
-            this.panel2.Controls.Add(this.lblCheck);
-            this.panel2.Controls.Add(this.label6);
-            this.panel2.Controls.Add(this.btnNonPerishable);
-            this.panel2.Controls.Add(this.btnPerishable);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(3, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(712, 383);
-            this.panel2.TabIndex = 0;
+            this.panelEditStock.Controls.Add(this.btnDeleteUnit);
+            this.panelEditStock.Controls.Add(this.dateExpiration);
+            this.panelEditStock.Controls.Add(this.button1);
+            this.panelEditStock.Controls.Add(this.btnUpdate);
+            this.panelEditStock.Controls.Add(this.label2);
+            this.panelEditStock.Controls.Add(this.btnCancel);
+            this.panelEditStock.Controls.Add(this.comBoxUnit);
+            this.panelEditStock.Controls.Add(this.label4);
+            this.panelEditStock.Controls.Add(this.lblID);
+            this.panelEditStock.Controls.Add(this.txtQuantity);
+            this.panelEditStock.Controls.Add(this.lblCheck);
+            this.panelEditStock.Controls.Add(this.label6);
+            this.panelEditStock.Controls.Add(this.btnNonPerishable);
+            this.panelEditStock.Controls.Add(this.btnPerishable);
+            this.panelEditStock.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelEditStock.Location = new System.Drawing.Point(3, 3);
+            this.panelEditStock.Name = "panelEditStock";
+            this.panelEditStock.Size = new System.Drawing.Size(712, 383);
+            this.panelEditStock.TabIndex = 0;
             // 
             // btnDeleteUnit
             // 
@@ -307,27 +339,27 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.panel3);
-            this.tabPage2.Location = new System.Drawing.Point(4, 46);
+            this.tabPage2.Controls.Add(this.panelAddUnit);
+            this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(718, 389);
+            this.tabPage2.Size = new System.Drawing.Size(718, 406);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Add";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // panel3
+            // panelAddUnit
             // 
-            this.panel3.Controls.Add(this.label3);
-            this.panel3.Controls.Add(this.btnSaveUnit);
-            this.panel3.Controls.Add(this.txtUnit);
-            this.panel3.Controls.Add(this.btnCancelUnit);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(3, 3);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(712, 383);
-            this.panel3.TabIndex = 56;
-            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
+            this.panelAddUnit.Controls.Add(this.label3);
+            this.panelAddUnit.Controls.Add(this.btnSaveUnit);
+            this.panelAddUnit.Controls.Add(this.txtUnit);
+            this.panelAddUnit.Controls.Add(this.btnCancelUnit);
+            this.panelAddUnit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelAddUnit.Location = new System.Drawing.Point(3, 3);
+            this.panelAddUnit.Name = "panelAddUnit";
+            this.panelAddUnit.Size = new System.Drawing.Size(712, 400);
+            this.panelAddUnit.TabIndex = 56;
+            this.panelAddUnit.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
             // label3
             // 
@@ -378,27 +410,189 @@
             this.btnCancelUnit.UseVisualStyleBackColor = false;
             this.btnCancelUnit.Click += new System.EventHandler(this.btnCancelUnit_Click);
             // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.panelStockDetail);
+            this.tabPage3.Location = new System.Drawing.Point(4, 46);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(718, 389);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Stock Details";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // panelStockDetail
+            // 
+            this.panelStockDetail.Controls.Add(this.panel5);
+            this.panelStockDetail.Controls.Add(this.panel4);
+            this.panelStockDetail.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelStockDetail.Location = new System.Drawing.Point(0, 0);
+            this.panelStockDetail.Name = "panelStockDetail";
+            this.panelStockDetail.Size = new System.Drawing.Size(718, 389);
+            this.panelStockDetail.TabIndex = 0;
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.dataGridViewDetails);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.Location = new System.Drawing.Point(0, 64);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(718, 325);
+            this.panel5.TabIndex = 8;
+            // 
+            // dataGridViewDetails
+            // 
+            this.dataGridViewDetails.AllowUserToAddRows = false;
+            this.dataGridViewDetails.AllowUserToResizeColumns = false;
+            this.dataGridViewDetails.AllowUserToResizeRows = false;
+            this.dataGridViewDetails.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridViewDetails.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewDetails.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewDetails.ColumnHeadersHeight = 40;
+            this.dataGridViewDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridViewDetails.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.NumService,
+            this.DeliveryDate,
+            this.Qty,
+            this.Expiration,
+            this.StockBy,
+            this.StockID});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Azure;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewDetails.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewDetails.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewDetails.EnableHeadersVisualStyles = false;
+            this.dataGridViewDetails.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.dataGridViewDetails.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewDetails.Name = "dataGridViewDetails";
+            this.dataGridViewDetails.RowHeadersVisible = false;
+            this.dataGridViewDetails.RowHeadersWidth = 51;
+            this.dataGridViewDetails.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dataGridViewDetails.RowTemplate.Height = 29;
+            this.dataGridViewDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewDetails.Size = new System.Drawing.Size(718, 325);
+            this.dataGridViewDetails.TabIndex = 6;
+            this.dataGridViewDetails.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDetails_CellClick);
+            // 
+            // NumService
+            // 
+            this.NumService.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.NumService.HeaderText = "#";
+            this.NumService.MinimumWidth = 6;
+            this.NumService.Name = "NumService";
+            this.NumService.ReadOnly = true;
+            this.NumService.Width = 61;
+            // 
+            // DeliveryDate
+            // 
+            this.DeliveryDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.DeliveryDate.HeaderText = "DELIVERY DATE";
+            this.DeliveryDate.MinimumWidth = 6;
+            this.DeliveryDate.Name = "DeliveryDate";
+            // 
+            // Qty
+            // 
+            this.Qty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Qty.HeaderText = "QTY";
+            this.Qty.MinimumWidth = 6;
+            this.Qty.Name = "Qty";
+            this.Qty.Width = 95;
+            // 
+            // Expiration
+            // 
+            this.Expiration.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Expiration.HeaderText = "EXPIRATION";
+            this.Expiration.MinimumWidth = 6;
+            this.Expiration.Name = "Expiration";
+            this.Expiration.Width = 195;
+            // 
+            // StockBy
+            // 
+            this.StockBy.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.StockBy.HeaderText = "STOCKED BY";
+            this.StockBy.MinimumWidth = 6;
+            this.StockBy.Name = "StockBy";
+            this.StockBy.Width = 199;
+            // 
+            // StockID
+            // 
+            this.StockID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.StockID.HeaderText = "STOCK ID";
+            this.StockID.MinimumWidth = 6;
+            this.StockID.Name = "StockID";
+            this.StockID.ReadOnly = true;
+            this.StockID.Visible = false;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.labelItemID);
+            this.panel4.Controls.Add(this.labelItemName);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(718, 64);
+            this.panel4.TabIndex = 7;
+            // 
+            // labelItemID
+            // 
+            this.labelItemID.AutoSize = true;
+            this.labelItemID.Location = new System.Drawing.Point(618, 13);
+            this.labelItemID.Name = "labelItemID";
+            this.labelItemID.Size = new System.Drawing.Size(57, 38);
+            this.labelItemID.TabIndex = 26;
+            this.labelItemID.Text = "     ";
+            this.labelItemID.Visible = false;
+            // 
+            // labelItemName
+            // 
+            this.labelItemName.AutoSize = true;
+            this.labelItemName.ForeColor = System.Drawing.Color.Red;
+            this.labelItemName.Location = new System.Drawing.Point(105, 13);
+            this.labelItemName.Name = "labelItemName";
+            this.labelItemName.Size = new System.Drawing.Size(154, 38);
+            this.labelItemName.TabIndex = 25;
+            this.labelItemName.Text = "Item Name";
+            // 
             // frmEditStock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 37F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(726, 496);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tabControlStock);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "frmEditStock";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmEditStock";
             this.panel1.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).EndInit();
-            this.tabControl1.ResumeLayout(false);
+            this.tabControlStock.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.panelEditStock.ResumeLayout(false);
+            this.panelEditStock.PerformLayout();
             this.tabPage2.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
+            this.panelAddUnit.ResumeLayout(false);
+            this.panelAddUnit.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.panelStockDetail.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDetails)).EndInit();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -423,12 +617,26 @@
         private TabPage tabPage1;
         private TabPage tabPage2;
         public Button btnSaveUnit;
-        public Panel panel3;
+        public Panel panelAddUnit;
         public Button btnCancelUnit;
         public TextBox txtUnit;
         public Label label3;
-        public TabControl tabControl1;
-        public Panel panel2;
+        public TabControl tabControlStock;
+        public Panel panelEditStock;
         public Button btnDeleteUnit;
+        private TabPage tabPage3;
+        private Panel panel5;
+        private Panel panel4;
+        private Panel panel6;
+        public DataGridView dataGridViewDetails;
+        public Label labelItemID;
+        public Label labelItemName;
+        public Panel panelStockDetail;
+        private DataGridViewTextBoxColumn NumService;
+        private DataGridViewTextBoxColumn DeliveryDate;
+        private DataGridViewTextBoxColumn Qty;
+        private DataGridViewTextBoxColumn Expiration;
+        private DataGridViewTextBoxColumn StockBy;
+        private DataGridViewTextBoxColumn StockID;
     }
 }

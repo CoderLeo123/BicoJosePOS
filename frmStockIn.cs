@@ -28,7 +28,7 @@ namespace Capstone
             LoadStock();
             dataGridViewStockItems.AllowUserToAddRows = false;
             LoadStockOnHand();
-            LoadHistory();
+            
         }
         public void LoadStock()
         {
@@ -125,52 +125,51 @@ namespace Capstone
             }
         }
 
-        public void LoadHistory()
-        {
-            try
-            {
-                int i = 0;
-                dataGridViewStockHist.Rows.Clear();
-                cn.Open();
-                cm = new SqlCommand("SELECT * from ViewStockItemType WHERE (Description LIKE '%" + txtSearch.Text + "%' OR Type LIKE '%" + txtSearch.Text + "%') AND Stock_In_Date BETWEEN '" + dateStart.Value.ToShortDateString() + "' AND '"+ dateEnd.Value.ToShortDateString() +"' AND Status LIKE 'DONE' ", cn);
-                dr = cm.ExecuteReader();
-                while (dr.Read())
-                {
-                    string ExpirationDate = dr[2].ToString();
-                    if (string.IsNullOrEmpty(ExpirationDate))
-                    {
-                        ExpirationDate = "Non-Perishable";
+        //public void LoadHistory()
+        //{
+        //    try
+        //    {
+        //        int i = 0;
+        //        dataGridViewStockHist.Rows.Clear();
+        //        cn.Open();
+        //        cm = new SqlCommand("SELECT * from ViewStockItemType WHERE (Description LIKE '%" + txtSearch.Text + "%' OR Type LIKE '%" + txtSearch.Text + "%') AND Status LIKE 'DONE' ", cn);
+        //        dr = cm.ExecuteReader();
+        //        while (dr.Read())
+        //        {
+        //            string ExpirationDate = dr[2].ToString();
+        //            if (string.IsNullOrEmpty(ExpirationDate))
+        //            {
+        //                ExpirationDate = "Non-Perishable";
 
-                    }
-                    else
-                    {               
-                        if(ExpirationDate.Substring(0, 10) != "")
-                        {
-                            ExpirationDate = dr[2].ToString().Substring(0, 9);
-                        }
-                        else
-                        {
-                            ExpirationDate = dr[2].ToString().Substring(0, 10);
-                        }
+        //            }
+        //            else
+        //            {               
+        //                if(ExpirationDate.Substring(0, 10) != "")
+        //                {
+        //                    ExpirationDate = dr[2].ToString().Substring(0, 9);
+        //                }
+        //                else
+        //                {
+        //                    ExpirationDate = dr[2].ToString().Substring(0, 10);
+        //                }
                         
-                    }
-                        //string CuttedExpirationDate = ExpirationDate.Substring(0, 10);
-                        // dr[8].ToString().Substring(0, 10)
-                        //                             1-STOCK ID / 0-Stock_ID               3-QTY / 10-Quantity                                         5-EXPIRATION / 2-Expiration_Date         8-ITEM ID / 5-Item_ID                    
-                        i += 1;               // 0-Num            2-DESCRIPTION / 1-Description                      4-STOCK IN DATE / 3-Stock_In_Date                  6-STOCK IN BY / 4-Stock_In_By           9-TYPE / 6-Type           
-                    dataGridViewStockHist.Rows.Add(i, dr[0].ToString(), dr[1].ToString(), dr[10].ToString(), DateTime.Parse(dr[3].ToString()).ToShortDateString(), ExpirationDate, dr[4].ToString(), dr[5].ToString(), dr[6].ToString());
-                    //dataGridViewStockHist.DefaultCellStyle.Font = new Font("Tahoma", 12);
-                }
-                dr.Close();
-                cn.Close();
-                //NonPerishHistory();
-            }
-            catch (Exception ex)
-            {
-                cn.Close();
-                MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
+        //            }
+                        
+        //                //                             1-STOCK ID / 0-Stock_ID               3-QTY / 10-Quantity                                         5-EXPIRATION / 2-Expiration_Date         8-ITEM ID / 5-Item_ID                    
+        //                i += 1;               // 0-Num            2-DESCRIPTION / 1-Description                      4-STOCK IN DATE / 3-Stock_In_Date                  6-STOCK IN BY / 4-Stock_In_By           9-TYPE / 6-Type           
+        //            dataGridViewStockHist.Rows.Add(i, dr[0].ToString(), dr[1].ToString(), dr[10].ToString(), DateTime.Parse(dr[3].ToString()).ToShortDateString(), ExpirationDate, dr[4].ToString(), dr[5].ToString(), dr[6].ToString());
+        //            //dataGridViewStockHist.DefaultCellStyle.Font = new Font("Tahoma", 12);
+        //        }
+        //        dr.Close();
+        //        cn.Close();
+                
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        cn.Close();
+        //        MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        //    }
+        //}
 
         public void LoadStockOnHand()
         {
@@ -243,10 +242,10 @@ namespace Capstone
                 {
                     frmEditStock frm = new frmEditStock(this);
                     
-                    frm.tabControl1.TabPages.Clear();
+                    frm.tabControlStock.TabPages.Clear();
                     TabPage tab = new TabPage("Edit Stock");
-                    frm.tabControl1.TabPages.Add(tab);
-                    tab.Controls.Add(frm.panel2);
+                    frm.tabControlStock.TabPages.Add(tab);
+                    tab.Controls.Add(frm.panelEditStock);
                     frm.lblID.Text = dataGridViewStockItems.Rows[e.RowIndex].Cells[11].Value.ToString();
                     frm.txtQuantity.Text = dataGridViewStockItems[5, e.RowIndex].Value.ToString();
                     frm.LoadUnitMeasure();
@@ -263,7 +262,7 @@ namespace Capstone
 
         private void btnLoadHistory_Click(object sender, EventArgs e)
         {
-            LoadHistory();
+            //LoadHistory();
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
@@ -276,7 +275,7 @@ namespace Capstone
                 }
                 else
                 {
-                    LoadHistory();
+                    LoadStockOnHand();
                 }
             }
             catch (Exception ex)
@@ -288,7 +287,35 @@ namespace Capstone
 
         private void dataGridViewOnHand_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            LoadStockOnHand();
+           
+        }
+
+        private void dataGridViewOnHand_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                frmEditStock frm = new frmEditStock(this);
+                frm.tabControlStock.TabPages.Clear();
+                TabPage tab = new TabPage("Stock Details");
+                frm.tabControlStock.TabPages.Add(tab);
+                tab.Controls.Add(frm.panelStockDetail);
+                frm.Size = new Size(809, 496);
+                
+
+                frm.labelItemID.Text = dataGridViewOnHand[1, e.RowIndex].Value.ToString();
+                frm.labelItemName.Text = dataGridViewOnHand[2, e.RowIndex].Value.ToString();
+                
+                frm.LoadRecordsStockDetail();
+                
+                frm.ShowDialog(this);
+            }
+
+            
+        }
+
+        private void dataGridViewOnHand_SelectionChanged(object sender, EventArgs e)
+        {
+            
         }
 
         private void dataGridViewStockItems_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)

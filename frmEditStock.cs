@@ -148,17 +148,17 @@ namespace Capstone
         }
         public void switchToEdit()
         {
-            tabControl1.TabPages.Clear();
+            tabControlStock.TabPages.Clear();
             TabPage tab = new TabPage("Edit Stock");
-            tabControl1.TabPages.Add(tab);
-            tab.Controls.Add(panel2);
+            tabControlStock.TabPages.Add(tab);
+            tab.Controls.Add(panelEditStock);
         }
         public void switchToAdd()
         {
-            tabControl1.TabPages.Clear();
+            tabControlStock.TabPages.Clear();
             TabPage tab = new TabPage("Add Unit Measure");
-            tabControl1.TabPages.Add(tab);
-            tab.Controls.Add(panel3);
+            tabControlStock.TabPages.Add(tab);
+            tab.Controls.Add(panelAddUnit);
         }
 
         
@@ -226,6 +226,51 @@ namespace Capstone
             cn.Close();
             
             LoadUnitMeasure();
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        public void LoadRecordsStockDetail()
+        {
+            int i = 0;
+            dataGridViewDetails.Rows.Clear();
+            cn.Open();
+            cm = new SqlCommand("SELECT Stock_In_Date, Quantity, Expiration_Date, Stock_In_By FROM tblStock WHERE Item_ID LIKE '%" + labelItemID.Text + "%'", cn);
+            dr = cm.ExecuteReader();
+            while (dr.Read())
+            { 
+                string ExpirationDate = dr[2].ToString();
+                    if (string.IsNullOrEmpty(ExpirationDate))
+                    {
+                        ExpirationDate = "Non-Consumable";
+
+                    }
+                    else
+                    {               
+                        if(ExpirationDate.Substring(0, 10) != "")
+                        {
+                            ExpirationDate = dr[2].ToString().Substring(0, 9);
+                        }
+                        else
+                        {
+                            ExpirationDate = dr[2].ToString().Substring(0, 10);
+                        }
+                        
+                    }
+
+                                         //                     3-QTY / 3-Quantity                 3-STOKED BY / 3-Stock_In_By        
+                i += 1;          //0-#  1-DELIVERY DATE / 1-Stock_In_Date         3-EXPIRATION / 3-Expiration_Date  
+                dataGridViewDetails.Rows.Add(i, DateTime.Parse(dr[0].ToString()).ToShortDateString(), dr[1].ToString(), ExpirationDate, dr[3].ToString());
+            }
+            dr.Close();
+            cn.Close();
+        }
+
+        private void dataGridViewDetails_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
