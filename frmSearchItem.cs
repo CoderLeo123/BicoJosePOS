@@ -16,6 +16,7 @@ namespace Capstone
         SqlCommand cm = new SqlCommand();
         DBConnection dbcon = new DBConnection();
         SqlDataReader dr;
+        ClassLoadData classLoadData = new ClassLoadData();
         string title = "BICO-JOSE System";
         frmStockIn frmList;
         string num = ""; int count2;
@@ -92,7 +93,8 @@ namespace Capstone
                         cm.ExecuteNonQuery();
                         cn.Close();
                         MessageBox.Show("Successfully Added!", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        frmList.LoadStock();
+                        classLoadData.LoadStock(frmList.dataGridViewStockItems, frmList.txtStockID, frmList.label3);
+                        //frmList.LoadStock();
                         this.Close();
                     }
                 }

@@ -199,9 +199,9 @@
             this.btnPerishable.ForeColor = System.Drawing.Color.White;
             this.btnPerishable.Location = new System.Drawing.Point(249, 105);
             this.btnPerishable.Name = "btnPerishable";
-            this.btnPerishable.Size = new System.Drawing.Size(153, 49);
+            this.btnPerishable.Size = new System.Drawing.Size(173, 49);
             this.btnPerishable.TabIndex = 45;
-            this.btnPerishable.Text = "Perishable";
+            this.btnPerishable.Text = "Consumable";
             this.btnPerishable.UseVisualStyleBackColor = false;
             this.btnPerishable.Click += new System.EventHandler(this.btnPerishable_Click);
             // 
@@ -213,11 +213,11 @@
             this.btnNonPerishable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNonPerishable.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnNonPerishable.ForeColor = System.Drawing.Color.White;
-            this.btnNonPerishable.Location = new System.Drawing.Point(420, 105);
+            this.btnNonPerishable.Location = new System.Drawing.Point(450, 105);
             this.btnNonPerishable.Name = "btnNonPerishable";
-            this.btnNonPerishable.Size = new System.Drawing.Size(202, 49);
+            this.btnNonPerishable.Size = new System.Drawing.Size(222, 49);
             this.btnNonPerishable.TabIndex = 46;
-            this.btnNonPerishable.Text = "Non-Perishable";
+            this.btnNonPerishable.Text = "Non-Consumable";
             this.btnNonPerishable.UseVisualStyleBackColor = false;
             this.btnNonPerishable.Click += new System.EventHandler(this.btnNonPerishable_Click);
             // 
@@ -611,7 +611,6 @@
         public Button btnNonPerishable;
         private Label lblCheck;
         public Label lblID;
-        private ComboBox comBoxUnit;
         private Label label2;
         public Button button1;
         private TabPage tabPage1;
@@ -638,5 +637,6 @@
         private DataGridViewTextBoxColumn Expiration;
         private DataGridViewTextBoxColumn StockBy;
         private DataGridViewTextBoxColumn StockID;
+        public ComboBox comBoxUnit;
     }
 }

@@ -16,6 +16,8 @@ namespace Capstone
         SqlCommand cm = new SqlCommand();
         DBConnection dbcon = new DBConnection();
         SqlDataReader dr;
+        ClassGenerateID classGenerateID = new ClassGenerateID();
+        ClassLoadData classLoadData = new ClassLoadData();
         string title = "BICO-JOSE System";
         string ID, num = "", pass; int count, count2, rows;
         string check = null;
@@ -25,181 +27,14 @@ namespace Capstone
         {
             InitializeComponent();
             cn = new SqlConnection(dbcon.MyConnection());
-            LoadStock();
+            classLoadData.LoadStock(dataGridViewStockItems, txtStockID, label3);
+            classLoadData.LoadStockOnHand(dataGridViewOnHand, txtSearch);
+            //LoadStock();
             dataGridViewStockItems.AllowUserToAddRows = false;
-            LoadStockOnHand();
+            //LoadStockOnHand();
             
         }
-        public void LoadStock()
-        {
-            try
-            {
-                int i = 0;
-                dataGridViewStockItems.Rows.Clear();
-                cn.Open();
-                cm = new SqlCommand("SELECT * from ViewStockItemType WHERE Stock_ID LIKE '" + txtStockID.Text + "' AND Status LIKE 'Pending' ", cn);
-                dr = cm.ExecuteReader();
-                while (dr.Read())
-                {
-                    int quantity = 0;
-                    string ExpirationDate = dr[2].ToString();
-                    if (string.IsNullOrEmpty(ExpirationDate))
-                    {
-                        ExpirationDate = "Non-Perishable";
-
-                    }
-                    else
-                    {
-                        if (ExpirationDate.Substring(0, 10) != "")
-                        {
-                            ExpirationDate = dr[2].ToString().Substring(0, 9);
-                        }
-                        else
-                        {
-                            ExpirationDate = dr[2].ToString().Substring(0, 10);
-                        }
-
-                    }
-                     i += 1;
-                                                     //                                                                      4-DESCRIPTION / 1-Description       6-EXPIRATION / 2-Expiration_Date                                      8-STOCK IN BY / 4-Stock_In_By            10-TYPE / 6-Type
-                                                //0-# / i         1/Edit                    2/Delete           3-STOCK ID / 0-Stock_ID            5-QTY / 10-Quantity                              7-STOCK IN DATE / 3-Stock_In_Date                            9-ITEM ID / 5-Item_ID                12-num / 11-num 
-                    dataGridViewStockItems.Rows.Add(i, Properties.Resources.Edit, Properties.Resources._Delete, dr[0].ToString(), dr[1].ToString(), quantity.ToString(), ExpirationDate, DateTime.Parse(dr[3].ToString()).ToShortDateString(), dr[4].ToString(), dr[5].ToString(), dr[6].ToString(), dr[9].ToString());
-                    
-                }
-                dr.Close();
-                cn.Close();
-                btnSaveStockIn.Show();
-                NonPerish();
-
-            }
-            catch (Exception ex)
-            {
-                cn.Close();
-                MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-        public void NonPerish()
-        {
-            for (int i = 0; i < dataGridViewStockItems.Rows.Count; i++)
-            {
-                string scan = dataGridViewStockItems.Rows[i].Cells[6].Value.ToString();
-                ((DataGridViewTextBoxColumn)dataGridViewStockItems.Columns[6]).MaxInputLength = 6;
-                if (string.IsNullOrEmpty(scan))
-                {
-                    dataGridViewStockItems.Rows[i].Cells[6].Value = "Non-Perishable";
-                }
-            }
-        }
-        private void Generate()
-        {
-            try
-            {
-                cn.Open();
-                cm = new SqlCommand("SELECT TOP 1 Stock_ID FROM tblStock ORDER BY Stock_ID DESC", cn);
-                dr = cm.ExecuteReader();
-                dr.Read();
-                if (dr.HasRows)
-                {
-                    ID = dr[0].ToString(); //STK1001
-                    count = int.Parse(ID.Substring(3, 4)); //1001
-                    txtStockID.Text = ID.Substring(0, 3) + (count + 1); //STK1002
-
-                }
-                else
-                {
-                    cn.Close();
-                    cn.Open();
-                    cm = new SqlCommand("INSERT INTO tblStock (Stock_ID) VALUES('STK1001')", cn);
-                    cm.ExecuteNonQuery();
-                    cn.Close();
-                    Generate();
-                }
-                dr.Close();
-                cn.Close();
-
-            }
-            catch (Exception ex)
-            {
-                cn.Close();
-                MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-
-        //public void LoadHistory()
-        //{
-        //    try
-        //    {
-        //        int i = 0;
-        //        dataGridViewStockHist.Rows.Clear();
-        //        cn.Open();
-        //        cm = new SqlCommand("SELECT * from ViewStockItemType WHERE (Description LIKE '%" + txtSearch.Text + "%' OR Type LIKE '%" + txtSearch.Text + "%') AND Status LIKE 'DONE' ", cn);
-        //        dr = cm.ExecuteReader();
-        //        while (dr.Read())
-        //        {
-        //            string ExpirationDate = dr[2].ToString();
-        //            if (string.IsNullOrEmpty(ExpirationDate))
-        //            {
-        //                ExpirationDate = "Non-Perishable";
-
-        //            }
-        //            else
-        //            {               
-        //                if(ExpirationDate.Substring(0, 10) != "")
-        //                {
-        //                    ExpirationDate = dr[2].ToString().Substring(0, 9);
-        //                }
-        //                else
-        //                {
-        //                    ExpirationDate = dr[2].ToString().Substring(0, 10);
-        //                }
-                        
-        //            }
-                        
-        //                //                             1-STOCK ID / 0-Stock_ID               3-QTY / 10-Quantity                                         5-EXPIRATION / 2-Expiration_Date         8-ITEM ID / 5-Item_ID                    
-        //                i += 1;               // 0-Num            2-DESCRIPTION / 1-Description                      4-STOCK IN DATE / 3-Stock_In_Date                  6-STOCK IN BY / 4-Stock_In_By           9-TYPE / 6-Type           
-        //            dataGridViewStockHist.Rows.Add(i, dr[0].ToString(), dr[1].ToString(), dr[10].ToString(), DateTime.Parse(dr[3].ToString()).ToShortDateString(), ExpirationDate, dr[4].ToString(), dr[5].ToString(), dr[6].ToString());
-        //            //dataGridViewStockHist.DefaultCellStyle.Font = new Font("Tahoma", 12);
-        //        }
-        //        dr.Close();
-        //        cn.Close();
-                
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        cn.Close();
-        //        MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //    }
-        //}
-
-        public void LoadStockOnHand()
-        {
-            try
-            {
-                int i = 0;
-                dataGridViewOnHand.Rows.Clear();
-                cn.Open();
-                cm = new SqlCommand("SELECT * from ViewItemProductType WHERE (Description LIKE '%" + txtSearch.Text + "%' OR Type LIKE '%" + txtSearch.Text + "%')", cn);
-                dr = cm.ExecuteReader();
-                while (dr.Read())
-                {
-                    
-
-                    //                              1-ITEM ID / 0-Item_ID                  2-QTY / 5-Quantity             5-CLASSIFICATION / 2-Classification                        
-                    i += 1;               // 0-Num            2-DESCRIPTION / 1-Description                      3-TYPE / 3-Type                            
-                    dataGridViewOnHand.Rows.Add(i, dr[0].ToString(), dr[1].ToString(), dr[5].ToString(), dr[2].ToString(), dr[6].ToString());
-                    
-                }
-                dr.Close();
-                cn.Close();
-                
-            }
-            catch (Exception ex)
-            {
-                cn.Close();
-                MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-
+        
         public void Clear()
         {
             txtStockID.Clear();
@@ -231,7 +66,8 @@ namespace Capstone
                     cm.ExecuteNonQuery();
                     cn.Close();
                     MessageBox.Show("Record has been successfully deleted.", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoadStock();
+                    classLoadData.LoadStock(dataGridViewStockItems, txtStockID, label3);
+                    //LoadStock();
                     
                 }
 
@@ -248,7 +84,8 @@ namespace Capstone
                     tab.Controls.Add(frm.panelEditStock);
                     frm.lblID.Text = dataGridViewStockItems.Rows[e.RowIndex].Cells[11].Value.ToString();
                     frm.txtQuantity.Text = dataGridViewStockItems[5, e.RowIndex].Value.ToString();
-                    frm.LoadUnitMeasure();
+                    classLoadData.LoadUnitMeasure(frm.comBoxUnit);
+                    //frm.LoadUnitMeasure();
                     frm.ShowDialog(this);
                 }
                 catch (Exception ex)
@@ -275,7 +112,8 @@ namespace Capstone
                 }
                 else
                 {
-                    LoadStockOnHand();
+                    classLoadData.LoadStockOnHand(dataGridViewOnHand, txtSearch);
+                    //LoadStockOnHand();
                 }
             }
             catch (Exception ex)
@@ -304,8 +142,8 @@ namespace Capstone
 
                 frm.labelItemID.Text = dataGridViewOnHand[1, e.RowIndex].Value.ToString();
                 frm.labelItemName.Text = dataGridViewOnHand[2, e.RowIndex].Value.ToString();
-                
-                frm.LoadRecordsStockDetail();
+                classLoadData.LoadRecordsStockDetail(frm.dataGridViewDetails, frm.labelItemID);
+                //frm.LoadRecordsStockDetail();
                 
                 frm.ShowDialog(this);
             }
@@ -318,6 +156,25 @@ namespace Capstone
             
         }
 
+        private void btnClearStock_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewStockItems.Rows.Count > 0)
+            {
+                if (MessageBox.Show("Remove these records?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    for (int i = 0; i < dataGridViewStockItems.Rows.Count; i++)
+                    {
+                        cn.Open();
+                        cm = new SqlCommand("DELETE FROM tblStock WHERE num LIKE '" + dataGridViewStockItems.Rows[i].Cells[11].Value.ToString() + "'", cn);
+                        cm.ExecuteNonQuery();
+                        cn.Close();
+                    }
+                    classLoadData.LoadStock(dataGridViewStockItems, txtStockID, label3);
+                    classLoadData.LoadStockOnHand(dataGridViewOnHand, txtSearch);
+                }
+            }
+        }
+
         private void dataGridViewStockItems_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             
@@ -326,7 +183,7 @@ namespace Capstone
         
         private void GenerateStockID_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Generate();
+            classGenerateID.GenerateStockID(txtStockID);
         }
 
         private void btnSaveStockIn_Click(object sender, EventArgs e)
@@ -340,7 +197,11 @@ namespace Capstone
                     
                     for (int i = 0; i < dataGridViewStockItems.Rows.Count; i++)
                     {
-                        
+                        cn.Open();
+                        cm = new SqlCommand("UPDATE tblItem SET Quantity = Quantity + " + int.Parse(dataGridViewStockItems.Rows[i].Cells[5].Value?.ToString()) + " WHERE Item_ID LIKE '" + dataGridViewStockItems.Rows[i].Cells[9].Value?.ToString() + "' ", cn);
+                        cm.ExecuteNonQuery();
+                        cn.Close();
+
                         try
                         {
                             cn.Open();
@@ -369,12 +230,6 @@ namespace Capstone
 
                             }
 
-                            cn.Open();
-                            cm = new SqlCommand("UPDATE tblItem SET Quantity = Quantity + " + int.Parse(dataGridViewStockItems.Rows[i].Cells[5].Value?.ToString()) + " WHERE Item_ID LIKE '" + dataGridViewStockItems.Rows[i].Cells[9].Value?.ToString() + "' ", cn);
-                            cm.ExecuteNonQuery();
-                            cn.Close();
-
-
                         }
                         catch (Exception ex)
                         {
@@ -383,7 +238,9 @@ namespace Capstone
                         }
                         
                     }
-                    LoadStock();
+                    classLoadData.LoadStock(dataGridViewStockItems, txtStockID, label3);
+                    classLoadData.LoadStockOnHand(dataGridViewOnHand, txtSearch);
+                    //LoadStock();
                     Clear();
                 }
                 

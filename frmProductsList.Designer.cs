@@ -36,6 +36,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel14 = new System.Windows.Forms.Panel();
             this.btnClose = new System.Windows.Forms.PictureBox();
@@ -280,7 +281,7 @@
             this.Delete});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.Azure;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
@@ -388,7 +389,7 @@
             this.DeleteProduct});
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.Azure;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
@@ -399,6 +400,14 @@
             this.dataGridViewProduct.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.dataGridViewProduct.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewProduct.Name = "dataGridViewProduct";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewProduct.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewProduct.RowHeadersVisible = false;
             this.dataGridViewProduct.RowHeadersWidth = 51;
             this.dataGridViewProduct.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
@@ -467,14 +476,14 @@
             this.dataGridViewItems.AllowUserToResizeRows = false;
             this.dataGridViewItems.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewItems.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridViewItems.ColumnHeadersHeight = 40;
             this.dataGridViewItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridViewItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -489,14 +498,14 @@
             this.EditItems,
             this.DeleteItems,
             this.dataGridViewTextBoxColumn5});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Azure;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewItems.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.Azure;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewItems.DefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridViewItems.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewItems.EnableHeadersVisualStyles = false;
             this.dataGridViewItems.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
@@ -531,7 +540,7 @@
             // 
             // TypeItems
             // 
-            this.TypeItems.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.TypeItems.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.TypeItems.HeaderText = "TYPE";
             this.TypeItems.MinimumWidth = 6;
             this.TypeItems.Name = "TypeItems";
@@ -540,7 +549,7 @@
             // 
             // ProductItems
             // 
-            this.ProductItems.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.ProductItems.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.ProductItems.HeaderText = "PRODUCT";
             this.ProductItems.MinimumWidth = 6;
             this.ProductItems.Name = "ProductItems";
@@ -793,14 +802,14 @@
             this.dataGridViewService.AllowUserToResizeRows = false;
             this.dataGridViewService.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewService.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewService.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewService.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridViewService.ColumnHeadersHeight = 40;
             this.dataGridViewService.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridViewService.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -811,14 +820,14 @@
             this.PriceService,
             this.EditService,
             this.DeleteService});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.Azure;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewService.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.Azure;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewService.DefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridViewService.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewService.EnableHeadersVisualStyles = false;
             this.dataGridViewService.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
@@ -1012,10 +1021,8 @@
         private Panel panel1;
         private Label label1;
         private PictureBox btnClose;
-        private DataGridView dataGridViewProduct;
         private Panel panel7;
         private DataGridViewTextBoxColumn NumProducts;
-        private DataGridView dataGridViewType;
         public TextBox txtSearchTypeProducts;
         public Button btnAddProduct;
         public Button btnAddType;
@@ -1033,22 +1040,8 @@
         private DataGridViewImageColumn EditProduct;
         private DataGridViewImageColumn DeleteProduct;
         private Panel panel8;
-        private TextBox txtSearch;
-        private Button btnAddItem;
-        private DataGridView dataGridViewItems;
         private DataGridViewTextBoxColumn Type_ID;
         private DataGridViewTextBoxColumn ItemID;
-        private DataGridViewTextBoxColumn NumItems;
-        private DataGridViewTextBoxColumn DescriptionItems;
-        private DataGridViewTextBoxColumn TypeItems;
-        private DataGridViewTextBoxColumn ProductItems;
-        private DataGridViewTextBoxColumn PriceItems;
-        private DataGridViewTextBoxColumn Quantity;
-        private DataGridViewTextBoxColumn Classification;
-        private DataGridViewTextBoxColumn ID;
-        private DataGridViewImageColumn EditItems;
-        private DataGridViewImageColumn DeleteItems;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         public TabControl tabControl1;
         private TabPage tabPage1;
         private Panel panelProductList;
@@ -1068,7 +1061,6 @@
         private Panel panel6;
         public TextBox txtSearchService;
         private Label label2;
-        private DataGridView dataGridViewService;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private DataGridViewTextBoxColumn ServiceID;
         private DataGridViewTextBoxColumn NAME;
@@ -1076,6 +1068,23 @@
         private DataGridViewTextBoxColumn PriceService;
         private DataGridViewImageColumn EditService;
         private DataGridViewImageColumn DeleteService;
-        private Button btnServiceAdd;
+        public DataGridView dataGridViewProduct;
+        public DataGridView dataGridViewType;
+        public DataGridView dataGridViewItems;
+        public DataGridView dataGridViewService;
+        public TextBox txtSearch;
+        public Button btnAddItem;
+        public Button btnServiceAdd;
+        private DataGridViewTextBoxColumn NumItems;
+        private DataGridViewTextBoxColumn DescriptionItems;
+        private DataGridViewTextBoxColumn TypeItems;
+        private DataGridViewTextBoxColumn ProductItems;
+        private DataGridViewTextBoxColumn PriceItems;
+        private DataGridViewTextBoxColumn Quantity;
+        private DataGridViewTextBoxColumn Classification;
+        private DataGridViewTextBoxColumn ID;
+        private DataGridViewImageColumn EditItems;
+        private DataGridViewImageColumn DeleteItems;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
     }
 }

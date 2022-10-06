@@ -16,6 +16,8 @@ namespace Capstone
         SqlCommand cm = new SqlCommand();
         DBConnection dbcon = new DBConnection();
         SqlDataReader dr;
+        ClassComputations classCompute = new ClassComputations();
+        ClassLoadData classLoadData = new ClassLoadData();
         string title = "BICO-JOSE System";
         frmBrowseItem frmB;
         int r;
@@ -30,33 +32,42 @@ namespace Capstone
 
             //dataGridViewSelected.Rows.Add('-', ' ', '0', '0', Properties.Resources._Add, Properties.Resources._Delete, '0');
         }
-        public void Compute()
+        //public void Compute()
+        //{
+        //    try
+        //    {
+        //        float total = float.Parse(lblPrice2.Text) * float.Parse(txtQuantity.Text);
+        //        lblTotal.Text = total.ToString("#.##");
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        cn.Close();
+        //        MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //}
+        private void btnClose_Click(object sender, EventArgs e)
         {
             try
             {
-                float total = float.Parse(lblPrice2.Text) * float.Parse(txtQuantity.Text);
-                lblTotal.Text = total.ToString("#.##");
-
+                cn.Open();
+                cm = new SqlCommand("DELETE FROM tblBrowseExp", cn);
+                cm.ExecuteNonQuery();
+                cn.Close();
+                this.Close();
             }
             catch (Exception ex)
             {
                 cn.Close();
                 MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            cn.Open();
-            cm = new SqlCommand("DELETE FROM tblBrowseExp", cn);
-            cm.ExecuteNonQuery();
-            cn.Close();
-            this.Close();
+
         }
 
         private void dataGridViewExpDate_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             string colName = dataGridViewExpDate.Columns[e.ColumnIndex].Name;
-            string id = dataGridViewExpDate[4, e.RowIndex].Value.ToString();
+            string id = dataGridViewExpDate[4, e.RowIndex].Value.ToString(); //num = Stock
 
             int i = 0;
             string num = dataGridViewExpDate[0, e.RowIndex].Value.ToString();
@@ -106,7 +117,7 @@ namespace Capstone
             try
             {
                 string colName = dataGridViewSelected.Columns[e.ColumnIndex].Name;
-                string id = dataGridViewSelected[6, e.RowIndex].Value.ToString();
+                string id = dataGridViewSelected[6, e.RowIndex].Value.ToString(); //num = Stock
                 int i = 0;
                 if (colName == "Delete")
                 {
@@ -236,46 +247,53 @@ namespace Capstone
 
         private void txtQuantity_TextChanged(object sender, EventArgs e)
         {
-            r = frmB.dataGridViewBrowse.SelectedRows[0].Index;
-            int Stock = int.Parse(frmB.dataGridViewBrowse[6, r].Value.ToString());
-            int input = int.Parse(txtQuantity.Text);
-            if (txtQuantity.Text == string.Empty)
+            try
             {
-                txtQuantity.Text = "0";
-                txtQuantity.SelectAll();
+                r = frmB.dataGridViewBrowse.SelectedRows[0].Index;
+                //int Stock = int.Parse(frmB.dataGridViewBrowse[6, r].Value.ToString());
+                int Stock = int.Parse(frmB.lblStock.Text);
+                String txtInput = txtQuantity.Text;
+                int input = int.Parse(txtInput);
+                if (txtQuantity.Text == string.Empty)
+                {
+                    txtQuantity.Text = "0";
+                    txtQuantity.Focus();
+                    txtQuantity.SelectAll();
+                }
+                if ((input < 1) || (input > Stock))
+                {
+
+                    txtQuantity.Text = Stock.ToString();
+                    txtQuantity.SelectAll();
+                }
+                classCompute.Compute(txtQuantity, lblPrice2, lblTotal);
             }
-            if ((input < 1) || (input > Stock))
+            catch (Exception ex)
             {
-                txtQuantity.Text = Stock.ToString();
-                txtQuantity.SelectAll();
+                cn.Close();
+                MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            Compute();
         }
 
         private void txtQuantity_KeyPress(object sender, KeyPressEventArgs e)
         {
             try
             {
-
                 if (e.KeyChar == 8)
                 {
                     //accept backspace
                 }
-
                 else if ((e.KeyChar < 48) || (e.KeyChar > 57))
                 {
                     //ascii code 48 - 57 = characters between 0 - 9
                     e.Handled = true;
-                    Compute();
-                }
-                
-
+                    classCompute.Compute(txtQuantity, lblPrice2, lblTotal);
+                    //Compute();
+                }               
                  r = frmB.dataGridViewBrowse.SelectedRows[0].Index;
                 int y = dataGridViewNC.SelectedRows[0].Index;
                 if ((e.KeyChar == 13) && (txtQuantity.Text != String.Empty))
                 {
-
-
                     cn.Open();
                     cm = new SqlCommand("INSERT INTO tblCart (Stock_Num, Item_ID, Transaction_No, Quantity, Price, Total, Date, Status) VALUES (@Stock_Num, @Item_ID, @TransactionNo, @Quantity, @Price, @Total, @Date, 'Cart')", cn);
                     //cm.Parameters.AddWithValue("@Stock_ID", frmB.dataGridViewBrowse[1, i].Value.ToString());
