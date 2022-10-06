@@ -17,6 +17,7 @@ namespace Capstone
         DBConnection dbcon = new DBConnection();
         SqlDataReader dr;
         frmStockIn frmList;
+        ClassLoadData classLoadData = new ClassLoadData();
         string title = "BICO-JOSE System";
         private bool mouseDown;
         private Point lastLocation;
@@ -66,7 +67,7 @@ namespace Capstone
                         cm = new SqlCommand("UPDATE tblStock SET Expiration_Date = null, Quantity = Quantity + " + int.Parse(txtQuantity.Text) + " WHERE num LIKE '" + lblID.Text + "' ", cn);
                         cm.ExecuteNonQuery();
                         cn.Close();
-                        frmList.dataGridViewStockItems[6, i].Value = "Non-Perishable";
+                        frmList.dataGridViewStockItems[6, i].Value = "Non-Consumable";
                         frmList.dataGridViewStockItems[5, i].Value = txtQuantity.Text;
                         this.Close();
                     }
@@ -174,20 +175,20 @@ namespace Capstone
             switchToEdit();
             
         }
-        public void LoadUnitMeasure()
-        {
-            comBoxUnit.Items.Clear();
-                cn.Open();
-                cm = new SqlCommand("SELECT UnitMeasure FROM tblUnitMeasure", cn);
-                dr = cm.ExecuteReader();
-                while (dr.Read())
-                {
-                comBoxUnit.Items.Add(dr[0].ToString());
+        //public void LoadUnitMeasure()
+        //{
+        //    comBoxUnit.Items.Clear();
+        //        cn.Open();
+        //        cm = new SqlCommand("SELECT UnitMeasure FROM tblUnitMeasure", cn);
+        //        dr = cm.ExecuteReader();
+        //        while (dr.Read())
+        //        {
+        //        comBoxUnit.Items.Add(dr[0].ToString());
 
-                }
-                dr.Close();
-                cn.Close();
-            }
+        //        }
+        //        dr.Close();
+        //        cn.Close();
+        //    }
         private void btnSaveUnit_Click(object sender, EventArgs e)
         {
             
@@ -203,7 +204,7 @@ namespace Capstone
                 cm.ExecuteNonQuery();
                 cn.Close();
                 switchToEdit();
-                LoadUnitMeasure();
+                classLoadData.LoadUnitMeasure(comBoxUnit);
             }
         }
 
@@ -224,49 +225,49 @@ namespace Capstone
             cm = new SqlCommand("DELETE FROM tblUnitMeasure WHERE UnitMeasure LIKE '" + unit + "'", cn);
             cm.ExecuteNonQuery();
             cn.Close();
-            
-            LoadUnitMeasure();
+            classLoadData.LoadUnitMeasure(comBoxUnit);
+            //LoadUnitMeasure();
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
 
         }
-        public void LoadRecordsStockDetail()
-        {
-            int i = 0;
-            dataGridViewDetails.Rows.Clear();
-            cn.Open();
-            cm = new SqlCommand("SELECT Stock_In_Date, Quantity, Expiration_Date, Stock_In_By FROM tblStock WHERE Item_ID LIKE '%" + labelItemID.Text + "%'", cn);
-            dr = cm.ExecuteReader();
-            while (dr.Read())
-            { 
-                string ExpirationDate = dr[2].ToString();
-                    if (string.IsNullOrEmpty(ExpirationDate))
-                    {
-                        ExpirationDate = "Non-Consumable";
+        //public void LoadRecordsStockDetail()
+        //{
+        //    int i = 0;
+        //    dataGridViewDetails.Rows.Clear();
+        //    cn.Open();
+        //    cm = new SqlCommand("SELECT Stock_In_Date, Quantity, Expiration_Date, Stock_In_By FROM tblStock WHERE Item_ID LIKE '%" + labelItemID.Text + "%'", cn);
+        //    dr = cm.ExecuteReader();
+        //    while (dr.Read())
+        //    { 
+        //        string ExpirationDate = dr[2].ToString();
+        //            if (string.IsNullOrEmpty(ExpirationDate))
+        //            {
+        //                ExpirationDate = "Non-Consumable";
 
-                    }
-                    else
-                    {               
-                        if(ExpirationDate.Substring(0, 10) != "")
-                        {
-                            ExpirationDate = dr[2].ToString().Substring(0, 9);
-                        }
-                        else
-                        {
-                            ExpirationDate = dr[2].ToString().Substring(0, 10);
-                        }
+        //            }
+        //            else
+        //            {               
+        //                if(ExpirationDate.Substring(0, 10) != "")
+        //                {
+        //                    ExpirationDate = dr[2].ToString().Substring(0, 9);
+        //                }
+        //                else
+        //                {
+        //                    ExpirationDate = dr[2].ToString().Substring(0, 10);
+        //                }
                         
-                    }
+        //            }
 
-                                         //                     3-QTY / 3-Quantity                 3-STOKED BY / 3-Stock_In_By        
-                i += 1;          //0-#  1-DELIVERY DATE / 1-Stock_In_Date         3-EXPIRATION / 3-Expiration_Date  
-                dataGridViewDetails.Rows.Add(i, DateTime.Parse(dr[0].ToString()).ToShortDateString(), dr[1].ToString(), ExpirationDate, dr[3].ToString());
-            }
-            dr.Close();
-            cn.Close();
-        }
+        //                                 //                     3-QTY / 3-Quantity                 3-STOKED BY / 3-Stock_In_By        
+        //        i += 1;          //0-#  1-DELIVERY DATE / 1-Stock_In_Date         3-EXPIRATION / 3-Expiration_Date  
+        //        dataGridViewDetails.Rows.Add(i, DateTime.Parse(dr[0].ToString()).ToShortDateString(), dr[1].ToString(), ExpirationDate, dr[3].ToString());
+        //    }
+        //    dr.Close();
+        //    cn.Close();
+        //}
 
         private void dataGridViewDetails_CellClick(object sender, DataGridViewCellEventArgs e)
         {

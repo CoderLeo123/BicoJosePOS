@@ -17,6 +17,7 @@ namespace Capstone
         SqlCommand cm = new SqlCommand();
         DBConnection dbcon = new DBConnection();
         SqlDataReader dr;
+        ClassLoadData classLoadData = new ClassLoadData();
         string title = "BICO-JOSE System";
         frmCashier frmC;
         private bool mouseDown;
@@ -93,7 +94,8 @@ namespace Capstone
                         cm = new SqlCommand("UPDATE tblCart SET Discount = '" + txtDiscountedAmount.Text + "' WHERE num LIKE '%" + lblID.Text + "'", cn);
                         cm.ExecuteNonQuery();
                         cn.Close();
-                        frmC.LoadCart();
+                        classLoadData.LoadCart(frmC.dataGridViewCart, frmC.lblDiscount, frmC.lblSalesTotal, frmC.lblPayment, frmC.lblNetTotal, frmC.btnSettlePayment, frmC.btnAddDiscount, frmC.btnClearCart, frmC.txtSearch);
+                        //frmC.LoadCart();
                         this.Close();
 
                     }

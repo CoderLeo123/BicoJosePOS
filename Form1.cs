@@ -66,6 +66,7 @@ namespace Capstone
             dropPanelPayment.Size = dropPanelPayment.MinimumSize;
             dropPanelProducts.Size = dropPanelProducts.MinimumSize;
             dropPanelSales.Size = dropPanelSales.MinimumSize;
+            
         }
 
         private void timerDrpBtnSales_Tick(object sender, EventArgs e)

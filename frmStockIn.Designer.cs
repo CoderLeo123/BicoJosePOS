@@ -66,6 +66,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.panelStockOnHand = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.dataGridViewOnHand = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -73,11 +75,12 @@
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Classification = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel6 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.txtSearch = new System.Windows.Forms.TextBox();
-            this.panelStockOnHand = new System.Windows.Forms.Panel();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
+            this.btnClearStock = new System.Windows.Forms.Button();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             this.tabControlStockIn.SuspendLayout();
@@ -86,18 +89,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStockItems)).BeginInit();
             this.panel2.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOnHand)).BeginInit();
-            this.panel4.SuspendLayout();
             this.panelStockOnHand.SuspendLayout();
-            this.panel6.SuspendLayout();
             this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOnHand)).BeginInit();
+            this.panel6.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel7.SuspendLayout();
+            this.panel8.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.panel1.Controls.Add(this.panel7);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.btnClose);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -122,7 +127,7 @@
             this.btnClose.BackgroundImage = global::Capstone.Properties.Resources.CloseTab;
             this.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnClose.Location = new System.Drawing.Point(1260, 9);
+            this.btnClose.Location = new System.Drawing.Point(5, 13);
             this.btnClose.Name = "btnClose";
             this.btnClose.Padding = new System.Windows.Forms.Padding(3);
             this.btnClose.Size = new System.Drawing.Size(40, 38);
@@ -156,12 +161,12 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.btnSaveStockIn);
+            this.panel3.Controls.Add(this.panel8);
             this.panel3.Controls.Add(this.dataGridViewStockItems);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(3, 212);
+            this.panel3.Location = new System.Drawing.Point(3, 206);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1301, 608);
+            this.panel3.Size = new System.Drawing.Size(1301, 614);
             this.panel3.TabIndex = 1;
             // 
             // btnSaveStockIn
@@ -172,7 +177,7 @@
             this.btnSaveStockIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSaveStockIn.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnSaveStockIn.ForeColor = System.Drawing.Color.White;
-            this.btnSaveStockIn.Location = new System.Drawing.Point(5, 556);
+            this.btnSaveStockIn.Location = new System.Drawing.Point(9, 6);
             this.btnSaveStockIn.Name = "btnSaveStockIn";
             this.btnSaveStockIn.Size = new System.Drawing.Size(140, 49);
             this.btnSaveStockIn.TabIndex = 23;
@@ -275,22 +280,20 @@
             // STOCK_ID
             // 
             this.STOCK_ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.STOCK_ID.Frozen = true;
             this.STOCK_ID.HeaderText = "STOCK ID";
             this.STOCK_ID.MinimumWidth = 6;
             this.STOCK_ID.Name = "STOCK_ID";
             this.STOCK_ID.ReadOnly = true;
-            this.STOCK_ID.Width = 136;
+            this.STOCK_ID.Visible = false;
+            this.STOCK_ID.Width = 125;
             // 
             // DescStockIn
             // 
-            this.DescStockIn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.DescStockIn.Frozen = true;
+            this.DescStockIn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.DescStockIn.HeaderText = "DESCRIPTION";
             this.DescStockIn.MinimumWidth = 6;
             this.DescStockIn.Name = "DescStockIn";
             this.DescStockIn.ReadOnly = true;
-            this.DescStockIn.Width = 180;
             // 
             // QuantityStockIn
             // 
@@ -336,16 +339,16 @@
             this.ITEM_ID.MinimumWidth = 6;
             this.ITEM_ID.Name = "ITEM_ID";
             this.ITEM_ID.ReadOnly = true;
-            this.ITEM_ID.Width = 120;
+            this.ITEM_ID.Visible = false;
+            this.ITEM_ID.Width = 125;
             // 
             // TypeStockIn
             // 
-            this.TypeStockIn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.TypeStockIn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.TypeStockIn.HeaderText = "TYPE";
             this.TypeStockIn.MinimumWidth = 6;
             this.TypeStockIn.Name = "TypeStockIn";
             this.TypeStockIn.ReadOnly = true;
-            this.TypeStockIn.Width = 91;
             // 
             // Column1
             // 
@@ -353,6 +356,7 @@
             this.Column1.HeaderText = "";
             this.Column1.MinimumWidth = 6;
             this.Column1.Name = "Column1";
+            this.Column1.Visible = false;
             // 
             // individualID
             // 
@@ -378,7 +382,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(3, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1301, 209);
+            this.panel2.Size = new System.Drawing.Size(1301, 203);
             this.panel2.TabIndex = 0;
             // 
             // lblCheck
@@ -476,6 +480,25 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Stock On Hand";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // panelStockOnHand
+            // 
+            this.panelStockOnHand.Controls.Add(this.panel5);
+            this.panelStockOnHand.Controls.Add(this.panel6);
+            this.panelStockOnHand.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelStockOnHand.Location = new System.Drawing.Point(3, 3);
+            this.panelStockOnHand.Name = "panelStockOnHand";
+            this.panelStockOnHand.Size = new System.Drawing.Size(1301, 817);
+            this.panelStockOnHand.TabIndex = 6;
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.dataGridViewOnHand);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.Location = new System.Drawing.Point(0, 79);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(1301, 738);
+            this.panel5.TabIndex = 1;
             // 
             // dataGridViewOnHand
             // 
@@ -589,6 +612,15 @@
             this.Classification.ReadOnly = true;
             this.Classification.Width = 248;
             // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.panel4);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel6.Location = new System.Drawing.Point(0, 0);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(1301, 79);
+            this.panel6.TabIndex = 0;
+            // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.DimGray;
@@ -609,33 +641,40 @@
             this.txtSearch.TabIndex = 23;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
-            // panelStockOnHand
+            // btnClearStock
             // 
-            this.panelStockOnHand.Controls.Add(this.panel5);
-            this.panelStockOnHand.Controls.Add(this.panel6);
-            this.panelStockOnHand.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelStockOnHand.Location = new System.Drawing.Point(3, 3);
-            this.panelStockOnHand.Name = "panelStockOnHand";
-            this.panelStockOnHand.Size = new System.Drawing.Size(1301, 817);
-            this.panelStockOnHand.TabIndex = 6;
+            this.btnClearStock.BackColor = System.Drawing.Color.Red;
+            this.btnClearStock.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClearStock.FlatAppearance.BorderSize = 0;
+            this.btnClearStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClearStock.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnClearStock.ForeColor = System.Drawing.Color.White;
+            this.btnClearStock.Location = new System.Drawing.Point(155, 6);
+            this.btnClearStock.Name = "btnClearStock";
+            this.btnClearStock.Size = new System.Drawing.Size(140, 49);
+            this.btnClearStock.TabIndex = 24;
+            this.btnClearStock.Text = "Clear";
+            this.btnClearStock.UseVisualStyleBackColor = false;
+            this.btnClearStock.Click += new System.EventHandler(this.btnClearStock_Click);
             // 
-            // panel6
+            // panel7
             // 
-            this.panel6.Controls.Add(this.panel4);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel6.Location = new System.Drawing.Point(0, 0);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(1301, 79);
-            this.panel6.TabIndex = 0;
+            this.panel7.Controls.Add(this.btnClose);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel7.Location = new System.Drawing.Point(1258, 0);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(57, 57);
+            this.panel7.TabIndex = 5;
             // 
-            // panel5
+            // panel8
             // 
-            this.panel5.Controls.Add(this.dataGridViewOnHand);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(0, 79);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1301, 738);
-            this.panel5.TabIndex = 1;
+            this.panel8.Controls.Add(this.btnSaveStockIn);
+            this.panel8.Controls.Add(this.btnClearStock);
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel8.Location = new System.Drawing.Point(0, 550);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(314, 64);
+            this.panel8.TabIndex = 25;
             // 
             // frmStockIn
             // 
@@ -658,12 +697,14 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.tabPage2.ResumeLayout(false);
+            this.panelStockOnHand.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOnHand)).EndInit();
+            this.panel6.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            this.panelStockOnHand.ResumeLayout(false);
-            this.panel6.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
+            this.panel8.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -679,7 +720,6 @@
         private Label label2;
         private TabPage tabPage2;
         private Label label4;
-        private Label label3;
         private Panel panel3;
         private LinkLabel ClickSearchItem;
         private Panel panel4;
@@ -691,6 +731,16 @@
         public DataGridView dataGridViewStockItems;
         private TextBox txtSearch;
         public Label lblCheck;
+        public DataGridView dataGridViewOnHand;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private DataGridViewTextBoxColumn Classification;
+        private Panel panelStockOnHand;
+        private Panel panel5;
+        private Panel panel6;
         private DataGridViewTextBoxColumn NumStockIn;
         private DataGridViewImageColumn EDIT;
         private DataGridViewImageColumn DeleteStockIn;
@@ -704,15 +754,9 @@
         private DataGridViewTextBoxColumn TypeStockIn;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn individualID;
-        public DataGridView dataGridViewOnHand;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
-        private DataGridViewTextBoxColumn Classification;
-        private Panel panelStockOnHand;
-        private Panel panel5;
-        private Panel panel6;
+        public Label label3;
+        private Panel panel7;
+        private Panel panel8;
+        public Button btnClearStock;
     }
 }

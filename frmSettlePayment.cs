@@ -16,6 +16,8 @@ namespace Capstone
         SqlCommand cm = new SqlCommand();
         DBConnection dbcon = new DBConnection();
         SqlDataReader dr;
+        ClassLoadData classLoadData = new ClassLoadData();
+        ClassGenerateID classGenerateID = new ClassGenerateID();
         string title = "BICO-JOSE System";
         int num = 0;
         private bool mouseDown;
@@ -144,8 +146,10 @@ namespace Capstone
                         cn.Close();
                     }
                     MessageBox.Show("Payment succesfully saved", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    frmC.GenerateTransactionNo();
-                    frmC.LoadCart();
+                    classGenerateID.GenerateTransactionNo(frmC.lblTransactionNo);
+                    //frmC.GenerateTransactionNo();
+                    classLoadData.LoadCart(frmC.dataGridViewCart, frmC.lblDiscount, frmC.lblSalesTotal, frmC.lblPayment, frmC.lblNetTotal, frmC.btnSettlePayment, frmC.btnAddDiscount, frmC.btnClearCart, frmC.txtSearch);
+                    //frmC.LoadCart();
                     this.Dispose();
                 }
             }

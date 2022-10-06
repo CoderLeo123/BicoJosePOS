@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+
 namespace Capstone
 {
     public partial class frmProductsList : Form
@@ -17,62 +18,22 @@ namespace Capstone
         DBConnection dbcon = new DBConnection();
         SqlDataReader dr;
         string title = "BICO-JOSE System";
+        ClassGenerateID classGenerateID = new ClassGenerateID();
+        ClassLoadData classLoadData = new ClassLoadData();
+        //frmAddAccessories frmAdd = new frmAddAccessories();
 
         public frmProductsList()
         {
             InitializeComponent();
             cn = new SqlConnection(dbcon.MyConnection());
-            LoadRecordsType();
-            LoadRecordsProduct();
-            LoadRecordsItem();
-            LoadRecordsService();
+            classLoadData.LoadRecordsType(dataGridViewType, txtSearchTypeProducts);
+            classLoadData.LoadRecordsProduct(dataGridViewProduct, txtSearchProduct);
+            classLoadData.LoadRecordsItem(dataGridViewItems, txtSearch);
+            classLoadData.LoadRecordsService(dataGridViewService, txtSearchService);
+            //LoadRecordsService();
 
         }
-        public void LoadRecordsType()
-        {
-            int i = 0;
-           dataGridViewType.Rows.Clear();
-            cn.Open();
-            cm = new SqlCommand("SELECT * FROM JoinProductType WHERE Type LIKE '%" + txtSearchTypeProducts.Text + "%' OR Product LIKE '%" + txtSearchTypeProducts.Text + "%' Order by Type_ID", cn);
-            dr = cm.ExecuteReader();
-            while (dr.Read())
-            {                             //                       2-TYPE / 2-Type              4-PRODUCT / 3-Product         
-                i += 1;                   //0-#  1-TYPE ID / 1-Type_ID          3-PRODUCT ID / 0-Product_ID                  
-                dataGridViewType.Rows.Add(i, dr[1].ToString(), dr[2].ToString(), dr[0].ToString(), dr[3].ToString());
-            }
-            dr.Close();
-            cn.Close();
-        }
-        public void LoadRecordsProduct()
-        {
-            int i = 0;
-            dataGridViewProduct.Rows.Clear();
-            cn.Open();
-            cm = new SqlCommand("SELECT * FROM tblProduct WHERE Product LIKE '%" + txtSearchProduct.Text + "%' Order by Product_ID", cn);
-            dr = cm.ExecuteReader();
-            while (dr.Read())
-            {                             //                     3-PRODUCT / 3-Product              
-                i += 1;                   //0-#  1-PRODUCT ID / 1-Product_ID       
-                dataGridViewProduct.Rows.Add(i, dr[1].ToString(), dr[2].ToString());
-            }
-            dr.Close();
-            cn.Close();
-        }
-        public void LoadRecordsItem()
-        {
-            int i = 0;
-            dataGridViewItems.Rows.Clear();
-            cn.Open();
-            cm = new SqlCommand("SELECT * FROM ViewItemProductType WHERE Description LIKE '%" + txtSearch.Text + "%' OR Type LIKE '%" + txtSearch.Text + "%' Order by Item_ID", cn);
-            dr = cm.ExecuteReader();
-            while (dr.Read())
-            {                         //     2-DESCRIPTION / 1-Description       4-PRODUCT / 3-Product                  6-QUANTITY / 5-Quantity                          7-TYPE ID / 5-Type_ID
-                i += 1;              // 0-#                  3-TYPE / 2-Type                     5-PRICE / 4-Price                   7-CLASSIFICATION / 6-Classification
-                dataGridViewItems.Rows.Add(i, dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), dr[5].ToString(), dr[6].ToString(), dr[0].ToString(), Properties.Resources.Edit, Properties.Resources._Delete);
-            }
-            dr.Close();
-            cn.Close();
-        }
+        
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -111,8 +72,9 @@ namespace Capstone
                 frm.comBoxProductType.Text = dataGridViewType[4, e.RowIndex].Value.ToString();
                 frm.btnSaveType.Enabled = false;
                 frm.btnUpdateType.Enabled = true;
-                
-                frm.LoadProduct();
+                classLoadData.LoadProduct(frm.comBoxProductType);
+                //frm.LoadProduct();
+                frm.Size = new Size(830, 441);
                 frm.ShowDialog();
             }
             else if (colName == "Delete")
@@ -120,11 +82,11 @@ namespace Capstone
                 if (MessageBox.Show("Are you sure you want to delete this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     cn.Open();
-                    cm = new SqlCommand("DELETE FROM tblProductType WHERE Type_ID LIKE '" + dataGridViewType[1, e.RowIndex].Value.ToString() + "'", cn);
+                    cm = new SqlCommand("DELETE FROM tblType WHERE Type_ID LIKE '" + dataGridViewType[1, e.RowIndex].Value.ToString() + "'", cn);
                     cm.ExecuteNonQuery();
                     cn.Close();
                     MessageBox.Show("Record has been successfully deleted.", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoadRecordsType();
+                    classLoadData.LoadRecordsType(dataGridViewType, txtSearchTypeProducts);
                 }
             }
         }
@@ -144,6 +106,7 @@ namespace Capstone
                 frm.txtProdName.Text = dataGridViewProduct[2, e.RowIndex].Value.ToString();
                 frm.btnSaveProduct.Enabled = false;
                 frm.btnUpdateProduct.Enabled = true;
+                frm.Size = new Size(672, 357);
                 frm.ShowDialog();
             }
             else if (colName == "DeleteProduct")
@@ -155,7 +118,7 @@ namespace Capstone
                     cm.ExecuteNonQuery();
                     cn.Close();
                     MessageBox.Show("Record has been successfully deleted.", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoadRecordsProduct();
+                    classLoadData.LoadRecordsProduct(dataGridViewProduct, txtSearchProduct);
                 }
             }
         }
@@ -166,12 +129,12 @@ namespace Capstone
             {
                 if (txtSearchTypeProducts.Text == String.Empty)
                 {
-                    LoadRecordsType();
+                    classLoadData.LoadRecordsType(dataGridViewType, txtSearchTypeProducts);
                     return;
                 }
                 else
                 {
-                    LoadRecordsType();
+                    classLoadData.LoadRecordsType(dataGridViewType, txtSearchTypeProducts);
                 }
             }
             catch (Exception ex)
@@ -191,8 +154,11 @@ namespace Capstone
             TabPage tab = new TabPage("Product");
             frm.tabControlCreateNew.TabPages.Add(tab);
             tab.Controls.Add(frm.panelProduct);
-            frm.GenerateProductID();
-            frm.LoadProduct();
+            classGenerateID.GenerateProductID(frm.txtProdID);
+            //frm.GenerateProductID();
+            //classLoadData.LoadProduct(frm.comBoxProductType);
+            //frm.LoadProduct();
+            frm.Size = new Size(672, 357);
             frm.ShowDialog();
         }
 
@@ -204,8 +170,11 @@ namespace Capstone
             TabPage tab = new TabPage("Type");
             frm.tabControlCreateNew.TabPages.Add(tab);
             tab.Controls.Add(frm.panelType);
-            frm.LoadProduct();
-            frm.GenerateTypeID();
+            classLoadData.LoadProduct(frm.comBoxProductType);
+            //frm.LoadProduct();
+            classGenerateID.GenerateTypeID(frm.txtTypID);
+            //frm.GenerateTypeID();
+            frm.Size = new Size(830, 441);
             frm.ShowDialog();
         }
 
@@ -215,12 +184,12 @@ namespace Capstone
             {
                 if (txtSearchTypeProducts.Text == String.Empty)
                 {
-                    LoadRecordsProduct();
+                    classLoadData.LoadRecordsProduct(dataGridViewProduct, txtSearchProduct);
                     return;
                 }
                 else
                 {
-                    LoadRecordsProduct();
+                    classLoadData.LoadRecordsProduct(dataGridViewProduct, txtSearchProduct);
                 }
             }
             catch (Exception ex)
@@ -255,8 +224,9 @@ namespace Capstone
                 frm.comBoxClassification.Text = dataGridViewItems[6, e.RowIndex].Value.ToString();
                 frm.btnSaveItem.Enabled = false;
                 frm.btnUpdateItem.Enabled = true;
+                classLoadData.LoadType(frm.comBoxType);
+                //frm.LoadType();
 
-                frm.LoadType();
                 frm.ShowDialog();
             }
             else if (colName == "DeleteItems")
@@ -268,7 +238,7 @@ namespace Capstone
                     cm.ExecuteNonQuery();
                     cn.Close();
                     MessageBox.Show("Record has been successfully deleted.", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoadRecordsItem();
+                    classLoadData.LoadRecordsItem(dataGridViewItems, txtSearch);
 
                 }
             }
@@ -282,9 +252,12 @@ namespace Capstone
             TabPage tab = new TabPage("Item");
             frm.tabControlCreateNew.TabPages.Add(tab);
             tab.Controls.Add(frm.panelItem);
-            frm.LoadType();
-            frm.LoadProductItem();
-            frm.GenerateItemID();
+            classLoadData.LoadType(frm.comBoxType);
+            //frm.LoadType();
+            classLoadData.LoadProductItem(frm.txtProduct, frm.txtTypeID, frm.comBoxType);
+            //frm.LoadProductItem();
+            classGenerateID.GenerateItemID(frm.txtID);
+            //frm.GenerateItemID();
             frm.ShowDialog();
         }
 
@@ -294,12 +267,12 @@ namespace Capstone
             {
                 if (txtSearch.Text == String.Empty)
                 {
-                    LoadRecordsItem();
+                    classLoadData.LoadRecordsItem(dataGridViewItems, txtSearch);
                     return;
                 }
                 else
                 {
-                    LoadRecordsItem();
+                    classLoadData.LoadRecordsItem(dataGridViewItems, txtSearch);
                 }
             }
             catch (Exception ex)
@@ -319,21 +292,7 @@ namespace Capstone
 
         }
 
-        public void LoadRecordsService()
-        {
-            int i = 0;
-            dataGridViewService.Rows.Clear();
-            cn.Open();
-            cm = new SqlCommand("SELECT * FROM tblServices WHERE Name LIKE '%" + txtSearchService.Text + "%' OR Description LIKE '%" + txtSearchService.Text + "%' Order by Service_ID", cn);
-            dr = cm.ExecuteReader();
-            while (dr.Read())
-            {                            //                       2-NAME / 2-Name                   4-PRICE / 4-Price
-                i += 1;                //0-#  1-SERVICE ID / 1-Service_ID       3-DESCRIPTION / 3-Description
-                dataGridViewService.Rows.Add(i, dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString());
-            }
-            dr.Close();
-            cn.Close();
-        }
+        
 
         private void dataGridViewService_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
@@ -353,7 +312,7 @@ namespace Capstone
                 frm.txtServicePrice.Text = dataGridViewService[4, e.RowIndex].Value.ToString();
                 frm.btnSaveService.Enabled = false;
                 frm.btnUpdateService.Enabled = true;
-
+                frm.Size = new Size(850, 428);
                 frm.ShowDialog();
             }
             else if (colName == "DeleteService")
@@ -365,7 +324,8 @@ namespace Capstone
                     cm.ExecuteNonQuery();
                     cn.Close();
                     MessageBox.Show("Record has been successfully deleted.", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoadRecordsService();
+                    classLoadData.LoadRecordsService(dataGridViewService, txtSearchService);
+                    //LoadRecordsService();
                 }
             }
         }
@@ -376,12 +336,14 @@ namespace Capstone
             {
                 if (txtSearchService.Text == String.Empty)
                 {
-                    LoadRecordsService();
+                    classLoadData.LoadRecordsService(dataGridViewService, txtSearchService);
+                    //LoadRecordsService();
                     return;
                 }
                 else
                 {
-                    LoadRecordsService();
+                    classLoadData.LoadRecordsService(dataGridViewService, txtSearchService);
+                    //LoadRecordsService();
                 }
             }
             catch (Exception ex)
@@ -403,7 +365,9 @@ namespace Capstone
             TabPage tab = new TabPage("Service");
             frm.tabControlCreateNew.TabPages.Add(tab);
             tab.Controls.Add(frm.panelService);
-            frm.GenerateServiceID();
+            classGenerateID.GenerateServiceID(frm.txtServiceID);
+            //frm.GenerateServiceID();
+            frm.Size = new Size(850, 428);
             frm.ShowDialog();
         }
     }

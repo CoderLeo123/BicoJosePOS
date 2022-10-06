@@ -61,6 +61,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.PriceSearchItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewSearchItem = new System.Windows.Forms.DataGridView();
+            this.lblStock = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBrowse)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -298,6 +299,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.DimGray;
+            this.panel2.Controls.Add(this.lblStock);
             this.panel2.Controls.Add(this.lblCheck);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.lblTrans);
@@ -411,6 +413,15 @@
             this.dataGridViewSearchItem.Size = new System.Drawing.Size(1315, 930);
             this.dataGridViewSearchItem.TabIndex = 8;
             // 
+            // lblStock
+            // 
+            this.lblStock.AutoSize = true;
+            this.lblStock.Location = new System.Drawing.Point(679, 15);
+            this.lblStock.Name = "lblStock";
+            this.lblStock.Size = new System.Drawing.Size(42, 28);
+            this.lblStock.TabIndex = 9;
+            this.lblStock.Text = "      ";
+            // 
             // frmBrowseItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
@@ -466,5 +477,6 @@
         private DataGridViewImageColumn AddToCart;
         private DataGridViewTextBoxColumn StockID;
         private DataGridViewTextBoxColumn StockNum;
+        public Label lblStock;
     }
 }
