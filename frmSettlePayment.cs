@@ -22,11 +22,12 @@ namespace Capstone
         int num = 0;
         private bool mouseDown;
         private Point lastLocation;
-
-        public frmSettlePayment()
+        frmCashier frmC;
+        public frmSettlePayment(frmCashier frm)
         {
             InitializeComponent();
             cn = new SqlConnection(dbcon.MyConnection());
+            frmC = frm;
         }
 
         private void label5_Click(object sender, EventArgs e)
@@ -123,7 +124,7 @@ namespace Capstone
         {
             try
             {
-                frmCashier frmC = new frmCashier();
+                //frmCashier frmC = new frmCashier();
                 if (double.Parse(txtChange.Text) < 0 || (txtChange.Text == String.Empty))
                 {
                     MessageBox.Show("Insufficient amount. Please enter the correct amount!", title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -131,8 +132,8 @@ namespace Capstone
                 }
                 else
                 {
-                    comBoxMethodPayment.Text = frmC.lblMethod.Text;
-                    comBoxPaymentTerms.Text = frmC.lblTerms.Text;
+                    //comBoxMethodPayment.Text = frmC.lblMethod.Text;
+                    //comBoxPaymentTerms.Text = frmC.lblTerms.Text;
                     for (int i = 0; i < frmC.dataGridViewCart.Rows.Count; i++)
                     {
                         cn.Open();

@@ -46,7 +46,7 @@ namespace Capstone
                         int i = frmList.dataGridViewStockItems.CurrentRow.Index;
 
                         cn.Open();
-                        cm = new SqlCommand("UPDATE tblStock SET Expiration_Date = '" + DateTime.Parse(dateExpiration.Value.ToString()).ToShortDateString() + "', Quantity = Quantity + " + int.Parse(txtQuantity.Text) + " WHERE num LIKE '" + lblID.Text + "' ", cn);
+                        cm = new SqlCommand("UPDATE tblStock SET Expiration_Date = '" + DateTime.Parse(dateExpiration.Value.ToString()).ToShortDateString() + "', Quantity = Quantity + " + int.Parse(txtQuantity.Text) + ", Unit_Measure = '" + comBoxUnit.Text + "' WHERE num LIKE '" + lblID.Text + "' ", cn);
                         cm.ExecuteNonQuery();
                         cn.Close();
 
@@ -64,7 +64,7 @@ namespace Capstone
                         int i = frmList.dataGridViewStockItems.CurrentRow.Index;
 
                         cn.Open();
-                        cm = new SqlCommand("UPDATE tblStock SET Expiration_Date = null, Quantity = Quantity + " + int.Parse(txtQuantity.Text) + " WHERE num LIKE '" + lblID.Text + "' ", cn);
+                        cm = new SqlCommand("UPDATE tblStock SET Expiration_Date = null, Quantity = Quantity + " + int.Parse(txtQuantity.Text) + ", Unit_Measure = '" + comBoxUnit.Text + "' WHERE num LIKE '" + lblID.Text + "' ", cn);
                         cm.ExecuteNonQuery();
                         cn.Close();
                         frmList.dataGridViewStockItems[6, i].Value = "Non-Consumable";
@@ -233,41 +233,7 @@ namespace Capstone
         {
 
         }
-        //public void LoadRecordsStockDetail()
-        //{
-        //    int i = 0;
-        //    dataGridViewDetails.Rows.Clear();
-        //    cn.Open();
-        //    cm = new SqlCommand("SELECT Stock_In_Date, Quantity, Expiration_Date, Stock_In_By FROM tblStock WHERE Item_ID LIKE '%" + labelItemID.Text + "%'", cn);
-        //    dr = cm.ExecuteReader();
-        //    while (dr.Read())
-        //    { 
-        //        string ExpirationDate = dr[2].ToString();
-        //            if (string.IsNullOrEmpty(ExpirationDate))
-        //            {
-        //                ExpirationDate = "Non-Consumable";
-
-        //            }
-        //            else
-        //            {               
-        //                if(ExpirationDate.Substring(0, 10) != "")
-        //                {
-        //                    ExpirationDate = dr[2].ToString().Substring(0, 9);
-        //                }
-        //                else
-        //                {
-        //                    ExpirationDate = dr[2].ToString().Substring(0, 10);
-        //                }
-                        
-        //            }
-
-        //                                 //                     3-QTY / 3-Quantity                 3-STOKED BY / 3-Stock_In_By        
-        //        i += 1;          //0-#  1-DELIVERY DATE / 1-Stock_In_Date         3-EXPIRATION / 3-Expiration_Date  
-        //        dataGridViewDetails.Rows.Add(i, DateTime.Parse(dr[0].ToString()).ToShortDateString(), dr[1].ToString(), ExpirationDate, dr[3].ToString());
-        //    }
-        //    dr.Close();
-        //    cn.Close();
-        //}
+        
 
         private void dataGridViewDetails_CellClick(object sender, DataGridViewCellEventArgs e)
         {

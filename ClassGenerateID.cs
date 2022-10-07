@@ -10,7 +10,7 @@ namespace Capstone
 
     internal class ClassGenerateID
     {
-        
+
         SqlConnection cn = new SqlConnection();
         //SqlCommand cm = new SqlCommand();
         DBConnection dbcon = new DBConnection();
@@ -18,7 +18,42 @@ namespace Capstone
         string title = "BICO-JOSE System";
         string I_ID, T_ID, P_ID, S_ID, STK_ID, trans_num; int count;
         //frmAddAccessories frmAdd = new frmAddAccessories();
-    
+
+        public void selectAndIncrement(string table, string column, TextBox Id, int index1Length2, int length1, int index2)
+        {//"tblProduct", "Product_ID", productID
+            //SELECT TOP 1 Product_ID FROM tblProduct ORDER BY Product_ID DESC
+            //string P_ID; int count;
+            cn = new SqlConnection(dbcon.MyConnection());
+            cn.Open();
+            SqlCommand cm = new SqlCommand("SELECT TOP 1 " + column + " FROM " + table + " ORDER BY " + column + " DESC", cn);
+            dr = cm.ExecuteReader();
+            dr.Read();
+            P_ID = dr[0].ToString();
+            count = int.Parse(P_ID.Substring(index1Length2, length1)); //1001    1, 4
+            Id.Text = P_ID.Substring(index2, index1Length2) + (count + 1); //P1002   0, 1
+            dr.Close();
+            cn.Close();
+        }
+
+        public void deleteInitialID(string table, string column, string value)
+        {
+            cn = new SqlConnection(dbcon.MyConnection());
+            cn.Open();
+            SqlCommand cm = new SqlCommand("DELETE FROM " + table + " WHERE " + column + " LIKE '" + value + "'", cn);
+            cm.ExecuteNonQuery();
+            cn.Close();
+        }
+     
+        public void insertIntialID(string table, string column, string value)
+        {//tblProduct, Product_ID, P1001
+         //INSERT INTO tblProduct (Product_ID) VALUES('P1001')
+            cn = new SqlConnection(dbcon.MyConnection());
+            cn.Open();
+            SqlCommand cm = new SqlCommand("INSERT INTO "+ table + " ("+ column + ") VALUES('"+ value + "')", cn);
+            cm.ExecuteNonQuery();
+            cn.Close();
+        }
+
         public void GenerateProductID(TextBox productID)
         {
             try
@@ -38,12 +73,9 @@ namespace Capstone
                 else
                 {
                     cn.Close();
-                    cn.Open();
-                    cm = new SqlCommand("INSERT INTO tblProduct (Product_ID) VALUES('P1001')", cn);                                        
-                    cm.ExecuteNonQuery();
-                    cn.Close();
-                    productID.Text = "P1001";
-                    //GenerateProductID(frmAdd.txtProdID);
+                    insertIntialID("tblProduct", "Product_ID", "P1000");
+                    selectAndIncrement("tblProduct", "Product_ID", productID, 1, 4, 0);
+                    deleteInitialID("tblProduct", "Product_ID", "P1000");
                 }
                 dr.Close();
                 cn.Close();
@@ -75,12 +107,9 @@ namespace Capstone
                 else
                 {
                     cn.Close();
-                    cn.Open();//tblProductType
-                    cm = new SqlCommand("INSERT INTO tblType (Type_ID) VALUES('T1001')", cn);
-                    cm.ExecuteNonQuery();
-                    typeID.Text = "T1001";
-                    cn.Close();
-                    //GenerateTypeID(frmAdd.txtTypID);
+                    insertIntialID("tblType", "Type_ID", "T1000");
+                    selectAndIncrement("tblType", "Type_ID", typeID, 1, 4, 0);
+                    deleteInitialID("tblType", "Type_ID", "T1000");
                 }
                 dr.Close();
                 cn.Close();
@@ -111,12 +140,9 @@ namespace Capstone
                 else
                 {
                     cn.Close();
-                    cn.Open();
-                    cm = new SqlCommand("INSERT INTO tblItem (Item_ID) VALUES('ITM1001')", cn);                    
-                    cm.ExecuteNonQuery();
-                    itemID.Text = "ITM1001";
-                    cn.Close();
-                    //GenerateItemID(frmAdd.txtID);
+                    insertIntialID("tblItem", "Item_ID", "ITM1000");
+                    selectAndIncrement("tblItem", "Item_ID", itemID, 3, 4, 0);
+                    deleteInitialID("tblItem", "Item_ID", "ITM1000");
                 }
                 dr.Close();
                 cn.Close();
@@ -146,12 +172,9 @@ namespace Capstone
                 else
                 {
                     cn.Close();
-                    cn.Open();
-                    cm = new SqlCommand("INSERT INTO tblServices (Service_ID) VALUES('S1001')", cn);                                       
-                    cm.ExecuteNonQuery();
-                    serviceID.Text = "S1001";
-                    cn.Close();
-                    //GenerateServiceID(frmAdd.txtServiceID);
+                    insertIntialID("tblServices", "Service_ID", "S1000");
+                    selectAndIncrement("tblServices", "Service_ID", serviceID, 1, 4, 0);
+                    deleteInitialID("tblServices", "Service_ID", "S1000");
                 }
                 dr.Close();
                 cn.Close();
@@ -182,11 +205,14 @@ namespace Capstone
                 else
                 {
                     cn.Close();
-                    cn.Open();
-                    cm = new SqlCommand("INSERT INTO tblStock (Stock_ID) VALUES('STK1001')", cn);                    
-                    cm.ExecuteNonQuery();
-                    stockID.Text = "STK1001";
-                    cn.Close();
+                    insertIntialID("tblStock", "Stock_ID", "STK1000");
+                    selectAndIncrement("tblStock", "Stock_ID", stockID, 3, 4, 0);
+                    deleteInitialID("tblStock", "Stock_ID", "STK1000");
+                    //cn.Open();
+                    //cm = new SqlCommand("INSERT INTO tblStock (Stock_ID) VALUES('STK1001')", cn);                    
+                    //cm.ExecuteNonQuery();
+                    //stockID.Text = "STK1001";
+                    //cn.Close();
                     //Generate();
                 }
                 dr.Close();
@@ -219,6 +245,7 @@ namespace Capstone
                 else
                 {
                     cn.Close();
+                    
                     cn.Open();
                     //DateTime current = DateTime.Now.Date;
                     //string shortdate = current.Date;

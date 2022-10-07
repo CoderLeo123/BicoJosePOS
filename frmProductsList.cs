@@ -175,7 +175,7 @@ namespace Capstone
             classGenerateID.GenerateTypeID(frm.txtTypID);
             //frm.GenerateTypeID();
             frm.Size = new Size(830, 441);
-            frm.ShowDialog();
+            frm.ShowDialog(); 
         }
 
         private void txtSearchProduct_TextChanged(object sender, EventArgs e)
