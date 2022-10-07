@@ -37,7 +37,7 @@ namespace Capstone
             int i = 0;
             dataGridViewSearchItem.Rows.Clear();
             cn.Open();
-            cm = new SqlCommand("SELECT * FROM ViewItemProductType ORDER BY Item_ID", cn);
+            cm = new SqlCommand("SELECT * FROM ViewItemProductType WHERE Lense_Check = 0 ORDER BY Item_ID", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {                                //                  2-DESCRIPTION / 1-Description          4-PRODUCT / 4-Product              6-CLASSIFICATION / 7-Classification

@@ -30,6 +30,7 @@ namespace Capstone
             InitializeComponent();
             cn = new SqlConnection(dbcon.MyConnection());
             frmList = frmAdd;
+            classLoadData.LoadRecordsItem(frmList.dataGridViewItems, frmList.txtSearch);
         }
         public void ClearItem()
         {
@@ -64,235 +65,8 @@ namespace Capstone
             txtProduct.Focus();
 
         }
-        //public void GenerateProductID()
-        //{
-        //    try
-        //    {
-                
-        //        cn.Open();
-        //        cm = new SqlCommand("SELECT TOP 1 Product_ID FROM tblProduct ORDER BY Product_ID DESC", cn);
-        //        dr = cm.ExecuteReader();
-        //        dr.Read();
-        //        if (dr.HasRows)
-        //        {
-        //            P_ID = dr[0].ToString(); //P1001
-        //            count = int.Parse(P_ID.Substring(1, 4)); //1001
-        //            txtProdID.Text = P_ID.Substring(0, 1) + (count + 1); //P1002
-        //        }
-        //        else
-        //        {
-        //            cn.Close();
-        //            cn.Open();
-        //            cm = new SqlCommand("INSERT INTO tblProduct (Product_ID) VALUES('P1001')", cn);
-        //            cm.ExecuteNonQuery();
-        //            cn.Close();
-        //            GenerateProductID();
-        //        }
-        //        dr.Close();
-        //        cn.Close();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        cn.Close();
-        //        MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //    }
-        //}
+        
 
-        //public void GenerateTypeID()
-        //{
-        //    try
-        //    {
-        //        cn.Open();
-        //        cm = new SqlCommand("SELECT TOP 1 Type_ID FROM tblProductType ORDER BY Type_ID DESC", cn);
-        //        dr = cm.ExecuteReader();
-        //        dr.Read();
-        //        if (dr.HasRows)
-        //        {
-        //            T_ID = dr[0].ToString(); //T1001
-        //            count = int.Parse(T_ID.Substring(1, 4)); //1001
-        //            txtTypID.Text = T_ID.Substring(0, 1) + (count + 1); //T1002
-        //        }
-        //        else
-        //        {
-        //            cn.Close();
-        //            cn.Open();
-        //            cm = new SqlCommand("INSERT INTO tblProductType (Type_ID) VALUES('T1001')", cn);
-        //            cm.ExecuteNonQuery();
-        //            cn.Close();
-        //            GenerateTypeID();
-        //        }
-        //        dr.Close();
-        //        cn.Close();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        cn.Close();
-        //        MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //    }
-        //}
-
-        //public void GenerateItemID()
-        //{
-        //    try
-        //    {
-        //        cn.Open();
-        //        cm = new SqlCommand("SELECT TOP 1 Item_ID FROM tblItem ORDER BY Item_ID DESC", cn);
-        //        dr = cm.ExecuteReader();
-        //        dr.Read();
-        //        if (dr.HasRows)
-        //        {
-        //            I_ID = dr[0].ToString(); //ITM1001
-        //            count = int.Parse(I_ID.Substring(3, 4)); //1001
-        //            txtID.Text = I_ID.Substring(0, 3) + (count + 1); //ITM1002
-        //        }
-        //        else
-        //        {
-        //            cn.Close();
-        //            cn.Open();
-        //            cm = new SqlCommand("INSERT INTO tblItem (Item_ID) VALUES('ITM1001')", cn);
-        //            cm.ExecuteNonQuery();
-        //            cn.Close();
-        //            GenerateItemID();
-        //        }
-        //        dr.Close();
-        //        cn.Close();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        cn.Close();
-        //        MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //    }
-        //}
-
-        //public void GenerateServiceID()
-        //{
-        //    try
-        //    {
-        //        cn.Open();
-        //        cm = new SqlCommand("SELECT TOP 1 Service_ID FROM tblServices ORDER BY Service_ID DESC", cn);
-        //        dr = cm.ExecuteReader();
-        //        dr.Read();
-        //        if (dr.HasRows)
-        //        {
-        //            S_ID = dr[0].ToString(); //S1001
-        //            count = int.Parse(S_ID.Substring(1, 4)); //1001
-        //            txtServiceID.Text = S_ID.Substring(0, 1) + (count + 1); //S1002
-        //        }
-        //        else
-        //        {
-        //            cn.Close();
-        //            cn.Open();
-        //            cm = new SqlCommand("INSERT INTO tblServices (Service_ID) VALUES('S1001')", cn);
-        //            cm.ExecuteNonQuery();
-        //            cn.Close();
-        //            GenerateServiceID();
-        //        }
-        //        dr.Close();
-        //        cn.Close();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        cn.Close();
-        //        MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //    }
-        //}
-
-        //public void LoadType()
-        //{
-        //    try
-        //    {
-        //        cn.Open();
-        //        cm = new SqlCommand("SELECT Type FROM tblProductType", cn);
-        //        dr = cm.ExecuteReader();
-        //        while (dr.Read())
-        //        {
-        //            comBoxType.Items.Add(dr[0].ToString());
-                    
-        //        }
-        //        dr.Close();
-        //        cn.Close();
-                
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //    }
-        //}
-
-        //public void LoadProductItem()
-        //{
-        //    txtProduct.Clear();
-        //    txtTypeID.Clear();
-        //    try
-        //    {
-        //        cn.Open();
-        //        cm = new SqlCommand("SELECT Type_ID, Product FROM tblProductType WHERE Type LIKE '" + comBoxType.Text + "'", cn);
-        //        dr = cm.ExecuteReader();
-        //        while (dr.Read())
-        //        {
-                    
-        //            txtTypeID.Text = dr[0].ToString();
-        //            txtProduct.Text = dr[1].ToString();
-        //        }
-        //        dr.Close();
-        //        cn.Close();
-               
-        //    }
-        //    catch(Exception ex)
-        //    {
-                
-        //        MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //    }
-            
-        //}
-
-        //public void LoadProductID()
-        //{
-
-        //    txtProductIDType.Clear();
-        //    try
-        //    {
-        //        cn.Open();
-        //        cm = new SqlCommand("SELECT Product_ID FROM tblProduct WHERE Product LIKE '%" + comBoxProductType.Text + "'", cn);
-        //        dr = cm.ExecuteReader();
-        //        while (dr.Read())
-        //        {
-
-        //            txtProductIDType.Text = dr[0].ToString();
-
-        //        }
-        //        dr.Close();
-        //        cn.Close();
-
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-        //        MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //    }
-
-        //}
-
-        //public void LoadProduct()
-        //{
-        //    try
-        //    {
-        //        cn.Open();
-        //        cm = new SqlCommand("SELECT Product FROM tblProduct", cn);
-        //        dr = cm.ExecuteReader();
-        //        while (dr.Read())
-        //        {
-        //            comBoxProductType.Items.Add(dr[0].ToString());
-
-        //        }
-        //        dr.Close();
-        //        cn.Close();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //    }
-        //}
 
         private void btnSaveAccessories_Click(object sender, EventArgs e)
         {
@@ -475,8 +249,10 @@ namespace Capstone
                     cm.ExecuteNonQuery();
                     cn.Close();
                     MessageBox.Show("Record has been successfully saved.");
+                    
                     ClearType();
                     classLoadData.LoadRecordsType(frmList.dataGridViewType, frmList.txtSearchTypeProducts);
+                    classLoadData.LoadRecordsItem(frmList.dataGridViewItems, frmList.txtSearch);
                     //frmList.LoadRecordsType();
                     this.Close();
                 }
@@ -560,6 +336,7 @@ namespace Capstone
                     btnSaveType.Enabled = false;
                     btnUpdateType.Enabled = true;
                     classLoadData.LoadRecordsType(frmList.dataGridViewType, frmList.txtSearchTypeProducts);
+                    classLoadData.LoadRecordsItem(frmList.dataGridViewItems, frmList.txtSearch);
                     //frmList.LoadRecordsType();
                     this.Close();
                 }
@@ -588,12 +365,13 @@ namespace Capstone
                 if (MessageBox.Show("Are you sure you want to save this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     cn.Open();
-                    cm = new SqlCommand("INSERT INTO tblItem (Item_ID, Type_ID, Description, Price, Classification) VALUES(@ID, @TypeID, @Description, @Price, @Classification)", cn);
+                    cm = new SqlCommand("INSERT INTO tblItem (Item_ID, Type_ID, Description, Price, Classification, Type) VALUES(@ID, @TypeID, @Description, @Price, @Classification, @Type)", cn);
                     cm.Parameters.AddWithValue("@ID", txtID.Text);
                     cm.Parameters.AddWithValue("@Description", txtDescription.Text);
                     cm.Parameters.AddWithValue("@TypeID", txtTypeID.Text);
                     cm.Parameters.AddWithValue("@Price", txtPrice.Text);
                     cm.Parameters.AddWithValue("@Classification", comBoxClassification.Text);
+                    cm.Parameters.AddWithValue("@Type", comBoxType.Text);
                     cm.ExecuteNonQuery();
                     cn.Close();
                     MessageBox.Show("Record has been successfully saved.");

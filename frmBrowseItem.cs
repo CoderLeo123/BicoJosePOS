@@ -35,30 +35,6 @@ namespace Capstone
             classLoadData.LoadCart(frmC.dataGridViewCart, frmC.lblDiscount, frmC.lblSalesTotal, frmC.lblPayment, frmC.lblNetTotal, frmC.btnSettlePayment, frmC.btnAddDiscount, frmC.btnClearCart, frmC.txtSearch);
             //LoadCart();
         }
-        //public void LoadRecordsBrowse()
-        //{
-        //    try
-        //    {
-        //        int i = 0;
-        //        dataGridViewBrowse.Rows.Clear();
-        //        cn.Open();
-        //        cm = new SqlCommand("SELECT * from ViewItemProductType WHERE (Description LIKE '%" + txtSearch.Text + "%' OR Type LIKE '%" + txtSearch.Text + "%') AND Quantity > 0 ORDER BY Item_ID", cn);
-        //        dr = cm.ExecuteReader();
-        //        while (dr.Read())
-        //        {
-        //                       //                                   2-DESCRIPTION / 1-Description       4-PRODUCT / 3-Product               6-STOCK / 5-Quantity                                                                                                                                      
-        //            i += 1;                  // 0-Num   1-Item ID / 0-Item_ID                3-TYPE / 2-Type               5-PRICE / 4-Price                 7-CLASSIFICATION / 6-Classification                           
-        //            dataGridViewBrowse.Rows.Add(i, dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), dr[5].ToString(), dr[6].ToString());
-        //        }
-        //        dr.Close();
-        //        cn.Close();               
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        cn.Close();
-        //        MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-        //}
        
         private void pictureBox1_Click(object sender, EventArgs e)
         {
@@ -82,7 +58,7 @@ namespace Capstone
                     string ExpirationDate = dr[2].ToString();
                     if (string.IsNullOrEmpty(ExpirationDate))
                     {
-                        ExpirationDate = "Non-Perishable";
+                        ExpirationDate = "Non-Consumable";
                     }
                     else
                     {
@@ -191,43 +167,65 @@ namespace Capstone
        
                     cn.Close();
                     lblCheck.Text = check;
-                    if (!(check.Equals("Sold")))
+                    string Stock = lblStock.Text;
+                    if (Stock.Equals("N/A"))
                     {
-
                         cn.Open();
-                        cm = new SqlCommand("SELECT Num, Quantity, Item_ID, Stock_ID FROM ViewStockItemType WHERE Item_ID LIKE '" + id.ToString() + "' ", cn);
-                        dr = cm.ExecuteReader();
-                        while (dr.Read())
-                        {
-                            i += 1;
-                            frmE.dataGridViewNC.Rows.Add(i, dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString());
-                        }
-                        dr.Close();
+                        cm = new SqlCommand("INSERT INTO tblCart (Stock_Num, Item_ID, Transaction_No, Quantity, Price, Total, Date, Status) VALUES (@Stock_Num, @Item_ID, @TransactionNo, @Quantity, @Price, @Total, @Date, 'Cart')", cn);
+                        //cm.Parameters.AddWithValue("@Stock_ID", frmB.dataGridViewBrowse[1, i].Value.ToString());
+                        cm.Parameters.AddWithValue("@Stock_Num", dataGridViewBrowse[1, e.RowIndex].Value.ToString());
+                        cm.Parameters.AddWithValue("@Item_ID", dataGridViewBrowse[1, e.RowIndex].Value.ToString());
+                        cm.Parameters.AddWithValue("@TransactionNo", lblTrans.Text);
+                        cm.Parameters.AddWithValue("@Quantity", 0);
+                        cm.Parameters.AddWithValue("@Price", dataGridViewBrowse[5, e.RowIndex].Value.ToString());
+                        cm.Parameters.AddWithValue("@Date", DateTime.Now);
+                        cm.Parameters.AddWithValue("@Total", dataGridViewBrowse[5, e.RowIndex].Value.ToString());
+                        cm.ExecuteNonQuery();
                         cn.Close();
-
-                        lblStock.Text = dataGridViewBrowse[6, e.RowIndex].Value.ToString();
-                        frmE.lblName2.Text = dataGridViewBrowse[2, e.RowIndex].Value.ToString();
-                        frmE.lblPrice2.Text = dataGridViewBrowse[5, e.RowIndex].Value.ToString();
-                        frmE.lblTotal.Text = "0";
-                        frmE.txtQuantity.Text = "0";
-                        frmE.txtQuantity.Focus();
-                        frmE.txtQuantity.SelectAll();
-                        frmE.tabControl1.SelectedIndex = 1;
-                        frmE.tabControl1.TabPages.Clear();
-                        TabPage tab = new TabPage("Non Consumable");
-                        frmE.tabControl1.TabPages.Add(tab);
-                        tab.Controls.Add(frmE.panelNC);
-                        tab.Controls.Add(frmE.lblName2);
-                        tab.Controls.Add(frmE.dataGridViewNC);
-                        frmE.Size = new Size(620, 543);
-                        frmE.ShowDialog();
+                        LoadCart();
+                        this.Close();
                     }
                     else
                     {
+                        if (!(check.Equals("Sold")))
+                        {
 
-                        MessageBox.Show("Selected Item is already in the Cart", title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
+                            cn.Open();
+                            cm = new SqlCommand("SELECT Num, Quantity, Item_ID, Stock_ID FROM ViewStockItemType WHERE Item_ID LIKE '" + id.ToString() + "' ", cn);
+                            dr = cm.ExecuteReader();
+                            while (dr.Read())
+                            {
+                                i += 1;
+                                frmE.dataGridViewNC.Rows.Add(i, dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString());
+                            }
+                            dr.Close();
+                            cn.Close();
 
+                            lblStock.Text = dataGridViewBrowse[6, e.RowIndex].Value.ToString();
+                            frmE.lblName2.Text = dataGridViewBrowse[2, e.RowIndex].Value.ToString();
+                            frmE.lblPrice2.Text = dataGridViewBrowse[5, e.RowIndex].Value.ToString();
+                            frmE.lblItemIDPass.Text = dataGridViewBrowse[1, e.RowIndex].Value.ToString();
+                            frmE.lblTotal.Text = "0";
+                            frmE.txtQuantity.Text = "0";
+                            frmE.txtQuantity.Focus();
+                            frmE.txtQuantity.SelectAll();
+                            frmE.tabControl1.SelectedIndex = 1;
+                            frmE.tabControl1.TabPages.Clear();
+                            TabPage tab = new TabPage("Non Consumable");
+                            frmE.tabControl1.TabPages.Add(tab);
+                            tab.Controls.Add(frmE.panelNC);
+                            tab.Controls.Add(frmE.lblName2);
+                            tab.Controls.Add(frmE.dataGridViewNC);
+                            frmE.Size = new Size(620, 543);
+                            frmE.ShowDialog();
+                        }
+                        else
+                        {
+
+                            MessageBox.Show("Selected Item is already in the Cart", title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+
+                        }
                     }
                 }
                 

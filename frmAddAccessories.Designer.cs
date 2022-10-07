@@ -57,6 +57,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.panelItem = new System.Windows.Forms.Panel();
+            this.lblLenseCheck = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -448,6 +449,7 @@
             // 
             // panelItem
             // 
+            this.panelItem.Controls.Add(this.lblLenseCheck);
             this.panelItem.Controls.Add(this.label5);
             this.panelItem.Controls.Add(this.label8);
             this.panelItem.Controls.Add(this.label2);
@@ -470,6 +472,17 @@
             this.panelItem.Name = "panelItem";
             this.panelItem.Size = new System.Drawing.Size(891, 497);
             this.panelItem.TabIndex = 0;
+            // 
+            // lblLenseCheck
+            // 
+            this.lblLenseCheck.AutoSize = true;
+            this.lblLenseCheck.ForeColor = System.Drawing.Color.Red;
+            this.lblLenseCheck.Location = new System.Drawing.Point(597, 275);
+            this.lblLenseCheck.Name = "lblLenseCheck";
+            this.lblLenseCheck.Size = new System.Drawing.Size(49, 38);
+            this.lblLenseCheck.TabIndex = 56;
+            this.lblLenseCheck.Text = "    ";
+            this.lblLenseCheck.Visible = false;
             // 
             // label5
             // 
@@ -909,5 +922,6 @@
         public TextBox txtServiceName;
         private Label label16;
         public Panel panelService;
+        public Label lblLenseCheck;
     }
 }

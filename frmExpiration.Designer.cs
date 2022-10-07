@@ -36,6 +36,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnClose = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -78,9 +79,11 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txtQuantity = new System.Windows.Forms.TextBox();
-            this.panel5 = new System.Windows.Forms.Panel();
+            this.lblStockNumPass = new System.Windows.Forms.Label();
+            this.lblItemIDPass = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             this.panel1.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewExpDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSelected)).BeginInit();
@@ -93,7 +96,6 @@
             this.NONCONSUMABLE.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewNC)).BeginInit();
             this.panelNC.SuspendLayout();
-            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnClose
@@ -123,6 +125,15 @@
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
             this.panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseUp);
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.btnClose);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel5.Location = new System.Drawing.Point(751, 0);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(50, 57);
+            this.panel5.TabIndex = 5;
             // 
             // label1
             // 
@@ -479,13 +490,15 @@
             // 
             // NONCONSUMABLE
             // 
+            this.NONCONSUMABLE.Controls.Add(this.lblItemIDPass);
+            this.NONCONSUMABLE.Controls.Add(this.lblStockNumPass);
             this.NONCONSUMABLE.Controls.Add(this.dataGridViewNC);
             this.NONCONSUMABLE.Controls.Add(this.lblName2);
             this.NONCONSUMABLE.Controls.Add(this.panelNC);
-            this.NONCONSUMABLE.Location = new System.Drawing.Point(4, 29);
+            this.NONCONSUMABLE.Location = new System.Drawing.Point(4, 46);
             this.NONCONSUMABLE.Name = "NONCONSUMABLE";
             this.NONCONSUMABLE.Padding = new System.Windows.Forms.Padding(3);
-            this.NONCONSUMABLE.Size = new System.Drawing.Size(793, 680);
+            this.NONCONSUMABLE.Size = new System.Drawing.Size(793, 663);
             this.NONCONSUMABLE.TabIndex = 1;
             this.NONCONSUMABLE.Text = "Non-Consumable";
             this.NONCONSUMABLE.UseVisualStyleBackColor = true;
@@ -651,14 +664,27 @@
             this.txtQuantity.TextChanged += new System.EventHandler(this.txtQuantity_TextChanged);
             this.txtQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuantity_KeyPress);
             // 
-            // panel5
+            // lblStockNumPass
             // 
-            this.panel5.Controls.Add(this.btnClose);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel5.Location = new System.Drawing.Point(751, 0);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(50, 57);
-            this.panel5.TabIndex = 5;
+            this.lblStockNumPass.AutoSize = true;
+            this.lblStockNumPass.ForeColor = System.Drawing.Color.Red;
+            this.lblStockNumPass.Location = new System.Drawing.Point(571, 125);
+            this.lblStockNumPass.Name = "lblStockNumPass";
+            this.lblStockNumPass.Size = new System.Drawing.Size(144, 38);
+            this.lblStockNumPass.TabIndex = 10;
+            this.lblStockNumPass.Text = "StockNum";
+            this.lblStockNumPass.Visible = false;
+            // 
+            // lblItemIDPass
+            // 
+            this.lblItemIDPass.AutoSize = true;
+            this.lblItemIDPass.ForeColor = System.Drawing.Color.Red;
+            this.lblItemIDPass.Location = new System.Drawing.Point(571, 163);
+            this.lblItemIDPass.Name = "lblItemIDPass";
+            this.lblItemIDPass.Size = new System.Drawing.Size(99, 38);
+            this.lblItemIDPass.TabIndex = 11;
+            this.lblItemIDPass.Text = "ItemID";
+            this.lblItemIDPass.Visible = false;
             // 
             // frmExpiration
             // 
@@ -675,6 +701,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel5.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewExpDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSelected)).EndInit();
@@ -691,7 +718,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewNC)).EndInit();
             this.panelNC.ResumeLayout(false);
             this.panelNC.PerformLayout();
-            this.panel5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -743,5 +769,7 @@
         private DataGridViewImageColumn Select;
         private DataGridViewTextBoxColumn ID;
         private Panel panel5;
+        public Label lblItemIDPass;
+        public Label lblStockNumPass;
     }
 }

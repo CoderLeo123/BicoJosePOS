@@ -30,22 +30,9 @@ namespace Capstone
             cn = new SqlConnection(dbcon.MyConnection());
             frmB = frmAdd;
 
-            //dataGridViewSelected.Rows.Add('-', ' ', '0', '0', Properties.Resources._Add, Properties.Resources._Delete, '0');
+            
         }
-        //public void Compute()
-        //{
-        //    try
-        //    {
-        //        float total = float.Parse(lblPrice2.Text) * float.Parse(txtQuantity.Text);
-        //        lblTotal.Text = total.ToString("#.##");
-
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        cn.Close();
-        //        MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-        //}
+      
         private void btnClose_Click(object sender, EventArgs e)
         {
             try
@@ -251,23 +238,39 @@ namespace Capstone
             {
                 //r = frmB.dataGridViewBrowse.SelectedRows[0].Index;
                 //int Stock = int.Parse(frmB.dataGridViewBrowse[6, r].Value.ToString());
-                int Stock = int.Parse(frmB.lblStock.Text);
+                string Stock = frmB.lblStock.Text;
+                //int Stock = int.Parse(frmB.lblStock.Text);
                 String txtInput = txtQuantity.Text;
                 //int input = int.Parse(txtInput);
                 if (txtQuantity.Text == string.Empty)
                 {
-                    txtQuantity.Text = "0";
                     txtQuantity.Focus();
+                    txtQuantity.Text = "0";                    
                     txtQuantity.SelectAll();
                 }
                 else
-                {
-                    int input = int.Parse(txtInput);
-                    if ((input < 1) || (input > Stock))
+                {                    
+                    if (Stock.Equals("N/A"))
                     {
-                        txtQuantity.Text = Stock.ToString();
-                        txtQuantity.SelectAll();
+                        int intStock = 0;
                     }
+                    else
+                    {
+                        
+                        int intStock = int.Parse(Stock);
+                        if (!(txtInput.Equals("")))
+                        {
+                            int input = int.Parse(txtInput);
+                            if ((input < 1) || (input > intStock))
+                            {
+                                txtQuantity.Text = intStock.ToString();
+                                txtQuantity.SelectAll();
+                            }
+                        }
+                        
+                        
+                    }
+                    
                 }
                 
                 classCompute.Compute(txtQuantity, lblPrice2, lblTotal);
@@ -293,26 +296,28 @@ namespace Capstone
                     e.Handled = true;
                     classCompute.Compute(txtQuantity, lblPrice2, lblTotal);
                     //Compute();
-                }               
-                 r = frmB.dataGridViewBrowse.SelectedRows[0].Index;
-                int y = dataGridViewNC.SelectedRows[0].Index;
-                if ((e.KeyChar == 13) && (txtQuantity.Text != String.Empty))
-                {
-                    cn.Open();
-                    cm = new SqlCommand("INSERT INTO tblCart (Stock_Num, Item_ID, Transaction_No, Quantity, Price, Total, Date, Status) VALUES (@Stock_Num, @Item_ID, @TransactionNo, @Quantity, @Price, @Total, @Date, 'Cart')", cn);
-                    //cm.Parameters.AddWithValue("@Stock_ID", frmB.dataGridViewBrowse[1, i].Value.ToString());
-                    cm.Parameters.AddWithValue("@Stock_Num", dataGridViewNC[1, y].Value.ToString());
-                    cm.Parameters.AddWithValue("@Item_ID", frmB.dataGridViewBrowse[1, r].Value.ToString());
-                    cm.Parameters.AddWithValue("@TransactionNo", frmB.lblTrans.Text);
-                    cm.Parameters.AddWithValue("@Quantity", txtQuantity.Text);
-                    cm.Parameters.AddWithValue("@Price", lblPrice2.Text);
-                    cm.Parameters.AddWithValue("@Date", DateTime.Now);
-                    cm.Parameters.AddWithValue("@Total", lblTotal.Text);
-                    cm.ExecuteNonQuery();
-                    cn.Close();
-                    MessageBox.Show("Successfully Added!", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    frmB.LoadCart();
                 }
+                
+                    if ((e.KeyChar == 13) && (txtQuantity.Text != String.Empty))
+                    {
+                        cn.Open();
+                        cm = new SqlCommand("INSERT INTO tblCart (Stock_Num, Item_ID, Transaction_No, Quantity, Price, Total, Date, Status) VALUES (@Stock_Num, @Item_ID, @TransactionNo, @Quantity, @Price, @Total, @Date, 'Cart')", cn);
+                        //cm.Parameters.AddWithValue("@Stock_ID", frmB.dataGridViewBrowse[1, i].Value.ToString());
+                        cm.Parameters.AddWithValue("@Stock_Num", dataGridViewNC[1, 0].Value.ToString());
+                        cm.Parameters.AddWithValue("@Item_ID", lblItemIDPass.Text);
+                        cm.Parameters.AddWithValue("@TransactionNo", frmB.lblTrans.Text);
+                        cm.Parameters.AddWithValue("@Quantity", txtQuantity.Text);
+                        cm.Parameters.AddWithValue("@Price", lblPrice2.Text);
+                        cm.Parameters.AddWithValue("@Date", DateTime.Now);
+                        cm.Parameters.AddWithValue("@Total", lblTotal.Text);
+                        cm.ExecuteNonQuery();
+                        cn.Close();
+                        MessageBox.Show("Successfully Added!", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        frmB.LoadCart();
+                        this.Close();
+                    }
+                
+                
                 frmB.LoadCart();
             }
             catch (Exception ex)

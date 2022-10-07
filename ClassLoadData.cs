@@ -53,8 +53,52 @@ namespace Capstone
             cn.Close();
         }
 
+        public string selectLenseID(string table, string column, string columnCondition, string returnValue)
+        {//SELECT Type_ID from tblType WHERE Type LIKE '%Lense%'
+            cn = new SqlConnection(dbcon.MyConnection());
+            cn.Open();
+            SqlCommand cm = new SqlCommand("SELECT " + column + " FROM " + table + " WHERE " + columnCondition + " LIKE '%Lense%'", cn);
+            dr = cm.ExecuteReader();
+            dr.Read();
+            if (dr.HasRows)
+            {
+                return returnValue = dr[0].ToString();                
+            }
+            else
+            {                
+                return returnValue = "N/A";
+                
+            }
+            //return returnValue = "N/A";
+            dr.Close();
+            cn.Close();
+            
+        }
+
+        public void updateLenseCheck(string table, string columnToUpdate, string columnCondition)
+        {//UPDATE tblItem SET Lense_Check WHERE Type LIKE variable(Type_ID of "Lense Features")
+            cn = new SqlConnection(dbcon.MyConnection());
+            //string lenseID = "";
+            //lenseID = selectLenseID("tblType", "Type_ID", "Type", lenseID);
+            //if (!(lenseID.Equals("N/A")))
+            //{
+                //cn.Close();
+                cn.Open();
+                SqlCommand cm = new SqlCommand("UPDATE " + table + " SET " + columnToUpdate + " = 1 WHERE " + columnCondition + " LIKE '%Vision%'", cn);
+                cm.ExecuteNonQuery();
+                cn.Close();
+            //}
+            //else
+            //{
+                
+            //    string msg = "The update query must not run";
+            //}           
+        }
+
         public void LoadRecordsItem(DataGridView dgv, TextBox txtSearch)
         {//dataGridViewItems, txtSearch
+            
+            updateLenseCheck("tblItem", "Lense_Check", "Type");
             cn = new SqlConnection(dbcon.MyConnection());
             int i = 0;
             dgv.Rows.Clear();
@@ -62,9 +106,22 @@ namespace Capstone
             SqlCommand cm = new SqlCommand("SELECT * FROM ViewItemProductType WHERE Description LIKE '%" + txtSearch.Text + "%' OR Type LIKE '%" + txtSearch.Text + "%' Order by Item_ID", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
-            {                         //     2-DESCRIPTION / 1-Description       4-PRODUCT / 3-Product                  6-QUANTITY / 5-Quantity                          7-TYPE ID / 5-Type_ID
-                i += 1;              // 0-#                  3-TYPE / 2-Type                     5-PRICE / 4-Price                   7-CLASSIFICATION / 6-Classification
-                dgv.Rows.Add(i, dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), dr[5].ToString(), dr[6].ToString(), dr[0].ToString(), Properties.Resources.Edit, Properties.Resources._Delete);
+            {
+
+                string Quantity = dr[5].ToString();//Quantity
+                string LenseCheck = dr[8].ToString();//Lense_Check
+                if (LenseCheck.Equals("1"))
+                {
+                    Quantity = "N/A";
+                }
+                else
+                {
+                    Quantity = dr[5].ToString();
+                }
+
+                         //     2-DESCRIPTION / 1-Description       4-PRODUCT / 3-Product                  5-QUANTITY / 5-Quantity                          7-TYPE ID / 5-Type_ID
+                i += 1;   // 0-#                  3-TYPE / 2-Type                     5-PRICE / 4-Price                   7-CLASSIFICATION / 6-Classification
+                dgv.Rows.Add(i, dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), Quantity, dr[6].ToString(), dr[0].ToString(), Properties.Resources.Edit, Properties.Resources._Delete);
             }
             dr.Close();
             cn.Close();
@@ -99,9 +156,9 @@ namespace Capstone
                 dr = cm.ExecuteReader();
                 while (dr.Read())
                 {
-
-                    //               1-ITEM ID / 0-Item_ID                  2-QTY / 5-Quantity             5-CLASSIFICATION / 2-Classification                        
-                    i += 1;   // 0-Num            2-DESCRIPTION / 1-Description               3-TYPE / 2-Type                            
+                  
+                    //               1-ITEM ID / 0-Item_ID                  2-QTY / 5-Quantity        5-CLASSIFICATION / 6-Classification                        
+                    i += 1;   // 0-Num            2-DESCRIPTION / 1-Description        3-TYPE / 2-Type                            
                     dgv.Rows.Add(i, dr[0].ToString(), dr[1].ToString(), dr[5].ToString(), dr[2].ToString(), dr[6].ToString());
                 }
                 dr.Close();
@@ -237,13 +294,25 @@ namespace Capstone
                 int i = 0;
                 dgv.Rows.Clear();
                 cn.Open();
-                SqlCommand cm = new SqlCommand("SELECT * from ViewItemProductType WHERE (Description LIKE '%" + textSearch.Text + "%' OR Type LIKE '%" + textSearch.Text + "%') AND Quantity > 0 ORDER BY Item_ID", cn);
+                SqlCommand cm = new SqlCommand("SELECT * from ViewItemProductType WHERE (Description LIKE '%" + textSearch.Text + "%' OR Type LIKE '%" + textSearch.Text + "%') ORDER BY Item_ID", cn);
                 dr = cm.ExecuteReader();
                 while (dr.Read())
                 {
+                    string Quantity = dr[5].ToString();//Quantity
+                    string LenseCheck = dr[8].ToString();//Lense_Check
+                    if (LenseCheck.Equals("1"))
+                    {
+                        Quantity = "N/A";
+                    }
+                    else
+                    {
+                        Quantity = dr[5].ToString();
+                    }
+
+
                     //                             2-DESCRIPTION / 1-Description       4-PRODUCT / 3-Product               6-STOCK / 5-Quantity                                                                                                                                      
                     i += 1;  // 0-Num   1-Item ID / 0-Item_ID                3-TYPE / 2-Type               5-PRICE / 4-Price                 7-CLASSIFICATION / 6-Classification                           
-                    dgv.Rows.Add(i, dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), dr[5].ToString(), dr[6].ToString());
+                    dgv.Rows.Add(i, dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), Quantity, dr[6].ToString());
                 }
                 dr.Close();
                 cn.Close();
