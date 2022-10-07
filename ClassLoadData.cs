@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 using System.Data;
 namespace Capstone
 {
-    internal class ClassLoadData
+    internal class ClassLoadData : ClassComputations
     {
         
         SqlConnection cn = new SqlConnection();
@@ -191,7 +191,7 @@ namespace Capstone
                 int i = 0;
                 dgv.Rows.Clear();
                 cn.Open();
-                SqlCommand cm = new SqlCommand("SELECT Stock_In_Date, Quantity, Expiration_Date, Stock_In_By FROM tblStock WHERE Item_ID LIKE '%" + labelID.Text + "%'", cn);
+                SqlCommand cm = new SqlCommand("SELECT Stock_In_Date, Quantity, Expiration_Date, Stock_In_By, Unit_Measure FROM tblStock WHERE Item_ID LIKE '%" + labelID.Text + "%'", cn);
                 dr = cm.ExecuteReader();
                 while (dr.Read())
                 {
@@ -215,9 +215,9 @@ namespace Capstone
 
                     }
 
-                    //                     3-QTY / 3-Quantity                 3-STOKED BY / 3-Stock_In_By        
-                    i += 1;          //0-#  1-DELIVERY DATE / 1-Stock_In_Date         3-EXPIRATION / 3-Expiration_Date  
-                    dgv.Rows.Add(i, DateTime.Parse(dr[0].ToString()).ToShortDateString(), dr[1].ToString(), ExpirationDate, dr[3].ToString());
+                                                                    //                     2-QTY / 1-Quantity                                   5-STOKED BY / 3-Stock_In_By        
+                    i += 1;  //0-#  1-DELIVERY DATE / 1-Stock_In_Date                              3-UNIT / 4-UNit_Measure    4-EXPIRATION / 3-Expiration_Date  
+                    dgv.Rows.Add(i, DateTime.Parse(dr[0].ToString()).ToShortDateString(), dr[1].ToString(), dr[4].ToString(), ExpirationDate, dr[3].ToString());
                 }
                 dr.Close();
                 cn.Close();
@@ -277,13 +277,13 @@ namespace Capstone
                     }
                     else
                     {
-                        if (ExpirationDate.Substring(0, 10) != "")
+                        if (ExpirationDate.Substring(0, 9) != "")
                         {
-                            ExpirationDate = dr[2].ToString().Substring(0, 9);
+                            ExpirationDate = dr[2].ToString();//.Substring(0, 9);
                         }
                         else
                         {
-                            ExpirationDate = dr[2].ToString().Substring(0, 10);
+                            ExpirationDate = dr[2].ToString().Substring(0, 9);
                         }
                     }
                     total += Double.Parse(dr[5].ToString());
@@ -298,8 +298,8 @@ namespace Capstone
                 cn.Close();
                 labelDiscount.Text = discount.ToString("#,##0.00");
                 labelSalesTotal.Text = total.ToString("#,##0.00");
-                frmCashier frmC = new frmCashier();
-                classCompute.GetCartTotal(frmC.lblDiscount, frmC.lblSalesTotal, frmC.lblPayment, frmC.lblNetTotal);
+                //frmCashier frmC = new frmCashier(); //frmC.lblDiscount, frmC.lblSalesTotal, frmC.lblPayment, out frmC.lblNetTotal
+                GetCartTotal(labelDiscount, labelSalesTotal, labelPayment, labelNetTotal);
                 //frmC.GetCartTotal();
                 if (hasRecord == true)
                 {

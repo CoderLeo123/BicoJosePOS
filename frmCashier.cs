@@ -206,7 +206,6 @@ namespace Capstone
 
         private void btnAddDiscount_Click(object sender, EventArgs e)
         {
-
             if (dataGridViewCart.Rows.Count == 0)
             {
                 MessageBox.Show("Select item on the Cart first", title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -220,12 +219,11 @@ namespace Capstone
                 frm.lblID.Text = dataGridViewCart[11, i].Value.ToString();
                 frm.ShowDialog();
             }
-
         }
 
         private void btnSettlePayment_Click(object sender, EventArgs e)
         {
-            frmSettlePayment frm = new frmSettlePayment();
+            frmSettlePayment frm = new frmSettlePayment(this);
             frm.txtTotal.Text = lblNetTotal.Text;
             frm.ShowDialog();
         }

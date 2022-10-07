@@ -22,8 +22,9 @@ namespace Capstone
             double payment = double.Parse(labelPayment.Text);
             double netTotal = grossSales - discount;
             //double change = netTotal - payment;
-
+            //labelNetTotal = new Label();
             labelNetTotal.Text = netTotal.ToString("#,##0.00");
+            //return labelNetTotal;
         }
 
         public void Compute(TextBox textQuantity, Label labelPrice, Label labelTotal)

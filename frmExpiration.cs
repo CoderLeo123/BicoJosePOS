@@ -249,23 +249,27 @@ namespace Capstone
         {
             try
             {
-                r = frmB.dataGridViewBrowse.SelectedRows[0].Index;
+                //r = frmB.dataGridViewBrowse.SelectedRows[0].Index;
                 //int Stock = int.Parse(frmB.dataGridViewBrowse[6, r].Value.ToString());
                 int Stock = int.Parse(frmB.lblStock.Text);
                 String txtInput = txtQuantity.Text;
-                int input = int.Parse(txtInput);
+                //int input = int.Parse(txtInput);
                 if (txtQuantity.Text == string.Empty)
                 {
                     txtQuantity.Text = "0";
                     txtQuantity.Focus();
                     txtQuantity.SelectAll();
                 }
-                if ((input < 1) || (input > Stock))
+                else
                 {
-
-                    txtQuantity.Text = Stock.ToString();
-                    txtQuantity.SelectAll();
+                    int input = int.Parse(txtInput);
+                    if ((input < 1) || (input > Stock))
+                    {
+                        txtQuantity.Text = Stock.ToString();
+                        txtQuantity.SelectAll();
+                    }
                 }
+                
                 classCompute.Compute(txtQuantity, lblPrice2, lblTotal);
             }
             catch (Exception ex)

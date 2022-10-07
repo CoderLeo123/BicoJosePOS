@@ -78,6 +78,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txtQuantity = new System.Windows.Forms.TextBox();
+            this.panel5 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -92,6 +93,7 @@
             this.NONCONSUMABLE.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewNC)).BeginInit();
             this.panelNC.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnClose
@@ -100,7 +102,7 @@
             this.btnClose.BackgroundImage = global::Capstone.Properties.Resources.CloseTab;
             this.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnClose.Location = new System.Drawing.Point(749, 9);
+            this.btnClose.Location = new System.Drawing.Point(6, 9);
             this.btnClose.Name = "btnClose";
             this.btnClose.Padding = new System.Windows.Forms.Padding(3);
             this.btnClose.Size = new System.Drawing.Size(40, 38);
@@ -111,8 +113,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.panel1.Controls.Add(this.panel5);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.btnClose);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -480,10 +482,10 @@
             this.NONCONSUMABLE.Controls.Add(this.dataGridViewNC);
             this.NONCONSUMABLE.Controls.Add(this.lblName2);
             this.NONCONSUMABLE.Controls.Add(this.panelNC);
-            this.NONCONSUMABLE.Location = new System.Drawing.Point(4, 46);
+            this.NONCONSUMABLE.Location = new System.Drawing.Point(4, 29);
             this.NONCONSUMABLE.Name = "NONCONSUMABLE";
             this.NONCONSUMABLE.Padding = new System.Windows.Forms.Padding(3);
-            this.NONCONSUMABLE.Size = new System.Drawing.Size(793, 663);
+            this.NONCONSUMABLE.Size = new System.Drawing.Size(793, 680);
             this.NONCONSUMABLE.TabIndex = 1;
             this.NONCONSUMABLE.Text = "Non-Consumable";
             this.NONCONSUMABLE.UseVisualStyleBackColor = true;
@@ -649,6 +651,15 @@
             this.txtQuantity.TextChanged += new System.EventHandler(this.txtQuantity_TextChanged);
             this.txtQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuantity_KeyPress);
             // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.btnClose);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel5.Location = new System.Drawing.Point(751, 0);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(50, 57);
+            this.panel5.TabIndex = 5;
+            // 
             // frmExpiration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 37F);
@@ -680,6 +691,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewNC)).EndInit();
             this.panelNC.ResumeLayout(false);
             this.panelNC.PerformLayout();
+            this.panel5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -730,5 +742,6 @@
         private DataGridViewTextBoxColumn Stock;
         private DataGridViewImageColumn Select;
         private DataGridViewTextBoxColumn ID;
+        private Panel panel5;
     }
 }

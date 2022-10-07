@@ -170,7 +170,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 46);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(889, 497);
+            this.tabPage1.Size = new System.Drawing.Size(891, 497);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Product";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -187,7 +187,7 @@
             this.panelProduct.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelProduct.Location = new System.Drawing.Point(3, 3);
             this.panelProduct.Name = "panelProduct";
-            this.panelProduct.Size = new System.Drawing.Size(883, 491);
+            this.panelProduct.Size = new System.Drawing.Size(885, 491);
             this.panelProduct.TabIndex = 0;
             // 
             // txtProdID
@@ -664,7 +664,7 @@
             this.tabPage4.Controls.Add(this.panelService);
             this.tabPage4.Location = new System.Drawing.Point(4, 46);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(842, 321);
+            this.tabPage4.Size = new System.Drawing.Size(891, 497);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Service";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -685,7 +685,7 @@
             this.panelService.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelService.Location = new System.Drawing.Point(0, 0);
             this.panelService.Name = "panelService";
-            this.panelService.Size = new System.Drawing.Size(842, 321);
+            this.panelService.Size = new System.Drawing.Size(891, 497);
             this.panelService.TabIndex = 0;
             // 
             // txtServiceID
