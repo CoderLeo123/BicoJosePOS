@@ -139,6 +139,8 @@ namespace Capstone
                     float change = float.Parse(txtChange.Text);
                     string pMethod = comBoxMethodPayment.Text;
                     string pTerms = comBoxPaymentTerms.Text;
+                    string cashier = lblCashier.Text;
+                    string customer = lblCustomer.Text;
                     for (int i = 0; i < frmC.dataGridViewCart.Rows.Count; i++)
                     {
                         cn.Open();
@@ -147,7 +149,7 @@ namespace Capstone
                         cn.Close();
 
                         cn.Open();
-                        cm = new SqlCommand("UPDATE tblCart SET Payment = " + payment.ToString("00.00") + ", Change = " + change.ToString("00.00") + ", PMode = '" + pMethod + "', PTerms = '" + pTerms + "', Status = 'Sold' WHERE num LIKE '" + frmC.dataGridViewCart.Rows[i].Cells[11].Value.ToString() + "'", cn);
+                        cm = new SqlCommand("UPDATE tblCart SET Payment = " + payment.ToString("00.00") + ", Change = " + change.ToString("00.00") + ", PMode = '" + pMethod + "', PTerms = '" + pTerms + "', Cashier = '" + cashier + "', Customer = '" + customer + "', Status = 'Sold' WHERE num LIKE '" + frmC.dataGridViewCart.Rows[i].Cells[11].Value.ToString() + "'", cn);
                         cm.ExecuteNonQuery();
                         cn.Close();
                     }

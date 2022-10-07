@@ -21,5 +21,15 @@ namespace Capstone
         {
             this.Close();
         }
+
+        private void dataGridViewTransacHist_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridViewSoldItems_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

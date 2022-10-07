@@ -81,6 +81,8 @@ namespace Capstone
             frm.txtTotal.Text = lblNetTotal.Text;
             frm.comBoxPaymentTerms.SelectedIndex = 0;
             frm.comBoxMethodPayment.SelectedIndex = 0;
+            frm.lblCustomer.Text = txtFirstName.Text + " " + txtLastName.Text;
+            frm.lblCashier.Text = lblCashierName.Text;
             frm.ShowDialog();
         }
 

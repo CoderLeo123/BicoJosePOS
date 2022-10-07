@@ -385,13 +385,13 @@ namespace Capstone
             }
         }
 
-        public void LoadRecordsDailySales(DataGridView dgv, TextBox txtSearch)
+        public void LoadRecordsTransacHist(DataGridView dgv, TextBox txtSearch)
         {//dataGridViewService, txtSearchService
             cn = new SqlConnection(dbcon.MyConnection());
             int i = 0;
             dgv.Rows.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT * FROM ViewCartStockItem WHERE Description LIKE '%" + txtSearch.Text + "%' OR Description LIKE '%" + txtSearch.Text + "%' Order by Service_ID", cn);
+            SqlCommand cm = new SqlCommand("SELECT * FROM ViewCartItem WHERE Description LIKE '%" + txtSearch.Text + "%' OR Description LIKE '%" + txtSearch.Text + "%' AND Status = 'Sold'", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {                            //                       2-NAME / 2-Name                   4-PRICE / 4-Price
