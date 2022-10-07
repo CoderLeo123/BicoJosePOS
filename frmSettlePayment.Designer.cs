@@ -44,6 +44,7 @@
             this.comBoxPaymentTerms = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblCustomer = new System.Windows.Forms.Label();
             this.comBoxMethodPayment = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -62,6 +63,7 @@
             this.btnFive = new System.Windows.Forms.Button();
             this.btnSix = new System.Windows.Forms.Button();
             this.btnFour = new System.Windows.Forms.Button();
+            this.lblCashier = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnCloseSettlePayment)).BeginInit();
             this.panel1.SuspendLayout();
@@ -259,6 +261,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.lblCashier);
+            this.panel1.Controls.Add(this.lblCustomer);
             this.panel1.Controls.Add(this.comBoxMethodPayment);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.comBoxPaymentTerms);
@@ -272,8 +276,19 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 66);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(539, 264);
+            this.panel1.Size = new System.Drawing.Size(539, 272);
             this.panel1.TabIndex = 31;
+            // 
+            // lblCustomer
+            // 
+            this.lblCustomer.AutoSize = true;
+            this.lblCustomer.ForeColor = System.Drawing.Color.Red;
+            this.lblCustomer.Location = new System.Drawing.Point(142, 211);
+            this.lblCustomer.Name = "lblCustomer";
+            this.lblCustomer.Size = new System.Drawing.Size(75, 31);
+            this.lblCustomer.TabIndex = 11;
+            this.lblCustomer.Text = "Name";
+            this.lblCustomer.Visible = false;
             // 
             // comBoxMethodPayment
             // 
@@ -320,9 +335,9 @@
             this.panel4.Controls.Add(this.btnNine);
             this.panel4.Controls.Add(this.btnSeven);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(0, 330);
+            this.panel4.Location = new System.Drawing.Point(0, 338);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(539, 622);
+            this.panel4.Size = new System.Drawing.Size(539, 614);
             this.panel4.TabIndex = 32;
             // 
             // btnTwoH
@@ -550,6 +565,17 @@
             this.btnFour.UseVisualStyleBackColor = false;
             this.btnFour.Click += new System.EventHandler(this.btnFour_Click);
             // 
+            // lblCashier
+            // 
+            this.lblCashier.AutoSize = true;
+            this.lblCashier.ForeColor = System.Drawing.Color.Red;
+            this.lblCashier.Location = new System.Drawing.Point(147, 168);
+            this.lblCashier.Name = "lblCashier";
+            this.lblCashier.Size = new System.Drawing.Size(89, 31);
+            this.lblCashier.TabIndex = 12;
+            this.lblCashier.Text = "Cashier";
+            this.lblCashier.Visible = false;
+            // 
             // frmSettlePayment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 31F);
@@ -610,5 +636,7 @@
         private Button btnFiveH;
         private Button btnOneH;
         private Button btnThousand;
+        public Label lblCustomer;
+        public Label lblCashier;
     }
 }
