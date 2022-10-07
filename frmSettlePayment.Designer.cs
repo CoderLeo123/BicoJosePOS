@@ -239,8 +239,8 @@
             this.comBoxPaymentTerms.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comBoxPaymentTerms.FormattingEnabled = true;
             this.comBoxPaymentTerms.Items.AddRange(new object[] {
-            "Cash",
-            "Gcash"});
+            "Full",
+            "Deposit"});
             this.comBoxPaymentTerms.Location = new System.Drawing.Point(277, 17);
             this.comBoxPaymentTerms.Name = "comBoxPaymentTerms";
             this.comBoxPaymentTerms.Size = new System.Drawing.Size(220, 39);
@@ -280,8 +280,8 @@
             this.comBoxMethodPayment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comBoxMethodPayment.FormattingEnabled = true;
             this.comBoxMethodPayment.Items.AddRange(new object[] {
-            "Full",
-            "Deposit"});
+            "Cash",
+            "Gcash"});
             this.comBoxMethodPayment.Location = new System.Drawing.Point(278, 62);
             this.comBoxMethodPayment.Name = "comBoxMethodPayment";
             this.comBoxMethodPayment.Size = new System.Drawing.Size(220, 39);

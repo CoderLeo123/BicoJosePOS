@@ -127,9 +127,13 @@ namespace Capstone
             try
             {
                 string colName = dataGridViewBrowse.Columns[e.ColumnIndex].Name;
-                string id = dataGridViewBrowse[1, e.RowIndex].Value.ToString(); // Item_ID
+                lblItemIDCheck.Text = dataGridViewBrowse[1, e.RowIndex].Value.ToString();
+                lblItemIDCheck.Visible = true;
+                string id = lblItemIDCheck.Text; // Item_ID
                 string classification = dataGridViewBrowse[7, e.RowIndex].Value.ToString();
-                
+                string Stock2 = dataGridViewBrowse[6, e.RowIndex].Value.ToString(); //STOCK quantity
+                //string Stock = lblStock.Text;
+                string Stock_Num = "";
                 frmExpiration frmE = new frmExpiration(this);
                 int i = 0;
                 if ((classification == "Consumable") && (colName == "AddToCart"))
@@ -157,29 +161,40 @@ namespace Capstone
                 }
                 else
                 {
+                    
                     cn.Open();
                     cm = new SqlCommand("SELECT Status FROM tblCart WHERE Item_ID LIKE '" + id.ToString() + "' ", cn);
                     dr = cm.ExecuteReader();
                     if (dr.Read())
                     {
                         check = dr[0].ToString();
-                    }
-       
+                    }     
                     cn.Close();
                     lblCheck.Text = check;
-                    string Stock = lblStock.Text;
-                    if (Stock.Equals("N/A"))
+
+                    cn.Open();
+                    cm = new SqlCommand("SELECT Num FROM tblStock WHERE Item_ID LIKE '" + id.ToString() + "' ", cn);
+                    dr = cm.ExecuteReader();
+                    if (dr.Read())
                     {
+                        Stock_Num = dr[0].ToString();
+                    }                                        
+                    cn.Close();
+
+                    if (Stock2.Equals("N/A"))
+                    {
+                        float price = float.Parse(dataGridViewBrowse[5, e.RowIndex].Value.ToString());
+                        
                         cn.Open();
                         cm = new SqlCommand("INSERT INTO tblCart (Stock_Num, Item_ID, Transaction_No, Quantity, Price, Total, Date, Status) VALUES (@Stock_Num, @Item_ID, @TransactionNo, @Quantity, @Price, @Total, @Date, 'Cart')", cn);
                         //cm.Parameters.AddWithValue("@Stock_ID", frmB.dataGridViewBrowse[1, i].Value.ToString());
-                        cm.Parameters.AddWithValue("@Stock_Num", dataGridViewBrowse[1, e.RowIndex].Value.ToString());
+                        cm.Parameters.AddWithValue("@Stock_Num", int.Parse(Stock_Num));
                         cm.Parameters.AddWithValue("@Item_ID", dataGridViewBrowse[1, e.RowIndex].Value.ToString());
                         cm.Parameters.AddWithValue("@TransactionNo", lblTrans.Text);
-                        cm.Parameters.AddWithValue("@Quantity", 0);
-                        cm.Parameters.AddWithValue("@Price", dataGridViewBrowse[5, e.RowIndex].Value.ToString());
+                        cm.Parameters.AddWithValue("@Quantity", 1);
+                        cm.Parameters.AddWithValue("@Price", price.ToString("00.00")); 
                         cm.Parameters.AddWithValue("@Date", DateTime.Now);
-                        cm.Parameters.AddWithValue("@Total", dataGridViewBrowse[5, e.RowIndex].Value.ToString());
+                        cm.Parameters.AddWithValue("@Total", price.ToString("00.00"));
                         cm.ExecuteNonQuery();
                         cn.Close();
                         LoadCart();
@@ -187,7 +202,7 @@ namespace Capstone
                     }
                     else
                     {
-                        if (!(check.Equals("Sold")))
+                        if (!(check.Equals("Cart"))) //check = Anything or Null
                         {
 
                             cn.Open();
@@ -219,7 +234,7 @@ namespace Capstone
                             frmE.Size = new Size(620, 543);
                             frmE.ShowDialog();
                         }
-                        else
+                        else if(check.Equals("Cart"))
                         {
 
                             MessageBox.Show("Selected Item is already in the Cart", title, MessageBoxButtons.OK, MessageBoxIcon.Warning);

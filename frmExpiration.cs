@@ -249,14 +249,13 @@ namespace Capstone
                     txtQuantity.SelectAll();
                 }
                 else
-                {                    
-                    if (Stock.Equals("N/A"))
+                {
+                    if (Stock.Equals("N/A") || Stock.Equals(""))
                     {
                         int intStock = 0;
                     }
                     else
                     {
-                        
                         int intStock = int.Parse(Stock);
                         if (!(txtInput.Equals("")))
                         {
@@ -267,8 +266,6 @@ namespace Capstone
                                 txtQuantity.SelectAll();
                             }
                         }
-                        
-                        
                     }
                     
                 }
@@ -298,7 +295,7 @@ namespace Capstone
                     //Compute();
                 }
                 
-                    if ((e.KeyChar == 13) && (txtQuantity.Text != String.Empty))
+                    if ((e.KeyChar == 13))
                     {
                         cn.Open();
                         cm = new SqlCommand("INSERT INTO tblCart (Stock_Num, Item_ID, Transaction_No, Quantity, Price, Total, Date, Status) VALUES (@Stock_Num, @Item_ID, @TransactionNo, @Quantity, @Price, @Total, @Date, 'Cart')", cn);

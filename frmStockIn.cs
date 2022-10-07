@@ -191,17 +191,26 @@ namespace Capstone
             
             if (dataGridViewStockItems.Rows.Count > 0)
             {
-                
                     if (MessageBox.Show("Are you sure you want to save this records?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                     
                     for (int i = 0; i < dataGridViewStockItems.Rows.Count; i++)
                     {
+                        //string type = dataGridViewStockItems[10, i].Value.ToString();
+                        string type = dataGridViewStockItems.Rows[i].Cells[10].Value?.ToString();
+                        //Double Vision Single Vision Progressive Vision
+                        string cut = type.Substring(type.IndexOf('V'), 6); //Vision
+                        if (cut.Equals("Vision"))
+                        {
+                            cn.Open();
+                            cm = new SqlCommand("UPDATE tblItem SET Stock_Check = 0 WHERE Item_ID LIKE '" + dataGridViewStockItems.Rows[i].Cells[9].Value?.ToString() + "' ", cn);
+                            cm.ExecuteNonQuery();
+                            cn.Close();
+                        }
                         cn.Open();
                         cm = new SqlCommand("UPDATE tblItem SET Quantity = Quantity + " + int.Parse(dataGridViewStockItems.Rows[i].Cells[5].Value?.ToString()) + " WHERE Item_ID LIKE '" + dataGridViewStockItems.Rows[i].Cells[9].Value?.ToString() + "' ", cn);
                         cm.ExecuteNonQuery();
                         cn.Close();
-
                         try
                         {
                             cn.Open();
