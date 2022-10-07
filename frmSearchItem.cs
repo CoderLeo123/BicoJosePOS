@@ -27,17 +27,17 @@ namespace Capstone
             InitializeComponent();
             cn = new SqlConnection(dbcon.MyConnection());
 
-            LoadRecordsSearch();
+            LoadRecordsSearch(0);
 
             //num = AutoGenerateID(num);
             frmList = frmAdd;
         }
-        public void LoadRecordsSearch()
+        public void LoadRecordsSearch(int lenseCheckValue)
         {
             int i = 0;
             dataGridViewSearchItem.Rows.Clear();
             cn.Open();
-            cm = new SqlCommand("SELECT * FROM ViewItemProductType WHERE Lense_Check = 0 ORDER BY Item_ID", cn);
+            cm = new SqlCommand("SELECT * FROM ViewItemProductType WHERE Stock_Check > "+lenseCheckValue +" ORDER BY Item_ID", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {                                //                  2-DESCRIPTION / 1-Description          4-PRODUCT / 4-Product              6-CLASSIFICATION / 7-Classification
@@ -48,7 +48,12 @@ namespace Capstone
             cn.Close();
         }
 
-       
+       public void valueChangingLoadRecordSearch()
+        {
+                
+        }
+
+
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -82,12 +87,12 @@ namespace Capstone
 
 
                         cn.Open();
-                        cm = new SqlCommand("INSERT INTO tblStock (Stock_ID, Item_ID, Stock_In_Date, Stock_In_By, Status) VALUES(@StockID, @ItemID, @StockDate, @StockInBy, 'Pending')", cn);
+                        cm = new SqlCommand("INSERT INTO tblStock (Stock_ID, Item_ID, Stock_In_Date, Stock_In_By, Status, Type) VALUES(@StockID, @ItemID, @StockDate, @StockInBy, 'Pending', @Type)", cn);
                         cm.Parameters.AddWithValue("@StockID", frmList.txtStockID.Text);
                         cm.Parameters.AddWithValue("@ItemID", dataGridViewSearchItem[1, e.RowIndex].Value.ToString());
                         cm.Parameters.AddWithValue("@StockInBy", frmList.txtStockInBy.Text);
                         cm.Parameters.AddWithValue("@StockDate", frmList.dateStockIn.Value);
-
+                        cm.Parameters.AddWithValue("@Type", dataGridViewSearchItem[3, e.RowIndex].Value.ToString());
                         //cm.Parameters.AddWithValue("@Num", num.ToString());
                         //cm.Parameters.AddWithValue("@Expiration", DateTime.Now);
                         cm.ExecuteNonQuery();
@@ -117,13 +122,13 @@ namespace Capstone
             {
                 if (txtSearchItem.Text == String.Empty)
                 {
-                    LoadRecordsSearch();
+                    LoadRecordsSearch(0);
                     return;
                 }
                 else
                 {
 
-                    LoadRecordsSearch();
+                    LoadRecordsSearch(0);
                 }
             }
             catch (Exception ex)

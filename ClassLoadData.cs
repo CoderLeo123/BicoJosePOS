@@ -84,7 +84,7 @@ namespace Capstone
             //{
                 //cn.Close();
                 cn.Open();
-                SqlCommand cm = new SqlCommand("UPDATE " + table + " SET " + columnToUpdate + " = 1 WHERE " + columnCondition + " LIKE '%Vision%'", cn);
+                SqlCommand cm = new SqlCommand("UPDATE " + table + " SET " + columnToUpdate + " = 0 WHERE " + columnCondition + " LIKE '%Vision%'", cn);
                 cm.ExecuteNonQuery();
                 cn.Close();
             //}
@@ -110,7 +110,7 @@ namespace Capstone
 
                 string Quantity = dr[5].ToString();//Quantity
                 string LenseCheck = dr[8].ToString();//Lense_Check
-                if (LenseCheck.Equals("1"))
+                if (LenseCheck.Equals("0"))
                 {
                     Quantity = "N/A";
                 }
@@ -152,11 +152,12 @@ namespace Capstone
                 int i = 0;
                 dgv.Rows.Clear();
                 cn.Open();
-                SqlCommand cm = new SqlCommand("SELECT * from ViewItemProductType WHERE (Description LIKE '%" + textSearch.Text + "%' OR Type LIKE '%" + textSearch.Text + "%')", cn);
+                SqlCommand cm = new SqlCommand("SELECT * from ViewItemProductType WHERE (Description LIKE '%" + textSearch.Text + "%' OR Type LIKE '%" + textSearch.Text + "%') AND Lense_Check > 0 ", cn);
                 dr = cm.ExecuteReader();
                 while (dr.Read())
                 {
-                  
+
+                    
                     //               1-ITEM ID / 0-Item_ID                  2-QTY / 5-Quantity        5-CLASSIFICATION / 6-Classification                        
                     i += 1;   // 0-Num            2-DESCRIPTION / 1-Description        3-TYPE / 2-Type                            
                     dgv.Rows.Add(i, dr[0].ToString(), dr[1].ToString(), dr[5].ToString(), dr[2].ToString(), dr[6].ToString());
@@ -300,7 +301,7 @@ namespace Capstone
                 {
                     string Quantity = dr[5].ToString();//Quantity
                     string LenseCheck = dr[8].ToString();//Lense_Check
-                    if (LenseCheck.Equals("1"))
+                    if (LenseCheck.Equals("0"))
                     {
                         Quantity = "N/A";
                     }
@@ -358,7 +359,7 @@ namespace Capstone
                     total += Double.Parse(dr[5].ToString());
                     discount += Double.Parse(dr[11].ToString());
 
-                    // 0-Num                2-EXPIRATION / 2-Expiration_Date     4-QUANTITY / 3-Quantity              6-TOTAL / 5-TOTAL                                                                                                       10-CartID / 12-Num
+                                // 0-Num                2-EXPIRATION / 2-Expiration_Date     4-QUANTITY / 3-Quantity              6-TOTAL / 5-TOTAL                                                                                                       10-CartID / 12-Num
                     i += 1;                 // 1-DESCRIPTION / 1-Description           3-PRICE / 4-Price                 5-DISCOUNT / 11-Discount                      7-Plus                         8-Minus                 9-Delete              10-StockID / 0-Stock_Num           10-ItemID / 9-Item_ID
                     dgv.Rows.Add(i, dr[1].ToString(), ExpirationDate, dr[4].ToString(), dr[3].ToString(), dr[11].ToString(), dr[5].ToString(), Properties.Resources._Add, Properties.Resources.Minus, Properties.Resources._Delete, dr[0].ToString(), dr[12].ToString(), dr[9].ToString());
                     hasRecord = true;
@@ -382,6 +383,23 @@ namespace Capstone
                 cn.Close();
                 MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        public void LoadRecordsDailySales(DataGridView dgv, TextBox txtSearch)
+        {//dataGridViewService, txtSearchService
+            cn = new SqlConnection(dbcon.MyConnection());
+            int i = 0;
+            dgv.Rows.Clear();
+            cn.Open();
+            SqlCommand cm = new SqlCommand("SELECT * FROM ViewCartStockItem WHERE Description LIKE '%" + txtSearch.Text + "%' OR Description LIKE '%" + txtSearch.Text + "%' Order by Service_ID", cn);
+            dr = cm.ExecuteReader();
+            while (dr.Read())
+            {                            //                       2-NAME / 2-Name                   4-PRICE / 4-Price
+                i += 1;                //0-#  1-SERVICE ID / 1-Service_ID       3-DESCRIPTION / 3-Description
+                dgv.Rows.Add(i, dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString());
+            }
+            dr.Close();
+            cn.Close();
         }
 
         public void LoadType(ComboBox comBoType)

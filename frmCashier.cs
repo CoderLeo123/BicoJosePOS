@@ -29,50 +29,7 @@ namespace Capstone
             lblDate.Text = DateTime.Parse(DateTime.Now.ToString()).ToShortDateString();
 
         }
-        //public void LoadCartItem()
-        //{
-        //    try
-        //    {
-        //        int i = 0;
-        //        dataGridViewCart.Rows.Clear();
-        //        cn.Open();
-        //        cm = new SqlCommand("SELECT * from ViewCartItem WHERE Description Like '%" + txtSearch.Text + "%' AND Status LIKE 'Cart'", cn);
-        //        dr = cm.ExecuteReader();
-        //        while (dr.Read())
-        //        {
-        //            string ExpirationDate = dr[2].ToString();
-        //            //if (string.IsNullOrEmpty(ExpirationDate))
-        //            //{
-        //            //    ExpirationDate = "Non-Perishable";
-
-        //            //}
-        //            //else
-        //            //{
-        //            //    if (ExpirationDate.Substring(0, 10) != "")
-        //            //    {
-        //            //        ExpirationDate = dr[2].ToString().Substring(0, 9);
-        //            //    }
-        //            //    else
-        //            //    {
-        //            //        ExpirationDate = dr[2].ToString().Substring(0, 10);
-        //            //    }
-
-        //            //}
-        //                                    // 0-Num            2-EXPIRATION / 2-Expiration_Date      4-QUANTITY / 3-Quantity              6-TOTAL / 5-TOTAL                                                                
-        //            i += 1;                 // 1-DESCRIPTION / 1-Description        3-PRICE / 4-Price                 5-DISCOUNT / 11-Discount                      7-Plus                         8-Minus                 9-Delete              10-ID / 5-Stock_Num
-        //            dataGridViewCart.Rows.Add(i, dr[1].ToString(), dr[2].ToString(), dr[4].ToString(), dr[3].ToString(), dr[11].ToString(), dr[5].ToString(), Properties.Resources._Add, Properties.Resources.Minus, Properties.Resources._Delete, dr[0].ToString());
-
-        //        }
-        //        dr.Close();
-        //        cn.Close();
-
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        cn.Close();
-        //        MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //    }
-        //}
+        
         private void button2_Click(object sender, EventArgs e) //Browse Item btn
         {
             if (lblTransactionNo.Text == string.Empty)
@@ -88,116 +45,13 @@ namespace Capstone
             }
         }
 
-        //public void LoadCart()
-        //{
-        //    try
-        //    {
-        //        Boolean hasRecord = false;
-        //        int i = 0;
-        //        double total = 0;
-        //        double discount = 0;
-        //        dataGridViewCart.Rows.Clear();
-        //        cn.Open();
-        //        cm = new SqlCommand("SELECT * from ViewCartStockItem WHERE Description Like '%" + txtSearch.Text + "%' AND Status LIKE 'Cart'", cn);
-        //        dr = cm.ExecuteReader();
-        //        while (dr.Read())
-        //        {
-        //            string ExpirationDate = dr[2].ToString();
-        //            if (string.IsNullOrEmpty(ExpirationDate))
-        //            {
-        //                ExpirationDate = "Non-Perishable";
-
-        //            }
-        //            else
-        //            {
-        //                if (ExpirationDate.Substring(0, 10) != "")
-        //                {
-        //                    ExpirationDate = dr[2].ToString().Substring(0, 9);
-        //                }
-        //                else
-        //                {
-        //                    ExpirationDate = dr[2].ToString().Substring(0, 10);
-        //                }
-
-        //            }
-        //            total += Double.Parse(dr[5].ToString());
-        //            discount += Double.Parse(dr[11].ToString());
-        //                                    // 0-Num            2-EXPIRATION / 2-Expiration_Date      4-QUANTITY / 3-Quantity              6-TOTAL / 5-TOTAL                                                                                                     10-CartID / 12-Num
-        //            i += 1;                 // 1-DESCRIPTION / 1-Description        3-PRICE / 4-Price                 5-DISCOUNT / 11-Discount                      7-Plus                         8-Minus                 9-Delete              10-StockID / 0-Stock_Num           10-ItemID / 9-Item_ID 
-        //            dataGridViewCart.Rows.Add(i, dr[1].ToString(), ExpirationDate, dr[4].ToString(), dr[3].ToString(), dr[11].ToString(), dr[5].ToString(), Properties.Resources._Add, Properties.Resources.Minus, Properties.Resources._Delete, dr[0].ToString(), dr[12].ToString(), dr[9].ToString());
-        //            hasRecord = true;   
-        //        }
-        //        dr.Close();
-        //        cn.Close();
-        //        lblDiscount.Text = discount.ToString("#,##0.00");
-        //        lblSalesTotal.Text = total.ToString("#,##0.00");
-        //        classCompute.GetCartTotal(lblDiscount, lblSalesTotal, lblPayment, lblNetTotal);
-        //        if (hasRecord == true) 
-        //        { btnSettlePayment.Enabled = true; btnAddDiscount.Enabled = true; btnClearCart.Enabled = true; 
-        //        } else 
-        //        { btnSettlePayment.Enabled = false; btnAddDiscount.Enabled = false; btnClearCart.Enabled = false; }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        cn.Close();
-        //        MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //    }
-        //}
-
-        //public void GetCartTotal()
-        //{
-        //    double discount = double.Parse(lblDiscount.Text);
-        //    double grossSales = double.Parse(lblSalesTotal.Text);
-        //    double payment = double.Parse(lblPayment.Text);
-        //    double netTotal = grossSales - discount;
-        //    //double change = netTotal - payment;
-
-        //    lblNetTotal.Text = netTotal.ToString("#,##0.00");
-        //}
+        
         private void btnLogout_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-        //public void GenerateTransactionNo()
-        //{
-        //    try
-        //    {
-        //        string date = DateTime.Now.ToString("yyyyMMdd");
-        //        cn.Open();
-        //        cm = new SqlCommand("SELECT TOP 1 Transaction_No FROM tblCart ORDER BY Transaction_No DESC", cn);
-        //        dr = cm.ExecuteReader();
-        //        dr.Read();  
-        //        if (dr.HasRows)
-        //        {
-        //            num = dr[0].ToString(); //2022081710001
-        //            count = int.Parse(num.Substring(8, 5)); //10001
-        //            lblTransactionNo.Text = date + (count + 1); //2022081710002
-
-        //        }
-        //        else
-        //        {
-
-        //            cn.Close();
-        //            cn.Open();
-        //            //DateTime current = DateTime.Now.Date;
-        //            //string shortdate = current.Date;
-        //            lblTransactionNo.Text = date + "10001";
-        //            cm = new SqlCommand("INSERT INTO tblCart (Transaction_No) VALUES(@Date)", cn);
-        //            cm.Parameters.AddWithValue("@Date", lblTransactionNo.Text);
-        //            cm.ExecuteNonQuery();
-        //            cn.Close();
-        //            //GenerateTransactionNo();
-
-        //        }
-        //        dr.Close();
-        //        cn.Close();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        cn.Close();
-        //        MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //    }
-        //}
+        
+       
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -225,6 +79,8 @@ namespace Capstone
         {
             frmSettlePayment frm = new frmSettlePayment(this);
             frm.txtTotal.Text = lblNetTotal.Text;
+            frm.comBoxPaymentTerms.SelectedIndex = 0;
+            frm.comBoxMethodPayment.SelectedIndex = 0;
             frm.ShowDialog();
         }
 
@@ -244,30 +100,7 @@ namespace Capstone
         {
             classGenerateID.GenerateTransactionNo(lblTransactionNo);
         }
-        //public void ComputeUnitTotal()
-        //{
-        //    if (dataGridViewCart.Rows.Count > 0)
-        //    {
-        //        for (int i = 0; i < dataGridViewCart.Rows.Count; i++)
-        //        {
-        //            //int i = dataGridViewCart.SelectedRows[0].Index;
-        //            float price = float.Parse(dataGridViewCart.Rows[i].Cells[3].Value.ToString());
-        //            int qty = int.Parse(dataGridViewCart.Rows[i].Cells[4].Value.ToString());
-        //            float total;
-        //            try
-        //            {
-        //                total = float.Parse(price.ToString()) * int.Parse(qty.ToString());
-        //                dataGridViewCart.Rows[i].Cells[6].Value = total.ToString("00.00");
-
-        //            }
-        //            catch (Exception ex)
-        //            {
-        //                cn.Close();
-        //                MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //            }
-        //        }
-        //    }
-        //}
+        
         private void dataGridViewCart_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             string colName = dataGridViewCart.Columns[e.ColumnIndex].Name;

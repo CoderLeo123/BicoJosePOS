@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txtSearchOrderStatus = new System.Windows.Forms.TextBox();
@@ -43,10 +43,8 @@
             this.PCodeDailySales = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.InvoiceDailySales = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DescriptionDailySales = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PriceDailySales = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QuantityDailySales = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DiscountDailySales = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TotalDailySales = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CancelDailySales = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -152,14 +150,14 @@
             this.dataGridViewItems.AllowUserToResizeRows = false;
             this.dataGridViewItems.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewItems.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewItems.ColumnHeadersHeight = 40;
             this.dataGridViewItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridViewItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -167,19 +165,17 @@
             this.PCodeDailySales,
             this.InvoiceDailySales,
             this.DescriptionDailySales,
-            this.PriceDailySales,
-            this.QuantityDailySales,
-            this.DiscountDailySales,
-            this.TotalDailySales,
+            this.Customer,
+            this.Date,
             this.CancelDailySales});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Azure;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewItems.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Azure;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewItems.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewItems.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewItems.EnableHeadersVisualStyles = false;
             this.dataGridViewItems.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
@@ -204,9 +200,11 @@
             // PCodeDailySales
             // 
             this.PCodeDailySales.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.PCodeDailySales.HeaderText = "PCODE";
+            this.PCodeDailySales.HeaderText = "CardID";
             this.PCodeDailySales.MinimumWidth = 6;
             this.PCodeDailySales.Name = "PCodeDailySales";
+            this.PCodeDailySales.Visible = false;
+            this.PCodeDailySales.Width = 99;
             // 
             // InvoiceDailySales
             // 
@@ -219,41 +217,24 @@
             // DescriptionDailySales
             // 
             this.DescriptionDailySales.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.DescriptionDailySales.HeaderText = "DESCRIPTION";
+            this.DescriptionDailySales.HeaderText = "ITEMS";
             this.DescriptionDailySales.MinimumWidth = 6;
             this.DescriptionDailySales.Name = "DescriptionDailySales";
             // 
-            // PriceDailySales
+            // Customer
             // 
-            this.PriceDailySales.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.PriceDailySales.HeaderText = "PRICE";
-            this.PriceDailySales.MinimumWidth = 6;
-            this.PriceDailySales.Name = "PriceDailySales";
-            this.PriceDailySales.Width = 89;
+            this.Customer.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Customer.HeaderText = "CUSTOMER";
+            this.Customer.MinimumWidth = 6;
+            this.Customer.Name = "Customer";
             // 
-            // QuantityDailySales
+            // Date
             // 
-            this.QuantityDailySales.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.QuantityDailySales.HeaderText = "QUANTITY";
-            this.QuantityDailySales.MinimumWidth = 6;
-            this.QuantityDailySales.Name = "QuantityDailySales";
-            this.QuantityDailySales.Width = 132;
-            // 
-            // DiscountDailySales
-            // 
-            this.DiscountDailySales.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.DiscountDailySales.HeaderText = "DISCOUNT";
-            this.DiscountDailySales.MinimumWidth = 6;
-            this.DiscountDailySales.Name = "DiscountDailySales";
-            this.DiscountDailySales.Width = 134;
-            // 
-            // TotalDailySales
-            // 
-            this.TotalDailySales.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.TotalDailySales.HeaderText = "TOTAL";
-            this.TotalDailySales.MinimumWidth = 6;
-            this.TotalDailySales.Name = "TotalDailySales";
-            this.TotalDailySales.Width = 93;
+            this.Date.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Date.HeaderText = "DATE";
+            this.Date.MinimumWidth = 6;
+            this.Date.Name = "Date";
+            this.Date.Width = 85;
             // 
             // CancelDailySales
             // 
@@ -301,10 +282,8 @@
         private DataGridViewTextBoxColumn PCodeDailySales;
         private DataGridViewTextBoxColumn InvoiceDailySales;
         private DataGridViewTextBoxColumn DescriptionDailySales;
-        private DataGridViewTextBoxColumn PriceDailySales;
-        private DataGridViewTextBoxColumn QuantityDailySales;
-        private DataGridViewTextBoxColumn DiscountDailySales;
-        private DataGridViewTextBoxColumn TotalDailySales;
+        private DataGridViewTextBoxColumn Customer;
+        private DataGridViewTextBoxColumn Date;
         private DataGridViewImageColumn CancelDailySales;
     }
 }
