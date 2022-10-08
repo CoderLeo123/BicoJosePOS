@@ -31,10 +31,15 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.txtSearchPatientRecord = new System.Windows.Forms.TextBox();
-            this.btnAddPatientRecord = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.btnAddPR = new System.Windows.Forms.Button();
             this.btnClosePatientRecord = new System.Windows.Forms.PictureBox();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.txtSearchPatientRecord = new System.Windows.Forms.TextBox();
+            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
+            this.label22 = new System.Windows.Forms.Label();
+            this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridViewPatientRecord = new System.Windows.Forms.DataGridView();
             this.NumPRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -86,33 +91,81 @@
             this.label18 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
-            this.label22 = new System.Windows.Forms.Label();
-            this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnAddPatientRecord)).BeginInit();
+            this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClosePatientRecord)).BeginInit();
+            this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPatientRecord)).BeginInit();
             this.panel3.SuspendLayout();
             this.panelPresc.SuspendLayout();
             this.panelTrans.SuspendLayout();
-            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.panel1.Controls.Add(this.panel5);
             this.panel1.Controls.Add(this.panel4);
-            this.panel1.Controls.Add(this.btnAddPatientRecord);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.btnClosePatientRecord);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1315, 109);
+            this.panel1.Size = new System.Drawing.Size(1315, 120);
             this.panel1.TabIndex = 4;
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.btnAddPR);
+            this.panel5.Controls.Add(this.btnClosePatientRecord);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel5.Location = new System.Drawing.Point(1095, 0);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(220, 66);
+            this.panel5.TabIndex = 39;
+            // 
+            // btnAddPR
+            // 
+            this.btnAddPR.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnAddPR.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddPR.FlatAppearance.BorderSize = 0;
+            this.btnAddPR.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddPR.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnAddPR.ForeColor = System.Drawing.Color.White;
+            this.btnAddPR.Location = new System.Drawing.Point(13, 9);
+            this.btnAddPR.Name = "btnAddPR";
+            this.btnAddPR.Size = new System.Drawing.Size(130, 46);
+            this.btnAddPR.TabIndex = 46;
+            this.btnAddPR.Text = "ADD";
+            this.btnAddPR.UseVisualStyleBackColor = false;
+            this.btnAddPR.Click += new System.EventHandler(this.btnAddPR_Click);
+            // 
+            // btnClosePatientRecord
+            // 
+            this.btnClosePatientRecord.BackColor = System.Drawing.Color.Transparent;
+            this.btnClosePatientRecord.BackgroundImage = global::Capstone.Properties.Resources.CloseTab;
+            this.btnClosePatientRecord.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnClosePatientRecord.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClosePatientRecord.Location = new System.Drawing.Point(168, 11);
+            this.btnClosePatientRecord.Name = "btnClosePatientRecord";
+            this.btnClosePatientRecord.Padding = new System.Windows.Forms.Padding(3);
+            this.btnClosePatientRecord.Size = new System.Drawing.Size(40, 38);
+            this.btnClosePatientRecord.TabIndex = 0;
+            this.btnClosePatientRecord.TabStop = false;
+            this.btnClosePatientRecord.Click += new System.EventHandler(this.btnClosePatientRecord_Click);
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.DimGray;
+            this.panel4.Controls.Add(this.txtSearchPatientRecord);
+            this.panel4.Controls.Add(this.dateTimePicker3);
+            this.panel4.Controls.Add(this.label22);
+            this.panel4.Controls.Add(this.dateTimePicker4);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel4.Location = new System.Drawing.Point(0, 66);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1315, 54);
+            this.panel4.TabIndex = 38;
             // 
             // txtSearchPatientRecord
             // 
@@ -123,18 +176,37 @@
             this.txtSearchPatientRecord.Size = new System.Drawing.Size(600, 38);
             this.txtSearchPatientRecord.TabIndex = 0;
             // 
-            // btnAddPatientRecord
+            // dateTimePicker3
             // 
-            this.btnAddPatientRecord.BackColor = System.Drawing.Color.Transparent;
-            this.btnAddPatientRecord.BackgroundImage = global::Capstone.Properties.Resources.AddNew;
-            this.btnAddPatientRecord.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnAddPatientRecord.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAddPatientRecord.Location = new System.Drawing.Point(1204, 9);
-            this.btnAddPatientRecord.Name = "btnAddPatientRecord";
-            this.btnAddPatientRecord.Size = new System.Drawing.Size(39, 38);
-            this.btnAddPatientRecord.TabIndex = 5;
-            this.btnAddPatientRecord.TabStop = false;
-            this.btnAddPatientRecord.Click += new System.EventHandler(this.btnAddPatientRecord_Click);
+            this.dateTimePicker3.CalendarFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dateTimePicker3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker3.Location = new System.Drawing.Point(313, 9);
+            this.dateTimePicker3.Name = "dateTimePicker3";
+            this.dateTimePicker3.Size = new System.Drawing.Size(158, 34);
+            this.dateTimePicker3.TabIndex = 33;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.BackColor = System.Drawing.Color.Transparent;
+            this.label22.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label22.ForeColor = System.Drawing.Color.White;
+            this.label22.Location = new System.Drawing.Point(12, 12);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(277, 31);
+            this.label22.TabIndex = 32;
+            this.label22.Text = "Filter By Date (From - To)";
+            // 
+            // dateTimePicker4
+            // 
+            this.dateTimePicker4.CalendarFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dateTimePicker4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dateTimePicker4.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker4.Location = new System.Drawing.Point(486, 9);
+            this.dateTimePicker4.Name = "dateTimePicker4";
+            this.dateTimePicker4.Size = new System.Drawing.Size(158, 34);
+            this.dateTimePicker4.TabIndex = 34;
             // 
             // label1
             // 
@@ -148,25 +220,11 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Patient\'s Record";
             // 
-            // btnClosePatientRecord
-            // 
-            this.btnClosePatientRecord.BackColor = System.Drawing.Color.Transparent;
-            this.btnClosePatientRecord.BackgroundImage = global::Capstone.Properties.Resources.CloseTab;
-            this.btnClosePatientRecord.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnClosePatientRecord.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnClosePatientRecord.Location = new System.Drawing.Point(1260, 9);
-            this.btnClosePatientRecord.Name = "btnClosePatientRecord";
-            this.btnClosePatientRecord.Padding = new System.Windows.Forms.Padding(3);
-            this.btnClosePatientRecord.Size = new System.Drawing.Size(40, 38);
-            this.btnClosePatientRecord.TabIndex = 0;
-            this.btnClosePatientRecord.TabStop = false;
-            this.btnClosePatientRecord.Click += new System.EventHandler(this.btnClosePatientRecord_Click);
-            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.dataGridViewPatientRecord);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 109);
+            this.panel2.Location = new System.Drawing.Point(0, 120);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1315, 362);
             this.panel2.TabIndex = 5;
@@ -236,7 +294,7 @@
             // CustomerNamePRecord
             // 
             this.CustomerNamePRecord.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CustomerNamePRecord.HeaderText = "CUSTOMER NAME";
+            this.CustomerNamePRecord.HeaderText = "NAME";
             this.CustomerNamePRecord.MinimumWidth = 6;
             this.CustomerNamePRecord.Name = "CustomerNamePRecord";
             // 
@@ -293,9 +351,9 @@
             this.panel3.Controls.Add(this.panelPresc);
             this.panel3.Controls.Add(this.panelTrans);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 471);
+            this.panel3.Location = new System.Drawing.Point(0, 482);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1315, 459);
+            this.panel3.Size = new System.Drawing.Size(1315, 448);
             this.panel3.TabIndex = 6;
             // 
             // panelPresc
@@ -594,7 +652,7 @@
             this.panelTrans.Dock = System.Windows.Forms.DockStyle.Right;
             this.panelTrans.Location = new System.Drawing.Point(930, 0);
             this.panelTrans.Name = "panelTrans";
-            this.panelTrans.Size = new System.Drawing.Size(385, 459);
+            this.panelTrans.Size = new System.Drawing.Size(385, 448);
             this.panelTrans.TabIndex = 18;
             // 
             // txtBalance
@@ -743,51 +801,6 @@
             this.label17.TabIndex = 15;
             this.label17.Text = "Others";
             // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.DimGray;
-            this.panel4.Controls.Add(this.txtSearchPatientRecord);
-            this.panel4.Controls.Add(this.dateTimePicker3);
-            this.panel4.Controls.Add(this.label22);
-            this.panel4.Controls.Add(this.dateTimePicker4);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel4.Location = new System.Drawing.Point(0, 55);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1315, 54);
-            this.panel4.TabIndex = 38;
-            // 
-            // dateTimePicker3
-            // 
-            this.dateTimePicker3.CalendarFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dateTimePicker3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker3.Location = new System.Drawing.Point(313, 9);
-            this.dateTimePicker3.Name = "dateTimePicker3";
-            this.dateTimePicker3.Size = new System.Drawing.Size(158, 34);
-            this.dateTimePicker3.TabIndex = 33;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.BackColor = System.Drawing.Color.Transparent;
-            this.label22.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label22.ForeColor = System.Drawing.Color.White;
-            this.label22.Location = new System.Drawing.Point(12, 12);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(277, 31);
-            this.label22.TabIndex = 32;
-            this.label22.Text = "Filter By Date (From - To)";
-            // 
-            // dateTimePicker4
-            // 
-            this.dateTimePicker4.CalendarFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dateTimePicker4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dateTimePicker4.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker4.Location = new System.Drawing.Point(486, 9);
-            this.dateTimePicker4.Name = "dateTimePicker4";
-            this.dateTimePicker4.Size = new System.Drawing.Size(158, 34);
-            this.dateTimePicker4.TabIndex = 34;
-            // 
             // frmPatientRecord
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -802,8 +815,10 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnAddPatientRecord)).EndInit();
+            this.panel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btnClosePatientRecord)).EndInit();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPatientRecord)).EndInit();
             this.panel3.ResumeLayout(false);
@@ -811,8 +826,6 @@
             this.panelPresc.PerformLayout();
             this.panelTrans.ResumeLayout(false);
             this.panelTrans.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -822,19 +835,8 @@
         private Panel panel1;
         private Label label1;
         private PictureBox btnClosePatientRecord;
-        private PictureBox btnAddPatientRecord;
         private Panel panel2;
         private Panel panel3;
-        private DataGridView dataGridViewPatientRecord;
-        private DataGridViewTextBoxColumn NumPRecord;
-        private DataGridViewTextBoxColumn PatientIDPRecord;
-        private DataGridViewTextBoxColumn CustomerNamePRecord;
-        private DataGridViewTextBoxColumn AddressPRecord;
-        private DataGridViewTextBoxColumn ContactPRecord;
-        private DataGridViewTextBoxColumn AgePRecord;
-        private DataGridViewTextBoxColumn GenderPRecord;
-        private DataGridViewTextBoxColumn CheckUpDatePRecord;
-        private DataGridViewImageColumn EditPRecord;
         private Label label3;
         private Panel panelPresc;
         private Label label14;
@@ -874,10 +876,22 @@
         private TextBox txtOthersPrice;
         private TextBox txtFramePrice;
         private TextBox txtLensePrice;
-        private TextBox txtSearchPatientRecord;
         private Panel panel4;
         private DateTimePicker dateTimePicker3;
         private Label label22;
         private DateTimePicker dateTimePicker4;
+        private Panel panel5;
+        private Button btnAddPR;
+        private DataGridViewTextBoxColumn NumPRecord;
+        private DataGridViewTextBoxColumn PatientIDPRecord;
+        private DataGridViewTextBoxColumn CustomerNamePRecord;
+        private DataGridViewTextBoxColumn AddressPRecord;
+        private DataGridViewTextBoxColumn ContactPRecord;
+        private DataGridViewTextBoxColumn AgePRecord;
+        private DataGridViewTextBoxColumn GenderPRecord;
+        private DataGridViewTextBoxColumn CheckUpDatePRecord;
+        private DataGridViewImageColumn EditPRecord;
+        public DataGridView dataGridViewPatientRecord;
+        public TextBox txtSearchPatientRecord;
     }
 }

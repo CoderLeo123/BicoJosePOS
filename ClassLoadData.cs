@@ -16,8 +16,44 @@ namespace Capstone
         SqlDataReader dr;
         ClassComputations classCompute = new ClassComputations();
         string title = "BICO-JOSE System";
-        
+
         //frmProductsList frmList = new frmProductsList();
+
+        public void LoadRecordsPatient(DataGridView dgv, TextBox txtSearch)
+        {//dataGridViewProduct, txtSearchProduct
+            cn = new SqlConnection(dbcon.MyConnection());
+            int i = 0;
+            dgv.Rows.Clear();
+            cn.Open();
+            SqlCommand cm = new SqlCommand("SELECT * FROM tblPatientRecord WHERE Product LIKE '%" + txtSearch.Text + "%' Order by Patient_ID", cn);
+            dr = cm.ExecuteReader();
+            while (dr.Read())
+            { 
+                        //                     2-PATIENT NAME / 2-Customer_Name       4-CONTACT / 4-Contact             6-GENDER / 6-Gender 
+                i += 1; //0-#  1-PATIENT ID / 1-Patient_ID         3-ADDRESS / 3-Address                 5-AGE / 5-Age                   7-CHECK-UP DATE / 7-Check_Up_Date 
+                dgv.Rows.Add(i, dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), dr[5].ToString(), dr[6].ToString(), dr[7].ToString());
+            }
+            dr.Close();
+            cn.Close();
+        }
+
+        public void LoadRecordsPrescription(DataGridView dgv, TextBox txtSearch)
+        {//dataGridViewProduct, txtSearchProduct
+            cn = new SqlConnection(dbcon.MyConnection());
+            int i = 0;
+            dgv.Rows.Clear();
+            cn.Open();
+            SqlCommand cm = new SqlCommand("SELECT * FROM tblPrescription WHERE Product LIKE '%" + txtSearch.Text + "%' Order by Patient_ID", cn);
+            dr = cm.ExecuteReader();
+            while (dr.Read())
+            {
+                //                     2-PATIENT NAME / 2-Customer_Name       4-CONTACT / 4-Contact             6-GENDER / 6-Gender 
+                i += 1; //0-#  1-PATIENT ID / 1-Patient_ID         3-ADDRESS / 3-Address                 5-AGE / 5-Age                   7-CHECK-UP DATE / 7-Check_Up_Date 
+                dgv.Rows.Add(i, dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), dr[5].ToString(), dr[6].ToString(), dr[7].ToString());
+            }
+            dr.Close();
+            cn.Close();
+        }
 
         public void LoadRecordsProduct(DataGridView dgv, TextBox txtSearch)
         {//dataGridViewProduct, txtSearchProduct
@@ -427,7 +463,7 @@ namespace Capstone
             int i = 0;
             dgv.Rows.Clear();
             cn.Open(); //Description LIKE '%" + txtSearch.Text + "%' OR Description LIKE '%" + txtSearch.Text + "%'
-            SqlCommand cm = new SqlCommand("SELECT * FROM tblService Name LIKE '%" + txtSearch.Text + "%' OR Description LIKE '%" + txtSearch.Text + "%'", cn);
+            SqlCommand cm = new SqlCommand("SELECT * FROM tblService WHERE Name LIKE '%" + txtSearch.Text + "%' OR Description LIKE '%" + txtSearch.Text + "%'", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {

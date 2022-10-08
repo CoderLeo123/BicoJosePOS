@@ -197,7 +197,7 @@ namespace Capstone
             }
             else
             {
-                frmDetailsSales frm = new frmDetailsSales();
+                frmDetailsSale frm = new frmDetailsSale();
                 frm.Size = new Size(1229, 478); // 685, 478 
                 frm.tabControl1.TabPages.Clear();
                 TabPage tab = new TabPage("Browse Service");
