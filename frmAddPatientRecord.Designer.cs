@@ -32,18 +32,17 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnClosePatientRecord = new System.Windows.Forms.PictureBox();
             this.panelAddInfo = new System.Windows.Forms.Panel();
-            this.GenerateCustID = new System.Windows.Forms.LinkLabel();
-            this.GeneratePrescNum = new System.Windows.Forms.LinkLabel();
+            this.comBoxAddGender = new System.Windows.Forms.ComboBox();
+            this.dateTimePickerBirthDate = new System.Windows.Forms.DateTimePicker();
+            this.label11 = new System.Windows.Forms.Label();
             this.txtAddLName = new System.Windows.Forms.TextBox();
             this.label31 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.txtAddCustID = new System.Windows.Forms.TextBox();
+            this.txtAddPatientID = new System.Windows.Forms.TextBox();
             this.label29 = new System.Windows.Forms.Label();
             this.txtAddPrescNum = new System.Windows.Forms.TextBox();
             this.label28 = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerCheckUpDate = new System.Windows.Forms.DateTimePicker();
             this.txtAddAge = new System.Windows.Forms.TextBox();
             this.label27 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
@@ -56,22 +55,21 @@
             this.txtAddTransRefNo = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
             this.panelAddPresc = new System.Windows.Forms.Panel();
+            this.txtAddOSAXIS = new System.Windows.Forms.TextBox();
+            this.txtAddODAXIS = new System.Windows.Forms.TextBox();
+            this.txtAddOSPD = new System.Windows.Forms.TextBox();
+            this.txtAddODPD = new System.Windows.Forms.TextBox();
+            this.txtAddOSSPH = new System.Windows.Forms.TextBox();
+            this.txtAddODSPH = new System.Windows.Forms.TextBox();
+            this.txtAddOSADD = new System.Windows.Forms.TextBox();
+            this.txtAddODADD = new System.Windows.Forms.TextBox();
             this.btnCancelPatientRecord = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.btnUpdatePatientRecord = new System.Windows.Forms.Button();
-            this.comBoxAddPD = new System.Windows.Forms.ComboBox();
             this.btnSavePatientRecord = new System.Windows.Forms.Button();
-            this.comBoxAddOSADD = new System.Windows.Forms.ComboBox();
-            this.comBoxAddODADD = new System.Windows.Forms.ComboBox();
-            this.comBoxAddOSAXIS = new System.Windows.Forms.ComboBox();
-            this.comBoxAddODAXIS = new System.Windows.Forms.ComboBox();
             this.comBoxAddOSCYL = new System.Windows.Forms.ComboBox();
             this.comBoxAddODCYL = new System.Windows.Forms.ComboBox();
-            this.comBoxAddOSSPH = new System.Windows.Forms.ComboBox();
-            this.comBoxAddODSPH = new System.Windows.Forms.ComboBox();
             this.txtAddFeature = new System.Windows.Forms.TextBox();
             this.txtAddNote = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -144,18 +142,17 @@
             // panelAddInfo
             // 
             this.panelAddInfo.BackColor = System.Drawing.Color.Honeydew;
-            this.panelAddInfo.Controls.Add(this.GenerateCustID);
-            this.panelAddInfo.Controls.Add(this.GeneratePrescNum);
+            this.panelAddInfo.Controls.Add(this.comBoxAddGender);
+            this.panelAddInfo.Controls.Add(this.dateTimePickerBirthDate);
+            this.panelAddInfo.Controls.Add(this.label11);
             this.panelAddInfo.Controls.Add(this.txtAddLName);
             this.panelAddInfo.Controls.Add(this.label31);
             this.panelAddInfo.Controls.Add(this.label30);
-            this.panelAddInfo.Controls.Add(this.radioButton2);
-            this.panelAddInfo.Controls.Add(this.radioButton1);
-            this.panelAddInfo.Controls.Add(this.txtAddCustID);
+            this.panelAddInfo.Controls.Add(this.txtAddPatientID);
             this.panelAddInfo.Controls.Add(this.label29);
             this.panelAddInfo.Controls.Add(this.txtAddPrescNum);
             this.panelAddInfo.Controls.Add(this.label28);
-            this.panelAddInfo.Controls.Add(this.dateTimePicker2);
+            this.panelAddInfo.Controls.Add(this.dateTimePickerCheckUpDate);
             this.panelAddInfo.Controls.Add(this.txtAddAge);
             this.panelAddInfo.Controls.Add(this.label27);
             this.panelAddInfo.Controls.Add(this.label26);
@@ -173,29 +170,34 @@
             this.panelAddInfo.Size = new System.Drawing.Size(1315, 358);
             this.panelAddInfo.TabIndex = 6;
             // 
-            // GenerateCustID
+            // comBoxAddGender
             // 
-            this.GenerateCustID.AutoSize = true;
-            this.GenerateCustID.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.GenerateCustID.LinkColor = System.Drawing.Color.Navy;
-            this.GenerateCustID.Location = new System.Drawing.Point(970, 311);
-            this.GenerateCustID.Name = "GenerateCustID";
-            this.GenerateCustID.Size = new System.Drawing.Size(103, 28);
-            this.GenerateCustID.TabIndex = 65;
-            this.GenerateCustID.TabStop = true;
-            this.GenerateCustID.Text = "[Generate]";
+            this.comBoxAddGender.BackColor = System.Drawing.Color.LightCyan;
+            this.comBoxAddGender.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.comBoxAddGender.FormattingEnabled = true;
+            this.comBoxAddGender.Location = new System.Drawing.Point(649, 254);
+            this.comBoxAddGender.Name = "comBoxAddGender";
+            this.comBoxAddGender.Size = new System.Drawing.Size(124, 36);
+            this.comBoxAddGender.TabIndex = 50;
             // 
-            // GeneratePrescNum
+            // dateTimePickerBirthDate
             // 
-            this.GeneratePrescNum.AutoSize = true;
-            this.GeneratePrescNum.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.GeneratePrescNum.LinkColor = System.Drawing.Color.Navy;
-            this.GeneratePrescNum.Location = new System.Drawing.Point(967, 192);
-            this.GeneratePrescNum.Name = "GeneratePrescNum";
-            this.GeneratePrescNum.Size = new System.Drawing.Size(103, 28);
-            this.GeneratePrescNum.TabIndex = 64;
-            this.GeneratePrescNum.TabStop = true;
-            this.GeneratePrescNum.Text = "[Generate]";
+            this.dateTimePickerBirthDate.CalendarFont = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dateTimePickerBirthDate.CalendarMonthBackground = System.Drawing.Color.Linen;
+            this.dateTimePickerBirthDate.Location = new System.Drawing.Point(254, 311);
+            this.dateTimePickerBirthDate.Name = "dateTimePickerBirthDate";
+            this.dateTimePickerBirthDate.Size = new System.Drawing.Size(250, 27);
+            this.dateTimePickerBirthDate.TabIndex = 67;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label11.Location = new System.Drawing.Point(39, 306);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(141, 38);
+            this.label11.TabIndex = 66;
+            this.label11.Text = "Birth Date";
             // 
             // txtAddLName
             // 
@@ -220,48 +222,22 @@
             // 
             this.label30.AutoSize = true;
             this.label30.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label30.Location = new System.Drawing.Point(379, 302);
+            this.label30.Location = new System.Drawing.Point(535, 252);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(108, 38);
             this.label30.TabIndex = 61;
             this.label30.Text = "Gender";
             this.label30.Click += new System.EventHandler(this.label30_Click);
             // 
-            // radioButton2
+            // txtAddPatientID
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.radioButton2.Location = new System.Drawing.Point(636, 308);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(95, 32);
-            this.radioButton2.TabIndex = 60;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Female";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.radioButton1.Location = new System.Drawing.Point(509, 308);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(76, 32);
-            this.radioButton1.TabIndex = 59;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Male";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
-            // 
-            // txtAddCustID
-            // 
-            this.txtAddCustID.BackColor = System.Drawing.Color.LightCyan;
-            this.txtAddCustID.Enabled = false;
-            this.txtAddCustID.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtAddCustID.Location = new System.Drawing.Point(970, 273);
-            this.txtAddCustID.Name = "txtAddCustID";
-            this.txtAddCustID.Size = new System.Drawing.Size(298, 34);
-            this.txtAddCustID.TabIndex = 58;
+            this.txtAddPatientID.BackColor = System.Drawing.Color.LightCyan;
+            this.txtAddPatientID.Enabled = false;
+            this.txtAddPatientID.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtAddPatientID.Location = new System.Drawing.Point(970, 273);
+            this.txtAddPatientID.Name = "txtAddPatientID";
+            this.txtAddPatientID.Size = new System.Drawing.Size(298, 34);
+            this.txtAddPatientID.TabIndex = 58;
             // 
             // label29
             // 
@@ -269,9 +245,9 @@
             this.label29.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label29.Location = new System.Drawing.Point(930, 232);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(171, 38);
+            this.label29.Size = new System.Drawing.Size(137, 38);
             this.label29.TabIndex = 57;
-            this.label29.Text = "Customer ID";
+            this.label29.Text = "Patient ID";
             this.label29.Click += new System.EventHandler(this.label29_Click);
             // 
             // txtAddPrescNum
@@ -290,26 +266,27 @@
             this.label28.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label28.Location = new System.Drawing.Point(930, 114);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(233, 38);
+            this.label28.Size = new System.Drawing.Size(199, 38);
             this.label28.TabIndex = 55;
-            this.label28.Text = "Prescription Num";
+            this.label28.Text = "Prescription ID";
             // 
-            // dateTimePicker2
+            // dateTimePickerCheckUpDate
             // 
-            this.dateTimePicker2.CalendarFont = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dateTimePicker2.CalendarMonthBackground = System.Drawing.Color.Linen;
-            this.dateTimePicker2.Location = new System.Drawing.Point(254, 259);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(250, 27);
-            this.dateTimePicker2.TabIndex = 51;
+            this.dateTimePickerCheckUpDate.CalendarFont = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dateTimePickerCheckUpDate.CalendarMonthBackground = System.Drawing.Color.Linen;
+            this.dateTimePickerCheckUpDate.Location = new System.Drawing.Point(254, 259);
+            this.dateTimePickerCheckUpDate.Name = "dateTimePickerCheckUpDate";
+            this.dateTimePickerCheckUpDate.Size = new System.Drawing.Size(250, 27);
+            this.dateTimePickerCheckUpDate.TabIndex = 51;
             // 
             // txtAddAge
             // 
             this.txtAddAge.BackColor = System.Drawing.Color.LightCyan;
+            this.txtAddAge.Enabled = false;
             this.txtAddAge.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtAddAge.Location = new System.Drawing.Point(184, 308);
+            this.txtAddAge.Location = new System.Drawing.Point(649, 311);
             this.txtAddAge.Name = "txtAddAge";
-            this.txtAddAge.Size = new System.Drawing.Size(110, 34);
+            this.txtAddAge.Size = new System.Drawing.Size(73, 34);
             this.txtAddAge.TabIndex = 54;
             // 
             // label27
@@ -326,7 +303,7 @@
             // 
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label26.Location = new System.Drawing.Point(49, 304);
+            this.label26.Location = new System.Drawing.Point(545, 301);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(66, 38);
             this.label26.TabIndex = 53;
@@ -411,22 +388,21 @@
             // panelAddPresc
             // 
             this.panelAddPresc.BackColor = System.Drawing.Color.SeaShell;
+            this.panelAddPresc.Controls.Add(this.txtAddOSAXIS);
+            this.panelAddPresc.Controls.Add(this.txtAddODAXIS);
+            this.panelAddPresc.Controls.Add(this.txtAddOSPD);
+            this.panelAddPresc.Controls.Add(this.txtAddODPD);
+            this.panelAddPresc.Controls.Add(this.txtAddOSSPH);
+            this.panelAddPresc.Controls.Add(this.txtAddODSPH);
+            this.panelAddPresc.Controls.Add(this.txtAddOSADD);
+            this.panelAddPresc.Controls.Add(this.txtAddODADD);
             this.panelAddPresc.Controls.Add(this.btnCancelPatientRecord);
-            this.panelAddPresc.Controls.Add(this.dateTimePicker1);
             this.panelAddPresc.Controls.Add(this.btnUpdatePatientRecord);
-            this.panelAddPresc.Controls.Add(this.comBoxAddPD);
             this.panelAddPresc.Controls.Add(this.btnSavePatientRecord);
-            this.panelAddPresc.Controls.Add(this.comBoxAddOSADD);
-            this.panelAddPresc.Controls.Add(this.comBoxAddODADD);
-            this.panelAddPresc.Controls.Add(this.comBoxAddOSAXIS);
-            this.panelAddPresc.Controls.Add(this.comBoxAddODAXIS);
             this.panelAddPresc.Controls.Add(this.comBoxAddOSCYL);
             this.panelAddPresc.Controls.Add(this.comBoxAddODCYL);
-            this.panelAddPresc.Controls.Add(this.comBoxAddOSSPH);
-            this.panelAddPresc.Controls.Add(this.comBoxAddODSPH);
             this.panelAddPresc.Controls.Add(this.txtAddFeature);
             this.panelAddPresc.Controls.Add(this.txtAddNote);
-            this.panelAddPresc.Controls.Add(this.label14);
             this.panelAddPresc.Controls.Add(this.label2);
             this.panelAddPresc.Controls.Add(this.label8);
             this.panelAddPresc.Controls.Add(this.label13);
@@ -442,6 +418,86 @@
             this.panelAddPresc.Name = "panelAddPresc";
             this.panelAddPresc.Size = new System.Drawing.Size(1315, 535);
             this.panelAddPresc.TabIndex = 20;
+            // 
+            // txtAddOSAXIS
+            // 
+            this.txtAddOSAXIS.BackColor = System.Drawing.Color.LightCyan;
+            this.txtAddOSAXIS.Enabled = false;
+            this.txtAddOSAXIS.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtAddOSAXIS.Location = new System.Drawing.Point(417, 183);
+            this.txtAddOSAXIS.Name = "txtAddOSAXIS";
+            this.txtAddOSAXIS.Size = new System.Drawing.Size(101, 34);
+            this.txtAddOSAXIS.TabIndex = 62;
+            // 
+            // txtAddODAXIS
+            // 
+            this.txtAddODAXIS.BackColor = System.Drawing.Color.LightCyan;
+            this.txtAddODAXIS.Enabled = false;
+            this.txtAddODAXIS.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtAddODAXIS.Location = new System.Drawing.Point(417, 120);
+            this.txtAddODAXIS.Name = "txtAddODAXIS";
+            this.txtAddODAXIS.Size = new System.Drawing.Size(101, 34);
+            this.txtAddODAXIS.TabIndex = 61;
+            // 
+            // txtAddOSPD
+            // 
+            this.txtAddOSPD.BackColor = System.Drawing.Color.LightCyan;
+            this.txtAddOSPD.Enabled = false;
+            this.txtAddOSPD.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtAddOSPD.Location = new System.Drawing.Point(690, 183);
+            this.txtAddOSPD.Name = "txtAddOSPD";
+            this.txtAddOSPD.Size = new System.Drawing.Size(101, 34);
+            this.txtAddOSPD.TabIndex = 60;
+            // 
+            // txtAddODPD
+            // 
+            this.txtAddODPD.BackColor = System.Drawing.Color.LightCyan;
+            this.txtAddODPD.Enabled = false;
+            this.txtAddODPD.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtAddODPD.Location = new System.Drawing.Point(690, 120);
+            this.txtAddODPD.Name = "txtAddODPD";
+            this.txtAddODPD.Size = new System.Drawing.Size(101, 34);
+            this.txtAddODPD.TabIndex = 59;
+            // 
+            // txtAddOSSPH
+            // 
+            this.txtAddOSSPH.BackColor = System.Drawing.Color.LightCyan;
+            this.txtAddOSSPH.Enabled = false;
+            this.txtAddOSSPH.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtAddOSSPH.Location = new System.Drawing.Point(140, 179);
+            this.txtAddOSSPH.Name = "txtAddOSSPH";
+            this.txtAddOSSPH.Size = new System.Drawing.Size(101, 34);
+            this.txtAddOSSPH.TabIndex = 58;
+            // 
+            // txtAddODSPH
+            // 
+            this.txtAddODSPH.BackColor = System.Drawing.Color.LightCyan;
+            this.txtAddODSPH.Enabled = false;
+            this.txtAddODSPH.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtAddODSPH.Location = new System.Drawing.Point(140, 120);
+            this.txtAddODSPH.Name = "txtAddODSPH";
+            this.txtAddODSPH.Size = new System.Drawing.Size(101, 34);
+            this.txtAddODSPH.TabIndex = 57;
+            // 
+            // txtAddOSADD
+            // 
+            this.txtAddOSADD.BackColor = System.Drawing.Color.LightCyan;
+            this.txtAddOSADD.Enabled = false;
+            this.txtAddOSADD.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtAddOSADD.Location = new System.Drawing.Point(557, 183);
+            this.txtAddOSADD.Name = "txtAddOSADD";
+            this.txtAddOSADD.Size = new System.Drawing.Size(101, 34);
+            this.txtAddOSADD.TabIndex = 56;
+            // 
+            // txtAddODADD
+            // 
+            this.txtAddODADD.BackColor = System.Drawing.Color.LightCyan;
+            this.txtAddODADD.Enabled = false;
+            this.txtAddODADD.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtAddODADD.Location = new System.Drawing.Point(557, 120);
+            this.txtAddODADD.Name = "txtAddODADD";
+            this.txtAddODADD.Size = new System.Drawing.Size(101, 34);
+            this.txtAddODADD.TabIndex = 55;
             // 
             // btnCancelPatientRecord
             // 
@@ -459,15 +515,6 @@
             this.btnCancelPatientRecord.UseVisualStyleBackColor = false;
             this.btnCancelPatientRecord.Click += new System.EventHandler(this.btnCancelPatientRecord_Click);
             // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.CalendarFont = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dateTimePicker1.CalendarMonthBackground = System.Drawing.Color.LightCyan;
-            this.dateTimePicker1.Location = new System.Drawing.Point(205, 261);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(250, 27);
-            this.dateTimePicker1.TabIndex = 49;
-            // 
             // btnUpdatePatientRecord
             // 
             this.btnUpdatePatientRecord.BackColor = System.Drawing.Color.SteelBlue;
@@ -484,16 +531,6 @@
             this.btnUpdatePatientRecord.Text = "Update";
             this.btnUpdatePatientRecord.UseVisualStyleBackColor = false;
             // 
-            // comBoxAddPD
-            // 
-            this.comBoxAddPD.BackColor = System.Drawing.Color.LightCyan;
-            this.comBoxAddPD.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.comBoxAddPD.FormattingEnabled = true;
-            this.comBoxAddPD.Location = new System.Drawing.Point(700, 411);
-            this.comBoxAddPD.Name = "comBoxAddPD";
-            this.comBoxAddPD.Size = new System.Drawing.Size(101, 36);
-            this.comBoxAddPD.TabIndex = 48;
-            // 
             // btnSavePatientRecord
             // 
             this.btnSavePatientRecord.BackColor = System.Drawing.Color.LimeGreen;
@@ -509,46 +546,6 @@
             this.btnSavePatientRecord.Text = "Save";
             this.btnSavePatientRecord.UseVisualStyleBackColor = false;
             this.btnSavePatientRecord.Click += new System.EventHandler(this.btnSavePatientRecord_Click);
-            // 
-            // comBoxAddOSADD
-            // 
-            this.comBoxAddOSADD.BackColor = System.Drawing.Color.LightCyan;
-            this.comBoxAddOSADD.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.comBoxAddOSADD.FormattingEnabled = true;
-            this.comBoxAddOSADD.Location = new System.Drawing.Point(553, 177);
-            this.comBoxAddOSADD.Name = "comBoxAddOSADD";
-            this.comBoxAddOSADD.Size = new System.Drawing.Size(124, 36);
-            this.comBoxAddOSADD.TabIndex = 46;
-            // 
-            // comBoxAddODADD
-            // 
-            this.comBoxAddODADD.BackColor = System.Drawing.Color.LightCyan;
-            this.comBoxAddODADD.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.comBoxAddODADD.FormattingEnabled = true;
-            this.comBoxAddODADD.Location = new System.Drawing.Point(553, 116);
-            this.comBoxAddODADD.Name = "comBoxAddODADD";
-            this.comBoxAddODADD.Size = new System.Drawing.Size(124, 36);
-            this.comBoxAddODADD.TabIndex = 45;
-            // 
-            // comBoxAddOSAXIS
-            // 
-            this.comBoxAddOSAXIS.BackColor = System.Drawing.Color.LightCyan;
-            this.comBoxAddOSAXIS.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.comBoxAddOSAXIS.FormattingEnabled = true;
-            this.comBoxAddOSAXIS.Location = new System.Drawing.Point(416, 177);
-            this.comBoxAddOSAXIS.Name = "comBoxAddOSAXIS";
-            this.comBoxAddOSAXIS.Size = new System.Drawing.Size(85, 36);
-            this.comBoxAddOSAXIS.TabIndex = 44;
-            // 
-            // comBoxAddODAXIS
-            // 
-            this.comBoxAddODAXIS.BackColor = System.Drawing.Color.LightCyan;
-            this.comBoxAddODAXIS.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.comBoxAddODAXIS.FormattingEnabled = true;
-            this.comBoxAddODAXIS.Location = new System.Drawing.Point(416, 116);
-            this.comBoxAddODAXIS.Name = "comBoxAddODAXIS";
-            this.comBoxAddODAXIS.Size = new System.Drawing.Size(85, 36);
-            this.comBoxAddODAXIS.TabIndex = 43;
             // 
             // comBoxAddOSCYL
             // 
@@ -570,31 +567,11 @@
             this.comBoxAddODCYL.Size = new System.Drawing.Size(85, 36);
             this.comBoxAddODCYL.TabIndex = 41;
             // 
-            // comBoxAddOSSPH
-            // 
-            this.comBoxAddOSSPH.BackColor = System.Drawing.Color.LightCyan;
-            this.comBoxAddOSSPH.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.comBoxAddOSSPH.FormattingEnabled = true;
-            this.comBoxAddOSSPH.Location = new System.Drawing.Point(142, 177);
-            this.comBoxAddOSSPH.Name = "comBoxAddOSSPH";
-            this.comBoxAddOSSPH.Size = new System.Drawing.Size(85, 36);
-            this.comBoxAddOSSPH.TabIndex = 40;
-            // 
-            // comBoxAddODSPH
-            // 
-            this.comBoxAddODSPH.BackColor = System.Drawing.Color.LightCyan;
-            this.comBoxAddODSPH.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.comBoxAddODSPH.FormattingEnabled = true;
-            this.comBoxAddODSPH.Location = new System.Drawing.Point(142, 116);
-            this.comBoxAddODSPH.Name = "comBoxAddODSPH";
-            this.comBoxAddODSPH.Size = new System.Drawing.Size(85, 36);
-            this.comBoxAddODSPH.TabIndex = 39;
-            // 
             // txtAddFeature
             // 
             this.txtAddFeature.BackColor = System.Drawing.Color.LightCyan;
             this.txtAddFeature.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtAddFeature.Location = new System.Drawing.Point(699, 216);
+            this.txtAddFeature.Location = new System.Drawing.Point(700, 350);
             this.txtAddFeature.Multiline = true;
             this.txtAddFeature.Name = "txtAddFeature";
             this.txtAddFeature.PlaceholderText = "E.g. Multicoated, etc..";
@@ -611,16 +588,6 @@
             this.txtAddNote.PlaceholderText = "E.g. Notify thru contacts remaining balance";
             this.txtAddNote.Size = new System.Drawing.Size(508, 130);
             this.txtAddNote.TabIndex = 34;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label14.Location = new System.Drawing.Point(37, 252);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(134, 38);
-            this.label14.TabIndex = 24;
-            this.label14.Text = "Due Date";
             // 
             // label2
             // 
@@ -676,7 +643,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label12.Location = new System.Drawing.Point(698, 175);
+            this.label12.Location = new System.Drawing.Point(699, 309);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(133, 38);
             this.label12.TabIndex = 22;
@@ -706,7 +673,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label10.Location = new System.Drawing.Point(700, 370);
+            this.label10.Location = new System.Drawing.Point(699, 63);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(53, 38);
             this.label10.TabIndex = 20;
@@ -926,7 +893,6 @@
         private Panel panelAddPresc;
         private TextBox txtAddFeature;
         private TextBox txtAddNote;
-        private Label label14;
         private Label label2;
         private Label label8;
         private Label label13;
@@ -937,7 +903,6 @@
         private Label label4;
         private Label label10;
         private Label label5;
-        private ComboBox comBoxAddODSPH;
         private Panel panelAddTrans;
         private TextBox txtAddBalance;
         private TextBox txtAddDeposit;
@@ -953,20 +918,11 @@
         private Label label18;
         private Label label16;
         private Label label17;
-        private DateTimePicker dateTimePicker1;
-        private ComboBox comBoxAddPD;
-        private ComboBox comBoxAddOSADD;
-        private ComboBox comBoxAddODADD;
-        private ComboBox comBoxAddOSAXIS;
-        private ComboBox comBoxAddODAXIS;
         private ComboBox comBoxAddOSCYL;
         private ComboBox comBoxAddODCYL;
-        private ComboBox comBoxAddOSSPH;
-        private TextBox txtAddCustID;
         private Label label29;
-        private TextBox txtAddPrescNum;
         private Label label28;
-        private DateTimePicker dateTimePicker2;
+        private DateTimePicker dateTimePickerCheckUpDate;
         private TextBox txtAddAge;
         private Label label27;
         private Label label26;
@@ -979,14 +935,23 @@
         private TextBox txtAddTransRefNo;
         private Label label22;
         private Label label30;
-        private RadioButton radioButton2;
-        private RadioButton radioButton1;
         private TextBox txtAddLName;
         private Label label31;
         private Button btnCancelPatientRecord;
         private Button btnUpdatePatientRecord;
         private Button btnSavePatientRecord;
-        private LinkLabel GenerateCustID;
-        private LinkLabel GeneratePrescNum;
+        private ComboBox comBoxAddGender;
+        private DateTimePicker dateTimePickerBirthDate;
+        private Label label11;
+        public TextBox txtAddOSSPH;
+        public TextBox txtAddODSPH;
+        public TextBox txtAddOSADD;
+        public TextBox txtAddODADD;
+        public TextBox txtAddOSAXIS;
+        public TextBox txtAddODAXIS;
+        public TextBox txtAddOSPD;
+        public TextBox txtAddODPD;
+        public TextBox txtAddPatientID;
+        public TextBox txtAddPrescNum;
     }
 }

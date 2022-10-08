@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 namespace Capstone
 {
-    public partial class frmDetailsSales : Form
+    public partial class frmDetailsSale : Form
     {
         SqlConnection cn = new SqlConnection();
         SqlCommand cm = new SqlCommand();
@@ -18,7 +18,7 @@ namespace Capstone
         SqlDataReader dr;
         ClassLoadData classLoadData = new ClassLoadData();
         string title = "BICO-JOSE System";
-        public frmDetailsSales()
+        public frmDetailsSale()
         {
             InitializeComponent();
         }

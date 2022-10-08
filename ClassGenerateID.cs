@@ -19,6 +19,106 @@ namespace Capstone
         string I_ID, T_ID, P_ID, S_ID, STK_ID, trans_num; int count;
         //frmAddAccessories frmAdd = new frmAddAccessories();
 
+        public void GenerateUserID(TextBox userID)
+        {
+            try
+            {
+                cn = new SqlConnection(dbcon.MyConnection());
+
+                cn.Open();
+                SqlCommand cm = new SqlCommand("SELECT TOP 1 User_ID FROM tblUser ORDER BY User_ID DESC", cn);
+                dr = cm.ExecuteReader();
+                dr.Read();
+                if (dr.HasRows)
+                {
+                    P_ID = dr[0].ToString(); //USR1001
+                    count = int.Parse(P_ID.Substring(3, 4)); //1001
+                    userID.Text = P_ID.Substring(0, 3) + (count + 1); //USR1002
+                }
+                else
+                {
+                    cn.Close();
+                    insertIntialID("tblUser", "User_ID", "USR1000");
+                    selectAndIncrement("tblUser", "User_ID", userID, 3, 4, 0);
+                    deleteInitialID("tblUser", "User_ID", "USR1000");
+                }
+                dr.Close();
+                cn.Close();
+            }
+            catch (Exception ex)
+            {
+                cn.Close();
+                MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        public void GeneratePatientID(TextBox patientID)
+        {
+            try
+            {
+                cn = new SqlConnection(dbcon.MyConnection());
+
+                cn.Open();
+                SqlCommand cm = new SqlCommand("SELECT TOP 1 Patient_ID FROM tblPatientRecord ORDER BY Patient_ID DESC", cn);
+                dr = cm.ExecuteReader();
+                dr.Read();
+                if (dr.HasRows)
+                {
+                    P_ID = dr[0].ToString(); //PNT1001
+                    count = int.Parse(P_ID.Substring(3, 4)); //1001
+                    patientID.Text = P_ID.Substring(0, 3) + (count + 1); //PNT1002
+                }
+                else
+                {
+                    cn.Close();
+                    insertIntialID("tblPatientRecord", "Patient_ID", "PNT1000");
+                    selectAndIncrement("tblPatientRecord", "Patient_ID", patientID, 3, 4, 0);
+                    deleteInitialID("tblPatientRecord", "Patient_ID", "PNT1000");
+                }
+                dr.Close();
+                cn.Close();
+            }
+            catch (Exception ex)
+            {
+                cn.Close();
+                MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        public void GeneratePrescriptionID(TextBox prescriptionID)
+        {
+            try
+            {
+                cn = new SqlConnection(dbcon.MyConnection());
+
+                cn.Open();
+                SqlCommand cm = new SqlCommand("SELECT TOP 1 Prescript_No FROM tblPrescription ORDER BY Prescript_No DESC", cn);
+                dr = cm.ExecuteReader();
+                dr.Read();
+                if (dr.HasRows)
+                {
+                    P_ID = dr[0].ToString(); //PRC1001
+                    count = int.Parse(P_ID.Substring(3, 4)); //1001
+                    prescriptionID.Text = P_ID.Substring(0, 3) + (count + 1); //PNT1002
+                }
+                else
+                {
+                    cn.Close();
+                    insertIntialID("tblPrescription", "Prescript_No", "PRC1000");
+                    selectAndIncrement("tblPrescription", "Prescript_No", prescriptionID, 3, 4, 0);
+                    deleteInitialID("tblPrescription", "Prescript_No", "PRC1000");
+                }
+                dr.Close();
+                cn.Close();
+            }
+            catch (Exception ex)
+            {
+                cn.Close();
+                MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+
         public void selectAndIncrement(string table, string column, TextBox Id, int index1Length2, int length1, int index2)
         {//"tblProduct", "Product_ID", productID
             //SELECT TOP 1 Product_ID FROM tblProduct ORDER BY Product_ID DESC
