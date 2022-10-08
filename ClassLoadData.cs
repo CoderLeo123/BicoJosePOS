@@ -385,18 +385,37 @@ namespace Capstone
             }
         }
 
-        public void LoadRecordsTransacHist(DataGridView dgv, TextBox txtSearch)
-        {//dataGridViewService, txtSearchService
+        public void LoadRecordsTransacHist(DataGridView dgv, TextBox txtSearch, DateTimePicker dateStart, DateTimePicker dateEnd)
+        {//dataGridViewTransacHist, txtSearchTransac
             cn = new SqlConnection(dbcon.MyConnection());
             int i = 0;
             dgv.Rows.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT * FROM ViewCartItem WHERE Description LIKE '%" + txtSearch.Text + "%' OR Description LIKE '%" + txtSearch.Text + "%' AND Status = 'Sold'", cn);
+            SqlCommand cm = new SqlCommand("SELECT * FROM tblCart WHERE Customer LIKE '%" + txtSearch.Text + "%' OR Cashier LIKE '%" + txtSearch.Text + "%' AND Status = 'Sold' AND Date BETWEEN '" + dateStart.Value.ToShortDateString() + "' AND '" + dateEnd.Value.ToShortDateString() + "' ", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
-            {                            //                       2-NAME / 2-Name                   4-PRICE / 4-Price
-                i += 1;                //0-#  1-SERVICE ID / 1-Service_ID       3-DESCRIPTION / 3-Description
-                dgv.Rows.Add(i, dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString());
+            {
+                        //                       2-CUSTOMER / 15-Customer                   4-DATE(TRANSACTION) / 6-Date
+                i += 1; //0-#  1-TRANSACTION NO / 2-Transaction_NO       3-CASHIER / 14-Cashier
+                dgv.Rows.Add(i, dr[2].ToString(), dr[15].ToString(), dr[14].ToString(), dr[6].ToString());
+            }
+            dr.Close();
+            cn.Close();
+        }
+
+        public void LoadRecordsSoldItems(DataGridView dgv, TextBox txtSearch, DateTimePicker dateStart, DateTimePicker dateEnd)
+        {//dataGridViewSoldItems, txtSearchSold
+            cn = new SqlConnection(dbcon.MyConnection());
+            int i = 0;
+            dgv.Rows.Clear();
+            cn.Open();
+            SqlCommand cm = new SqlCommand("SELECT * FROM ViewCartStockItem WHERE Description LIKE '%" + txtSearch.Text + "%' OR Date LIKE '%" + DateTime.Parse(txtSearch.Text).ToShortDateString() + "%' AND Status = 'Sold' AND Date BETWEEN '" + dateStart.Value.ToShortDateString() + "' AND '" + dateEnd.Value.ToShortDateString() + "' ", cn);
+            dr = cm.ExecuteReader();
+            while (dr.Read())
+            {
+                //                          2-DESCRIPTION / 1-Description                  4-PRICE / 4-Price                  4-TOTAL / 5-Total
+                i += 1; //0-#  1-TRANSACTION NO / 7-Transaction_NO      3-EXPIRATION / 2-Expiration_Date           4-QTY / 3-Quantity            4-DATE / 6-Date
+                dgv.Rows.Add(i, dr[7].ToString(), dr[1].ToString(), dr[2].ToString(), dr[4].ToString(), dr[3].ToString(), dr[5].ToString(), dr[6].ToString());
             }
             dr.Close();
             cn.Close();
