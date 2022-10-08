@@ -44,10 +44,16 @@
             this.comBoxPaymentTerms = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panelDepositDueDate = new System.Windows.Forms.Panel();
+            this.dateTimePickerDueDate = new System.Windows.Forms.DateTimePicker();
+            this.lblChangeDueDate = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.lblCashier = new System.Windows.Forms.Label();
             this.lblCustomer = new System.Windows.Forms.Label();
             this.comBoxMethodPayment = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.btnBackSpace = new System.Windows.Forms.Button();
             this.btnTwoH = new System.Windows.Forms.Button();
             this.btnTwenty = new System.Windows.Forms.Button();
             this.btnFifty = new System.Windows.Forms.Button();
@@ -63,10 +69,11 @@
             this.btnFive = new System.Windows.Forms.Button();
             this.btnSix = new System.Windows.Forms.Button();
             this.btnFour = new System.Windows.Forms.Button();
-            this.lblCashier = new System.Windows.Forms.Label();
+            this.lblTransacNo = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnCloseSettlePayment)).BeginInit();
             this.panel1.SuspendLayout();
+            this.panelDepositDueDate.SuspendLayout();
             this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -204,6 +211,7 @@
             this.txtChange.PlaceholderText = "0.00";
             this.txtChange.Size = new System.Drawing.Size(220, 43);
             this.txtChange.TabIndex = 2;
+            this.txtChange.Text = "0";
             this.txtChange.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label1
@@ -247,6 +255,7 @@
             this.comBoxPaymentTerms.Name = "comBoxPaymentTerms";
             this.comBoxPaymentTerms.Size = new System.Drawing.Size(220, 39);
             this.comBoxPaymentTerms.TabIndex = 7;
+            this.comBoxPaymentTerms.SelectedIndexChanged += new System.EventHandler(this.comBoxPaymentTerms_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -261,6 +270,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.lblTransacNo);
+            this.panel1.Controls.Add(this.panelDepositDueDate);
             this.panel1.Controls.Add(this.lblCashier);
             this.panel1.Controls.Add(this.lblCustomer);
             this.panel1.Controls.Add(this.comBoxMethodPayment);
@@ -276,8 +287,63 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 66);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(539, 272);
+            this.panel1.Size = new System.Drawing.Size(539, 246);
             this.panel1.TabIndex = 31;
+            // 
+            // panelDepositDueDate
+            // 
+            this.panelDepositDueDate.Controls.Add(this.dateTimePickerDueDate);
+            this.panelDepositDueDate.Controls.Add(this.lblChangeDueDate);
+            this.panelDepositDueDate.Controls.Add(this.label8);
+            this.panelDepositDueDate.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelDepositDueDate.Location = new System.Drawing.Point(0, 92);
+            this.panelDepositDueDate.Name = "panelDepositDueDate";
+            this.panelDepositDueDate.Size = new System.Drawing.Size(539, 154);
+            this.panelDepositDueDate.TabIndex = 16;
+            this.panelDepositDueDate.Visible = false;
+            // 
+            // dateTimePickerDueDate
+            // 
+            this.dateTimePickerDueDate.Enabled = false;
+            this.dateTimePickerDueDate.Location = new System.Drawing.Point(158, 13);
+            this.dateTimePickerDueDate.Name = "dateTimePickerDueDate";
+            this.dateTimePickerDueDate.Size = new System.Drawing.Size(366, 38);
+            this.dateTimePickerDueDate.TabIndex = 13;
+            this.dateTimePickerDueDate.ValueChanged += new System.EventHandler(this.dateTimePickerDueDate_ValueChanged);
+            // 
+            // lblChangeDueDate
+            // 
+            this.lblChangeDueDate.AutoSize = true;
+            this.lblChangeDueDate.ForeColor = System.Drawing.Color.Red;
+            this.lblChangeDueDate.Location = new System.Drawing.Point(13, 54);
+            this.lblChangeDueDate.Name = "lblChangeDueDate";
+            this.lblChangeDueDate.Size = new System.Drawing.Size(492, 124);
+            this.lblChangeDueDate.TabIndex = 14;
+            this.lblChangeDueDate.Text = "By default, the due date for balance settlement\r\n is 2 days prior to Transaction " +
+    "Date. \r\nTo change to date C͟L͟I͟C͟K͟ H͟E͟R͟E͟\r\n\r\n";
+            this.lblChangeDueDate.Visible = false;
+            this.lblChangeDueDate.Click += new System.EventHandler(this.lblChangeDueDate_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label8.Location = new System.Drawing.Point(18, 13);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(134, 38);
+            this.label8.TabIndex = 15;
+            this.label8.Text = "Due Date";
+            // 
+            // lblCashier
+            // 
+            this.lblCashier.AutoSize = true;
+            this.lblCashier.ForeColor = System.Drawing.Color.Red;
+            this.lblCashier.Location = new System.Drawing.Point(147, 168);
+            this.lblCashier.Name = "lblCashier";
+            this.lblCashier.Size = new System.Drawing.Size(89, 31);
+            this.lblCashier.TabIndex = 12;
+            this.lblCashier.Text = "Cashier";
+            this.lblCashier.Visible = false;
             // 
             // lblCustomer
             // 
@@ -315,6 +381,7 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.White;
+            this.panel4.Controls.Add(this.btnBackSpace);
             this.panel4.Controls.Add(this.btnTwoH);
             this.panel4.Controls.Add(this.btnTwenty);
             this.panel4.Controls.Add(this.btnFifty);
@@ -335,10 +402,25 @@
             this.panel4.Controls.Add(this.btnNine);
             this.panel4.Controls.Add(this.btnSeven);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(0, 338);
+            this.panel4.Location = new System.Drawing.Point(0, 312);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(539, 614);
+            this.panel4.Size = new System.Drawing.Size(539, 627);
             this.panel4.TabIndex = 32;
+            // 
+            // btnBackSpace
+            // 
+            this.btnBackSpace.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.btnBackSpace.FlatAppearance.BorderSize = 0;
+            this.btnBackSpace.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBackSpace.Font = new System.Drawing.Font("Segoe UI", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnBackSpace.ForeColor = System.Drawing.Color.White;
+            this.btnBackSpace.Location = new System.Drawing.Point(382, 116);
+            this.btnBackSpace.Name = "btnBackSpace";
+            this.btnBackSpace.Size = new System.Drawing.Size(113, 91);
+            this.btnBackSpace.TabIndex = 19;
+            this.btnBackSpace.Text = "◄";
+            this.btnBackSpace.UseVisualStyleBackColor = false;
+            this.btnBackSpace.Click += new System.EventHandler(this.btnBackSpace_Click);
             // 
             // btnTwoH
             // 
@@ -362,7 +444,7 @@
             this.btnTwenty.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTwenty.Font = new System.Drawing.Font("Segoe UI Semibold", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnTwenty.ForeColor = System.Drawing.Color.White;
-            this.btnTwenty.Location = new System.Drawing.Point(385, 116);
+            this.btnTwenty.Location = new System.Drawing.Point(266, 116);
             this.btnTwenty.Name = "btnTwenty";
             this.btnTwenty.Size = new System.Drawing.Size(113, 91);
             this.btnTwenty.TabIndex = 17;
@@ -377,7 +459,7 @@
             this.btnFifty.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFifty.Font = new System.Drawing.Font("Segoe UI Semibold", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnFifty.ForeColor = System.Drawing.Color.White;
-            this.btnFifty.Location = new System.Drawing.Point(266, 116);
+            this.btnFifty.Location = new System.Drawing.Point(147, 116);
             this.btnFifty.Name = "btnFifty";
             this.btnFifty.Size = new System.Drawing.Size(113, 91);
             this.btnFifty.TabIndex = 16;
@@ -407,7 +489,7 @@
             this.btnOneH.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOneH.Font = new System.Drawing.Font("Segoe UI Semibold", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnOneH.ForeColor = System.Drawing.Color.White;
-            this.btnOneH.Location = new System.Drawing.Point(147, 116);
+            this.btnOneH.Location = new System.Drawing.Point(28, 116);
             this.btnOneH.Name = "btnOneH";
             this.btnOneH.Size = new System.Drawing.Size(113, 91);
             this.btnOneH.TabIndex = 15;
@@ -565,22 +647,22 @@
             this.btnFour.UseVisualStyleBackColor = false;
             this.btnFour.Click += new System.EventHandler(this.btnFour_Click);
             // 
-            // lblCashier
+            // lblTransacNo
             // 
-            this.lblCashier.AutoSize = true;
-            this.lblCashier.ForeColor = System.Drawing.Color.Red;
-            this.lblCashier.Location = new System.Drawing.Point(147, 168);
-            this.lblCashier.Name = "lblCashier";
-            this.lblCashier.Size = new System.Drawing.Size(89, 31);
-            this.lblCashier.TabIndex = 12;
-            this.lblCashier.Text = "Cashier";
-            this.lblCashier.Visible = false;
+            this.lblTransacNo.AutoSize = true;
+            this.lblTransacNo.ForeColor = System.Drawing.Color.Red;
+            this.lblTransacNo.Location = new System.Drawing.Point(503, 25);
+            this.lblTransacNo.Name = "lblTransacNo";
+            this.lblTransacNo.Size = new System.Drawing.Size(19, 31);
+            this.lblTransacNo.TabIndex = 17;
+            this.lblTransacNo.Text = ".";
+            this.lblTransacNo.Visible = false;
             // 
             // frmSettlePayment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(539, 952);
+            this.ClientSize = new System.Drawing.Size(539, 939);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
@@ -595,6 +677,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnCloseSettlePayment)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panelDepositDueDate.ResumeLayout(false);
+            this.panelDepositDueDate.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -638,5 +722,11 @@
         private Button btnThousand;
         public Label lblCustomer;
         public Label lblCashier;
+        private Label label8;
+        public Label lblChangeDueDate;
+        private DateTimePicker dateTimePickerDueDate;
+        private Button btnBackSpace;
+        public Panel panelDepositDueDate;
+        public Label lblTransacNo;
     }
 }

@@ -83,19 +83,22 @@ namespace Capstone
             frm.comBoxMethodPayment.SelectedIndex = 0;
             frm.lblCustomer.Text = txtFirstName.Text + " " + txtLastName.Text;
             frm.lblCashier.Text = lblCashierName.Text;
+            frm.lblTransacNo.Text = lblTransactionNo.Text;
             frm.ShowDialog();
         }
 
         private void btnDailySales_Click(object sender, EventArgs e)
         {
             frmDailySales frm = new frmDailySales();
+            classLoadData.LoadRecordsTransacHist(frm.dataGridViewTransacHist, frm.txtSearchTransac, frm.dateTimePickerStartTrans, frm.dateTimePickerEndTrans);
+            classLoadData.LoadRecordsSoldItems(frm.dataGridViewSoldItems, frm.txtSearchSold, frm.dateTimePickerStartSold, frm.dateTimePickerEndSold);
             frm.ShowDialog();
         }
 
         private void btnChangePass_Click(object sender, EventArgs e)
         {
-            frmChangePassword frm = new frmChangePassword();
-            frm.ShowDialog();
+            //frmChangePassword frm = new frmChangePassword();
+            //frm.ShowDialog();
         }
 
         private void btnNewTransaction_Click(object sender, EventArgs e)

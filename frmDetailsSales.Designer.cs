@@ -30,30 +30,25 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panelSoldDetails = new System.Windows.Forms.Panel();
-            this.panelTransDetails = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.btnClose = new System.Windows.Forms.PictureBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lblPTerms = new System.Windows.Forms.Label();
+            this.lblPMode = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             this.lblChange = new System.Windows.Forms.Label();
             this.lblPayment = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
             this.lblDiscount = new System.Windows.Forms.Label();
             this.lblQty = new System.Windows.Forms.Label();
             this.lblPrice = new System.Windows.Forms.Label();
-            this.lblPTerms = new System.Windows.Forms.Label();
-            this.lblPMode = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.panelTransDetails = new System.Windows.Forms.Panel();
             this.lblChangeTrans = new System.Windows.Forms.Label();
             this.lblPaymentTrans = new System.Windows.Forms.Label();
             this.lblTotalTrans = new System.Windows.Forms.Label();
@@ -64,10 +59,15 @@
             this.label17 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.btnClose = new System.Windows.Forms.PictureBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
             this.panelSoldDetails.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.panelTransDetails.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -98,17 +98,6 @@
             this.tabPage1.Text = "Sold Items";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.panelTransDetails);
-            this.tabPage2.Location = new System.Drawing.Point(4, 46);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(677, 365);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Transac Details";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
             // panelSoldDetails
             // 
             this.panelSoldDetails.Controls.Add(this.lblPTerms);
@@ -133,127 +122,43 @@
             this.panelSoldDetails.Size = new System.Drawing.Size(671, 359);
             this.panelSoldDetails.TabIndex = 0;
             // 
-            // panelTransDetails
+            // lblPTerms
             // 
-            this.panelTransDetails.Controls.Add(this.lblChangeTrans);
-            this.panelTransDetails.Controls.Add(this.lblPaymentTrans);
-            this.panelTransDetails.Controls.Add(this.lblTotalTrans);
-            this.panelTransDetails.Controls.Add(this.lblCashier);
-            this.panelTransDetails.Controls.Add(this.lblCustomer);
-            this.panelTransDetails.Controls.Add(this.label13);
-            this.panelTransDetails.Controls.Add(this.label14);
-            this.panelTransDetails.Controls.Add(this.label17);
-            this.panelTransDetails.Controls.Add(this.label19);
-            this.panelTransDetails.Controls.Add(this.label20);
-            this.panelTransDetails.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelTransDetails.Location = new System.Drawing.Point(3, 3);
-            this.panelTransDetails.Name = "panelTransDetails";
-            this.panelTransDetails.Size = new System.Drawing.Size(671, 359);
-            this.panelTransDetails.TabIndex = 0;
+            this.lblPTerms.AutoSize = true;
+            this.lblPTerms.ForeColor = System.Drawing.Color.Red;
+            this.lblPTerms.Location = new System.Drawing.Point(466, 191);
+            this.lblPTerms.Name = "lblPTerms";
+            this.lblPTerms.Size = new System.Drawing.Size(55, 38);
+            this.lblPTerms.TabIndex = 15;
+            this.lblPTerms.Text = ".    ";
             // 
-            // panel1
+            // lblPMode
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.panel1.Controls.Add(this.panel6);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(685, 63);
-            this.panel1.TabIndex = 34;
+            this.lblPMode.AutoSize = true;
+            this.lblPMode.ForeColor = System.Drawing.Color.Red;
+            this.lblPMode.Location = new System.Drawing.Point(466, 82);
+            this.lblPMode.Name = "lblPMode";
+            this.lblPMode.Size = new System.Drawing.Size(55, 38);
+            this.lblPMode.TabIndex = 14;
+            this.lblPMode.Text = ".    ";
             // 
-            // panel6
+            // label15
             // 
-            this.panel6.Controls.Add(this.btnClose);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel6.Location = new System.Drawing.Point(624, 0);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(61, 63);
-            this.panel6.TabIndex = 1;
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(404, 138);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(205, 38);
+            this.label15.TabIndex = 13;
+            this.label15.Text = "Payment Terms";
             // 
-            // btnClose
+            // label16
             // 
-            this.btnClose.BackColor = System.Drawing.Color.Transparent;
-            this.btnClose.BackgroundImage = global::Capstone.Properties.Resources.CloseTab;
-            this.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnClose.Location = new System.Drawing.Point(12, 12);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Padding = new System.Windows.Forms.Padding(3);
-            this.btnClose.Size = new System.Drawing.Size(40, 38);
-            this.btnClose.TabIndex = 0;
-            this.btnClose.TabStop = false;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.panel1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(685, 63);
-            this.panel2.TabIndex = 35;
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.tabControl1);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 63);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(685, 415);
-            this.panel3.TabIndex = 36;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(37, 29);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(78, 38);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Price";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(37, 82);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(123, 38);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Quantity";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(37, 191);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(75, 38);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Total";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(37, 138);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(126, 38);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "Discount";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(37, 292);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(111, 38);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "Change";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(37, 239);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(124, 38);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "Payment";
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(404, 29);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(262, 38);
+            this.label16.TabIndex = 12;
+            this.label16.Text = "Method of Payment";
             // 
             // lblChange
             // 
@@ -315,43 +220,88 @@
             this.lblPrice.TabIndex = 6;
             this.lblPrice.Text = ".    ";
             // 
-            // lblPTerms
+            // label5
             // 
-            this.lblPTerms.AutoSize = true;
-            this.lblPTerms.ForeColor = System.Drawing.Color.Red;
-            this.lblPTerms.Location = new System.Drawing.Point(466, 191);
-            this.lblPTerms.Name = "lblPTerms";
-            this.lblPTerms.Size = new System.Drawing.Size(55, 38);
-            this.lblPTerms.TabIndex = 15;
-            this.lblPTerms.Text = ".    ";
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(37, 292);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(111, 38);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "Change";
             // 
-            // lblPMode
+            // label6
             // 
-            this.lblPMode.AutoSize = true;
-            this.lblPMode.ForeColor = System.Drawing.Color.Red;
-            this.lblPMode.Location = new System.Drawing.Point(466, 82);
-            this.lblPMode.Name = "lblPMode";
-            this.lblPMode.Size = new System.Drawing.Size(55, 38);
-            this.lblPMode.TabIndex = 14;
-            this.lblPMode.Text = ".    ";
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(37, 239);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(124, 38);
+            this.label6.TabIndex = 4;
+            this.label6.Text = "Payment";
             // 
-            // label15
+            // label3
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(404, 138);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(205, 38);
-            this.label15.TabIndex = 13;
-            this.label15.Text = "Payment Terms";
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(37, 191);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(75, 38);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Total";
             // 
-            // label16
+            // label4
             // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(404, 29);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(262, 38);
-            this.label16.TabIndex = 12;
-            this.label16.Text = "Method of Payment";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(37, 138);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(126, 38);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Discount";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(37, 82);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(123, 38);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Quantity";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(37, 29);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(78, 38);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Price";
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.panelTransDetails);
+            this.tabPage2.Location = new System.Drawing.Point(4, 46);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(677, 365);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Transac Details";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // panelTransDetails
+            // 
+            this.panelTransDetails.Controls.Add(this.lblChangeTrans);
+            this.panelTransDetails.Controls.Add(this.lblPaymentTrans);
+            this.panelTransDetails.Controls.Add(this.lblTotalTrans);
+            this.panelTransDetails.Controls.Add(this.lblCashier);
+            this.panelTransDetails.Controls.Add(this.lblCustomer);
+            this.panelTransDetails.Controls.Add(this.label13);
+            this.panelTransDetails.Controls.Add(this.label14);
+            this.panelTransDetails.Controls.Add(this.label17);
+            this.panelTransDetails.Controls.Add(this.label19);
+            this.panelTransDetails.Controls.Add(this.label20);
+            this.panelTransDetails.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelTransDetails.Location = new System.Drawing.Point(3, 3);
+            this.panelTransDetails.Name = "panelTransDetails";
+            this.panelTransDetails.Size = new System.Drawing.Size(671, 359);
+            this.panelTransDetails.TabIndex = 0;
             // 
             // lblChangeTrans
             // 
@@ -448,6 +398,56 @@
             this.label20.TabIndex = 12;
             this.label20.Text = "Customer";
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.panel1.Controls.Add(this.panel6);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(685, 63);
+            this.panel1.TabIndex = 34;
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.btnClose);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel6.Location = new System.Drawing.Point(624, 0);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(61, 63);
+            this.panel6.TabIndex = 1;
+            // 
+            // btnClose
+            // 
+            this.btnClose.BackColor = System.Drawing.Color.Transparent;
+            this.btnClose.BackgroundImage = global::Capstone.Properties.Resources.CloseTab;
+            this.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClose.Location = new System.Drawing.Point(12, 12);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Padding = new System.Windows.Forms.Padding(3);
+            this.btnClose.Size = new System.Drawing.Size(40, 38);
+            this.btnClose.TabIndex = 0;
+            this.btnClose.TabStop = false;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.panel1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(685, 63);
+            this.panel2.TabIndex = 35;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.tabControl1);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(0, 63);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(685, 415);
+            this.panel3.TabIndex = 36;
+            // 
             // frmDetailsSales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 37F);
@@ -457,15 +457,15 @@
             this.Controls.Add(this.panel2);
             this.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "frmDetailsSales";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmDetailsSales";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
             this.panelSoldDetails.ResumeLayout(false);
             this.panelSoldDetails.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
             this.panelTransDetails.ResumeLayout(false);
             this.panelTransDetails.PerformLayout();
             this.panel1.ResumeLayout(false);

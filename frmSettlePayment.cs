@@ -23,6 +23,7 @@ namespace Capstone
         private bool mouseDown;
         private Point lastLocation;
         frmCashier frmC;
+
         public frmSettlePayment(frmCashier frm)
         {
             InitializeComponent();
@@ -49,15 +50,15 @@ namespace Capstone
                 double change = payment - sales;
                 txtChange.Text = change.ToString("#,##0.00");
 
-                
+
                 if (txtPayment.Text == string.Empty)
                 {
                     txtPayment.Text = "0";
                     txtPayment.SelectAll();
                 }
-                
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 txtChange.Text = "0.00";
             }
@@ -65,7 +66,7 @@ namespace Capstone
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            
+
             txtPayment.Clear();
             txtPayment.Text = "0";
             txtPayment.Focus();
@@ -120,11 +121,43 @@ namespace Capstone
         {
             txtPayment.Text += btnDoubleZero.Text;
         }
-
+        public void depositTerms(string paymentMode)
+        {
+            try
+            {
+                if (paymentMode == "Full")
+                {
+                    
+                }
+                else if (paymentMode == "Deposit")
+                {
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
         private void btnEnter_Click(object sender, EventArgs e)
         {
             try
             {
+                string transacNum = lblTransacNo.Text;
+                float payment = float.Parse(txtPayment.Text);//Initial_Deposit
+                float change = float.Parse(txtChange.Text);
+                string pMethod = comBoxMethodPayment.Text;
+                string pTerms = comBoxPaymentTerms.Text;
+                string cashier = lblCashier.Text;
+                string customer = lblCustomer.Text;
+                float total = float.Parse(txtTotal.Text); //Total_Payment
+                string dueDate = dateTimePickerDueDate.Value.ToShortDateString(); //Due_Date , Expected_Arrival
+                float remainBalance = 0; //remBalance
+                string status = "";
+                string claimDate = "";
+                checkPaymentTerms(status, pMethod, total, payment, remainBalance);
+                checkOrderIfDeposit(status, pMethod, claimDate);
                 //frmCashier frmC = new frmCashier();
                 if (double.Parse(txtChange.Text) < 0 || (txtChange.Text == String.Empty))
                 {
@@ -133,17 +166,9 @@ namespace Capstone
                 }
                 else
                 {
-                    //comBoxMethodPayment.Text = frmC.lblMethod.Text;
-                    //comBoxPaymentTerms.Text = frmC.lblTerms.Text;
-                    float payment = float.Parse(txtPayment.Text);
-                    float change = float.Parse(txtChange.Text);
-                    string pMethod = comBoxMethodPayment.Text;
-                    string pTerms = comBoxPaymentTerms.Text;
-                    string cashier = lblCashier.Text;
-                    string customer = lblCustomer.Text;
                     for (int i = 0; i < frmC.dataGridViewCart.Rows.Count; i++)
                     {
-                        cn.Open();
+                        cn.Open();//Set Quantity
                         cm = new SqlCommand("UPDATE tblItem SET Quantity = Quantity - " + int.Parse(frmC.dataGridViewCart.Rows[i].Cells[4].Value.ToString()) + " WHERE Item_ID LIKE '" + frmC.dataGridViewCart.Rows[i].Cells[12].Value.ToString() + "'", cn);
                         cm.ExecuteNonQuery();
                         cn.Close();
@@ -152,7 +177,20 @@ namespace Capstone
                         cm = new SqlCommand("UPDATE tblCart SET Payment = " + payment.ToString("00.00") + ", Change = " + change.ToString("00.00") + ", PMode = '" + pMethod + "', PTerms = '" + pTerms + "', Cashier = '" + cashier + "', Customer = '" + customer + "', Status = 'Sold' WHERE num LIKE '" + frmC.dataGridViewCart.Rows[i].Cells[11].Value.ToString() + "'", cn);
                         cm.ExecuteNonQuery();
                         cn.Close();
+
+                        cn.Open();//Set Customer, Expected_Arrival,   Status = VariableMethod, Release By = 'Undefined', Date_Claimed = 'Not Yet' NULL 
+                        cm = new SqlCommand("UPDATE tblOrderStatus SET Customer = " + customer + ", Expected_Arrival = " + dueDate + " , Status = " + status + ", Date_Claimed = " + claimDate + ", Release By = 'Undefined' WHERE Transaction_No LIKE '" + transacNum + "'", cn);
+                        cm.ExecuteNonQuery();
+                        cn.Close();
+
+                       
                     }
+
+                    cn.Open();//Set Customer, Total_Payment, Initial_Deposit, Due_Date,  Rem_Balance = VariableMethod, Status = 'Pending'
+                    cm = new SqlCommand("UPDATE tblPaymentStatus SET Customer = " + customer + ", Total_Payment = " + total.ToString("00.00") + ", Initial_Deposit = " + payment.ToString("00.00") + ", Due_Date = " + dueDate + " , Rem_Balance = " + remainBalance + ", Status = " + status + " WHERE Transaction_No LIKE '" + transacNum + "'", cn);
+                    cm.ExecuteNonQuery();
+                    cn.Close();
+
                     MessageBox.Show("Payment succesfully saved", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     classGenerateID.GenerateTransactionNo(frmC.lblTransactionNo);
                     //frmC.GenerateTransactionNo();
@@ -168,7 +206,50 @@ namespace Capstone
                 return;
             }
         }
+        public void checkOrderIfDeposit(string statusValue, string paymentMode, string dateClaim)
+        {
+            try
+            {
+                if (paymentMode == "Full")
+                {
+                    statusValue = "Claimed";
+                    dateClaim = DateTime.Now.ToShortDateString();
+                }
+                else if (paymentMode == "Deposit")
+                {
+                    statusValue = "In The Lab";
+                    dateClaim = "Not Yet";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        } 
 
+        public void checkPaymentTerms(string statusValue, string paymentMode, float total, float payment, float remBalance)
+        {
+            try
+            {
+                remBalance = total - payment;
+                if (paymentMode == "Full")
+                {
+                    statusValue = "Settled";
+                }
+                else if (paymentMode == "Deposit")
+                {
+                    statusValue = "Pending";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }            
+        }
+        
+        
         private void txtPayment_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 8)
@@ -242,6 +323,38 @@ namespace Capstone
         private void panel2_MouseUp(object sender, MouseEventArgs e)
         {
             mouseDown = false;
+        }
+
+        private void lblChangeDueDate_Click(object sender, EventArgs e)
+        {
+            dateTimePickerDueDate.Enabled = true;
+            dateTimePickerDueDate.Focus();
+        }
+
+        private void dateTimePickerDueDate_ValueChanged(object sender, EventArgs e)
+        {
+            dateTimePickerDueDate.Enabled = false;
+        }
+
+        private void comBoxPaymentTerms_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comBoxPaymentTerms.SelectedIndex == 0)
+            {
+                panel1.Size = new Size(539, 408);
+                this.Size = new Size(539, 1055);
+                panelDepositDueDate.Visible = true;
+            }
+            else
+            {
+                panel1.Size = new Size(539, 246);
+                this.Size = new Size(539, 939);
+                panelDepositDueDate.Visible = false;
+            }
+        }
+
+        private void btnBackSpace_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
