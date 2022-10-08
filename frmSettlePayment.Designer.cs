@@ -44,6 +44,7 @@
             this.comBoxPaymentTerms = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblTransacNo = new System.Windows.Forms.Label();
             this.panelDepositDueDate = new System.Windows.Forms.Panel();
             this.dateTimePickerDueDate = new System.Windows.Forms.DateTimePicker();
             this.lblChangeDueDate = new System.Windows.Forms.Label();
@@ -69,7 +70,6 @@
             this.btnFive = new System.Windows.Forms.Button();
             this.btnSix = new System.Windows.Forms.Button();
             this.btnFour = new System.Windows.Forms.Button();
-            this.lblTransacNo = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnCloseSettlePayment)).BeginInit();
             this.panel1.SuspendLayout();
@@ -201,6 +201,7 @@
             this.txtPayment.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtPayment.TextChanged += new System.EventHandler(this.txtPayment_TextChanged);
             this.txtPayment.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPayment_KeyPress);
+            this.txtPayment.Leave += new System.EventHandler(this.txtPayment_Leave);
             // 
             // txtChange
             // 
@@ -290,6 +291,17 @@
             this.panel1.Size = new System.Drawing.Size(539, 246);
             this.panel1.TabIndex = 31;
             // 
+            // lblTransacNo
+            // 
+            this.lblTransacNo.AutoSize = true;
+            this.lblTransacNo.ForeColor = System.Drawing.Color.Red;
+            this.lblTransacNo.Location = new System.Drawing.Point(503, 25);
+            this.lblTransacNo.Name = "lblTransacNo";
+            this.lblTransacNo.Size = new System.Drawing.Size(19, 31);
+            this.lblTransacNo.TabIndex = 17;
+            this.lblTransacNo.Text = ".";
+            this.lblTransacNo.Visible = false;
+            // 
             // panelDepositDueDate
             // 
             this.panelDepositDueDate.Controls.Add(this.dateTimePickerDueDate);
@@ -310,6 +322,7 @@
             this.dateTimePickerDueDate.Size = new System.Drawing.Size(366, 38);
             this.dateTimePickerDueDate.TabIndex = 13;
             this.dateTimePickerDueDate.ValueChanged += new System.EventHandler(this.dateTimePickerDueDate_ValueChanged);
+            this.dateTimePickerDueDate.Leave += new System.EventHandler(this.dateTimePickerDueDate_Leave);
             // 
             // lblChangeDueDate
             // 
@@ -646,17 +659,6 @@
             this.btnFour.Text = "4";
             this.btnFour.UseVisualStyleBackColor = false;
             this.btnFour.Click += new System.EventHandler(this.btnFour_Click);
-            // 
-            // lblTransacNo
-            // 
-            this.lblTransacNo.AutoSize = true;
-            this.lblTransacNo.ForeColor = System.Drawing.Color.Red;
-            this.lblTransacNo.Location = new System.Drawing.Point(503, 25);
-            this.lblTransacNo.Name = "lblTransacNo";
-            this.lblTransacNo.Size = new System.Drawing.Size(19, 31);
-            this.lblTransacNo.TabIndex = 17;
-            this.lblTransacNo.Text = ".";
-            this.lblTransacNo.Visible = false;
             // 
             // frmSettlePayment
             // 

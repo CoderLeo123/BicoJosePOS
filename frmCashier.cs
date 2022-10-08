@@ -69,22 +69,33 @@ namespace Capstone
             {
                 int i = dataGridViewCart.SelectedRows[0].Index;
                 frmDiscount frm = new frmDiscount(this);
-                frm.txtPriceDiscount.Text = dataGridViewCart[6, i].Value.ToString();
-                frm.lblID.Text = dataGridViewCart[11, i].Value.ToString();
+                //frm.txtPriceDiscount.Text = dataGridViewCart[6, i].Value.ToString();                
+                //frm.lblID.Text = dataGridViewCart[11, i].Value.ToString();
+                frm.lblID.Text = lblTransactionNo.Text;
+                frm.txtPriceDiscount.Text = lblSalesTotal.Text;
                 frm.ShowDialog();
             }
         }
 
         private void btnSettlePayment_Click(object sender, EventArgs e)
         {
-            frmSettlePayment frm = new frmSettlePayment(this);
-            frm.txtTotal.Text = lblNetTotal.Text;
-            frm.comBoxPaymentTerms.SelectedIndex = 0;
-            frm.comBoxMethodPayment.SelectedIndex = 0;
-            frm.lblCustomer.Text = txtFirstName.Text + " " + txtLastName.Text;
-            frm.lblCashier.Text = lblCashierName.Text;
-            frm.lblTransacNo.Text = lblTransactionNo.Text;
-            frm.ShowDialog();
+            if(txtFirstName.Text == "" && txtLastName.Text == "")
+            {
+                MessageBox.Show("Kindly input the customer's name first", title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtFirstName.Focus();
+            }
+            else
+            {
+                frmSettlePayment frm = new frmSettlePayment(this);
+                frm.txtTotal.Text = lblNetTotal.Text;
+                frm.comBoxPaymentTerms.SelectedIndex = 0;
+                frm.comBoxMethodPayment.SelectedIndex = 0;
+                frm.lblCustomer.Text = txtFirstName.Text + " " + txtLastName.Text;
+                frm.lblCashier.Text = lblCashierName.Text;
+                frm.lblTransacNo.Text = lblTransactionNo.Text;
+                frm.ShowDialog();
+            }
+            
         }
 
         private void btnDailySales_Click(object sender, EventArgs e)
@@ -174,6 +185,29 @@ namespace Capstone
         private void btnClearCart_Click(object sender, EventArgs e)
         {
             dataGridViewCart.Rows.Clear();
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)//btnBrowseService
+        {
+            if (lblTransactionNo.Text == string.Empty)
+            {
+                MessageBox.Show("Please generate a Transaction No first", title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else
+            {
+                frmDetailsSales frm = new frmDetailsSales();
+                frm.Size = new Size(1229, 478); // 685, 478 
+                frm.tabControl1.TabPages.Clear();
+                TabPage tab = new TabPage("Browse Service");
+                frm.tabControl1.TabPages.Add(tab);
+                tab.Controls.Add(frm.panelBrowseService);
+                //frm.lblTrans.Text = lblTransactionNo.Text;
+                classLoadData.LoadRecordsBrowseService(frm.dataGridViewService, frm.txtSearchService);
+                frm.ShowDialog();
+            }
+
         }
     }
 

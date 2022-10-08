@@ -155,6 +155,7 @@ namespace Capstone
             frm.tabControlCreateNew.TabPages.Add(tab);
             tab.Controls.Add(frm.panelProduct);
             classGenerateID.GenerateProductID(frm.txtProdID);
+            
             //frm.GenerateProductID();
             //classLoadData.LoadProduct(frm.comBoxProductType);
             //frm.LoadProduct();
@@ -171,6 +172,7 @@ namespace Capstone
             frm.tabControlCreateNew.TabPages.Add(tab);
             tab.Controls.Add(frm.panelType);
             classLoadData.LoadProduct(frm.comBoxProductType);
+            frm.comBoxProductType.SelectedIndex = 0;
             //frm.LoadProduct();
             classGenerateID.GenerateTypeID(frm.txtTypID);
             //frm.GenerateTypeID();
@@ -252,6 +254,8 @@ namespace Capstone
             TabPage tab = new TabPage("Item");
             frm.tabControlCreateNew.TabPages.Add(tab);
             tab.Controls.Add(frm.panelItem);
+            frm.comBoxType.SelectedIndex = 0;
+            frm.comBoxClassification.SelectedIndex = 0;
             classLoadData.LoadType(frm.comBoxType);
             //frm.LoadType();
             classLoadData.LoadProductItem(frm.txtProduct, frm.txtTypeID, frm.comBoxType);

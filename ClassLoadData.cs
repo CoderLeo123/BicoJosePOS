@@ -367,7 +367,7 @@ namespace Capstone
                 dr.Close();
                 cn.Close();
                 labelDiscount.Text = discount.ToString("#,##0.00");
-                labelSalesTotal.Text = total.ToString("#,##0.00");
+                labelSalesTotal.Text += total.ToString("#,##0.00");
                 //frmCashier frmC = new frmCashier(); //frmC.lblDiscount, frmC.lblSalesTotal, frmC.lblPayment, out frmC.lblNetTotal
                 GetCartTotal(labelDiscount, labelSalesTotal, labelPayment, labelNetTotal);
                 //frmC.GetCartTotal();
@@ -419,6 +419,45 @@ namespace Capstone
             }
             dr.Close();
             cn.Close();
+        }
+
+        public void LoadRecordsBrowseService(DataGridView dgv, TextBox txtSearch)
+        {//dataGridViewService
+            cn = new SqlConnection(dbcon.MyConnection());
+            int i = 0;
+            dgv.Rows.Clear();
+            cn.Open(); //Description LIKE '%" + txtSearch.Text + "%' OR Description LIKE '%" + txtSearch.Text + "%'
+            SqlCommand cm = new SqlCommand("SELECT * FROM tblService Name LIKE '%" + txtSearch.Text + "%' OR Description LIKE '%" + txtSearch.Text + "%'", cn);
+            dr = cm.ExecuteReader();
+            while (dr.Read())
+            {
+                //                          2-DESCRIPTION / 1-Description            
+                i += 1; //0-#  1-NAME / 7-Name      3-PRICE / 2-Price          
+                dgv.Rows.Add(i, dr[0].ToString(), dr[1].ToString(), dr[2].ToString());
+            }
+            dr.Close();
+            cn.Close();
+        }
+
+        public void LoadRecordServiceAvail(DataGridView dgv, Label total)
+        {//dataGridViewService
+            cn = new SqlConnection(dbcon.MyConnection());
+            int i = 0;
+            double totalVar = 0;
+            dgv.Rows.Clear();
+            cn.Open(); //Description LIKE '%" + txtSearch.Text + "%' OR Description LIKE '%" + txtSearch.Text + "%'
+            SqlCommand cm = new SqlCommand("SELECT * FROM ViewServiceAvailed WHERE Status LIKE 'Pending'", cn);
+            dr = cm.ExecuteReader();
+            while (dr.Read())
+            {
+                totalVar += Double.Parse(dr[2].ToString());
+                //                          2-DESCRIPTION / 1-Description            
+                i += 1; //0-#  1-NAME / 7-Name      3-PRICE / 2-Price          
+                dgv.Rows.Add(i, dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[0].ToString());
+            }
+            dr.Close();
+            cn.Close();
+            total.Text += totalVar.ToString("#,##0.00");
         }
 
         public void LoadType(ComboBox comBoType)
