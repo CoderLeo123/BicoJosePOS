@@ -41,27 +41,75 @@ namespace Capstone
             this.Close();
         }
 
-        private void txtPayment_TextChanged(object sender, EventArgs e)
-        {
+        public void computeChange(TextBox total, TextBox Payment, TextBox changeText)
+        {//txtTotal, txtPayment, txtChange
             try
             {
-                double sales = double.Parse(txtTotal.Text);
-                double payment = double.Parse(txtPayment.Text);
-                double change = payment - sales;
-                txtChange.Text = change.ToString("#,##0.00");
-
-
-                if (txtPayment.Text == string.Empty)
+                double sales = double.Parse(total.Text);
+                double payment = double.Parse(Payment.Text);
+                double change = 0;
+                if (Payment.Text == string.Empty)
                 {
-                    txtPayment.Text = "0";
-                    txtPayment.SelectAll();
+                    Payment.Text = "0";
+                    Payment.SelectAll();
+                }else
+                {
+                    change = payment - sales;
+                    changeText.Text = change.ToString("00.00");
                 }
-
             }
             catch (Exception ex)
             {
-                txtChange.Text = "0.00";
+                changeText.Text = "0";
             }
+        }
+
+        public void requiredDepositPercent(TextBox total, TextBox Payment)
+        {
+            double paymentInput = double.Parse(Payment.Text);
+            double TotalVar = double.Parse(total.Text);
+            double initialDepRequired = TotalVar * 0.5;
+
+            if (paymentInput < initialDepRequired)
+            {
+                Payment.Text = initialDepRequired.ToString();                
+                Payment.SelectAll();
+                Payment.Focus();
+            }
+            
+        }
+
+        private void txtPayment_TextChanged(object sender, EventArgs e)
+        {
+            string pTerms = comBoxPaymentTerms.Text;
+            
+            try
+            {
+                if (txtPayment.Text == string.Empty)
+                {
+                    txtPayment.Focus();
+                    txtPayment.Text = "0";
+                    txtPayment.SelectAll();
+                }
+                else
+                {
+                    if (pTerms == "Full")
+                    {
+                        computeChange(txtTotal, txtPayment, txtChange);
+                    }
+                    else if (pTerms == "Deposit")
+                    {
+                        requiredDepositPercent(txtTotal, txtPayment);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            
+             
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -74,72 +122,57 @@ namespace Capstone
 
         private void btnOne_Click(object sender, EventArgs e)
         {
+            txtPayment.Focus();
             txtPayment.Text += btnOne.Text;
         }
 
         private void btnTwo_Click(object sender, EventArgs e)
         {
+            txtPayment.Focus();
             txtPayment.Text += btnTwo.Text;
         }
 
         private void btnThree_Click(object sender, EventArgs e)
         {
-            txtPayment.Text += btnThree.Text;
+            
+            txtPayment.Focus();txtPayment.Text += btnThree.Text;
         }
 
         private void btnFour_Click(object sender, EventArgs e)
         {
-            txtPayment.Text += btnFour.Text;
+            txtPayment.Focus(); txtPayment.Text += btnFour.Text;
         }
 
         private void btnFive_Click(object sender, EventArgs e)
         {
-            txtPayment.Text += btnFive.Text;
+            txtPayment.Focus(); txtPayment.Text += btnFive.Text;
         }
 
         private void btnSix_Click(object sender, EventArgs e)
         {
-            txtPayment.Text += btnSix.Text;
+            txtPayment.Focus(); txtPayment.Text += btnSix.Text;
         }
 
         private void btnZero_Click(object sender, EventArgs e)
         {
-            txtPayment.Text += btnZero.Text;
+            txtPayment.Focus(); txtPayment.Text += btnZero.Text;
         }
 
         private void btnSeven_Click(object sender, EventArgs e)
         {
-            txtPayment.Text += btnSeven.Text;
+            txtPayment.Focus(); txtPayment.Text += btnSeven.Text;
         }
 
         private void btnEight_Click(object sender, EventArgs e)
         {
-            txtPayment.Text += btnEight.Text;
+            txtPayment.Focus(); txtPayment.Text += btnEight.Text;
         }
 
         private void btnDoubleZero_Click(object sender, EventArgs e)
         {
-            txtPayment.Text += btnDoubleZero.Text;
+            txtPayment.Focus(); txtPayment.Text += btnDoubleZero.Text;
         }
-        public void depositTerms(string paymentMode)
-        {
-            try
-            {
-                if (paymentMode == "Full")
-                {
-                    
-                }
-                else if (paymentMode == "Deposit")
-                {
-                    
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-        }
+       
         private void btnEnter_Click(object sender, EventArgs e)
         {
             try
@@ -156,10 +189,10 @@ namespace Capstone
                 float remainBalance = 0; //remBalance
                 string status = "";
                 string claimDate = "";
-                checkPaymentTerms(status, pMethod, total, payment, remainBalance);
-                checkOrderIfDeposit(status, pMethod, claimDate);
+                checkPaymentTerms(status, pTerms, total, payment, remainBalance);
+                checkOrderIfDeposit(status, pTerms, claimDate);
                 //frmCashier frmC = new frmCashier();
-                if (double.Parse(txtChange.Text) < 0 || (txtChange.Text == String.Empty))
+                if (txtChange.Text == String.Empty)
                 {
                     MessageBox.Show("Insufficient amount. Please enter the correct amount!", title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
@@ -179,15 +212,19 @@ namespace Capstone
                         cn.Close();
 
                         cn.Open();//Set Customer, Expected_Arrival,   Status = VariableMethod, Release By = 'Undefined', Date_Claimed = 'Not Yet' NULL 
-                        cm = new SqlCommand("UPDATE tblOrderStatus SET Customer = " + customer + ", Expected_Arrival = " + dueDate + " , Status = " + status + ", Date_Claimed = " + claimDate + ", Release By = 'Undefined' WHERE Transaction_No LIKE '" + transacNum + "'", cn);
+                        cm = new SqlCommand("UPDATE tblOrderStatus SET Transaction_No = " + transacNum + ", Customer = " + customer + ", Expected_Arrival = " + dueDate + " , Status = " + status + ", Date_Claimed = " + claimDate + ", Release By = 'Undefined' WHERE Cart_ID LIKE '" + frmC.dataGridViewCart.Rows[i].Cells[11].Value.ToString() + "'", cn);
                         cm.ExecuteNonQuery();
                         cn.Close();
 
-                       
                     }
 
                     cn.Open();//Set Customer, Total_Payment, Initial_Deposit, Due_Date,  Rem_Balance = VariableMethod, Status = 'Pending'
-                    cm = new SqlCommand("UPDATE tblPaymentStatus SET Customer = " + customer + ", Total_Payment = " + total.ToString("00.00") + ", Initial_Deposit = " + payment.ToString("00.00") + ", Due_Date = " + dueDate + " , Rem_Balance = " + remainBalance + ", Status = " + status + " WHERE Transaction_No LIKE '" + transacNum + "'", cn);
+                    cm = new SqlCommand("UPDATE tblPaymentStatus SET Transaction_No = " + transacNum + ", Customer = " + customer + ", Total_Payment = " + total.ToString("00.00") + ", Initial_Deposit = " + payment.ToString("00.00") + ", Due_Date = " + dueDate + " , Rem_Balance = " + remainBalance + ", Status = " + status + " WHERE Transaction_No LIKE '" + transacNum + "'", cn);
+                    cm.ExecuteNonQuery();
+                    cn.Close();
+
+                    cn.Open();
+                    cm = new SqlCommand("UPDATE tblServiceAvailed SET Transaction_No = " + transacNum + ", Customer = " + customer + ", Status = 'Sold'  WHERE Transaction_No LIKE '" + transacNum + "'", cn);
                     cm.ExecuteNonQuery();
                     cn.Close();
 
@@ -206,16 +243,16 @@ namespace Capstone
                 return;
             }
         }
-        public void checkOrderIfDeposit(string statusValue, string paymentMode, string dateClaim)
+        public void checkOrderIfDeposit(string statusValue, string paymentTerms, string dateClaim)
         {
             try
             {
-                if (paymentMode == "Full")
+                if (paymentTerms == "Full")
                 {
                     statusValue = "Claimed";
                     dateClaim = DateTime.Now.ToShortDateString();
                 }
-                else if (paymentMode == "Deposit")
+                else if (paymentTerms == "Deposit")
                 {
                     statusValue = "In The Lab";
                     dateClaim = "Not Yet";
@@ -228,16 +265,16 @@ namespace Capstone
             }
         } 
 
-        public void checkPaymentTerms(string statusValue, string paymentMode, float total, float payment, float remBalance)
+        public void checkPaymentTerms(string statusValue, string paymentTerms, float total, float payment, float remBalance)
         {
             try
             {
                 remBalance = total - payment;
-                if (paymentMode == "Full")
+                if (paymentTerms == "Full")
                 {
                     statusValue = "Settled";
                 }
-                else if (paymentMode == "Deposit")
+                else if (paymentTerms == "Deposit")
                 {
                     statusValue = "Pending";
                 }
@@ -267,36 +304,42 @@ namespace Capstone
 
         private void btnTwenty_Click(object sender, EventArgs e)
         {
+            txtPayment.Focus();
             num = int.Parse(txtPayment.Text) + 20;
             txtPayment.Text = num.ToString();
         }
 
         private void btnFifty_Click(object sender, EventArgs e)
         {
+            txtPayment.Focus();
             num = int.Parse(txtPayment.Text) + 50;
             txtPayment.Text = num.ToString();
         }
 
         private void btnOneH_Click(object sender, EventArgs e)
         {
+            txtPayment.Focus();
             num = int.Parse(txtPayment.Text) + 100;
             txtPayment.Text = num.ToString();
         }
 
         private void btnTwoH_Click(object sender, EventArgs e)
         {
+            txtPayment.Focus();
             num = int.Parse(txtPayment.Text) + 200;
             txtPayment.Text = num.ToString();
         }
 
         private void btnFiveH_Click(object sender, EventArgs e)
         {
+            txtPayment.Focus();
             num = int.Parse(txtPayment.Text) + 500;
             txtPayment.Text = num.ToString();
         }
 
         private void btnThousand_Click(object sender, EventArgs e)
         {
+            txtPayment.Focus();
             num = int.Parse(txtPayment.Text) + 1000;
             txtPayment.Text = num.ToString();
         }
@@ -333,7 +376,7 @@ namespace Capstone
 
         private void dateTimePickerDueDate_ValueChanged(object sender, EventArgs e)
         {
-            dateTimePickerDueDate.Enabled = false;
+            //dateTimePickerDueDate.Enabled = false;
         }
 
         private void comBoxPaymentTerms_SelectedIndexChanged(object sender, EventArgs e)
@@ -355,6 +398,34 @@ namespace Capstone
         private void btnBackSpace_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtPayment_Leave(object sender, EventArgs e)
+        {
+            string pTerms = comBoxPaymentTerms.Text;
+            if (pTerms == "Full")
+            {
+                if (double.Parse(txtPayment.Text) < double.Parse(txtTotal.Text))
+                {
+                    MessageBox.Show("Payment must be higher than Total amount", title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtPayment.Focus();
+                }
+                else
+                {
+                    computeChange(txtTotal, txtPayment, txtChange);
+                }
+                
+            }
+            else if (pTerms == "Deposit")
+            {
+                requiredDepositPercent(txtTotal, txtPayment);
+            }
+            
+        }
+
+        private void dateTimePickerDueDate_Leave(object sender, EventArgs e)
+        {
+            dateTimePickerDueDate.Enabled = false;
         }
     }
 }
