@@ -16,7 +16,7 @@ namespace Capstone
         SqlCommand cm = new SqlCommand();
         DBConnection dbcon = new DBConnection();
         SqlDataReader dr;
-        ClassGenerateID classGenerateID = new ClassGenerateID();
+        ClassLoginAndSignUp classLoginMethod = new ClassLoginAndSignUp();
         ClassLoadData classLoadData = new ClassLoadData();
         string title = "BICO-JOSE System";
         private bool mouseDown;
@@ -24,6 +24,7 @@ namespace Capstone
         public frmLogin()
         {
             InitializeComponent();
+            cn = new SqlConnection(dbcon.MyConnection());
         }
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
@@ -52,64 +53,73 @@ namespace Capstone
         {
             this.Close();
         }
-        public void insertFirstAdmin(string user_ID, string UserName, string password, string FName, string LName, string userType)
-        {
-            string Name = FName + " " + LName;
-            cn.Open();
-            cm = new SqlCommand("INSERT INTO tblUser (User_ID, Username, Password, Name, User_Type) VALUES(@User_ID, @Username, @Password, @Name, @User_Type)", cn);
-            cm.Parameters.AddWithValue("@User_ID", user_ID);
-            cm.Parameters.AddWithValue("@Username", UserName);
-            cm.Parameters.AddWithValue("@Password", password);
-            cm.Parameters.AddWithValue("@Name", Name);
-            cm.Parameters.AddWithValue("@User_Type", userType);
-            cm.ExecuteNonQuery();
-            cn.Close();
-        }
-        public void selectDataTblUser(string user_ID, string UserName, string password, string userType, TextBox txtUser, TextBox txtPass)
-        {
-            cn.Open();
-            cm = new SqlCommand("SELECT Username, Password, User_ID FROM tblUser WHERE Username LIKE '" + txtUser.Text + "' AND Password LIKE '" + txtPass.Text + "'", cn);
-            dr = cm.ExecuteReader();
-            dr.Read();
-            if (dr.HasRows)
-            {
-                UserName = dr[0].ToString();
-                password = dr[1].ToString();
-                user_ID = dr[2].ToString();
-            }
-            else
-            {
-                insertFirstAdmin("USR1000", "leo", "qweasd", "Leomar", "Cabug", "Admin");
-            }
-            cm.ExecuteNonQuery();
-            cn.Close();
-        }
+        //public void insertFirstAdmin(string user_ID, string UserName, string password, string FName, string LName, string userType)
+        //{
+        //    string Name = FName + " " + LName;
+        //    cn.Open();
+        //    cm = new SqlCommand("INSERT INTO tblUser (User_ID, Username, Password, Name, User_Type) VALUES(@User_ID, @Username, @Password, @Name, @User_Type)", cn);
+        //    cm.Parameters.AddWithValue("@User_ID", user_ID);
+        //    cm.Parameters.AddWithValue("@Username", UserName);
+        //    cm.Parameters.AddWithValue("@Password", password);
+        //    cm.Parameters.AddWithValue("@Name", Name);
+        //    cm.Parameters.AddWithValue("@User_Type", userType);
+        //    cm.ExecuteNonQuery();
+        //    cn.Close();
+        //}
+        //public void selectDataTblUser(string user_ID, string UserName, string password, string userType, TextBox txtUser, TextBox txtPass)
+        //{
+        //    cn.Open();
+        //    cm = new SqlCommand("SELECT Username, Password, User_ID FROM tblUser WHERE Username LIKE '" + txtUser.Text + "' AND Password LIKE '" + txtPass.Text + "'", cn);
+        //    dr = cm.ExecuteReader();
+        //    dr.Read();
+        //    if (dr.HasRows)
+        //    {
+        //        UserName = dr[0].ToString();
+        //        password = dr[1].ToString();
+        //        user_ID = dr[2].ToString();
+        //    }
+        //    else
+        //    {
+        //        insertFirstAdmin("USR1000", "leo", "qweasd", "Leomar", "Cabug", "Admin");
+        //    }
+        //    cm.ExecuteNonQuery();
+        //    cn.Close();
+        //}
         private void btnLogin_Click(object sender, EventArgs e)
         {
             int attempt = 0;
             attempt++;
-            string Name = "";
+            bool found = false;
+            string UName = "";
+            string CompleteName = "";
             string Pass = "";
             string ID = "";
             string type = "";
-            selectDataTblUser(ID, Name, Pass, type, txtUsername, txtPassword);// for checking
-            selectDataTblUser(ID, Name, Pass, type, txtUsername, txtPassword);
+            classLoginMethod.selectDataTblUser(out ID, out UName, out CompleteName, out type, txtUsername, txtPassword, out found);// for checking
+            
 
-            if ((txtUsername.Text == "")|| (txtPassword.Text == ""))
+
+            if (found == false)
             {
-                MessageBox.Show("Complete the login credentials first", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Invalid credentials. Try again", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //classLoginMethod.checkForBlank(txtUsername, lblUserNotice, "Username");
+                //classLoginMethod.checkForBlank(txtPassword, lblPasswordNotice, "Password");
+                classLoginMethod.checkForBlankOrIncorrectCredentials(txtUsername, lblUserNotice, "Username");
+                classLoginMethod.checkForBlankOrIncorrectCredentials(txtPassword, lblPasswordNotice, "Password");
             }
-            else if ((txtUsername.Text == Name) || (txtPassword.Text == Pass))
+            else if (found == true)
             {
                 if (type.Equals("Admin"))
                 {
                     frmAdmin frm = new frmAdmin();
                     frm.ShowDialog();
+                    this.Close();
                 }
                 else if (type.Equals("Cashier"))
                 {
                     frmCashier frm = new frmCashier();
                     frm.ShowDialog();
+                    this.Close();
                 }
                 else
                 {
@@ -132,6 +142,9 @@ namespace Capstone
             frm.tabControlRegister.TabPages.Add(tab);
             tab.Controls.Add(frm.panelForgotPass);
             frm.Size = new Size(647, 517);
+            
+            frm.ShowDialog();
+
         }
 
         private void linkLabelCreateAccount_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -141,7 +154,8 @@ namespace Capstone
             TabPage tab = new TabPage("Sign Up");
             frm.tabControlRegister.TabPages.Add(tab);
             tab.Controls.Add(frm.panelSignUp);
-            
+            frm.comBoxUserType.SelectedIndex = 0;
+            frm.ShowDialog();
         }
     }
 }

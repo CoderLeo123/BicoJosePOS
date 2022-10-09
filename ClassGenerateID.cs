@@ -19,7 +19,7 @@ namespace Capstone
         string I_ID, T_ID, P_ID, S_ID, STK_ID, trans_num; int count;
         //frmAddAccessories frmAdd = new frmAddAccessories();
 
-        public void GenerateUserID(TextBox userID)
+        public void GenerateUserID(Label userID)
         {
             try
             {
@@ -35,13 +35,15 @@ namespace Capstone
                     count = int.Parse(P_ID.Substring(3, 4)); //1001
                     userID.Text = P_ID.Substring(0, 3) + (count + 1); //USR1002
                 }
-                else
-                {
-                    cn.Close();
-                    insertIntialID("tblUser", "User_ID", "USR1000");
-                    selectAndIncrement("tblUser", "User_ID", userID, 3, 4, 0);
-                    deleteInitialID("tblUser", "User_ID", "USR1000");
-                }
+                //else
+                //{
+                //    TextBox tb = new TextBox();
+                //    cn.Close();
+                //    insertIntialID("tblUser", "User_ID", "USR1000");
+                //    selectAndIncrement("tblUser", "User_ID", tb, 3, 4, 0);
+                //    userID.Text = tb.Text;
+                //    deleteInitialID("tblUser", "User_ID", "USR1000");
+                //}
                 dr.Close();
                 cn.Close();
             }
