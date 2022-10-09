@@ -16,75 +16,144 @@ namespace Capstone
         SqlCommand cm = new SqlCommand();
         DBConnection dbcon = new DBConnection();
         SqlDataReader dr;
-        ClassGenerateID classGenerateID = new ClassGenerateID();
+        
         ClassLoadData classLoadData = new ClassLoadData();
+        ClassGenerateID classGenerateID = new ClassGenerateID();
+        ClassLoginAndSignUp classLoginMethod = new ClassLoginAndSignUp();
         string title = "BICO-JOSE System";
         private bool mouseDown;
         private Point lastLocation;
         public frmSignUpForgotPass()
         {
             InitializeComponent();
+            cn = new SqlConnection(dbcon.MyConnection());
+            classGenerateID.GenerateUserID(lblUserID);
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
 
         }
-        public void checkConfirmPass(TextBox pass, TextBox confirmPass, string result)
+        //public void checkConfirmPass(TextBox pass, TextBox confirmPass, string result)
+        //{
+        //    if (pass == confirmPass)
+        //    {
+        //        result = pass.Text;
+        //    }
+        //    else if (pass != confirmPass)
+        //    {
+        //        result = "Incorrect";
+        //    }
+        //}
+        //public void validatePass(string correctPass)
+        //{
+        //    string pass = "";
+        //    checkConfirmPass(txtPasswordCreate, txtConfirmPass, pass);// correct pass or Incorrect
+        //    if (pass.Equals("Incorrect"))
+        //    {
+        //        lblPasswordNotice.Text = "Those passwords didn't match. Try again";
+        //        correctPass = "Again";
+        //    }
+        //    else//if (!(pass.Equals("Incorrect")))
+        //    {
+        //        correctPass = pass;
+        //    }
+        //}
+        //public void textMinimumCharacter(TextBox textVar, Label labelNotice)
+        //{
+        //    string input = textVar.Text;
+        //    int inputLength = input.Length;
+        //    int min = 8;
+        //    if (inputLength < min)
+        //    {
+        //        labelNotice.Text = "Use 8 characters or more";
+        //    }
+        //}
+        //public void checkForBlank(TextBox checkText, Label labelNotice, string name)
+        //{
+        //    if (checkText.Text == "")
+        //    {
+        //        labelNotice.Text = "Don't leave the " + name + " blank";
+        //        labelNotice.Visible = true;
+        //    }
+        //    else
+        //    {
+        //        labelNotice.Visible = false;
+        //    }
+        //}
+
+        public void CreateTabCheckForBlank()
         {
-            if (pass == confirmPass)
-            {
-                result = pass.Text;
-            }
-            else if (pass != confirmPass)
-            {
-                result = "Incorrect";
-            }
+            
+            classLoginMethod.checkForBlank(txtFirstN, lblNameNotice, "Name");
+            classLoginMethod.checkForBlank(txtLastN, lblNameNotice, "Name");
+            classLoginMethod.checkForBlank(txtUserNameCreate, lblUserNamNotice, "Username");
+            classLoginMethod.checkForBlank(txtPasswordCreate, lblPassNoticeForgot, "Password");
+            classLoginMethod.checkForBlank(txtConfirmPass, lblPassNoticeForgot, "Password");
+            classLoginMethod.textMinimumCharacter(txtPasswordCreate, lblPasswordNotice);
         }
-        public void validatePass(string correctPass)
+        public void ResetTabCheckForBlank()
         {
-            string pass = "";
-            checkConfirmPass(txtPasswordCreate, txtConfirmPass, pass);// correct pass or Incorrect
-            if (pass.Equals("Incorrect"))
-            {
-                lblPasswordNotice.Text = "Those passwords didn't match. Try again";
-                correctPass = "Again";
-            }
-            else//if (!(pass.Equals("Incorrect")))
-            {
-                correctPass = pass;
-            }
+            
+            classLoginMethod.checkForBlank(txtUserNameForgot, lblUsernameNoticeForgot, "Username");
+            classLoginMethod.checkForBlank(txtNewPassword, lblPassNoticeForgot, "Password");
+            classLoginMethod.checkForBlank(txtConfirmNewPass, lblPassNoticeForgot, "Password");
+            classLoginMethod.textMinimumCharacter(txtNewPassword, lblPassNoticeForgot);
+            
         }
-        
         private void btnCreateAccount_Click(object sender, EventArgs e)
         {
             
             string Uname = txtUserNameCreate.Text;
-            string fullname = txtFirstN.Text + " " + txtLastN.Text;
-            string password = "Again";
+            string firtN = txtFirstN.Text;
+            string lastN = txtLastN.Text;
+            string fullname = firtN + " " + lastN;
+            string password = txtPasswordCreate.Text;
+            string confirmP = txtConfirmPass.Text;
             string type = comBoxUserType.Text;
-            checkConfirmPass(txtPasswordCreate, txtConfirmPass, password);
-            validatePass(password);
-            while (password.Equals("Again"))
+            string correctP = "";
+            classLoginMethod.validatePass(out correctP, txtPasswordCreate, txtConfirmPass, lblPasswordNotice);
+            //if (password.Equals("Again"))
+            //{
+            //    classLoginMethod.validatePass(password, txtPasswordCreate, txtConfirmPass, lblPasswordNotice);
+            //}
+            
+
+            if((Uname != "") && (firtN != "") && (lastN != "") && (password != "") && (confirmP != "") && (type != ""))
             {
-                validatePass(password);
+                if(password != confirmP)
+                {
+                    txtConfirmPass.Focus();
+                    txtConfirmPass.SelectAll();
+                    lblPasswordNotice.Text = "Those passwords didn't match. Try again";
+                    lblPasswordNotice.Visible = true;
+                }
+                else
+                {
+                    cn.Open();
+                    cm = new SqlCommand("INSERT INTO tblUser (User_ID, Username, Password, Name, User_Type) VALUES(@User_ID, @Username, @Password, @Name, @User_Type)", cn);
+                    cm.Parameters.AddWithValue("@User_ID", lblUserID.Text);
+                    cm.Parameters.AddWithValue("@Username", Uname);
+                    cm.Parameters.AddWithValue("@Password", correctP);
+                    cm.Parameters.AddWithValue("@Name", fullname);
+                    cm.Parameters.AddWithValue("@User_Type", type);
+                    cm.ExecuteNonQuery();
+                    cn.Close();
+                    MessageBox.Show("New account has saved", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    frmLogin frm = new frmLogin();
+                    frm.ShowDialog();
+                    this.Close();
+                }
+                
+            }
+            else
+            {
+                CreateTabCheckForBlank();
+                ResetTabCheckForBlank();
             }
 
-
-
-
-            cn.Open();
-            cm = new SqlCommand("INSERT INTO tblUser (User_ID, Username, Password, Name, User_Type) VALUES(@User_ID, @Username, @Password, @Name, @User_Type)", cn);
-            cm.Parameters.AddWithValue("@User_ID", lblUserID.Text);
-            cm.Parameters.AddWithValue("@Username", txtUserNameCreate.Text);
-            cm.Parameters.AddWithValue("@Password", password);
-            cm.Parameters.AddWithValue("@Name", fullname);
-            cm.Parameters.AddWithValue("@User_Type", comBoxUserType.Text);
-            cm.ExecuteNonQuery();
-            cn.Close();
-            frmLogin frm = new frmLogin();
-            frm.ShowDialog();
-            this.Close();
+            
+            
         }
 
         private void panel1_MouseDown(object sender, MouseEventArgs e)
@@ -119,6 +188,7 @@ namespace Capstone
             cn.Close();
 
             frmLogin frm = new frmLogin();
+            frm.txtUsername.Focus();
             frm.ShowDialog();
             this.Close();
         }
@@ -126,9 +196,32 @@ namespace Capstone
         private void linkLabelLogin_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             frmLogin frm = new frmLogin();
+            frm.txtUsername.Focus();
             frm.ShowDialog();
             this.Close();
             
+        }
+
+        private void txtPasswordCreate_Leave(object sender, EventArgs e)
+        {
+            string Uname = txtUserNameCreate.Text;
+            string firtN = txtFirstN.Text;
+            string lastN = txtLastN.Text;
+            if ((Uname != "") && (firtN != "") && (lastN != ""))
+            {
+                classLoginMethod.textMinimumCharacter(txtPasswordCreate, lblPasswordNotice);
+            }
+            
+        }
+
+        private void txtNewPassword_Leave(object sender, EventArgs e)
+        {
+            classLoginMethod.textMinimumCharacter(txtNewPassword, lblPassNoticeForgot);
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

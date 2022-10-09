@@ -31,14 +31,14 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.linkLabelCreateAccount = new System.Windows.Forms.LinkLabel();
+            this.lblPasswordNotice = new System.Windows.Forms.Label();
+            this.lblUserNotice = new System.Windows.Forms.Label();
             this.linkLabelForgotP = new System.Windows.Forms.LinkLabel();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnLogin = new System.Windows.Forms.Button();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.txtUsername = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lblPasswordNotice = new System.Windows.Forms.Label();
-            this.linkLabelCreateAccount = new System.Windows.Forms.LinkLabel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -73,7 +73,7 @@
             this.panel2.BackColor = System.Drawing.Color.LightYellow;
             this.panel2.Controls.Add(this.linkLabelCreateAccount);
             this.panel2.Controls.Add(this.lblPasswordNotice);
-            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.lblUserNotice);
             this.panel2.Controls.Add(this.linkLabelForgotP);
             this.panel2.Controls.Add(this.btnExit);
             this.panel2.Controls.Add(this.btnLogin);
@@ -84,6 +84,42 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(408, 384);
             this.panel2.TabIndex = 1;
+            // 
+            // linkLabelCreateAccount
+            // 
+            this.linkLabelCreateAccount.AutoSize = true;
+            this.linkLabelCreateAccount.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.linkLabelCreateAccount.Location = new System.Drawing.Point(112, 344);
+            this.linkLabelCreateAccount.Name = "linkLabelCreateAccount";
+            this.linkLabelCreateAccount.Size = new System.Drawing.Size(170, 31);
+            this.linkLabelCreateAccount.TabIndex = 71;
+            this.linkLabelCreateAccount.TabStop = true;
+            this.linkLabelCreateAccount.Text = "Create Account";
+            this.linkLabelCreateAccount.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelCreateAccount_LinkClicked);
+            // 
+            // lblPasswordNotice
+            // 
+            this.lblPasswordNotice.AutoSize = true;
+            this.lblPasswordNotice.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblPasswordNotice.ForeColor = System.Drawing.Color.Red;
+            this.lblPasswordNotice.Location = new System.Drawing.Point(50, 149);
+            this.lblPasswordNotice.Name = "lblPasswordNotice";
+            this.lblPasswordNotice.Size = new System.Drawing.Size(156, 28);
+            this.lblPasswordNotice.TabIndex = 70;
+            this.lblPasswordNotice.Text = "Password Notice";
+            this.lblPasswordNotice.Visible = false;
+            // 
+            // lblUserNotice
+            // 
+            this.lblUserNotice.AutoSize = true;
+            this.lblUserNotice.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblUserNotice.ForeColor = System.Drawing.Color.Red;
+            this.lblUserNotice.Location = new System.Drawing.Point(50, 70);
+            this.lblUserNotice.Name = "lblUserNotice";
+            this.lblUserNotice.Size = new System.Drawing.Size(162, 28);
+            this.lblUserNotice.TabIndex = 69;
+            this.lblUserNotice.Text = "Username Notice";
+            this.lblUserNotice.Visible = false;
             // 
             // linkLabelForgotP
             // 
@@ -149,42 +185,6 @@
             this.txtUsername.Size = new System.Drawing.Size(305, 43);
             this.txtUsername.TabIndex = 64;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(59, 70);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(190, 31);
-            this.label1.TabIndex = 69;
-            this.label1.Text = "Username Notice";
-            this.label1.Visible = false;
-            // 
-            // lblPasswordNotice
-            // 
-            this.lblPasswordNotice.AutoSize = true;
-            this.lblPasswordNotice.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblPasswordNotice.ForeColor = System.Drawing.Color.Red;
-            this.lblPasswordNotice.Location = new System.Drawing.Point(59, 150);
-            this.lblPasswordNotice.Name = "lblPasswordNotice";
-            this.lblPasswordNotice.Size = new System.Drawing.Size(183, 31);
-            this.lblPasswordNotice.TabIndex = 70;
-            this.lblPasswordNotice.Text = "Password Notice";
-            this.lblPasswordNotice.Visible = false;
-            // 
-            // linkLabelCreateAccount
-            // 
-            this.linkLabelCreateAccount.AutoSize = true;
-            this.linkLabelCreateAccount.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.linkLabelCreateAccount.Location = new System.Drawing.Point(112, 344);
-            this.linkLabelCreateAccount.Name = "linkLabelCreateAccount";
-            this.linkLabelCreateAccount.Size = new System.Drawing.Size(170, 31);
-            this.linkLabelCreateAccount.TabIndex = 71;
-            this.linkLabelCreateAccount.TabStop = true;
-            this.linkLabelCreateAccount.Text = "Create Account";
-            this.linkLabelCreateAccount.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelCreateAccount_LinkClicked);
-            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 37F);
@@ -217,7 +217,7 @@
         private Button btnExit;
         public Button btnLogin;
         public Label lblPasswordNotice;
-        public Label label1;
+        public Label lblUserNotice;
         public LinkLabel linkLabelCreateAccount;
     }
 }
