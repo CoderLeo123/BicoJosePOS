@@ -214,6 +214,8 @@ namespace Capstone
                     }
                     MessageBox.Show("Successfully Added!", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     frmB.LoadCart();
+                    this.Close();
+                    frmB.Close();
                 }
             }
             else
@@ -312,6 +314,7 @@ namespace Capstone
                         MessageBox.Show("Successfully Added!", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
                         frmB.LoadCart();
                         this.Close();
+                        frmB.Close();
                     }
                 
                 

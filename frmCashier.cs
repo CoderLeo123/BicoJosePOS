@@ -27,7 +27,8 @@ namespace Capstone
             InitializeComponent();
             cn = new SqlConnection(dbcon.MyConnection());
             lblDate.Text = DateTime.Parse(DateTime.Now.ToString()).ToShortDateString();
-
+            classLoadData.LoadCart(dataGridViewCart, lblDiscount, lblSalesTotal, lblPayment, lblNetTotal, btnSettlePayment, btnAddDiscount, btnClearCart, txtSearch, dataGridViewService);
+            //classLoadData.LoadRecordServiceAvail(dataGridViewService, lblSalesTotal);
         }
         
         private void button2_Click(object sender, EventArgs e) //Browse Item btn
@@ -49,6 +50,9 @@ namespace Capstone
         private void btnLogout_Click(object sender, EventArgs e)
         {
             this.Close();
+            frmLogin frm = new frmLogin();
+            frm.ShowDialog();
+
         }
         
        
@@ -115,6 +119,7 @@ namespace Capstone
         private void btnNewTransaction_Click(object sender, EventArgs e)
         {
             classGenerateID.GenerateTransactionNo(lblTransactionNo);
+            classLoadData.LoadCart(dataGridViewCart, lblDiscount, lblSalesTotal, lblPayment, lblNetTotal, btnSettlePayment, btnAddDiscount, btnClearCart, txtSearch, dataGridViewService);
         }
         
         private void dataGridViewCart_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -129,7 +134,7 @@ namespace Capstone
                     cm.ExecuteNonQuery();
                     cn.Close();
                     MessageBox.Show("Record has been successfully deleted.", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    classLoadData.LoadCart(dataGridViewCart, lblDiscount, lblSalesTotal, lblPayment, lblNetTotal, btnSettlePayment, btnAddDiscount, btnClearCart, txtSearch);
+                    classLoadData.LoadCart(dataGridViewCart, lblDiscount, lblSalesTotal, lblPayment, lblNetTotal, btnSettlePayment, btnAddDiscount, btnClearCart, txtSearch, dataGridViewService);
                     //LoadCart();
 
                 }
@@ -140,7 +145,7 @@ namespace Capstone
                 cm = new SqlCommand("UPDATE tblCart SET Quantity = Quantity + 1 WHERE Num LIKE '" + dataGridViewCart.Rows[e.RowIndex].Cells[11].Value.ToString() + "'", cn);
                 cm.ExecuteNonQuery();
                 cn.Close();
-                classLoadData.LoadCart(dataGridViewCart, lblDiscount, lblSalesTotal, lblPayment, lblNetTotal, btnSettlePayment, btnAddDiscount, btnClearCart, txtSearch);
+                classLoadData.LoadCart(dataGridViewCart, lblDiscount, lblSalesTotal, lblPayment, lblNetTotal, btnSettlePayment, btnAddDiscount, btnClearCart, txtSearch, dataGridViewService);
                 //LoadCart();
                 classCompute.ComputeUnitTotal(dataGridViewCart);
                 //ComputeUnitTotal();
@@ -151,7 +156,7 @@ namespace Capstone
                 cm = new SqlCommand("UPDATE tblCart SET Quantity = Quantity - 1 WHERE Num LIKE '" + dataGridViewCart.Rows[e.RowIndex].Cells[11].Value.ToString() + "'", cn);
                 cm.ExecuteNonQuery();
                 cn.Close();
-                classLoadData.LoadCart(dataGridViewCart, lblDiscount, lblSalesTotal, lblPayment, lblNetTotal, btnSettlePayment, btnAddDiscount, btnClearCart, txtSearch);
+                classLoadData.LoadCart(dataGridViewCart, lblDiscount, lblSalesTotal, lblPayment, lblNetTotal, btnSettlePayment, btnAddDiscount, btnClearCart, txtSearch, dataGridViewService);
                 //LoadCart();
                 classCompute.ComputeUnitTotal(dataGridViewCart);
                 //ComputeUnitTotal();
@@ -165,13 +170,13 @@ namespace Capstone
             {
                 if (txtSearch.Text == String.Empty)
                 {
-                    classLoadData.LoadCart(dataGridViewCart, lblDiscount, lblSalesTotal, lblPayment, lblNetTotal, btnSettlePayment, btnAddDiscount, btnClearCart, txtSearch);
+                    classLoadData.LoadCart(dataGridViewCart, lblDiscount, lblSalesTotal, lblPayment, lblNetTotal, btnSettlePayment, btnAddDiscount, btnClearCart, txtSearch, dataGridViewService);
                     //LoadCart();
                     return;
                 }
                 else
                 {
-                    classLoadData.LoadCart(dataGridViewCart, lblDiscount, lblSalesTotal, lblPayment, lblNetTotal, btnSettlePayment, btnAddDiscount, btnClearCart, txtSearch);
+                    classLoadData.LoadCart(dataGridViewCart, lblDiscount, lblSalesTotal, lblPayment, lblNetTotal, btnSettlePayment, btnAddDiscount, btnClearCart, txtSearch, dataGridViewService);
                     //LoadCart();
                 }
             }
@@ -197,7 +202,7 @@ namespace Capstone
             }
             else
             {
-                frmDetailsSale frm = new frmDetailsSale();
+                frmDetailsSales frm = new frmDetailsSales(this);
                 frm.Size = new Size(1229, 478); // 685, 478 
                 frm.tabControl1.TabPages.Clear();
                 TabPage tab = new TabPage("Browse Service");
@@ -207,6 +212,32 @@ namespace Capstone
                 classLoadData.LoadRecordsBrowseService(frm.dataGridViewService, frm.txtSearchService);
                 frm.ShowDialog();
             }
+
+        }
+
+        private void dataGridViewService_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string colName = dataGridViewService.Columns[e.ColumnIndex].Name;
+            if (colName == "del")
+            {
+                if (MessageBox.Show("Remove this Item?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    cn.Open();
+                    cm = new SqlCommand("DELETE FROM tblServiceAvailed WHERE Num LIKE '" + dataGridViewService.Rows[e.RowIndex].Cells[6].Value.ToString() + "'", cn);
+                    //cm.Parameters.AddWithValue("@User_ID", lblUserID.Text);//dataGridViewService.Rows[e.RowIndex].Cells[6].Value.ToString()
+                    cm.ExecuteNonQuery();
+                    cn.Close();
+                    MessageBox.Show("Record has been successfully deleted.", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    classLoadData.LoadCart(dataGridViewCart, lblDiscount, lblSalesTotal, lblPayment, lblNetTotal, btnSettlePayment, btnAddDiscount, btnClearCart, txtSearch, dataGridViewService);
+                    //classLoadData.LoadRecordServiceAvail(dataGridViewService, lblSalesTotal);
+                    //LoadCart();
+
+                }
+            }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
 
         }
     }

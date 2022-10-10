@@ -85,6 +85,7 @@ namespace Capstone
                     frm.lblID.Text = dataGridViewStockItems.Rows[e.RowIndex].Cells[11].Value.ToString();
                     frm.txtQuantity.Text = dataGridViewStockItems[5, e.RowIndex].Value.ToString();
                     classLoadData.LoadUnitMeasure(frm.comBoxUnit);
+                    frm.comBoxUnit.SelectedIndex = 0;
                     //frm.LoadUnitMeasure();
                     frm.ShowDialog(this);
                 }
@@ -137,7 +138,7 @@ namespace Capstone
                 TabPage tab = new TabPage("Stock Details");
                 frm.tabControlStock.TabPages.Add(tab);
                 tab.Controls.Add(frm.panelStockDetail);
-                frm.Size = new Size(809, 496);
+                frm.Size = new Size(920, 496);
                 
 
                 frm.labelItemID.Text = dataGridViewOnHand[1, e.RowIndex].Value.ToString();
@@ -198,9 +199,11 @@ namespace Capstone
                     {
                         //string type = dataGridViewStockItems[10, i].Value.ToString();
                         string type = dataGridViewStockItems.Rows[i].Cells[10].Value?.ToString();
+                        bool isVisionType = false;
                         //Double Vision Single Vision Progressive Vision
-                        string cut = type.Substring(type.IndexOf('V'), 6); //Vision
-                        if (cut.Equals("Vision"))
+                        //string cut = type.Substring(type.IndexOf('V'), 6); //Vision
+                        try { string cut = type.Substring(type.IndexOf('V'), 6); isVisionType = true; } catch (Exception) { isVisionType = false; }
+                        if (isVisionType == true)
                         {
                             cn.Open();
                             cm = new SqlCommand("UPDATE tblItem SET Stock_Check = 0 WHERE Item_ID LIKE '" + dataGridViewStockItems.Rows[i].Cells[9].Value?.ToString() + "' ", cn);

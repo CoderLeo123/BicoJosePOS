@@ -360,16 +360,25 @@ namespace Capstone
                 MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        public void LoadCart(DataGridView dgv, Label labelDiscount, Label labelSalesTotal, Label labelPayment, Label labelNetTotal, Button buttonSettle, Button buttonDiscount, Button buttonClear, TextBox textSearch)
-        {                           //dataGridViewCart, lblDiscount, lblSalesTotal, lblPayment, lblNetTotal, btnSettlePayment, btnAddDiscount, btnClearCart, txtSearch
+        public void ComputeDiscount(double textDiscount, double textPrice, out double textDiscountedResult)
+        {//txtDiscount, txtPriceDiscount, txtDiscountedAmount, 
+            double discount = textDiscount * .01;
+            double result = textPrice * discount;
+            textDiscountedResult = result;
+        }
+        public void LoadCart(DataGridView dgv, Label labelDiscount, Label labelSalesTotal, Label labelPayment, Label labelNetTotal, Button buttonSettle, Button buttonDiscount, Button buttonClear, TextBox textSearch, DataGridView dgv2)
+        {                           //dataGridViewCart, lblDiscount, lblSalesTotal, lblPayment, lblNetTotal, btnSettlePayment, btnAddDiscount, btnClearCart, txtSearch, dataGridViewService
             try
-            {                
+            {
+                string servTotal = "";
+                LoadRecordServiceAvail(dgv2, out servTotal);
                 cn = new SqlConnection(dbcon.MyConnection());
                 Boolean hasRecord = false;
                 int i = 0;
                 double total = 0;
                 double discount = 0;
+                double discountResult = 0;
+                double addToCurrentTotal = double.Parse(labelSalesTotal.Text);
                 dgv.Rows.Clear();
                 cn.Open();
                 SqlCommand cm = new SqlCommand("SELECT * from ViewCartStockItem WHERE Description Like '%" + textSearch.Text + "%' AND Status LIKE 'Cart'", cn);
@@ -393,7 +402,7 @@ namespace Capstone
                         }
                     }
                     total += Double.Parse(dr[5].ToString());
-                    discount += Double.Parse(dr[11].ToString());
+                    discount = Double.Parse(dr[11].ToString());
 
                                 // 0-Num                2-EXPIRATION / 2-Expiration_Date     4-QUANTITY / 3-Quantity              6-TOTAL / 5-TOTAL                                                                                                       10-CartID / 12-Num
                     i += 1;                 // 1-DESCRIPTION / 1-Description           3-PRICE / 4-Price                 5-DISCOUNT / 11-Discount                      7-Plus                         8-Minus                 9-Delete              10-StockID / 0-Stock_Num           10-ItemID / 9-Item_ID
@@ -402,10 +411,14 @@ namespace Capstone
                 }
                 dr.Close();
                 cn.Close();
-                labelDiscount.Text = discount.ToString("#,##0.00");
-                labelSalesTotal.Text += total.ToString("#,##0.00");
+                
+                total += double.Parse(servTotal);
+                ComputeDiscount(discount, total, out discountResult);
+                labelDiscount.Text = discountResult.ToString("#,##0.00");
+                labelSalesTotal.Text = total.ToString("#,##0.00");
                 //frmCashier frmC = new frmCashier(); //frmC.lblDiscount, frmC.lblSalesTotal, frmC.lblPayment, out frmC.lblNetTotal
                 GetCartTotal(labelDiscount, labelSalesTotal, labelPayment, labelNetTotal);
+                LoadRecordServiceAvail(dgv2, out servTotal);
                 //frmC.GetCartTotal();
                 if (hasRecord == true)
                 {
@@ -431,9 +444,20 @@ namespace Capstone
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
-                        //                       2-CUSTOMER / 15-Customer                   4-DATE(TRANSACTION) / 6-Date
-                i += 1; //0-#  1-TRANSACTION NO / 2-Transaction_NO       3-CASHIER / 14-Cashier
-                dgv.Rows.Add(i, dr[2].ToString(), dr[15].ToString(), dr[14].ToString(), dr[6].ToString());
+                string TransDate = dr[6].ToString();
+
+                if (TransDate.Substring(0, 9) != "")
+                {
+                    TransDate = dr[6].ToString();//.Substring(0, 9);
+                }
+                else
+                {
+                    TransDate = dr[6].ToString().Substring(0, 9);
+                }
+                
+                        //                                          2-CUSTOMER / 15-Customer                   4-DATE(TRANSACTION) / 6-Date
+                i += 1; //0-#                    1-TRANSACTION NO / 2-Transaction_NO       3-CASHIER / 14-Cashier
+                dgv.Rows.Add(i, dr[0].ToString(), dr[2].ToString(), dr[15].ToString(), dr[14].ToString(), TransDate);
             }
             dr.Close();
             cn.Close();
@@ -445,13 +469,41 @@ namespace Capstone
             int i = 0;
             dgv.Rows.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT * FROM ViewCartStockItem WHERE Description LIKE '%" + txtSearch.Text + "%' OR Date LIKE '%" + DateTime.Parse(txtSearch.Text).ToShortDateString() + "%' AND Status = 'Sold' AND Date BETWEEN '" + dateStart.Value.ToShortDateString() + "' AND '" + dateEnd.Value.ToShortDateString() + "' ", cn);
+            SqlCommand cm = new SqlCommand("SELECT * FROM ViewCartStockItem WHERE Description LIKE '%" + txtSearch.Text + "%' AND Status = 'Sold' AND Date BETWEEN '" + dateStart.Value.ToShortDateString() + "' AND '" + dateEnd.Value.ToShortDateString() + "' ", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
-                //                          2-DESCRIPTION / 1-Description                  4-PRICE / 4-Price                  4-TOTAL / 5-Total
-                i += 1; //0-#  1-TRANSACTION NO / 7-Transaction_NO      3-EXPIRATION / 2-Expiration_Date           4-QTY / 3-Quantity            4-DATE / 6-Date
-                dgv.Rows.Add(i, dr[7].ToString(), dr[1].ToString(), dr[2].ToString(), dr[4].ToString(), dr[3].ToString(), dr[5].ToString(), dr[6].ToString());
+
+                string TransDate = dr[6].ToString();
+                string ExpirationDate = dr[2].ToString();
+                if (string.IsNullOrEmpty(ExpirationDate))
+                {
+                    ExpirationDate = "Non-Consumable";
+                }
+                else
+                {
+                    if (ExpirationDate.Substring(0, 9) != "")
+                    {
+                        ExpirationDate = dr[2].ToString();//.Substring(0, 9);
+                    }
+                    else
+                    {
+                        ExpirationDate = dr[2].ToString().Substring(0, 9);
+                    }
+                }
+                if (TransDate.Substring(0, 9) != "")
+                {
+                    TransDate = dr[6].ToString();//.Substring(0, 9);
+                }
+                else
+                {
+                    TransDate = dr[6].ToString().Substring(0, 9);
+                }
+
+
+                                    //                          2-DESCRIPTION / 1-Description                  4-PRICE / 4-Price                  4-TOTAL / 5-Total
+                i += 1; //0-#                    1-TRANSACTION NO / 7-Transaction_NO      3-EXPIRATION / 2-Expiration_Date           4-QTY / 3-Quantity            4-DATE / 6-Date
+                dgv.Rows.Add(i, dr[0].ToString(), dr[7].ToString(), dr[1].ToString(), ExpirationDate, dr[4].ToString(), dr[3].ToString(), dr[5].ToString(), TransDate);
             }
             dr.Close();
             cn.Close();
@@ -459,41 +511,53 @@ namespace Capstone
 
         public void LoadRecordsBrowseService(DataGridView dgv, TextBox txtSearch)
         {//dataGridViewService
-            cn = new SqlConnection(dbcon.MyConnection());
-            int i = 0;
-            dgv.Rows.Clear();
-            cn.Open(); //Description LIKE '%" + txtSearch.Text + "%' OR Description LIKE '%" + txtSearch.Text + "%'
-            SqlCommand cm = new SqlCommand("SELECT * FROM tblService WHERE Name LIKE '%" + txtSearch.Text + "%' OR Description LIKE '%" + txtSearch.Text + "%'", cn);
-            dr = cm.ExecuteReader();
-            while (dr.Read())
+            try
             {
-                //                          2-DESCRIPTION / 1-Description            
-                i += 1; //0-#  1-NAME / 7-Name      3-PRICE / 2-Price          
-                dgv.Rows.Add(i, dr[0].ToString(), dr[1].ToString(), dr[2].ToString());
+                cn = new SqlConnection(dbcon.MyConnection());
+                int i = 0;
+                dgv.Rows.Clear();
+                cn.Open(); //Description LIKE '%" + txtSearch.Text + "%' OR Description LIKE '%" + txtSearch.Text + "%'
+                SqlCommand cm = new SqlCommand("SELECT * FROM tblServices WHERE Name LIKE '%" + txtSearch.Text + "%' OR Description LIKE '%" + txtSearch.Text + "%'", cn);
+                dr = cm.ExecuteReader();
+                while (dr.Read())
+                {
+                    //                          2-DESCRIPTION / 1-Description                                       3-ServiceID / 2-Service_ID 
+                    i += 1; //0-#  1-NAME / 7-Name                          3-PRICE / 2-Price          
+                    dgv.Rows.Add(i, dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), Properties.Resources.addToCart, dr[1].ToString());
+                }
+                dr.Close();
+                cn.Close();
             }
-            dr.Close();
-            cn.Close();
+            catch (Exception ex)
+            {
+                cn.Close();
+                MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
-        public void LoadRecordServiceAvail(DataGridView dgv, Label total)
+        public void LoadRecordServiceAvail(DataGridView dgv, out string serviceTotal)
         {//dataGridViewService
             cn = new SqlConnection(dbcon.MyConnection());
             int i = 0;
+            //total = new Label();
             double totalVar = 0;
+            //double addToCurrentTotal = double.Parse(total.Text);
             dgv.Rows.Clear();
             cn.Open(); //Description LIKE '%" + txtSearch.Text + "%' OR Description LIKE '%" + txtSearch.Text + "%'
             SqlCommand cm = new SqlCommand("SELECT * FROM ViewServiceAvailed WHERE Status LIKE 'Pending'", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
-                totalVar += Double.Parse(dr[2].ToString());
-                //                          2-DESCRIPTION / 1-Description            
-                i += 1; //0-#  1-NAME / 7-Name      3-PRICE / 2-Price          
-                dgv.Rows.Add(i, dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[0].ToString());
+                totalVar += Double.Parse(dr[3].ToString());
+                //                          2-DESCRIPTION / 1-Description                                       3-SID / 2-Service_ID   
+                i += 1; //0-#  1-NAME / 7-Name                      3-PRICE / 2-Price          
+                dgv.Rows.Add(i, dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), Properties.Resources._Delete, dr[0].ToString(), dr[9].ToString());
             }
             dr.Close();
             cn.Close();
-            total.Text += totalVar.ToString("#,##0.00");
+            //totalVar += addToCurrentTotal;
+            serviceTotal = totalVar.ToString("#,##0.00");
+            
         }
 
         public void LoadType(ComboBox comBoType)

@@ -90,11 +90,12 @@ namespace Capstone
                 {
                     try
                     {
+                        frmC.lblDiscount.Text = txtDiscountedAmount.Text;
                         cn.Open();
-                        cm = new SqlCommand("UPDATE tblCart SET Discount = '" + txtDiscountedAmount.Text + "' WHERE Transaction_No LIKE '%" + lblID.Text + "'", cn);
+                        cm = new SqlCommand("UPDATE tblCart SET Discount = '" + txtDiscount.Text + "' WHERE Transaction_No LIKE '%" + lblID.Text + "'", cn);
                         cm.ExecuteNonQuery();
                         cn.Close();
-                        classLoadData.LoadCart(frmC.dataGridViewCart, frmC.lblDiscount, frmC.lblSalesTotal, frmC.lblPayment, frmC.lblNetTotal, frmC.btnSettlePayment, frmC.btnAddDiscount, frmC.btnClearCart, frmC.txtSearch);
+                        classLoadData.LoadCart(frmC.dataGridViewCart, frmC.lblDiscount, frmC.lblSalesTotal, frmC.lblPayment, frmC.lblNetTotal, frmC.btnSettlePayment, frmC.btnAddDiscount, frmC.btnClearCart, frmC.txtSearch, frmC.dataGridViewService);
                         //frmC.LoadCart();
                         this.Close();
 

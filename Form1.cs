@@ -143,6 +143,13 @@ namespace Capstone
             isCollapsed3 = false;
             isCollapsed1 = false;
             timerStart();
+
+            frmPaymentStatus frm = new frmPaymentStatus();
+            frm.TopLevel = false;
+            panelLoad.Controls.Clear();
+            panelLoad.Controls.Add(frm);
+            frm.BringToFront();
+            frm.Show();
         }
 
         private void dropBtnProducts_Click_1(object sender, EventArgs e)
@@ -152,6 +159,13 @@ namespace Capstone
             isCollapsed3 = false;
             
             timerStart();
+
+            frmProductsList frm = new frmProductsList();
+            frm.TopLevel = false;
+            panelLoad.Controls.Clear();
+            panelLoad.Controls.Add(frm);
+            frm.BringToFront();
+            frm.Show();
         }
 
         private void btnDashboard_Click(object sender, EventArgs e)
@@ -174,12 +188,12 @@ namespace Capstone
 
         private void button25_Click(object sender, EventArgs e)
         {//btnPayStatus
-            frmPaymentStatus frm = new frmPaymentStatus();
-            frm.TopLevel = false;
-            panelLoad.Controls.Clear();
-            panelLoad.Controls.Add(frm);
-            frm.BringToFront();
-            frm.Show();
+            //frmPaymentStatus frm = new frmPaymentStatus();
+            //frm.TopLevel = false;
+            //panelLoad.Controls.Clear();
+            //panelLoad.Controls.Add(frm);
+            //frm.BringToFront();
+            //frm.Show();
         }
 
         private void btnOrderStatus_Click(object sender, EventArgs e)
@@ -200,18 +214,18 @@ namespace Capstone
             //panelLoad.Controls.Add(frm);
             //frm.BringToFront();
             //frm.Show();
-            btnCollapsed();
-            timerStart();
+            //btnCollapsed();
+            //timerStart();
         }
 
         private void btnProd_Click(object sender, EventArgs e)
         {
-            frmProductsList frm = new frmProductsList();
-            frm.TopLevel = false;
-            panelLoad.Controls.Clear();
-            panelLoad.Controls.Add(frm);
-            frm.BringToFront();
-            frm.Show();
+            //frmProductsList frm = new frmProductsList();
+            //frm.TopLevel = false;
+            //panelLoad.Controls.Clear();
+            //panelLoad.Controls.Add(frm);
+            //frm.BringToFront();
+            //frm.Show();
         }
 
         private void btnItems_Click(object sender, EventArgs e)
@@ -226,8 +240,8 @@ namespace Capstone
 
         private void btnServices_Click(object sender, EventArgs e)
         {
-            frmCashier frm = new frmCashier();
-            frm.ShowDialog();
+            //frmCashier frm = new frmCashier();
+            //frm.ShowDialog();
         }
 
         private void btnStockDel_Click(object sender, EventArgs e)
@@ -236,6 +250,7 @@ namespace Capstone
             frm.TopLevel = false;
             panelLoad.Controls.Clear();
             panelLoad.Controls.Add(frm);
+            frm.txtStockInBy.Text = lblName.Text;
             frm.BringToFront();
             frm.Show();
             btnCollapsed();

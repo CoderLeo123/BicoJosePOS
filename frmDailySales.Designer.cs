@@ -42,13 +42,6 @@
             this.dateTimePickerEndTrans = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridViewTransacHist = new System.Windows.Forms.DataGridView();
-            this.NumDailySales = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PCodeDailySales = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.InvoiceDailySales = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DescriptionDailySales = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CancelDailySales = new System.Windows.Forms.DataGridViewImageColumn();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panelTransacHist = new System.Windows.Forms.Panel();
@@ -58,16 +51,6 @@
             this.panelSoldItems = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.dataGridViewSoldItems = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ExpDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
@@ -78,6 +61,21 @@
             this.label3 = new System.Windows.Forms.Label();
             this.dateTimePickerEndSold = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
+            this.NumDailySales = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PCodeDailySales = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.InvoiceDailySales = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DescriptionDailySales = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ExpDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnCloseDailySales)).BeginInit();
@@ -222,8 +220,7 @@
             this.InvoiceDailySales,
             this.Customer,
             this.DescriptionDailySales,
-            this.Date,
-            this.CancelDailySales});
+            this.Date});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.Azure;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -245,61 +242,6 @@
             this.dataGridViewTransacHist.Size = new System.Drawing.Size(1301, 754);
             this.dataGridViewTransacHist.TabIndex = 8;
             this.dataGridViewTransacHist.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewTransacHist_CellContentClick);
-            // 
-            // NumDailySales
-            // 
-            this.NumDailySales.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.NumDailySales.HeaderText = "#";
-            this.NumDailySales.MinimumWidth = 6;
-            this.NumDailySales.Name = "NumDailySales";
-            this.NumDailySales.Width = 61;
-            // 
-            // PCodeDailySales
-            // 
-            this.PCodeDailySales.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.PCodeDailySales.HeaderText = "CardID";
-            this.PCodeDailySales.MinimumWidth = 6;
-            this.PCodeDailySales.Name = "PCodeDailySales";
-            this.PCodeDailySales.Visible = false;
-            this.PCodeDailySales.Width = 125;
-            // 
-            // InvoiceDailySales
-            // 
-            this.InvoiceDailySales.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.InvoiceDailySales.HeaderText = "INVOICE NO.";
-            this.InvoiceDailySales.MinimumWidth = 6;
-            this.InvoiceDailySales.Name = "InvoiceDailySales";
-            this.InvoiceDailySales.Width = 203;
-            // 
-            // Customer
-            // 
-            this.Customer.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Customer.HeaderText = "CUSTOMER";
-            this.Customer.MinimumWidth = 6;
-            this.Customer.Name = "Customer";
-            // 
-            // DescriptionDailySales
-            // 
-            this.DescriptionDailySales.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.DescriptionDailySales.HeaderText = "CASHIER";
-            this.DescriptionDailySales.MinimumWidth = 6;
-            this.DescriptionDailySales.Name = "DescriptionDailySales";
-            // 
-            // Date
-            // 
-            this.Date.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Date.HeaderText = "DATE";
-            this.Date.MinimumWidth = 6;
-            this.Date.Name = "Date";
-            this.Date.Width = 108;
-            // 
-            // CancelDailySales
-            // 
-            this.CancelDailySales.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.CancelDailySales.HeaderText = "";
-            this.CancelDailySales.MinimumWidth = 6;
-            this.CancelDailySales.Name = "CancelDailySales";
-            this.CancelDailySales.Width = 24;
             // 
             // tabControl1
             // 
@@ -406,8 +348,7 @@
             this.Price,
             this.Qty,
             this.Total,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewImageColumn1});
+            this.dataGridViewTextBoxColumn6});
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.Azure;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -429,86 +370,6 @@
             this.dataGridViewSoldItems.Size = new System.Drawing.Size(1301, 755);
             this.dataGridViewSoldItems.TabIndex = 9;
             this.dataGridViewSoldItems.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSoldItems_CellContentClick);
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataGridViewTextBoxColumn1.HeaderText = "#";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 61;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dataGridViewTextBoxColumn2.HeaderText = "CardID";
-            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.Visible = false;
-            this.dataGridViewTextBoxColumn2.Width = 125;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dataGridViewTextBoxColumn3.HeaderText = "INVOICE NO.";
-            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.Width = 203;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn4.HeaderText = "DESCRIPTION";
-            this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            // 
-            // ExpDate
-            // 
-            this.ExpDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.ExpDate.HeaderText = "EXPIRATION";
-            this.ExpDate.MinimumWidth = 6;
-            this.ExpDate.Name = "ExpDate";
-            this.ExpDate.Width = 195;
-            // 
-            // Price
-            // 
-            this.Price.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Price.HeaderText = "PRICE";
-            this.Price.MinimumWidth = 6;
-            this.Price.Name = "Price";
-            this.Price.Width = 115;
-            // 
-            // Qty
-            // 
-            this.Qty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Qty.HeaderText = "QTY";
-            this.Qty.MinimumWidth = 6;
-            this.Qty.Name = "Qty";
-            this.Qty.Width = 95;
-            // 
-            // Total
-            // 
-            this.Total.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Total.HeaderText = "TOTAL";
-            this.Total.MinimumWidth = 6;
-            this.Total.Name = "Total";
-            this.Total.Width = 122;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dataGridViewTextBoxColumn6.HeaderText = "DATE";
-            this.dataGridViewTextBoxColumn6.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.Width = 108;
-            // 
-            // dataGridViewImageColumn1
-            // 
-            this.dataGridViewImageColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataGridViewImageColumn1.HeaderText = "";
-            this.dataGridViewImageColumn1.MinimumWidth = 6;
-            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
-            this.dataGridViewImageColumn1.Width = 24;
             // 
             // panel6
             // 
@@ -619,6 +480,138 @@
             this.label4.TabIndex = 4;
             this.label4.Text = "Sold Items ";
             // 
+            // NumDailySales
+            // 
+            this.NumDailySales.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.NumDailySales.HeaderText = "#";
+            this.NumDailySales.MinimumWidth = 6;
+            this.NumDailySales.Name = "NumDailySales";
+            this.NumDailySales.ReadOnly = true;
+            this.NumDailySales.Width = 61;
+            // 
+            // PCodeDailySales
+            // 
+            this.PCodeDailySales.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.PCodeDailySales.HeaderText = "CardID";
+            this.PCodeDailySales.MinimumWidth = 6;
+            this.PCodeDailySales.Name = "PCodeDailySales";
+            this.PCodeDailySales.Visible = false;
+            this.PCodeDailySales.Width = 128;
+            // 
+            // InvoiceDailySales
+            // 
+            this.InvoiceDailySales.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.InvoiceDailySales.HeaderText = "INVOICE NO.";
+            this.InvoiceDailySales.MinimumWidth = 6;
+            this.InvoiceDailySales.Name = "InvoiceDailySales";
+            this.InvoiceDailySales.ReadOnly = true;
+            this.InvoiceDailySales.Width = 203;
+            // 
+            // Customer
+            // 
+            this.Customer.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Customer.HeaderText = "CUSTOMER";
+            this.Customer.MinimumWidth = 6;
+            this.Customer.Name = "Customer";
+            this.Customer.ReadOnly = true;
+            // 
+            // DescriptionDailySales
+            // 
+            this.DescriptionDailySales.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.DescriptionDailySales.HeaderText = "CASHIER";
+            this.DescriptionDailySales.MinimumWidth = 6;
+            this.DescriptionDailySales.Name = "DescriptionDailySales";
+            this.DescriptionDailySales.ReadOnly = true;
+            // 
+            // Date
+            // 
+            this.Date.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Date.HeaderText = "DATE";
+            this.Date.MinimumWidth = 6;
+            this.Date.Name = "Date";
+            this.Date.ReadOnly = true;
+            this.Date.Width = 108;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewTextBoxColumn1.HeaderText = "#";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 61;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.dataGridViewTextBoxColumn2.HeaderText = "CardID";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Visible = false;
+            this.dataGridViewTextBoxColumn2.Width = 128;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.dataGridViewTextBoxColumn3.HeaderText = "INVOICE NO.";
+            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 203;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn4.HeaderText = "DESCRIPTION";
+            this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // ExpDate
+            // 
+            this.ExpDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.ExpDate.HeaderText = "EXPIRATION";
+            this.ExpDate.MinimumWidth = 6;
+            this.ExpDate.Name = "ExpDate";
+            this.ExpDate.ReadOnly = true;
+            this.ExpDate.Width = 195;
+            // 
+            // Price
+            // 
+            this.Price.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Price.HeaderText = "PRICE";
+            this.Price.MinimumWidth = 6;
+            this.Price.Name = "Price";
+            this.Price.ReadOnly = true;
+            this.Price.Width = 115;
+            // 
+            // Qty
+            // 
+            this.Qty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Qty.HeaderText = "QTY";
+            this.Qty.MinimumWidth = 6;
+            this.Qty.Name = "Qty";
+            this.Qty.ReadOnly = true;
+            this.Qty.Width = 95;
+            // 
+            // Total
+            // 
+            this.Total.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Total.HeaderText = "TOTAL";
+            this.Total.MinimumWidth = 6;
+            this.Total.Name = "Total";
+            this.Total.ReadOnly = true;
+            this.Total.Width = 122;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.dataGridViewTextBoxColumn6.HeaderText = "DATE";
+            this.dataGridViewTextBoxColumn6.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.Width = 108;
+            // 
             // frmDailySales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 37F);
@@ -683,13 +676,18 @@
         private Label label3;
         private Label label4;
         public DataGridView dataGridViewTransacHist;
+        public TextBox txtSearchTransac;
+        public TextBox txtSearchSold;
+        public DateTimePicker dateTimePickerStartTrans;
+        public DateTimePicker dateTimePickerStartSold;
+        public DateTimePicker dateTimePickerEndTrans;
+        public DateTimePicker dateTimePickerEndSold;
         private DataGridViewTextBoxColumn NumDailySales;
         private DataGridViewTextBoxColumn PCodeDailySales;
         private DataGridViewTextBoxColumn InvoiceDailySales;
         private DataGridViewTextBoxColumn Customer;
         private DataGridViewTextBoxColumn DescriptionDailySales;
         private DataGridViewTextBoxColumn Date;
-        private DataGridViewImageColumn CancelDailySales;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
@@ -699,12 +697,5 @@
         private DataGridViewTextBoxColumn Qty;
         private DataGridViewTextBoxColumn Total;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private DataGridViewImageColumn dataGridViewImageColumn1;
-        public TextBox txtSearchTransac;
-        public TextBox txtSearchSold;
-        public DateTimePicker dateTimePickerStartTrans;
-        public DateTimePicker dateTimePickerStartSold;
-        public DateTimePicker dateTimePickerEndTrans;
-        public DateTimePicker dateTimePickerEndSold;
     }
 }
