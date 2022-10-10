@@ -60,9 +60,6 @@
             this.panelStockDetail = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.dataGridViewDetails = new System.Windows.Forms.DataGridView();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.labelItemID = new System.Windows.Forms.Label();
-            this.labelItemName = new System.Windows.Forms.Label();
             this.NumService = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DeliveryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -70,6 +67,9 @@
             this.Expiration = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StockBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StockID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.labelItemID = new System.Windows.Forms.Label();
+            this.labelItemName = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
@@ -341,10 +341,10 @@
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.panelAddUnit);
-            this.tabPage2.Location = new System.Drawing.Point(4, 46);
+            this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(798, 389);
+            this.tabPage2.Size = new System.Drawing.Size(798, 406);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Add";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -358,7 +358,7 @@
             this.panelAddUnit.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelAddUnit.Location = new System.Drawing.Point(3, 3);
             this.panelAddUnit.Name = "panelAddUnit";
-            this.panelAddUnit.Size = new System.Drawing.Size(792, 383);
+            this.panelAddUnit.Size = new System.Drawing.Size(792, 400);
             this.panelAddUnit.TabIndex = 56;
             this.panelAddUnit.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
@@ -481,41 +481,11 @@
             this.dataGridViewDetails.RowHeadersVisible = false;
             this.dataGridViewDetails.RowHeadersWidth = 51;
             this.dataGridViewDetails.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dataGridViewDetails.RowTemplate.Height = 29;
+            this.dataGridViewDetails.RowTemplate.Height = 35;
             this.dataGridViewDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewDetails.Size = new System.Drawing.Size(798, 325);
             this.dataGridViewDetails.TabIndex = 6;
             this.dataGridViewDetails.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDetails_CellClick);
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.labelItemID);
-            this.panel4.Controls.Add(this.labelItemName);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(0, 0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(798, 64);
-            this.panel4.TabIndex = 7;
-            // 
-            // labelItemID
-            // 
-            this.labelItemID.AutoSize = true;
-            this.labelItemID.Location = new System.Drawing.Point(618, 13);
-            this.labelItemID.Name = "labelItemID";
-            this.labelItemID.Size = new System.Drawing.Size(57, 38);
-            this.labelItemID.TabIndex = 26;
-            this.labelItemID.Text = "     ";
-            this.labelItemID.Visible = false;
-            // 
-            // labelItemName
-            // 
-            this.labelItemName.AutoSize = true;
-            this.labelItemName.ForeColor = System.Drawing.Color.Red;
-            this.labelItemName.Location = new System.Drawing.Point(105, 13);
-            this.labelItemName.Name = "labelItemName";
-            this.labelItemName.Size = new System.Drawing.Size(154, 38);
-            this.labelItemName.TabIndex = 25;
-            this.labelItemName.Text = "Item Name";
             // 
             // NumService
             // 
@@ -573,6 +543,36 @@
             this.StockID.Name = "StockID";
             this.StockID.ReadOnly = true;
             this.StockID.Visible = false;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.labelItemID);
+            this.panel4.Controls.Add(this.labelItemName);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(798, 64);
+            this.panel4.TabIndex = 7;
+            // 
+            // labelItemID
+            // 
+            this.labelItemID.AutoSize = true;
+            this.labelItemID.Location = new System.Drawing.Point(618, 13);
+            this.labelItemID.Name = "labelItemID";
+            this.labelItemID.Size = new System.Drawing.Size(57, 38);
+            this.labelItemID.TabIndex = 26;
+            this.labelItemID.Text = "     ";
+            this.labelItemID.Visible = false;
+            // 
+            // labelItemName
+            // 
+            this.labelItemName.AutoSize = true;
+            this.labelItemName.ForeColor = System.Drawing.Color.Red;
+            this.labelItemName.Location = new System.Drawing.Point(105, 13);
+            this.labelItemName.Name = "labelItemName";
+            this.labelItemName.Size = new System.Drawing.Size(154, 38);
+            this.labelItemName.TabIndex = 25;
+            this.labelItemName.Text = "Item Name";
             // 
             // frmEditStock
             // 

@@ -66,6 +66,8 @@
             this.panelC = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.NONCONSUMABLE = new System.Windows.Forms.TabPage();
+            this.lblItemIDPass = new System.Windows.Forms.Label();
+            this.lblStockNumPass = new System.Windows.Forms.Label();
             this.dataGridViewNC = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.number = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -79,8 +81,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txtQuantity = new System.Windows.Forms.TextBox();
-            this.lblStockNumPass = new System.Windows.Forms.Label();
-            this.lblItemIDPass = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -224,7 +224,7 @@
             this.dataGridViewExpDate.RowHeadersVisible = false;
             this.dataGridViewExpDate.RowHeadersWidth = 51;
             this.dataGridViewExpDate.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dataGridViewExpDate.RowTemplate.Height = 29;
+            this.dataGridViewExpDate.RowTemplate.Height = 35;
             this.dataGridViewExpDate.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewExpDate.Size = new System.Drawing.Size(789, 165);
             this.dataGridViewExpDate.TabIndex = 7;
@@ -313,7 +313,7 @@
             this.dataGridViewSelected.RowHeadersVisible = false;
             this.dataGridViewSelected.RowHeadersWidth = 51;
             this.dataGridViewSelected.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dataGridViewSelected.RowTemplate.Height = 29;
+            this.dataGridViewSelected.RowTemplate.Height = 35;
             this.dataGridViewSelected.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewSelected.Size = new System.Drawing.Size(789, 143);
             this.dataGridViewSelected.TabIndex = 8;
@@ -503,6 +503,28 @@
             this.NONCONSUMABLE.Text = "Non-Consumable";
             this.NONCONSUMABLE.UseVisualStyleBackColor = true;
             // 
+            // lblItemIDPass
+            // 
+            this.lblItemIDPass.AutoSize = true;
+            this.lblItemIDPass.ForeColor = System.Drawing.Color.Red;
+            this.lblItemIDPass.Location = new System.Drawing.Point(571, 163);
+            this.lblItemIDPass.Name = "lblItemIDPass";
+            this.lblItemIDPass.Size = new System.Drawing.Size(99, 38);
+            this.lblItemIDPass.TabIndex = 11;
+            this.lblItemIDPass.Text = "ItemID";
+            this.lblItemIDPass.Visible = false;
+            // 
+            // lblStockNumPass
+            // 
+            this.lblStockNumPass.AutoSize = true;
+            this.lblStockNumPass.ForeColor = System.Drawing.Color.Red;
+            this.lblStockNumPass.Location = new System.Drawing.Point(571, 125);
+            this.lblStockNumPass.Name = "lblStockNumPass";
+            this.lblStockNumPass.Size = new System.Drawing.Size(144, 38);
+            this.lblStockNumPass.TabIndex = 10;
+            this.lblStockNumPass.Text = "StockNum";
+            this.lblStockNumPass.Visible = false;
+            // 
             // dataGridViewNC
             // 
             this.dataGridViewNC.AllowUserToAddRows = false;
@@ -663,28 +685,6 @@
             this.txtQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtQuantity.TextChanged += new System.EventHandler(this.txtQuantity_TextChanged);
             this.txtQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuantity_KeyPress);
-            // 
-            // lblStockNumPass
-            // 
-            this.lblStockNumPass.AutoSize = true;
-            this.lblStockNumPass.ForeColor = System.Drawing.Color.Red;
-            this.lblStockNumPass.Location = new System.Drawing.Point(571, 125);
-            this.lblStockNumPass.Name = "lblStockNumPass";
-            this.lblStockNumPass.Size = new System.Drawing.Size(144, 38);
-            this.lblStockNumPass.TabIndex = 10;
-            this.lblStockNumPass.Text = "StockNum";
-            this.lblStockNumPass.Visible = false;
-            // 
-            // lblItemIDPass
-            // 
-            this.lblItemIDPass.AutoSize = true;
-            this.lblItemIDPass.ForeColor = System.Drawing.Color.Red;
-            this.lblItemIDPass.Location = new System.Drawing.Point(571, 163);
-            this.lblItemIDPass.Name = "lblItemIDPass";
-            this.lblItemIDPass.Size = new System.Drawing.Size(99, 38);
-            this.lblItemIDPass.TabIndex = 11;
-            this.lblItemIDPass.Text = "ItemID";
-            this.lblItemIDPass.Visible = false;
             // 
             // frmExpiration
             // 

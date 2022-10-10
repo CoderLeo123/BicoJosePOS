@@ -50,6 +50,7 @@ namespace Capstone
         private void btnLogout_Click(object sender, EventArgs e)
         {
             this.Close();
+            this.Dispose();
             frmLogin frm = new frmLogin();
             frm.ShowDialog();
 

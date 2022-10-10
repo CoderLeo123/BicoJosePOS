@@ -42,6 +42,12 @@
             this.dateTimePickerEndTrans = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridViewTransacHist = new System.Windows.Forms.DataGridView();
+            this.NumDailySales = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PCodeDailySales = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.InvoiceDailySales = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DescriptionDailySales = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panelTransacHist = new System.Windows.Forms.Panel();
@@ -51,6 +57,15 @@
             this.panelSoldItems = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.dataGridViewSoldItems = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ExpDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
@@ -61,21 +76,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.dateTimePickerEndSold = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
-            this.NumDailySales = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PCodeDailySales = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.InvoiceDailySales = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DescriptionDailySales = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ExpDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnCloseDailySales)).BeginInit();
@@ -106,14 +106,14 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1301, 120);
+            this.panel1.Size = new System.Drawing.Size(1479, 120);
             this.panel1.TabIndex = 4;
             // 
             // panel3
             // 
             this.panel3.Controls.Add(this.btnCloseDailySales);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel3.Location = new System.Drawing.Point(1240, 0);
+            this.panel3.Location = new System.Drawing.Point(1418, 0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(61, 66);
             this.panel3.TabIndex = 37;
@@ -142,7 +142,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 66);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1301, 54);
+            this.panel2.Size = new System.Drawing.Size(1479, 54);
             this.panel2.TabIndex = 36;
             // 
             // txtSearchTransac
@@ -237,11 +237,63 @@
             this.dataGridViewTransacHist.RowHeadersVisible = false;
             this.dataGridViewTransacHist.RowHeadersWidth = 51;
             this.dataGridViewTransacHist.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dataGridViewTransacHist.RowTemplate.Height = 29;
+            this.dataGridViewTransacHist.RowTemplate.Height = 35;
             this.dataGridViewTransacHist.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTransacHist.Size = new System.Drawing.Size(1301, 754);
+            this.dataGridViewTransacHist.Size = new System.Drawing.Size(1479, 754);
             this.dataGridViewTransacHist.TabIndex = 8;
             this.dataGridViewTransacHist.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewTransacHist_CellContentClick);
+            // 
+            // NumDailySales
+            // 
+            this.NumDailySales.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.NumDailySales.HeaderText = "#";
+            this.NumDailySales.MinimumWidth = 6;
+            this.NumDailySales.Name = "NumDailySales";
+            this.NumDailySales.ReadOnly = true;
+            this.NumDailySales.Width = 61;
+            // 
+            // PCodeDailySales
+            // 
+            this.PCodeDailySales.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.PCodeDailySales.HeaderText = "CardID";
+            this.PCodeDailySales.MinimumWidth = 6;
+            this.PCodeDailySales.Name = "PCodeDailySales";
+            this.PCodeDailySales.Visible = false;
+            this.PCodeDailySales.Width = 125;
+            // 
+            // InvoiceDailySales
+            // 
+            this.InvoiceDailySales.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.InvoiceDailySales.HeaderText = "INVOICE NO.";
+            this.InvoiceDailySales.MinimumWidth = 6;
+            this.InvoiceDailySales.Name = "InvoiceDailySales";
+            this.InvoiceDailySales.ReadOnly = true;
+            this.InvoiceDailySales.Width = 203;
+            // 
+            // Customer
+            // 
+            this.Customer.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Customer.HeaderText = "CUSTOMER";
+            this.Customer.MinimumWidth = 6;
+            this.Customer.Name = "Customer";
+            this.Customer.ReadOnly = true;
+            // 
+            // DescriptionDailySales
+            // 
+            this.DescriptionDailySales.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.DescriptionDailySales.HeaderText = "CASHIER";
+            this.DescriptionDailySales.MinimumWidth = 6;
+            this.DescriptionDailySales.Name = "DescriptionDailySales";
+            this.DescriptionDailySales.ReadOnly = true;
+            // 
+            // Date
+            // 
+            this.Date.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Date.HeaderText = "DATE";
+            this.Date.MinimumWidth = 6;
+            this.Date.Name = "Date";
+            this.Date.ReadOnly = true;
+            this.Date.Width = 108;
             // 
             // tabControl1
             // 
@@ -251,7 +303,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1315, 930);
+            this.tabControl1.Size = new System.Drawing.Size(1493, 930);
             this.tabControl1.TabIndex = 9;
             // 
             // tabPage1
@@ -260,7 +312,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 46);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1307, 880);
+            this.tabPage1.Size = new System.Drawing.Size(1485, 880);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Transaction History";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -272,7 +324,7 @@
             this.panelTransacHist.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelTransacHist.Location = new System.Drawing.Point(3, 3);
             this.panelTransacHist.Name = "panelTransacHist";
-            this.panelTransacHist.Size = new System.Drawing.Size(1301, 874);
+            this.panelTransacHist.Size = new System.Drawing.Size(1479, 874);
             this.panelTransacHist.TabIndex = 5;
             // 
             // panel5
@@ -281,7 +333,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(0, 120);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1301, 754);
+            this.panel5.Size = new System.Drawing.Size(1479, 754);
             this.panel5.TabIndex = 1;
             // 
             // panel4
@@ -290,7 +342,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1301, 120);
+            this.panel4.Size = new System.Drawing.Size(1479, 120);
             this.panel4.TabIndex = 0;
             // 
             // tabPage2
@@ -299,7 +351,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 46);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1307, 880);
+            this.tabPage2.Size = new System.Drawing.Size(1485, 880);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Sold Items";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -311,7 +363,7 @@
             this.panelSoldItems.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelSoldItems.Location = new System.Drawing.Point(3, 3);
             this.panelSoldItems.Name = "panelSoldItems";
-            this.panelSoldItems.Size = new System.Drawing.Size(1301, 874);
+            this.panelSoldItems.Size = new System.Drawing.Size(1479, 874);
             this.panelSoldItems.TabIndex = 0;
             // 
             // panel7
@@ -320,7 +372,7 @@
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel7.Location = new System.Drawing.Point(0, 119);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(1301, 755);
+            this.panel7.Size = new System.Drawing.Size(1479, 755);
             this.panel7.TabIndex = 1;
             // 
             // dataGridViewSoldItems
@@ -365,172 +417,11 @@
             this.dataGridViewSoldItems.RowHeadersVisible = false;
             this.dataGridViewSoldItems.RowHeadersWidth = 51;
             this.dataGridViewSoldItems.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dataGridViewSoldItems.RowTemplate.Height = 29;
+            this.dataGridViewSoldItems.RowTemplate.Height = 35;
             this.dataGridViewSoldItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewSoldItems.Size = new System.Drawing.Size(1301, 755);
+            this.dataGridViewSoldItems.Size = new System.Drawing.Size(1479, 755);
             this.dataGridViewSoldItems.TabIndex = 9;
             this.dataGridViewSoldItems.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSoldItems_CellContentClick);
-            // 
-            // panel6
-            // 
-            this.panel6.Controls.Add(this.panel8);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel6.Location = new System.Drawing.Point(0, 0);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(1301, 119);
-            this.panel6.TabIndex = 0;
-            // 
-            // panel8
-            // 
-            this.panel8.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.panel8.Controls.Add(this.panel9);
-            this.panel8.Controls.Add(this.panel10);
-            this.panel8.Controls.Add(this.label4);
-            this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel8.Location = new System.Drawing.Point(0, 0);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(1301, 119);
-            this.panel8.TabIndex = 5;
-            // 
-            // panel9
-            // 
-            this.panel9.Controls.Add(this.pictureBox1);
-            this.panel9.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel9.Location = new System.Drawing.Point(1240, 0);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(61, 65);
-            this.panel9.TabIndex = 37;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.BackgroundImage = global::Capstone.Properties.Resources.CloseTab;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox1.Location = new System.Drawing.Point(9, 9);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Padding = new System.Windows.Forms.Padding(3);
-            this.pictureBox1.Size = new System.Drawing.Size(40, 38);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
-            // panel10
-            // 
-            this.panel10.BackColor = System.Drawing.Color.DimGray;
-            this.panel10.Controls.Add(this.txtSearchSold);
-            this.panel10.Controls.Add(this.dateTimePickerStartSold);
-            this.panel10.Controls.Add(this.label3);
-            this.panel10.Controls.Add(this.dateTimePickerEndSold);
-            this.panel10.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel10.Location = new System.Drawing.Point(0, 65);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(1301, 54);
-            this.panel10.TabIndex = 36;
-            // 
-            // txtSearchSold
-            // 
-            this.txtSearchSold.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtSearchSold.Location = new System.Drawing.Point(685, 10);
-            this.txtSearchSold.Name = "txtSearchSold";
-            this.txtSearchSold.PlaceholderText = "Search Here";
-            this.txtSearchSold.Size = new System.Drawing.Size(570, 38);
-            this.txtSearchSold.TabIndex = 0;
-            // 
-            // dateTimePickerStartSold
-            // 
-            this.dateTimePickerStartSold.CalendarFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dateTimePickerStartSold.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dateTimePickerStartSold.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerStartSold.Location = new System.Drawing.Point(313, 9);
-            this.dateTimePickerStartSold.Name = "dateTimePickerStartSold";
-            this.dateTimePickerStartSold.Size = new System.Drawing.Size(158, 34);
-            this.dateTimePickerStartSold.TabIndex = 33;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(12, 12);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(277, 31);
-            this.label3.TabIndex = 32;
-            this.label3.Text = "Filter By Date (From - To)";
-            // 
-            // dateTimePickerEndSold
-            // 
-            this.dateTimePickerEndSold.CalendarFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dateTimePickerEndSold.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dateTimePickerEndSold.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerEndSold.Location = new System.Drawing.Point(486, 9);
-            this.dateTimePickerEndSold.Name = "dateTimePickerEndSold";
-            this.dateTimePickerEndSold.Size = new System.Drawing.Size(158, 34);
-            this.dateTimePickerEndSold.TabIndex = 34;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(12, 9);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(175, 41);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Sold Items ";
-            // 
-            // NumDailySales
-            // 
-            this.NumDailySales.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.NumDailySales.HeaderText = "#";
-            this.NumDailySales.MinimumWidth = 6;
-            this.NumDailySales.Name = "NumDailySales";
-            this.NumDailySales.ReadOnly = true;
-            this.NumDailySales.Width = 61;
-            // 
-            // PCodeDailySales
-            // 
-            this.PCodeDailySales.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.PCodeDailySales.HeaderText = "CardID";
-            this.PCodeDailySales.MinimumWidth = 6;
-            this.PCodeDailySales.Name = "PCodeDailySales";
-            this.PCodeDailySales.Visible = false;
-            this.PCodeDailySales.Width = 128;
-            // 
-            // InvoiceDailySales
-            // 
-            this.InvoiceDailySales.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.InvoiceDailySales.HeaderText = "INVOICE NO.";
-            this.InvoiceDailySales.MinimumWidth = 6;
-            this.InvoiceDailySales.Name = "InvoiceDailySales";
-            this.InvoiceDailySales.ReadOnly = true;
-            this.InvoiceDailySales.Width = 203;
-            // 
-            // Customer
-            // 
-            this.Customer.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Customer.HeaderText = "CUSTOMER";
-            this.Customer.MinimumWidth = 6;
-            this.Customer.Name = "Customer";
-            this.Customer.ReadOnly = true;
-            // 
-            // DescriptionDailySales
-            // 
-            this.DescriptionDailySales.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.DescriptionDailySales.HeaderText = "CASHIER";
-            this.DescriptionDailySales.MinimumWidth = 6;
-            this.DescriptionDailySales.Name = "DescriptionDailySales";
-            this.DescriptionDailySales.ReadOnly = true;
-            // 
-            // Date
-            // 
-            this.Date.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Date.HeaderText = "DATE";
-            this.Date.MinimumWidth = 6;
-            this.Date.Name = "Date";
-            this.Date.ReadOnly = true;
-            this.Date.Width = 108;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -548,7 +439,7 @@
             this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.Visible = false;
-            this.dataGridViewTextBoxColumn2.Width = 128;
+            this.dataGridViewTextBoxColumn2.Width = 125;
             // 
             // dataGridViewTextBoxColumn3
             // 
@@ -607,16 +498,127 @@
             // 
             this.dataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.dataGridViewTextBoxColumn6.HeaderText = "DATE";
+            this.dataGridViewTextBoxColumn6.MaxInputLength = 11;
             this.dataGridViewTextBoxColumn6.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
             this.dataGridViewTextBoxColumn6.Width = 108;
             // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.panel8);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel6.Location = new System.Drawing.Point(0, 0);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(1479, 119);
+            this.panel6.TabIndex = 0;
+            // 
+            // panel8
+            // 
+            this.panel8.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.panel8.Controls.Add(this.panel9);
+            this.panel8.Controls.Add(this.panel10);
+            this.panel8.Controls.Add(this.label4);
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel8.Location = new System.Drawing.Point(0, 0);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(1479, 119);
+            this.panel8.TabIndex = 5;
+            // 
+            // panel9
+            // 
+            this.panel9.Controls.Add(this.pictureBox1);
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel9.Location = new System.Drawing.Point(1418, 0);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(61, 65);
+            this.panel9.TabIndex = 37;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.BackgroundImage = global::Capstone.Properties.Resources.CloseTab;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox1.Location = new System.Drawing.Point(9, 9);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Padding = new System.Windows.Forms.Padding(3);
+            this.pictureBox1.Size = new System.Drawing.Size(40, 38);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // panel10
+            // 
+            this.panel10.BackColor = System.Drawing.Color.DimGray;
+            this.panel10.Controls.Add(this.txtSearchSold);
+            this.panel10.Controls.Add(this.dateTimePickerStartSold);
+            this.panel10.Controls.Add(this.label3);
+            this.panel10.Controls.Add(this.dateTimePickerEndSold);
+            this.panel10.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel10.Location = new System.Drawing.Point(0, 65);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(1479, 54);
+            this.panel10.TabIndex = 36;
+            // 
+            // txtSearchSold
+            // 
+            this.txtSearchSold.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtSearchSold.Location = new System.Drawing.Point(685, 10);
+            this.txtSearchSold.Name = "txtSearchSold";
+            this.txtSearchSold.PlaceholderText = "Search Here";
+            this.txtSearchSold.Size = new System.Drawing.Size(570, 38);
+            this.txtSearchSold.TabIndex = 0;
+            // 
+            // dateTimePickerStartSold
+            // 
+            this.dateTimePickerStartSold.CalendarFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dateTimePickerStartSold.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dateTimePickerStartSold.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerStartSold.Location = new System.Drawing.Point(313, 9);
+            this.dateTimePickerStartSold.Name = "dateTimePickerStartSold";
+            this.dateTimePickerStartSold.Size = new System.Drawing.Size(158, 34);
+            this.dateTimePickerStartSold.TabIndex = 33;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(12, 12);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(277, 31);
+            this.label3.TabIndex = 32;
+            this.label3.Text = "Filter By Date (From - To)";
+            // 
+            // dateTimePickerEndSold
+            // 
+            this.dateTimePickerEndSold.CalendarFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dateTimePickerEndSold.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dateTimePickerEndSold.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerEndSold.Location = new System.Drawing.Point(486, 9);
+            this.dateTimePickerEndSold.Name = "dateTimePickerEndSold";
+            this.dateTimePickerEndSold.Size = new System.Drawing.Size(158, 34);
+            this.dateTimePickerEndSold.TabIndex = 34;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(12, 9);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(175, 41);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Sold Items ";
+            // 
             // frmDailySales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 37F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1315, 930);
+            this.ClientSize = new System.Drawing.Size(1493, 930);
             this.Controls.Add(this.tabControl1);
             this.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

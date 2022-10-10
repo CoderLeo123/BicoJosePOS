@@ -25,6 +25,7 @@ namespace Capstone
         {
             InitializeComponent();
             cn = new SqlConnection(dbcon.MyConnection());
+            txtPassword.PasswordChar = '●'; txtPassword.MaxLength = 14;
         }
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
@@ -158,6 +159,20 @@ namespace Capstone
             tab.Controls.Add(frm.panelSignUp);
             frm.comBoxUserType.SelectedIndex = 0;
             frm.ShowDialog();
+        }
+
+        private void checkBoxShowPassL_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxShowPassL.Checked == true)
+            {
+                txtPassword.PasswordChar = '\0';
+
+            }
+            else if (checkBoxShowPassL.Checked == false)
+            {
+                txtPassword.PasswordChar = '●';
+
+            }
         }
     }
 }

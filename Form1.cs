@@ -118,7 +118,7 @@ namespace Capstone
         }
         public void timerStart()
         {
-            timerDrpBtnPayment.Start();
+            timerDrpBtnPayment.Start(); 
             timerDrpBtnSales.Start();
             timerDrpBtnProducts.Start();
         }
@@ -135,14 +135,14 @@ namespace Capstone
             isCollapsed3 = true;
             isCollapsed2 = false;
             isCollapsed1 = false;
-            timerStart();
+            //timerStart();
         }
         private void dropBtnPayment_Click_1(object sender, EventArgs e)
         {//isCollapsed2
             isCollapsed2 = true;
             isCollapsed3 = false;
             isCollapsed1 = false;
-            timerStart();
+            //timerStart();
 
             frmPaymentStatus frm = new frmPaymentStatus();
             frm.TopLevel = false;
@@ -158,7 +158,7 @@ namespace Capstone
             isCollapsed2 = false;
             isCollapsed3 = false;
             
-            timerStart();
+            //timerStart();
 
             frmProductsList frm = new frmProductsList();
             frm.TopLevel = false;
@@ -171,7 +171,7 @@ namespace Capstone
         private void btnDashboard_Click(object sender, EventArgs e)
         {
             btnCollapsed();
-            timerStart();
+            //timerStart();
         }
 
         private void btnPatientR_Click(object sender, EventArgs e)
@@ -183,7 +183,7 @@ namespace Capstone
             frm.BringToFront();
             frm.Show();
             btnCollapsed();
-            timerStart();
+            //timerStart();
         }
 
         private void button25_Click(object sender, EventArgs e)
@@ -254,7 +254,7 @@ namespace Capstone
             frm.BringToFront();
             frm.Show();
             btnCollapsed();
-            timerStart();
+            //timerStart();
         }
 
         private void btnInventory_Click(object sender, EventArgs e)
@@ -266,7 +266,7 @@ namespace Capstone
             frm.BringToFront();
             frm.Show();
             btnCollapsed();
-            timerStart();
+            //timerStart();
         }
 
         private void btnInventoryReport_Click(object sender, EventArgs e)
@@ -277,13 +277,13 @@ namespace Capstone
         private void btnBackupArch_Click(object sender, EventArgs e)
         {
             btnCollapsed();
-            timerStart();
+            //timerStart();
         }
 
         private void btnUserSettings_Click(object sender, EventArgs e)
         {
             btnCollapsed();
-            timerStart();
+            //timerStart();
         }
 
         private void panel3_Paint(object sender, PaintEventArgs e)
@@ -298,9 +298,11 @@ namespace Capstone
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            this.Close();
-            btnCollapsed();
-            timerStart();
+             this.Dispose(); this.Close();
+            //btnCollapsed();
+            //timerStart();
+            frmLogin frm = new frmLogin();
+            frm.ShowDialog();
         }
 
         
