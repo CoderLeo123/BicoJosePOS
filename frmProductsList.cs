@@ -254,9 +254,10 @@ namespace Capstone
             TabPage tab = new TabPage("Item");
             frm.tabControlCreateNew.TabPages.Add(tab);
             tab.Controls.Add(frm.panelItem);
-            frm.comBoxType.SelectedIndex = 0;
+            
             frm.comBoxClassification.SelectedIndex = 0;
             classLoadData.LoadType(frm.comBoxType);
+            frm.comBoxType.SelectedIndex = 0;
             //frm.LoadType();
             classLoadData.LoadProductItem(frm.txtProduct, frm.txtTypeID, frm.comBoxType);
             //frm.LoadProductItem();

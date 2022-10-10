@@ -112,12 +112,14 @@ namespace Capstone
                 if (type.Equals("Admin"))
                 {
                     frmAdmin frm = new frmAdmin();
+                    frm.lblName.Text = CompleteName;
                     frm.ShowDialog();
                     this.Close();
                 }
                 else if (type.Equals("Cashier"))
                 {
                     frmCashier frm = new frmCashier();
+                    frm.lblCashierName.Text = CompleteName;
                     frm.ShowDialog();
                     this.Close();
                 }

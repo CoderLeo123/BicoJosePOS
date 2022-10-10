@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 namespace Capstone
 {
-    public partial class frmDetailsSale : Form
+    public partial class frmDetailsSales : Form
     {
         SqlConnection cn = new SqlConnection();
         SqlCommand cm = new SqlCommand();
@@ -18,33 +18,49 @@ namespace Capstone
         SqlDataReader dr;
         ClassLoadData classLoadData = new ClassLoadData();
         string title = "BICO-JOSE System";
-        public frmDetailsSale()
+        frmCashier frmC;
+        //frmCashier frmList;
+        public frmDetailsSales(frmCashier frmL)
         {
             InitializeComponent();
+            cn = new SqlConnection(dbcon.MyConnection());
+            frmC = frmL;
+            //frmC = new frmCashier();
+            //frmList = frmAdd;
         }
 
         private void dataGridViewService_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            frmCashier frm = new frmCashier();
+            frmCashier frmC = new frmCashier();
             string colName = dataGridViewService.Columns[e.ColumnIndex].Name;
-            if (colName == "AddSearchItem")
+            if (colName == "add")
             {
                 if (MessageBox.Show("Add this Item?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     cn.Open();
                     cm = new SqlCommand("INSERT INTO tblServiceAvailed (Service_ID, Status) VALUES(@Service_ID, 'Pending')", cn);
-                    cm.Parameters.AddWithValue("@Service_ID", dataGridViewService[1, e.RowIndex].Value.ToString());
+                    cm.Parameters.AddWithValue("@Service_ID", dataGridViewService.Rows[e.RowIndex].Cells[5].Value?.ToString());
 
                     cm.ExecuteNonQuery();
                     cn.Close();
                     MessageBox.Show("Successfully Added!", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    classLoadData.LoadRecordServiceAvail(frm.dataGridViewService, frm.lblSalesTotal);
+                    //classLoadData.LoadRecordServiceAvail(frmList.dataGridViewService, frmList.lblSalesTotal);
+                    classLoadData.LoadCart(frmC.dataGridViewCart, frmC.lblDiscount, frmC.lblSalesTotal, frmC.lblPayment, frmC.lblNetTotal, frmC.btnSettlePayment, frmC.btnAddDiscount, frmC.btnClearCart, frmC.txtSearch, frmC.dataGridViewService);
                     //frmList.LoadStock();
                     this.Close();
                 }
             }
         }
 
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
 
+        private void frmDetailsSales_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            
+            classLoadData.LoadCart(frmC.dataGridViewCart, frmC.lblDiscount, frmC.lblSalesTotal, frmC.lblPayment, frmC.lblNetTotal, frmC.btnSettlePayment, frmC.btnAddDiscount, frmC.btnClearCart, frmC.txtSearch, frmC.dataGridViewService);
+        }
     }
 }

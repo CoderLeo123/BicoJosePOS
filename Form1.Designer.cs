@@ -35,20 +35,12 @@
             this.btnUserSettings = new System.Windows.Forms.Button();
             this.btnBackupArch = new System.Windows.Forms.Button();
             this.dropPanelSales = new System.Windows.Forms.Panel();
-            this.btnInventoryReport = new System.Windows.Forms.Button();
-            this.btnSalesReport = new System.Windows.Forms.Button();
             this.dropBtnReports = new System.Windows.Forms.Button();
             this.btnInventory = new System.Windows.Forms.Button();
             this.btnStockDel = new System.Windows.Forms.Button();
             this.dropPanelProducts = new System.Windows.Forms.Panel();
-            this.btnTransaction = new System.Windows.Forms.Button();
-            this.btnItems = new System.Windows.Forms.Button();
-            this.btnProd = new System.Windows.Forms.Button();
             this.dropBtnProducts = new System.Windows.Forms.Button();
-            this.btnTranscHist = new System.Windows.Forms.Button();
             this.dropPanelPayment = new System.Windows.Forms.Panel();
-            this.btnOrderStatus = new System.Windows.Forms.Button();
-            this.btnPayStatus = new System.Windows.Forms.Button();
             this.dropBtnPayment = new System.Windows.Forms.Button();
             this.btnPatientR = new System.Windows.Forms.Button();
             this.btnDashboard = new System.Windows.Forms.Button();
@@ -90,7 +82,6 @@
             this.panel4.Controls.Add(this.btnInventory);
             this.panel4.Controls.Add(this.btnStockDel);
             this.panel4.Controls.Add(this.dropPanelProducts);
-            this.panel4.Controls.Add(this.btnTranscHist);
             this.panel4.Controls.Add(this.dropPanelPayment);
             this.panel4.Controls.Add(this.btnPatientR);
             this.panel4.Controls.Add(this.btnDashboard);
@@ -109,7 +100,7 @@
             this.btnLogout.ForeColor = System.Drawing.Color.White;
             this.btnLogout.Image = global::Capstone.Properties.Resources.Log_out;
             this.btnLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLogout.Location = new System.Drawing.Point(0, 881);
+            this.btnLogout.Location = new System.Drawing.Point(0, 482);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(278, 52);
             this.btnLogout.TabIndex = 17;
@@ -128,7 +119,7 @@
             this.btnUserSettings.ForeColor = System.Drawing.Color.White;
             this.btnUserSettings.Image = global::Capstone.Properties.Resources.User_Settings;
             this.btnUserSettings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUserSettings.Location = new System.Drawing.Point(0, 829);
+            this.btnUserSettings.Location = new System.Drawing.Point(0, 430);
             this.btnUserSettings.Name = "btnUserSettings";
             this.btnUserSettings.Size = new System.Drawing.Size(278, 52);
             this.btnUserSettings.TabIndex = 16;
@@ -147,7 +138,7 @@
             this.btnBackupArch.ForeColor = System.Drawing.Color.White;
             this.btnBackupArch.Image = global::Capstone.Properties.Resources.Back_up;
             this.btnBackupArch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBackupArch.Location = new System.Drawing.Point(0, 777);
+            this.btnBackupArch.Location = new System.Drawing.Point(0, 378);
             this.btnBackupArch.Name = "btnBackupArch";
             this.btnBackupArch.Size = new System.Drawing.Size(278, 52);
             this.btnBackupArch.TabIndex = 15;
@@ -158,54 +149,14 @@
             // 
             // dropPanelSales
             // 
-            this.dropPanelSales.Controls.Add(this.btnInventoryReport);
-            this.dropPanelSales.Controls.Add(this.btnSalesReport);
             this.dropPanelSales.Controls.Add(this.dropBtnReports);
             this.dropPanelSales.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dropPanelSales.Location = new System.Drawing.Point(0, 622);
+            this.dropPanelSales.Location = new System.Drawing.Point(0, 322);
             this.dropPanelSales.MaximumSize = new System.Drawing.Size(366, 155);
             this.dropPanelSales.MinimumSize = new System.Drawing.Size(366, 52);
             this.dropPanelSales.Name = "dropPanelSales";
-            this.dropPanelSales.Size = new System.Drawing.Size(366, 155);
+            this.dropPanelSales.Size = new System.Drawing.Size(366, 56);
             this.dropPanelSales.TabIndex = 14;
-            // 
-            // btnInventoryReport
-            // 
-            this.btnInventoryReport.BackColor = System.Drawing.Color.Transparent;
-            this.btnInventoryReport.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnInventoryReport.FlatAppearance.BorderSize = 0;
-            this.btnInventoryReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnInventoryReport.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnInventoryReport.ForeColor = System.Drawing.Color.White;
-            this.btnInventoryReport.Image = global::Capstone.Properties.Resources.Inventory;
-            this.btnInventoryReport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnInventoryReport.Location = new System.Drawing.Point(0, 104);
-            this.btnInventoryReport.Name = "btnInventoryReport";
-            this.btnInventoryReport.Size = new System.Drawing.Size(366, 52);
-            this.btnInventoryReport.TabIndex = 2;
-            this.btnInventoryReport.Text = "   Inventory Report";
-            this.btnInventoryReport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnInventoryReport.UseVisualStyleBackColor = false;
-            this.btnInventoryReport.Click += new System.EventHandler(this.btnInventoryReport_Click);
-            // 
-            // btnSalesReport
-            // 
-            this.btnSalesReport.BackColor = System.Drawing.Color.Transparent;
-            this.btnSalesReport.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnSalesReport.FlatAppearance.BorderSize = 0;
-            this.btnSalesReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSalesReport.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnSalesReport.ForeColor = System.Drawing.Color.White;
-            this.btnSalesReport.Image = global::Capstone.Properties.Resources.Sales;
-            this.btnSalesReport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSalesReport.Location = new System.Drawing.Point(0, 52);
-            this.btnSalesReport.Name = "btnSalesReport";
-            this.btnSalesReport.Size = new System.Drawing.Size(366, 52);
-            this.btnSalesReport.TabIndex = 1;
-            this.btnSalesReport.Text = "   Sales Report";
-            this.btnSalesReport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnSalesReport.UseVisualStyleBackColor = false;
-            this.btnSalesReport.Click += new System.EventHandler(this.button32_Click);
             // 
             // dropBtnReports
             // 
@@ -221,7 +172,7 @@
             this.dropBtnReports.Name = "dropBtnReports";
             this.dropBtnReports.Size = new System.Drawing.Size(366, 52);
             this.dropBtnReports.TabIndex = 0;
-            this.dropBtnReports.Text = "   Sales and Inventory Report";
+            this.dropBtnReports.Text = "   Reports";
             this.dropBtnReports.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.dropBtnReports.UseVisualStyleBackColor = false;
             this.dropBtnReports.Click += new System.EventHandler(this.dropBtnSales_Click_1);
@@ -236,7 +187,7 @@
             this.btnInventory.ForeColor = System.Drawing.Color.White;
             this.btnInventory.Image = global::Capstone.Properties.Resources.inventoryMonitor;
             this.btnInventory.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnInventory.Location = new System.Drawing.Point(0, 570);
+            this.btnInventory.Location = new System.Drawing.Point(0, 270);
             this.btnInventory.Name = "btnInventory";
             this.btnInventory.Size = new System.Drawing.Size(278, 52);
             this.btnInventory.TabIndex = 13;
@@ -255,7 +206,7 @@
             this.btnStockDel.ForeColor = System.Drawing.Color.White;
             this.btnStockDel.Image = global::Capstone.Properties.Resources.Stock_Delivery;
             this.btnStockDel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnStockDel.Location = new System.Drawing.Point(0, 518);
+            this.btnStockDel.Location = new System.Drawing.Point(0, 218);
             this.btnStockDel.Name = "btnStockDel";
             this.btnStockDel.Size = new System.Drawing.Size(278, 52);
             this.btnStockDel.TabIndex = 12;
@@ -266,74 +217,14 @@
             // 
             // dropPanelProducts
             // 
-            this.dropPanelProducts.Controls.Add(this.btnTransaction);
-            this.dropPanelProducts.Controls.Add(this.btnItems);
-            this.dropPanelProducts.Controls.Add(this.btnProd);
             this.dropPanelProducts.Controls.Add(this.dropBtnProducts);
             this.dropPanelProducts.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dropPanelProducts.Location = new System.Drawing.Point(0, 311);
+            this.dropPanelProducts.Location = new System.Drawing.Point(0, 161);
             this.dropPanelProducts.MaximumSize = new System.Drawing.Size(366, 207);
             this.dropPanelProducts.MinimumSize = new System.Drawing.Size(366, 52);
             this.dropPanelProducts.Name = "dropPanelProducts";
-            this.dropPanelProducts.Size = new System.Drawing.Size(366, 207);
+            this.dropPanelProducts.Size = new System.Drawing.Size(366, 57);
             this.dropPanelProducts.TabIndex = 10;
-            // 
-            // btnTransaction
-            // 
-            this.btnTransaction.BackColor = System.Drawing.Color.Transparent;
-            this.btnTransaction.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnTransaction.FlatAppearance.BorderSize = 0;
-            this.btnTransaction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTransaction.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnTransaction.ForeColor = System.Drawing.Color.White;
-            this.btnTransaction.Image = global::Capstone.Properties.Resources.Service;
-            this.btnTransaction.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnTransaction.Location = new System.Drawing.Point(0, 156);
-            this.btnTransaction.Name = "btnTransaction";
-            this.btnTransaction.Size = new System.Drawing.Size(366, 52);
-            this.btnTransaction.TabIndex = 3;
-            this.btnTransaction.Text = "   Transaction";
-            this.btnTransaction.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnTransaction.UseVisualStyleBackColor = false;
-            this.btnTransaction.Click += new System.EventHandler(this.btnServices_Click);
-            // 
-            // btnItems
-            // 
-            this.btnItems.BackColor = System.Drawing.Color.Transparent;
-            this.btnItems.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnItems.FlatAppearance.BorderSize = 0;
-            this.btnItems.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnItems.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnItems.ForeColor = System.Drawing.Color.White;
-            this.btnItems.Image = global::Capstone.Properties.Resources.Items;
-            this.btnItems.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnItems.Location = new System.Drawing.Point(0, 104);
-            this.btnItems.Name = "btnItems";
-            this.btnItems.Size = new System.Drawing.Size(366, 52);
-            this.btnItems.TabIndex = 2;
-            this.btnItems.Text = "   Items";
-            this.btnItems.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnItems.UseVisualStyleBackColor = false;
-            this.btnItems.Click += new System.EventHandler(this.btnItems_Click);
-            // 
-            // btnProd
-            // 
-            this.btnProd.BackColor = System.Drawing.Color.Transparent;
-            this.btnProd.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnProd.FlatAppearance.BorderSize = 0;
-            this.btnProd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnProd.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnProd.ForeColor = System.Drawing.Color.White;
-            this.btnProd.Image = global::Capstone.Properties.Resources.Products;
-            this.btnProd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnProd.Location = new System.Drawing.Point(0, 52);
-            this.btnProd.Name = "btnProd";
-            this.btnProd.Size = new System.Drawing.Size(366, 52);
-            this.btnProd.TabIndex = 1;
-            this.btnProd.Text = "   Products";
-            this.btnProd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnProd.UseVisualStyleBackColor = false;
-            this.btnProd.Click += new System.EventHandler(this.btnProd_Click);
             // 
             // dropBtnProducts
             // 
@@ -354,75 +245,16 @@
             this.dropBtnProducts.UseVisualStyleBackColor = false;
             this.dropBtnProducts.Click += new System.EventHandler(this.dropBtnProducts_Click_1);
             // 
-            // btnTranscHist
-            // 
-            this.btnTranscHist.BackColor = System.Drawing.Color.Transparent;
-            this.btnTranscHist.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnTranscHist.FlatAppearance.BorderSize = 0;
-            this.btnTranscHist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTranscHist.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnTranscHist.ForeColor = System.Drawing.Color.White;
-            this.btnTranscHist.Image = global::Capstone.Properties.Resources.Transaction_History;
-            this.btnTranscHist.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnTranscHist.Location = new System.Drawing.Point(0, 259);
-            this.btnTranscHist.Name = "btnTranscHist";
-            this.btnTranscHist.Size = new System.Drawing.Size(278, 52);
-            this.btnTranscHist.TabIndex = 8;
-            this.btnTranscHist.Text = "   Transaction History";
-            this.btnTranscHist.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnTranscHist.UseVisualStyleBackColor = false;
-            this.btnTranscHist.Click += new System.EventHandler(this.btnTranscHist_Click);
-            // 
             // dropPanelPayment
             // 
-            this.dropPanelPayment.Controls.Add(this.btnOrderStatus);
-            this.dropPanelPayment.Controls.Add(this.btnPayStatus);
             this.dropPanelPayment.Controls.Add(this.dropBtnPayment);
             this.dropPanelPayment.Dock = System.Windows.Forms.DockStyle.Top;
             this.dropPanelPayment.Location = new System.Drawing.Point(0, 104);
             this.dropPanelPayment.MaximumSize = new System.Drawing.Size(366, 155);
             this.dropPanelPayment.MinimumSize = new System.Drawing.Size(366, 52);
             this.dropPanelPayment.Name = "dropPanelPayment";
-            this.dropPanelPayment.Size = new System.Drawing.Size(366, 155);
+            this.dropPanelPayment.Size = new System.Drawing.Size(366, 57);
             this.dropPanelPayment.TabIndex = 7;
-            // 
-            // btnOrderStatus
-            // 
-            this.btnOrderStatus.BackColor = System.Drawing.Color.Transparent;
-            this.btnOrderStatus.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnOrderStatus.FlatAppearance.BorderSize = 0;
-            this.btnOrderStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOrderStatus.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnOrderStatus.ForeColor = System.Drawing.Color.White;
-            this.btnOrderStatus.Image = global::Capstone.Properties.Resources.orderStat;
-            this.btnOrderStatus.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnOrderStatus.Location = new System.Drawing.Point(0, 104);
-            this.btnOrderStatus.Name = "btnOrderStatus";
-            this.btnOrderStatus.Size = new System.Drawing.Size(366, 52);
-            this.btnOrderStatus.TabIndex = 2;
-            this.btnOrderStatus.Text = "   Order Status";
-            this.btnOrderStatus.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnOrderStatus.UseVisualStyleBackColor = false;
-            this.btnOrderStatus.Click += new System.EventHandler(this.btnOrderStatus_Click);
-            // 
-            // btnPayStatus
-            // 
-            this.btnPayStatus.BackColor = System.Drawing.Color.Transparent;
-            this.btnPayStatus.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnPayStatus.FlatAppearance.BorderSize = 0;
-            this.btnPayStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPayStatus.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnPayStatus.ForeColor = System.Drawing.Color.White;
-            this.btnPayStatus.Image = global::Capstone.Properties.Resources.payStat;
-            this.btnPayStatus.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPayStatus.Location = new System.Drawing.Point(0, 52);
-            this.btnPayStatus.Name = "btnPayStatus";
-            this.btnPayStatus.Size = new System.Drawing.Size(366, 52);
-            this.btnPayStatus.TabIndex = 1;
-            this.btnPayStatus.Text = "   Payment Status";
-            this.btnPayStatus.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnPayStatus.UseVisualStyleBackColor = false;
-            this.btnPayStatus.Click += new System.EventHandler(this.button25_Click);
             // 
             // dropBtnPayment
             // 
@@ -564,7 +396,6 @@
         private Panel panel2;
         private PictureBox pictureBox1;
         private Label label1;
-        private Label lblName;
         private System.Windows.Forms.Timer timerDrpBtnProducts;
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.Timer timerDrpBtnPayment;
@@ -577,20 +408,13 @@
         private Button btnInventory;
         private Button btnStockDel;
         private Panel dropPanelProducts;
-        private Button btnTranscHist;
         private Panel dropPanelPayment;
         private Button btnPatientR;
         private Button btnDashboard;
-        private Button btnSalesReport;
         private Button dropBtnReports;
-        private Button btnItems;
-        private Button btnProd;
         private Button dropBtnProducts;
-        private Button btnOrderStatus;
-        private Button btnPayStatus;
         private Button dropBtnPayment;
-        private Button btnTransaction;
-        private Button btnInventoryReport;
         private Panel panelLoad;
+        public Label lblName;
     }
 }

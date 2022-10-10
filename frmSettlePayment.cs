@@ -29,6 +29,7 @@ namespace Capstone
             InitializeComponent();
             cn = new SqlConnection(dbcon.MyConnection());
             frmC = frm;
+            dateTimePickerDueDate.Value = DateTime.Today.AddDays(3);
         }
 
         private void label5_Click(object sender, EventArgs e)
@@ -56,6 +57,7 @@ namespace Capstone
                 {
                     change = payment - sales;
                     changeText.Text = change.ToString("00.00");
+                    lblPaymentNotice.Visible = false;
                 }
             }
             catch (Exception ex)
@@ -75,8 +77,10 @@ namespace Capstone
                 Payment.Text = initialDepRequired.ToString();                
                 Payment.SelectAll();
                 Payment.Focus();
-            }
-            
+                
+                lblPaymentNotice.Text = "Ateast 50 percent: " + initialDepRequired.ToString("00.00");
+                lblPaymentNotice.Visible = true;
+            }            
         }
 
         private void txtPayment_TextChanged(object sender, EventArgs e)
@@ -95,12 +99,14 @@ namespace Capstone
                 {
                     if (pTerms == "Full")
                     {
+                        lblPaymentNotice.Visible = false;
                         computeChange(txtTotal, txtPayment, txtChange);
                     }
-                    else if (pTerms == "Deposit")
-                    {
-                        requiredDepositPercent(txtTotal, txtPayment);
-                    }
+                    //else if (pTerms == "Deposit")
+                    //{
+                    //    requiredDepositPercent(txtTotal, txtPayment);
+                        
+                    //}
                 }
             }
             catch (Exception ex)
@@ -178,6 +184,7 @@ namespace Capstone
             try
             {
                 string transacNum = lblTransacNo.Text;
+                //int transacNum = int.Parse(transacInput);
                 float payment = float.Parse(txtPayment.Text);//Initial_Deposit
                 float change = float.Parse(txtChange.Text);
                 string pMethod = comBoxMethodPayment.Text;
@@ -188,9 +195,11 @@ namespace Capstone
                 string dueDate = dateTimePickerDueDate.Value.ToShortDateString(); //Due_Date , Expected_Arrival
                 float remainBalance = 0; //remBalance
                 string status = "";
-                string claimDate = "";
-                checkPaymentTerms(status, pTerms, total, payment, remainBalance);
-                checkOrderIfDeposit(status, pTerms, claimDate);
+                string claimDate = DateTime.Today.AddDays(3).ToShortDateString();
+                string releaseBy = "Undefined";
+                string finalDiscount = frmC.lblDiscount.Text;
+                checkPaymentTerms(out status, pTerms, total, payment, out remainBalance);
+                
                 //frmCashier frmC = new frmCashier();
                 if (txtChange.Text == String.Empty)
                 {
@@ -203,35 +212,74 @@ namespace Capstone
                     {
                         cn.Open();//Set Quantity
                         cm = new SqlCommand("UPDATE tblItem SET Quantity = Quantity - " + int.Parse(frmC.dataGridViewCart.Rows[i].Cells[4].Value.ToString()) + " WHERE Item_ID LIKE '" + frmC.dataGridViewCart.Rows[i].Cells[12].Value.ToString() + "'", cn);
+                        
                         cm.ExecuteNonQuery();
                         cn.Close();
 
                         cn.Open();
-                        cm = new SqlCommand("UPDATE tblCart SET Payment = " + payment.ToString("00.00") + ", Change = " + change.ToString("00.00") + ", PMode = '" + pMethod + "', PTerms = '" + pTerms + "', Cashier = '" + cashier + "', Customer = '" + customer + "', Status = 'Sold' WHERE num LIKE '" + frmC.dataGridViewCart.Rows[i].Cells[11].Value.ToString() + "'", cn);
+                        cm = new SqlCommand("UPDATE tblCart SET Payment = " + payment + ", Change = " + change + ", PMode = '" + pMethod + "', PTerms = '" + pTerms + "', Cashier = '" + cashier + "', Customer = '" + customer + "', Status = 'Sold', Discount_Per_Trans = '" + finalDiscount + "' WHERE num LIKE '" + frmC.dataGridViewCart.Rows[i].Cells[11].Value.ToString() + "'", cn);
                         cm.ExecuteNonQuery();
                         cn.Close();
 
-                        cn.Open();//Set Customer, Expected_Arrival,   Status = VariableMethod, Release By = 'Undefined', Date_Claimed = 'Not Yet' NULL 
-                        cm = new SqlCommand("UPDATE tblOrderStatus SET Transaction_No = " + transacNum + ", Customer = " + customer + ", Expected_Arrival = " + dueDate + " , Status = " + status + ", Date_Claimed = " + claimDate + ", Release By = 'Undefined' WHERE Cart_ID LIKE '" + frmC.dataGridViewCart.Rows[i].Cells[11].Value.ToString() + "'", cn);
+                        checkOrderIfDeposit(out status, pTerms, out claimDate);
+                        //cn.Open();//Set Customer, Expected_Arrival,   Status = VariableMethod, Release By = 'Undefined', Date_Claimed = 'Not Yet' NULL 
+                        //cm = new SqlCommand("UPDATE tblOrderStatus SET Transaction_No = @TransactionNo, Customer = '" + customer + "', Expected_Arrival = " + DateTime.Parse(dueDate).ToShortDateString() + " , Status = '" + status + "', Date_Claimed = " + DateTime.Parse(claimDate).ToShortDateString() + ", Release_By = 'Undefined' WHERE Cart_ID LIKE '" + frmC.dataGridViewCart.Rows[i].Cells[11].Value.ToString() + "'", cn);
+                        //cm.Parameters.AddWithValue("@TransactionNo", lblTransacNo.Text); 
+                        //cm.ExecuteNonQuery();
+                        //cn.Close();
+
+                        cn.Open();
+                        cm = new SqlCommand("INSERT INTO tblOrderStatus (Transaction_No, Customer, Expected_Arrival, Status, Date_Claimed, Release_By, Cart_ID) VALUES(@Transaction_No, @Customer, @Expected_Arrival, @Status, @Date_Claimed, @Release_By, @Cart_ID)", cn);
+                        cm.Parameters.AddWithValue("@Transaction_No", lblTransacNo.Text);
+                        cm.Parameters.AddWithValue("@Customer", customer);
+                        cm.Parameters.AddWithValue("@Expected_Arrival", DateTime.Parse(dueDate).ToShortDateString());
+                        cm.Parameters.AddWithValue("@Status", status);
+                        cm.Parameters.AddWithValue("@Date_Claimed", DateTime.Parse(claimDate).ToShortDateString());
+                        cm.Parameters.AddWithValue("@Release_By", releaseBy);
+                        cm.Parameters.AddWithValue("@Cart_ID", frmC.dataGridViewCart.Rows[i].Cells[11].Value.ToString());
                         cm.ExecuteNonQuery();
                         cn.Close();
 
                     }
 
-                    cn.Open();//Set Customer, Total_Payment, Initial_Deposit, Due_Date,  Rem_Balance = VariableMethod, Status = 'Pending'
-                    cm = new SqlCommand("UPDATE tblPaymentStatus SET Transaction_No = " + transacNum + ", Customer = " + customer + ", Total_Payment = " + total.ToString("00.00") + ", Initial_Deposit = " + payment.ToString("00.00") + ", Due_Date = " + dueDate + " , Rem_Balance = " + remainBalance + ", Status = " + status + " WHERE Transaction_No LIKE '" + transacNum + "'", cn);
+                    cn.Open();
+                    cm = new SqlCommand("INSERT INTO tblPaymentStatus (Transaction_No, Customer, Total_Payment, Initial_Deposit, Due_Date, Rem_Balance, Status, Discount_Per_Trans) VALUES(@Transaction_No, @Customer, @Total_Payment, @Initial_Deposit, @Due_Date, @Rem_Balance, @Status, @Discount_Per_Trans)", cn);
+                    cm.Parameters.AddWithValue("@Transaction_No", transacNum);
+                    cm.Parameters.AddWithValue("@Customer", customer);
+                    cm.Parameters.AddWithValue("@Total_Payment", total);
+                    cm.Parameters.AddWithValue("@Initial_Deposit", payment);
+                    cm.Parameters.AddWithValue("@Due_Date", DateTime.Parse(dueDate).ToShortDateString());
+                    cm.Parameters.AddWithValue("@Rem_Balance", remainBalance);
+                    cm.Parameters.AddWithValue("@Status", status);
+                    cm.Parameters.AddWithValue("@Discount_Per_Trans", finalDiscount);
                     cm.ExecuteNonQuery();
                     cn.Close();
 
+                    string statusSA = "Sold";
                     cn.Open();
-                    cm = new SqlCommand("UPDATE tblServiceAvailed SET Transaction_No = " + transacNum + ", Customer = " + customer + ", Status = 'Sold'  WHERE Transaction_No LIKE '" + transacNum + "'", cn);
+                    cm = new SqlCommand("INSERT INTO tblServiceAvailed (Transaction_No, Customer, Status) VALUES(@Transaction_No, @Customer, @Status)", cn);
+                    cm.Parameters.AddWithValue("@Transaction_No", lblTransacNo.Text);
+                    cm.Parameters.AddWithValue("@Customer", customer);
+                    cm.Parameters.AddWithValue("@Status", statusSA);
                     cm.ExecuteNonQuery();
                     cn.Close();
+
+                    //cn.Open();//Set Customer, Total_Payment, Initial_Deposit, Due_Date,  Rem_Balance = VariableMethod, Status = 'Pending'
+                    //cm = new SqlCommand("UPDATE tblPaymentStatus SET Transaction_No = @TransactionNo, Customer = '" + customer + "', Total_Payment = " + total + ", Initial_Deposit = " + payment + ", Due_Date = " + DateTime.Parse(dueDate).ToShortDateString() + " , Rem_Balance = " + remainBalance + ", Status = '" + status + "' WHERE Transaction_No LIKE @TransactionNo", cn);
+                    //cm.Parameters.AddWithValue("@TransactionNo", lblTransacNo.Text); 
+                    //cm.ExecuteNonQuery();
+                    //cn.Close();
+
+                    //cn.Open();
+                    //cm = new SqlCommand("UPDATE tblServiceAvailed SET Transaction_No = @TransactionNo, Customer = '" + customer + "', Status = 'Sold'  WHERE Transaction_No LIKE @TransactionNo", cn);
+                    //cm.Parameters.AddWithValue("@TransactionNo", lblTransacNo.Text); 
+                    //cm.ExecuteNonQuery();
+                    //cn.Close();
 
                     MessageBox.Show("Payment succesfully saved", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     classGenerateID.GenerateTransactionNo(frmC.lblTransactionNo);
                     //frmC.GenerateTransactionNo();
-                    classLoadData.LoadCart(frmC.dataGridViewCart, frmC.lblDiscount, frmC.lblSalesTotal, frmC.lblPayment, frmC.lblNetTotal, frmC.btnSettlePayment, frmC.btnAddDiscount, frmC.btnClearCart, frmC.txtSearch);
+                    classLoadData.LoadCart(frmC.dataGridViewCart, frmC.lblDiscount, frmC.lblSalesTotal, frmC.lblPayment, frmC.lblNetTotal, frmC.btnSettlePayment, frmC.btnAddDiscount, frmC.btnClearCart, frmC.txtSearch, frmC.dataGridViewService);
                     //frmC.LoadCart();
                     this.Dispose();
                 }
@@ -243,46 +291,55 @@ namespace Capstone
                 return;
             }
         }
-        public void checkOrderIfDeposit(string statusValue, string paymentTerms, string dateClaim)
+        public void checkOrderIfDeposit(out string statusValue, string paymentTerms, out string dateClaim)
         {
             try
             {
+                statusValue = "";
+                dateClaim = "";
                 if (paymentTerms == "Full")
                 {
-                    statusValue = "Claimed";
+                    statusValue = "In The Lab";
                     dateClaim = DateTime.Now.ToShortDateString();
                 }
                 else if (paymentTerms == "Deposit")
                 {
                     statusValue = "In The Lab";
-                    dateClaim = "Not Yet";
+                    dateClaim = DateTime.Today.AddDays(3).ToShortDateString();
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                statusValue = "In The Lab";
+                dateClaim = DateTime.Today.AddDays(3).ToShortDateString();
                 return;
             }
         } 
 
-        public void checkPaymentTerms(string statusValue, string paymentTerms, float total, float payment, float remBalance)
+        public void checkPaymentTerms(out string statusValue, string paymentTerms, float total, float payment, out float remBalance)
         {
             try
             {
+                statusValue = "";                
                 remBalance = total - payment;
                 if (paymentTerms == "Full")
                 {
                     statusValue = "Settled";
+                    remBalance = 0;
                 }
                 else if (paymentTerms == "Deposit")
                 {
                     statusValue = "Pending";
+                    remBalance = total - payment;
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                statusValue = "Pending";
+                remBalance = total - payment;
+                
             }            
         }
         
@@ -339,9 +396,18 @@ namespace Capstone
 
         private void btnThousand_Click(object sender, EventArgs e)
         {
-            txtPayment.Focus();
-            num = int.Parse(txtPayment.Text) + 1000;
-            txtPayment.Text = num.ToString();
+            try
+            {
+                txtPayment.Focus();
+                num = int.Parse(txtPayment.Text) + 1000;
+                txtPayment.Text = num.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
+            }
+            
         }
 
         private void panel2_MouseDown(object sender, MouseEventArgs e)
@@ -383,15 +449,19 @@ namespace Capstone
         {
             if (comBoxPaymentTerms.SelectedIndex == 0)
             {
-                panel1.Size = new Size(539, 408);
-                this.Size = new Size(539, 1055);
-                panelDepositDueDate.Visible = true;
+                panel1.Size = new Size(539, 302);
+                this.Size = new Size(539, 665);
+                panelDepositDueDate.Visible = false;
+                lblChangeDueDate.Visible = false;
+                lblPaymentNotice.Visible = false;
             }
             else
             {
-                panel1.Size = new Size(539, 246);
-                this.Size = new Size(539, 939);
-                panelDepositDueDate.Visible = false;
+                panel1.Size = new Size(539, 436);
+                this.Size = new Size(539, 812);
+                panelDepositDueDate.Visible = true;
+                lblChangeDueDate.Visible = true;
+                txtChange.Text = "0";
             }
         }
 
@@ -407,11 +477,13 @@ namespace Capstone
             {
                 if (double.Parse(txtPayment.Text) < double.Parse(txtTotal.Text))
                 {
-                    MessageBox.Show("Payment must be higher than Total amount", title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txtPayment.Focus();
+                    //MessageBox.Show("Payment must be higher than Total amount", title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    lblPaymentNotice.Text = "Payment must be higher than Total amount";
+                    lblPaymentNotice.Visible = true;
                 }
                 else
                 {
+                    lblPaymentNotice.Visible = false;
                     computeChange(txtTotal, txtPayment, txtChange);
                 }
                 

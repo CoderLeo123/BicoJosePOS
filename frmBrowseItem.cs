@@ -32,7 +32,7 @@ namespace Capstone
             classLoadData.LoadRecordsBrowse(dataGridViewBrowse, txtSearch);
             //LoadRecordsBrowse();
             this.frmC = frmC;
-            classLoadData.LoadCart(frmC.dataGridViewCart, frmC.lblDiscount, frmC.lblSalesTotal, frmC.lblPayment, frmC.lblNetTotal, frmC.btnSettlePayment, frmC.btnAddDiscount, frmC.btnClearCart, frmC.txtSearch);
+            classLoadData.LoadCart(frmC.dataGridViewCart, frmC.lblDiscount, frmC.lblSalesTotal, frmC.lblPayment, frmC.lblNetTotal, frmC.btnSettlePayment, frmC.btnAddDiscount, frmC.btnClearCart, frmC.txtSearch, frmC.dataGridViewService);
             //LoadCart();
         }
        
@@ -45,10 +45,14 @@ namespace Capstone
         {
             try
             {
+                string servTotal = "";
+                classLoadData.LoadRecordServiceAvail(frmC.dataGridViewService, out servTotal);
                 Boolean hasRecord = false;
                 int i = 0;
                 double total = 0;
                 double discount = 0;
+                double discountResult = 0;
+                double addToCurrentTotal = double.Parse(frmC.lblSalesTotal.Text);
                 frmC.dataGridViewCart.Rows.Clear();
                 cn.Open();
                 cm = new SqlCommand("SELECT * from ViewCartStockItem WHERE Description Like '%" + frmC.txtSearch.Text + "%' AND Status LIKE 'Cart'", cn);
@@ -72,7 +76,7 @@ namespace Capstone
                         }
                     }
                     total += Double.Parse(dr[5].ToString());
-                    discount += Double.Parse(dr[11].ToString());
+                    discount = Double.Parse(dr[11].ToString());
 
                                              // 0-Num                2-EXPIRATION / 2-Expiration_Date     4-QUANTITY / 3-Quantity              6-TOTAL / 5-TOTAL                                                                                                       10-CartID / 12-Num
                     i += 1;                 // 1-DESCRIPTION / 1-Description           3-PRICE / 4-Price                 5-DISCOUNT / 11-Discount                      7-Plus                         8-Minus                 9-Delete              10-StockID / 0-Stock_Num           10-ItemID / 9-Item_ID
@@ -81,7 +85,9 @@ namespace Capstone
                 }
                 dr.Close();
                 cn.Close();
-                frmC.lblDiscount.Text = discount.ToString("#,##0.00");
+                total += double.Parse(servTotal);
+                classLoadData.ComputeDiscount(discount, total, out discountResult);
+                frmC.lblDiscount.Text = discountResult.ToString("#,##0.00");
                 frmC.lblSalesTotal.Text = total.ToString("#,##0.00");
                 classCompute.GetCartTotal(frmC.lblDiscount, frmC.lblSalesTotal, frmC.lblPayment, frmC.lblNetTotal);
                 //frmC.GetCartTotal();
