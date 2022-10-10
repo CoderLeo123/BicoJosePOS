@@ -63,6 +63,17 @@
             this.DeleteProduct = new System.Windows.Forms.DataGridViewImageColumn();
             this.NumProducts = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewItems = new System.Windows.Forms.DataGridView();
+            this.NumItems = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DescriptionItems = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TypeItems = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductItems = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PriceItems = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Classification = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EditItems = new System.Windows.Forms.DataGridViewImageColumn();
+            this.DeleteItems = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnAddItem = new System.Windows.Forms.Button();
@@ -94,17 +105,6 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.txtSearchService = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.NumItems = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DescriptionItems = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TypeItems = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProductItems = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PriceItems = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Classification = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EditItems = new System.Windows.Forms.DataGridViewImageColumn();
-            this.DeleteItems = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel14.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
@@ -295,7 +295,7 @@
             this.dataGridViewType.RowHeadersVisible = false;
             this.dataGridViewType.RowHeadersWidth = 51;
             this.dataGridViewType.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dataGridViewType.RowTemplate.Height = 29;
+            this.dataGridViewType.RowTemplate.Height = 35;
             this.dataGridViewType.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewType.Size = new System.Drawing.Size(774, 286);
             this.dataGridViewType.TabIndex = 6;
@@ -411,7 +411,7 @@
             this.dataGridViewProduct.RowHeadersVisible = false;
             this.dataGridViewProduct.RowHeadersWidth = 51;
             this.dataGridViewProduct.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dataGridViewProduct.RowTemplate.Height = 29;
+            this.dataGridViewProduct.RowTemplate.Height = 35;
             this.dataGridViewProduct.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewProduct.Size = new System.Drawing.Size(527, 286);
             this.dataGridViewProduct.TabIndex = 5;
@@ -514,11 +514,108 @@
             this.dataGridViewItems.RowHeadersVisible = false;
             this.dataGridViewItems.RowHeadersWidth = 51;
             this.dataGridViewItems.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dataGridViewItems.RowTemplate.Height = 29;
+            this.dataGridViewItems.RowTemplate.Height = 35;
             this.dataGridViewItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewItems.Size = new System.Drawing.Size(1301, 394);
             this.dataGridViewItems.TabIndex = 3;
             this.dataGridViewItems.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewItems_CellContentClick);
+            // 
+            // NumItems
+            // 
+            this.NumItems.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.NumItems.Frozen = true;
+            this.NumItems.HeaderText = "#";
+            this.NumItems.MinimumWidth = 6;
+            this.NumItems.Name = "NumItems";
+            this.NumItems.ReadOnly = true;
+            this.NumItems.Width = 61;
+            // 
+            // DescriptionItems
+            // 
+            this.DescriptionItems.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.DescriptionItems.HeaderText = "ITEM DESCRIPTION";
+            this.DescriptionItems.MinimumWidth = 6;
+            this.DescriptionItems.Name = "DescriptionItems";
+            this.DescriptionItems.ReadOnly = true;
+            // 
+            // TypeItems
+            // 
+            this.TypeItems.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.TypeItems.HeaderText = "TYPE";
+            this.TypeItems.MinimumWidth = 6;
+            this.TypeItems.Name = "TypeItems";
+            this.TypeItems.ReadOnly = true;
+            this.TypeItems.Width = 105;
+            // 
+            // ProductItems
+            // 
+            this.ProductItems.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.ProductItems.HeaderText = "PRODUCT";
+            this.ProductItems.MinimumWidth = 6;
+            this.ProductItems.Name = "ProductItems";
+            this.ProductItems.ReadOnly = true;
+            this.ProductItems.Width = 169;
+            // 
+            // PriceItems
+            // 
+            this.PriceItems.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.PriceItems.HeaderText = "PRICE";
+            this.PriceItems.MinimumWidth = 6;
+            this.PriceItems.Name = "PriceItems";
+            this.PriceItems.ReadOnly = true;
+            this.PriceItems.Width = 115;
+            // 
+            // Quantity
+            // 
+            this.Quantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Quantity.HeaderText = "QTY";
+            this.Quantity.MinimumWidth = 6;
+            this.Quantity.Name = "Quantity";
+            this.Quantity.ReadOnly = true;
+            this.Quantity.Width = 95;
+            // 
+            // Classification
+            // 
+            this.Classification.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Classification.HeaderText = "CLASSIFICATION";
+            this.Classification.MinimumWidth = 6;
+            this.Classification.Name = "Classification";
+            this.Classification.ReadOnly = true;
+            this.Classification.Width = 248;
+            // 
+            // ID
+            // 
+            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ID.HeaderText = "";
+            this.ID.MinimumWidth = 6;
+            this.ID.Name = "ID";
+            this.ID.Width = 21;
+            // 
+            // EditItems
+            // 
+            this.EditItems.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.EditItems.HeaderText = "";
+            this.EditItems.Image = global::Capstone.Properties.Resources.Edit;
+            this.EditItems.MinimumWidth = 6;
+            this.EditItems.Name = "EditItems";
+            this.EditItems.Width = 6;
+            // 
+            // DeleteItems
+            // 
+            this.DeleteItems.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.DeleteItems.HeaderText = "";
+            this.DeleteItems.Image = global::Capstone.Properties.Resources._Delete;
+            this.DeleteItems.MinimumWidth = 6;
+            this.DeleteItems.Name = "DeleteItems";
+            this.DeleteItems.Width = 6;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.HeaderText = "TYPE ID";
+            this.dataGridViewTextBoxColumn5.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.Visible = false;
+            this.dataGridViewTextBoxColumn5.Width = 125;
             // 
             // panel8
             // 
@@ -739,7 +836,7 @@
             this.dataGridViewService.RowHeadersVisible = false;
             this.dataGridViewService.RowHeadersWidth = 51;
             this.dataGridViewService.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dataGridViewService.RowTemplate.Height = 29;
+            this.dataGridViewService.RowTemplate.Height = 35;
             this.dataGridViewService.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewService.Size = new System.Drawing.Size(1301, 410);
             this.dataGridViewService.TabIndex = 9;
@@ -875,103 +972,6 @@
             this.label2.Size = new System.Drawing.Size(189, 41);
             this.label2.TabIndex = 4;
             this.label2.Text = "Services List";
-            // 
-            // NumItems
-            // 
-            this.NumItems.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.NumItems.Frozen = true;
-            this.NumItems.HeaderText = "#";
-            this.NumItems.MinimumWidth = 6;
-            this.NumItems.Name = "NumItems";
-            this.NumItems.ReadOnly = true;
-            this.NumItems.Width = 61;
-            // 
-            // DescriptionItems
-            // 
-            this.DescriptionItems.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.DescriptionItems.HeaderText = "ITEM DESCRIPTION";
-            this.DescriptionItems.MinimumWidth = 6;
-            this.DescriptionItems.Name = "DescriptionItems";
-            this.DescriptionItems.ReadOnly = true;
-            // 
-            // TypeItems
-            // 
-            this.TypeItems.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.TypeItems.HeaderText = "TYPE";
-            this.TypeItems.MinimumWidth = 6;
-            this.TypeItems.Name = "TypeItems";
-            this.TypeItems.ReadOnly = true;
-            this.TypeItems.Width = 105;
-            // 
-            // ProductItems
-            // 
-            this.ProductItems.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.ProductItems.HeaderText = "PRODUCT";
-            this.ProductItems.MinimumWidth = 6;
-            this.ProductItems.Name = "ProductItems";
-            this.ProductItems.ReadOnly = true;
-            this.ProductItems.Width = 169;
-            // 
-            // PriceItems
-            // 
-            this.PriceItems.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.PriceItems.HeaderText = "PRICE";
-            this.PriceItems.MinimumWidth = 6;
-            this.PriceItems.Name = "PriceItems";
-            this.PriceItems.ReadOnly = true;
-            this.PriceItems.Width = 115;
-            // 
-            // Quantity
-            // 
-            this.Quantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Quantity.HeaderText = "QTY";
-            this.Quantity.MinimumWidth = 6;
-            this.Quantity.Name = "Quantity";
-            this.Quantity.ReadOnly = true;
-            this.Quantity.Width = 95;
-            // 
-            // Classification
-            // 
-            this.Classification.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Classification.HeaderText = "CLASSIFICATION";
-            this.Classification.MinimumWidth = 6;
-            this.Classification.Name = "Classification";
-            this.Classification.ReadOnly = true;
-            this.Classification.Width = 248;
-            // 
-            // ID
-            // 
-            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ID.HeaderText = "";
-            this.ID.MinimumWidth = 6;
-            this.ID.Name = "ID";
-            this.ID.Width = 21;
-            // 
-            // EditItems
-            // 
-            this.EditItems.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.EditItems.HeaderText = "";
-            this.EditItems.Image = global::Capstone.Properties.Resources.Edit;
-            this.EditItems.MinimumWidth = 6;
-            this.EditItems.Name = "EditItems";
-            this.EditItems.Width = 6;
-            // 
-            // DeleteItems
-            // 
-            this.DeleteItems.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.DeleteItems.HeaderText = "";
-            this.DeleteItems.Image = global::Capstone.Properties.Resources._Delete;
-            this.DeleteItems.MinimumWidth = 6;
-            this.DeleteItems.Name = "DeleteItems";
-            this.DeleteItems.Width = 6;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.HeaderText = "TYPE ID";
-            this.dataGridViewTextBoxColumn5.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.Visible = false;
-            this.dataGridViewTextBoxColumn5.Width = 125;
             // 
             // frmProductsList
             // 

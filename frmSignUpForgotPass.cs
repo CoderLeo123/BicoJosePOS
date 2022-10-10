@@ -28,6 +28,11 @@ namespace Capstone
             InitializeComponent();
             cn = new SqlConnection(dbcon.MyConnection());
             classGenerateID.GenerateUserID(lblUserID);
+            txtPasswordCreate.PasswordChar = '●';
+            txtConfirmPass.PasswordChar = '●';
+            txtConfirmNewPass.PasswordChar = '●'; 
+            txtNewPassword.PasswordChar = '●'; 
+            
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
@@ -190,11 +195,12 @@ namespace Capstone
             frmLogin frm = new frmLogin();
             frm.txtUsername.Focus();
             frm.ShowDialog();
-            this.Close();
+            this.Close(); this.Dispose();
         }
 
         private void linkLabelLogin_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            this.Dispose();
             frmLogin frm = new frmLogin();
             frm.txtUsername.Focus();
             frm.ShowDialog();
@@ -221,7 +227,39 @@ namespace Capstone
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Dispose();
+            frmLogin frm = new frmLogin();
+            frm.txtUsername.Focus();
+            frm.ShowDialog();
+        }
+
+        private void checkBoxShowPass_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxShowPass.Checked == true)
+            {
+                txtPasswordCreate.PasswordChar = '\0';
+                txtConfirmPass.PasswordChar = '\0';
+                
+            }else if (checkBoxShowPass.Checked == false)
+            {
+                txtPasswordCreate.PasswordChar = '●';
+                txtConfirmPass.PasswordChar = '●';
+            }
+        }
+
+        private void checkBoxShowPassForgot_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxShowPassForgot.Checked == true)
+            {
+                txtConfirmNewPass.PasswordChar = '\0';
+                txtNewPassword.PasswordChar = '\0';
+            }
+            else if (checkBoxShowPassForgot.Checked == false)
+            {
+                txtConfirmNewPass.PasswordChar = '●';
+                txtNewPassword.PasswordChar = '●';
+                
+            }
         }
     }
 }

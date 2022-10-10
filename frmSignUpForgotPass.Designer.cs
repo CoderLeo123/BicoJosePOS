@@ -241,6 +241,7 @@
             this.checkBoxShowPass.TabIndex = 75;
             this.checkBoxShowPass.Text = "Show Password";
             this.checkBoxShowPass.UseVisualStyleBackColor = true;
+            this.checkBoxShowPass.CheckedChanged += new System.EventHandler(this.checkBoxShowPass_CheckedChanged);
             // 
             // txtLastN
             // 
@@ -257,6 +258,7 @@
             this.txtConfirmPass.BackColor = System.Drawing.Color.LightCyan;
             this.txtConfirmPass.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtConfirmPass.Location = new System.Drawing.Point(347, 262);
+            this.txtConfirmPass.MaxLength = 14;
             this.txtConfirmPass.Name = "txtConfirmPass";
             this.txtConfirmPass.PlaceholderText = "Confirm";
             this.txtConfirmPass.Size = new System.Drawing.Size(260, 43);
@@ -268,6 +270,7 @@
             this.txtPasswordCreate.BackColor = System.Drawing.Color.LightCyan;
             this.txtPasswordCreate.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtPasswordCreate.Location = new System.Drawing.Point(13, 262);
+            this.txtPasswordCreate.MaxLength = 14;
             this.txtPasswordCreate.Name = "txtPasswordCreate";
             this.txtPasswordCreate.PlaceholderText = "Password";
             this.txtPasswordCreate.Size = new System.Drawing.Size(260, 43);
@@ -295,6 +298,7 @@
             this.txtUserNameCreate.BackColor = System.Drawing.Color.LightCyan;
             this.txtUserNameCreate.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtUserNameCreate.Location = new System.Drawing.Point(13, 176);
+            this.txtUserNameCreate.MaxLength = 14;
             this.txtUserNameCreate.Name = "txtUserNameCreate";
             this.txtUserNameCreate.PlaceholderText = "Username";
             this.txtUserNameCreate.Size = new System.Drawing.Size(329, 43);
@@ -313,10 +317,10 @@
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.panelForgotPass);
-            this.tabPage2.Location = new System.Drawing.Point(4, 29);
+            this.tabPage2.Location = new System.Drawing.Point(4, 46);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(639, 542);
+            this.tabPage2.Size = new System.Drawing.Size(639, 525);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Forgot Password";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -335,7 +339,7 @@
             this.panelForgotPass.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelForgotPass.Location = new System.Drawing.Point(3, 3);
             this.panelForgotPass.Name = "panelForgotPass";
-            this.panelForgotPass.Size = new System.Drawing.Size(633, 536);
+            this.panelForgotPass.Size = new System.Drawing.Size(633, 519);
             this.panelForgotPass.TabIndex = 0;
             // 
             // lblUserIDForgot
@@ -367,6 +371,7 @@
             this.txtUserNameForgot.BackColor = System.Drawing.Color.LightCyan;
             this.txtUserNameForgot.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtUserNameForgot.Location = new System.Drawing.Point(19, 91);
+            this.txtUserNameForgot.MaxLength = 14;
             this.txtUserNameForgot.Name = "txtUserNameForgot";
             this.txtUserNameForgot.PlaceholderText = "Username";
             this.txtUserNameForgot.Size = new System.Drawing.Size(329, 43);
@@ -403,12 +408,14 @@
             this.checkBoxShowPassForgot.TabIndex = 83;
             this.checkBoxShowPassForgot.Text = "Show Password";
             this.checkBoxShowPassForgot.UseVisualStyleBackColor = true;
+            this.checkBoxShowPassForgot.CheckedChanged += new System.EventHandler(this.checkBoxShowPassForgot_CheckedChanged);
             // 
             // txtConfirmNewPass
             // 
             this.txtConfirmNewPass.BackColor = System.Drawing.Color.LightCyan;
             this.txtConfirmNewPass.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtConfirmNewPass.Location = new System.Drawing.Point(353, 195);
+            this.txtConfirmNewPass.MaxLength = 14;
             this.txtConfirmNewPass.Name = "txtConfirmNewPass";
             this.txtConfirmNewPass.PlaceholderText = "Confirm";
             this.txtConfirmNewPass.Size = new System.Drawing.Size(260, 43);
@@ -419,6 +426,7 @@
             this.txtNewPassword.BackColor = System.Drawing.Color.LightCyan;
             this.txtNewPassword.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtNewPassword.Location = new System.Drawing.Point(19, 195);
+            this.txtNewPassword.MaxLength = 14;
             this.txtNewPassword.Name = "txtNewPassword";
             this.txtNewPassword.PlaceholderText = "New Password";
             this.txtNewPassword.Size = new System.Drawing.Size(260, 43);

@@ -39,6 +39,7 @@
             this.btnLogin = new System.Windows.Forms.Button();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.txtUsername = new System.Windows.Forms.TextBox();
+            this.checkBoxShowPassL = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -71,6 +72,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.LightYellow;
+            this.panel2.Controls.Add(this.checkBoxShowPassL);
             this.panel2.Controls.Add(this.linkLabelCreateAccount);
             this.panel2.Controls.Add(this.lblPasswordNotice);
             this.panel2.Controls.Add(this.lblUserNotice);
@@ -82,14 +84,14 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 279);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(408, 384);
+            this.panel2.Size = new System.Drawing.Size(408, 381);
             this.panel2.TabIndex = 1;
             // 
             // linkLabelCreateAccount
             // 
             this.linkLabelCreateAccount.AutoSize = true;
             this.linkLabelCreateAccount.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.linkLabelCreateAccount.Location = new System.Drawing.Point(112, 344);
+            this.linkLabelCreateAccount.Location = new System.Drawing.Point(3, 334);
             this.linkLabelCreateAccount.Name = "linkLabelCreateAccount";
             this.linkLabelCreateAccount.Size = new System.Drawing.Size(170, 31);
             this.linkLabelCreateAccount.TabIndex = 71;
@@ -125,7 +127,7 @@
             // 
             this.linkLabelForgotP.AutoSize = true;
             this.linkLabelForgotP.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.linkLabelForgotP.Location = new System.Drawing.Point(112, 180);
+            this.linkLabelForgotP.Location = new System.Drawing.Point(222, 334);
             this.linkLabelForgotP.Name = "linkLabelForgotP";
             this.linkLabelForgotP.Size = new System.Drawing.Size(183, 31);
             this.linkLabelForgotP.TabIndex = 68;
@@ -141,7 +143,7 @@
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnExit.ForeColor = System.Drawing.Color.White;
-            this.btnExit.Location = new System.Drawing.Point(120, 289);
+            this.btnExit.Location = new System.Drawing.Point(120, 282);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(153, 49);
             this.btnExit.TabIndex = 67;
@@ -157,7 +159,7 @@
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnLogin.ForeColor = System.Drawing.Color.White;
-            this.btnLogin.Location = new System.Drawing.Point(95, 225);
+            this.btnLogin.Location = new System.Drawing.Point(95, 218);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(200, 58);
             this.btnLogin.TabIndex = 66;
@@ -185,11 +187,23 @@
             this.txtUsername.Size = new System.Drawing.Size(305, 43);
             this.txtUsername.TabIndex = 64;
             // 
+            // checkBoxShowPassL
+            // 
+            this.checkBoxShowPassL.AutoSize = true;
+            this.checkBoxShowPassL.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.checkBoxShowPassL.Location = new System.Drawing.Point(50, 180);
+            this.checkBoxShowPassL.Name = "checkBoxShowPassL";
+            this.checkBoxShowPassL.Size = new System.Drawing.Size(168, 32);
+            this.checkBoxShowPassL.TabIndex = 72;
+            this.checkBoxShowPassL.Text = "Show Password";
+            this.checkBoxShowPassL.UseVisualStyleBackColor = true;
+            this.checkBoxShowPassL.CheckedChanged += new System.EventHandler(this.checkBoxShowPassL_CheckedChanged);
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 37F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(408, 663);
+            this.ClientSize = new System.Drawing.Size(408, 660);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -219,5 +233,6 @@
         public Label lblPasswordNotice;
         public Label lblUserNotice;
         public LinkLabel linkLabelCreateAccount;
+        private CheckBox checkBoxShowPassL;
     }
 }

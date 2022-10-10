@@ -298,7 +298,7 @@
             this.lblPaymentNotice.AutoSize = true;
             this.lblPaymentNotice.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblPaymentNotice.ForeColor = System.Drawing.Color.Red;
-            this.lblPaymentNotice.Location = new System.Drawing.Point(278, 202);
+            this.lblPaymentNotice.Location = new System.Drawing.Point(193, 202);
             this.lblPaymentNotice.Name = "lblPaymentNotice";
             this.lblPaymentNotice.Size = new System.Drawing.Size(150, 28);
             this.lblPaymentNotice.TabIndex = 18;

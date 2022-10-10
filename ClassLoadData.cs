@@ -372,6 +372,7 @@ namespace Capstone
             {
                 string servTotal = "";
                 LoadRecordServiceAvail(dgv2, out servTotal);
+                classCompute.ComputeUnitTotal(dgv);
                 cn = new SqlConnection(dbcon.MyConnection());
                 Boolean hasRecord = false;
                 int i = 0;
@@ -446,13 +447,13 @@ namespace Capstone
             {
                 string TransDate = dr[6].ToString();
 
-                if (TransDate.Substring(0, 9) != "")
+                if (TransDate.Substring(0, 10) != "")
                 {
-                    TransDate = dr[6].ToString();//.Substring(0, 9);
+                    TransDate = dr[6].ToString().Substring(0, 9);
                 }
                 else
                 {
-                    TransDate = dr[6].ToString().Substring(0, 9);
+                    TransDate = dr[6].ToString().Substring(0, 10);
                 }
                 
                         //                                          2-CUSTOMER / 15-Customer                   4-DATE(TRANSACTION) / 6-Date
@@ -491,13 +492,13 @@ namespace Capstone
                         ExpirationDate = dr[2].ToString().Substring(0, 9);
                     }
                 }
-                if (TransDate.Substring(0, 9) != "")
+                if (TransDate.Substring(0, 10) != "")
                 {
-                    TransDate = dr[6].ToString();//.Substring(0, 9);
+                    TransDate = dr[6].ToString().Substring(0, 9);
                 }
                 else
                 {
-                    TransDate = dr[6].ToString().Substring(0, 9);
+                    TransDate = dr[6].ToString().Substring(0, 10);
                 }
 
 
