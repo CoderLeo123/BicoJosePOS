@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSettlePayment));
             this.panel2 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.btnCloseSettlePayment = new System.Windows.Forms.PictureBox();
@@ -55,6 +56,7 @@
             this.comBoxMethodPayment = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.btnReceiptPreview = new System.Windows.Forms.Button();
             this.btnBackSpace = new System.Windows.Forms.Button();
             this.btnTwoH = new System.Windows.Forms.Button();
             this.btnTwenty = new System.Windows.Forms.Button();
@@ -71,6 +73,9 @@
             this.btnFive = new System.Windows.Forms.Button();
             this.btnSix = new System.Windows.Forms.Button();
             this.btnFour = new System.Windows.Forms.Button();
+            this.printDocument = new System.Drawing.Printing.PrintDocument();
+            this.printDialog = new System.Windows.Forms.PrintDialog();
+            this.printPreviewDialog = new System.Windows.Forms.PrintPreviewDialog();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnCloseSettlePayment)).BeginInit();
             this.panel1.SuspendLayout();
@@ -408,6 +413,7 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.White;
+            this.panel4.Controls.Add(this.btnReceiptPreview);
             this.panel4.Controls.Add(this.btnBackSpace);
             this.panel4.Controls.Add(this.btnTwoH);
             this.panel4.Controls.Add(this.btnTwenty);
@@ -434,6 +440,21 @@
             this.panel4.Size = new System.Drawing.Size(539, 295);
             this.panel4.TabIndex = 32;
             // 
+            // btnReceiptPreview
+            // 
+            this.btnReceiptPreview.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.btnReceiptPreview.FlatAppearance.BorderSize = 0;
+            this.btnReceiptPreview.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReceiptPreview.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnReceiptPreview.ForeColor = System.Drawing.Color.White;
+            this.btnReceiptPreview.Location = new System.Drawing.Point(272, 154);
+            this.btnReceiptPreview.Name = "btnReceiptPreview";
+            this.btnReceiptPreview.Size = new System.Drawing.Size(116, 62);
+            this.btnReceiptPreview.TabIndex = 20;
+            this.btnReceiptPreview.Text = "Preview";
+            this.btnReceiptPreview.UseVisualStyleBackColor = false;
+            this.btnReceiptPreview.Click += new System.EventHandler(this.btnReceiptPreview_Click);
+            // 
             // btnBackSpace
             // 
             this.btnBackSpace.BackColor = System.Drawing.SystemColors.MenuHighlight;
@@ -441,7 +462,7 @@
             this.btnBackSpace.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBackSpace.Font = new System.Drawing.Font("Segoe UI", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnBackSpace.ForeColor = System.Drawing.Color.White;
-            this.btnBackSpace.Location = new System.Drawing.Point(395, 154);
+            this.btnBackSpace.Location = new System.Drawing.Point(394, 154);
             this.btnBackSpace.Name = "btnBackSpace";
             this.btnBackSpace.Size = new System.Drawing.Size(116, 62);
             this.btnBackSpace.TabIndex = 19;
@@ -456,7 +477,7 @@
             this.btnTwoH.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTwoH.Font = new System.Drawing.Font("Segoe UI Semibold", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnTwoH.ForeColor = System.Drawing.Color.White;
-            this.btnTwoH.Location = new System.Drawing.Point(394, 18);
+            this.btnTwoH.Location = new System.Drawing.Point(272, 18);
             this.btnTwoH.Name = "btnTwoH";
             this.btnTwoH.Size = new System.Drawing.Size(116, 62);
             this.btnTwoH.TabIndex = 18;
@@ -471,7 +492,7 @@
             this.btnTwenty.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTwenty.Font = new System.Drawing.Font("Segoe UI Semibold", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnTwenty.ForeColor = System.Drawing.Color.White;
-            this.btnTwenty.Location = new System.Drawing.Point(273, 154);
+            this.btnTwenty.Location = new System.Drawing.Point(394, 86);
             this.btnTwenty.Name = "btnTwenty";
             this.btnTwenty.Size = new System.Drawing.Size(116, 62);
             this.btnTwenty.TabIndex = 17;
@@ -486,7 +507,7 @@
             this.btnFifty.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFifty.Font = new System.Drawing.Font("Segoe UI Semibold", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnFifty.ForeColor = System.Drawing.Color.White;
-            this.btnFifty.Location = new System.Drawing.Point(273, 87);
+            this.btnFifty.Location = new System.Drawing.Point(272, 87);
             this.btnFifty.Name = "btnFifty";
             this.btnFifty.Size = new System.Drawing.Size(116, 62);
             this.btnFifty.TabIndex = 16;
@@ -501,9 +522,9 @@
             this.btnFiveH.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFiveH.Font = new System.Drawing.Font("Segoe UI Semibold", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnFiveH.ForeColor = System.Drawing.Color.White;
-            this.btnFiveH.Location = new System.Drawing.Point(272, 18);
+            this.btnFiveH.Location = new System.Drawing.Point(153, 18);
             this.btnFiveH.Name = "btnFiveH";
-            this.btnFiveH.Size = new System.Drawing.Size(116, 62);
+            this.btnFiveH.Size = new System.Drawing.Size(113, 62);
             this.btnFiveH.TabIndex = 14;
             this.btnFiveH.Text = "500";
             this.btnFiveH.UseVisualStyleBackColor = false;
@@ -516,7 +537,7 @@
             this.btnOneH.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOneH.Font = new System.Drawing.Font("Segoe UI Semibold", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnOneH.ForeColor = System.Drawing.Color.White;
-            this.btnOneH.Location = new System.Drawing.Point(395, 86);
+            this.btnOneH.Location = new System.Drawing.Point(394, 18);
             this.btnOneH.Name = "btnOneH";
             this.btnOneH.Size = new System.Drawing.Size(116, 62);
             this.btnOneH.TabIndex = 15;
@@ -529,11 +550,11 @@
             this.btnThousand.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.btnThousand.FlatAppearance.BorderSize = 0;
             this.btnThousand.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnThousand.Font = new System.Drawing.Font("Segoe UI Semibold", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnThousand.Font = new System.Drawing.Font("Segoe UI Semibold", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnThousand.ForeColor = System.Drawing.Color.White;
-            this.btnThousand.Location = new System.Drawing.Point(139, 18);
+            this.btnThousand.Location = new System.Drawing.Point(32, 18);
             this.btnThousand.Name = "btnThousand";
-            this.btnThousand.Size = new System.Drawing.Size(127, 62);
+            this.btnThousand.Size = new System.Drawing.Size(115, 62);
             this.btnThousand.TabIndex = 13;
             this.btnThousand.Text = "1000";
             this.btnThousand.UseVisualStyleBackColor = false;
@@ -548,7 +569,7 @@
             this.btnEnter.ForeColor = System.Drawing.Color.White;
             this.btnEnter.Location = new System.Drawing.Point(272, 222);
             this.btnEnter.Name = "btnEnter";
-            this.btnEnter.Size = new System.Drawing.Size(240, 66);
+            this.btnEnter.Size = new System.Drawing.Size(238, 66);
             this.btnEnter.TabIndex = 12;
             this.btnEnter.Text = "Enter";
             this.btnEnter.UseVisualStyleBackColor = false;
@@ -674,6 +695,24 @@
             this.btnFour.UseVisualStyleBackColor = false;
             this.btnFour.Click += new System.EventHandler(this.btnFour_Click);
             // 
+            // printDocument
+            // 
+            this.printDocument.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument_PrintPage);
+            // 
+            // printDialog
+            // 
+            this.printDialog.UseEXDialog = true;
+            // 
+            // printPreviewDialog
+            // 
+            this.printPreviewDialog.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialog.Enabled = true;
+            this.printPreviewDialog.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog.Icon")));
+            this.printPreviewDialog.Name = "printPreviewDialog";
+            this.printPreviewDialog.Visible = false;
+            // 
             // frmSettlePayment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 31F);
@@ -745,5 +784,9 @@
         public Panel panelDepositDueDate;
         public Label lblTransacNo;
         private Label lblPaymentNotice;
+        private Button btnReceiptPreview;
+        private System.Drawing.Printing.PrintDocument printDocument;
+        private PrintDialog printDialog;
+        public PrintPreviewDialog printPreviewDialog;
     }
 }
