@@ -94,6 +94,7 @@
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.panel2.SuspendLayout();
             this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewService)).BeginInit();
@@ -881,6 +882,10 @@
             this.ItemID.Visible = false;
             this.ItemID.Width = 125;
             // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+            // 
             // frmCashier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
@@ -926,7 +931,6 @@
         private Label lblTotal;
         private Label label6;
         private Label label4;
-        private Label lblDate;
         public Label lblTransactionNo;
         public DataGridView dataGridViewCart;
         public TextBox txtSearch;
@@ -978,5 +982,7 @@
         private DataGridViewImageColumn del;
         private DataGridViewTextBoxColumn ServID;
         private DataGridViewTextBoxColumn ServNum;
+        public System.Drawing.Printing.PrintDocument printDocument1;
+        public Label lblDate;
     }
 }

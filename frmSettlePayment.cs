@@ -24,6 +24,7 @@ namespace Capstone
         private Point lastLocation;
         frmCashier frmC;
 
+
         public frmSettlePayment(frmCashier frm)
         {
             InitializeComponent();
@@ -281,6 +282,7 @@ namespace Capstone
                     //frmC.GenerateTransactionNo();
                     classLoadData.LoadCart(frmC.dataGridViewCart, frmC.lblDiscount, frmC.lblSalesTotal, frmC.lblPayment, frmC.lblNetTotal, frmC.btnSettlePayment, frmC.btnAddDiscount, frmC.btnClearCart, frmC.txtSearch, frmC.dataGridViewService);
                     //frmC.LoadCart();
+                    printPreviewDialog.ShowDialog();
                     this.Dispose();
                 }
             }
@@ -499,5 +501,75 @@ namespace Capstone
         {
             dateTimePickerDueDate.Enabled = false;
         }
+
+        private void printDocument_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            //printDocument.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("pprnm", 200, 500);
+            //printDocument.Print();
+            int x = 0, y = 0;
+            System.Drawing.Font printFont = new System.Drawing.Font("Arial", 10, System.Drawing.FontStyle.Regular);
+            System.Drawing.Font printFontBold = new System.Drawing.Font("Arial", 15, System.Drawing.FontStyle.Bold);
+            System.Drawing.Font printFontItallic = new System.Drawing.Font("Arial", 12, System.Drawing.FontStyle.Italic);
+            e.Graphics.DrawString("Bico-Jose Optical Clinic", printFontBold, Brushes.Black, 130, 30);
+            e.Graphics.DrawString("Address: 3rd Floor Susana Mart, Tungko San Jose Del Monte Bulacan", printFont, Brushes.Black, 30, 80);
+            y = 140;
+            e.Graphics.DrawString("Contact Number: 09178326666", printFont, Brushes.Black, 20, y);//140
+            e.Graphics.DrawString("Date Issued: " + frmC.lblDate.Text , printFont, Brushes.Black, 300, y);
+            e.Graphics.DrawString("Mode of Payment:  " + comBoxMethodPayment.Text, printFont, Brushes.Black, 20, (y += 30));//170
+            e.Graphics.DrawString("Settlement Date for Remaining Balance:  " + dateTimePickerDueDate.Value.ToShortDateString(), printFont, Brushes.Black, 20, (y += 30));//200
+            e.Graphics.DrawString("---------------------------------------------------------------------------------------------------", printFont, Brushes.Black, 10, (y += 30));//230
+            e.Graphics.DrawString("Invoice No: " + frmC.lblTransactionNo.Text, printFont, Brushes.Black, 20, (y += 50));//280
+            e.Graphics.DrawString("#", printFont, Brushes.Black, 20, (y += 50));//330
+            e.Graphics.DrawString("Description", printFont, Brushes.Black, 60, y);
+            e.Graphics.DrawString("Price", printFont, Brushes.Black, 300, y);
+            e.Graphics.DrawString("Qty", printFont, Brushes.Black, 350, y);
+            e.Graphics.DrawString("Total", printFont, Brushes.Black, 400, y);//330
+
+            //y = 430;
+            e.Graphics.DrawString("Service:  ", printFont, Brushes.Black, 20, (y += 150));//430 + 50
+            e.Graphics.DrawString(frmC.dataGridViewService.Rows[0].Cells[1].Value.ToString(), printFont, Brushes.Black, 60, (y+=30));//470
+            e.Graphics.DrawString(frmC.dataGridViewService.Rows[0].Cells[3].Value.ToString(), printFont, Brushes.Black, 300, y);//470
+            //y = 550;
+            e.Graphics.DrawString("Total Amount: ", printFont, Brushes.Black, 20, (y += 80));//550
+            e.Graphics.DrawString(frmC.lblSalesTotal.Text, printFont, Brushes.Black, 370, y);
+
+            e.Graphics.DrawString("Discount: ", printFont, Brushes.Black, 20, (y += 30));
+            e.Graphics.DrawString(frmC.lblDiscount.Text, printFont, Brushes.Black, 370, y);
+            e.Graphics.DrawString("("+ frmC.dataGridViewCart.Rows[0].Cells[5].Value.ToString()+ "%)", printFont, Brushes.Black, 300, y);
+
+            e.Graphics.DrawString("Total Due: ", printFont, Brushes.Black, 20, (y += 30));
+            e.Graphics.DrawString(txtTotal.Text, printFont, Brushes.Black, 370, y);
+
+            e.Graphics.DrawString("Amount Tendered: ", printFont, Brushes.Black, 20, (y += 30));
+            e.Graphics.DrawString(txtPayment.Text, printFont, Brushes.Black, 370, y);
+
+            e.Graphics.DrawString("Remaining Balance: ", printFont, Brushes.Black, 20, (y += 30));
+            e.Graphics.DrawString("-", printFont, Brushes.Black, 370, y);
+
+            e.Graphics.DrawString("Change: ", printFont, Brushes.Black, 20, (y += 30));
+            e.Graphics.DrawString(txtChange.Text, printFont, Brushes.Black, 370, y);//710
+
+            e.Graphics.DrawString("THIS INVOICE/RECEIPT SHALL BE VALID FOR", printFontItallic, Brushes.Black, 60, (y += 60));//770
+            e.Graphics.DrawString("ONE (1)) WEEK FROM THE DATE OF THE PERMIT TO USE", printFontItallic, Brushes.Black, 20, (y += 30));//800
+            e.Graphics.DrawString("THANKYOU", printFontBold, Brushes.Black, 180, (y += 30));//830
+        }
+
+        private void btnReceiptPreview_Click(object sender, EventArgs e)
+        {
+            PrintPreviewDialog preview = new PrintPreviewDialog();
+            preview.Document = printDocument;
+            printDocument.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("RECEIPT", 500, 900);
+            preview.PrintPreviewControl.Zoom = 0.75;
+            preview.Size = new System.Drawing.Size(400, 650);            
+            preview.ShowDialog();
+            //printPreviewDialog.ShowDialog();
+        }
+
+        public void paperSizeUpdate()
+        {
+            int dgvCount = frmC.dataGridViewCart.Rows.Count;
+
+        }
+
     }
 }
