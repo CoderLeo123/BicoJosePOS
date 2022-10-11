@@ -132,16 +132,16 @@ namespace Capstone
             frm.BringToFront();
             frm.Show();
 
-            isCollapsed3 = true;
-            isCollapsed2 = false;
-            isCollapsed1 = false;
+            //isCollapsed3 = true;
+            //isCollapsed2 = false;
+            //isCollapsed1 = false;
             //timerStart();
         }
         private void dropBtnPayment_Click_1(object sender, EventArgs e)
         {//isCollapsed2
-            isCollapsed2 = true;
-            isCollapsed3 = false;
-            isCollapsed1 = false;
+            //isCollapsed2 = true;
+            //isCollapsed3 = false;
+            //isCollapsed1 = false;
             //timerStart();
 
             frmPaymentStatus frm = new frmPaymentStatus();
@@ -182,7 +182,7 @@ namespace Capstone
             panelLoad.Controls.Add(frm);
             frm.BringToFront();
             frm.Show();
-            btnCollapsed();
+            //btnCollapsed();
             //timerStart();
         }
 
@@ -253,7 +253,7 @@ namespace Capstone
             frm.txtStockInBy.Text = lblName.Text;
             frm.BringToFront();
             frm.Show();
-            btnCollapsed();
+            //btnCollapsed();
             //timerStart();
         }
 
@@ -265,7 +265,7 @@ namespace Capstone
             panelLoad.Controls.Add(frm);
             frm.BringToFront();
             frm.Show();
-            btnCollapsed();
+            //btnCollapsed();
             //timerStart();
         }
 
@@ -276,13 +276,13 @@ namespace Capstone
 
         private void btnBackupArch_Click(object sender, EventArgs e)
         {
-            btnCollapsed();
+            //btnCollapsed();
             //timerStart();
         }
 
         private void btnUserSettings_Click(object sender, EventArgs e)
         {
-            btnCollapsed();
+            //btnCollapsed();
             //timerStart();
         }
 
