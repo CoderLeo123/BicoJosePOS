@@ -25,7 +25,7 @@ namespace Capstone
             int i = 0;
             dgv.Rows.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT * FROM tblPatientRecord WHERE Product LIKE '%" + txtSearch.Text + "%' Order by Patient_ID", cn);
+            SqlCommand cm = new SqlCommand("SELECT * FROM tblPatientRecord WHERE Customer_Name LIKE '%" + txtSearch.Text + "%' Order by Patient_ID", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             { 

@@ -76,6 +76,7 @@
             this.printDocument = new System.Drawing.Printing.PrintDocument();
             this.printDialog = new System.Windows.Forms.PrintDialog();
             this.printPreviewDialog = new System.Windows.Forms.PrintPreviewDialog();
+            this.lblRowCount = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnCloseSettlePayment)).BeginInit();
             this.panel1.SuspendLayout();
@@ -277,6 +278,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.lblRowCount);
             this.panel1.Controls.Add(this.lblPaymentNotice);
             this.panel1.Controls.Add(this.lblTransacNo);
             this.panel1.Controls.Add(this.panelDepositDueDate);
@@ -316,9 +318,9 @@
             this.lblTransacNo.ForeColor = System.Drawing.Color.Red;
             this.lblTransacNo.Location = new System.Drawing.Point(503, 25);
             this.lblTransacNo.Name = "lblTransacNo";
-            this.lblTransacNo.Size = new System.Drawing.Size(19, 31);
+            this.lblTransacNo.Size = new System.Drawing.Size(24, 31);
             this.lblTransacNo.TabIndex = 17;
-            this.lblTransacNo.Text = ".";
+            this.lblTransacNo.Text = "*";
             this.lblTransacNo.Visible = false;
             // 
             // panelDepositDueDate
@@ -713,6 +715,17 @@
             this.printPreviewDialog.Name = "printPreviewDialog";
             this.printPreviewDialog.Visible = false;
             // 
+            // lblRowCount
+            // 
+            this.lblRowCount.AutoSize = true;
+            this.lblRowCount.ForeColor = System.Drawing.Color.Red;
+            this.lblRowCount.Location = new System.Drawing.Point(503, 70);
+            this.lblRowCount.Name = "lblRowCount";
+            this.lblRowCount.Size = new System.Drawing.Size(24, 31);
+            this.lblRowCount.TabIndex = 19;
+            this.lblRowCount.Text = "*";
+            this.lblRowCount.Visible = false;
+            // 
             // frmSettlePayment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 31F);
@@ -788,5 +801,6 @@
         private System.Drawing.Printing.PrintDocument printDocument;
         private PrintDialog printDialog;
         public PrintPreviewDialog printPreviewDialog;
+        public Label lblRowCount;
     }
 }

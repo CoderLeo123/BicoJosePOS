@@ -84,14 +84,18 @@ namespace Capstone
 
         private void btnSettlePayment_Click(object sender, EventArgs e)
         {
-            if(txtFirstName.Text == "" && txtLastName.Text == "")
+            frmSettlePayment frm = new frmSettlePayment(this);
+            frm.lblRowCount.Text = dataGridViewCart.Rows.Count.ToString();
+
+            if (txtFirstName.Text == "" && txtLastName.Text == "")
             {
                 MessageBox.Show("Kindly input the customer's name first", title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtFirstName.Focus();
+                txtLastName.Focus();
             }
             else
             {
-                frmSettlePayment frm = new frmSettlePayment(this);
+                
                 frm.txtTotal.Text = lblNetTotal.Text;
                 frm.comBoxPaymentTerms.SelectedIndex = 0;
                 frm.comBoxMethodPayment.SelectedIndex = 0;

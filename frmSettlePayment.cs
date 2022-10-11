@@ -196,10 +196,11 @@ namespace Capstone
                 string dueDate = dateTimePickerDueDate.Value.ToShortDateString(); //Due_Date , Expected_Arrival
                 float remainBalance = 0; //remBalance
                 string status = "";
-                string claimDate = DateTime.Today.AddDays(3).ToShortDateString();
+                string claimDate = ""; //DateTime.Today.AddDays(3).ToShortDateString()
                 string releaseBy = "Undefined";
                 string finalDiscount = frmC.lblDiscount.Text;
-                checkPaymentTerms(out status, pTerms, total, payment, out remainBalance);
+                string settlementDate = "Pending";
+                checkPaymentTerms(out status, pTerms, total, payment, out remainBalance, out settlementDate);
                 
                 //frmCashier frmC = new frmCashier();
                 if (txtChange.Text == String.Empty)
@@ -209,6 +210,32 @@ namespace Capstone
                 }
                 else
                 {
+                    cn.Open();
+                    cm = new SqlCommand("INSERT INTO tblPaymentStatus (Transaction_No, Customer, Total_Payment, Initial_Deposit, Due_Date, Rem_Balance, Status, Discount_Per_Trans, Settled_Date) VALUES(@Transaction_No, @Customer, @Total_Payment, @Initial_Deposit, @Due_Date, @Rem_Balance, @Status, @Discount_Per_Trans, @Settled_Date)", cn);
+                    cm.Parameters.AddWithValue("@Transaction_No", transacNum);
+                    cm.Parameters.AddWithValue("@Customer", customer);
+                    cm.Parameters.AddWithValue("@Total_Payment", total);
+                    cm.Parameters.AddWithValue("@Initial_Deposit", payment);
+                    cm.Parameters.AddWithValue("@Due_Date", dueDate);
+                    cm.Parameters.AddWithValue("@Rem_Balance", remainBalance);
+                    cm.Parameters.AddWithValue("@Status", status);
+                    cm.Parameters.AddWithValue("@Discount_Per_Trans", finalDiscount);
+                    cm.Parameters.AddWithValue("@Settled_Date", settlementDate);
+                    cm.ExecuteNonQuery();
+                    cn.Close();
+                    checkOrderIfDeposit(out status, pTerms, out claimDate);
+                    cn.Open();
+                    cm = new SqlCommand("INSERT INTO tblOrderStatus (Transaction_No, Customer, Expected_Arrival, Status, Date_Claimed, Release_By) VALUES(@Transaction_No, @Customer, @Expected_Arrival, @Status, @Date_Claimed, @Release_By)", cn);
+                    cm.Parameters.AddWithValue("@Transaction_No", lblTransacNo.Text);
+                    cm.Parameters.AddWithValue("@Customer", customer);
+                    cm.Parameters.AddWithValue("@Expected_Arrival", dueDate);
+                    cm.Parameters.AddWithValue("@Status", status);
+                    cm.Parameters.AddWithValue("@Date_Claimed", claimDate);
+                    cm.Parameters.AddWithValue("@Release_By", releaseBy);
+                    //cm.Parameters.AddWithValue("@Cart_ID", frmC.dataGridViewCart.Rows[i].Cells[11].Value.ToString());
+                    cm.ExecuteNonQuery();
+                    cn.Close();
+
                     for (int i = 0; i < frmC.dataGridViewCart.Rows.Count; i++)
                     {
                         cn.Open();//Set Quantity
@@ -222,39 +249,17 @@ namespace Capstone
                         cm.ExecuteNonQuery();
                         cn.Close();
 
-                        checkOrderIfDeposit(out status, pTerms, out claimDate);
+                        
                         //cn.Open();//Set Customer, Expected_Arrival,   Status = VariableMethod, Release By = 'Undefined', Date_Claimed = 'Not Yet' NULL 
                         //cm = new SqlCommand("UPDATE tblOrderStatus SET Transaction_No = @TransactionNo, Customer = '" + customer + "', Expected_Arrival = " + DateTime.Parse(dueDate).ToShortDateString() + " , Status = '" + status + "', Date_Claimed = " + DateTime.Parse(claimDate).ToShortDateString() + ", Release_By = 'Undefined' WHERE Cart_ID LIKE '" + frmC.dataGridViewCart.Rows[i].Cells[11].Value.ToString() + "'", cn);
                         //cm.Parameters.AddWithValue("@TransactionNo", lblTransacNo.Text); 
                         //cm.ExecuteNonQuery();
                         //cn.Close();
 
-                        cn.Open();
-                        cm = new SqlCommand("INSERT INTO tblOrderStatus (Transaction_No, Customer, Expected_Arrival, Status, Date_Claimed, Release_By, Cart_ID) VALUES(@Transaction_No, @Customer, @Expected_Arrival, @Status, @Date_Claimed, @Release_By, @Cart_ID)", cn);
-                        cm.Parameters.AddWithValue("@Transaction_No", lblTransacNo.Text);
-                        cm.Parameters.AddWithValue("@Customer", customer);
-                        cm.Parameters.AddWithValue("@Expected_Arrival", DateTime.Parse(dueDate).ToShortDateString());
-                        cm.Parameters.AddWithValue("@Status", status);
-                        cm.Parameters.AddWithValue("@Date_Claimed", DateTime.Parse(claimDate).ToShortDateString());
-                        cm.Parameters.AddWithValue("@Release_By", releaseBy);
-                        cm.Parameters.AddWithValue("@Cart_ID", frmC.dataGridViewCart.Rows[i].Cells[11].Value.ToString());
-                        cm.ExecuteNonQuery();
-                        cn.Close();
 
                     }
 
-                    cn.Open();
-                    cm = new SqlCommand("INSERT INTO tblPaymentStatus (Transaction_No, Customer, Total_Payment, Initial_Deposit, Due_Date, Rem_Balance, Status, Discount_Per_Trans) VALUES(@Transaction_No, @Customer, @Total_Payment, @Initial_Deposit, @Due_Date, @Rem_Balance, @Status, @Discount_Per_Trans)", cn);
-                    cm.Parameters.AddWithValue("@Transaction_No", transacNum);
-                    cm.Parameters.AddWithValue("@Customer", customer);
-                    cm.Parameters.AddWithValue("@Total_Payment", total);
-                    cm.Parameters.AddWithValue("@Initial_Deposit", payment);
-                    cm.Parameters.AddWithValue("@Due_Date", DateTime.Parse(dueDate).ToShortDateString());
-                    cm.Parameters.AddWithValue("@Rem_Balance", remainBalance);
-                    cm.Parameters.AddWithValue("@Status", status);
-                    cm.Parameters.AddWithValue("@Discount_Per_Trans", finalDiscount);
-                    cm.ExecuteNonQuery();
-                    cn.Close();
+                    
 
                     string statusSA = "Sold";
                     cn.Open();
@@ -282,7 +287,14 @@ namespace Capstone
                     //frmC.GenerateTransactionNo();
                     classLoadData.LoadCart(frmC.dataGridViewCart, frmC.lblDiscount, frmC.lblSalesTotal, frmC.lblPayment, frmC.lblNetTotal, frmC.btnSettlePayment, frmC.btnAddDiscount, frmC.btnClearCart, frmC.txtSearch, frmC.dataGridViewService);
                     //frmC.LoadCart();
-                    printPreviewDialog.ShowDialog();
+                    PrintPreviewDialog preview = new PrintPreviewDialog();
+                    preview.Document = printDocument;
+                    int pLength = 920;
+                    paperSizeUpdate(out pLength);
+                    printDocument.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("RECEIPT", 500, pLength);
+                    preview.PrintPreviewControl.Zoom = 0.75;
+                    preview.Size = new System.Drawing.Size(400, 650);
+                    preview.ShowDialog();
                     this.Dispose();
                 }
             }
@@ -302,38 +314,43 @@ namespace Capstone
                 if (paymentTerms == "Full")
                 {
                     statusValue = "In The Lab";
-                    dateClaim = DateTime.Now.ToShortDateString();
+                    //dateClaim = DateTime.Today.AddDays(3).ToShortDateString();
+                    dateClaim = "Unclaimed";
                 }
                 else if (paymentTerms == "Deposit")
                 {
                     statusValue = "In The Lab";
-                    dateClaim = DateTime.Today.AddDays(3).ToShortDateString();
+                    //dateClaim = DateTime.Today.AddDays(3).ToShortDateString();
+                    dateClaim = "Unclaimed";
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 statusValue = "In The Lab";
-                dateClaim = DateTime.Today.AddDays(3).ToShortDateString();
+                dateClaim = "";
                 return;
             }
         } 
 
-        public void checkPaymentTerms(out string statusValue, string paymentTerms, float total, float payment, out float remBalance)
+        public void checkPaymentTerms(out string statusValue, string paymentTerms, float total, float payment, out float remBalance, out string settledDate)
         {
             try
             {
-                statusValue = "";                
+                statusValue = "";
+                settledDate = "";
                 remBalance = total - payment;
                 if (paymentTerms == "Full")
                 {
                     statusValue = "Settled";
                     remBalance = 0;
+                    settledDate = DateTime.Today.ToShortDateString();
                 }
                 else if (paymentTerms == "Deposit")
                 {
                     statusValue = "Pending";
                     remBalance = total - payment;
+                    settledDate = "Pending";
                 }
             }
             catch (Exception ex)
@@ -341,7 +358,7 @@ namespace Capstone
                 MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 statusValue = "Pending";
                 remBalance = total - payment;
-                
+                settledDate = "";
             }            
         }
         
@@ -501,53 +518,90 @@ namespace Capstone
         {
             dateTimePickerDueDate.Enabled = false;
         }
-
+        public void getValueIfAnyElseBlank(DataGridView dgv, out string result, int rows, int col)
+        {
+            if (dgv.Rows.Count == 0)
+            {
+                result = "No Data";
+            }
+            else
+            {
+                result = dgv.Rows[rows].Cells[col].Value.ToString();
+                int slength = result.Length;
+                //if (slength > 38)
+                //{
+                //    int xAxis = 60;
+                //    int yAxis = 30;
+                //}
+            }
+        }
         private void printDocument_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
             //printDocument.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("pprnm", 200, 500);
             //printDocument.Print();
-            int x = 0, y = 0;
+            int x = 0, y = 0, num = 1; string resultText = ""; int dgvCount = frmC.dataGridViewCart.Rows.Count;
             System.Drawing.Font printFont = new System.Drawing.Font("Arial", 10, System.Drawing.FontStyle.Regular);
             System.Drawing.Font printFontBold = new System.Drawing.Font("Arial", 15, System.Drawing.FontStyle.Bold);
             System.Drawing.Font printFontItallic = new System.Drawing.Font("Arial", 12, System.Drawing.FontStyle.Italic);
             e.Graphics.DrawString("Bico-Jose Optical Clinic", printFontBold, Brushes.Black, 130, 30);
             e.Graphics.DrawString("Address: 3rd Floor Susana Mart, Tungko San Jose Del Monte Bulacan", printFont, Brushes.Black, 30, 80);
-            y = 140;
+            y = 140; x = 320;
             e.Graphics.DrawString("Contact Number: 09178326666", printFont, Brushes.Black, 20, y);//140
-            e.Graphics.DrawString("Date Issued: " + frmC.lblDate.Text , printFont, Brushes.Black, 300, y);
+            e.Graphics.DrawString("Date Issued: " + frmC.lblDate.Text , printFont, Brushes.Black, x, y);
             e.Graphics.DrawString("Mode of Payment:  " + comBoxMethodPayment.Text, printFont, Brushes.Black, 20, (y += 30));//170
             e.Graphics.DrawString("Settlement Date for Remaining Balance:  " + dateTimePickerDueDate.Value.ToShortDateString(), printFont, Brushes.Black, 20, (y += 30));//200
             e.Graphics.DrawString("---------------------------------------------------------------------------------------------------", printFont, Brushes.Black, 10, (y += 30));//230
             e.Graphics.DrawString("Invoice No: " + frmC.lblTransactionNo.Text, printFont, Brushes.Black, 20, (y += 50));//280
             e.Graphics.DrawString("#", printFont, Brushes.Black, 20, (y += 50));//330
             e.Graphics.DrawString("Description", printFont, Brushes.Black, 60, y);
-            e.Graphics.DrawString("Price", printFont, Brushes.Black, 300, y);
-            e.Graphics.DrawString("Qty", printFont, Brushes.Black, 350, y);
-            e.Graphics.DrawString("Total", printFont, Brushes.Black, 400, y);//330
+            e.Graphics.DrawString("Price", printFont, Brushes.Black, x, y);
+            e.Graphics.DrawString("Qty", printFont, Brushes.Black, (x += 50), y);
+            e.Graphics.DrawString("Total", printFont, Brushes.Black, (x += 50), y);//330
 
+            if(dgvCount > 0)
+            {
+                for(int i = 0; i < dgvCount; i++)
+                {
+                    x = 320;
+                    e.Graphics.DrawString(num.ToString(), printFont, Brushes.Black, 20, (y += 30));//330
+                    getValueIfAnyElseBlank(frmC.dataGridViewCart, out resultText, i, 1);//Description
+                    e.Graphics.DrawString(resultText, printFont, Brushes.Black, 60, y);
+                    getValueIfAnyElseBlank(frmC.dataGridViewCart, out resultText, i, 3);//Price
+                    e.Graphics.DrawString(resultText, printFont, Brushes.Black, x, y);
+                    getValueIfAnyElseBlank(frmC.dataGridViewCart, out resultText, i, 4);//Qty
+                    e.Graphics.DrawString(resultText, printFont, Brushes.Black, (x += 50), y);
+                    getValueIfAnyElseBlank(frmC.dataGridViewCart, out resultText, i, 6);//Total
+                    e.Graphics.DrawString(resultText, printFont, Brushes.Black, (x += 50), y);//330
+                    num += 1;
+                }
+            }
+            x = 320;
             //y = 430;
-            e.Graphics.DrawString("Service:  ", printFont, Brushes.Black, 20, (y += 150));//430 + 50
-            e.Graphics.DrawString(frmC.dataGridViewService.Rows[0].Cells[1].Value.ToString(), printFont, Brushes.Black, 60, (y+=30));//470
-            e.Graphics.DrawString(frmC.dataGridViewService.Rows[0].Cells[3].Value.ToString(), printFont, Brushes.Black, 300, y);//470
+            e.Graphics.DrawString("Service:  ", printFont, Brushes.Black, 20, (y += 50));//430 + 50
+            getValueIfAnyElseBlank(frmC.dataGridViewService, out resultText, 0, 1);//frmC.dataGridViewService.Rows[0].Cells[1].Value.ToString()
+            e.Graphics.DrawString(resultText, printFont, Brushes.Black, 60, (y+=30));//470      Name
+            getValueIfAnyElseBlank(frmC.dataGridViewService, out resultText, 0, 3);//frmC.dataGridViewService.Rows[0].Cells[3].Value.ToString()
+            e.Graphics.DrawString(resultText, printFont, Brushes.Black, x, y);//320   Price
             //y = 550;
             e.Graphics.DrawString("Total Amount: ", printFont, Brushes.Black, 20, (y += 80));//550
-            e.Graphics.DrawString(frmC.lblSalesTotal.Text, printFont, Brushes.Black, 370, y);
+            e.Graphics.DrawString(frmC.lblSalesTotal.Text, printFont, Brushes.Black, (x += 70), y);//390 
 
             e.Graphics.DrawString("Discount: ", printFont, Brushes.Black, 20, (y += 30));
-            e.Graphics.DrawString(frmC.lblDiscount.Text, printFont, Brushes.Black, 370, y);
-            e.Graphics.DrawString("("+ frmC.dataGridViewCart.Rows[0].Cells[5].Value.ToString()+ "%)", printFont, Brushes.Black, 300, y);
+            e.Graphics.DrawString(frmC.lblDiscount.Text, printFont, Brushes.Black, x, y);//370
+            getValueIfAnyElseBlank(frmC.dataGridViewCart, out resultText, 0, 5);//frmC.dataGridViewCart.Rows[0].Cells[5].Value.ToString()
+            e.Graphics.DrawString("("+ resultText + "%)", printFont, Brushes.Black, (x -= 70), y);//320
 
             e.Graphics.DrawString("Total Due: ", printFont, Brushes.Black, 20, (y += 30));
-            e.Graphics.DrawString(txtTotal.Text, printFont, Brushes.Black, 370, y);
+            e.Graphics.DrawString(txtTotal.Text, printFont, Brushes.Black, (x += 70), y);
 
             e.Graphics.DrawString("Amount Tendered: ", printFont, Brushes.Black, 20, (y += 30));
-            e.Graphics.DrawString(txtPayment.Text, printFont, Brushes.Black, 370, y);
+            e.Graphics.DrawString(txtPayment.Text, printFont, Brushes.Black, x, y);
 
             e.Graphics.DrawString("Remaining Balance: ", printFont, Brushes.Black, 20, (y += 30));
-            e.Graphics.DrawString("-", printFont, Brushes.Black, 370, y);
+            e.Graphics.DrawString("-", printFont, Brushes.Black, x, y);
 
             e.Graphics.DrawString("Change: ", printFont, Brushes.Black, 20, (y += 30));
-            e.Graphics.DrawString(txtChange.Text, printFont, Brushes.Black, 370, y);//710
+            e.Graphics.DrawString(txtChange.Text, printFont, Brushes.Black, x, y);//710
 
             e.Graphics.DrawString("THIS INVOICE/RECEIPT SHALL BE VALID FOR", printFontItallic, Brushes.Black, 60, (y += 60));//770
             e.Graphics.DrawString("ONE (1)) WEEK FROM THE DATE OF THE PERMIT TO USE", printFontItallic, Brushes.Black, 20, (y += 30));//800
@@ -558,16 +612,39 @@ namespace Capstone
         {
             PrintPreviewDialog preview = new PrintPreviewDialog();
             preview.Document = printDocument;
-            printDocument.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("RECEIPT", 500, 900);
+            int pLength = 920;
+            paperSizeUpdate(out pLength);
+            printDocument.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("RECEIPT", 500, pLength);
             preview.PrintPreviewControl.Zoom = 0.75;
             preview.Size = new System.Drawing.Size(400, 650);            
             preview.ShowDialog();
             //printPreviewDialog.ShowDialog();
         }
 
-        public void paperSizeUpdate()
+        public void paperSizeUpdate(out int paperL)
         {
             int dgvCount = frmC.dataGridViewCart.Rows.Count;
+            paperL = 0;
+            if (dgvCount > 0 && dgvCount <= 4)
+            {
+                paperL = 920;
+            }
+            else if (dgvCount > 4 && dgvCount <= 7)// + 3 items = 30 * 3 = 90
+            {
+                paperL = 1020;
+            }
+            else if (dgvCount > 7 && dgvCount <= 10)// + 3 items = 30 * 3 = 90
+            {
+                paperL = 1110;
+            }
+            else if (dgvCount > 10 && dgvCount <= 13)// + 3 items = 30 * 3 = 90
+            {
+                paperL = 1200;
+            }
+            else
+            {
+                paperL = 920;
+            }
 
         }
 
