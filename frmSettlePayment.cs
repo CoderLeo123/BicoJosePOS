@@ -182,6 +182,8 @@ namespace Capstone
        
         private void btnEnter_Click(object sender, EventArgs e)
         {
+
+            //int dgvCount = lblRowCount.Text.ToString();
             try
             {
                 string transacNum = lblTransacNo.Text;
@@ -210,6 +212,15 @@ namespace Capstone
                 }
                 else
                 {
+                    PrintPreviewDialog preview = new PrintPreviewDialog();
+                    preview.Document = printDocument;
+                    int pLength = 920;
+                    paperSizeUpdate(out pLength);
+                    printDocument.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("RECEIPT", 500, pLength);
+                    preview.PrintPreviewControl.Zoom = 0.75;
+                    preview.Size = new System.Drawing.Size(400, 650);
+                    preview.ShowDialog();
+
                     cn.Open();
                     cm = new SqlCommand("INSERT INTO tblPaymentStatus (Transaction_No, Customer, Total_Payment, Initial_Deposit, Due_Date, Rem_Balance, Status, Discount_Per_Trans, Settled_Date) VALUES(@Transaction_No, @Customer, @Total_Payment, @Initial_Deposit, @Due_Date, @Rem_Balance, @Status, @Discount_Per_Trans, @Settled_Date)", cn);
                     cm.Parameters.AddWithValue("@Transaction_No", transacNum);
@@ -287,14 +298,7 @@ namespace Capstone
                     //frmC.GenerateTransactionNo();
                     classLoadData.LoadCart(frmC.dataGridViewCart, frmC.lblDiscount, frmC.lblSalesTotal, frmC.lblPayment, frmC.lblNetTotal, frmC.btnSettlePayment, frmC.btnAddDiscount, frmC.btnClearCart, frmC.txtSearch, frmC.dataGridViewService);
                     //frmC.LoadCart();
-                    PrintPreviewDialog preview = new PrintPreviewDialog();
-                    preview.Document = printDocument;
-                    int pLength = 920;
-                    paperSizeUpdate(out pLength);
-                    printDocument.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("RECEIPT", 500, pLength);
-                    preview.PrintPreviewControl.Zoom = 0.75;
-                    preview.Size = new System.Drawing.Size(400, 650);
-                    preview.ShowDialog();
+                    
                     this.Dispose();
                 }
             }
@@ -520,14 +524,15 @@ namespace Capstone
         }
         public void getValueIfAnyElseBlank(DataGridView dgv, out string result, int rows, int col)
         {
-            if (dgv.Rows.Count == 0)
+            int dgvCount = int.Parse(lblRowCount.Text);
+            if (dgvCount == 0)
             {
                 result = "No Data";
             }
             else
             {
                 result = dgv.Rows[rows].Cells[col].Value.ToString();
-                int slength = result.Length;
+                //int slength = result.Length;
                 //if (slength > 38)
                 //{
                 //    int xAxis = 60;
@@ -539,7 +544,7 @@ namespace Capstone
         {
             //printDocument.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("pprnm", 200, 500);
             //printDocument.Print();
-            int x = 0, y = 0, num = 1; string resultText = ""; int dgvCount = frmC.dataGridViewCart.Rows.Count;
+            int x = 0, y = 0, num = 1; string resultText = ""; int dgvCount = int.Parse(lblRowCount.Text);
             System.Drawing.Font printFont = new System.Drawing.Font("Arial", 10, System.Drawing.FontStyle.Regular);
             System.Drawing.Font printFontBold = new System.Drawing.Font("Arial", 15, System.Drawing.FontStyle.Bold);
             System.Drawing.Font printFontItallic = new System.Drawing.Font("Arial", 12, System.Drawing.FontStyle.Italic);
@@ -623,7 +628,7 @@ namespace Capstone
 
         public void paperSizeUpdate(out int paperL)
         {
-            int dgvCount = frmC.dataGridViewCart.Rows.Count;
+            int dgvCount = int.Parse(lblRowCount.Text);
             paperL = 0;
             if (dgvCount > 0 && dgvCount <= 4)
             {
