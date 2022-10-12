@@ -7,16 +7,55 @@ namespace Capstone
         SqlConnection cn = new SqlConnection();
         SqlCommand cm = new SqlCommand();
         DBConnection dbcon = new DBConnection();
-
+        SqlDataReader dr;
         Boolean isCollapsed1, isCollapsed2, isCollapsed3 = true;
         
         public frmAdmin()
         {
             InitializeComponent();
             cn = new SqlConnection(dbcon.MyConnection());
+            Stock();
+            Users();
+        }
+        public void Stock()
+        {
             
+            //dataGridViewProduct, txtSearchProduct
+                cn = new SqlConnection(dbcon.MyConnection());
+                int i = 0;
+            int StockTotal = 0;
+            int CriticalCount = 0;
+            int outOfStockCount = 0;
+            int dataPass = 0;
+                cn.Open();
+                SqlCommand cm = new SqlCommand("SELECT Quantity FROM tblItem WHERE Lense_Check = 1 Order by Item_ID", cn);
+                dr = cm.ExecuteReader();
+                while (dr.Read())
+                {
+                    //                     2-PATIENT NAME / 2-Customer_Name       4-CONTACT / 4-Contact             6-GENDER / 6-Gender 
+                    i += 1; //0-#  1-PATIENT ID / 1-Patient_ID         3-ADDRESS / 3-Address                 5-AGE / 5-Age                   7-CHECK-UP DATE / 7-Check_Up_Date 
+                StockTotal += int.Parse(dr[0].ToString());
+                dataPass = int.Parse(dr[0].ToString());
+                if (dataPass < 3 && dataPass > 0)
+                {
+                    CriticalCount++;
+                }else if (dataPass == 0)
+                {
+                    outOfStockCount++;
+                }
+
+                }
+                dr.Close();
+                cn.Close();
+
+
+            lblAvailableStock.Text = StockTotal.ToString();
+            lblCriticalStock.Text = CriticalCount.ToString();
+            lblOutOfStock.Text = outOfStockCount.ToString();
+
         }
 
+       
         private void pictureBox2_Click(object sender, EventArgs e)
         {
 
@@ -170,8 +209,10 @@ namespace Capstone
 
         private void btnDashboard_Click(object sender, EventArgs e)
         {
-            btnCollapsed();
+            //btnCollapsed();
             //timerStart();
+            panelLoad.Controls.Clear();
+            panelLoad.Controls.Add(panelDashboard);
         }
 
         private void btnPatientR_Click(object sender, EventArgs e)
@@ -294,6 +335,64 @@ namespace Capstone
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnStockDetails_Click(object sender, EventArgs e)
+        {
+            frmDashboardDetails frm = new frmDashboardDetails();
+            frm.LoadCriticalStock();
+            frm.LoadOutOfStock();
+            frm.ShowDialog();
+        }
+        public void Users()
+        {
+            
+            cn = new SqlConnection(dbcon.MyConnection());
+            int i = 0;
+            //dataGridViewUsers.Rows.Clear();
+            string role = "";
+            int adminCount = 0;
+            int cashierCount = 0;
+            int totalUsers = 0;
+            cn.Open();
+            SqlCommand cm = new SqlCommand("SELECT User_Type FROM tblUser Order by Num", cn);
+            dr = cm.ExecuteReader();
+            while (dr.Read())
+            {
+                //                                          2-ROLE / 2-User_Type       
+                i += 1; //          0-#  1-NAME / 1-Name           
+                //dataGridViewUsers.Rows.Add(i, dr[4].ToString(), dr[5].ToString());
+                role = dr[0].ToString();
+                totalUsers++;
+                if (role.Equals("Admin"))
+                {
+                    adminCount++;
+                }else if (role.Equals("Cashier"))
+                {
+                    cashierCount++;
+                }
+                lblAdmin.Text = adminCount.ToString();
+                lblCashier.Text = cashierCount.ToString();
+                lblTotalUsers.Text = totalUsers.ToString();
+
+            }
+            dr.Close();
+            cn.Close();
+        }
+        private void btnUsersDetails_Click(object sender, EventArgs e)
+        {
+            frmDashboardDetails frm = new frmDashboardDetails();
+            frm.tabControlDashboardDetails.TabPages.Clear();
+            TabPage tab = new TabPage("USER INFO");
+            frm.tabControlDashboardDetails.TabPages.Add(tab);
+            tab.Controls.Add(frm.panelUsers);
+            frm.LoadUsers();
+            frm.ShowDialog();
+        }
+
+        private void btnCategoryDetails_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void btnLogout_Click(object sender, EventArgs e)

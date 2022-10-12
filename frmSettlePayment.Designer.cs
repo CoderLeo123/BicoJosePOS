@@ -45,6 +45,7 @@
             this.comBoxPaymentTerms = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblRowCount = new System.Windows.Forms.Label();
             this.lblPaymentNotice = new System.Windows.Forms.Label();
             this.lblTransacNo = new System.Windows.Forms.Label();
             this.panelDepositDueDate = new System.Windows.Forms.Panel();
@@ -76,7 +77,6 @@
             this.printDocument = new System.Drawing.Printing.PrintDocument();
             this.printDialog = new System.Windows.Forms.PrintDialog();
             this.printPreviewDialog = new System.Windows.Forms.PrintPreviewDialog();
-            this.lblRowCount = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnCloseSettlePayment)).BeginInit();
             this.panel1.SuspendLayout();
@@ -299,6 +299,17 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(539, 433);
             this.panel1.TabIndex = 31;
+            // 
+            // lblRowCount
+            // 
+            this.lblRowCount.AutoSize = true;
+            this.lblRowCount.ForeColor = System.Drawing.Color.Red;
+            this.lblRowCount.Location = new System.Drawing.Point(503, 70);
+            this.lblRowCount.Name = "lblRowCount";
+            this.lblRowCount.Size = new System.Drawing.Size(26, 31);
+            this.lblRowCount.TabIndex = 19;
+            this.lblRowCount.Text = "0";
+            this.lblRowCount.Visible = false;
             // 
             // lblPaymentNotice
             // 
@@ -714,17 +725,6 @@
             this.printPreviewDialog.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog.Icon")));
             this.printPreviewDialog.Name = "printPreviewDialog";
             this.printPreviewDialog.Visible = false;
-            // 
-            // lblRowCount
-            // 
-            this.lblRowCount.AutoSize = true;
-            this.lblRowCount.ForeColor = System.Drawing.Color.Red;
-            this.lblRowCount.Location = new System.Drawing.Point(503, 70);
-            this.lblRowCount.Name = "lblRowCount";
-            this.lblRowCount.Size = new System.Drawing.Size(24, 31);
-            this.lblRowCount.TabIndex = 19;
-            this.lblRowCount.Text = "*";
-            this.lblRowCount.Visible = false;
             // 
             // frmSettlePayment
             // 
