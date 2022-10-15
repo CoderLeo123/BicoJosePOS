@@ -31,15 +31,13 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.linkLabelCreateAccount = new System.Windows.Forms.LinkLabel();
+            this.checkBoxShowPassL = new System.Windows.Forms.CheckBox();
             this.lblPasswordNotice = new System.Windows.Forms.Label();
             this.lblUserNotice = new System.Windows.Forms.Label();
-            this.linkLabelForgotP = new System.Windows.Forms.LinkLabel();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnLogin = new System.Windows.Forms.Button();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.txtUsername = new System.Windows.Forms.TextBox();
-            this.checkBoxShowPassL = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -73,10 +71,8 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.LightYellow;
             this.panel2.Controls.Add(this.checkBoxShowPassL);
-            this.panel2.Controls.Add(this.linkLabelCreateAccount);
             this.panel2.Controls.Add(this.lblPasswordNotice);
             this.panel2.Controls.Add(this.lblUserNotice);
-            this.panel2.Controls.Add(this.linkLabelForgotP);
             this.panel2.Controls.Add(this.btnExit);
             this.panel2.Controls.Add(this.btnLogin);
             this.panel2.Controls.Add(this.txtPassword);
@@ -87,17 +83,17 @@
             this.panel2.Size = new System.Drawing.Size(408, 381);
             this.panel2.TabIndex = 1;
             // 
-            // linkLabelCreateAccount
+            // checkBoxShowPassL
             // 
-            this.linkLabelCreateAccount.AutoSize = true;
-            this.linkLabelCreateAccount.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.linkLabelCreateAccount.Location = new System.Drawing.Point(3, 334);
-            this.linkLabelCreateAccount.Name = "linkLabelCreateAccount";
-            this.linkLabelCreateAccount.Size = new System.Drawing.Size(170, 31);
-            this.linkLabelCreateAccount.TabIndex = 71;
-            this.linkLabelCreateAccount.TabStop = true;
-            this.linkLabelCreateAccount.Text = "Create Account";
-            this.linkLabelCreateAccount.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelCreateAccount_LinkClicked);
+            this.checkBoxShowPassL.AutoSize = true;
+            this.checkBoxShowPassL.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.checkBoxShowPassL.Location = new System.Drawing.Point(50, 180);
+            this.checkBoxShowPassL.Name = "checkBoxShowPassL";
+            this.checkBoxShowPassL.Size = new System.Drawing.Size(168, 32);
+            this.checkBoxShowPassL.TabIndex = 72;
+            this.checkBoxShowPassL.Text = "Show Password";
+            this.checkBoxShowPassL.UseVisualStyleBackColor = true;
+            this.checkBoxShowPassL.CheckedChanged += new System.EventHandler(this.checkBoxShowPassL_CheckedChanged);
             // 
             // lblPasswordNotice
             // 
@@ -122,18 +118,6 @@
             this.lblUserNotice.TabIndex = 69;
             this.lblUserNotice.Text = "Username Notice";
             this.lblUserNotice.Visible = false;
-            // 
-            // linkLabelForgotP
-            // 
-            this.linkLabelForgotP.AutoSize = true;
-            this.linkLabelForgotP.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.linkLabelForgotP.Location = new System.Drawing.Point(222, 334);
-            this.linkLabelForgotP.Name = "linkLabelForgotP";
-            this.linkLabelForgotP.Size = new System.Drawing.Size(183, 31);
-            this.linkLabelForgotP.TabIndex = 68;
-            this.linkLabelForgotP.TabStop = true;
-            this.linkLabelForgotP.Text = "Forgot Password";
-            this.linkLabelForgotP.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelForgotP_LinkClicked);
             // 
             // btnExit
             // 
@@ -187,18 +171,6 @@
             this.txtUsername.Size = new System.Drawing.Size(305, 43);
             this.txtUsername.TabIndex = 64;
             // 
-            // checkBoxShowPassL
-            // 
-            this.checkBoxShowPassL.AutoSize = true;
-            this.checkBoxShowPassL.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.checkBoxShowPassL.Location = new System.Drawing.Point(50, 180);
-            this.checkBoxShowPassL.Name = "checkBoxShowPassL";
-            this.checkBoxShowPassL.Size = new System.Drawing.Size(168, 32);
-            this.checkBoxShowPassL.TabIndex = 72;
-            this.checkBoxShowPassL.Text = "Show Password";
-            this.checkBoxShowPassL.UseVisualStyleBackColor = true;
-            this.checkBoxShowPassL.CheckedChanged += new System.EventHandler(this.checkBoxShowPassL_CheckedChanged);
-            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 37F);
@@ -227,12 +199,10 @@
         private PictureBox pictureBox1;
         public TextBox txtPassword;
         public TextBox txtUsername;
-        public LinkLabel linkLabelForgotP;
         private Button btnExit;
         public Button btnLogin;
         public Label lblPasswordNotice;
         public Label lblUserNotice;
-        public LinkLabel linkLabelCreateAccount;
         private CheckBox checkBoxShowPassL;
     }
 }

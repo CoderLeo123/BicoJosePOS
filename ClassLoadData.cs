@@ -447,9 +447,9 @@ namespace Capstone
             {
                 string TransDate = dr[6].ToString();
 
-                if (TransDate.Substring(0, 10) != "")
+                if (TransDate.Substring(0, 9) != "")
                 {
-                    TransDate = dr[6].ToString().Substring(0, 9);
+                    TransDate = dr[6].ToString().Substring(0, 10);
                 }
                 else
                 {
@@ -485,11 +485,11 @@ namespace Capstone
                 {
                     if (ExpirationDate.Substring(0, 9) != "")
                     {
-                        ExpirationDate = dr[2].ToString();//.Substring(0, 9);
+                        ExpirationDate = dr[2].ToString().Substring(0, 9);
                     }
                     else
                     {
-                        ExpirationDate = dr[2].ToString().Substring(0, 9);
+                        ExpirationDate = dr[2].ToString().Substring(0, 10);
                     }
                 }
                 if (TransDate.Substring(0, 10) != "")

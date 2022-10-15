@@ -40,7 +40,6 @@
             this.lblPasswordNotice = new System.Windows.Forms.Label();
             this.lblUserNamNotice = new System.Windows.Forms.Label();
             this.lblNameNotice = new System.Windows.Forms.Label();
-            this.linkLabelLogin = new System.Windows.Forms.LinkLabel();
             this.checkBoxShowPass = new System.Windows.Forms.CheckBox();
             this.txtLastN = new System.Windows.Forms.TextBox();
             this.txtConfirmPass = new System.Windows.Forms.TextBox();
@@ -59,6 +58,8 @@
             this.txtConfirmNewPass = new System.Windows.Forms.TextBox();
             this.txtNewPassword = new System.Windows.Forms.TextBox();
             this.btnResetPass = new System.Windows.Forms.Button();
+            this.lblPermi = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
@@ -129,13 +130,14 @@
             // 
             // panelSignUp
             // 
+            this.panelSignUp.Controls.Add(this.label1);
+            this.panelSignUp.Controls.Add(this.lblPermi);
             this.panelSignUp.Controls.Add(this.lblUserID);
             this.panelSignUp.Controls.Add(this.comBoxUserType);
             this.panelSignUp.Controls.Add(this.label4);
             this.panelSignUp.Controls.Add(this.lblPasswordNotice);
             this.panelSignUp.Controls.Add(this.lblUserNamNotice);
             this.panelSignUp.Controls.Add(this.lblNameNotice);
-            this.panelSignUp.Controls.Add(this.linkLabelLogin);
             this.panelSignUp.Controls.Add(this.checkBoxShowPass);
             this.panelSignUp.Controls.Add(this.txtLastN);
             this.panelSignUp.Controls.Add(this.txtConfirmPass);
@@ -148,6 +150,7 @@
             this.panelSignUp.Name = "panelSignUp";
             this.panelSignUp.Size = new System.Drawing.Size(633, 519);
             this.panelSignUp.TabIndex = 0;
+            this.panelSignUp.Paint += new System.Windows.Forms.PaintEventHandler(this.panelSignUp_Paint);
             // 
             // lblUserID
             // 
@@ -220,18 +223,6 @@
             this.lblNameNotice.Text = "Name Notice";
             this.lblNameNotice.Visible = false;
             // 
-            // linkLabelLogin
-            // 
-            this.linkLabelLogin.AutoSize = true;
-            this.linkLabelLogin.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.linkLabelLogin.Location = new System.Drawing.Point(262, 459);
-            this.linkLabelLogin.Name = "linkLabelLogin";
-            this.linkLabelLogin.Size = new System.Drawing.Size(80, 31);
-            this.linkLabelLogin.TabIndex = 76;
-            this.linkLabelLogin.TabStop = true;
-            this.linkLabelLogin.Text = "LOGIN";
-            this.linkLabelLogin.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelLogin_LinkClicked);
-            // 
             // checkBoxShowPass
             // 
             this.checkBoxShowPass.AutoSize = true;
@@ -289,7 +280,7 @@
             this.btnCreateAccount.Name = "btnCreateAccount";
             this.btnCreateAccount.Size = new System.Drawing.Size(192, 58);
             this.btnCreateAccount.TabIndex = 70;
-            this.btnCreateAccount.Text = "SIGN UP";
+            this.btnCreateAccount.Text = "CREATE";
             this.btnCreateAccount.UseVisualStyleBackColor = false;
             this.btnCreateAccount.Click += new System.EventHandler(this.btnCreateAccount_Click);
             // 
@@ -317,10 +308,10 @@
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.panelForgotPass);
-            this.tabPage2.Location = new System.Drawing.Point(4, 46);
+            this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(639, 525);
+            this.tabPage2.Size = new System.Drawing.Size(639, 542);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Forgot Password";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -339,7 +330,7 @@
             this.panelForgotPass.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelForgotPass.Location = new System.Drawing.Point(3, 3);
             this.panelForgotPass.Name = "panelForgotPass";
-            this.panelForgotPass.Size = new System.Drawing.Size(633, 519);
+            this.panelForgotPass.Size = new System.Drawing.Size(633, 536);
             this.panelForgotPass.TabIndex = 0;
             // 
             // lblUserIDForgot
@@ -449,6 +440,27 @@
             this.btnResetPass.UseVisualStyleBackColor = false;
             this.btnResetPass.Click += new System.EventHandler(this.btnResetPass_Click);
             // 
+            // lblPermi
+            // 
+            this.lblPermi.AutoSize = true;
+            this.lblPermi.ForeColor = System.Drawing.Color.Red;
+            this.lblPermi.Location = new System.Drawing.Point(459, 354);
+            this.lblPermi.Name = "lblPermi";
+            this.lblPermi.Size = new System.Drawing.Size(151, 38);
+            this.lblPermi.TabIndex = 83;
+            this.lblPermi.Text = "Permission";
+            this.lblPermi.Visible = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.Red;
+            this.label1.Location = new System.Drawing.Point(459, 398);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 38);
+            this.label1.TabIndex = 84;
+            this.label1.Visible = false;
+            // 
             // frmSignUpForgotPass
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 37F);
@@ -494,7 +506,6 @@
         public TextBox txtFirstN;
         public ComboBox comBoxUserType;
         private Label label4;
-        public LinkLabel linkLabelLogin;
         public CheckBox checkBoxShowPass;
         public Label lblNameNotice;
         public Label lblPasswordNotice;
@@ -509,5 +520,7 @@
         public Button btnResetPass;
         public Label lblUserID;
         public Label lblUserIDForgot;
+        public Label lblPermi;
+        public Label label1;
     }
 }

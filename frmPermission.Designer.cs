@@ -35,6 +35,7 @@
             this.txtAdminPassword = new System.Windows.Forms.TextBox();
             this.btnConfirmPassPermision = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.lblWhatForm = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
@@ -74,6 +75,7 @@
             this.btnClose.Size = new System.Drawing.Size(40, 38);
             this.btnClose.TabIndex = 0;
             this.btnClose.TabStop = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // lblAdminPassNotice
             // 
@@ -122,11 +124,22 @@
             this.label2.TabIndex = 89;
             this.label2.Text = "Admin Permision";
             // 
+            // lblWhatForm
+            // 
+            this.lblWhatForm.AutoSize = true;
+            this.lblWhatForm.Location = new System.Drawing.Point(407, 203);
+            this.lblWhatForm.Name = "lblWhatForm";
+            this.lblWhatForm.Size = new System.Drawing.Size(113, 41);
+            this.lblWhatForm.TabIndex = 90;
+            this.lblWhatForm.Text = "Denied";
+            this.lblWhatForm.Visible = false;
+            // 
             // frmPermission
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(17F, 41F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(620, 253);
+            this.Controls.Add(this.lblWhatForm);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblAdminPassNotice);
             this.Controls.Add(this.txtAdminPassword);
@@ -134,7 +147,7 @@
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "frmPermission";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmPermission";
@@ -155,5 +168,6 @@
         public TextBox txtAdminPassword;
         public Button btnConfirmPassPermision;
         private Label label2;
+        public Label lblWhatForm;
     }
 }

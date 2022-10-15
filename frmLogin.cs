@@ -52,7 +52,7 @@ namespace Capstone
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Dispose(); this.Close();
         }
         //public void insertFirstAdmin(string user_ID, string UserName, string password, string FName, string LName, string userType)
         //{
@@ -114,15 +114,25 @@ namespace Capstone
                 {
                     frmAdmin frm = new frmAdmin();
                     frm.lblName.Text = CompleteName;
+                    frm.btnBackupArch.Visible = false;
+                    frm.btnUserSettings.Visible = false;
+                    frm.btnCashier.Visible = false;
                     frm.ShowDialog();
-                    this.Close();
+                    this.Dispose(); this.Close();
                 }
                 else if (type.Equals("Cashier"))
                 {
                     frmCashier frm = new frmCashier();
                     frm.lblCashierName.Text = CompleteName;
                     frm.ShowDialog();
-                    this.Close();
+                    this.Dispose(); this.Close();
+                }
+                else if (type.Equals("Master"))
+                {
+                    frmAdmin frm = new frmAdmin();
+                    frm.lblName.Text = CompleteName;
+                    frm.ShowDialog();
+                    this.Dispose(); this.Close();
                 }
                 else
                 {
@@ -139,26 +149,26 @@ namespace Capstone
 
         private void linkLabelForgotP_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            frmSignUpForgotPass frm = new frmSignUpForgotPass();
-            frm.tabControlRegister.TabPages.Clear();
-            TabPage tab = new TabPage("Reset");
-            frm.tabControlRegister.TabPages.Add(tab);
-            tab.Controls.Add(frm.panelForgotPass);
-            frm.Size = new Size(647, 517);
+            //frmSignUpForgotPass frm = new frmSignUpForgotPass();
+            //frm.tabControlRegister.TabPages.Clear();
+            //TabPage tab = new TabPage("Reset");
+            //frm.tabControlRegister.TabPages.Add(tab);
+            //tab.Controls.Add(frm.panelForgotPass);
+            //frm.Size = new Size(647, 517);
             
-            frm.ShowDialog();
+            //frm.ShowDialog();
 
         }
 
         private void linkLabelCreateAccount_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            frmSignUpForgotPass frm = new frmSignUpForgotPass();
-            frm.tabControlRegister.TabPages.Clear();
-            TabPage tab = new TabPage("Sign Up");
-            frm.tabControlRegister.TabPages.Add(tab);
-            tab.Controls.Add(frm.panelSignUp);
-            frm.comBoxUserType.SelectedIndex = 0;
-            frm.ShowDialog();
+            //frmSignUpForgotPass frm = new frmSignUpForgotPass();
+            //frm.tabControlRegister.TabPages.Clear();
+            //TabPage tab = new TabPage("Sign Up");
+            //frm.tabControlRegister.TabPages.Add(tab);
+            //tab.Controls.Add(frm.panelSignUp);
+            //frm.comBoxUserType.SelectedIndex = 0;
+            //frm.ShowDialog();
         }
 
         private void checkBoxShowPassL_CheckedChanged(object sender, EventArgs e)

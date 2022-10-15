@@ -18,6 +18,7 @@ namespace Capstone
         SqlDataReader dr;
         ClassGenerateID classGenerateID = new ClassGenerateID();
         ClassLoadData classLoadData = new ClassLoadData();
+        ClassInventory classInventory = new ClassInventory();
         string title = "BICO-JOSE System";
         string ID, num = "", pass; int count, count2, rows;
         string check = null;
@@ -210,8 +211,12 @@ namespace Capstone
                             cm.ExecuteNonQuery();
                             cn.Close();
                         }
+                        int baseStk = 0;
+                        string ITMID = dataGridViewStockItems.Rows[i].Cells[9].Value?.ToString();
+                        int newStock = int.Parse(dataGridViewStockItems.Rows[i].Cells[5].Value?.ToString());
+                        classInventory.determineBaseStock(newStock, out baseStk, ITMID);
                         cn.Open();
-                        cm = new SqlCommand("UPDATE tblItem SET Quantity = Quantity + " + int.Parse(dataGridViewStockItems.Rows[i].Cells[5].Value?.ToString()) + " WHERE Item_ID LIKE '" + dataGridViewStockItems.Rows[i].Cells[9].Value?.ToString() + "' ", cn);
+                        cm = new SqlCommand("UPDATE tblItem SET Base_Stock = "+ baseStk + ", Quantity = Quantity + " + int.Parse(dataGridViewStockItems.Rows[i].Cells[5].Value?.ToString()) + " WHERE Item_ID LIKE '" + dataGridViewStockItems.Rows[i].Cells[9].Value?.ToString() + "' ", cn);
                         cm.ExecuteNonQuery();
                         cn.Close();
                         try
@@ -252,6 +257,8 @@ namespace Capstone
                     }
                     classLoadData.LoadStock(dataGridViewStockItems, txtStockID, label3);
                     classLoadData.LoadStockOnHand(dataGridViewOnHand, txtSearch);
+                    frmAdmin frm = new frmAdmin();
+                    txtStockInBy.Text = frm.lblName.Text;
                     //LoadStock();
                     Clear();
                 }

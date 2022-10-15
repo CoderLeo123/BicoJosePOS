@@ -290,6 +290,7 @@
             // 
             this.Date.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.Date.HeaderText = "DATE";
+            this.Date.MaxInputLength = 11;
             this.Date.MinimumWidth = 6;
             this.Date.Name = "Date";
             this.Date.ReadOnly = true;
@@ -498,7 +499,7 @@
             // 
             this.dataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.dataGridViewTextBoxColumn6.HeaderText = "DATE";
-            this.dataGridViewTextBoxColumn6.MaxInputLength = 11;
+            this.dataGridViewTextBoxColumn6.MaxInputLength = 13;
             this.dataGridViewTextBoxColumn6.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.ReadOnly = true;

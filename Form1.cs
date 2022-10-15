@@ -323,6 +323,12 @@ namespace Capstone
 
         private void btnUserSettings_Click(object sender, EventArgs e)
         {
+            frmUserSetting frm = new frmUserSetting();
+            frm.TopLevel = false;
+            panelLoad.Controls.Clear();
+            panelLoad.Controls.Add(frm);
+            frm.BringToFront();
+            frm.Show();
             //btnCollapsed();
             //timerStart();
         }
@@ -340,6 +346,17 @@ namespace Capstone
         private void btnStockDetails_Click(object sender, EventArgs e)
         {
             frmDashboardDetails frm = new frmDashboardDetails();
+            
+            frm.tabControlDashboardDetails.TabPages.Clear();
+            TabPage tab = new TabPage("Critical");
+            frm.tabControlDashboardDetails.TabPages.Add(tab);
+            tab.Controls.Add(frm.panelCritical);
+            TabPage tab2 = new TabPage("Out of Stock");
+            frm.tabControlDashboardDetails.TabPages.Add(tab2);
+            
+            tab2.Controls.Add(frm.panelOutOfStock);
+            frm.LoadUsers();
+            
             frm.LoadCriticalStock();
             frm.LoadOutOfStock();
             frm.ShowDialog();
@@ -395,12 +412,19 @@ namespace Capstone
 
         }
 
-        private void btnLogout_Click(object sender, EventArgs e)
+        private void btnLogout_Click_1(object sender, EventArgs e)
+        {
+            this.Dispose(); this.Close();
+
+            frmLogin frm = new frmLogin();
+            frm.ShowDialog();
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)//btnCashier
         {
              this.Dispose(); this.Close();
-            //btnCollapsed();
-            //timerStart();
-            frmLogin frm = new frmLogin();
+           
+            frmCashier frm = new frmCashier();
             frm.ShowDialog();
         }
 

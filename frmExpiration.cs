@@ -138,6 +138,7 @@ namespace Capstone
 
                     dataGridViewSelected.Rows[e.RowIndex].Cells["Qty"].ReadOnly = false;
                     dataGridViewSelected.CurrentCell = dataGridViewSelected.Rows[e.RowIndex].Cells["Qty"];
+                    lblInitialStock.Text = dataGridViewSelected.Rows[e.RowIndex].Cells["Qty"].ToString();
                     dataGridViewSelected.BeginEdit(true);
 
                     //int stocks = int.Parse(dataGridViewSelected[2, e.RowIndex].Value.ToString());
@@ -229,9 +230,25 @@ namespace Capstone
         {
             float price = float.Parse(lblPrice.Text);
             int qty = int.Parse(dataGridViewSelected[2, e.RowIndex].Value.ToString());
+            int intialStock = int.Parse(lblInitialStock.Text);
             float total = float.Parse(price.ToString()) * int.Parse(qty.ToString());
-            dataGridViewSelected[3, e.RowIndex].Value = total.ToString("#.##");
-            dataGridViewSelected.Rows[e.RowIndex].Cells["Qty"].ReadOnly = true;
+            //dataGridViewSelected[3, e.RowIndex].Value = total.ToString("#.##");
+            //dataGridViewSelected.Rows[e.RowIndex].Cells["Qty"].ReadOnly = true;
+
+            if (qty > intialStock)
+            {
+                dataGridViewSelected[2, e.RowIndex].Value = intialStock.ToString();
+                
+                dataGridViewSelected[3, e.RowIndex].Value = total.ToString("#.##");
+                dataGridViewSelected.BeginEdit(true);
+
+            }
+            else
+            {
+                dataGridViewSelected[3, e.RowIndex].Value = total.ToString("#.##");
+                dataGridViewSelected.Rows[e.RowIndex].Cells["Qty"].ReadOnly = true;
+            }
+            
         }
 
         private void txtQuantity_TextChanged(object sender, EventArgs e)
@@ -349,6 +366,15 @@ namespace Capstone
         private void panel1_MouseUp(object sender, MouseEventArgs e)
         {
             mouseDown = false;
+        }
+
+        private void dataGridViewSelected_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            float price = float.Parse(lblPrice.Text);
+            int qty = int.Parse(dataGridViewSelected[2, e.RowIndex].Value.ToString());
+            float total = float.Parse(price.ToString()) * int.Parse(qty.ToString());
+            dataGridViewSelected[3, e.RowIndex].Value = total.ToString("#.##");
+            dataGridViewSelected.Rows[e.RowIndex].Cells["Qty"].ReadOnly = true;
         }
     }
 }

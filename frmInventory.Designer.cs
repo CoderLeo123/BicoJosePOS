@@ -151,7 +151,7 @@
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(1307, 823);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Inventory List";
+            this.tabPage1.Text = "Re-order";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // panel3
@@ -309,15 +309,16 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.BackColor = System.Drawing.Color.Transparent;
             this.tabPage2.Controls.Add(this.panel5);
             this.tabPage2.Controls.Add(this.panel4);
-            this.tabPage2.Location = new System.Drawing.Point(4, 29);
+            this.tabPage2.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.tabPage2.Location = new System.Drawing.Point(4, 46);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1307, 840);
+            this.tabPage2.Size = new System.Drawing.Size(1307, 823);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Critical Stocks";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabPage2.Text = "Critical";
             // 
             // panel5
             // 
@@ -325,7 +326,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(3, 83);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1301, 754);
+            this.panel5.Size = new System.Drawing.Size(1301, 737);
             this.panel5.TabIndex = 2;
             // 
             // dataGridView1
@@ -372,7 +373,7 @@
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView1.RowTemplate.Height = 29;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1301, 754);
+            this.dataGridView1.Size = new System.Drawing.Size(1301, 737);
             this.dataGridView1.TabIndex = 6;
             // 
             // dataGridViewTextBoxColumn1
@@ -457,11 +458,11 @@
             // 
             this.tabPage4.Controls.Add(this.panel7);
             this.tabPage4.Controls.Add(this.panel6);
-            this.tabPage4.Location = new System.Drawing.Point(4, 29);
+            this.tabPage4.Location = new System.Drawing.Point(4, 46);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(1307, 840);
+            this.tabPage4.Size = new System.Drawing.Size(1307, 823);
             this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Perishable Items";
+            this.tabPage4.Text = "Out of Stock";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // panel7
@@ -470,7 +471,7 @@
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel7.Location = new System.Drawing.Point(0, 84);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(1307, 756);
+            this.panel7.Size = new System.Drawing.Size(1307, 739);
             this.panel7.TabIndex = 1;
             // 
             // dataGridView2
@@ -517,7 +518,7 @@
             this.dataGridView2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView2.RowTemplate.Height = 29;
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(1307, 756);
+            this.dataGridView2.Size = new System.Drawing.Size(1307, 739);
             this.dataGridView2.TabIndex = 7;
             // 
             // dataGridViewTextBoxColumn12

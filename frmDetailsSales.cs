@@ -20,6 +20,8 @@ namespace Capstone
         string title = "BICO-JOSE System";
         frmCashier frmC;
         //frmCashier frmList;
+        private bool mouseDown;
+        private Point lastLocation;
         public frmDetailsSales(frmCashier frmL)
         {
             InitializeComponent();
@@ -61,6 +63,33 @@ namespace Capstone
         {
             
             classLoadData.LoadCart(frmC.dataGridViewCart, frmC.lblDiscount, frmC.lblSalesTotal, frmC.lblPayment, frmC.lblNetTotal, frmC.btnSettlePayment, frmC.btnAddDiscount, frmC.btnClearCart, frmC.txtSearch, frmC.dataGridViewService);
+        }
+
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseDown = true;
+            lastLocation = e.Location;
+        }
+
+        private void panel1_MouseLeave(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_MouseUp(object sender, MouseEventArgs e)
+        {
+            mouseDown = false;
+        }
+
+        private void panel1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseDown)
+            {
+                this.Location = new Point(
+                    (this.Location.X - lastLocation.X) + e.X, (this.Location.Y - lastLocation.Y) + e.Y);
+
+                this.Update();
+            }
         }
     }
 }

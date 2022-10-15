@@ -125,7 +125,7 @@ namespace Capstone
             }
             else
             {
-                insertFirstAdmin("USR1000", "leo", "qweasd", "Leomar", "Cabug", "Admin");
+                insertFirstAdmin("USR1000", "leo", "qweasd", "Leomar", "Cabug", "Master");
                 
             }
             dr.Close();

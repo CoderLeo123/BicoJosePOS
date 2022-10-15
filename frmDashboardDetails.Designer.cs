@@ -96,6 +96,8 @@
             this.panel1Category = new System.Windows.Forms.Panel();
             this.panel15 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel16 = new System.Windows.Forms.Panel();
             this.panel17 = new System.Windows.Forms.Panel();
             this.label14 = new System.Windows.Forms.Label();
@@ -105,8 +107,6 @@
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -157,6 +157,10 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(842, 62);
             this.panel3.TabIndex = 35;
+            this.panel3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseDown);
+            this.panel3.MouseLeave += new System.EventHandler(this.panel3_MouseLeave);
+            this.panel3.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseMove);
+            this.panel3.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseUp);
             // 
             // panel6
             // 
@@ -228,9 +232,9 @@
             // 
             this.panel7.Controls.Add(this.dataGridViewCritical);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel7.Location = new System.Drawing.Point(0, 84);
+            this.panel7.Location = new System.Drawing.Point(0, 57);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(828, 307);
+            this.panel7.Size = new System.Drawing.Size(828, 334);
             this.panel7.TabIndex = 1;
             // 
             // dataGridViewCritical
@@ -273,7 +277,7 @@
             this.dataGridViewCritical.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridViewCritical.RowTemplate.Height = 35;
             this.dataGridViewCritical.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewCritical.Size = new System.Drawing.Size(828, 307);
+            this.dataGridViewCritical.Size = new System.Drawing.Size(828, 334);
             this.dataGridViewCritical.TabIndex = 8;
             // 
             // NumService
@@ -317,7 +321,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(0, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(828, 84);
+            this.panel5.Size = new System.Drawing.Size(828, 57);
             this.panel5.TabIndex = 0;
             // 
             // panel9
@@ -333,7 +337,7 @@
             this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel9.Location = new System.Drawing.Point(0, 0);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(828, 84);
+            this.panel9.Size = new System.Drawing.Size(828, 57);
             this.panel9.TabIndex = 38;
             // 
             // lblItemIDCheck
@@ -852,6 +856,23 @@
             this.dataGridView1.Size = new System.Drawing.Size(834, 313);
             this.dataGridView1.TabIndex = 8;
             // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewTextBoxColumn8.HeaderText = "#";
+            this.dataGridViewTextBoxColumn8.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            this.dataGridViewTextBoxColumn8.Width = 61;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn9.HeaderText = "PRODUCT";
+            this.dataGridViewTextBoxColumn9.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.ReadOnly = true;
+            // 
             // panel16
             // 
             this.panel16.Controls.Add(this.panel17);
@@ -940,23 +961,6 @@
             this.textBox3.PlaceholderText = "Search Here";
             this.textBox3.Size = new System.Drawing.Size(619, 38);
             this.textBox3.TabIndex = 0;
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataGridViewTextBoxColumn8.HeaderText = "#";
-            this.dataGridViewTextBoxColumn8.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            this.dataGridViewTextBoxColumn8.ReadOnly = true;
-            this.dataGridViewTextBoxColumn8.Width = 61;
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn9.HeaderText = "PRODUCT";
-            this.dataGridViewTextBoxColumn9.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            this.dataGridViewTextBoxColumn9.ReadOnly = true;
             // 
             // frmDashboardDetails
             // 
