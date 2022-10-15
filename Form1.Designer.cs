@@ -32,6 +32,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnLogout = new System.Windows.Forms.Button();
+            this.btnCashier = new System.Windows.Forms.Button();
             this.btnUserSettings = new System.Windows.Forms.Button();
             this.btnBackupArch = new System.Windows.Forms.Button();
             this.dropPanelSales = new System.Windows.Forms.Panel();
@@ -113,6 +114,7 @@
             // panel4
             // 
             this.panel4.Controls.Add(this.btnLogout);
+            this.panel4.Controls.Add(this.btnCashier);
             this.panel4.Controls.Add(this.btnUserSettings);
             this.panel4.Controls.Add(this.btnBackupArch);
             this.panel4.Controls.Add(this.dropPanelSales);
@@ -137,14 +139,33 @@
             this.btnLogout.ForeColor = System.Drawing.Color.White;
             this.btnLogout.Image = global::Capstone.Properties.Resources.Log_out;
             this.btnLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLogout.Location = new System.Drawing.Point(0, 482);
+            this.btnLogout.Location = new System.Drawing.Point(0, 534);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(278, 52);
-            this.btnLogout.TabIndex = 17;
+            this.btnLogout.TabIndex = 18;
             this.btnLogout.Text = "   Logout";
             this.btnLogout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnLogout.UseVisualStyleBackColor = false;
-            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click_1);
+            // 
+            // btnCashier
+            // 
+            this.btnCashier.BackColor = System.Drawing.Color.Transparent;
+            this.btnCashier.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnCashier.FlatAppearance.BorderSize = 0;
+            this.btnCashier.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCashier.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnCashier.ForeColor = System.Drawing.Color.White;
+            this.btnCashier.Image = global::Capstone.Properties.Resources.Items;
+            this.btnCashier.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCashier.Location = new System.Drawing.Point(0, 482);
+            this.btnCashier.Name = "btnCashier";
+            this.btnCashier.Size = new System.Drawing.Size(278, 52);
+            this.btnCashier.TabIndex = 17;
+            this.btnCashier.Text = "   Cashier";
+            this.btnCashier.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCashier.UseVisualStyleBackColor = false;
+            this.btnCashier.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // btnUserSettings
             // 
@@ -847,19 +868,9 @@
         private System.Windows.Forms.Timer timerDrpBtnPayment;
         private System.Windows.Forms.Timer timerDrpBtnSales;
         private Panel panel4;
-        private Button btnLogout;
-        private Button btnUserSettings;
-        private Button btnBackupArch;
         private Panel dropPanelSales;
-        private Button btnInventory;
-        private Button btnStockDel;
-        private Panel dropPanelProducts;
         private Panel dropPanelPayment;
-        private Button btnPatientR;
-        private Button btnDashboard;
-        private Button dropBtnReports;
         private Button dropBtnProducts;
-        private Button dropBtnPayment;
         private Panel panelLoad;
         public Label lblName;
         private Panel panelDashboard;
@@ -897,5 +908,16 @@
         public Button btnUsersDetails;
         public Button btnStockDetails;
         public Button btnSalesDetails;
+        public Button btnUserSettings;
+        public Button btnBackupArch;
+        public Button btnInventory;
+        public Button btnStockDel;
+        public Panel dropPanelProducts;
+        public Button btnPatientR;
+        public Button btnDashboard;
+        public Button dropBtnReports;
+        public Button dropBtnPayment;
+        private Button btnLogout;
+        public Button btnCashier;
     }
 }

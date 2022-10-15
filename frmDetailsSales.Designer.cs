@@ -429,9 +429,9 @@
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.panelBrowseService);
-            this.tabPage3.Location = new System.Drawing.Point(4, 46);
+            this.tabPage3.Location = new System.Drawing.Point(4, 29);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(677, 365);
+            this.tabPage3.Size = new System.Drawing.Size(677, 382);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "BrowseService";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -443,7 +443,7 @@
             this.panelBrowseService.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelBrowseService.Location = new System.Drawing.Point(0, 0);
             this.panelBrowseService.Name = "panelBrowseService";
-            this.panelBrowseService.Size = new System.Drawing.Size(677, 365);
+            this.panelBrowseService.Size = new System.Drawing.Size(677, 382);
             this.panelBrowseService.TabIndex = 0;
             // 
             // panel5
@@ -452,7 +452,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(0, 56);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(677, 309);
+            this.panel5.Size = new System.Drawing.Size(677, 326);
             this.panel5.TabIndex = 1;
             // 
             // dataGridViewService
@@ -497,7 +497,7 @@
             this.dataGridViewService.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridViewService.RowTemplate.Height = 29;
             this.dataGridViewService.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewService.Size = new System.Drawing.Size(677, 309);
+            this.dataGridViewService.Size = new System.Drawing.Size(677, 326);
             this.dataGridViewService.TabIndex = 7;
             this.dataGridViewService.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewService_CellContentClick);
             // 
@@ -651,6 +651,10 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(685, 63);
             this.panel1.TabIndex = 34;
+            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
+            this.panel1.MouseLeave += new System.EventHandler(this.panel1_MouseLeave);
+            this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
+            this.panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseUp);
             // 
             // panel6
             // 

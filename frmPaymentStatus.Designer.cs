@@ -81,6 +81,13 @@
             this.panel9 = new System.Windows.Forms.Panel();
             this.panel11 = new System.Windows.Forms.Panel();
             this.dataGridViewOrderStatus = new System.Windows.Forms.DataGridView();
+            this.NumOrderStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CustomerNameOrdStat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StatusOrdStat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ExpectedArrival = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DateClaimedOrdStat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ReleaseByOrdStat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel10 = new System.Windows.Forms.Panel();
             this.panel12 = new System.Windows.Forms.Panel();
             this.panel13 = new System.Windows.Forms.Panel();
@@ -90,13 +97,7 @@
             this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.NumOrderStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CustomerNameOrdStat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StatusOrdStat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ExpectedArrival = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DateClaimedOrdStat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ReleaseByOrdStat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel14 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSettled)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -119,6 +120,7 @@
             this.panel12.SuspendLayout();
             this.panel13.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel14.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridViewSettled
@@ -182,7 +184,8 @@
             this.TransRefNoSettled.MinimumWidth = 6;
             this.TransRefNoSettled.Name = "TransRefNoSettled";
             this.TransRefNoSettled.ReadOnly = true;
-            this.TransRefNoSettled.Width = 180;
+            this.TransRefNoSettled.Visible = false;
+            this.TransRefNoSettled.Width = 125;
             // 
             // CustNameSettled
             // 
@@ -321,7 +324,7 @@
             this.btnClose.BackgroundImage = global::Capstone.Properties.Resources.CloseTab;
             this.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnClose.Location = new System.Drawing.Point(1260, 9);
+            this.btnClose.Location = new System.Drawing.Point(3, 8);
             this.btnClose.Name = "btnClose";
             this.btnClose.Padding = new System.Windows.Forms.Padding(3);
             this.btnClose.Size = new System.Drawing.Size(40, 38);
@@ -392,7 +395,8 @@
             this.TransRefNoPendingSet.MinimumWidth = 6;
             this.TransRefNoPendingSet.Name = "TransRefNoPendingSet";
             this.TransRefNoPendingSet.ReadOnly = true;
-            this.TransRefNoPendingSet.Width = 180;
+            this.TransRefNoPendingSet.Visible = false;
+            this.TransRefNoPendingSet.Width = 125;
             // 
             // CustomerNamePendingSet
             // 
@@ -458,9 +462,9 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.panel1.Controls.Add(this.panel14);
             this.panel1.Controls.Add(this.panel7);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.btnClose);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -691,6 +695,68 @@
             this.dataGridViewOrderStatus.Size = new System.Drawing.Size(1301, 763);
             this.dataGridViewOrderStatus.TabIndex = 6;
             // 
+            // NumOrderStatus
+            // 
+            this.NumOrderStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.NumOrderStatus.HeaderText = "#";
+            this.NumOrderStatus.MinimumWidth = 6;
+            this.NumOrderStatus.Name = "NumOrderStatus";
+            this.NumOrderStatus.ReadOnly = true;
+            this.NumOrderStatus.Width = 61;
+            // 
+            // TNO
+            // 
+            this.TNO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.TNO.HeaderText = "TRANS NO";
+            this.TNO.MinimumWidth = 6;
+            this.TNO.Name = "TNO";
+            this.TNO.ReadOnly = true;
+            this.TNO.Visible = false;
+            this.TNO.Width = 125;
+            // 
+            // CustomerNameOrdStat
+            // 
+            this.CustomerNameOrdStat.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CustomerNameOrdStat.HeaderText = "CUSTOMER";
+            this.CustomerNameOrdStat.MinimumWidth = 6;
+            this.CustomerNameOrdStat.Name = "CustomerNameOrdStat";
+            this.CustomerNameOrdStat.ReadOnly = true;
+            // 
+            // StatusOrdStat
+            // 
+            this.StatusOrdStat.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.StatusOrdStat.HeaderText = "STATUS";
+            this.StatusOrdStat.MinimumWidth = 6;
+            this.StatusOrdStat.Name = "StatusOrdStat";
+            this.StatusOrdStat.Width = 137;
+            // 
+            // ExpectedArrival
+            // 
+            this.ExpectedArrival.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.ExpectedArrival.HeaderText = "ARRIVAL";
+            this.ExpectedArrival.MinimumWidth = 6;
+            this.ExpectedArrival.Name = "ExpectedArrival";
+            this.ExpectedArrival.ReadOnly = true;
+            this.ExpectedArrival.Width = 149;
+            // 
+            // DateClaimedOrdStat
+            // 
+            this.DateClaimedOrdStat.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.DateClaimedOrdStat.HeaderText = "DATE CLAIMED";
+            this.DateClaimedOrdStat.MinimumWidth = 6;
+            this.DateClaimedOrdStat.Name = "DateClaimedOrdStat";
+            this.DateClaimedOrdStat.ReadOnly = true;
+            this.DateClaimedOrdStat.Width = 231;
+            // 
+            // ReleaseByOrdStat
+            // 
+            this.ReleaseByOrdStat.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.ReleaseByOrdStat.HeaderText = "RELEASE BY";
+            this.ReleaseByOrdStat.MinimumWidth = 6;
+            this.ReleaseByOrdStat.Name = "ReleaseByOrdStat";
+            this.ReleaseByOrdStat.ReadOnly = true;
+            this.ReleaseByOrdStat.Width = 187;
+            // 
             // panel10
             // 
             this.panel10.Controls.Add(this.panel12);
@@ -791,66 +857,14 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // NumOrderStatus
+            // panel14
             // 
-            this.NumOrderStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.NumOrderStatus.HeaderText = "#";
-            this.NumOrderStatus.MinimumWidth = 6;
-            this.NumOrderStatus.Name = "NumOrderStatus";
-            this.NumOrderStatus.ReadOnly = true;
-            this.NumOrderStatus.Width = 61;
-            // 
-            // TNO
-            // 
-            this.TNO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.TNO.HeaderText = "TRANS NO";
-            this.TNO.MinimumWidth = 6;
-            this.TNO.Name = "TNO";
-            this.TNO.ReadOnly = true;
-            this.TNO.Width = 180;
-            // 
-            // CustomerNameOrdStat
-            // 
-            this.CustomerNameOrdStat.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CustomerNameOrdStat.HeaderText = "CUSTOMER";
-            this.CustomerNameOrdStat.MinimumWidth = 6;
-            this.CustomerNameOrdStat.Name = "CustomerNameOrdStat";
-            this.CustomerNameOrdStat.ReadOnly = true;
-            // 
-            // StatusOrdStat
-            // 
-            this.StatusOrdStat.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.StatusOrdStat.HeaderText = "STATUS";
-            this.StatusOrdStat.MinimumWidth = 6;
-            this.StatusOrdStat.Name = "StatusOrdStat";
-            this.StatusOrdStat.Width = 137;
-            // 
-            // ExpectedArrival
-            // 
-            this.ExpectedArrival.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.ExpectedArrival.HeaderText = "ARRIVAL";
-            this.ExpectedArrival.MinimumWidth = 6;
-            this.ExpectedArrival.Name = "ExpectedArrival";
-            this.ExpectedArrival.ReadOnly = true;
-            this.ExpectedArrival.Width = 149;
-            // 
-            // DateClaimedOrdStat
-            // 
-            this.DateClaimedOrdStat.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.DateClaimedOrdStat.HeaderText = "DATE CLAIMED";
-            this.DateClaimedOrdStat.MinimumWidth = 6;
-            this.DateClaimedOrdStat.Name = "DateClaimedOrdStat";
-            this.DateClaimedOrdStat.ReadOnly = true;
-            this.DateClaimedOrdStat.Width = 231;
-            // 
-            // ReleaseByOrdStat
-            // 
-            this.ReleaseByOrdStat.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.ReleaseByOrdStat.HeaderText = "RELEASE BY";
-            this.ReleaseByOrdStat.MinimumWidth = 6;
-            this.ReleaseByOrdStat.Name = "ReleaseByOrdStat";
-            this.ReleaseByOrdStat.ReadOnly = true;
-            this.ReleaseByOrdStat.Width = 187;
+            this.panel14.Controls.Add(this.btnClose);
+            this.panel14.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel14.Location = new System.Drawing.Point(1248, 0);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(53, 49);
+            this.panel14.TabIndex = 37;
             // 
             // frmPaymentStatus
             // 
@@ -890,6 +904,7 @@
             this.panel13.ResumeLayout(false);
             this.panel13.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel14.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -958,5 +973,6 @@
         private DataGridViewTextBoxColumn ExpectedArrival;
         private DataGridViewTextBoxColumn DateClaimedOrdStat;
         private DataGridViewTextBoxColumn ReleaseByOrdStat;
+        private Panel panel14;
     }
 }

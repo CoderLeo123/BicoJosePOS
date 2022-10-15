@@ -135,19 +135,50 @@ namespace Capstone
                 }
                 else
                 {
-                    cn.Open();
-                    cm = new SqlCommand("INSERT INTO tblUser (User_ID, Username, Password, Name, User_Type) VALUES(@User_ID, @Username, @Password, @Name, @User_Type)", cn);
-                    cm.Parameters.AddWithValue("@User_ID", lblUserID.Text);
-                    cm.Parameters.AddWithValue("@Username", Uname);
-                    cm.Parameters.AddWithValue("@Password", correctP);
-                    cm.Parameters.AddWithValue("@Name", fullname);
-                    cm.Parameters.AddWithValue("@User_Type", type);
-                    cm.ExecuteNonQuery();
-                    cn.Close();
-                    MessageBox.Show("New account has saved", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    frmLogin frm = new frmLogin();
-                    frm.ShowDialog();
-                    this.Close();
+                    if(comBoxUserType.SelectedIndex == 1)
+                    {
+                        MessageBox.Show("You're creating an admin account. Master admin permission is needed", title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        frmPermission frmP = new frmPermission();
+                        frmP.lblWhatForm.Text = "CreateAccount";
+                        frmP.ShowDialog();
+
+                        if (lblPermi.Equals("Granted"))
+                        {
+                            cn.Open();
+                            cm = new SqlCommand("INSERT INTO tblUser (User_ID, Username, Password, Name, User_Type) VALUES(@User_ID, @Username, @Password, @Name, @User_Type)", cn);
+                            cm.Parameters.AddWithValue("@User_ID", lblUserID.Text);
+                            cm.Parameters.AddWithValue("@Username", Uname);
+                            cm.Parameters.AddWithValue("@Password", correctP);
+                            cm.Parameters.AddWithValue("@Name", fullname);
+                            cm.Parameters.AddWithValue("@User_Type", type);
+                            cm.ExecuteNonQuery();
+                            cn.Close();
+                            MessageBox.Show("New account has saved", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            this.Dispose(); this.Close();
+                        }
+                        else
+                        {
+                            lblUserNamNotice.Text = "Request not permitted";
+                        }
+                    }
+                    else
+                    {
+                        cn.Open();
+                        cm = new SqlCommand("INSERT INTO tblUser (User_ID, Username, Password, Name, User_Type) VALUES(@User_ID, @Username, @Password, @Name, @User_Type)", cn);
+                        cm.Parameters.AddWithValue("@User_ID", lblUserID.Text);
+                        cm.Parameters.AddWithValue("@Username", Uname);
+                        cm.Parameters.AddWithValue("@Password", correctP);
+                        cm.Parameters.AddWithValue("@Name", fullname);
+                        cm.Parameters.AddWithValue("@User_Type", type);
+                        cm.ExecuteNonQuery();
+                        cn.Close();
+                        MessageBox.Show("New account has saved", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        this.Dispose(); this.Close();
+                    }
+
+                    
                 }
                 
             }
@@ -192,20 +223,20 @@ namespace Capstone
             cm.ExecuteNonQuery();
             cn.Close();
 
-            frmLogin frm = new frmLogin();
-            frm.txtUsername.Focus();
-            frm.ShowDialog();
-            this.Close(); this.Dispose();
+            //frmLogin frm = new frmLogin();
+            //frm.txtUsername.Focus();
+            //frm.ShowDialog();
+             this.Close(); this.Dispose();
         }
 
         private void linkLabelLogin_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            this.Dispose();
-            frmLogin frm = new frmLogin();
-            frm.txtUsername.Focus();
-            frm.ShowDialog();
-            this.Close();
-            
+            //this.Dispose();
+            //frmLogin frm = new frmLogin();
+            //frm.txtUsername.Focus();
+            //frm.ShowDialog();
+            //this.Close(); this.Dispose();
+
         }
 
         private void txtPasswordCreate_Leave(object sender, EventArgs e)
@@ -227,7 +258,7 @@ namespace Capstone
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            this.Dispose();
+             this.Close(); this.Dispose();
             frmLogin frm = new frmLogin();
             frm.txtUsername.Focus();
             frm.ShowDialog();
@@ -260,6 +291,11 @@ namespace Capstone
                 txtNewPassword.PasswordChar = '●';
                 
             }
+        }
+
+        private void panelSignUp_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

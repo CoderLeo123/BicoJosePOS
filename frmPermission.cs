@@ -47,12 +47,28 @@ namespace Capstone
         {
             mouseDown = false;
         }
+        public void whatForm()
+        {
+            string grant = "Granted";
+            if (lblWhatForm.Equals("UserSetting"))
+            {
+                frmUserSetting frm = new frmUserSetting();
+                frm.lblPermitted.Text = grant;
+            }else if (lblWhatForm.Equals("CreateAccount"))
+            {
+                frmSignUpForgotPass frm = new frmSignUpForgotPass();
+                frm.lblPermi.Text = grant;
+            }
+        }
 
         private void btnResetPass_Click(object sender, EventArgs e)//btnConfirmPassPermision
         {
-            string permision = "Denied";
+            
             string adminPass = "";
             string userID = "";
+
+            
+
             cn.Open();
             cm = new SqlCommand("SELECT Password, User_ID FROM tblUser WHERE Password LIKE '" + txtAdminPassword.Text + "'", cn);
             dr = cm.ExecuteReader();
@@ -74,11 +90,17 @@ namespace Capstone
             }
             else if (txtAdminPassword.Text == adminPass)
             {
-                permision = "Granted";
+                whatForm();
+                
                 lblAdminPassNotice.Text = "Permision Granted";
                 this.Close();
             }
 
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Dispose(); this.Close();
         }
     }
 }
