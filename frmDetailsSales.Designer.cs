@@ -30,6 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDetailsSales));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panelSoldDetails = new System.Windows.Forms.Panel();
@@ -51,16 +52,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panelTransDetails = new System.Windows.Forms.Panel();
-            this.lblChangeTrans = new System.Windows.Forms.Label();
-            this.lblPaymentTrans = new System.Windows.Forms.Label();
-            this.lblTotalTrans = new System.Windows.Forms.Label();
-            this.lblCashier = new System.Windows.Forms.Label();
-            this.lblCustomer = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.panelBrowseService = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -85,6 +76,9 @@
             this.btnClose = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            this.printDocumentTransacDe = new System.Drawing.Printing.PrintDocument();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panelSoldDetails.SuspendLayout();
@@ -305,133 +299,29 @@
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.panelTransDetails);
-            this.tabPage2.Location = new System.Drawing.Point(4, 29);
+            this.tabPage2.Location = new System.Drawing.Point(4, 46);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(677, 382);
+            this.tabPage2.Size = new System.Drawing.Size(677, 365);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Transac Details";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // panelTransDetails
             // 
-            this.panelTransDetails.Controls.Add(this.lblChangeTrans);
-            this.panelTransDetails.Controls.Add(this.lblPaymentTrans);
-            this.panelTransDetails.Controls.Add(this.lblTotalTrans);
-            this.panelTransDetails.Controls.Add(this.lblCashier);
-            this.panelTransDetails.Controls.Add(this.lblCustomer);
-            this.panelTransDetails.Controls.Add(this.label13);
-            this.panelTransDetails.Controls.Add(this.label14);
-            this.panelTransDetails.Controls.Add(this.label17);
-            this.panelTransDetails.Controls.Add(this.label19);
-            this.panelTransDetails.Controls.Add(this.label20);
+            this.panelTransDetails.Controls.Add(this.panel8);
             this.panelTransDetails.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelTransDetails.Location = new System.Drawing.Point(3, 3);
             this.panelTransDetails.Name = "panelTransDetails";
-            this.panelTransDetails.Size = new System.Drawing.Size(671, 376);
+            this.panelTransDetails.Size = new System.Drawing.Size(671, 359);
             this.panelTransDetails.TabIndex = 0;
-            // 
-            // lblChangeTrans
-            // 
-            this.lblChangeTrans.AutoSize = true;
-            this.lblChangeTrans.ForeColor = System.Drawing.Color.Red;
-            this.lblChangeTrans.Location = new System.Drawing.Point(242, 291);
-            this.lblChangeTrans.Name = "lblChangeTrans";
-            this.lblChangeTrans.Size = new System.Drawing.Size(55, 38);
-            this.lblChangeTrans.TabIndex = 23;
-            this.lblChangeTrans.Text = ".    ";
-            // 
-            // lblPaymentTrans
-            // 
-            this.lblPaymentTrans.AutoSize = true;
-            this.lblPaymentTrans.ForeColor = System.Drawing.Color.Red;
-            this.lblPaymentTrans.Location = new System.Drawing.Point(242, 238);
-            this.lblPaymentTrans.Name = "lblPaymentTrans";
-            this.lblPaymentTrans.Size = new System.Drawing.Size(55, 38);
-            this.lblPaymentTrans.TabIndex = 22;
-            this.lblPaymentTrans.Text = ".    ";
-            // 
-            // lblTotalTrans
-            // 
-            this.lblTotalTrans.AutoSize = true;
-            this.lblTotalTrans.ForeColor = System.Drawing.Color.Red;
-            this.lblTotalTrans.Location = new System.Drawing.Point(242, 190);
-            this.lblTotalTrans.Name = "lblTotalTrans";
-            this.lblTotalTrans.Size = new System.Drawing.Size(55, 38);
-            this.lblTotalTrans.TabIndex = 21;
-            this.lblTotalTrans.Text = ".    ";
-            // 
-            // lblCashier
-            // 
-            this.lblCashier.AutoSize = true;
-            this.lblCashier.ForeColor = System.Drawing.Color.Red;
-            this.lblCashier.Location = new System.Drawing.Point(242, 81);
-            this.lblCashier.Name = "lblCashier";
-            this.lblCashier.Size = new System.Drawing.Size(55, 38);
-            this.lblCashier.TabIndex = 19;
-            this.lblCashier.Text = ".    ";
-            // 
-            // lblCustomer
-            // 
-            this.lblCustomer.AutoSize = true;
-            this.lblCustomer.ForeColor = System.Drawing.Color.Red;
-            this.lblCustomer.Location = new System.Drawing.Point(242, 28);
-            this.lblCustomer.Name = "lblCustomer";
-            this.lblCustomer.Size = new System.Drawing.Size(55, 38);
-            this.lblCustomer.TabIndex = 18;
-            this.lblCustomer.Text = ".    ";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(61, 291);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(111, 38);
-            this.label13.TabIndex = 17;
-            this.label13.Text = "Change";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(61, 238);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(124, 38);
-            this.label14.TabIndex = 16;
-            this.label14.Text = "Payment";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(61, 190);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(75, 38);
-            this.label17.TabIndex = 15;
-            this.label17.Text = "Total";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(61, 81);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(108, 38);
-            this.label19.TabIndex = 13;
-            this.label19.Text = "Cashier";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(61, 28);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(136, 38);
-            this.label20.TabIndex = 12;
-            this.label20.Text = "Customer";
             // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.panelBrowseService);
-            this.tabPage3.Location = new System.Drawing.Point(4, 29);
+            this.tabPage3.Location = new System.Drawing.Point(4, 46);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(677, 382);
+            this.tabPage3.Size = new System.Drawing.Size(677, 365);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "BrowseService";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -443,7 +333,7 @@
             this.panelBrowseService.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelBrowseService.Location = new System.Drawing.Point(0, 0);
             this.panelBrowseService.Name = "panelBrowseService";
-            this.panelBrowseService.Size = new System.Drawing.Size(677, 382);
+            this.panelBrowseService.Size = new System.Drawing.Size(677, 365);
             this.panelBrowseService.TabIndex = 0;
             // 
             // panel5
@@ -452,7 +342,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(0, 56);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(677, 326);
+            this.panel5.Size = new System.Drawing.Size(677, 309);
             this.panel5.TabIndex = 1;
             // 
             // dataGridViewService
@@ -497,7 +387,7 @@
             this.dataGridViewService.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridViewService.RowTemplate.Height = 29;
             this.dataGridViewService.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewService.Size = new System.Drawing.Size(677, 326);
+            this.dataGridViewService.Size = new System.Drawing.Size(677, 309);
             this.dataGridViewService.TabIndex = 7;
             this.dataGridViewService.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewService_CellContentClick);
             // 
@@ -697,6 +587,28 @@
             this.panel3.Size = new System.Drawing.Size(685, 415);
             this.panel3.TabIndex = 36;
             // 
+            // panel8
+            // 
+            this.panel8.Location = new System.Drawing.Point(5, 3);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(661, 356);
+            this.panel8.TabIndex = 24;
+            // 
+            // printPreviewDialog1
+            // 
+            this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialog1.Document = this.printDocumentTransacDe;
+            this.printPreviewDialog1.Enabled = true;
+            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
+            this.printPreviewDialog1.Name = "printPreviewDialog1";
+            this.printPreviewDialog1.Visible = false;
+            // 
+            // printDocumentTransacDe
+            // 
+            this.printDocumentTransacDe.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocumentTransacDe_PrintPage);
+            // 
             // frmDetailsSales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 37F);
@@ -717,7 +629,6 @@
             this.panelSoldDetails.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.panelTransDetails.ResumeLayout(false);
-            this.panelTransDetails.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.panelBrowseService.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
@@ -749,11 +660,6 @@
         private Label label4;
         private Label label2;
         private Label label1;
-        private Label label13;
-        private Label label14;
-        private Label label17;
-        private Label label19;
-        private Label label20;
         private Panel panel1;
         private Panel panel6;
         private PictureBox btnClose;
@@ -767,11 +673,6 @@
         public Label lblDiscount;
         public Label lblQty;
         public Label lblPrice;
-        public Label lblChangeTrans;
-        public Label lblPaymentTrans;
-        public Label lblTotalTrans;
-        public Label lblCashier;
-        public Label lblCustomer;
         private TabPage tabPage3;
         public Panel panelBrowseService;
         private Panel panel5;
@@ -791,5 +692,8 @@
         private DataGridViewTextBoxColumn Price;
         private DataGridViewImageColumn add;
         private DataGridViewTextBoxColumn ID;
+        private Panel panel8;
+        private PrintPreviewDialog printPreviewDialog1;
+        private System.Drawing.Printing.PrintDocument printDocumentTransacDe;
     }
 }

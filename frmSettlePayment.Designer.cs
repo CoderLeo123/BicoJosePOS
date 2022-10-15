@@ -79,6 +79,9 @@
             this.printDocument = new System.Drawing.Printing.PrintDocument();
             this.printDialog = new System.Windows.Forms.PrintDialog();
             this.printPreviewDialog = new System.Windows.Forms.PrintPreviewDialog();
+            this.lblDiscount = new System.Windows.Forms.Label();
+            this.lblGrossTotal = new System.Windows.Forms.Label();
+            this.lblDPercent = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnCloseSettlePayment)).BeginInit();
             this.panel1.SuspendLayout();
@@ -280,6 +283,9 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.lblDPercent);
+            this.panel1.Controls.Add(this.lblDiscount);
+            this.panel1.Controls.Add(this.lblGrossTotal);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.txtRemBalances);
             this.panel1.Controls.Add(this.lblRowCount);
@@ -752,6 +758,39 @@
             this.printPreviewDialog.Name = "printPreviewDialog";
             this.printPreviewDialog.Visible = false;
             // 
+            // lblDiscount
+            // 
+            this.lblDiscount.AutoSize = true;
+            this.lblDiscount.ForeColor = System.Drawing.Color.Red;
+            this.lblDiscount.Location = new System.Drawing.Point(153, 264);
+            this.lblDiscount.Name = "lblDiscount";
+            this.lblDiscount.Size = new System.Drawing.Size(104, 31);
+            this.lblDiscount.TabIndex = 23;
+            this.lblDiscount.Text = "Discount";
+            this.lblDiscount.Visible = false;
+            // 
+            // lblGrossTotal
+            // 
+            this.lblGrossTotal.AutoSize = true;
+            this.lblGrossTotal.ForeColor = System.Drawing.Color.Red;
+            this.lblGrossTotal.Location = new System.Drawing.Point(153, 233);
+            this.lblGrossTotal.Name = "lblGrossTotal";
+            this.lblGrossTotal.Size = new System.Drawing.Size(71, 31);
+            this.lblGrossTotal.TabIndex = 22;
+            this.lblGrossTotal.Text = "Gross";
+            this.lblGrossTotal.Visible = false;
+            // 
+            // lblDPercent
+            // 
+            this.lblDPercent.AutoSize = true;
+            this.lblDPercent.ForeColor = System.Drawing.Color.Red;
+            this.lblDPercent.Location = new System.Drawing.Point(153, 299);
+            this.lblDPercent.Name = "lblDPercent";
+            this.lblDPercent.Size = new System.Drawing.Size(106, 31);
+            this.lblDPercent.TabIndex = 24;
+            this.lblDPercent.Text = "DPercent";
+            this.lblDPercent.Visible = false;
+            // 
             // frmSettlePayment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 31F);
@@ -830,5 +869,8 @@
         public Label lblRowCount;
         private Label label7;
         public TextBox txtRemBalances;
+        public Label lblDPercent;
+        public Label lblDiscount;
+        public Label lblGrossTotal;
     }
 }

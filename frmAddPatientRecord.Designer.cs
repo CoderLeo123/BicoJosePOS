@@ -175,7 +175,10 @@
             this.comBoxAddGender.BackColor = System.Drawing.Color.LightCyan;
             this.comBoxAddGender.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.comBoxAddGender.FormattingEnabled = true;
-            this.comBoxAddGender.Location = new System.Drawing.Point(649, 254);
+            this.comBoxAddGender.Items.AddRange(new object[] {
+            "Male",
+            "Female"});
+            this.comBoxAddGender.Location = new System.Drawing.Point(758, 250);
             this.comBoxAddGender.Name = "comBoxAddGender";
             this.comBoxAddGender.Size = new System.Drawing.Size(124, 36);
             this.comBoxAddGender.TabIndex = 50;
@@ -184,10 +187,12 @@
             // 
             this.dateTimePickerBirthDate.CalendarFont = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dateTimePickerBirthDate.CalendarMonthBackground = System.Drawing.Color.Linen;
+            this.dateTimePickerBirthDate.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dateTimePickerBirthDate.Location = new System.Drawing.Point(254, 311);
             this.dateTimePickerBirthDate.Name = "dateTimePickerBirthDate";
-            this.dateTimePickerBirthDate.Size = new System.Drawing.Size(250, 27);
+            this.dateTimePickerBirthDate.Size = new System.Drawing.Size(367, 38);
             this.dateTimePickerBirthDate.TabIndex = 67;
+            this.dateTimePickerBirthDate.ValueChanged += new System.EventHandler(this.dateTimePickerBirthDate_ValueChanged);
             // 
             // label11
             // 
@@ -222,7 +227,7 @@
             // 
             this.label30.AutoSize = true;
             this.label30.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label30.Location = new System.Drawing.Point(535, 252);
+            this.label30.Location = new System.Drawing.Point(644, 248);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(108, 38);
             this.label30.TabIndex = 61;
@@ -274,9 +279,10 @@
             // 
             this.dateTimePickerCheckUpDate.CalendarFont = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dateTimePickerCheckUpDate.CalendarMonthBackground = System.Drawing.Color.Linen;
-            this.dateTimePickerCheckUpDate.Location = new System.Drawing.Point(254, 259);
+            this.dateTimePickerCheckUpDate.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dateTimePickerCheckUpDate.Location = new System.Drawing.Point(254, 250);
             this.dateTimePickerCheckUpDate.Name = "dateTimePickerCheckUpDate";
-            this.dateTimePickerCheckUpDate.Size = new System.Drawing.Size(250, 27);
+            this.dateTimePickerCheckUpDate.Size = new System.Drawing.Size(367, 38);
             this.dateTimePickerCheckUpDate.TabIndex = 51;
             // 
             // txtAddAge
@@ -284,7 +290,7 @@
             this.txtAddAge.BackColor = System.Drawing.Color.LightCyan;
             this.txtAddAge.Enabled = false;
             this.txtAddAge.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtAddAge.Location = new System.Drawing.Point(649, 311);
+            this.txtAddAge.Location = new System.Drawing.Point(758, 307);
             this.txtAddAge.Name = "txtAddAge";
             this.txtAddAge.Size = new System.Drawing.Size(73, 34);
             this.txtAddAge.TabIndex = 54;
@@ -303,7 +309,7 @@
             // 
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label26.Location = new System.Drawing.Point(545, 301);
+            this.label26.Location = new System.Drawing.Point(654, 297);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(66, 38);
             this.label26.TabIndex = 53;
@@ -369,6 +375,7 @@
             // txtAddTransRefNo
             // 
             this.txtAddTransRefNo.BackColor = System.Drawing.Color.LightCyan;
+            this.txtAddTransRefNo.Enabled = false;
             this.txtAddTransRefNo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtAddTransRefNo.Location = new System.Drawing.Point(961, 63);
             this.txtAddTransRefNo.Name = "txtAddTransRefNo";
@@ -422,7 +429,6 @@
             // txtAddOSAXIS
             // 
             this.txtAddOSAXIS.BackColor = System.Drawing.Color.LightCyan;
-            this.txtAddOSAXIS.Enabled = false;
             this.txtAddOSAXIS.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtAddOSAXIS.Location = new System.Drawing.Point(417, 183);
             this.txtAddOSAXIS.Name = "txtAddOSAXIS";
@@ -432,7 +438,6 @@
             // txtAddODAXIS
             // 
             this.txtAddODAXIS.BackColor = System.Drawing.Color.LightCyan;
-            this.txtAddODAXIS.Enabled = false;
             this.txtAddODAXIS.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtAddODAXIS.Location = new System.Drawing.Point(417, 120);
             this.txtAddODAXIS.Name = "txtAddODAXIS";
@@ -442,7 +447,6 @@
             // txtAddOSPD
             // 
             this.txtAddOSPD.BackColor = System.Drawing.Color.LightCyan;
-            this.txtAddOSPD.Enabled = false;
             this.txtAddOSPD.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtAddOSPD.Location = new System.Drawing.Point(690, 183);
             this.txtAddOSPD.Name = "txtAddOSPD";
@@ -452,7 +456,6 @@
             // txtAddODPD
             // 
             this.txtAddODPD.BackColor = System.Drawing.Color.LightCyan;
-            this.txtAddODPD.Enabled = false;
             this.txtAddODPD.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtAddODPD.Location = new System.Drawing.Point(690, 120);
             this.txtAddODPD.Name = "txtAddODPD";
@@ -462,7 +465,6 @@
             // txtAddOSSPH
             // 
             this.txtAddOSSPH.BackColor = System.Drawing.Color.LightCyan;
-            this.txtAddOSSPH.Enabled = false;
             this.txtAddOSSPH.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtAddOSSPH.Location = new System.Drawing.Point(140, 179);
             this.txtAddOSSPH.Name = "txtAddOSSPH";
@@ -472,7 +474,6 @@
             // txtAddODSPH
             // 
             this.txtAddODSPH.BackColor = System.Drawing.Color.LightCyan;
-            this.txtAddODSPH.Enabled = false;
             this.txtAddODSPH.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtAddODSPH.Location = new System.Drawing.Point(140, 120);
             this.txtAddODSPH.Name = "txtAddODSPH";
@@ -482,7 +483,6 @@
             // txtAddOSADD
             // 
             this.txtAddOSADD.BackColor = System.Drawing.Color.LightCyan;
-            this.txtAddOSADD.Enabled = false;
             this.txtAddOSADD.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtAddOSADD.Location = new System.Drawing.Point(557, 183);
             this.txtAddOSADD.Name = "txtAddOSADD";
@@ -492,7 +492,6 @@
             // txtAddODADD
             // 
             this.txtAddODADD.BackColor = System.Drawing.Color.LightCyan;
-            this.txtAddODADD.Enabled = false;
             this.txtAddODADD.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtAddODADD.Location = new System.Drawing.Point(557, 120);
             this.txtAddODADD.Name = "txtAddODADD";
@@ -926,16 +925,12 @@
         private TextBox txtAddAge;
         private Label label27;
         private Label label26;
-        private TextBox txtAddContact;
         private Label label25;
-        private TextBox txtAddAddress;
         private Label label24;
-        private TextBox txtAddFName;
         private Label label23;
         private TextBox txtAddTransRefNo;
         private Label label22;
         private Label label30;
-        private TextBox txtAddLName;
         private Label label31;
         private Button btnCancelPatientRecord;
         private Button btnUpdatePatientRecord;
@@ -953,5 +948,9 @@
         public TextBox txtAddODPD;
         public TextBox txtAddPatientID;
         public TextBox txtAddPrescNum;
+        public TextBox txtAddContact;
+        public TextBox txtAddAddress;
+        public TextBox txtAddFName;
+        public TextBox txtAddLName;
     }
 }

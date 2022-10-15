@@ -91,5 +91,10 @@ namespace Capstone
                 this.Update();
             }
         }
+
+        private void printDocumentTransacDe_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+
+        }
     }
 }

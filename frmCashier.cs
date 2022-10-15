@@ -102,6 +102,9 @@ namespace Capstone
                 frm.lblCustomer.Text = txtFirstName.Text + " " + txtLastName.Text;
                 frm.lblCashier.Text = lblCashierName.Text;
                 frm.lblTransacNo.Text = lblTransactionNo.Text;
+                frm.lblGrossTotal.Text = lblSalesTotal.Text;
+                frm.lblDiscount.Text = lblDiscount.Text;
+                frm.lblDPercent.Text = lblDiscPercen.Text;
                 frm.ShowDialog();
             }
             

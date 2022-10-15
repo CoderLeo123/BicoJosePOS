@@ -196,6 +196,9 @@ namespace Capstone
                 //int transacNum = int.Parse(transacInput);
                 float payment = float.Parse(txtPayment.Text);//Initial_Deposit
                 float change = float.Parse(txtChange.Text);
+
+                string discountPer = lblDPercent.Text;
+                string gross = lblCustomer.Text;
                 string pMethod = comBoxMethodPayment.Text;
                 string pTerms = comBoxPaymentTerms.Text;
                 string cashier = lblCashier.Text;
@@ -206,7 +209,7 @@ namespace Capstone
                 string status = "";
                 string claimDate = ""; //DateTime.Today.AddDays(3).ToShortDateString()
                 string releaseBy = "Undefined";
-                string finalDiscount = frmC.lblDiscount.Text;
+                string finalDiscount = lblDiscount.Text;
                 string settlementDate = "Pending";
                 checkPaymentTerms(out status, pTerms, total, payment, out remainBalance, out settlementDate);
 
@@ -245,13 +248,14 @@ namespace Capstone
                         cm = new SqlCommand("INSERT INTO tblPaymentStatus (Transaction_No, Customer, Total_Payment, Initial_Deposit, Due_Date, Rem_Balance, Status, Discount_Per_Trans, Settled_Date) VALUES(@Transaction_No, @Customer, @Total_Payment, @Initial_Deposit, @Due_Date, @Rem_Balance, @Status, @Discount_Per_Trans, @Settled_Date)", cn);
                         cm.Parameters.AddWithValue("@Transaction_No", transacNum);
                         cm.Parameters.AddWithValue("@Customer", customer);
-                        cm.Parameters.AddWithValue("@Total_Payment", total);
-                        cm.Parameters.AddWithValue("@Initial_Deposit", payment);
+                        cm.Parameters.AddWithValue("@Total_Payment", total.ToString("00.00"));
+                        cm.Parameters.AddWithValue("@Initial_Deposit", payment.ToString("00.00"));
                         cm.Parameters.AddWithValue("@Due_Date", dueDate);
-                        cm.Parameters.AddWithValue("@Rem_Balance", remainBalance);
+                        cm.Parameters.AddWithValue("@Rem_Balance", remainBalance.ToString("00.00"));
                         cm.Parameters.AddWithValue("@Status", status);
                         cm.Parameters.AddWithValue("@Discount_Per_Trans", finalDiscount);
                         cm.Parameters.AddWithValue("@Settled_Date", settlementDate);
+                        
                         cm.ExecuteNonQuery();
                         cn.Close();
                         checkOrderIfDeposit(out status, pTerms, out claimDate);
@@ -264,6 +268,25 @@ namespace Capstone
                         cm.Parameters.AddWithValue("@Date_Claimed", claimDate);
                         cm.Parameters.AddWithValue("@Release_By", releaseBy);
                         //cm.Parameters.AddWithValue("@Cart_ID", frmC.dataGridViewCart.Rows[i].Cells[11].Value.ToString());
+                        cm.ExecuteNonQuery();
+                        cn.Close();
+
+                        cn.Open();
+                        cm = new SqlCommand("INSERT INTO tblReceipt (Transaction_No, Transaction_Date, Payment_Mode, Payment_Terms, Customer, Gross_Total, Discount, Net_Total, Payment, Balance, Change, Discount_Percent, Settled_Date, Cashier) VALUES(@Transaction_No, @Transaction_Date, @Payment_Mode, @Payment_Terms, @Customer, @Gross_Total, @Discount, @Net_Total, @Payment, @Balance, @Change, @Discount_Percent, @Settled_Date, @Cashier)", cn);
+                        cm.Parameters.AddWithValue("@Transaction_No", lblTransacNo.Text);
+                        cm.Parameters.AddWithValue("@Transaction_Date", customer);
+                        cm.Parameters.AddWithValue("@Payment_Mode", pMethod);
+                        cm.Parameters.AddWithValue("@Payment_Terms", pTerms);
+                        cm.Parameters.AddWithValue("@Customer", customer);
+                        cm.Parameters.AddWithValue("@Gross_Total", gross);
+                        cm.Parameters.AddWithValue("@Discount", finalDiscount);
+                        cm.Parameters.AddWithValue("@Net_Total", total.ToString("00.00"));
+                        cm.Parameters.AddWithValue("@Payment", payment.ToString("00.00"));
+                        cm.Parameters.AddWithValue("@Balance", remainBalance.ToString("00.00"));
+                        cm.Parameters.AddWithValue("@Change", change.ToString("00.00"));
+                        cm.Parameters.AddWithValue("@Discount_Percent", discountPer);
+                        cm.Parameters.AddWithValue("@Settled_Date", settlementDate);
+                        cm.Parameters.AddWithValue("@Cashier", cashier);                      
                         cm.ExecuteNonQuery();
                         cn.Close();
 
@@ -281,13 +304,18 @@ namespace Capstone
                             cn.Close();
                         }
                         string statusSA = "Sold";
-                        cn.Open();
-                        cm = new SqlCommand("INSERT INTO tblServiceAvailed (Transaction_No, Customer, Status) VALUES(@Transaction_No, @Customer, @Status)", cn);
-                        cm.Parameters.AddWithValue("@Transaction_No", lblTransacNo.Text);
-                        cm.Parameters.AddWithValue("@Customer", customer);
-                        cm.Parameters.AddWithValue("@Status", statusSA);
-                        cm.ExecuteNonQuery();
-                        cn.Close();
+                        for (int i = 0; i < frmC.dataGridViewService.Rows.Count; i++)
+                        {
+                            cn.Open();
+                            cm = new SqlCommand("INSERT INTO tblServiceAvailed (Service_ID, Transaction_No, Customer, Status) VALUES(@Service_ID, @Transaction_No, @Customer, @Status)", cn);
+                            cm.Parameters.AddWithValue("@Service_ID", frmC.dataGridViewService.Rows[i].Cells[5].Value.ToString());
+                            cm.Parameters.AddWithValue("@Transaction_No", lblTransacNo.Text);
+                            cm.Parameters.AddWithValue("@Customer", customer);
+                            cm.Parameters.AddWithValue("@Status", statusSA);
+                            cm.ExecuteNonQuery();
+                            cn.Close();
+                        }
+                        
 
                         MessageBox.Show("Payment succesfully saved", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
                         classGenerateID.GenerateTransactionNo(frmC.lblTransactionNo);
@@ -526,7 +554,7 @@ namespace Capstone
             int dgvCount = int.Parse(lblRowCount.Text);
             if (dgvCount == 0)
             {
-                result = "No Data";
+                result = "--";
             }
             else
             {
@@ -539,10 +567,13 @@ namespace Capstone
                 //}
             }
         }
+        
         private void printDocument_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
             //printDocument.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("pprnm", 200, 500);
             //printDocument.Print();
+            //string full = "Settlement Date for Remaining Balance:";
+            string deposit = "Settlement Date for Remaining Balance:";
             int x = 0, y = 0, num = 1; string resultText = ""; int dgvCount = int.Parse(lblRowCount.Text);
             System.Drawing.Font printFont = new System.Drawing.Font("Arial", 10, System.Drawing.FontStyle.Regular);
             System.Drawing.Font printFontBold = new System.Drawing.Font("Arial", 15, System.Drawing.FontStyle.Bold);
@@ -550,16 +581,25 @@ namespace Capstone
             e.Graphics.DrawString("Bico-Jose Optical Clinic", printFontBold, Brushes.Black, 130, 30);
             e.Graphics.DrawString("Address: 3rd Floor Susana Mart, Tungko San Jose Del Monte Bulacan", printFont, Brushes.Black, 30, 80);
             y = 140; x = 320;
-            e.Graphics.DrawString("Contact Number: 09178326666", printFont, Brushes.Black, 20, y);//140
-            e.Graphics.DrawString("Date Issued: " + frmC.lblDate.Text , printFont, Brushes.Black, x, y);
+            e.Graphics.DrawString("Clinic's Contact: 09178326666", printFont, Brushes.Black, 20, y);//140
+            e.Graphics.DrawString("Date Issued: ", printFont, Brushes.Black, (x += 50), y);            
             e.Graphics.DrawString("Mode of Payment:  " + comBoxMethodPayment.Text, printFont, Brushes.Black, 20, (y += 30));//170
-            e.Graphics.DrawString("Settlement Date for Remaining Balance:  " + dateTimePickerDueDate.Value.ToShortDateString(), printFont, Brushes.Black, 20, (y += 30));//200
-            e.Graphics.DrawString("---------------------------------------------------------------------------------------------------", printFont, Brushes.Black, 10, (y += 30));//230
-            e.Graphics.DrawString("Invoice No: " + frmC.lblTransactionNo.Text, printFont, Brushes.Black, 20, (y += 50));//280
-            e.Graphics.DrawString("#", printFont, Brushes.Black, 20, (y += 50));//330
+            e.Graphics.DrawString(DateTime.Now.ToString(), printFont, Brushes.Black, x, y);
+            e.Graphics.DrawString("Payment Terms:  " + comBoxPaymentTerms.Text, printFont, Brushes.Black, 20, (y += 30));//200
+            e.Graphics.DrawString("Cashier:  " + lblCashier.Text, printFont, Brushes.Black, x, y);//200
+            e.Graphics.DrawString("Customer Name:  " + lblCustomer.Text, printFont, Brushes.Black, 20, (y += 30));//230
+            if (comBoxPaymentTerms.Text.Equals("Deposit"))
+            {
+                e.Graphics.DrawString("Settlement Date for Remaining Balance:  " + dateTimePickerDueDate.Value.ToShortDateString(), printFont, Brushes.Black, 20, (y += 30));//260               
+            }
+
+            e.Graphics.DrawString("-----------------------------------------------------------------------------------------------------------------------", printFont, Brushes.Black, 10, (y += 30));//260 or 290
+            e.Graphics.DrawString("Invoice No: " + frmC.lblTransactionNo.Text, printFont, Brushes.Black, 20, (y += 50));//310 or 340
+            e.Graphics.DrawString("#", printFont, Brushes.Black, 20, (y += 50));//360 or 390
             e.Graphics.DrawString("Description", printFont, Brushes.Black, 60, y);
-            e.Graphics.DrawString("Price", printFont, Brushes.Black, x, y);
-            e.Graphics.DrawString("Qty", printFont, Brushes.Black, (x += 50), y);
+            e.Graphics.DrawString("Price", printFont, Brushes.Black, x, y);//x=320
+            e.Graphics.DrawString("Qty", printFont, Brushes.Black, (x += 60), y);
+            e.Graphics.DrawString("Unit", printFont, Brushes.Black, (x += 50), y);
             e.Graphics.DrawString("Total", printFont, Brushes.Black, (x += 50), y);//330
 
             if(dgvCount > 0)
@@ -570,10 +610,16 @@ namespace Capstone
                     e.Graphics.DrawString(num.ToString(), printFont, Brushes.Black, 20, (y += 30));//330
                     getValueIfAnyElseBlank(frmC.dataGridViewCart, out resultText, i, 1);//Description
                     e.Graphics.DrawString(resultText, printFont, Brushes.Black, 60, y);
+
                     getValueIfAnyElseBlank(frmC.dataGridViewCart, out resultText, i, 3);//Price
                     e.Graphics.DrawString(resultText, printFont, Brushes.Black, x, y);
+
                     getValueIfAnyElseBlank(frmC.dataGridViewCart, out resultText, i, 4);//Qty
+                    e.Graphics.DrawString(resultText, printFont, Brushes.Black, (x += 60), y);
+
+                    getValueIfAnyElseBlank(frmC.dataGridViewCart, out resultText, i, 13);//Unit
                     e.Graphics.DrawString(resultText, printFont, Brushes.Black, (x += 50), y);
+
                     getValueIfAnyElseBlank(frmC.dataGridViewCart, out resultText, i, 6);//Total
                     e.Graphics.DrawString(resultText, printFont, Brushes.Black, (x += 50), y);//330
                     num += 1;
@@ -600,12 +646,27 @@ namespace Capstone
 
             e.Graphics.DrawString("Amount Tendered: ", printFont, Brushes.Black, 20, (y += 30));
             e.Graphics.DrawString(txtPayment.Text, printFont, Brushes.Black, x, y);
+            
+            if (comBoxPaymentTerms.Text.Equals("Deposit"))
+            {
+                e.Graphics.DrawString("Remaining Balance: ", printFont, Brushes.Black, 20, (y += 30));
+                e.Graphics.DrawString(txtRemBalances.Text, printFont, Brushes.Black, x, y);
 
-            e.Graphics.DrawString("Remaining Balance: ", printFont, Brushes.Black, 20, (y += 30));
-            e.Graphics.DrawString("-", printFont, Brushes.Black, x, y);
+                e.Graphics.DrawString("Change: ", printFont, Brushes.Black, 20, (y += 30));
+                e.Graphics.DrawString("-", printFont, Brushes.Black, x, y);//710
 
-            e.Graphics.DrawString("Change: ", printFont, Brushes.Black, 20, (y += 30));
-            e.Graphics.DrawString(txtChange.Text, printFont, Brushes.Black, x, y);//710
+            }
+            else
+            {
+                e.Graphics.DrawString("Remaining Balance: ", printFont, Brushes.Black, 20, (y += 30));
+                e.Graphics.DrawString("-", printFont, Brushes.Black, x, y);
+
+                e.Graphics.DrawString("Change: ", printFont, Brushes.Black, 20, (y += 30));
+                e.Graphics.DrawString(txtChange.Text, printFont, Brushes.Black, x, y);//710
+
+            }
+
+            
 
             e.Graphics.DrawString("THIS INVOICE/RECEIPT SHALL BE VALID FOR", printFontItallic, Brushes.Black, 60, (y += 60));//770
             e.Graphics.DrawString("ONE (1)) WEEK FROM THE DATE OF THE PERMIT TO USE", printFontItallic, Brushes.Black, 20, (y += 30));//800

@@ -91,6 +91,7 @@ namespace Capstone
                     try
                     {
                         frmC.lblDiscount.Text = txtDiscountedAmount.Text;
+                        frmC.lblDiscPercen.Text = txtDiscount.Text;
                         cn.Open();
                         cm = new SqlCommand("UPDATE tblCart SET Discount = '" + txtDiscount.Text + "' WHERE Transaction_No LIKE '%" + lblID.Text + "'", cn);
                         cm.ExecuteNonQuery();

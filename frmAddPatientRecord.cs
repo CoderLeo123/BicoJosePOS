@@ -119,5 +119,10 @@ namespace Capstone
 
 
         }
+
+        private void dateTimePickerBirthDate_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
