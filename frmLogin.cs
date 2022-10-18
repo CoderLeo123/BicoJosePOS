@@ -117,6 +117,7 @@ namespace Capstone
                     frm.btnBackupArch.Visible = false;
                     frm.btnUserSettings.Visible = false;
                     frm.btnCashier.Visible = false;
+                    frm.btnPatientR.Visible = false;
                     frm.ShowDialog();
                     this.Dispose(); this.Close();
                 }
@@ -132,12 +133,16 @@ namespace Capstone
                     frmAdmin frm = new frmAdmin();
                     frm.lblName.Text = CompleteName;
                     frm.ShowDialog();
-                    this.Dispose(); this.Close();
+                    //frmLogin frmL = new frmLogin();
+                    //frmL.Close();
+                    this.Hide();  this.Close(); 
+
                 }
                 else
                 {
                     MessageBox.Show("User type is not defined", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+                this.Dispose(); this.Close();
             }
             else if(attempt < 0)
             {

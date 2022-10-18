@@ -16,6 +16,8 @@ namespace Capstone
             cn = new SqlConnection(dbcon.MyConnection());
             Stock();
             Users();
+            frmLogin frmL = new frmLogin();
+            frmL.Hide(); 
         }
         public void Stock()
         {
@@ -211,6 +213,8 @@ namespace Capstone
         {
             //btnCollapsed();
             //timerStart();
+            Stock();
+            Users();
             panelLoad.Controls.Clear();
             panelLoad.Controls.Add(panelDashboard);
         }

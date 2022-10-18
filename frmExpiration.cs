@@ -138,7 +138,8 @@ namespace Capstone
 
                     dataGridViewSelected.Rows[e.RowIndex].Cells["Qty"].ReadOnly = false;
                     dataGridViewSelected.CurrentCell = dataGridViewSelected.Rows[e.RowIndex].Cells["Qty"];
-                    lblInitialStock.Text = dataGridViewSelected.Rows[e.RowIndex].Cells["Qty"].ToString();
+                    lblInitialStock.Text = dataGridViewSelected.Rows[e.RowIndex].Cells[2].Value?.ToString();
+                    
                     dataGridViewSelected.BeginEdit(true);
 
                     //int stocks = int.Parse(dataGridViewSelected[2, e.RowIndex].Value.ToString());

@@ -39,7 +39,7 @@ namespace Capstone
         public void Clear()
         {
             txtStockID.Clear();
-            txtStockInBy.Clear();
+            //txtStockInBy.Clear();
             dateStockIn.Value = DateTime.Now;
             dataGridViewStockItems.Rows.Clear();
 
@@ -190,7 +190,7 @@ namespace Capstone
 
         private void btnSaveStockIn_Click(object sender, EventArgs e)
         {
-            
+            frmAdmin frm = new frmAdmin();
             if (dataGridViewStockItems.Rows.Count > 0)
             {
                     if (MessageBox.Show("Are you sure you want to save this records?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -219,6 +219,7 @@ namespace Capstone
                         cm = new SqlCommand("UPDATE tblItem SET Base_Stock = "+ baseStk + ", Quantity = Quantity + " + int.Parse(dataGridViewStockItems.Rows[i].Cells[5].Value?.ToString()) + " WHERE Item_ID LIKE '" + dataGridViewStockItems.Rows[i].Cells[9].Value?.ToString() + "' ", cn);
                         cm.ExecuteNonQuery();
                         cn.Close();
+                        classInventory.determineStockLevel(ITMID);
                         try
                         {
                             cn.Open();
@@ -257,14 +258,16 @@ namespace Capstone
                     }
                     classLoadData.LoadStock(dataGridViewStockItems, txtStockID, label3);
                     classLoadData.LoadStockOnHand(dataGridViewOnHand, txtSearch);
-                    frmAdmin frm = new frmAdmin();
-                    txtStockInBy.Text = frm.lblName.Text;
+                    
+                    
                     //LoadStock();
                     Clear();
                 }
                 
+                
+
             }
-            
+            //txtStockInBy.Text = frm.lblName.Text;
         }
 
         private void dataGridViewStockItems_SelectionChanged(object sender, EventArgs e)

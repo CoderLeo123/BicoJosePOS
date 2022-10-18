@@ -19,7 +19,7 @@ namespace Capstone
         ClassLoadData classLoadData = new ClassLoadData();
         ClassReports classReport = new ClassReports();
         string title = "BICO-JOSE System", transNo = "";
-        
+        List<ItemList> List = new List<ItemList>();
         public frmDailySales()
         {
             InitializeComponent();
@@ -61,16 +61,53 @@ namespace Capstone
         {
             this.Close();
         }
+        public void tblAvailedList(string transacNo, out int rowCount)
+        {
+            cn = new SqlConnection(dbcon.MyConnection());
+            //Desc = ""; Price = ""; Quant = ""; Total = ""; UnitM = "";
+            cn.Open();
+            SqlCommand cm = new SqlCommand("SELECT Description, Price, Quantity, Total, Unit_Measure FROM ViewCartStockItem WHERE Transaction_No LIKE '" + transacNo + "'", cn);
+            dr = cm.ExecuteReader();
+            
+            while (dr.Read())
+            {
+                ItemList IList = new ItemList();
+                IList.Desc = dr.GetString("Description");
+                IList.Price = dr.GetDouble("Price");
+                IList.Qty = dr.GetInt32("Quantity");
+                IList.Price = dr.GetDouble("Total");
+                IList.Desc = dr.GetString("Unit_Measure");
+                List.Add(IList);
+
+                //Desc = dr[0].ToString(); Price = dr[1].ToString();
+                //Quant = dr[2].ToString(); Total = dr[3].ToString(); UnitM = dr[4].ToString();
+                //if (UnitM == string.Empty || UnitM == null)
+                //{
+                //    UnitM = "--";
+                //}
+            }
+            dr.Close();
+            cn.Close();
+            rowCount = List.Count;
+        }
+        public class ItemList
+        {
+            public string Desc { get; set; }
+            public double Price { get; set; }
+            public int Qty { get; set; }
+            public string UnitM { get; set; }
+            public double Total { get; set; }
+        }
 
         private void printDocument_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
             transNo = lblCurrentTransN.Text; int ITMrowCount = 0; int SrowCount = 0;
             string TransDate = "", PMode = "", PTerms = "", Customer = "", GrossT = "", Discoun = "", NetT = "", Payment = "", Balance = "", Change = "", DisPerc = "", SettledDate = "", Cashier = "";
             classReport.tblReceiptValue(transNo, out TransDate, out PMode, out PTerms, out Customer, out GrossT, out Discoun, out NetT, out Payment, out Balance, out Change, out DisPerc, out SettledDate, out Cashier, out ITMrowCount);
-            string Desc = "", Price = "", Quant = "", Total = "", UnitM = "";
-            classReport.tblAvailedList(transNo, out Desc, out Price, out Quant, out Total, out UnitM);
+            //string Desc = "", Price = "", Quant = "", Total = "", UnitM = "";
+            //classReport.tblAvailedList(transNo, out Desc, out Price, out Quant, out Total, out UnitM);
             string SName = "", SPrice = "";
-            classReport.tblServiceAvailedList(transNo, out SName, out SPrice);
+            classReport.tblServiceAvailedList(transNo, out SName, out SPrice, out SrowCount);
 
             int x = 0, y = 0, num = 1; //string resultText = ""; //int dgvCount = int.Parse(lblRowCount.Text);
             System.Drawing.Font printFont = new System.Drawing.Font("Arial", 10, System.Drawing.FontStyle.Regular);
@@ -100,27 +137,31 @@ namespace Capstone
             e.Graphics.DrawString("Unit", printFont, Brushes.Black, (x += 50), y);
             e.Graphics.DrawString("Total", printFont, Brushes.Black, (x += 50), y);//330
 
+            tblAvailedList(transNo, out ITMrowCount);
+            
+            
             if (ITMrowCount > 0)
             {
                 for (int i = 0; i < ITMrowCount; i++)
                 {
+                    ItemList Itms = List[i];
                     x = 320;
                     e.Graphics.DrawString(num.ToString(), printFont, Brushes.Black, 20, (y += 30));//330
 
                     //Description
-                    e.Graphics.DrawString(Desc, printFont, Brushes.Black, 60, y);
+                    e.Graphics.DrawString(Itms.Desc, printFont, Brushes.Black, 60, y);
 
                     //Price
-                    e.Graphics.DrawString(Price, printFont, Brushes.Black, x, y);
+                    e.Graphics.DrawString(Itms.Price.ToString("00.00"), printFont, Brushes.Black, x, y); ;
 
                     //Qty
-                    e.Graphics.DrawString(Quant, printFont, Brushes.Black, (x += 60), y);
+                    e.Graphics.DrawString(Itms.Qty.ToString(), printFont, Brushes.Black, (x += 60), y);
 
                     //Unit
-                    e.Graphics.DrawString(UnitM, printFont, Brushes.Black, (x += 50), y);
+                    e.Graphics.DrawString(Itms.UnitM, printFont, Brushes.Black, (x += 50), y);
 
                     //Total
-                    e.Graphics.DrawString(Total, printFont, Brushes.Black, (x += 50), y);//330
+                    e.Graphics.DrawString(Itms.Total.ToString("00.00"), printFont, Brushes.Black, (x += 50), y);//330
                     num += 1;
                 }
             }
@@ -130,14 +171,14 @@ namespace Capstone
             {
                 for (int i = 0; i < SrowCount; i++)
                 {
+                    e.Graphics.DrawString("Service:  ", printFont, Brushes.Black, 20, (y += 50));//430 + 50
 
+                    e.Graphics.DrawString(SName, printFont, Brushes.Black, 60, (y += 30));//470      Name
+
+                    e.Graphics.DrawString(SPrice, printFont, Brushes.Black, x, y);//320   Price
                 }
             }
-            e.Graphics.DrawString("Service:  ", printFont, Brushes.Black, 20, (y += 50));//430 + 50
-            
-            e.Graphics.DrawString(SName, printFont, Brushes.Black, 60, (y += 30));//470      Name
-            
-            e.Graphics.DrawString(SPrice, printFont, Brushes.Black, x, y);//320   Price
+           
             //y = 550;
             e.Graphics.DrawString("Total Amount: ", printFont, Brushes.Black, 20, (y += 80));//550
             e.Graphics.DrawString(GrossT, printFont, Brushes.Black, (x += 70), y);//390 

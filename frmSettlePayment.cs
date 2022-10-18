@@ -20,7 +20,7 @@ namespace Capstone
         ClassGenerateID classGenerateID = new ClassGenerateID();
         ClassInventory classInventory = new ClassInventory();
         string title = "BICO-JOSE System";
-        int num = 0;
+        double num = 0, curr = 0;
         private bool mouseDown;
         private Point lastLocation;
         frmCashier frmC;
@@ -239,7 +239,7 @@ namespace Capstone
                         preview.Document = printDocument;
                         int pLength = 920;
                         paperSizeUpdate(out pLength);
-                        printDocument.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("RECEIPT", 500, pLength);
+                        printDocument.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("RECEIPT", 610, pLength);
                         preview.PrintPreviewControl.Zoom = 0.75;
                         preview.Size = new System.Drawing.Size(400, 650);
                         preview.ShowDialog();
@@ -447,7 +447,8 @@ namespace Capstone
             try
             {
                 txtPayment.Focus();
-                num = int.Parse(txtPayment.Text) + 1000;
+                curr = double.Parse(txtPayment.Text);
+                num = curr + 1000;
                 txtPayment.Text = num.ToString();
             }
             catch (Exception ex)
@@ -495,7 +496,7 @@ namespace Capstone
 
         private void comBoxPaymentTerms_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comBoxPaymentTerms.SelectedIndex == 0)
+            if (comBoxPaymentTerms.SelectedIndex == 0)//Full
             {
                 panel1.Size = new Size(539, 339);
                 this.Size = new Size(539, 714);
@@ -504,9 +505,9 @@ namespace Capstone
                 lblPaymentNotice.Visible = false;
                 txtRemBalances.Text = "0";
             }
-            else
+            else//Deposit
             {
-                panel1.Size = new Size(539, 436);
+                panel1.Size = new Size(539, 487);
                 this.Size = new Size(539, 864);
                 panelDepositDueDate.Visible = true;
                 lblChangeDueDate.Visible = true;
@@ -551,21 +552,33 @@ namespace Capstone
         }
         public void getValueIfAnyElseBlank(DataGridView dgv, out string result, int rows, int col)
         {
-            int dgvCount = int.Parse(lblRowCount.Text);
-            if (dgvCount == 0)
-            {
-                result = "--";
+            result = "N/A";
+            
+                
+                int dgvCount = int.Parse(lblRowCount.Text);
+                if (dgvCount == 0)
+                {
+                    result = "--";
+                }
+                else
+                {
+                try
+                {
+                    result = dgv.Rows[rows].Cells[col].Value.ToString();
+                    //int slength = result.Length;
+                    //if (slength > 38)
+                    //{
+                    //    int xAxis = 60;
+                    //    int yAxis = 30;
+                    //}
+                }
+                catch (Exception ex)
+                {
+                    cn.Close();
+                    MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            else
-            {
-                result = dgv.Rows[rows].Cells[col].Value.ToString();
-                //int slength = result.Length;
-                //if (slength > 38)
-                //{
-                //    int xAxis = 60;
-                //    int yAxis = 30;
-                //}
-            }
+            
         }
         
         private void printDocument_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
@@ -574,15 +587,15 @@ namespace Capstone
             //printDocument.Print();
             //string full = "Settlement Date for Remaining Balance:";
             string deposit = "Settlement Date for Remaining Balance:";
-            int x = 0, y = 0, num = 1; string resultText = ""; int dgvCount = int.Parse(lblRowCount.Text);
+            int x = 0, y = 0, num = 1; string resultText = ""; int dgvCount = int.Parse(lblRowCount.Text), dgvCountService = int.Parse(lblServRowCount.Text);
             System.Drawing.Font printFont = new System.Drawing.Font("Arial", 10, System.Drawing.FontStyle.Regular);
             System.Drawing.Font printFontBold = new System.Drawing.Font("Arial", 15, System.Drawing.FontStyle.Bold);
             System.Drawing.Font printFontItallic = new System.Drawing.Font("Arial", 12, System.Drawing.FontStyle.Italic);
-            e.Graphics.DrawString("Bico-Jose Optical Clinic", printFontBold, Brushes.Black, 130, 30);
-            e.Graphics.DrawString("Address: 3rd Floor Susana Mart, Tungko San Jose Del Monte Bulacan", printFont, Brushes.Black, 30, 80);
+            e.Graphics.DrawString("Bico-Jose Optical Clinic", printFontBold, Brushes.Black, 175, 30);
+            e.Graphics.DrawString("Address: 3rd Floor Susana Mart, Tungko San Jose Del Monte Bulacan", printFont, Brushes.Black, 80, 80);
             y = 140; x = 320;
             e.Graphics.DrawString("Clinic's Contact: 09178326666", printFont, Brushes.Black, 20, y);//140
-            e.Graphics.DrawString("Date Issued: ", printFont, Brushes.Black, (x += 50), y);            
+            e.Graphics.DrawString("Date Issued: ", printFont, Brushes.Black, (x += 60), y);            
             e.Graphics.DrawString("Mode of Payment:  " + comBoxMethodPayment.Text, printFont, Brushes.Black, 20, (y += 30));//170
             e.Graphics.DrawString(DateTime.Now.ToString(), printFont, Brushes.Black, x, y);
             e.Graphics.DrawString("Payment Terms:  " + comBoxPaymentTerms.Text, printFont, Brushes.Black, 20, (y += 30));//200
@@ -593,11 +606,11 @@ namespace Capstone
                 e.Graphics.DrawString("Settlement Date for Remaining Balance:  " + dateTimePickerDueDate.Value.ToShortDateString(), printFont, Brushes.Black, 20, (y += 30));//260               
             }
 
-            e.Graphics.DrawString("-----------------------------------------------------------------------------------------------------------------------", printFont, Brushes.Black, 10, (y += 30));//260 or 290
+            e.Graphics.DrawString("--------------------------------------------------------------------------------------------------------------------------", printFont, Brushes.Black, 10, (y += 30));//260 or 290
             e.Graphics.DrawString("Invoice No: " + frmC.lblTransactionNo.Text, printFont, Brushes.Black, 20, (y += 50));//310 or 340
             e.Graphics.DrawString("#", printFont, Brushes.Black, 20, (y += 50));//360 or 390
             e.Graphics.DrawString("Description", printFont, Brushes.Black, 60, y);
-            e.Graphics.DrawString("Price", printFont, Brushes.Black, x, y);//x=320
+            e.Graphics.DrawString("Price", printFont, Brushes.Black, x, y);//x=380
             e.Graphics.DrawString("Qty", printFont, Brushes.Black, (x += 60), y);
             e.Graphics.DrawString("Unit", printFont, Brushes.Black, (x += 50), y);
             e.Graphics.DrawString("Total", printFont, Brushes.Black, (x += 50), y);//330
@@ -606,7 +619,7 @@ namespace Capstone
             {
                 for(int i = 0; i < dgvCount; i++)
                 {
-                    x = 320;
+                    x = 380; // 320 + 60
                     e.Graphics.DrawString(num.ToString(), printFont, Brushes.Black, 20, (y += 30));//330
                     getValueIfAnyElseBlank(frmC.dataGridViewCart, out resultText, i, 1);//Description
                     e.Graphics.DrawString(resultText, printFont, Brushes.Black, 60, y);
@@ -625,24 +638,36 @@ namespace Capstone
                     num += 1;
                 }
             }
-            x = 320;
-            //y = 430;
-            e.Graphics.DrawString("Service:  ", printFont, Brushes.Black, 20, (y += 50));//430 + 50
-            getValueIfAnyElseBlank(frmC.dataGridViewService, out resultText, 0, 1);//frmC.dataGridViewService.Rows[0].Cells[1].Value.ToString()
-            e.Graphics.DrawString(resultText, printFont, Brushes.Black, 60, (y+=30));//470      Name
-            getValueIfAnyElseBlank(frmC.dataGridViewService, out resultText, 0, 3);//frmC.dataGridViewService.Rows[0].Cells[3].Value.ToString()
-            e.Graphics.DrawString(resultText, printFont, Brushes.Black, x, y);//320   Price
+            
+            if (dgvCountService > 0)
+            {
+                e.Graphics.DrawString("Service:  ", printFont, Brushes.Black, 60, (y += 50));//430 + 50
+                num = 1;
+                for (int i = 0; i < dgvCountService; i++)
+                {
+                    x = 380;
+                    //y = 430;
+                    e.Graphics.DrawString(num.ToString(), printFont, Brushes.Black, 20, (y += 30));
+                    getValueIfAnyElseBlank(frmC.dataGridViewService, out resultText, i, 1);//frmC.dataGridViewService.Rows[0].Cells[1].Value.ToString()
+                    e.Graphics.DrawString(resultText, printFont, Brushes.Black, 60, y);//470      Name
+                    getValueIfAnyElseBlank(frmC.dataGridViewService, out resultText, i, 3);//frmC.dataGridViewService.Rows[0].Cells[3].Value.ToString()
+                    e.Graphics.DrawString(resultText, printFont, Brushes.Black, x, y);//320   Price
+                    num += 1;
+                }
+            }
+            x = 440;
+
             //y = 550;
-            e.Graphics.DrawString("Total Amount: ", printFont, Brushes.Black, 20, (y += 80));//550
-            e.Graphics.DrawString(frmC.lblSalesTotal.Text, printFont, Brushes.Black, (x += 70), y);//390 
+            e.Graphics.DrawString("Total Amount: ", printFont, Brushes.Black, 20, (y += 50));//550
+            e.Graphics.DrawString(frmC.lblSalesTotal.Text, printFont, Brushes.Black, (x += 70), y);//510 
 
             e.Graphics.DrawString("Discount: ", printFont, Brushes.Black, 20, (y += 30));
             e.Graphics.DrawString(frmC.lblDiscount.Text, printFont, Brushes.Black, x, y);//370
             getValueIfAnyElseBlank(frmC.dataGridViewCart, out resultText, 0, 5);//frmC.dataGridViewCart.Rows[0].Cells[5].Value.ToString()
-            e.Graphics.DrawString("("+ resultText + "%)", printFont, Brushes.Black, (x -= 70), y);//320
+            e.Graphics.DrawString("("+ resultText + "%)", printFont, Brushes.Black, (x -= 70), y);//440
 
             e.Graphics.DrawString("Total Due: ", printFont, Brushes.Black, 20, (y += 30));
-            e.Graphics.DrawString(txtTotal.Text, printFont, Brushes.Black, (x += 70), y);
+            e.Graphics.DrawString(txtTotal.Text, printFont, Brushes.Black, (x += 70), y);//510
 
             e.Graphics.DrawString("Amount Tendered: ", printFont, Brushes.Black, 20, (y += 30));
             e.Graphics.DrawString(txtPayment.Text, printFont, Brushes.Black, x, y);
@@ -668,9 +693,9 @@ namespace Capstone
 
             
 
-            e.Graphics.DrawString("THIS INVOICE/RECEIPT SHALL BE VALID FOR", printFontItallic, Brushes.Black, 60, (y += 60));//770
-            e.Graphics.DrawString("ONE (1)) WEEK FROM THE DATE OF THE PERMIT TO USE", printFontItallic, Brushes.Black, 20, (y += 30));//800
-            e.Graphics.DrawString("THANKYOU", printFontBold, Brushes.Black, 180, (y += 30));//830
+            e.Graphics.DrawString("THIS INVOICE/RECEIPT SHALL BE VALID FOR", printFontItallic, Brushes.Black, 130, (y += 60));//770
+            e.Graphics.DrawString("ONE (1)) WEEK FROM THE DATE OF THE PERMIT TO USE", printFontItallic, Brushes.Black, 70, (y += 30));//800
+            e.Graphics.DrawString("THANKYOU", printFontBold, Brushes.Black, (x -= 280), (y += 30));//830
         }
 
         private void btnReceiptPreview_Click(object sender, EventArgs e)
@@ -679,7 +704,7 @@ namespace Capstone
             preview.Document = printDocument;
             int pLength = 920;
             paperSizeUpdate(out pLength);
-            printDocument.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("RECEIPT", 550, pLength);
+            printDocument.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("RECEIPT", 610, pLength);
             preview.PrintPreviewControl.Zoom = 0.75;
             preview.Size = new System.Drawing.Size(400, 650);            
             preview.ShowDialog();
@@ -692,23 +717,23 @@ namespace Capstone
             paperL = 0;
             if (dgvCount > 0 && dgvCount <= 4)
             {
-                paperL = 920;
+                paperL = 950;
             }
             else if (dgvCount > 4 && dgvCount <= 7)// + 3 items = 30 * 3 = 90
             {
-                paperL = 1020;
+                paperL = 1040;
             }
             else if (dgvCount > 7 && dgvCount <= 10)// + 3 items = 30 * 3 = 90
             {
-                paperL = 1110;
+                paperL = 1130;
             }
             else if (dgvCount > 10 && dgvCount <= 13)// + 3 items = 30 * 3 = 90
             {
-                paperL = 1200;
+                paperL = 1220;
             }
             else
             {
-                paperL = 920;
+                paperL = 950;
             }
 
         }

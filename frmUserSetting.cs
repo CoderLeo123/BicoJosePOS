@@ -21,6 +21,14 @@ namespace Capstone
             InitializeComponent();
             cn = new SqlConnection(dbcon.MyConnection());
             LoadUsers();
+            if (dataGridViewUsers.Rows.Count > 0)
+            {
+                dataGridViewUsers.Rows[0].Selected = true;
+                lblUsID.Text = dataGridViewUsers.Rows[0].Cells[4].Value.ToString();
+
+            }
+                
+            
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -30,22 +38,37 @@ namespace Capstone
 
         private void linkLabelCreateNew_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            frmSignUpForgotPass frm = new frmSignUpForgotPass();
-            frm.tabControlRegister.TabPages.Clear();
-            TabPage tab = new TabPage("Sign Up");
-            frm.tabControlRegister.TabPages.Add(tab);
-            tab.Controls.Add(frm.panelSignUp);
-            frm.comBoxUserType.SelectedIndex = 0;
-            frm.ShowDialog();
+            frmPermission frmP = new frmPermission();
+            frmP.lblWhatForm.Text = "ResetPass";
+            frmP.ShowDialog();
+
+            if (frmP.lblGrant.Text == "1")
+            {
+                frmSignUpForgotPass frm = new frmSignUpForgotPass();
+                frm.tabControlRegister.TabPages.Clear();
+                TabPage tab = new TabPage("Sign Up");
+                frm.tabControlRegister.TabPages.Add(tab);
+                tab.Controls.Add(frm.panelSignUp);
+                frm.comBoxUserType.SelectedIndex = 0;
+                frm.ShowDialog();
+                lblUserNotices.Visible = false;
+            }
+            else
+            {
+                lblUserNotices.Visible = true;
+                lblUserNotices.Text = "Request not permitted";
+            }
+
         }
 
         private void linkLabelResetPass_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             frmPermission frmP = new frmPermission();
-            frmP.lblWhatForm.Text = "UserSetting";
+            frmP.lblWhatForm.Text = "ResetPass";
             frmP.ShowDialog();
+            
 
-            if (lblPermitted.Equals("Granted"))
+            if (frmP.lblGrant.Text == "1")
             {
                 frmSignUpForgotPass frm = new frmSignUpForgotPass();
                 frm.tabControlRegister.TabPages.Clear();
@@ -53,10 +76,14 @@ namespace Capstone
                 frm.tabControlRegister.TabPages.Add(tab);
                 tab.Controls.Add(frm.panelForgotPass);
                 frm.Size = new Size(647, 517);
+                //frm.txtUserNameForgot.Text = dataGridViewUsers.Rows[e.RowIndex].Cells[4].Value.ToString();
                 frm.ShowDialog();
+                
+                lblUserNotices.Visible = false;
             }
             else
             {
+                lblUserNotices.Visible = true;
                 lblUserNotices.Text = "Request not permitted";
             }
 
@@ -69,7 +96,7 @@ namespace Capstone
             
             
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT Password FROM tblUsers WHERE User_ID LIKE '"+ lblUsID.Text + "'", cn);
+            SqlCommand cm = new SqlCommand("SELECT Password FROM tblUser WHERE User_ID LIKE '"+ lblUsID.Text + "'", cn);
             dr = cm.ExecuteReader();
             if (dr.Read())
             {
@@ -106,16 +133,21 @@ namespace Capstone
             frmPermission frm = new frmPermission();
             frm.lblWhatForm.Text = "UserSetting";
             frm.ShowDialog();
-            
-            if (lblPermitted.Equals("Granted"))
+
+           
+            if (frm.lblGrant.Text == "1")
             {
                 LoadUserPassword();
+
+                lblUserNotices.Visible = false;
             }
             else
             {
+                lblUserNotices.Visible = true;
                 lblUserNotices.Text = "Request not permitted";
+                lblPermitted.Text = "Denied";
             }
-
+            
         }
 
         private void dataGridViewUsers_CellContentClick(object sender, DataGridViewCellEventArgs e)

@@ -54,15 +54,16 @@ namespace Capstone
             dr.Close();
             cn.Close();
         }
-        public void tblServiceAvailedList(string transacNo, out string SName, out string SPrice)
+        public void tblServiceAvailedList(string transacNo, out string SName, out string SPrice, out int rowCount)
         {
             cn = new SqlConnection(dbcon.MyConnection());
-            SName = ""; SPrice = "";
+            SName = ""; SPrice = ""; rowCount = -1;
             cn.Open();
             SqlCommand cm = new SqlCommand("SELECT Name, Price FROM ViewServiceAvailed WHERE Transaction_No LIKE '" + transacNo + "'", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
+                rowCount++;
                 SName = dr[0].ToString(); SPrice = dr[1].ToString();
                 
             }
