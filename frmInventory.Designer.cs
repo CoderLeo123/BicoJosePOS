@@ -34,75 +34,196 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.panel13 = new System.Windows.Forms.Panel();
+            this.btnExpira = new System.Windows.Forms.Button();
+            this.btnReOrder = new System.Windows.Forms.Button();
+            this.btnCrittical = new System.Windows.Forms.Button();
+            this.btnOutOFStock = new System.Windows.Forms.Button();
             this.btnCloseInventory = new System.Windows.Forms.PictureBox();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tabControlInventory = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.panelReOrder = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.dataGridViewStockHist = new System.Windows.Forms.DataGridView();
+            this.dataGridViewReOrder = new System.Windows.Forms.DataGridView();
             this.NumInventory = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.InventoryID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DescriptionInventory = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TypeInventory = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProductInventory = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PriceInventory = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ExpirationInventory = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StockInByInventory = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StockInDateInventory = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StockOnHandInventory = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StockLevelInventory = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Class = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.txtSearchReOrder = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.panelCritical = new System.Windows.Forms.Panel();
+            this.panel14 = new System.Windows.Forms.Panel();
+            this.dataGridViewCritical = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StockInByCritical = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.txtSearchCritical = new System.Windows.Forms.TextBox();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.panelOutOfStock = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.dataGridViewOutStock = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.txtSearchOutOStock = new System.Windows.Forms.TextBox();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.panelExpiration = new System.Windows.Forms.Panel();
+            this.panel15 = new System.Windows.Forms.Panel();
+            this.dataGridViewExpir = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel6 = new System.Windows.Forms.Panel();
+            this.ITEMAYD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.txtSearchExpirat = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
+            this.panel13.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnCloseInventory)).BeginInit();
-            this.tabControl1.SuspendLayout();
+            this.tabControlInventory.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.panelReOrder.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStockHist)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReOrder)).BeginInit();
+            this.panel2.SuspendLayout();
+            this.panel10.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.panelCritical.SuspendLayout();
+            this.panel14.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCritical)).BeginInit();
             this.panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panel8.SuspendLayout();
             this.tabPage4.SuspendLayout();
-            this.panel7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            this.panelOutOfStock.SuspendLayout();
+            this.panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOutStock)).BeginInit();
+            this.panel4.SuspendLayout();
+            this.panel9.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            this.panelExpiration.SuspendLayout();
+            this.panel15.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewExpir)).BeginInit();
+            this.panel11.SuspendLayout();
+            this.panel12.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.panel1.Controls.Add(this.panel13);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.btnCloseInventory);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1315, 57);
             this.panel1.TabIndex = 4;
+            // 
+            // panel13
+            // 
+            this.panel13.Controls.Add(this.btnExpira);
+            this.panel13.Controls.Add(this.btnReOrder);
+            this.panel13.Controls.Add(this.btnCrittical);
+            this.panel13.Controls.Add(this.btnOutOFStock);
+            this.panel13.Controls.Add(this.btnCloseInventory);
+            this.panel13.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel13.Location = new System.Drawing.Point(615, 0);
+            this.panel13.Name = "panel13";
+            this.panel13.Size = new System.Drawing.Size(700, 57);
+            this.panel13.TabIndex = 5;
+            // 
+            // btnExpira
+            // 
+            this.btnExpira.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnExpira.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExpira.FlatAppearance.BorderSize = 0;
+            this.btnExpira.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExpira.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnExpira.ForeColor = System.Drawing.Color.White;
+            this.btnExpira.Location = new System.Drawing.Point(469, 9);
+            this.btnExpira.Name = "btnExpira";
+            this.btnExpira.Size = new System.Drawing.Size(133, 42);
+            this.btnExpira.TabIndex = 49;
+            this.btnExpira.Text = "Expiration";
+            this.btnExpira.UseVisualStyleBackColor = false;
+            this.btnExpira.Click += new System.EventHandler(this.btnExpira_Click);
+            // 
+            // btnReOrder
+            // 
+            this.btnReOrder.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnReOrder.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnReOrder.FlatAppearance.BorderSize = 0;
+            this.btnReOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReOrder.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnReOrder.ForeColor = System.Drawing.Color.White;
+            this.btnReOrder.Location = new System.Drawing.Point(23, 9);
+            this.btnReOrder.Name = "btnReOrder";
+            this.btnReOrder.Size = new System.Drawing.Size(135, 42);
+            this.btnReOrder.TabIndex = 48;
+            this.btnReOrder.Text = "Re Order";
+            this.btnReOrder.UseVisualStyleBackColor = false;
+            this.btnReOrder.Click += new System.EventHandler(this.btnReOrder_Click);
+            // 
+            // btnCrittical
+            // 
+            this.btnCrittical.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnCrittical.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCrittical.FlatAppearance.BorderSize = 0;
+            this.btnCrittical.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCrittical.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnCrittical.ForeColor = System.Drawing.Color.White;
+            this.btnCrittical.Location = new System.Drawing.Point(164, 9);
+            this.btnCrittical.Name = "btnCrittical";
+            this.btnCrittical.Size = new System.Drawing.Size(135, 42);
+            this.btnCrittical.TabIndex = 47;
+            this.btnCrittical.Text = "Critical";
+            this.btnCrittical.UseVisualStyleBackColor = false;
+            this.btnCrittical.Click += new System.EventHandler(this.btnCrittical_Click);
+            // 
+            // btnOutOFStock
+            // 
+            this.btnOutOFStock.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnOutOFStock.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnOutOFStock.FlatAppearance.BorderSize = 0;
+            this.btnOutOFStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOutOFStock.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnOutOFStock.ForeColor = System.Drawing.Color.White;
+            this.btnOutOFStock.Location = new System.Drawing.Point(305, 9);
+            this.btnOutOFStock.Name = "btnOutOFStock";
+            this.btnOutOFStock.Size = new System.Drawing.Size(158, 42);
+            this.btnOutOFStock.TabIndex = 46;
+            this.btnOutOFStock.Text = "Out of Stock";
+            this.btnOutOFStock.UseVisualStyleBackColor = false;
+            this.btnOutOFStock.Click += new System.EventHandler(this.btnOutOFStock_Click);
+            // 
+            // btnCloseInventory
+            // 
+            this.btnCloseInventory.BackColor = System.Drawing.Color.Transparent;
+            this.btnCloseInventory.BackgroundImage = global::Capstone.Properties.Resources.CloseTab;
+            this.btnCloseInventory.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnCloseInventory.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCloseInventory.Location = new System.Drawing.Point(653, 9);
+            this.btnCloseInventory.Name = "btnCloseInventory";
+            this.btnCloseInventory.Padding = new System.Windows.Forms.Padding(3);
+            this.btnCloseInventory.Size = new System.Drawing.Size(40, 38);
+            this.btnCloseInventory.TabIndex = 0;
+            this.btnCloseInventory.TabStop = false;
+            this.btnCloseInventory.Click += new System.EventHandler(this.btnCloseInventory_Click);
             // 
             // label1
             // 
@@ -116,36 +237,22 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Stock Monitoring";
             // 
-            // btnCloseInventory
+            // tabControlInventory
             // 
-            this.btnCloseInventory.BackColor = System.Drawing.Color.Transparent;
-            this.btnCloseInventory.BackgroundImage = global::Capstone.Properties.Resources.CloseTab;
-            this.btnCloseInventory.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnCloseInventory.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCloseInventory.Location = new System.Drawing.Point(1260, 9);
-            this.btnCloseInventory.Name = "btnCloseInventory";
-            this.btnCloseInventory.Padding = new System.Windows.Forms.Padding(3);
-            this.btnCloseInventory.Size = new System.Drawing.Size(40, 38);
-            this.btnCloseInventory.TabIndex = 0;
-            this.btnCloseInventory.TabStop = false;
-            this.btnCloseInventory.Click += new System.EventHandler(this.btnCloseInventory_Click);
-            // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage4);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 57);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1315, 873);
-            this.tabControl1.TabIndex = 5;
+            this.tabControlInventory.Controls.Add(this.tabPage1);
+            this.tabControlInventory.Controls.Add(this.tabPage2);
+            this.tabControlInventory.Controls.Add(this.tabPage4);
+            this.tabControlInventory.Controls.Add(this.tabPage3);
+            this.tabControlInventory.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControlInventory.Location = new System.Drawing.Point(0, 57);
+            this.tabControlInventory.Name = "tabControlInventory";
+            this.tabControlInventory.SelectedIndex = 0;
+            this.tabControlInventory.Size = new System.Drawing.Size(1315, 873);
+            this.tabControlInventory.TabIndex = 5;
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.panel3);
-            this.tabPage1.Controls.Add(this.panel2);
+            this.tabPage1.Controls.Add(this.panelReOrder);
             this.tabPage1.Location = new System.Drawing.Point(4, 46);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -154,43 +261,47 @@
             this.tabPage1.Text = "Re-order";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // panelReOrder
+            // 
+            this.panelReOrder.Controls.Add(this.panel3);
+            this.panelReOrder.Controls.Add(this.panel2);
+            this.panelReOrder.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelReOrder.Location = new System.Drawing.Point(3, 3);
+            this.panelReOrder.Name = "panelReOrder";
+            this.panelReOrder.Size = new System.Drawing.Size(1301, 817);
+            this.panelReOrder.TabIndex = 2;
+            // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.dataGridViewStockHist);
+            this.panel3.Controls.Add(this.dataGridViewReOrder);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(3, 83);
+            this.panel3.Location = new System.Drawing.Point(0, 72);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1301, 737);
+            this.panel3.Size = new System.Drawing.Size(1301, 745);
             this.panel3.TabIndex = 1;
             // 
-            // dataGridViewStockHist
+            // dataGridViewReOrder
             // 
-            this.dataGridViewStockHist.AllowUserToResizeColumns = false;
-            this.dataGridViewStockHist.AllowUserToResizeRows = false;
-            this.dataGridViewStockHist.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridViewStockHist.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dataGridViewReOrder.AllowUserToResizeColumns = false;
+            this.dataGridViewReOrder.AllowUserToResizeRows = false;
+            this.dataGridViewReOrder.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridViewReOrder.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewStockHist.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewStockHist.ColumnHeadersHeight = 40;
-            this.dataGridViewStockHist.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dataGridViewStockHist.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewReOrder.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewReOrder.ColumnHeadersHeight = 40;
+            this.dataGridViewReOrder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridViewReOrder.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NumInventory,
-            this.InventoryID,
             this.DescriptionInventory,
             this.TypeInventory,
-            this.ProductInventory,
-            this.PriceInventory,
-            this.ExpirationInventory,
-            this.StockInByInventory,
-            this.StockInDateInventory,
             this.StockOnHandInventory,
-            this.StockLevelInventory});
+            this.Class});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.Azure;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -198,19 +309,19 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewStockHist.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridViewStockHist.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewStockHist.EnableHeadersVisualStyles = false;
-            this.dataGridViewStockHist.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.dataGridViewStockHist.Location = new System.Drawing.Point(0, 0);
-            this.dataGridViewStockHist.Name = "dataGridViewStockHist";
-            this.dataGridViewStockHist.RowHeadersVisible = false;
-            this.dataGridViewStockHist.RowHeadersWidth = 51;
-            this.dataGridViewStockHist.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dataGridViewStockHist.RowTemplate.Height = 29;
-            this.dataGridViewStockHist.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewStockHist.Size = new System.Drawing.Size(1301, 737);
-            this.dataGridViewStockHist.TabIndex = 5;
+            this.dataGridViewReOrder.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewReOrder.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewReOrder.EnableHeadersVisualStyles = false;
+            this.dataGridViewReOrder.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.dataGridViewReOrder.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewReOrder.Name = "dataGridViewReOrder";
+            this.dataGridViewReOrder.RowHeadersVisible = false;
+            this.dataGridViewReOrder.RowHeadersWidth = 51;
+            this.dataGridViewReOrder.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dataGridViewReOrder.RowTemplate.Height = 35;
+            this.dataGridViewReOrder.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewReOrder.Size = new System.Drawing.Size(1301, 745);
+            this.dataGridViewReOrder.TabIndex = 5;
             // 
             // NumInventory
             // 
@@ -218,15 +329,8 @@
             this.NumInventory.HeaderText = "#";
             this.NumInventory.MinimumWidth = 6;
             this.NumInventory.Name = "NumInventory";
-            this.NumInventory.Width = 47;
-            // 
-            // InventoryID
-            // 
-            this.InventoryID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.InventoryID.HeaderText = "INVENTORY ID";
-            this.InventoryID.MinimumWidth = 6;
-            this.InventoryID.Name = "InventoryID";
-            this.InventoryID.Width = 154;
+            this.NumInventory.ReadOnly = true;
+            this.NumInventory.Width = 61;
             // 
             // DescriptionInventory
             // 
@@ -234,84 +338,66 @@
             this.DescriptionInventory.HeaderText = "DESCRIPTION";
             this.DescriptionInventory.MinimumWidth = 6;
             this.DescriptionInventory.Name = "DescriptionInventory";
+            this.DescriptionInventory.ReadOnly = true;
             // 
             // TypeInventory
             // 
-            this.TypeInventory.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.TypeInventory.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.TypeInventory.HeaderText = "TYPE";
             this.TypeInventory.MinimumWidth = 6;
             this.TypeInventory.Name = "TypeInventory";
-            this.TypeInventory.Width = 76;
-            // 
-            // ProductInventory
-            // 
-            this.ProductInventory.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.ProductInventory.HeaderText = "PRODUCT";
-            this.ProductInventory.MinimumWidth = 6;
-            this.ProductInventory.Name = "ProductInventory";
-            this.ProductInventory.Width = 117;
-            // 
-            // PriceInventory
-            // 
-            this.PriceInventory.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.PriceInventory.HeaderText = "PRICE";
-            this.PriceInventory.MinimumWidth = 6;
-            this.PriceInventory.Name = "PriceInventory";
-            this.PriceInventory.Width = 83;
-            // 
-            // ExpirationInventory
-            // 
-            this.ExpirationInventory.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.ExpirationInventory.HeaderText = "EXPIRATION";
-            this.ExpirationInventory.MinimumWidth = 6;
-            this.ExpirationInventory.Name = "ExpirationInventory";
-            this.ExpirationInventory.Width = 135;
-            // 
-            // StockInByInventory
-            // 
-            this.StockInByInventory.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.StockInByInventory.HeaderText = "STOCK IN BY";
-            this.StockInByInventory.MinimumWidth = 6;
-            this.StockInByInventory.Name = "StockInByInventory";
-            this.StockInByInventory.Width = 140;
-            // 
-            // StockInDateInventory
-            // 
-            this.StockInDateInventory.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.StockInDateInventory.HeaderText = "STOCK IN DATE";
-            this.StockInDateInventory.MinimumWidth = 6;
-            this.StockInDateInventory.Name = "StockInDateInventory";
-            this.StockInDateInventory.Width = 162;
+            this.TypeInventory.ReadOnly = true;
             // 
             // StockOnHandInventory
             // 
             this.StockOnHandInventory.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.StockOnHandInventory.HeaderText = "STOCK ON HAND";
+            this.StockOnHandInventory.HeaderText = "STOCK";
             this.StockOnHandInventory.MinimumWidth = 6;
             this.StockOnHandInventory.Name = "StockOnHandInventory";
-            this.StockOnHandInventory.Width = 178;
+            this.StockOnHandInventory.ReadOnly = true;
+            this.StockOnHandInventory.Width = 127;
             // 
-            // StockLevelInventory
+            // Class
             // 
-            this.StockLevelInventory.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.StockLevelInventory.HeaderText = "STOCK LEVEL";
-            this.StockLevelInventory.MinimumWidth = 6;
-            this.StockLevelInventory.Name = "StockLevelInventory";
-            this.StockLevelInventory.Width = 143;
+            this.Class.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Class.HeaderText = "CLASSIFICATION";
+            this.Class.MinimumWidth = 6;
+            this.Class.Name = "Class";
+            this.Class.ReadOnly = true;
+            this.Class.Width = 248;
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.panel10);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(3, 3);
+            this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1301, 80);
+            this.panel2.Size = new System.Drawing.Size(1301, 72);
             this.panel2.TabIndex = 0;
+            // 
+            // panel10
+            // 
+            this.panel10.BackColor = System.Drawing.Color.DimGray;
+            this.panel10.Controls.Add(this.txtSearchReOrder);
+            this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel10.Location = new System.Drawing.Point(0, 0);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(1301, 72);
+            this.panel10.TabIndex = 40;
+            // 
+            // txtSearchReOrder
+            // 
+            this.txtSearchReOrder.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtSearchReOrder.Location = new System.Drawing.Point(18, 17);
+            this.txtSearchReOrder.Name = "txtSearchReOrder";
+            this.txtSearchReOrder.PlaceholderText = "Search Here";
+            this.txtSearchReOrder.Size = new System.Drawing.Size(619, 38);
+            this.txtSearchReOrder.TabIndex = 0;
             // 
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.Transparent;
-            this.tabPage2.Controls.Add(this.panel5);
-            this.tabPage2.Controls.Add(this.panel4);
+            this.tabPage2.Controls.Add(this.panelCritical);
             this.tabPage2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.tabPage2.Location = new System.Drawing.Point(4, 46);
             this.tabPage2.Name = "tabPage2";
@@ -320,41 +406,47 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Critical";
             // 
-            // panel5
+            // panelCritical
             // 
-            this.panel5.Controls.Add(this.dataGridView1);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(3, 83);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1301, 737);
-            this.panel5.TabIndex = 2;
+            this.panelCritical.Controls.Add(this.panel14);
+            this.panelCritical.Controls.Add(this.panel5);
+            this.panelCritical.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelCritical.Location = new System.Drawing.Point(3, 3);
+            this.panelCritical.Name = "panelCritical";
+            this.panelCritical.Size = new System.Drawing.Size(1301, 817);
+            this.panelCritical.TabIndex = 41;
             // 
-            // dataGridView1
+            // panel14
             // 
-            this.dataGridView1.AllowUserToResizeColumns = false;
-            this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.panel14.Controls.Add(this.dataGridViewCritical);
+            this.panel14.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel14.Location = new System.Drawing.Point(0, 75);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(1301, 742);
+            this.panel14.TabIndex = 1;
+            // 
+            // dataGridViewCritical
+            // 
+            this.dataGridViewCritical.AllowUserToResizeColumns = false;
+            this.dataGridViewCritical.AllowUserToResizeRows = false;
+            this.dataGridViewCritical.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridViewCritical.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridView1.ColumnHeadersHeight = 40;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewCritical.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridViewCritical.ColumnHeadersHeight = 40;
+            this.dataGridViewCritical.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridViewCritical.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5,
-            this.StockInByCritical,
-            this.dataGridViewTextBoxColumn9,
-            this.dataGridViewTextBoxColumn10,
-            this.dataGridViewTextBoxColumn11});
+            this.dataGridViewTextBoxColumn5});
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.Azure;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -362,19 +454,19 @@
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.EnableHeadersVisualStyles = false;
-            this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dataGridView1.RowTemplate.Height = 29;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1301, 737);
-            this.dataGridView1.TabIndex = 6;
+            this.dataGridViewCritical.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridViewCritical.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewCritical.EnableHeadersVisualStyles = false;
+            this.dataGridViewCritical.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.dataGridViewCritical.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewCritical.Name = "dataGridViewCritical";
+            this.dataGridViewCritical.RowHeadersVisible = false;
+            this.dataGridViewCritical.RowHeadersWidth = 51;
+            this.dataGridViewCritical.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dataGridViewCritical.RowTemplate.Height = 35;
+            this.dataGridViewCritical.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewCritical.Size = new System.Drawing.Size(1301, 742);
+            this.dataGridViewCritical.TabIndex = 6;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -382,82 +474,74 @@
             this.dataGridViewTextBoxColumn1.HeaderText = "#";
             this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 47;
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 61;
             // 
             // dataGridViewTextBoxColumn2
             // 
-            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataGridViewTextBoxColumn2.HeaderText = "INVENTORY ID";
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn2.HeaderText = "DESCRIPTION";
             this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.Width = 154;
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn3
             // 
             this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn3.HeaderText = "DESCRIPTION";
+            this.dataGridViewTextBoxColumn3.HeaderText = "TYPE";
             this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn4
             // 
             this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dataGridViewTextBoxColumn4.HeaderText = "TYPE";
+            this.dataGridViewTextBoxColumn4.HeaderText = "STOCK";
             this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.Width = 76;
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Width = 127;
             // 
             // dataGridViewTextBoxColumn5
             // 
             this.dataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dataGridViewTextBoxColumn5.HeaderText = "PRODUCT";
+            this.dataGridViewTextBoxColumn5.HeaderText = "CLASSIFICATION";
             this.dataGridViewTextBoxColumn5.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.Width = 117;
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Width = 248;
             // 
-            // StockInByCritical
+            // panel5
             // 
-            this.StockInByCritical.HeaderText = "STOCK IN BY";
-            this.StockInByCritical.MinimumWidth = 6;
-            this.StockInByCritical.Name = "StockInByCritical";
-            this.StockInByCritical.Width = 125;
+            this.panel5.Controls.Add(this.panel8);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel5.Location = new System.Drawing.Point(0, 0);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(1301, 75);
+            this.panel5.TabIndex = 0;
             // 
-            // dataGridViewTextBoxColumn9
+            // panel8
             // 
-            this.dataGridViewTextBoxColumn9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dataGridViewTextBoxColumn9.HeaderText = "STOCK IN DATE";
-            this.dataGridViewTextBoxColumn9.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            this.dataGridViewTextBoxColumn9.Width = 162;
+            this.panel8.BackColor = System.Drawing.Color.DimGray;
+            this.panel8.Controls.Add(this.txtSearchCritical);
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel8.Location = new System.Drawing.Point(0, 0);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(1301, 75);
+            this.panel8.TabIndex = 40;
             // 
-            // dataGridViewTextBoxColumn10
+            // txtSearchCritical
             // 
-            this.dataGridViewTextBoxColumn10.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dataGridViewTextBoxColumn10.HeaderText = "STOCK ON HAND";
-            this.dataGridViewTextBoxColumn10.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            this.dataGridViewTextBoxColumn10.Width = 178;
-            // 
-            // dataGridViewTextBoxColumn11
-            // 
-            this.dataGridViewTextBoxColumn11.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataGridViewTextBoxColumn11.HeaderText = "STOCK LEVEL";
-            this.dataGridViewTextBoxColumn11.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            this.dataGridViewTextBoxColumn11.Width = 143;
-            // 
-            // panel4
-            // 
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(3, 3);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1301, 80);
-            this.panel4.TabIndex = 1;
+            this.txtSearchCritical.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtSearchCritical.Location = new System.Drawing.Point(18, 17);
+            this.txtSearchCritical.Name = "txtSearchCritical";
+            this.txtSearchCritical.PlaceholderText = "Search Here";
+            this.txtSearchCritical.Size = new System.Drawing.Size(619, 38);
+            this.txtSearchCritical.TabIndex = 0;
             // 
             // tabPage4
             // 
-            this.tabPage4.Controls.Add(this.panel7);
-            this.tabPage4.Controls.Add(this.panel6);
+            this.tabPage4.Controls.Add(this.panelOutOfStock);
             this.tabPage4.Location = new System.Drawing.Point(4, 46);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Size = new System.Drawing.Size(1307, 823);
@@ -465,41 +549,47 @@
             this.tabPage4.Text = "Out of Stock";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // panel7
+            // panelOutOfStock
             // 
-            this.panel7.Controls.Add(this.dataGridView2);
-            this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel7.Location = new System.Drawing.Point(0, 84);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(1307, 739);
-            this.panel7.TabIndex = 1;
+            this.panelOutOfStock.Controls.Add(this.panel6);
+            this.panelOutOfStock.Controls.Add(this.panel4);
+            this.panelOutOfStock.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelOutOfStock.Location = new System.Drawing.Point(0, 0);
+            this.panelOutOfStock.Name = "panelOutOfStock";
+            this.panelOutOfStock.Size = new System.Drawing.Size(1307, 823);
+            this.panelOutOfStock.TabIndex = 1;
             // 
-            // dataGridView2
+            // panel6
             // 
-            this.dataGridView2.AllowUserToResizeColumns = false;
-            this.dataGridView2.AllowUserToResizeRows = false;
-            this.dataGridView2.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView2.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.panel6.Controls.Add(this.dataGridViewOutStock);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel6.Location = new System.Drawing.Point(0, 74);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(1307, 749);
+            this.panel6.TabIndex = 41;
+            // 
+            // dataGridViewOutStock
+            // 
+            this.dataGridViewOutStock.AllowUserToResizeColumns = false;
+            this.dataGridViewOutStock.AllowUserToResizeRows = false;
+            this.dataGridViewOutStock.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridViewOutStock.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            this.dataGridView2.ColumnHeadersHeight = 40;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn12,
-            this.dataGridViewTextBoxColumn13,
-            this.dataGridViewTextBoxColumn14,
-            this.dataGridViewTextBoxColumn15,
-            this.dataGridViewTextBoxColumn16,
-            this.dataGridViewTextBoxColumn18,
-            this.dataGridViewTextBoxColumn19,
-            this.dataGridViewTextBoxColumn20,
-            this.dataGridViewTextBoxColumn21});
+            this.dataGridViewOutStock.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.dataGridViewOutStock.ColumnHeadersHeight = 40;
+            this.dataGridViewOutStock.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridViewOutStock.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewTextBoxColumn8,
+            this.dataGridViewTextBoxColumn9,
+            this.dataGridViewTextBoxColumn10});
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.Azure;
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -507,105 +597,242 @@
             dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView2.EnableHeadersVisualStyles = false;
-            this.dataGridView2.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.dataGridView2.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowHeadersVisible = false;
-            this.dataGridView2.RowHeadersWidth = 51;
-            this.dataGridView2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dataGridView2.RowTemplate.Height = 29;
-            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(1307, 739);
-            this.dataGridView2.TabIndex = 7;
+            this.dataGridViewOutStock.DefaultCellStyle = dataGridViewCellStyle6;
+            this.dataGridViewOutStock.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewOutStock.EnableHeadersVisualStyles = false;
+            this.dataGridViewOutStock.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.dataGridViewOutStock.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewOutStock.Name = "dataGridViewOutStock";
+            this.dataGridViewOutStock.RowHeadersVisible = false;
+            this.dataGridViewOutStock.RowHeadersWidth = 51;
+            this.dataGridViewOutStock.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dataGridViewOutStock.RowTemplate.Height = 35;
+            this.dataGridViewOutStock.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewOutStock.Size = new System.Drawing.Size(1307, 749);
+            this.dataGridViewOutStock.TabIndex = 6;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewTextBoxColumn6.HeaderText = "#";
+            this.dataGridViewTextBoxColumn6.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.Width = 61;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn7.HeaderText = "DESCRIPTION";
+            this.dataGridViewTextBoxColumn7.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn8.HeaderText = "TYPE";
+            this.dataGridViewTextBoxColumn8.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.dataGridViewTextBoxColumn9.HeaderText = "STOCK";
+            this.dataGridViewTextBoxColumn9.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.ReadOnly = true;
+            this.dataGridViewTextBoxColumn9.Width = 127;
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.dataGridViewTextBoxColumn10.HeaderText = "CLASSIFICATION";
+            this.dataGridViewTextBoxColumn10.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.ReadOnly = true;
+            this.dataGridViewTextBoxColumn10.Width = 248;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.panel9);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1307, 74);
+            this.panel4.TabIndex = 40;
+            // 
+            // panel9
+            // 
+            this.panel9.BackColor = System.Drawing.Color.DimGray;
+            this.panel9.Controls.Add(this.txtSearchOutOStock);
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel9.Location = new System.Drawing.Point(0, 0);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(1307, 74);
+            this.panel9.TabIndex = 39;
+            // 
+            // txtSearchOutOStock
+            // 
+            this.txtSearchOutOStock.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtSearchOutOStock.Location = new System.Drawing.Point(18, 17);
+            this.txtSearchOutOStock.Name = "txtSearchOutOStock";
+            this.txtSearchOutOStock.PlaceholderText = "Search Here";
+            this.txtSearchOutOStock.Size = new System.Drawing.Size(619, 38);
+            this.txtSearchOutOStock.TabIndex = 0;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.panelExpiration);
+            this.tabPage3.Location = new System.Drawing.Point(4, 46);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(1307, 823);
+            this.tabPage3.TabIndex = 4;
+            this.tabPage3.Text = "Expiration";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // panelExpiration
+            // 
+            this.panelExpiration.Controls.Add(this.panel15);
+            this.panelExpiration.Controls.Add(this.panel11);
+            this.panelExpiration.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelExpiration.Location = new System.Drawing.Point(0, 0);
+            this.panelExpiration.Name = "panelExpiration";
+            this.panelExpiration.Size = new System.Drawing.Size(1307, 823);
+            this.panelExpiration.TabIndex = 40;
+            // 
+            // panel15
+            // 
+            this.panel15.Controls.Add(this.dataGridViewExpir);
+            this.panel15.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel15.Location = new System.Drawing.Point(0, 70);
+            this.panel15.Name = "panel15";
+            this.panel15.Size = new System.Drawing.Size(1307, 753);
+            this.panel15.TabIndex = 1;
+            // 
+            // dataGridViewExpir
+            // 
+            this.dataGridViewExpir.AllowUserToResizeColumns = false;
+            this.dataGridViewExpir.AllowUserToResizeRows = false;
+            this.dataGridViewExpir.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridViewExpir.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewExpir.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.dataGridViewExpir.ColumnHeadersHeight = 40;
+            this.dataGridViewExpir.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridViewExpir.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn11,
+            this.dataGridViewTextBoxColumn12,
+            this.dataGridViewTextBoxColumn13,
+            this.dataGridViewTextBoxColumn14,
+            this.ITEMAYD});
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.Azure;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewExpir.DefaultCellStyle = dataGridViewCellStyle8;
+            this.dataGridViewExpir.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewExpir.EnableHeadersVisualStyles = false;
+            this.dataGridViewExpir.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.dataGridViewExpir.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewExpir.Name = "dataGridViewExpir";
+            this.dataGridViewExpir.RowHeadersVisible = false;
+            this.dataGridViewExpir.RowHeadersWidth = 51;
+            this.dataGridViewExpir.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dataGridViewExpir.RowTemplate.Height = 35;
+            this.dataGridViewExpir.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewExpir.Size = new System.Drawing.Size(1307, 753);
+            this.dataGridViewExpir.TabIndex = 7;
+            this.dataGridViewExpir.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewExpir_CellContentClick);
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            this.dataGridViewTextBoxColumn11.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewTextBoxColumn11.HeaderText = "#";
+            this.dataGridViewTextBoxColumn11.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            this.dataGridViewTextBoxColumn11.ReadOnly = true;
+            this.dataGridViewTextBoxColumn11.Width = 61;
             // 
             // dataGridViewTextBoxColumn12
             // 
-            this.dataGridViewTextBoxColumn12.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataGridViewTextBoxColumn12.HeaderText = "#";
+            this.dataGridViewTextBoxColumn12.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn12.HeaderText = "DESCRIPTION";
             this.dataGridViewTextBoxColumn12.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
-            this.dataGridViewTextBoxColumn12.Width = 47;
+            this.dataGridViewTextBoxColumn12.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn13
             // 
-            this.dataGridViewTextBoxColumn13.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataGridViewTextBoxColumn13.HeaderText = "INVENTORY ID";
+            this.dataGridViewTextBoxColumn13.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn13.HeaderText = "TYPE";
             this.dataGridViewTextBoxColumn13.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
-            this.dataGridViewTextBoxColumn13.Width = 154;
+            this.dataGridViewTextBoxColumn13.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn14
             // 
-            this.dataGridViewTextBoxColumn14.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn14.HeaderText = "DESCRIPTION";
+            this.dataGridViewTextBoxColumn14.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.dataGridViewTextBoxColumn14.HeaderText = "STOCK";
             this.dataGridViewTextBoxColumn14.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
+            this.dataGridViewTextBoxColumn14.ReadOnly = true;
+            this.dataGridViewTextBoxColumn14.Width = 127;
             // 
-            // dataGridViewTextBoxColumn15
+            // ITEMAYD
             // 
-            this.dataGridViewTextBoxColumn15.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dataGridViewTextBoxColumn15.HeaderText = "TYPE";
-            this.dataGridViewTextBoxColumn15.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
-            this.dataGridViewTextBoxColumn15.Width = 76;
+            this.ITEMAYD.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.ITEMAYD.HeaderText = "ID";
+            this.ITEMAYD.MinimumWidth = 6;
+            this.ITEMAYD.Name = "ITEMAYD";
+            this.ITEMAYD.ReadOnly = true;
+            this.ITEMAYD.Visible = false;
+            this.ITEMAYD.Width = 125;
             // 
-            // dataGridViewTextBoxColumn16
+            // panel11
             // 
-            this.dataGridViewTextBoxColumn16.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dataGridViewTextBoxColumn16.HeaderText = "PRODUCT";
-            this.dataGridViewTextBoxColumn16.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
-            this.dataGridViewTextBoxColumn16.Width = 117;
+            this.panel11.Controls.Add(this.panel12);
+            this.panel11.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel11.Location = new System.Drawing.Point(0, 0);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(1307, 70);
+            this.panel11.TabIndex = 0;
             // 
-            // dataGridViewTextBoxColumn18
+            // panel12
             // 
-            this.dataGridViewTextBoxColumn18.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dataGridViewTextBoxColumn18.HeaderText = "EXPIRATION";
-            this.dataGridViewTextBoxColumn18.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
-            this.dataGridViewTextBoxColumn18.Width = 135;
+            this.panel12.BackColor = System.Drawing.Color.DimGray;
+            this.panel12.Controls.Add(this.txtSearchExpirat);
+            this.panel12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel12.Location = new System.Drawing.Point(0, 0);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(1307, 70);
+            this.panel12.TabIndex = 39;
             // 
-            // dataGridViewTextBoxColumn19
+            // txtSearchExpirat
             // 
-            this.dataGridViewTextBoxColumn19.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dataGridViewTextBoxColumn19.HeaderText = "STOCK IN BY";
-            this.dataGridViewTextBoxColumn19.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
-            this.dataGridViewTextBoxColumn19.Width = 140;
-            // 
-            // dataGridViewTextBoxColumn20
-            // 
-            this.dataGridViewTextBoxColumn20.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dataGridViewTextBoxColumn20.HeaderText = "STOCK IN DATE";
-            this.dataGridViewTextBoxColumn20.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn20.Name = "dataGridViewTextBoxColumn20";
-            this.dataGridViewTextBoxColumn20.Width = 162;
-            // 
-            // dataGridViewTextBoxColumn21
-            // 
-            this.dataGridViewTextBoxColumn21.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dataGridViewTextBoxColumn21.HeaderText = "STOCK ON HAND";
-            this.dataGridViewTextBoxColumn21.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn21.Name = "dataGridViewTextBoxColumn21";
-            this.dataGridViewTextBoxColumn21.Width = 178;
-            // 
-            // panel6
-            // 
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel6.Location = new System.Drawing.Point(0, 0);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(1307, 84);
-            this.panel6.TabIndex = 0;
+            this.txtSearchExpirat.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtSearchExpirat.Location = new System.Drawing.Point(18, 17);
+            this.txtSearchExpirat.Name = "txtSearchExpirat";
+            this.txtSearchExpirat.PlaceholderText = "Search Here";
+            this.txtSearchExpirat.Size = new System.Drawing.Size(619, 38);
+            this.txtSearchExpirat.TabIndex = 0;
             // 
             // frmInventory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 37F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1315, 930);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tabControlInventory);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -615,17 +842,37 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel13.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btnCloseInventory)).EndInit();
-            this.tabControl1.ResumeLayout(false);
+            this.tabControlInventory.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.panelReOrder.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStockHist)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReOrder)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel10.ResumeLayout(false);
+            this.panel10.PerformLayout();
             this.tabPage2.ResumeLayout(false);
+            this.panelCritical.ResumeLayout(false);
+            this.panel14.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCritical)).EndInit();
             this.panel5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
             this.tabPage4.ResumeLayout(false);
-            this.panel7.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            this.panelOutOfStock.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOutStock)).EndInit();
+            this.panel4.ResumeLayout(false);
+            this.panel9.ResumeLayout(false);
+            this.panel9.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.panelExpiration.ResumeLayout(false);
+            this.panel15.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewExpir)).EndInit();
+            this.panel11.ResumeLayout(false);
+            this.panel12.ResumeLayout(false);
+            this.panel12.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -635,47 +882,59 @@
         private Panel panel1;
         private Label label1;
         private PictureBox btnCloseInventory;
-        private TabControl tabControl1;
         private TabPage tabPage1;
         private TabPage tabPage2;
         private TabPage tabPage4;
-        private Panel panel3;
-        private Panel panel2;
-        private DataGridView dataGridViewStockHist;
+        private DataGridView dataGridViewReOrder;
+        private Panel panelOutOfStock;
+        private Panel panel9;
+        public TextBox txtSearchOutOStock;
+        private Panel panel10;
+        public TextBox txtSearchReOrder;
+        private Panel panel8;
+        public TextBox txtSearchCritical;
         private DataGridViewTextBoxColumn NumInventory;
-        private DataGridViewTextBoxColumn InventoryID;
         private DataGridViewTextBoxColumn DescriptionInventory;
         private DataGridViewTextBoxColumn TypeInventory;
-        private DataGridViewTextBoxColumn ProductInventory;
-        private DataGridViewTextBoxColumn PriceInventory;
-        private DataGridViewTextBoxColumn ExpirationInventory;
-        private DataGridViewTextBoxColumn StockInByInventory;
-        private DataGridViewTextBoxColumn StockInDateInventory;
         private DataGridViewTextBoxColumn StockOnHandInventory;
-        private DataGridViewTextBoxColumn StockLevelInventory;
-        private Panel panel5;
-        private DataGridView dataGridView1;
-        private Panel panel4;
-        private Panel panel7;
-        private Panel panel6;
-        private DataGridView dataGridView2;
+        private DataGridViewTextBoxColumn Class;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private DataGridViewTextBoxColumn StockInByCritical;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private TabPage tabPage3;
+        private Panel panel12;
+        public TextBox txtSearchExpirat;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn20;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn21;
+        private DataGridViewTextBoxColumn ITEMAYD;
+        public DataGridView dataGridViewCritical;
+        public TabControl tabControlInventory;
+        public DataGridView dataGridViewOutStock;
+        public DataGridView dataGridViewExpir;
+        private Panel panel13;
+        public Button btnExpira;
+        public Button btnReOrder;
+        public Button btnCrittical;
+        public Button btnOutOFStock;
+        private Panel panelReOrder;
+        private Panel panel3;
+        private Panel panel2;
+        private Panel panelCritical;
+        private Panel panel14;
+        private Panel panel5;
+        private Panel panel6;
+        private Panel panel4;
+        public Panel panelExpiration;
+        private Panel panel15;
+        private Panel panel11;
     }
 }

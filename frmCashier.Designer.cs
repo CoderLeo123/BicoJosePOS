@@ -94,7 +94,9 @@
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unitMe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.lblDiscPercen = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewService)).BeginInit();
@@ -234,6 +236,7 @@
             // 
             // panel7
             // 
+            this.panel7.Controls.Add(this.lblDiscPercen);
             this.panel7.Controls.Add(this.label14);
             this.panel7.Controls.Add(this.label3);
             this.panel7.Controls.Add(this.lblSalesTotal);
@@ -744,7 +747,8 @@
             this.DeleteCart,
             this.ID,
             this.sd,
-            this.ItemID});
+            this.ItemID,
+            this.unitMe});
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.Azure;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -882,9 +886,29 @@
             this.ItemID.Visible = false;
             this.ItemID.Width = 125;
             // 
+            // unitMe
+            // 
+            this.unitMe.HeaderText = "UnitMeasure";
+            this.unitMe.MinimumWidth = 6;
+            this.unitMe.Name = "unitMe";
+            this.unitMe.ReadOnly = true;
+            this.unitMe.Visible = false;
+            this.unitMe.Width = 125;
+            // 
             // printDocument1
             // 
             this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+            // 
+            // lblDiscPercen
+            // 
+            this.lblDiscPercen.AutoSize = true;
+            this.lblDiscPercen.ForeColor = System.Drawing.Color.Red;
+            this.lblDiscPercen.Location = new System.Drawing.Point(152, 69);
+            this.lblDiscPercen.Name = "lblDiscPercen";
+            this.lblDiscPercen.Size = new System.Drawing.Size(76, 28);
+            this.lblDiscPercen.TabIndex = 23;
+            this.lblDiscPercen.Text = "Percent";
+            this.lblDiscPercen.Visible = false;
             // 
             // frmCashier
             // 
@@ -962,6 +986,15 @@
         public Button btnBrowseService;
         private Label label11;
         private Label label2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private DataGridViewImageColumn del;
+        private DataGridViewTextBoxColumn ServID;
+        private DataGridViewTextBoxColumn ServNum;
+        public System.Drawing.Printing.PrintDocument printDocument1;
+        public Label lblDate;
         private DataGridViewTextBoxColumn NumCart;
         private DataGridViewTextBoxColumn DescriptionCart;
         private DataGridViewTextBoxColumn Expiration;
@@ -975,14 +1008,7 @@
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn sd;
         private DataGridViewTextBoxColumn ItemID;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private DataGridViewImageColumn del;
-        private DataGridViewTextBoxColumn ServID;
-        private DataGridViewTextBoxColumn ServNum;
-        public System.Drawing.Printing.PrintDocument printDocument1;
-        public Label lblDate;
+        private DataGridViewTextBoxColumn unitMe;
+        public Label lblDiscPercen;
     }
 }

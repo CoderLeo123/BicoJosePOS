@@ -222,7 +222,7 @@
             this.dropBtnReports.Dock = System.Windows.Forms.DockStyle.Top;
             this.dropBtnReports.FlatAppearance.BorderSize = 0;
             this.dropBtnReports.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.dropBtnReports.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dropBtnReports.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dropBtnReports.ForeColor = System.Drawing.Color.White;
             this.dropBtnReports.Image = global::Capstone.Properties.Resources.Sales_Report;
             this.dropBtnReports.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -792,7 +792,7 @@
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(572, 40);
             this.textBox4.TabIndex = 3;
-            this.textBox4.Text = "Category";
+            this.textBox4.Text = "Order Monitoring";
             this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox3
@@ -818,7 +818,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(572, 40);
             this.textBox2.TabIndex = 1;
-            this.textBox2.Text = "Sales";
+            this.textBox2.Text = "Payment Monitoring";
             this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox1

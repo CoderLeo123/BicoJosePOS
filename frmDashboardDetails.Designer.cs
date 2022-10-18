@@ -810,9 +810,9 @@
             // 
             this.panel15.Controls.Add(this.dataGridView1);
             this.panel15.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel15.Location = new System.Drawing.Point(0, 84);
+            this.panel15.Location = new System.Drawing.Point(0, 54);
             this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(834, 313);
+            this.panel15.Size = new System.Drawing.Size(834, 343);
             this.panel15.TabIndex = 1;
             // 
             // dataGridView1
@@ -853,7 +853,7 @@
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView1.RowTemplate.Height = 35;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(834, 313);
+            this.dataGridView1.Size = new System.Drawing.Size(834, 343);
             this.dataGridView1.TabIndex = 8;
             // 
             // dataGridViewTextBoxColumn8
@@ -879,7 +879,7 @@
             this.panel16.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel16.Location = new System.Drawing.Point(0, 0);
             this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(834, 84);
+            this.panel16.Size = new System.Drawing.Size(834, 54);
             this.panel16.TabIndex = 0;
             // 
             // panel17
@@ -895,7 +895,7 @@
             this.panel17.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel17.Location = new System.Drawing.Point(0, 0);
             this.panel17.Name = "panel17";
-            this.panel17.Size = new System.Drawing.Size(834, 84);
+            this.panel17.Size = new System.Drawing.Size(834, 54);
             this.panel17.TabIndex = 38;
             // 
             // label14

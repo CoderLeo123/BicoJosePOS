@@ -36,6 +36,7 @@
             this.btnConfirmPassPermision = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.lblWhatForm = new System.Windows.Forms.Label();
+            this.lblGrant = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
@@ -127,18 +128,30 @@
             // lblWhatForm
             // 
             this.lblWhatForm.AutoSize = true;
-            this.lblWhatForm.Location = new System.Drawing.Point(407, 203);
+            this.lblWhatForm.Location = new System.Drawing.Point(348, 187);
             this.lblWhatForm.Name = "lblWhatForm";
             this.lblWhatForm.Size = new System.Drawing.Size(113, 41);
             this.lblWhatForm.TabIndex = 90;
             this.lblWhatForm.Text = "Denied";
-            this.lblWhatForm.Visible = false;
+            // 
+            // lblGrant
+            // 
+            this.lblGrant.AutoSize = true;
+            this.lblGrant.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblGrant.ForeColor = System.Drawing.Color.Red;
+            this.lblGrant.Location = new System.Drawing.Point(141, 219);
+            this.lblGrant.Name = "lblGrant";
+            this.lblGrant.Size = new System.Drawing.Size(26, 31);
+            this.lblGrant.TabIndex = 92;
+            this.lblGrant.Text = "0";
+            this.lblGrant.Visible = false;
             // 
             // frmPermission
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(17F, 41F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(620, 253);
+            this.Controls.Add(this.lblGrant);
             this.Controls.Add(this.lblWhatForm);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblAdminPassNotice);
@@ -169,5 +182,6 @@
         public Button btnConfirmPassPermision;
         private Label label2;
         public Label lblWhatForm;
+        public Label lblGrant;
     }
 }

@@ -365,13 +365,14 @@ namespace Capstone
                 if (MessageBox.Show("Are you sure you want to save this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     cn.Open();
-                    cm = new SqlCommand("INSERT INTO tblItem (Item_ID, Type_ID, Description, Price, Classification, Type) VALUES(@ID, @TypeID, @Description, @Price, @Classification, @Type)", cn);
+                    cm = new SqlCommand("INSERT INTO tblItem (Item_ID, Type_ID, Description, Price, Classification, Type, Stock_Level) VALUES(@ID, @TypeID, @Description, @Price, @Classification, @Type, @Stock_Level)", cn);
                     cm.Parameters.AddWithValue("@ID", txtID.Text);
                     cm.Parameters.AddWithValue("@Description", txtDescription.Text);
                     cm.Parameters.AddWithValue("@TypeID", txtTypeID.Text);
                     cm.Parameters.AddWithValue("@Price", txtPrice.Text);
                     cm.Parameters.AddWithValue("@Classification", comBoxClassification.Text);
                     cm.Parameters.AddWithValue("@Type", comBoxType.Text);
+                    cm.Parameters.AddWithValue("@Stock_Level", 3);
                     cm.ExecuteNonQuery();
                     cn.Close();
                     MessageBox.Show("Record has been successfully saved.");

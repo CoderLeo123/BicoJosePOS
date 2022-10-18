@@ -331,7 +331,31 @@ namespace Capstone
                 int i = 0;
                 dgv.Rows.Clear();
                 cn.Open();
-                SqlCommand cm = new SqlCommand("SELECT * from ViewItemProductType WHERE (Description LIKE '%" + textSearch.Text + "%' OR Type LIKE '%" + textSearch.Text + "%') ORDER BY Item_ID", cn);
+                SqlCommand cm = new SqlCommand("SELECT * from ViewItemProductType WHERE Quantity > 0 AND (Description LIKE '%" + textSearch.Text + "%' OR Type LIKE '%" + textSearch.Text + "%') ORDER BY Item_ID", cn);
+                dr = cm.ExecuteReader();
+                while (dr.Read())
+                {
+                    string Quantity = dr[5].ToString();//Quantity
+                    string LenseCheck = dr[8].ToString();//Lense_Check
+                    if (LenseCheck.Equals("0"))
+                    {
+                        Quantity = "N/A";
+                    }
+                    else
+                    {
+                        Quantity = dr[5].ToString();
+                    }
+
+
+                    //                             2-DESCRIPTION / 1-Description       4-PRODUCT / 3-Product               6-STOCK / 5-Quantity                                                                                                                                      
+                    i += 1;  // 0-Num   1-Item ID / 0-Item_ID                3-TYPE / 2-Type               5-PRICE / 4-Price                 7-CLASSIFICATION / 6-Classification                           
+                    dgv.Rows.Add(i, dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), Quantity, dr[6].ToString());
+                }
+                dr.Close();
+                cn.Close();
+
+                cn.Open();
+                cm = new SqlCommand("SELECT * from ViewItemProductType WHERE Lense_Check = 0 AND (Description LIKE '%" + textSearch.Text + "%' OR Type LIKE '%" + textSearch.Text + "%') ORDER BY Item_ID", cn);
                 dr = cm.ExecuteReader();
                 while (dr.Read())
                 {
@@ -405,9 +429,9 @@ namespace Capstone
                     total += Double.Parse(dr[5].ToString());
                     discount = Double.Parse(dr[11].ToString());
 
-                                // 0-Num                2-EXPIRATION / 2-Expiration_Date     4-QUANTITY / 3-Quantity              6-TOTAL / 5-TOTAL                                                                                                       10-CartID / 12-Num
-                    i += 1;                 // 1-DESCRIPTION / 1-Description           3-PRICE / 4-Price                 5-DISCOUNT / 11-Discount                      7-Plus                         8-Minus                 9-Delete              10-StockID / 0-Stock_Num           10-ItemID / 9-Item_ID
-                    dgv.Rows.Add(i, dr[1].ToString(), ExpirationDate, dr[4].ToString(), dr[3].ToString(), dr[11].ToString(), dr[5].ToString(), Properties.Resources._Add, Properties.Resources.Minus, Properties.Resources._Delete, dr[0].ToString(), dr[12].ToString(), dr[9].ToString());
+                               // 0-Num                2-EXPIRATION / 2-Expiration_Date                                  4-QUANTITY / 3-Quantity                        6-TOTAL / 5-TOTAL                                                                                                                       10-CartID / 12-Num
+                    i += 1;    // 1-DESCRIPTION / 1-Description           3-PRICE / 4-Price                                             5-DISCOUNT / 11-Discount                                                    7-Plus                         8-Minus                 9-Delete              10-StockID / 0-Stock_Num           10-ItemID / 9-Item_ID
+                    dgv.Rows.Add(i, dr[1].ToString(), ExpirationDate, double.Parse(dr[4].ToString()).ToString("00.00"), dr[3].ToString(), dr[11].ToString(), double.Parse(dr[5].ToString()).ToString("00.00"), Properties.Resources._Add, Properties.Resources.Minus, Properties.Resources._Delete, dr[0].ToString(), dr[12].ToString(), dr[9].ToString(), dr[17].ToString());
                     hasRecord = true;
                 }
                 dr.Close();

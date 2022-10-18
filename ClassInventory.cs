@@ -94,16 +94,45 @@ namespace Capstone
             {
                 stockLevel = 2; //Critical level
             }
+            else if (currentStock == 0)
+            {
+                stockLevel = 3; //Out of Stock level
+            }
 
 
         }
         public void LoadReOrder(DataGridView dgv, TextBox txtSearch)
         {//dataGridViewProduct, txtSearchProduct
+            try
+            {
+                cn = new SqlConnection(dbcon.MyConnection());
+                int i = 0;
+                dgv.Rows.Clear();
+                cn.Open();
+                SqlCommand cm = new SqlCommand("SELECT * FROM tblItem WHERE Stock_Check = 1 AND Stock_Level = 1 AND (Description LIKE '%" + txtSearch.Text + "%' OR Type LIKE '%" + txtSearch.Text + "%' OR Classification LIKE '%" + txtSearch.Text + "%') ORDER BY Item_ID", cn);
+                dr = cm.ExecuteReader();//Description,, Quantity, Type, Classification
+                while (dr.Read())
+                {                             //                     3-PRODUCT / 3-Product              
+                    i += 1;                   //0-#  1-PRODUCT ID / 1-Product_ID       
+                    dgv.Rows.Add(i, dr[3].ToString(), dr[5].ToString(), dr[10].ToString(), dr[7].ToString());
+                }
+                dr.Close();
+                cn.Close();
+            }
+            catch (Exception ex)
+            {
+                cn.Close();
+                MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void LoadCritical(DataGridView dgv, TextBox txtSearch)
+        {//dataGridViewProduct, txtSearchProduct
             cn = new SqlConnection(dbcon.MyConnection());
             int i = 0;
             dgv.Rows.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT * FROM tblItem WHERE Stock_Check = 1 AND Stock_Level = 1 ORDER BY Item_ID", cn);
+            SqlCommand cm = new SqlCommand("SELECT * FROM tblItem WHERE Stock_Check = 1 AND Stock_Level = 2 AND (Description LIKE '%" + txtSearch.Text + "%' OR Type LIKE '%" + txtSearch.Text + "%' OR Classification LIKE '%" + txtSearch.Text + "%') ORDER BY Item_ID", cn);
             dr = cm.ExecuteReader();//Description,, Quantity, Type, Classification
             while (dr.Read())
             {                             //                     3-PRODUCT / 3-Product              
@@ -113,14 +142,13 @@ namespace Capstone
             dr.Close();
             cn.Close();
         }
-
-        public void LoadCritical(DataGridView dgv, TextBox txtSearch)
+        public void LoadOutOfStock(DataGridView dgv, TextBox txtSearch)
         {//dataGridViewProduct, txtSearchProduct
             cn = new SqlConnection(dbcon.MyConnection());
             int i = 0;
             dgv.Rows.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT * FROM tblItem WHERE Stock_Check = 1 AND Stock_Level = 2 ORDER BY Item_ID", cn);
+            SqlCommand cm = new SqlCommand("SELECT * FROM tblItem WHERE Stock_Check = 1 AND Stock_Level = 3 AND (Description LIKE '%" + txtSearch.Text + "%' OR Type LIKE '%" + txtSearch.Text + "%' OR Classification LIKE '%" + txtSearch.Text + "%') ORDER BY Item_ID", cn);
             dr = cm.ExecuteReader();//Description,, Quantity, Type, Classification
             while (dr.Read())
             {                             //                     3-PRODUCT / 3-Product              
@@ -137,7 +165,7 @@ namespace Capstone
             int i = 0;
             dgv.Rows.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT * FROM tblItem WHERE Classification = 'Consumable' ORDER BY Item_ID", cn);
+            SqlCommand cm = new SqlCommand("SELECT * FROM tblItem WHERE Classification LIKE 'Consumable' AND (Description LIKE '%" + txtSearch.Text + "%' OR Type LIKE '%" + txtSearch.Text + "%') ORDER BY Item_ID", cn);
             dr = cm.ExecuteReader();//Description, Type, Quantity, Item_ID
             while (dr.Read())
             {                             //                     3-PRODUCT / 3-Product              

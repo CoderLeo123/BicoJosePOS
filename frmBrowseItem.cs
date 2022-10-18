@@ -165,7 +165,7 @@ namespace Capstone
                     frmE.ShowDialog();
                     
                 }
-                else
+                else if ((classification == "Non-Consumable") && (colName == "AddToCart"))
                 {
                     
                     cn.Open();

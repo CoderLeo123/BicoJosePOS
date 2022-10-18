@@ -39,6 +39,9 @@ namespace Capstone
         {
             try
             {        //Perishable
+                string unitMe = "";
+                
+                
                 if (lblCheck.Text == "Yes")
                 {
                     if (MessageBox.Show("Are you sure you want to update this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)

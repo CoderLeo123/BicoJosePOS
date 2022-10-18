@@ -142,7 +142,7 @@ namespace Capstone
                         frmP.lblWhatForm.Text = "CreateAccount";
                         frmP.ShowDialog();
 
-                        if (lblPermi.Equals("Granted"))
+                        if (frmP.lblGrant.Text == "1")
                         {
                             cn.Open();
                             cm = new SqlCommand("INSERT INTO tblUser (User_ID, Username, Password, Name, User_Type) VALUES(@User_ID, @Username, @Password, @Name, @User_Type)", cn);
@@ -259,9 +259,7 @@ namespace Capstone
         private void btnClose_Click(object sender, EventArgs e)
         {
              this.Close(); this.Dispose();
-            frmLogin frm = new frmLogin();
-            frm.txtUsername.Focus();
-            frm.ShowDialog();
+            
         }
 
         private void checkBoxShowPass_CheckedChanged(object sender, EventArgs e)

@@ -28,14 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.btnClose = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lblPermitted = new System.Windows.Forms.Label();
+            this.lblUserNotices = new System.Windows.Forms.Label();
+            this.lblUsID = new System.Windows.Forms.Label();
             this.txtViewPass = new System.Windows.Forms.TextBox();
             this.linkLabelResetPass = new System.Windows.Forms.LinkLabel();
             this.linkLabelViewPass = new System.Windows.Forms.LinkLabel();
@@ -44,6 +47,11 @@
             this.panelCritical = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.dataGridViewUsers = new System.Windows.Forms.DataGridView();
+            this.NumService = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Desc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Typ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AYD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
             this.lblItemIDCheck = new System.Windows.Forms.Label();
@@ -53,14 +61,6 @@
             this.lblTrans = new System.Windows.Forms.Label();
             this.lblTransNo = new System.Windows.Forms.Label();
             this.txtSearchUsers = new System.Windows.Forms.TextBox();
-            this.NumService = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Desc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Typ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AYD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblUsID = new System.Windows.Forms.Label();
-            this.lblUserNotices = new System.Windows.Forms.Label();
-            this.lblPermitted = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -80,7 +80,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1181, 61);
+            this.panel1.Size = new System.Drawing.Size(1206, 61);
             this.panel1.TabIndex = 0;
             // 
             // panel3
@@ -91,14 +91,14 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1181, 57);
+            this.panel3.Size = new System.Drawing.Size(1206, 57);
             this.panel3.TabIndex = 5;
             // 
             // panel5
             // 
             this.panel5.Controls.Add(this.btnClose);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel5.Location = new System.Drawing.Point(1131, 0);
+            this.panel5.Location = new System.Drawing.Point(1156, 0);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(50, 57);
             this.panel5.TabIndex = 5;
@@ -142,13 +142,43 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 61);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1181, 644);
+            this.panel2.Size = new System.Drawing.Size(1206, 719);
             this.panel2.TabIndex = 1;
+            // 
+            // lblPermitted
+            // 
+            this.lblPermitted.AutoSize = true;
+            this.lblPermitted.Location = new System.Drawing.Point(967, 445);
+            this.lblPermitted.Name = "lblPermitted";
+            this.lblPermitted.Size = new System.Drawing.Size(33, 38);
+            this.lblPermitted.TabIndex = 7;
+            this.lblPermitted.Text = "  ";
+            // 
+            // lblUserNotices
+            // 
+            this.lblUserNotices.AutoSize = true;
+            this.lblUserNotices.ForeColor = System.Drawing.Color.Red;
+            this.lblUserNotices.Location = new System.Drawing.Point(598, 500);
+            this.lblUserNotices.Name = "lblUserNotices";
+            this.lblUserNotices.Size = new System.Drawing.Size(98, 38);
+            this.lblUserNotices.TabIndex = 6;
+            this.lblUserNotices.Text = "Notice";
+            this.lblUserNotices.Visible = false;
+            // 
+            // lblUsID
+            // 
+            this.lblUsID.AutoSize = true;
+            this.lblUsID.Location = new System.Drawing.Point(928, 445);
+            this.lblUsID.Name = "lblUsID";
+            this.lblUsID.Size = new System.Drawing.Size(33, 38);
+            this.lblUsID.TabIndex = 5;
+            this.lblUsID.Text = "  ";
+            this.lblUsID.Visible = false;
             // 
             // txtViewPass
             // 
             this.txtViewPass.Enabled = false;
-            this.txtViewPass.Location = new System.Drawing.Point(533, 415);
+            this.txtViewPass.Location = new System.Drawing.Point(598, 440);
             this.txtViewPass.Name = "txtViewPass";
             this.txtViewPass.Size = new System.Drawing.Size(300, 43);
             this.txtViewPass.TabIndex = 4;
@@ -156,7 +186,7 @@
             // linkLabelResetPass
             // 
             this.linkLabelResetPass.AutoSize = true;
-            this.linkLabelResetPass.Location = new System.Drawing.Point(836, 564);
+            this.linkLabelResetPass.Location = new System.Drawing.Point(901, 589);
             this.linkLabelResetPass.Name = "linkLabelResetPass";
             this.linkLabelResetPass.Size = new System.Drawing.Size(207, 38);
             this.linkLabelResetPass.TabIndex = 3;
@@ -167,7 +197,7 @@
             // linkLabelViewPass
             // 
             this.linkLabelViewPass.AutoSize = true;
-            this.linkLabelViewPass.Location = new System.Drawing.Point(299, 418);
+            this.linkLabelViewPass.Location = new System.Drawing.Point(364, 443);
             this.linkLabelViewPass.Name = "linkLabelViewPass";
             this.linkLabelViewPass.Size = new System.Drawing.Size(199, 38);
             this.linkLabelViewPass.TabIndex = 2;
@@ -178,7 +208,7 @@
             // linkLabelCreateNew
             // 
             this.linkLabelCreateNew.AutoSize = true;
-            this.linkLabelCreateNew.Location = new System.Drawing.Point(94, 564);
+            this.linkLabelCreateNew.Location = new System.Drawing.Point(159, 589);
             this.linkLabelCreateNew.Name = "linkLabelCreateNew";
             this.linkLabelCreateNew.Size = new System.Drawing.Size(270, 38);
             this.linkLabelCreateNew.TabIndex = 1;
@@ -189,7 +219,7 @@
             // panel4
             // 
             this.panel4.Controls.Add(this.panelCritical);
-            this.panel4.Location = new System.Drawing.Point(94, 52);
+            this.panel4.Location = new System.Drawing.Point(159, 77);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(949, 336);
             this.panel4.TabIndex = 0;
@@ -220,14 +250,14 @@
             this.dataGridViewUsers.AllowUserToResizeRows = false;
             this.dataGridViewUsers.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewUsers.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewUsers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewUsers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewUsers.ColumnHeadersHeight = 40;
             this.dataGridViewUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridViewUsers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -236,14 +266,14 @@
             this.Typ,
             this.Price,
             this.AYD});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Azure;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewUsers.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Azure;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewUsers.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewUsers.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewUsers.EnableHeadersVisualStyles = false;
             this.dataGridViewUsers.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
@@ -257,6 +287,49 @@
             this.dataGridViewUsers.Size = new System.Drawing.Size(949, 279);
             this.dataGridViewUsers.TabIndex = 8;
             this.dataGridViewUsers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewUsers_CellContentClick);
+            // 
+            // NumService
+            // 
+            this.NumService.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.NumService.HeaderText = "#";
+            this.NumService.MinimumWidth = 6;
+            this.NumService.Name = "NumService";
+            this.NumService.ReadOnly = true;
+            this.NumService.Width = 61;
+            // 
+            // Desc
+            // 
+            this.Desc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Desc.HeaderText = "NAME";
+            this.Desc.MinimumWidth = 6;
+            this.Desc.Name = "Desc";
+            this.Desc.ReadOnly = true;
+            // 
+            // Typ
+            // 
+            this.Typ.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Typ.HeaderText = "USERNAME";
+            this.Typ.MinimumWidth = 6;
+            this.Typ.Name = "Typ";
+            this.Typ.ReadOnly = true;
+            // 
+            // Price
+            // 
+            this.Price.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Price.HeaderText = "ROLE";
+            this.Price.MinimumWidth = 6;
+            this.Price.Name = "Price";
+            this.Price.ReadOnly = true;
+            this.Price.Width = 109;
+            // 
+            // AYD
+            // 
+            this.AYD.HeaderText = "USER ID";
+            this.AYD.MinimumWidth = 6;
+            this.AYD.Name = "AYD";
+            this.AYD.ReadOnly = true;
+            this.AYD.Visible = false;
+            this.AYD.Width = 125;
             // 
             // panel6
             // 
@@ -347,84 +420,11 @@
             this.txtSearchUsers.Size = new System.Drawing.Size(619, 38);
             this.txtSearchUsers.TabIndex = 0;
             // 
-            // NumService
-            // 
-            this.NumService.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.NumService.HeaderText = "#";
-            this.NumService.MinimumWidth = 6;
-            this.NumService.Name = "NumService";
-            this.NumService.ReadOnly = true;
-            this.NumService.Width = 61;
-            // 
-            // Desc
-            // 
-            this.Desc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Desc.HeaderText = "NAME";
-            this.Desc.MinimumWidth = 6;
-            this.Desc.Name = "Desc";
-            this.Desc.ReadOnly = true;
-            // 
-            // Typ
-            // 
-            this.Typ.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Typ.HeaderText = "USERNAME";
-            this.Typ.MinimumWidth = 6;
-            this.Typ.Name = "Typ";
-            this.Typ.ReadOnly = true;
-            // 
-            // Price
-            // 
-            this.Price.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Price.HeaderText = "ROLE";
-            this.Price.MinimumWidth = 6;
-            this.Price.Name = "Price";
-            this.Price.ReadOnly = true;
-            this.Price.Width = 109;
-            // 
-            // AYD
-            // 
-            this.AYD.HeaderText = "USER ID";
-            this.AYD.MinimumWidth = 6;
-            this.AYD.Name = "AYD";
-            this.AYD.ReadOnly = true;
-            this.AYD.Visible = false;
-            this.AYD.Width = 125;
-            // 
-            // lblUsID
-            // 
-            this.lblUsID.AutoSize = true;
-            this.lblUsID.Location = new System.Drawing.Point(863, 420);
-            this.lblUsID.Name = "lblUsID";
-            this.lblUsID.Size = new System.Drawing.Size(33, 38);
-            this.lblUsID.TabIndex = 5;
-            this.lblUsID.Text = "  ";
-            this.lblUsID.Visible = false;
-            // 
-            // lblUserNotices
-            // 
-            this.lblUserNotices.AutoSize = true;
-            this.lblUserNotices.ForeColor = System.Drawing.Color.Red;
-            this.lblUserNotices.Location = new System.Drawing.Point(533, 475);
-            this.lblUserNotices.Name = "lblUserNotices";
-            this.lblUserNotices.Size = new System.Drawing.Size(98, 38);
-            this.lblUserNotices.TabIndex = 6;
-            this.lblUserNotices.Text = "Notice";
-            // 
-            // lblPermitted
-            // 
-            this.lblPermitted.AutoSize = true;
-            this.lblPermitted.Location = new System.Drawing.Point(902, 418);
-            this.lblPermitted.Name = "lblPermitted";
-            this.lblPermitted.Size = new System.Drawing.Size(33, 38);
-            this.lblPermitted.TabIndex = 7;
-            this.lblPermitted.Text = "  ";
-            this.lblPermitted.Visible = false;
-            // 
             // frmUserSetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 37F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1181, 705);
+            this.ClientSize = new System.Drawing.Size(1206, 780);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -432,6 +432,7 @@
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "frmUserSetting";
             this.Text = "frmUserSetting";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();

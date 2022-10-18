@@ -86,6 +86,7 @@ namespace Capstone
         {
             frmSettlePayment frm = new frmSettlePayment(this);
             frm.lblRowCount.Text = dataGridViewCart.Rows.Count.ToString();
+            frm.lblServRowCount.Text = dataGridViewService.Rows.Count.ToString();
 
             if (txtFirstName.Text == "" && txtLastName.Text == "")
             {
@@ -102,6 +103,10 @@ namespace Capstone
                 frm.lblCustomer.Text = txtFirstName.Text + " " + txtLastName.Text;
                 frm.lblCashier.Text = lblCashierName.Text;
                 frm.lblTransacNo.Text = lblTransactionNo.Text;
+                frm.lblGrossTotal.Text = lblSalesTotal.Text;
+                frm.lblDiscount.Text = lblDiscount.Text;
+                frm.lblDPercent.Text = lblDiscPercen.Text;
+                 
                 frm.ShowDialog();
             }
             
