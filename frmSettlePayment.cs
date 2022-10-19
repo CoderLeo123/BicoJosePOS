@@ -109,11 +109,7 @@ namespace Capstone
                         lblPaymentNotice.Visible = false;
                         computeChange(txtTotal, txtPayment, txtChange);
                     }
-                    //else if (pTerms == "Deposit")
-                    //{
-                    //    requiredDepositPercent(txtTotal, txtPayment);
-                        
-                    //}
+                    
                 }
             }
             catch (Exception ex)
@@ -192,6 +188,47 @@ namespace Capstone
             //int dgvCount = lblRowCount.Text.ToString();
             try
             {
+                string pTerms = comBoxPaymentTerms.Text;
+                //frmCashier frmC = new frmCashier();
+                if (pTerms == "Full")
+                { 
+                    if (txtChange.Text == String.Empty)
+                    {
+                    MessageBox.Show("Insufficient amount. Please enter the correct amount!", title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                    }
+                    else
+                    {
+                        //string pTerm = comBoxPaymentTerms.Text;
+                        if (double.Parse(txtPayment.Text) < double.Parse(txtTotal.Text))
+                        {
+                            //MessageBox.Show("Payment must be higher than Total amount", title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            lblPaymentNotice.Text = "Payment should be greater than Total amount";
+                            lblPaymentNotice.Visible = true;
+                        }
+                        else
+                        {
+
+                            settlement();
+                        }
+                    }
+                }
+                else if(pTerms == "Deposit")
+                {
+                    settlement();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //MessageBox.Show("Insufficient amount. Please enter the correct amount!", title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+        }
+        public void settlement()
+        {
+            try
+            {
                 string transacNum = lblTransacNo.Text;
                 //int transacNum = int.Parse(transacInput);
                 float payment = float.Parse(txtPayment.Text);//Initial_Deposit
@@ -211,121 +248,103 @@ namespace Capstone
                 string releaseBy = "Undefined";
                 string finalDiscount = lblDiscount.Text;
                 string settlementDate = "Pending";
+                string ITMID = "";
                 checkPaymentTerms(out status, pTerms, total, payment, out remainBalance, out settlementDate);
 
-                //frmCashier frmC = new frmCashier();
-                if (txtChange.Text == String.Empty)
+                lblPaymentNotice.Visible = false;
+                computeChange(txtTotal, txtPayment, txtChange);
+
+                PrintPreviewDialog preview = new PrintPreviewDialog();
+                preview.Document = printDocument;
+                int pLength = 920;
+                paperSizeUpdate(out pLength);
+                printDocument.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("RECEIPT", 610, pLength);
+                preview.PrintPreviewControl.Zoom = 0.75;
+                preview.Size = new System.Drawing.Size(400, 650);
+                preview.ShowDialog();
+
+                cn.Open();
+                cm = new SqlCommand("INSERT INTO tblPaymentStatus (Transaction_No, Customer, Total_Payment, Initial_Deposit, Due_Date, Rem_Balance, Status, Discount_Per_Trans, Settled_Date) VALUES(@Transaction_No, @Customer, @Total_Payment, @Initial_Deposit, @Due_Date, @Rem_Balance, @Status, @Discount_Per_Trans, @Settled_Date)", cn);
+                cm.Parameters.AddWithValue("@Transaction_No", transacNum);
+                cm.Parameters.AddWithValue("@Customer", customer);
+                cm.Parameters.AddWithValue("@Total_Payment", total.ToString("00.00"));
+                cm.Parameters.AddWithValue("@Initial_Deposit", payment.ToString("00.00"));
+                cm.Parameters.AddWithValue("@Due_Date", dueDate);
+                cm.Parameters.AddWithValue("@Rem_Balance", remainBalance.ToString("00.00"));
+                cm.Parameters.AddWithValue("@Status", status);
+                cm.Parameters.AddWithValue("@Discount_Per_Trans", finalDiscount);
+                cm.Parameters.AddWithValue("@Settled_Date", settlementDate);
+
+                cm.ExecuteNonQuery();
+                cn.Close();
+                checkOrderIfDeposit(out status, pTerms, out claimDate);
+                cn.Open();
+                cm = new SqlCommand("INSERT INTO tblOrderStatus (Transaction_No, Customer, Expected_Arrival, Status, Date_Claimed, Release_By) VALUES(@Transaction_No, @Customer, @Expected_Arrival, @Status, @Date_Claimed, @Release_By)", cn);
+                cm.Parameters.AddWithValue("@Transaction_No", lblTransacNo.Text);
+                cm.Parameters.AddWithValue("@Customer", customer);
+                cm.Parameters.AddWithValue("@Expected_Arrival", dueDate);
+                cm.Parameters.AddWithValue("@Status", status);
+                cm.Parameters.AddWithValue("@Date_Claimed", claimDate);
+                cm.Parameters.AddWithValue("@Release_By", releaseBy);
+                //cm.Parameters.AddWithValue("@Cart_ID", frmC.dataGridViewCart.Rows[i].Cells[11].Value.ToString());
+                cm.ExecuteNonQuery();
+                cn.Close();
+
+                cn.Open();
+                cm = new SqlCommand("INSERT INTO tblReceipt (Transaction_No, Transaction_Date, Payment_Mode, Payment_Terms, Customer, Gross_Total, Discount, Net_Total, Payment, Balance, Change, Discount_Percent, Settled_Date, Cashier) VALUES(@Transaction_No, @Transaction_Date, @Payment_Mode, @Payment_Terms, @Customer, @Gross_Total, @Discount, @Net_Total, @Payment, @Balance, @Change, @Discount_Percent, @Settled_Date, @Cashier)", cn);
+                cm.Parameters.AddWithValue("@Transaction_No", lblTransacNo.Text);
+                cm.Parameters.AddWithValue("@Transaction_Date", customer);
+                cm.Parameters.AddWithValue("@Payment_Mode", pMethod);
+                cm.Parameters.AddWithValue("@Payment_Terms", pTerms);
+                cm.Parameters.AddWithValue("@Customer", customer);
+                cm.Parameters.AddWithValue("@Gross_Total", gross);
+                cm.Parameters.AddWithValue("@Discount", finalDiscount);
+                cm.Parameters.AddWithValue("@Net_Total", total.ToString("00.00"));
+                cm.Parameters.AddWithValue("@Payment", payment.ToString("00.00"));
+                cm.Parameters.AddWithValue("@Balance", remainBalance.ToString("00.00"));
+                cm.Parameters.AddWithValue("@Change", change.ToString("00.00"));
+                cm.Parameters.AddWithValue("@Discount_Percent", discountPer);
+                cm.Parameters.AddWithValue("@Settled_Date", settlementDate);
+                cm.Parameters.AddWithValue("@Cashier", cashier);
+                cm.ExecuteNonQuery();
+                cn.Close();
+
+                for (int i = 0; i < frmC.dataGridViewCart.Rows.Count; i++)
                 {
-                    MessageBox.Show("Insufficient amount. Please enter the correct amount!", title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
+                    ITMID = frmC.dataGridViewCart.Rows[i].Cells[12].Value.ToString();
+                    cn.Open();//Set Quantity
+                    cm = new SqlCommand("UPDATE tblItem SET Quantity = Quantity - " + int.Parse(frmC.dataGridViewCart.Rows[i].Cells[4].Value.ToString()) + " WHERE Item_ID LIKE '" + frmC.dataGridViewCart.Rows[i].Cells[12].Value.ToString() + "'", cn);
+                    cm.ExecuteNonQuery();
+                    cn.Close();
+                    classInventory.determineStockLevel(ITMID);
+
+                    cn.Open();
+                    cm = new SqlCommand("UPDATE tblCart SET Payment = " + payment + ", Change = " + change + ", PMode = '" + pMethod + "', PTerms = '" + pTerms + "', Cashier = '" + cashier + "', Customer = '" + customer + "', Status = 'Sold', Discount_Per_Trans = '" + finalDiscount + "' WHERE num LIKE '" + frmC.dataGridViewCart.Rows[i].Cells[11].Value.ToString() + "'", cn);
+                    cm.ExecuteNonQuery();
+                    cn.Close();
                 }
-                else
+                string statusSA = "Sold";
+                for (int i = 0; i < frmC.dataGridViewService.Rows.Count; i++)
                 {
-
-                    //string pTerm = comBoxPaymentTerms.Text;
-
-                    if (double.Parse(txtPayment.Text) < double.Parse(txtTotal.Text))
-                    {
-                        //MessageBox.Show("Payment must be higher than Total amount", title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        lblPaymentNotice.Text = "Payment should be greater than Total amount";
-                        lblPaymentNotice.Visible = true;
-                    }
-                    else
-                    {
-                        lblPaymentNotice.Visible = false;
-                        computeChange(txtTotal, txtPayment, txtChange);
-
-                        PrintPreviewDialog preview = new PrintPreviewDialog();
-                        preview.Document = printDocument;
-                        int pLength = 920;
-                        paperSizeUpdate(out pLength);
-                        printDocument.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("RECEIPT", 610, pLength);
-                        preview.PrintPreviewControl.Zoom = 0.75;
-                        preview.Size = new System.Drawing.Size(400, 650);
-                        preview.ShowDialog();
-
-                        cn.Open();
-                        cm = new SqlCommand("INSERT INTO tblPaymentStatus (Transaction_No, Customer, Total_Payment, Initial_Deposit, Due_Date, Rem_Balance, Status, Discount_Per_Trans, Settled_Date) VALUES(@Transaction_No, @Customer, @Total_Payment, @Initial_Deposit, @Due_Date, @Rem_Balance, @Status, @Discount_Per_Trans, @Settled_Date)", cn);
-                        cm.Parameters.AddWithValue("@Transaction_No", transacNum);
-                        cm.Parameters.AddWithValue("@Customer", customer);
-                        cm.Parameters.AddWithValue("@Total_Payment", total.ToString("00.00"));
-                        cm.Parameters.AddWithValue("@Initial_Deposit", payment.ToString("00.00"));
-                        cm.Parameters.AddWithValue("@Due_Date", dueDate);
-                        cm.Parameters.AddWithValue("@Rem_Balance", remainBalance.ToString("00.00"));
-                        cm.Parameters.AddWithValue("@Status", status);
-                        cm.Parameters.AddWithValue("@Discount_Per_Trans", finalDiscount);
-                        cm.Parameters.AddWithValue("@Settled_Date", settlementDate);
-                        
-                        cm.ExecuteNonQuery();
-                        cn.Close();
-                        checkOrderIfDeposit(out status, pTerms, out claimDate);
-                        cn.Open();
-                        cm = new SqlCommand("INSERT INTO tblOrderStatus (Transaction_No, Customer, Expected_Arrival, Status, Date_Claimed, Release_By) VALUES(@Transaction_No, @Customer, @Expected_Arrival, @Status, @Date_Claimed, @Release_By)", cn);
-                        cm.Parameters.AddWithValue("@Transaction_No", lblTransacNo.Text);
-                        cm.Parameters.AddWithValue("@Customer", customer);
-                        cm.Parameters.AddWithValue("@Expected_Arrival", dueDate);
-                        cm.Parameters.AddWithValue("@Status", status);
-                        cm.Parameters.AddWithValue("@Date_Claimed", claimDate);
-                        cm.Parameters.AddWithValue("@Release_By", releaseBy);
-                        //cm.Parameters.AddWithValue("@Cart_ID", frmC.dataGridViewCart.Rows[i].Cells[11].Value.ToString());
-                        cm.ExecuteNonQuery();
-                        cn.Close();
-
-                        cn.Open();
-                        cm = new SqlCommand("INSERT INTO tblReceipt (Transaction_No, Transaction_Date, Payment_Mode, Payment_Terms, Customer, Gross_Total, Discount, Net_Total, Payment, Balance, Change, Discount_Percent, Settled_Date, Cashier) VALUES(@Transaction_No, @Transaction_Date, @Payment_Mode, @Payment_Terms, @Customer, @Gross_Total, @Discount, @Net_Total, @Payment, @Balance, @Change, @Discount_Percent, @Settled_Date, @Cashier)", cn);
-                        cm.Parameters.AddWithValue("@Transaction_No", lblTransacNo.Text);
-                        cm.Parameters.AddWithValue("@Transaction_Date", customer);
-                        cm.Parameters.AddWithValue("@Payment_Mode", pMethod);
-                        cm.Parameters.AddWithValue("@Payment_Terms", pTerms);
-                        cm.Parameters.AddWithValue("@Customer", customer);
-                        cm.Parameters.AddWithValue("@Gross_Total", gross);
-                        cm.Parameters.AddWithValue("@Discount", finalDiscount);
-                        cm.Parameters.AddWithValue("@Net_Total", total.ToString("00.00"));
-                        cm.Parameters.AddWithValue("@Payment", payment.ToString("00.00"));
-                        cm.Parameters.AddWithValue("@Balance", remainBalance.ToString("00.00"));
-                        cm.Parameters.AddWithValue("@Change", change.ToString("00.00"));
-                        cm.Parameters.AddWithValue("@Discount_Percent", discountPer);
-                        cm.Parameters.AddWithValue("@Settled_Date", settlementDate);
-                        cm.Parameters.AddWithValue("@Cashier", cashier);                      
-                        cm.ExecuteNonQuery();
-                        cn.Close();
-
-                        for (int i = 0; i < frmC.dataGridViewCart.Rows.Count; i++)
-                        {
-                            cn.Open();//Set Quantity
-                            cm = new SqlCommand("UPDATE tblItem SET Quantity = Quantity - " + int.Parse(frmC.dataGridViewCart.Rows[i].Cells[4].Value.ToString()) + " WHERE Item_ID LIKE '" + frmC.dataGridViewCart.Rows[i].Cells[12].Value.ToString() + "'", cn);
-                            cm.ExecuteNonQuery();
-                            cn.Close();
-                            
-
-                            cn.Open();
-                            cm = new SqlCommand("UPDATE tblCart SET Payment = " + payment + ", Change = " + change + ", PMode = '" + pMethod + "', PTerms = '" + pTerms + "', Cashier = '" + cashier + "', Customer = '" + customer + "', Status = 'Sold', Discount_Per_Trans = '" + finalDiscount + "' WHERE num LIKE '" + frmC.dataGridViewCart.Rows[i].Cells[11].Value.ToString() + "'", cn);
-                            cm.ExecuteNonQuery();
-                            cn.Close();
-                        }
-                        string statusSA = "Sold";
-                        for (int i = 0; i < frmC.dataGridViewService.Rows.Count; i++)
-                        {
-                            cn.Open();
-                            cm = new SqlCommand("INSERT INTO tblServiceAvailed (Service_ID, Transaction_No, Customer, Status) VALUES(@Service_ID, @Transaction_No, @Customer, @Status)", cn);
-                            cm.Parameters.AddWithValue("@Service_ID", frmC.dataGridViewService.Rows[i].Cells[5].Value.ToString());
-                            cm.Parameters.AddWithValue("@Transaction_No", lblTransacNo.Text);
-                            cm.Parameters.AddWithValue("@Customer", customer);
-                            cm.Parameters.AddWithValue("@Status", statusSA);
-                            cm.ExecuteNonQuery();
-                            cn.Close();
-                        }
-                        
-
-                        MessageBox.Show("Payment succesfully saved", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        classGenerateID.GenerateTransactionNo(frmC.lblTransactionNo);
-                        //frmC.GenerateTransactionNo();
-                        classLoadData.LoadCart(frmC.dataGridViewCart, frmC.lblDiscount, frmC.lblSalesTotal, frmC.lblPayment, frmC.lblNetTotal, frmC.btnSettlePayment, frmC.btnAddDiscount, frmC.btnClearCart, frmC.txtSearch, frmC.dataGridViewService);
-                        //frmC.LoadCart();
-
-                        this.Dispose();
-                    }
+                    cn.Open();
+                    cm = new SqlCommand("INSERT INTO tblServiceAvailed (Service_ID, Transaction_No, Customer, Status) VALUES(@Service_ID, @Transaction_No, @Customer, @Status)", cn);
+                    cm.Parameters.AddWithValue("@Service_ID", frmC.dataGridViewService.Rows[i].Cells[5].Value.ToString());
+                    cm.Parameters.AddWithValue("@Transaction_No", lblTransacNo.Text);
+                    cm.Parameters.AddWithValue("@Customer", customer);
+                    cm.Parameters.AddWithValue("@Status", statusSA);
+                    cm.ExecuteNonQuery();
+                    cn.Close();
                 }
+
+
+                MessageBox.Show("Payment succesfully saved", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                classGenerateID.GenerateTransactionNo(frmC.lblTransactionNo);
+                //frmC.GenerateTransactionNo();
+                classLoadData.LoadCart(frmC.dataGridViewCart, frmC.lblDiscount, frmC.lblSalesTotal, frmC.lblPayment, frmC.lblNetTotal, frmC.btnSettlePayment, frmC.btnAddDiscount, frmC.btnClearCart, frmC.txtSearch, frmC.dataGridViewService);
+                
+                //frmC.LoadCart();
+
+                this.Dispose();
             }
             catch (Exception ex)
             {
@@ -334,6 +353,7 @@ namespace Capstone
                 return;
             }
         }
+
         public void checkOrderIfDeposit(out string statusValue, string paymentTerms, out string dateClaim)
         {
             try
@@ -410,35 +430,40 @@ namespace Capstone
         private void btnTwenty_Click(object sender, EventArgs e)
         {
             txtPayment.Focus();
-            num = int.Parse(txtPayment.Text) + 20;
+            curr = double.Parse(txtPayment.Text);
+            num = curr + 20;
             txtPayment.Text = num.ToString();
         }
 
         private void btnFifty_Click(object sender, EventArgs e)
         {
             txtPayment.Focus();
-            num = int.Parse(txtPayment.Text) + 50;
+            curr = double.Parse(txtPayment.Text);
+            num = curr + 50;
             txtPayment.Text = num.ToString();
         }
 
         private void btnOneH_Click(object sender, EventArgs e)
         {
             txtPayment.Focus();
-            num = int.Parse(txtPayment.Text) + 100;
+            curr = double.Parse(txtPayment.Text);
+            num = curr + 100;
             txtPayment.Text = num.ToString();
         }
 
         private void btnTwoH_Click(object sender, EventArgs e)
         {
             txtPayment.Focus();
-            num = int.Parse(txtPayment.Text) + 200;
+            curr = double.Parse(txtPayment.Text);
+            num = curr + 200;
             txtPayment.Text = num.ToString();
         }
 
         private void btnFiveH_Click(object sender, EventArgs e)
         {
             txtPayment.Focus();
-            num = int.Parse(txtPayment.Text) + 500;
+            curr = double.Parse(txtPayment.Text);
+            num = curr + 500;
             txtPayment.Text = num.ToString();
         }
 

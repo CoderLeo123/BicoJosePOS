@@ -18,24 +18,25 @@ namespace Capstone
         public void determineBaseStock(int newStock, out int baseStock, string itemID)
         {//
             cn = new SqlConnection(dbcon.MyConnection());
-            baseStock = 0;
+            baseStock = 5;
             
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT Quantity, Base_Stock FROM tblItem WHERE Stock_Check = 1 AND Item_ID LIKE '"+ itemID + "'", cn);
+            SqlCommand cm = new SqlCommand("SELECT Quantity, Base_Stock FROM tblItem WHERE Item_ID LIKE '"+ itemID + "'", cn);
             dr = cm.ExecuteReader();
             if (dr.Read())
             {                                         
 
-                int quantity = int.Parse(dr[0].ToString());                
+                int quantity = int.Parse(dr[0].ToString());
+                baseStock = int.Parse(dr[1].ToString())+3;
                 int newQuantity = quantity + newStock;
                 double safeLev = baseStock * .8;
                 if(newQuantity >= safeLev)
                 {
                     baseStock = newQuantity;
                 }
-                else
+                else if (newQuantity <= safeLev)
                 {
-                    baseStock = int.Parse(dr[2].ToString());
+                    baseStock = int.Parse(dr[1].ToString())+2;
                 }
             }
             dr.Close();
@@ -46,14 +47,14 @@ namespace Capstone
         {
             cn = new SqlConnection(dbcon.MyConnection());
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT Quantity, Base_Stock FROM tblItem WHERE Stock_Check = 1 AND Item_ID LIKE '" + itemID + "'", cn);
+            SqlCommand cm = new SqlCommand("SELECT Quantity, Base_Stock FROM tblItem WHERE Item_ID LIKE '" + itemID + "'", cn);
             dr = cm.ExecuteReader();
             if (dr.Read())
             {
                 int currentStock = int.Parse(dr[0].ToString());
                 int baseStock = int.Parse(dr[1].ToString());
                 int stkLev = 0;
-                calculateStockLevel(currentStock, baseStock, out stkLev);
+                calculateStockLevel(baseStock, currentStock, out stkLev);
                 assignStockLevel(itemID, stkLev);
             }
             dr.Close();
@@ -65,8 +66,8 @@ namespace Capstone
         {
             cn = new SqlConnection(dbcon.MyConnection());
             cn.Open();//Set Quantity
-            SqlCommand cm = new SqlCommand("UPDATE tblItem SET Base_Stock = @BaseStock WHERE Stock_Check = 1 AND Item_ID LIKE '" + itemID + "'", cn);
-            cm.Parameters.AddWithValue("@BaseStock", stockLeve);
+            SqlCommand cm = new SqlCommand("UPDATE tblItem SET Stock_Level = @Stock_Level WHERE Stock_Check = 1 AND Item_ID LIKE '" + itemID + "'", cn);
+            cm.Parameters.AddWithValue("@Stock_Level", stockLeve);
             cm.ExecuteNonQuery();
             cn.Close();
 
@@ -114,7 +115,7 @@ namespace Capstone
                 while (dr.Read())
                 {                             //                     3-PRODUCT / 3-Product              
                     i += 1;                   //0-#  1-PRODUCT ID / 1-Product_ID       
-                    dgv.Rows.Add(i, dr[3].ToString(), dr[5].ToString(), dr[10].ToString(), dr[7].ToString());
+                    dgv.Rows.Add(i, dr[3].ToString(), dr[10].ToString(), dr[5].ToString(), dr[7].ToString());
                 }
                 dr.Close();
                 cn.Close();
@@ -137,7 +138,7 @@ namespace Capstone
             while (dr.Read())
             {                             //                     3-PRODUCT / 3-Product              
                 i += 1;                   //0-#  1-PRODUCT ID / 1-Product_ID       
-                dgv.Rows.Add(i, dr[3].ToString(), dr[5].ToString(), dr[10].ToString(), dr[7].ToString());
+                dgv.Rows.Add(i, dr[3].ToString(), dr[10].ToString(), dr[5].ToString(), dr[7].ToString());
             }
             dr.Close();
             cn.Close();
@@ -153,7 +154,7 @@ namespace Capstone
             while (dr.Read())
             {                             //                     3-PRODUCT / 3-Product              
                 i += 1;                   //0-#  1-PRODUCT ID / 1-Product_ID       
-                dgv.Rows.Add(i, dr[3].ToString(), dr[5].ToString(), dr[10].ToString(), dr[7].ToString());
+                dgv.Rows.Add(i, dr[3].ToString(), dr[10].ToString(), dr[5].ToString(), dr[7].ToString());
             }
             dr.Close();
             cn.Close();

@@ -54,13 +54,14 @@
             this.timerDrpBtnSales = new System.Windows.Forms.Timer(this.components);
             this.panelLoad = new System.Windows.Forms.Panel();
             this.panelDashboard = new System.Windows.Forms.Panel();
-            this.lblSalesTotal = new System.Windows.Forms.Label();
-            this.lblSales30Days = new System.Windows.Forms.Label();
-            this.lblSales7Days = new System.Windows.Forms.Label();
-            this.lblSalesToday = new System.Windows.Forms.Label();
-            this.lblItemCount = new System.Windows.Forms.Label();
-            this.lblTypeCount = new System.Windows.Forms.Label();
-            this.lblProductCount = new System.Windows.Forms.Label();
+            this.lblMasterCount = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lblReOrder = new System.Windows.Forms.Label();
+            this.lblReOrBlink = new System.Windows.Forms.Label();
+            this.lblSettledPay = new System.Windows.Forms.Label();
+            this.lblPendingPay = new System.Windows.Forms.Label();
+            this.lblClaimedOrd = new System.Windows.Forms.Label();
+            this.lblInLab = new System.Windows.Forms.Label();
             this.lblTotalUsers = new System.Windows.Forms.Label();
             this.lblCashier = new System.Windows.Forms.Label();
             this.lblAdmin = new System.Windows.Forms.Label();
@@ -71,18 +72,15 @@
             this.btnUsersDetails = new System.Windows.Forms.Button();
             this.btnStockDetails = new System.Windows.Forms.Button();
             this.btnSalesDetails = new System.Windows.Forms.Button();
-            this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
+            this.lblInLabBlink = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblPendingBlink = new System.Windows.Forms.Label();
+            this.lblOofStkBlink = new System.Windows.Forms.Label();
+            this.lblCritBlink = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
@@ -431,13 +429,14 @@
             // 
             // panelDashboard
             // 
-            this.panelDashboard.Controls.Add(this.lblSalesTotal);
-            this.panelDashboard.Controls.Add(this.lblSales30Days);
-            this.panelDashboard.Controls.Add(this.lblSales7Days);
-            this.panelDashboard.Controls.Add(this.lblSalesToday);
-            this.panelDashboard.Controls.Add(this.lblItemCount);
-            this.panelDashboard.Controls.Add(this.lblTypeCount);
-            this.panelDashboard.Controls.Add(this.lblProductCount);
+            this.panelDashboard.Controls.Add(this.lblMasterCount);
+            this.panelDashboard.Controls.Add(this.label4);
+            this.panelDashboard.Controls.Add(this.lblReOrder);
+            this.panelDashboard.Controls.Add(this.lblReOrBlink);
+            this.panelDashboard.Controls.Add(this.lblSettledPay);
+            this.panelDashboard.Controls.Add(this.lblPendingPay);
+            this.panelDashboard.Controls.Add(this.lblClaimedOrd);
+            this.panelDashboard.Controls.Add(this.lblInLab);
             this.panelDashboard.Controls.Add(this.lblTotalUsers);
             this.panelDashboard.Controls.Add(this.lblCashier);
             this.panelDashboard.Controls.Add(this.lblAdmin);
@@ -448,18 +447,15 @@
             this.panelDashboard.Controls.Add(this.btnUsersDetails);
             this.panelDashboard.Controls.Add(this.btnStockDetails);
             this.panelDashboard.Controls.Add(this.btnSalesDetails);
-            this.panelDashboard.Controls.Add(this.label13);
             this.panelDashboard.Controls.Add(this.label14);
-            this.panelDashboard.Controls.Add(this.label15);
+            this.panelDashboard.Controls.Add(this.lblInLabBlink);
             this.panelDashboard.Controls.Add(this.label9);
             this.panelDashboard.Controls.Add(this.label10);
             this.panelDashboard.Controls.Add(this.label11);
-            this.panelDashboard.Controls.Add(this.label8);
-            this.panelDashboard.Controls.Add(this.label5);
             this.panelDashboard.Controls.Add(this.label6);
-            this.panelDashboard.Controls.Add(this.label7);
-            this.panelDashboard.Controls.Add(this.label4);
-            this.panelDashboard.Controls.Add(this.label3);
+            this.panelDashboard.Controls.Add(this.lblPendingBlink);
+            this.panelDashboard.Controls.Add(this.lblOofStkBlink);
+            this.panelDashboard.Controls.Add(this.lblCritBlink);
             this.panelDashboard.Controls.Add(this.label2);
             this.panelDashboard.Controls.Add(this.textBox4);
             this.panelDashboard.Controls.Add(this.textBox3);
@@ -472,81 +468,89 @@
             this.panelDashboard.Size = new System.Drawing.Size(1317, 948);
             this.panelDashboard.TabIndex = 0;
             // 
-            // lblSalesTotal
+            // lblMasterCount
             // 
-            this.lblSalesTotal.AutoSize = true;
-            this.lblSalesTotal.ForeColor = System.Drawing.Color.Red;
-            this.lblSalesTotal.Location = new System.Drawing.Point(891, 350);
-            this.lblSalesTotal.Name = "lblSalesTotal";
-            this.lblSalesTotal.Size = new System.Drawing.Size(23, 38);
-            this.lblSalesTotal.TabIndex = 62;
-            this.lblSalesTotal.Text = ".";
+            this.lblMasterCount.AutoSize = true;
+            this.lblMasterCount.ForeColor = System.Drawing.Color.Red;
+            this.lblMasterCount.Location = new System.Drawing.Point(306, 724);
+            this.lblMasterCount.Name = "lblMasterCount";
+            this.lblMasterCount.Size = new System.Drawing.Size(32, 38);
+            this.lblMasterCount.TabIndex = 66;
+            this.lblMasterCount.Text = "0";
             // 
-            // lblSales30Days
+            // label4
             // 
-            this.lblSales30Days.AutoSize = true;
-            this.lblSales30Days.ForeColor = System.Drawing.Color.Red;
-            this.lblSales30Days.Location = new System.Drawing.Point(891, 280);
-            this.lblSales30Days.Name = "lblSales30Days";
-            this.lblSales30Days.Size = new System.Drawing.Size(23, 38);
-            this.lblSales30Days.TabIndex = 61;
-            this.lblSales30Days.Text = ".";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(100, 724);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(108, 38);
+            this.label4.TabIndex = 65;
+            this.label4.Text = "Master:";
             // 
-            // lblSales7Days
+            // lblReOrder
             // 
-            this.lblSales7Days.AutoSize = true;
-            this.lblSales7Days.ForeColor = System.Drawing.Color.Red;
-            this.lblSales7Days.Location = new System.Drawing.Point(891, 214);
-            this.lblSales7Days.Name = "lblSales7Days";
-            this.lblSales7Days.Size = new System.Drawing.Size(23, 38);
-            this.lblSales7Days.TabIndex = 60;
-            this.lblSales7Days.Text = ".";
+            this.lblReOrder.AutoSize = true;
+            this.lblReOrder.ForeColor = System.Drawing.Color.Blue;
+            this.lblReOrder.Location = new System.Drawing.Point(306, 201);
+            this.lblReOrder.Name = "lblReOrder";
+            this.lblReOrder.Size = new System.Drawing.Size(32, 38);
+            this.lblReOrder.TabIndex = 64;
+            this.lblReOrder.Text = "0";
             // 
-            // lblSalesToday
+            // lblReOrBlink
             // 
-            this.lblSalesToday.AutoSize = true;
-            this.lblSalesToday.ForeColor = System.Drawing.Color.Red;
-            this.lblSalesToday.Location = new System.Drawing.Point(891, 153);
-            this.lblSalesToday.Name = "lblSalesToday";
-            this.lblSalesToday.Size = new System.Drawing.Size(23, 38);
-            this.lblSalesToday.TabIndex = 59;
-            this.lblSalesToday.Text = ".";
+            this.lblReOrBlink.AutoSize = true;
+            this.lblReOrBlink.Location = new System.Drawing.Point(100, 201);
+            this.lblReOrBlink.Name = "lblReOrBlink";
+            this.lblReOrBlink.Size = new System.Drawing.Size(137, 38);
+            this.lblReOrBlink.TabIndex = 63;
+            this.lblReOrBlink.Text = "Re-Order:";
             // 
-            // lblItemCount
+            // lblSettledPay
             // 
-            this.lblItemCount.AutoSize = true;
-            this.lblItemCount.ForeColor = System.Drawing.Color.Red;
-            this.lblItemCount.Location = new System.Drawing.Point(878, 724);
-            this.lblItemCount.Name = "lblItemCount";
-            this.lblItemCount.Size = new System.Drawing.Size(32, 38);
-            this.lblItemCount.TabIndex = 58;
-            this.lblItemCount.Text = "0";
+            this.lblSettledPay.AutoSize = true;
+            this.lblSettledPay.ForeColor = System.Drawing.Color.Green;
+            this.lblSettledPay.Location = new System.Drawing.Point(911, 262);
+            this.lblSettledPay.Name = "lblSettledPay";
+            this.lblSettledPay.Size = new System.Drawing.Size(32, 38);
+            this.lblSettledPay.TabIndex = 60;
+            this.lblSettledPay.Text = "0";
             // 
-            // lblTypeCount
+            // lblPendingPay
             // 
-            this.lblTypeCount.AutoSize = true;
-            this.lblTypeCount.ForeColor = System.Drawing.Color.Red;
-            this.lblTypeCount.Location = new System.Drawing.Point(878, 658);
-            this.lblTypeCount.Name = "lblTypeCount";
-            this.lblTypeCount.Size = new System.Drawing.Size(32, 38);
-            this.lblTypeCount.TabIndex = 57;
-            this.lblTypeCount.Text = "0";
+            this.lblPendingPay.AutoSize = true;
+            this.lblPendingPay.ForeColor = System.Drawing.Color.Red;
+            this.lblPendingPay.Location = new System.Drawing.Point(911, 201);
+            this.lblPendingPay.Name = "lblPendingPay";
+            this.lblPendingPay.Size = new System.Drawing.Size(32, 38);
+            this.lblPendingPay.TabIndex = 59;
+            this.lblPendingPay.Text = "0";
             // 
-            // lblProductCount
+            // lblClaimedOrd
             // 
-            this.lblProductCount.AutoSize = true;
-            this.lblProductCount.ForeColor = System.Drawing.Color.Red;
-            this.lblProductCount.Location = new System.Drawing.Point(878, 597);
-            this.lblProductCount.Name = "lblProductCount";
-            this.lblProductCount.Size = new System.Drawing.Size(32, 38);
-            this.lblProductCount.TabIndex = 56;
-            this.lblProductCount.Text = "0";
+            this.lblClaimedOrd.AutoSize = true;
+            this.lblClaimedOrd.ForeColor = System.Drawing.Color.Green;
+            this.lblClaimedOrd.Location = new System.Drawing.Point(899, 733);
+            this.lblClaimedOrd.Name = "lblClaimedOrd";
+            this.lblClaimedOrd.Size = new System.Drawing.Size(32, 38);
+            this.lblClaimedOrd.TabIndex = 57;
+            this.lblClaimedOrd.Text = "0";
+            // 
+            // lblInLab
+            // 
+            this.lblInLab.AutoSize = true;
+            this.lblInLab.ForeColor = System.Drawing.Color.Red;
+            this.lblInLab.Location = new System.Drawing.Point(899, 672);
+            this.lblInLab.Name = "lblInLab";
+            this.lblInLab.Size = new System.Drawing.Size(32, 38);
+            this.lblInLab.TabIndex = 56;
+            this.lblInLab.Text = "0";
             // 
             // lblTotalUsers
             // 
             this.lblTotalUsers.AutoSize = true;
             this.lblTotalUsers.ForeColor = System.Drawing.Color.Green;
-            this.lblTotalUsers.Location = new System.Drawing.Point(306, 733);
+            this.lblTotalUsers.Location = new System.Drawing.Point(306, 783);
             this.lblTotalUsers.Name = "lblTotalUsers";
             this.lblTotalUsers.Size = new System.Drawing.Size(32, 38);
             this.lblTotalUsers.TabIndex = 55;
@@ -576,7 +580,7 @@
             // 
             this.lblOutOfStock.AutoSize = true;
             this.lblOutOfStock.ForeColor = System.Drawing.Color.Red;
-            this.lblOutOfStock.Location = new System.Drawing.Point(306, 280);
+            this.lblOutOfStock.Location = new System.Drawing.Point(306, 332);
             this.lblOutOfStock.Name = "lblOutOfStock";
             this.lblOutOfStock.Size = new System.Drawing.Size(32, 38);
             this.lblOutOfStock.TabIndex = 52;
@@ -586,7 +590,7 @@
             // 
             this.lblCriticalStock.AutoSize = true;
             this.lblCriticalStock.ForeColor = System.Drawing.Color.Gold;
-            this.lblCriticalStock.Location = new System.Drawing.Point(306, 214);
+            this.lblCriticalStock.Location = new System.Drawing.Point(306, 266);
             this.lblCriticalStock.Name = "lblCriticalStock";
             this.lblCriticalStock.Size = new System.Drawing.Size(32, 38);
             this.lblCriticalStock.TabIndex = 51;
@@ -596,7 +600,7 @@
             // 
             this.lblAvailableStock.AutoSize = true;
             this.lblAvailableStock.ForeColor = System.Drawing.Color.Green;
-            this.lblAvailableStock.Location = new System.Drawing.Point(306, 153);
+            this.lblAvailableStock.Location = new System.Drawing.Point(306, 140);
             this.lblAvailableStock.Name = "lblAvailableStock";
             this.lblAvailableStock.Size = new System.Drawing.Size(32, 38);
             this.lblAvailableStock.TabIndex = 50;
@@ -610,7 +614,7 @@
             this.btnCategoryDetails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCategoryDetails.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnCategoryDetails.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.btnCategoryDetails.Location = new System.Drawing.Point(847, 793);
+            this.btnCategoryDetails.Location = new System.Drawing.Point(847, 851);
             this.btnCategoryDetails.Name = "btnCategoryDetails";
             this.btnCategoryDetails.Size = new System.Drawing.Size(286, 49);
             this.btnCategoryDetails.TabIndex = 49;
@@ -626,7 +630,7 @@
             this.btnUsersDetails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUsersDetails.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnUsersDetails.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.btnUsersDetails.Location = new System.Drawing.Point(200, 803);
+            this.btnUsersDetails.Location = new System.Drawing.Point(200, 851);
             this.btnUsersDetails.Name = "btnUsersDetails";
             this.btnUsersDetails.Size = new System.Drawing.Size(286, 49);
             this.btnUsersDetails.TabIndex = 48;
@@ -665,37 +669,28 @@
             this.btnSalesDetails.Text = "View Details";
             this.btnSalesDetails.UseVisualStyleBackColor = false;
             // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(689, 719);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(78, 38);
-            this.label13.TabIndex = 16;
-            this.label13.Text = "Item:";
-            // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(689, 653);
+            this.label14.Location = new System.Drawing.Point(710, 728);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(81, 38);
+            this.label14.Size = new System.Drawing.Size(123, 38);
             this.label14.TabIndex = 15;
-            this.label14.Text = "Type:";
+            this.label14.Text = "Claimed:";
             // 
-            // label15
+            // lblInLabBlink
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(689, 592);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(119, 38);
-            this.label15.TabIndex = 14;
-            this.label15.Text = "Product:";
+            this.lblInLabBlink.AutoSize = true;
+            this.lblInLabBlink.Location = new System.Drawing.Point(710, 667);
+            this.lblInLabBlink.Name = "lblInLabBlink";
+            this.lblInLabBlink.Size = new System.Drawing.Size(145, 38);
+            this.lblInLabBlink.TabIndex = 14;
+            this.lblInLabBlink.Text = "In the Lab:";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(100, 733);
+            this.label9.Location = new System.Drawing.Point(100, 783);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(157, 38);
             this.label9.TabIndex = 13;
@@ -719,68 +714,50 @@
             this.label11.TabIndex = 11;
             this.label11.Text = "Admin:";
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(689, 350);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(152, 38);
-            this.label8.TabIndex = 10;
-            this.label8.Text = "Total Sales:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(689, 280);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(177, 38);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Last 30 Days:";
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(689, 214);
+            this.label6.Location = new System.Drawing.Point(709, 262);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(162, 38);
+            this.label6.Size = new System.Drawing.Size(109, 38);
             this.label6.TabIndex = 8;
-            this.label6.Text = "Last 7 Days:";
+            this.label6.Text = "Settled:";
             // 
-            // label7
+            // lblPendingBlink
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(689, 153);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(95, 38);
-            this.label7.TabIndex = 7;
-            this.label7.Text = "Today:";
+            this.lblPendingBlink.AutoSize = true;
+            this.lblPendingBlink.Location = new System.Drawing.Point(709, 201);
+            this.lblPendingBlink.Name = "lblPendingBlink";
+            this.lblPendingBlink.Size = new System.Drawing.Size(124, 38);
+            this.lblPendingBlink.TabIndex = 7;
+            this.lblPendingBlink.Text = "Pending:";
             // 
-            // label4
+            // lblOofStkBlink
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(100, 280);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(176, 38);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Out of Stock:";
+            this.lblOofStkBlink.AutoSize = true;
+            this.lblOofStkBlink.Location = new System.Drawing.Point(100, 332);
+            this.lblOofStkBlink.Name = "lblOofStkBlink";
+            this.lblOofStkBlink.Size = new System.Drawing.Size(176, 38);
+            this.lblOofStkBlink.TabIndex = 6;
+            this.lblOofStkBlink.Text = "Out of Stock:";
             // 
-            // label3
+            // lblCritBlink
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(100, 214);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(107, 38);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Critical:";
+            this.lblCritBlink.AutoSize = true;
+            this.lblCritBlink.Location = new System.Drawing.Point(100, 266);
+            this.lblCritBlink.Name = "lblCritBlink";
+            this.lblCritBlink.Size = new System.Drawing.Size(107, 38);
+            this.lblCritBlink.TabIndex = 5;
+            this.lblCritBlink.Text = "Critical:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(100, 153);
+            this.label2.Location = new System.Drawing.Point(100, 140);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(133, 38);
+            this.label2.Size = new System.Drawing.Size(99, 38);
             this.label2.TabIndex = 4;
-            this.label2.Text = "Available:";
+            this.label2.Text = "Safety:";
             // 
             // textBox4
             // 
@@ -874,30 +851,24 @@
         private Panel panelLoad;
         public Label lblName;
         private Panel panelDashboard;
-        private Label label13;
         private Label label14;
-        private Label label15;
+        private Label lblInLabBlink;
         private Label label9;
         private Label label10;
         private Label label11;
-        private Label label8;
-        private Label label5;
         private Label label6;
-        private Label label7;
-        private Label label4;
-        private Label label3;
+        private Label lblPendingBlink;
+        private Label lblOofStkBlink;
+        private Label lblCritBlink;
         private Label label2;
         private TextBox textBox4;
         private TextBox textBox3;
         private TextBox textBox2;
         private TextBox textBox1;
-        public Label lblSalesTotal;
-        public Label lblSales30Days;
-        public Label lblSales7Days;
-        public Label lblSalesToday;
-        public Label lblItemCount;
-        public Label lblTypeCount;
-        public Label lblProductCount;
+        public Label lblSettledPay;
+        public Label lblPendingPay;
+        public Label lblClaimedOrd;
+        public Label lblInLab;
         public Label lblTotalUsers;
         public Label lblCashier;
         public Label lblAdmin;
@@ -919,5 +890,9 @@
         public Button dropBtnPayment;
         private Button btnLogout;
         public Button btnCashier;
+        public Label lblReOrder;
+        private Label lblReOrBlink;
+        public Label lblMasterCount;
+        private Label label4;
     }
 }

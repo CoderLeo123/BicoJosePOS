@@ -45,6 +45,7 @@
             this.comBoxPaymentTerms = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblServRowCount = new System.Windows.Forms.Label();
             this.lblDPercent = new System.Windows.Forms.Label();
             this.lblDiscount = new System.Windows.Forms.Label();
             this.lblGrossTotal = new System.Windows.Forms.Label();
@@ -82,7 +83,6 @@
             this.printDocument = new System.Drawing.Printing.PrintDocument();
             this.printDialog = new System.Windows.Forms.PrintDialog();
             this.printPreviewDialog = new System.Windows.Forms.PrintPreviewDialog();
-            this.lblServRowCount = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnCloseSettlePayment)).BeginInit();
             this.panel1.SuspendLayout();
@@ -312,6 +312,17 @@
             this.panel1.Size = new System.Drawing.Size(539, 487);
             this.panel1.TabIndex = 31;
             // 
+            // lblServRowCount
+            // 
+            this.lblServRowCount.AutoSize = true;
+            this.lblServRowCount.ForeColor = System.Drawing.Color.Red;
+            this.lblServRowCount.Location = new System.Drawing.Point(503, 119);
+            this.lblServRowCount.Name = "lblServRowCount";
+            this.lblServRowCount.Size = new System.Drawing.Size(26, 31);
+            this.lblServRowCount.TabIndex = 25;
+            this.lblServRowCount.Text = "0";
+            this.lblServRowCount.Visible = false;
+            // 
             // lblDPercent
             // 
             this.lblDPercent.AutoSize = true;
@@ -383,7 +394,7 @@
             this.lblPaymentNotice.AutoSize = true;
             this.lblPaymentNotice.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblPaymentNotice.ForeColor = System.Drawing.Color.Red;
-            this.lblPaymentNotice.Location = new System.Drawing.Point(193, 202);
+            this.lblPaymentNotice.Location = new System.Drawing.Point(18, 205);
             this.lblPaymentNotice.Name = "lblPaymentNotice";
             this.lblPaymentNotice.Size = new System.Drawing.Size(150, 28);
             this.lblPaymentNotice.TabIndex = 18;
@@ -792,17 +803,6 @@
             this.printPreviewDialog.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog.Icon")));
             this.printPreviewDialog.Name = "printPreviewDialog";
             this.printPreviewDialog.Visible = false;
-            // 
-            // lblServRowCount
-            // 
-            this.lblServRowCount.AutoSize = true;
-            this.lblServRowCount.ForeColor = System.Drawing.Color.Red;
-            this.lblServRowCount.Location = new System.Drawing.Point(503, 119);
-            this.lblServRowCount.Name = "lblServRowCount";
-            this.lblServRowCount.Size = new System.Drawing.Size(26, 31);
-            this.lblServRowCount.TabIndex = 25;
-            this.lblServRowCount.Text = "0";
-            this.lblServRowCount.Visible = false;
             // 
             // frmSettlePayment
             // 

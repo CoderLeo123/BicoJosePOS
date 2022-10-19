@@ -211,12 +211,14 @@ namespace Capstone
                             cm.ExecuteNonQuery();
                             cn.Close();
                         }
-                        int baseStk = 0;
-                        string ITMID = dataGridViewStockItems.Rows[i].Cells[9].Value?.ToString();
+                        int baseStk;
+                        string ITMID = dataGridViewStockItems.Rows[i].Cells[9].Value?.ToString(); //label3.Text = ITMID;
+
                         int newStock = int.Parse(dataGridViewStockItems.Rows[i].Cells[5].Value?.ToString());
                         classInventory.determineBaseStock(newStock, out baseStk, ITMID);
                         cn.Open();
-                        cm = new SqlCommand("UPDATE tblItem SET Base_Stock = "+ baseStk + ", Quantity = Quantity + " + int.Parse(dataGridViewStockItems.Rows[i].Cells[5].Value?.ToString()) + " WHERE Item_ID LIKE '" + dataGridViewStockItems.Rows[i].Cells[9].Value?.ToString() + "' ", cn);
+                        cm = new SqlCommand("UPDATE tblItem SET Base_Stock = " + baseStk + ", Quantity = Quantity + " + int.Parse(dataGridViewStockItems.Rows[i].Cells[5].Value?.ToString()) + " WHERE Item_ID LIKE '" + dataGridViewStockItems.Rows[i].Cells[9].Value?.ToString() + "' ", cn);
+                        cm.Parameters.AddWithValue("@BaseStock", baseStk);
                         cm.ExecuteNonQuery();
                         cn.Close();
                         classInventory.determineStockLevel(ITMID);
