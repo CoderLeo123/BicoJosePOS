@@ -43,6 +43,7 @@
             this.ServID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ServNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.lblDiscPercen = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.lblSalesTotal = new System.Windows.Forms.Label();
@@ -96,7 +97,6 @@
             this.ItemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unitMe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
-            this.lblDiscPercen = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewService)).BeginInit();
@@ -253,6 +253,17 @@
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(427, 293);
             this.panel7.TabIndex = 0;
+            // 
+            // lblDiscPercen
+            // 
+            this.lblDiscPercen.AutoSize = true;
+            this.lblDiscPercen.ForeColor = System.Drawing.Color.Red;
+            this.lblDiscPercen.Location = new System.Drawing.Point(152, 69);
+            this.lblDiscPercen.Name = "lblDiscPercen";
+            this.lblDiscPercen.Size = new System.Drawing.Size(76, 28);
+            this.lblDiscPercen.TabIndex = 23;
+            this.lblDiscPercen.Text = "Percent";
+            this.lblDiscPercen.Visible = false;
             // 
             // label14
             // 
@@ -452,7 +463,7 @@
             this.btnBrowseService.Name = "btnBrowseService";
             this.btnBrowseService.Size = new System.Drawing.Size(427, 67);
             this.btnBrowseService.TabIndex = 8;
-            this.btnBrowseService.Text = "    [ F2 ] BROWSE SERVICE";
+            this.btnBrowseService.Text = "    [ F3 ] BROWSE SERVICE";
             this.btnBrowseService.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnBrowseService.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnBrowseService.UseVisualStyleBackColor = true;
@@ -470,7 +481,7 @@
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(389, 68);
             this.btnLogout.TabIndex = 7;
-            this.btnLogout.Text = "    [ F1 ] LOGOUT";
+            this.btnLogout.Text = "    [ F8 ] LOGOUT";
             this.btnLogout.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLogout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnLogout.UseVisualStyleBackColor = true;
@@ -488,7 +499,7 @@
             this.btnDailySales.Name = "btnDailySales";
             this.btnDailySales.Size = new System.Drawing.Size(389, 68);
             this.btnDailySales.TabIndex = 5;
-            this.btnDailySales.Text = "    [ F1 ] DAILY SALES";
+            this.btnDailySales.Text = "    [ F7 ] DAILY SALES";
             this.btnDailySales.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDailySales.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnDailySales.UseVisualStyleBackColor = true;
@@ -507,7 +518,7 @@
             this.btnClearCart.Name = "btnClearCart";
             this.btnClearCart.Size = new System.Drawing.Size(389, 68);
             this.btnClearCart.TabIndex = 4;
-            this.btnClearCart.Text = "    [ F1 ] CLEAR CART";
+            this.btnClearCart.Text = "    [ F6 ] CLEAR CART";
             this.btnClearCart.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnClearCart.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnClearCart.UseVisualStyleBackColor = true;
@@ -526,7 +537,7 @@
             this.btnSettlePayment.Name = "btnSettlePayment";
             this.btnSettlePayment.Size = new System.Drawing.Size(389, 68);
             this.btnSettlePayment.TabIndex = 3;
-            this.btnSettlePayment.Text = "    [ F1 ] SETTLE PAYMENT";
+            this.btnSettlePayment.Text = "    [ F5 ] SETTLE PAYMENT";
             this.btnSettlePayment.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSettlePayment.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSettlePayment.UseVisualStyleBackColor = true;
@@ -545,7 +556,7 @@
             this.btnAddDiscount.Name = "btnAddDiscount";
             this.btnAddDiscount.Size = new System.Drawing.Size(389, 68);
             this.btnAddDiscount.TabIndex = 2;
-            this.btnAddDiscount.Text = "    [ F1 ] ADD DISCOUNT";
+            this.btnAddDiscount.Text = "    [ F4 ] ADD DISCOUNT";
             this.btnAddDiscount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAddDiscount.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAddDiscount.UseVisualStyleBackColor = true;
@@ -898,17 +909,6 @@
             // printDocument1
             // 
             this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
-            // 
-            // lblDiscPercen
-            // 
-            this.lblDiscPercen.AutoSize = true;
-            this.lblDiscPercen.ForeColor = System.Drawing.Color.Red;
-            this.lblDiscPercen.Location = new System.Drawing.Point(152, 69);
-            this.lblDiscPercen.Name = "lblDiscPercen";
-            this.lblDiscPercen.Size = new System.Drawing.Size(76, 28);
-            this.lblDiscPercen.TabIndex = 23;
-            this.lblDiscPercen.Text = "Percent";
-            this.lblDiscPercen.Visible = false;
             // 
             // frmCashier
             // 

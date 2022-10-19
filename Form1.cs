@@ -16,48 +16,129 @@ namespace Capstone
             cn = new SqlConnection(dbcon.MyConnection());
             Stock();
             Users();
+            Payment();
+            Order();
             frmLogin frmL = new frmLogin();
-            frmL.Hide(); 
+            frmL.Hide();
+            stockBlinkNotify();
         }
         public void Stock()
         {
-            
-            //dataGridViewProduct, txtSearchProduct
-                cn = new SqlConnection(dbcon.MyConnection());
-                int i = 0;
-            int StockTotal = 0;
+            cn = new SqlConnection(dbcon.MyConnection());            
+            int StockLevel = 0;
             int CriticalCount = 0;
             int outOfStockCount = 0;
-            int dataPass = 0;
+            int safetyStockCount = 0;
+            int reOrderStockCount = 0;
+            
                 cn.Open();
-                SqlCommand cm = new SqlCommand("SELECT Quantity FROM tblItem WHERE Lense_Check = 1 Order by Item_ID", cn);
+                SqlCommand cm = new SqlCommand("SELECT Stock_Level FROM tblItem WHERE Lense_Check = 1 Order by Item_ID", cn);
                 dr = cm.ExecuteReader();
                 while (dr.Read())
-                {
-                    //                     2-PATIENT NAME / 2-Customer_Name       4-CONTACT / 4-Contact             6-GENDER / 6-Gender 
-                    i += 1; //0-#  1-PATIENT ID / 1-Patient_ID         3-ADDRESS / 3-Address                 5-AGE / 5-Age                   7-CHECK-UP DATE / 7-Check_Up_Date 
-                StockTotal += int.Parse(dr[0].ToString());
-                dataPass = int.Parse(dr[0].ToString());
-                if (dataPass < 3 && dataPass > 0)
-                {
-                    CriticalCount++;
-                }else if (dataPass == 0)
-                {
-                    outOfStockCount++;
-                }
-
+                {                                      
+                    StockLevel = int.Parse(dr[0].ToString());                    
+                    if (StockLevel == 3)
+                    {
+                        outOfStockCount++;                    
+                    }
+                    else if (StockLevel == 2)
+                    {
+                        CriticalCount++;
+                    }
+                    else if (StockLevel == 1)
+                    {
+                        reOrderStockCount++;
+                    }
+                    else if (StockLevel == 0)
+                    {
+                        safetyStockCount++;
+                    }
                 }
                 dr.Close();
                 cn.Close();
-
-
-            lblAvailableStock.Text = StockTotal.ToString();
+            lblAvailableStock.Text = safetyStockCount.ToString();
             lblCriticalStock.Text = CriticalCount.ToString();
             lblOutOfStock.Text = outOfStockCount.ToString();
-
+            lblReOrder.Text = reOrderStockCount.ToString();
         }
-
-       
+        public void stockBlinkNotify()
+        {
+            blinkLabel(lblCriticalStock, lblCritBlink);
+            blinkLabel(lblReOrder, lblReOrBlink);
+            blinkLabel(lblOutOfStock, lblOofStkBlink);
+            blinkLabel(lblPendingPay, lblPendingBlink);
+            blinkLabel(lblInLab, lblInLabBlink);
+        }
+        public async void blinkLabel(Label labelStock, Label labelBlink)
+        {
+            bool blink = false;
+            int stockC = int.Parse(labelStock.Text);
+            if (stockC > 0)
+            {
+                blink = true;
+                while (blink)
+                {
+                    await Task.Delay(500);
+                    labelBlink.ForeColor = labelBlink.ForeColor == Color.Red ? Color.Black : Color.Red;
+                }
+            }
+            else
+            {
+                blink = false;
+            }
+        }
+        public void Payment()
+        {
+            cn = new SqlConnection(dbcon.MyConnection());
+            string status = "";
+            int pendingCount = 0;
+            int settledCount = 0;
+            cn.Open();
+            SqlCommand cm = new SqlCommand("SELECT Status FROM tblPaymentStatus Order by Num", cn);
+            dr = cm.ExecuteReader();
+            while (dr.Read())
+            {               
+                status = dr[0].ToString();             
+                if (status.Equals("Pending"))
+                {
+                    pendingCount++;
+                }
+                else if (status.Equals("Settled"))
+                {
+                    settledCount++;
+                }                
+                lblPendingPay.Text = pendingCount.ToString();
+                lblSettledPay.Text = settledCount.ToString();                
+            }
+            dr.Close();
+            cn.Close();
+        }
+        public void Order()
+        {
+            cn = new SqlConnection(dbcon.MyConnection());
+            string status = "";
+            int inLabCount = 0;
+            int claimedCount = 0;
+            cn.Open();
+            SqlCommand cm = new SqlCommand("SELECT Status FROM tblOrderStatus Order by Num", cn);
+            dr = cm.ExecuteReader();
+            while (dr.Read())
+            {
+                status = dr[0].ToString();
+                if (status.Equals("In The Lab"))
+                {
+                    inLabCount++;
+                }
+                else if (status.Equals("Claimed"))
+                {
+                    claimedCount++;
+                }
+                lblInLab.Text = inLabCount.ToString();
+                lblClaimedOrd.Text = claimedCount.ToString();
+            }
+            dr.Close();
+            cn.Close();
+        }
         private void pictureBox2_Click(object sender, EventArgs e)
         {
 
@@ -75,26 +156,26 @@ namespace Capstone
 
         private void timerDrpBtnPayment_Tick(object sender, EventArgs e)
         {
-            if (isCollapsed2)
-            {
-                dropBtnPayment.Image = Properties.Resources.Down_Arrow;
-                dropPanelPayment.Height += 10;
-                if (dropPanelPayment.Size == dropPanelPayment.MaximumSize)
-                {
-                    timerDrpBtnPayment.Stop();
-                    isCollapsed2 = false;
-                }
-            }
-            else
-            {
-                dropBtnPayment.Image = Properties.Resources.payment;
-                dropPanelPayment.Height -= 10;
-                if (dropPanelPayment.Size == dropPanelPayment.MinimumSize)
-                {
-                    timerDrpBtnPayment.Stop();
-                    isCollapsed2 = true;
-                }
-            }
+            //if (isCollapsed2)
+            //{
+            //    dropBtnPayment.Image = Properties.Resources.Down_Arrow;
+            //    dropPanelPayment.Height += 10;
+            //    if (dropPanelPayment.Size == dropPanelPayment.MaximumSize)
+            //    {
+            //        timerDrpBtnPayment.Stop();
+            //        isCollapsed2 = false;
+            //    }
+            //}
+            //else
+            //{
+            //    dropBtnPayment.Image = Properties.Resources.payment;
+            //    dropPanelPayment.Height -= 10;
+            //    if (dropPanelPayment.Size == dropPanelPayment.MinimumSize)
+            //    {
+            //        timerDrpBtnPayment.Stop();
+            //        isCollapsed2 = true;
+            //    }
+            //}
         }
 
         private void dropBtnPayment_Click(object sender, EventArgs e)
@@ -104,34 +185,34 @@ namespace Capstone
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            dropPanelPayment.Size = dropPanelPayment.MinimumSize;
-            dropPanelProducts.Size = dropPanelProducts.MinimumSize;
-            dropPanelSales.Size = dropPanelSales.MinimumSize;
+            //dropPanelPayment.Size = dropPanelPayment.MinimumSize;
+            //dropPanelProducts.Size = dropPanelProducts.MinimumSize;
+            //dropPanelSales.Size = dropPanelSales.MinimumSize;
             
         }
 
         private void timerDrpBtnSales_Tick(object sender, EventArgs e)
         {
-            if (isCollapsed3)
-            {
-                dropBtnReports.Image = Properties.Resources.Down_Arrow;
-                dropPanelSales.Height += 10;
-                if (dropPanelSales.Size == dropPanelSales.MaximumSize)
-                {
-                    timerDrpBtnSales.Stop();
-                    isCollapsed3 = false;
-                }
-            }
-            else
-            {
-                dropBtnReports.Image = Properties.Resources.Sales_Report;
-                dropPanelSales.Height -= 10;
-                if (dropPanelSales.Size == dropPanelSales.MinimumSize)
-                {
-                    timerDrpBtnSales.Stop();
-                    isCollapsed3 = true;
-                }
-            }
+            //if (isCollapsed3)
+            //{
+            //    dropBtnReports.Image = Properties.Resources.Down_Arrow;
+            //    dropPanelSales.Height += 10;
+            //    if (dropPanelSales.Size == dropPanelSales.MaximumSize)
+            //    {
+            //        timerDrpBtnSales.Stop();
+            //        isCollapsed3 = false;
+            //    }
+            //}
+            //else
+            //{
+            //    dropBtnReports.Image = Properties.Resources.Sales_Report;
+            //    dropPanelSales.Height -= 10;
+            //    if (dropPanelSales.Size == dropPanelSales.MinimumSize)
+            //    {
+            //        timerDrpBtnSales.Stop();
+            //        isCollapsed3 = true;
+            //    }
+            //}
         }
 
         
@@ -152,16 +233,16 @@ namespace Capstone
         }
         public void btnCollapsed()
         {
-            isCollapsed2 = false;
-            isCollapsed3 = false;
-            isCollapsed1 = false;
+            //isCollapsed2 = false;
+            //isCollapsed3 = false;
+            //isCollapsed1 = false;
             
         }
         public void timerStart()
         {
-            timerDrpBtnPayment.Start(); 
-            timerDrpBtnSales.Start();
-            timerDrpBtnProducts.Start();
+            //timerDrpBtnPayment.Start(); 
+            //timerDrpBtnSales.Start();
+            //timerDrpBtnProducts.Start();
         }
        
         private void dropBtnSales_Click_1(object sender, EventArgs e)
@@ -374,6 +455,7 @@ namespace Capstone
             string role = "";
             int adminCount = 0;
             int cashierCount = 0;
+            int MasterCount = 0;
             int totalUsers = 0;
             cn.Open();
             SqlCommand cm = new SqlCommand("SELECT User_Type FROM tblUser Order by Num", cn);
@@ -388,12 +470,18 @@ namespace Capstone
                 if (role.Equals("Admin"))
                 {
                     adminCount++;
-                }else if (role.Equals("Cashier"))
+                }
+                else if (role.Equals("Cashier"))
                 {
                     cashierCount++;
                 }
+                else if (role.Equals("Master"))
+                {
+                    MasterCount++;
+                }
                 lblAdmin.Text = adminCount.ToString();
                 lblCashier.Text = cashierCount.ToString();
+                lblMasterCount.Text = MasterCount.ToString();
                 lblTotalUsers.Text = totalUsers.ToString();
 
             }
