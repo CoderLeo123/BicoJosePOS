@@ -312,10 +312,10 @@ namespace Capstone
                 for (int i = 0; i < frmC.dataGridViewCart.Rows.Count; i++)
                 {
                     ITMID = frmC.dataGridViewCart.Rows[i].Cells[12].Value.ToString();
-                    cn.Open();//Set Quantity
-                    cm = new SqlCommand("UPDATE tblItem SET Quantity = Quantity - " + int.Parse(frmC.dataGridViewCart.Rows[i].Cells[4].Value.ToString()) + " WHERE Item_ID LIKE '" + frmC.dataGridViewCart.Rows[i].Cells[12].Value.ToString() + "'", cn);
-                    cm.ExecuteNonQuery();
-                    cn.Close();
+                    //cn.Open();//Set Quantity
+                    //cm = new SqlCommand("UPDATE tblItem SET Quantity = Quantity - " + int.Parse(frmC.dataGridViewCart.Rows[i].Cells[4].Value.ToString()) + " WHERE Item_ID LIKE '" + frmC.dataGridViewCart.Rows[i].Cells[12].Value.ToString() + "'", cn);
+                    //cm.ExecuteNonQuery();
+                    //cn.Close();
                     classInventory.determineStockLevel(ITMID);
 
                     cn.Open();
@@ -327,8 +327,10 @@ namespace Capstone
                 for (int i = 0; i < frmC.dataGridViewService.Rows.Count; i++)
                 {
                     cn.Open();
-                    cm = new SqlCommand("INSERT INTO tblServiceAvailed (Service_ID, Transaction_No, Customer, Status) VALUES(@Service_ID, @Transaction_No, @Customer, @Status)", cn);
-                    cm.Parameters.AddWithValue("@Service_ID", frmC.dataGridViewService.Rows[i].Cells[5].Value.ToString());
+                    //cm = new SqlCommand("INSERT INTO tblServiceAvailed (Service_ID, Transaction_No, Customer, Status) VALUES(@Service_ID, @Transaction_No, @Customer, @Status)", cn);
+
+                    cm = new SqlCommand("UPDATE tblServiceAvailed SET Transaction_No = @Transaction_No, Customer = @Customer, Status = @Status WHERE Num LIKE @Service_num ", cn);
+                    cm.Parameters.AddWithValue("@Service_num", frmC.dataGridViewService.Rows[i].Cells[6].Value.ToString());
                     cm.Parameters.AddWithValue("@Transaction_No", lblTransacNo.Text);
                     cm.Parameters.AddWithValue("@Customer", customer);
                     cm.Parameters.AddWithValue("@Status", statusSA);
@@ -575,12 +577,12 @@ namespace Capstone
         {
             dateTimePickerDueDate.Enabled = false;
         }
-        public void getValueIfAnyElseBlank(DataGridView dgv, out string result, int rows, int col)
+        public void getValueIfAnyElseBlank(int dgvCount, DataGridView dgv, out string result, int rows, int col)
         {
             result = "N/A";
             
                 
-                int dgvCount = int.Parse(lblRowCount.Text);
+                //dgvCount = int.Parse(lblRowCount.Text);
                 if (dgvCount == 0)
                 {
                     result = "--";
@@ -646,19 +648,20 @@ namespace Capstone
                 {
                     x = 380; // 320 + 60
                     e.Graphics.DrawString(num.ToString(), printFont, Brushes.Black, 20, (y += 30));//330
-                    getValueIfAnyElseBlank(frmC.dataGridViewCart, out resultText, i, 1);//Description
+                    getValueIfAnyElseBlank(dgvCount, frmC.dataGridViewCart, out resultText, i, 1);//Description
                     e.Graphics.DrawString(resultText, printFont, Brushes.Black, 60, y);
 
-                    getValueIfAnyElseBlank(frmC.dataGridViewCart, out resultText, i, 3);//Price
+                    getValueIfAnyElseBlank(dgvCount, frmC.dataGridViewCart, out resultText, i, 3);//Price
                     e.Graphics.DrawString(resultText, printFont, Brushes.Black, x, y);
 
-                    getValueIfAnyElseBlank(frmC.dataGridViewCart, out resultText, i, 4);//Qty
+                    getValueIfAnyElseBlank(dgvCount, frmC.dataGridViewCart, out resultText, i, 4);//Qty
                     e.Graphics.DrawString(resultText, printFont, Brushes.Black, (x += 60), y);
 
-                    getValueIfAnyElseBlank(frmC.dataGridViewCart, out resultText, i, 13);//Unit
+                    
+                    getValueIfAnyElseBlank(dgvCount, frmC.dataGridViewCart, out resultText, i, 13);//Unit
                     e.Graphics.DrawString(resultText, printFont, Brushes.Black, (x += 50), y);
 
-                    getValueIfAnyElseBlank(frmC.dataGridViewCart, out resultText, i, 6);//Total
+                    getValueIfAnyElseBlank(dgvCount, frmC.dataGridViewCart, out resultText, i, 6);//Total
                     e.Graphics.DrawString(resultText, printFont, Brushes.Black, (x += 50), y);//330
                     num += 1;
                 }
@@ -673,9 +676,9 @@ namespace Capstone
                     x = 380;
                     //y = 430;
                     e.Graphics.DrawString(num.ToString(), printFont, Brushes.Black, 20, (y += 30));
-                    getValueIfAnyElseBlank(frmC.dataGridViewService, out resultText, i, 1);//frmC.dataGridViewService.Rows[0].Cells[1].Value.ToString()
+                    getValueIfAnyElseBlank(dgvCountService, frmC.dataGridViewService, out resultText, i, 1);//frmC.dataGridViewService.Rows[0].Cells[1].Value.ToString()
                     e.Graphics.DrawString(resultText, printFont, Brushes.Black, 60, y);//470      Name
-                    getValueIfAnyElseBlank(frmC.dataGridViewService, out resultText, i, 3);//frmC.dataGridViewService.Rows[0].Cells[3].Value.ToString()
+                    getValueIfAnyElseBlank(dgvCountService, frmC.dataGridViewService, out resultText, i, 3);//frmC.dataGridViewService.Rows[0].Cells[3].Value.ToString()
                     e.Graphics.DrawString(resultText, printFont, Brushes.Black, x, y);//320   Price
                     num += 1;
                 }
@@ -688,7 +691,7 @@ namespace Capstone
 
             e.Graphics.DrawString("Discount: ", printFont, Brushes.Black, 20, (y += 30));
             e.Graphics.DrawString(frmC.lblDiscount.Text, printFont, Brushes.Black, x, y);//370
-            getValueIfAnyElseBlank(frmC.dataGridViewCart, out resultText, 0, 5);//frmC.dataGridViewCart.Rows[0].Cells[5].Value.ToString()
+            getValueIfAnyElseBlank(dgvCount, frmC.dataGridViewCart, out resultText, 0, 5);//frmC.dataGridViewCart.Rows[0].Cells[5].Value.ToString()
             e.Graphics.DrawString("("+ resultText + "%)", printFont, Brushes.Black, (x -= 70), y);//440
 
             e.Graphics.DrawString("Total Due: ", printFont, Brushes.Black, 20, (y += 30));

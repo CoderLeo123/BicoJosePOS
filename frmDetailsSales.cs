@@ -35,22 +35,40 @@ namespace Capstone
         {
             frmCashier frmC = new frmCashier();
             string colName = dataGridViewService.Columns[e.ColumnIndex].Name;
-            if (colName == "add")
+            string check = "";
+            string SID = dataGridViewService.Rows[e.RowIndex].Cells[5].Value?.ToString();
+            cn.Open();
+            cm = new SqlCommand("SELECT Service_ID FROM tblServiceAvailed WHERE Status = 'Pending' AND Service_ID LIKE '" + SID + "' ", cn);
+            dr = cm.ExecuteReader();
+            if (dr.Read())
             {
-                if (MessageBox.Show("Add this Item?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                check = dr[0].ToString();
+            }
+            cn.Close();
+            if ((check.Equals("")) || (check == string.Empty))
+            {
+                if (colName == "add")
                 {
-                    cn.Open();
-                    cm = new SqlCommand("INSERT INTO tblServiceAvailed (Service_ID, Status) VALUES(@Service_ID, 'Pending')", cn);
-                    cm.Parameters.AddWithValue("@Service_ID", dataGridViewService.Rows[e.RowIndex].Cells[5].Value?.ToString());
+                    if (MessageBox.Show("Add this Item?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        cn.Open();
+                        cm = new SqlCommand("INSERT INTO tblServiceAvailed (Service_ID, Status) VALUES(@Service_ID, 'Pending')", cn);
+                        cm.Parameters.AddWithValue("@Service_ID", dataGridViewService.Rows[e.RowIndex].Cells[5].Value?.ToString());
 
-                    cm.ExecuteNonQuery();
-                    cn.Close();
-                    MessageBox.Show("Successfully Added!", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //classLoadData.LoadRecordServiceAvail(frmList.dataGridViewService, frmList.lblSalesTotal);
-                    classLoadData.LoadCart(frmC.dataGridViewCart, frmC.lblDiscount, frmC.lblSalesTotal, frmC.lblPayment, frmC.lblNetTotal, frmC.btnSettlePayment, frmC.btnAddDiscount, frmC.btnClearCart, frmC.txtSearch, frmC.dataGridViewService);
-                    //frmList.LoadStock();
-                    this.Close();
+                        cm.ExecuteNonQuery();
+                        cn.Close();
+                        MessageBox.Show("Successfully Added!", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        //classLoadData.LoadRecordServiceAvail(frmList.dataGridViewService, frmList.lblSalesTotal);
+                        classLoadData.LoadCart(frmC.dataGridViewCart, frmC.lblDiscount, frmC.lblSalesTotal, frmC.lblPayment, frmC.lblNetTotal, frmC.btnSettlePayment, frmC.btnAddDiscount, frmC.btnClearCart, frmC.txtSearch, frmC.dataGridViewService);
+                        //frmList.LoadStock();
+                        this.Close();
+                    }
                 }
+            }
+            else
+            {
+                MessageBox.Show("Selected Service is already in the Cart", title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
         }
 

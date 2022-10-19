@@ -224,6 +224,7 @@ namespace Capstone
                         classInventory.determineStockLevel(ITMID);
                         try
                         {
+                            string StkID = dataGridViewStockItems.Rows[i].Cells[3].Value?.ToString();
                             cn.Open();
                             cm = new SqlCommand("SELECT Expiration_Date FROM tblStock WHERE num LIKE '" + dataGridViewStockItems.Rows[i].Cells[11].Value?.ToString() + "' ", cn);
                             dr = cm.ExecuteReader();
@@ -248,7 +249,15 @@ namespace Capstone
                                 cm.ExecuteNonQuery();
                                 cn.Close();
 
+                                cn.Open();
+                                cm = new SqlCommand("UPDATE tblStockInventory SET Stock_Num = '" + dataGridViewStockItems.Rows[i].Cells[11].Value?.ToString() + "', Expiration_Date = '" + DateTime.Parse(dataGridViewStockItems.Rows[i].Cells[6].Value?.ToString()).ToShortDateString() + "', Quantity = " + int.Parse(dataGridViewStockItems.Rows[i].Cells[5].Value?.ToString()) + " WHERE Item_ID LIKE '" + ITMID + "' AND Stock_ID LIKE '" + StkID + "'", cn);
+                                //cm.Parameters.AddWithValue("@Stock_ID", frmList.txtStockID.Text);
+                                cm.ExecuteNonQuery();
+                                cn.Close();
                             }
+
+                            
+                            
 
                         }
                         catch (Exception ex)

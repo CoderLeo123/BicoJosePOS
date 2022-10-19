@@ -19,6 +19,7 @@ namespace Capstone
         ClassComputations classCompute = new ClassComputations();
         ClassLoadData classLoadData = new ClassLoadData();
         ClassGenerateID classGenerateID = new ClassGenerateID();
+        ClassInventory classInventory = new ClassInventory();
         string title = "BICO-JOSE System";
         string num; int count;
 
@@ -131,9 +132,45 @@ namespace Capstone
             classGenerateID.GenerateTransactionNo(lblTransactionNo);
             classLoadData.LoadCart(dataGridViewCart, lblDiscount, lblSalesTotal, lblPayment, lblNetTotal, btnSettlePayment, btnAddDiscount, btnClearCart, txtSearch, dataGridViewService);
         }
-        
+        public void returnQuantity(string itemID, int CartQty)
+        {
+            cn = new SqlConnection(dbcon.MyConnection());
+            cn.Open();//Set Quantity
+            SqlCommand cm = new SqlCommand("UPDATE tblItem SET Quantity = Quantity + @Cart WHERE Stock_Check = 1 AND Item_ID LIKE '" + itemID + "'", cn);
+            cm.Parameters.AddWithValue("@Cart", CartQty);
+            cm.ExecuteNonQuery();
+            cn.Close();
+
+        }
+        public void reducedQuantity(string itemID, int CartQty)
+        {
+            cn = new SqlConnection(dbcon.MyConnection());
+            cn.Open();//Set Quantity
+            SqlCommand cm = new SqlCommand("UPDATE tblItem SET Quantity = Quantity - @Cart WHERE Stock_Check = 1 AND Item_ID LIKE '" + itemID + "'", cn);
+            cm.Parameters.AddWithValue("@Cart", CartQty);
+            cm.ExecuteNonQuery();
+            cn.Close();
+
+        }
+        public void selectTblQty(string itemID, out int currQty)
+        {
+            cn = new SqlConnection(dbcon.MyConnection());
+            currQty = 0;
+            cn.Open();
+            SqlCommand cm = new SqlCommand("SELECT Quantity FROM tblItem WHERE Item_ID LIKE '" + itemID + "'", cn);
+            dr = cm.ExecuteReader();
+            if (dr.Read())
+            {
+                currQty = int.Parse(dr[0].ToString());
+            }
+            dr.Close();
+            cn.Close();
+        }
         private void dataGridViewCart_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            string ItemID = dataGridViewCart.Rows[e.RowIndex].Cells[12].Value.ToString();
+            int cartQty = int.Parse(dataGridViewCart.Rows[e.RowIndex].Cells[4].Value.ToString());
+            int qtyCart = 1, tblQty = 0;
             string colName = dataGridViewCart.Columns[e.ColumnIndex].Name;
             if (colName == "DeleteCart")
             {
@@ -146,30 +183,55 @@ namespace Capstone
                     MessageBox.Show("Record has been successfully deleted.", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     classLoadData.LoadCart(dataGridViewCart, lblDiscount, lblSalesTotal, lblPayment, lblNetTotal, btnSettlePayment, btnAddDiscount, btnClearCart, txtSearch, dataGridViewService);
                     //LoadCart();
-
+                    returnQuantity(ItemID, cartQty);
+                    classInventory.determineStockLevel(ItemID);
                 }
             }
             else if (colName == "PlusCart")
             {
+                selectTblQty(ItemID, out tblQty);
+                if(tblQty <= 0)
+                {
+                    qtyCart = 0;
+                }
+                else if(tblQty > 0)
+                {
+                    qtyCart = 1;
+                }
                 cn.Open();
-                cm = new SqlCommand("UPDATE tblCart SET Quantity = Quantity + 1 WHERE Num LIKE '" + dataGridViewCart.Rows[e.RowIndex].Cells[11].Value.ToString() + "'", cn);
+                cm = new SqlCommand("UPDATE tblCart SET Quantity = Quantity + '"+ qtyCart + "' WHERE Num LIKE '" + dataGridViewCart.Rows[e.RowIndex].Cells[11].Value.ToString() + "'", cn);
                 cm.ExecuteNonQuery();
                 cn.Close();
-                classLoadData.LoadCart(dataGridViewCart, lblDiscount, lblSalesTotal, lblPayment, lblNetTotal, btnSettlePayment, btnAddDiscount, btnClearCart, txtSearch, dataGridViewService);
-                //LoadCart();
+                //classLoadData.LoadCart(dataGridViewCart, lblDiscount, lblSalesTotal, lblPayment, lblNetTotal, btnSettlePayment, btnAddDiscount, btnClearCart, txtSearch, dataGridViewService);
+                
                 classCompute.ComputeUnitTotal(dataGridViewCart);
-                //ComputeUnitTotal();
+                reducedQuantity(ItemID, qtyCart);
+                classInventory.determineStockLevel(ItemID);
+                
+                classLoadData.LoadCart(dataGridViewCart, lblDiscount, lblSalesTotal, lblPayment, lblNetTotal, btnSettlePayment, btnAddDiscount, btnClearCart, txtSearch, dataGridViewService);
             }
             else if (colName == "MinusCart")
             {
+                selectTblQty(ItemID, out tblQty);
+                if (tblQty <= 0)//0 pababa pwede magadd sa tblItem
+                {
+                    qtyCart = 1;
+                }
+                else if (cartQty == 0)
+                {
+                    qtyCart = 0;
+                }
                 cn.Open();
-                cm = new SqlCommand("UPDATE tblCart SET Quantity = Quantity - 1 WHERE Num LIKE '" + dataGridViewCart.Rows[e.RowIndex].Cells[11].Value.ToString() + "'", cn);
+                cm = new SqlCommand("UPDATE tblCart SET Quantity = Quantity - '" + qtyCart + "' WHERE Num LIKE '" + dataGridViewCart.Rows[e.RowIndex].Cells[11].Value.ToString() + "'", cn);
                 cm.ExecuteNonQuery();
                 cn.Close();
-                classLoadData.LoadCart(dataGridViewCart, lblDiscount, lblSalesTotal, lblPayment, lblNetTotal, btnSettlePayment, btnAddDiscount, btnClearCart, txtSearch, dataGridViewService);
-                //LoadCart();
+                //classLoadData.LoadCart(dataGridViewCart, lblDiscount, lblSalesTotal, lblPayment, lblNetTotal, btnSettlePayment, btnAddDiscount, btnClearCart, txtSearch, dataGridViewService);
+                
                 classCompute.ComputeUnitTotal(dataGridViewCart);
-                //ComputeUnitTotal();
+                
+                returnQuantity(ItemID, qtyCart);
+                classInventory.determineStockLevel(ItemID);
+                classLoadData.LoadCart(dataGridViewCart, lblDiscount, lblSalesTotal, lblPayment, lblNetTotal, btnSettlePayment, btnAddDiscount, btnClearCart, txtSearch, dataGridViewService);
             }
 
         }
