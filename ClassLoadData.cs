@@ -394,11 +394,11 @@ namespace Capstone
         {                           //dataGridViewCart, lblDiscount, lblSalesTotal, lblPayment, lblNetTotal, btnSettlePayment, btnAddDiscount, btnClearCart, txtSearch, dataGridViewService
             try
             {
-                string servTotal = "";
-                LoadRecordServiceAvail(dgv2, out servTotal);
+                string servTotal = ""; Boolean hasRecord = false;
+                LoadRecordServiceAvail(dgv2, out servTotal, out hasRecord);
                 classCompute.ComputeUnitTotal(dgv);
                 cn = new SqlConnection(dbcon.MyConnection());
-                Boolean hasRecord = false;
+                
                 int i = 0;
                 double total = 0;
                 double discount = 0;
@@ -429,8 +429,8 @@ namespace Capstone
                     total += Double.Parse(dr[5].ToString());
                     discount = Double.Parse(dr[11].ToString());
 
-                               // 0-Num                2-EXPIRATION / 2-Expiration_Date                                  4-QUANTITY / 3-Quantity                        6-TOTAL / 5-TOTAL                                                                                                                       10-CartID / 12-Num
-                    i += 1;    // 1-DESCRIPTION / 1-Description           3-PRICE / 4-Price                                             5-DISCOUNT / 11-Discount                                                    7-Plus                         8-Minus                 9-Delete              10-StockID / 0-Stock_Num           10-ItemID / 9-Item_ID
+                               // 0-Num                2-EXPIRATION / 2-Expiration_Date                                  4-QUANTITY / 3-Quantity                        6-TOTAL / 5-TOTAL                                                                                                                       11-CartID / 12-Num
+                    i += 1;    // 1-DESCRIPTION / 1-Description           3-PRICE / 4-Price                                             5-DISCOUNT / 11-Discount                                                    7-Plus                         8-Minus                 9-Delete              10-StockID / 0-Stock_Num           12-ItemID / 9-Item_ID
                     dgv.Rows.Add(i, dr[1].ToString(), ExpirationDate, double.Parse(dr[4].ToString()).ToString("00.00"), dr[3].ToString(), dr[11].ToString(), double.Parse(dr[5].ToString()).ToString("00.00"), Properties.Resources._Add, Properties.Resources.Minus, Properties.Resources._Delete, dr[0].ToString(), dr[12].ToString(), dr[9].ToString(), dr[17].ToString());
                     hasRecord = true;
                 }
@@ -443,7 +443,7 @@ namespace Capstone
                 labelSalesTotal.Text = total.ToString("#,##0.00");
                 //frmCashier frmC = new frmCashier(); //frmC.lblDiscount, frmC.lblSalesTotal, frmC.lblPayment, out frmC.lblNetTotal
                 GetCartTotal(labelDiscount, labelSalesTotal, labelPayment, labelNetTotal);
-                LoadRecordServiceAvail(dgv2, out servTotal);
+                LoadRecordServiceAvail(dgv2, out servTotal, out hasRecord);
                 //frmC.GetCartTotal();
                 if (hasRecord == true)
                 {
@@ -560,10 +560,10 @@ namespace Capstone
             }
         }
 
-        public void LoadRecordServiceAvail(DataGridView dgv, out string serviceTotal)
+        public void LoadRecordServiceAvail(DataGridView dgv, out string serviceTotal, out bool hasRecord)
         {//dataGridViewService
             cn = new SqlConnection(dbcon.MyConnection());
-            int i = 0;
+            int i = 0; hasRecord = false;
             //total = new Label();
             double totalVar = 0;
             //double addToCurrentTotal = double.Parse(total.Text);
@@ -574,9 +574,10 @@ namespace Capstone
             while (dr.Read())
             {
                 totalVar += Double.Parse(dr[3].ToString());
-                //                          2-DESCRIPTION / 1-Description                                       3-SID / 2-Service_ID   
+                //                          2-DESCRIPTION / 1-Description                                       5-SID / 2-Service_ID   
                 i += 1; //0-#  1-NAME / 7-Name                      3-PRICE / 2-Price          
                 dgv.Rows.Add(i, dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), Properties.Resources._Delete, dr[0].ToString(), dr[9].ToString());
+                hasRecord = true;
             }
             dr.Close();
             cn.Close();

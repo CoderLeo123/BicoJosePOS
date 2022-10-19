@@ -82,6 +82,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.dataGridViewCart = new System.Windows.Forms.DataGridView();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.NumCart = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DescriptionCart = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Expiration = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -96,7 +97,6 @@
             this.sd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unitMe = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.panel2.SuspendLayout();
             this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewService)).BeginInit();
@@ -782,6 +782,10 @@
             this.dataGridViewCart.TabIndex = 3;
             this.dataGridViewCart.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewCart_CellContentClick);
             // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+            // 
             // NumCart
             // 
             this.NumCart.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -834,7 +838,7 @@
             this.DiscountCart.Name = "DiscountCart";
             this.DiscountCart.ReadOnly = true;
             this.DiscountCart.Visible = false;
-            this.DiscountCart.Width = 125;
+            this.DiscountCart.Width = 134;
             // 
             // TotalCart
             // 
@@ -903,12 +907,7 @@
             this.unitMe.MinimumWidth = 6;
             this.unitMe.Name = "unitMe";
             this.unitMe.ReadOnly = true;
-            this.unitMe.Visible = false;
             this.unitMe.Width = 125;
-            // 
-            // printDocument1
-            // 
-            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
             // frmCashier
             // 
@@ -995,6 +994,7 @@
         private DataGridViewTextBoxColumn ServNum;
         public System.Drawing.Printing.PrintDocument printDocument1;
         public Label lblDate;
+        public Label lblDiscPercen;
         private DataGridViewTextBoxColumn NumCart;
         private DataGridViewTextBoxColumn DescriptionCart;
         private DataGridViewTextBoxColumn Expiration;
@@ -1009,6 +1009,5 @@
         private DataGridViewTextBoxColumn sd;
         private DataGridViewTextBoxColumn ItemID;
         private DataGridViewTextBoxColumn unitMe;
-        public Label lblDiscPercen;
     }
 }

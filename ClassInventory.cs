@@ -91,7 +91,7 @@ namespace Capstone
             {
                 stockLevel = 1; //Re Order level
             }
-            else if (currentStock <= critLev)
+            else if (currentStock <= critLev && currentStock > 0)
             {
                 stockLevel = 2; //Critical level
             }

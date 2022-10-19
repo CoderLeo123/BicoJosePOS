@@ -84,7 +84,13 @@ namespace Capstone
                     }
                     if (MessageBox.Show("Add this Item?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-
+                        cn.Open();
+                        cm = new SqlCommand("INSERT INTO tblStockInventory (Stock_ID, Item_ID) VALUES(@Stock_ID, @Item_ID)", cn);
+                        cm.Parameters.AddWithValue("@Stock_ID", frmList.txtStockID.Text);
+                        cm.Parameters.AddWithValue("@Item_ID", dataGridViewSearchItem[1, e.RowIndex].Value.ToString());
+                        
+                        cm.ExecuteNonQuery();
+                        cn.Close();
 
                         cn.Open();
                         cm = new SqlCommand("INSERT INTO tblStock (Stock_ID, Item_ID, Stock_In_Date, Stock_In_By, Status, Type) VALUES(@StockID, @ItemID, @StockDate, @StockInBy, 'Pending', @Type)", cn);

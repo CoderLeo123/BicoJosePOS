@@ -63,6 +63,7 @@
             this.AddToCart = new System.Windows.Forms.DataGridViewImageColumn();
             this.StockID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StockNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UM = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBrowse)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -158,7 +159,8 @@
             this.Classification,
             this.AddToCart,
             this.StockID,
-            this.StockNum});
+            this.StockNum,
+            this.UM});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.Azure;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -434,6 +436,14 @@
             this.StockNum.Visible = false;
             this.StockNum.Width = 125;
             // 
+            // UM
+            // 
+            this.UM.HeaderText = "UnitMeas";
+            this.UM.MinimumWidth = 6;
+            this.UM.Name = "UM";
+            this.UM.Visible = false;
+            this.UM.Width = 125;
+            // 
             // frmBrowseItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
@@ -479,7 +489,7 @@
         public Label lblCheck;
         private Label label2;
         public Label lblStock;
-        private Label lblItemIDCheck;
+        public Label lblItemIDCheck;
         private DataGridViewTextBoxColumn NumBrowseItem;
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn DescBrowseItem;
@@ -491,5 +501,6 @@
         private DataGridViewImageColumn AddToCart;
         private DataGridViewTextBoxColumn StockID;
         private DataGridViewTextBoxColumn StockNum;
+        private DataGridViewTextBoxColumn UM;
     }
 }

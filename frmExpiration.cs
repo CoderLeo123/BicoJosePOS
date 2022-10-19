@@ -18,6 +18,7 @@ namespace Capstone
         SqlDataReader dr;
         ClassComputations classCompute = new ClassComputations();
         ClassLoadData classLoadData = new ClassLoadData();
+        ClassInventory classInventory = new ClassInventory();
         string title = "BICO-JOSE System";
         frmBrowseItem frmB;
         int r;
@@ -196,15 +197,18 @@ namespace Capstone
                 
                 r = dataGridViewSelected.SelectedRows[0].Index;
                 int y = frmB.dataGridViewBrowse.SelectedRows[0].Index;
+                string ITID = frmB.lblItemIDCheck.Text;
+                int CartStockTotal = 0; int CartStock = 0;
+                int StockNum = 0;
                 if (MessageBox.Show("Are you sure you want to save this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     for (int i = 0; i < dataGridViewSelected.Rows.Count; i++)
                     {
                         
-                    cn.Open();
+                        cn.Open();
                         cm = new SqlCommand("INSERT INTO tblCart (Stock_Num, Item_ID, Transaction_No, Quantity, Price, Total, Date, Status) VALUES (@Stock_Num, @Item_ID, @TransactionNo, @Quantity, @Price, @Total, @Date, 'Cart')", cn);
                         cm.Parameters.AddWithValue("@Stock_Num", dataGridViewSelected.Rows[i].Cells[6].Value.ToString());
-                        cm.Parameters.AddWithValue("@Item_ID", frmB.dataGridViewBrowse.Rows[i].Cells[1].Value.ToString());
+                        cm.Parameters.AddWithValue("@Item_ID", frmB.dataGridViewBrowse.Rows[0].Cells[1].Value.ToString());
                         cm.Parameters.AddWithValue("@TransactionNo", frmB.lblTrans.Text);
                         cm.Parameters.AddWithValue("@Quantity", dataGridViewSelected.Rows[i].Cells[2].Value.ToString());
                         cm.Parameters.AddWithValue("@Price", lblPrice.Text);
@@ -212,8 +216,13 @@ namespace Capstone
                         cm.Parameters.AddWithValue("@Total", dataGridViewSelected.Rows[i].Cells[3].Value.ToString());
                         cm.ExecuteNonQuery();
                         cn.Close();
-                        
+                        StockNum = int.Parse(dataGridViewSelected.Rows[i].Cells[6].Value.ToString());
+                        CartStockTotal += int.Parse(dataGridViewSelected.Rows[i].Cells[2].Value.ToString());
+                        CartStock = int.Parse(dataGridViewSelected.Rows[i].Cells[2].Value.ToString());
+                        reducedQuantityTblStock(StockNum, CartStock);
                     }
+                    reducedQuantity(ITID, CartStockTotal);
+                    classInventory.determineStockLevel(ITID);
                     MessageBox.Show("Successfully Added!", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     frmB.LoadCart();
                     this.Close();
@@ -239,7 +248,7 @@ namespace Capstone
             if (qty > intialStock)
             {
                 dataGridViewSelected[2, e.RowIndex].Value = intialStock.ToString();
-                
+                total = float.Parse(price.ToString()) * int.Parse(qty.ToString());
                 dataGridViewSelected[3, e.RowIndex].Value = total.ToString("#.##");
                 dataGridViewSelected.BeginEdit(true);
 
@@ -314,8 +323,9 @@ namespace Capstone
                     classCompute.Compute(txtQuantity, lblPrice2, lblTotal);
                     //Compute();
                 }
-                
-                    if ((e.KeyChar == 13))
+                string ITID = lblItemIDPass.Text;
+                int CartStock = int.Parse(txtQuantity.Text);
+                    if ((e.KeyChar == 13))//enter
                     {
                         cn.Open();
                         cm = new SqlCommand("INSERT INTO tblCart (Stock_Num, Item_ID, Transaction_No, Quantity, Price, Total, Date, Status) VALUES (@Stock_Num, @Item_ID, @TransactionNo, @Quantity, @Price, @Total, @Date, 'Cart')", cn);
@@ -327,13 +337,16 @@ namespace Capstone
                         cm.Parameters.AddWithValue("@Price", lblPrice2.Text);
                         cm.Parameters.AddWithValue("@Date", DateTime.Now);
                         cm.Parameters.AddWithValue("@Total", lblTotal.Text);
+                        cm.Parameters.AddWithValue("@UnitM", lblTotal.Text);
                         cm.ExecuteNonQuery();
                         cn.Close();
                         MessageBox.Show("Successfully Added!", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
                         frmB.LoadCart();
                         this.Close();
                         frmB.Close();
-                    }
+                        reducedQuantity(ITID, CartStock);
+                    classInventory.determineStockLevel(ITID);
+                }
                 
                 
                 frmB.LoadCart();
@@ -344,7 +357,27 @@ namespace Capstone
                 MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        public void reducedQuantity(string itemID, int CartQty)
+        {
+            cn = new SqlConnection(dbcon.MyConnection());
+            cn.Open();//Set Quantity
+            SqlCommand cm = new SqlCommand("UPDATE tblItem SET Quantity = Quantity - @Cart WHERE Stock_Check = 1 AND Item_ID LIKE '" + itemID + "'", cn);
+            cm.Parameters.AddWithValue("@Cart", CartQty);
+            cm.ExecuteNonQuery();
+            cn.Close();
 
+        }
+        public void reducedQuantityTblStock(int SNum, int CartQty)
+        {
+            //string StkID = dataGridViewStockItems.Rows[i].Cells[3].Value?.ToString();
+            cn = new SqlConnection(dbcon.MyConnection());
+            cn.Open();//Set Quantity
+            SqlCommand cm = new SqlCommand("UPDATE tblStockInventory SET Quantity = Quantity - @Cart WHERE Stock_Num LIKE " + SNum + " ", cn);
+            cm.Parameters.AddWithValue("@Cart", CartQty);
+            cm.ExecuteNonQuery();
+            cn.Close();
+
+        }
         private void panel1_MouseDown(object sender, MouseEventArgs e)
         {
             mouseDown = true;
