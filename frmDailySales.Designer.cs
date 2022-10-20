@@ -37,6 +37,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnCloseDailySales = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lblCurrentTransN = new System.Windows.Forms.Label();
             this.txtSearchTransac = new System.Windows.Forms.TextBox();
             this.dateTimePickerStartTrans = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
@@ -79,7 +80,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.printDocument = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog = new System.Windows.Forms.PrintPreviewDialog();
-            this.lblCurrentTransN = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnCloseDailySales)).BeginInit();
@@ -149,6 +149,17 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1479, 54);
             this.panel2.TabIndex = 36;
+            // 
+            // lblCurrentTransN
+            // 
+            this.lblCurrentTransN.AutoSize = true;
+            this.lblCurrentTransN.ForeColor = System.Drawing.Color.Red;
+            this.lblCurrentTransN.Location = new System.Drawing.Point(1301, 16);
+            this.lblCurrentTransN.Name = "lblCurrentTransN";
+            this.lblCurrentTransN.Size = new System.Drawing.Size(57, 38);
+            this.lblCurrentTransN.TabIndex = 38;
+            this.lblCurrentTransN.Text = "     ";
+            this.lblCurrentTransN.Visible = false;
             // 
             // txtSearchTransac
             // 
@@ -354,10 +365,10 @@
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.panelSoldItems);
-            this.tabPage2.Location = new System.Drawing.Point(4, 29);
+            this.tabPage2.Location = new System.Drawing.Point(4, 46);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1485, 897);
+            this.tabPage2.Size = new System.Drawing.Size(1485, 880);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Sold Items";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -369,7 +380,7 @@
             this.panelSoldItems.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelSoldItems.Location = new System.Drawing.Point(3, 3);
             this.panelSoldItems.Name = "panelSoldItems";
-            this.panelSoldItems.Size = new System.Drawing.Size(1479, 891);
+            this.panelSoldItems.Size = new System.Drawing.Size(1479, 874);
             this.panelSoldItems.TabIndex = 0;
             // 
             // panel7
@@ -378,7 +389,7 @@
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel7.Location = new System.Drawing.Point(0, 119);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(1479, 772);
+            this.panel7.Size = new System.Drawing.Size(1479, 755);
             this.panel7.TabIndex = 1;
             // 
             // dataGridViewSoldItems
@@ -425,7 +436,7 @@
             this.dataGridViewSoldItems.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridViewSoldItems.RowTemplate.Height = 35;
             this.dataGridViewSoldItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewSoldItems.Size = new System.Drawing.Size(1479, 772);
+            this.dataGridViewSoldItems.Size = new System.Drawing.Size(1479, 755);
             this.dataGridViewSoldItems.TabIndex = 9;
             this.dataGridViewSoldItems.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSoldItems_CellContentClick);
             // 
@@ -634,17 +645,6 @@
             this.printPreviewDialog.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog.Icon")));
             this.printPreviewDialog.Name = "printPreviewDialog";
             this.printPreviewDialog.Visible = false;
-            // 
-            // lblCurrentTransN
-            // 
-            this.lblCurrentTransN.AutoSize = true;
-            this.lblCurrentTransN.ForeColor = System.Drawing.Color.Red;
-            this.lblCurrentTransN.Location = new System.Drawing.Point(1301, 16);
-            this.lblCurrentTransN.Name = "lblCurrentTransN";
-            this.lblCurrentTransN.Size = new System.Drawing.Size(57, 38);
-            this.lblCurrentTransN.TabIndex = 38;
-            this.lblCurrentTransN.Text = "     ";
-            this.lblCurrentTransN.Visible = false;
             // 
             // frmDailySales
             // 

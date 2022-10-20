@@ -8,6 +8,7 @@ namespace Capstone
         SqlCommand cm = new SqlCommand();
         DBConnection dbcon = new DBConnection();
         SqlDataReader dr;
+        ClassInventory classInvent = new ClassInventory();
         Boolean isCollapsed1, isCollapsed2, isCollapsed3 = true;
         
         public frmAdmin()
@@ -385,12 +386,23 @@ namespace Capstone
 
         private void btnInventory_Click(object sender, EventArgs e)
         {
+
+
             frmInventory frm = new frmInventory();
+
+
             frm.TopLevel = false;
             panelLoad.Controls.Clear();
             panelLoad.Controls.Add(frm);
             frm.BringToFront();
             frm.Show();
+
+            frm.tabControlInventory.TabPages.Clear();
+            TabPage tab = new TabPage("RE-ORDER");
+            frm.tabControlInventory.TabPages.Add(tab);
+            tab.Controls.Add(frm.panelReOrder);
+            classInvent.LoadReOrder(frm.dataGridViewReOrder, frm.txtSearchReOrder);
+            frm.checkWhatIsPress(true, false, false, false);
             //btnCollapsed();
             //timerStart();
         }

@@ -321,7 +321,8 @@ namespace Capstone
 
         private void btnSettleBalance_Click(object sender, EventArgs e)
         {
-            
+            frmEditPaymentOrder frm = new frmEditPaymentOrder();
+            frm.ShowDialog();
         }
     }
 

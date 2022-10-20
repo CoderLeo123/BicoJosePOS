@@ -260,9 +260,9 @@ namespace Capstone
                 //int transacNum = int.Parse(transacInput);
                 float payment = float.Parse(txtPayment.Text);//Initial_Deposit
                 float change = float.Parse(txtChange.Text);
-
+                string transDate = DateTime.Parse(DateTime.Now.ToString()).ToShortDateString();
                 string discountPer = lblDPercent.Text;
-                string gross = lblCustomer.Text;
+                string gross = frmC.lblSalesTotal.Text;
                 string pMethod = comBoxMethodPayment.Text;
                 string pTerms = comBoxPaymentTerms.Text;
                 string cashier = lblCashier.Text;
@@ -320,7 +320,7 @@ namespace Capstone
                 cn.Open();
                 cm = new SqlCommand("INSERT INTO tblReceipt (Transaction_No, Transaction_Date, Payment_Mode, Payment_Terms, Customer, Gross_Total, Discount, Net_Total, Payment, Balance, Change, Discount_Percent, Settled_Date, Cashier) VALUES(@Transaction_No, @Transaction_Date, @Payment_Mode, @Payment_Terms, @Customer, @Gross_Total, @Discount, @Net_Total, @Payment, @Balance, @Change, @Discount_Percent, @Settled_Date, @Cashier)", cn);
                 cm.Parameters.AddWithValue("@Transaction_No", lblTransacNo.Text);
-                cm.Parameters.AddWithValue("@Transaction_Date", customer);
+                cm.Parameters.AddWithValue("@Transaction_Date", transDate);
                 cm.Parameters.AddWithValue("@Payment_Mode", pMethod);
                 cm.Parameters.AddWithValue("@Payment_Terms", pTerms);
                 cm.Parameters.AddWithValue("@Customer", customer);
