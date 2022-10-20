@@ -224,17 +224,21 @@ namespace Capstone
                             }
                             else if (lblCheckSettleBalance.Text == "1")
                             {
+                                
                                 frmEditPaymentOrder frmEP = new frmEditPaymentOrder();
                                 PrintPreviewDialog preview = new PrintPreviewDialog();
                                 preview.Document = printDocumentBalance;
                                 pLength = 600;
-                                paperSizeUpdate(out pLength);
+                                
                                 printDocumentBalance.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("RECEIPT", 610, pLength);
                                 preview.PrintPreviewControl.Zoom = 0.75;
-                                preview.Size = new System.Drawing.Size(400, 650);
+                                preview.Size = new System.Drawing.Size(400, 500);
                                 preview.ShowDialog();
                                 MessageBox.Show("Payment succesfully", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                classPayment.LoadRecordsUnsettled(frmEP.dataGridViewPaymentStat, frmEP.txtSearchPending);
+                                settleBalance();
+                                classPayment.LoadRecordsUnsettled(frmEP.dataGridViewPaymentStat, frmEP.txtSearchPending);                                
+                                this.Dispose();
+
                             }
                             
                         }
@@ -251,6 +255,42 @@ namespace Capstone
                 //MessageBox.Show("Insufficient amount. Please enter the correct amount!", title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+        }
+        public void settleBalance()
+        {
+            frmEditPaymentOrder frmEP = new frmEditPaymentOrder();
+            string transacNum = lblTransacNo.Text;
+                float total = float.Parse(txtTotal.Text);
+                float payment = float.Parse(txtPayment.Text);//Initial_Deposit
+                float change = float.Parse(txtChange.Text);
+                string pMethod = comBoxMethodPayment.Text;
+                string customer = lblCustomer.Text;
+                //string cashier = lblCashier.Text;
+                string Settled_Date = DateTime.Now.ToString();
+                string Completed_By = lblCashier.Text;
+                
+                cn.Open();
+                cm = new SqlCommand("UPDATE tblPaymentStatus SET Settled_Date = @Settled_Date, Completed_By = @Completed_By, Status = 'Settled' WHERE Transaction_No LIKE '" + transacNum + "' ", cn);
+                //cm.Parameters.AddWithValue("@Transaction_No", transacNum);
+                cm.Parameters.AddWithValue("@Settled_Date", Settled_Date);
+                cm.Parameters.AddWithValue("@Completed_By", Completed_By);
+                cm.ExecuteNonQuery();
+                cn.Close();
+
+                cn.Open();
+                cm = new SqlCommand("INSERT INTO tblReceiptSettle (Transaction_No, Transaction_Date, Payment_Mode, Customer, Net_Total, Payment, Change, Cashier) VALUES(@Transaction_No, @Transaction_Date, @Payment_Mode, @Customer, @Net_Total, @Payment, @Change, @Cashier)", cn);
+                cm.Parameters.AddWithValue("@Transaction_No", transacNum);
+                cm.Parameters.AddWithValue("@Transaction_Date", Settled_Date);
+                cm.Parameters.AddWithValue("@Payment_Mode", pMethod);
+                cm.Parameters.AddWithValue("@Customer", customer);
+                cm.Parameters.AddWithValue("@Net_Total", total.ToString("00.00"));
+                cm.Parameters.AddWithValue("@Payment", payment.ToString("00.00"));
+                cm.Parameters.AddWithValue("@Change", change.ToString("00.00"));
+                cm.Parameters.AddWithValue("@Cashier", Completed_By);
+                cm.ExecuteNonQuery();
+                cn.Close();
+                classPayment.LoadRecordsUnsettled(frmEP.dataGridViewPaymentStat, frmEP.txtSearchPending);
+
         }
         public void settlement()
         {
@@ -773,10 +813,10 @@ namespace Capstone
                 PrintPreviewDialog preview = new PrintPreviewDialog();
                 preview.Document = printDocumentBalance;
                 pLength = 600;
-                paperSizeUpdate(out pLength);
+                
                 printDocumentBalance.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("RECEIPT", 610, pLength);
                 preview.PrintPreviewControl.Zoom = 0.75;
-                preview.Size = new System.Drawing.Size(400, 650);
+                preview.Size = new System.Drawing.Size(400, 500);
                 preview.ShowDialog();
             }
         }
@@ -798,10 +838,10 @@ namespace Capstone
             e.Graphics.DrawString("Mode of Payment:  " + comBoxMethodPayment.Text, printFont, Brushes.Black, 20, (y += 30));//170
             e.Graphics.DrawString(DateTime.Now.ToString(), printFont, Brushes.Black, x, y);
             
-            e.Graphics.DrawString("Cashier:  " + lblCashier.Text, printFont, Brushes.Black, x, y);//200
-            e.Graphics.DrawString("Customer Name:  " + lblCustomer.Text, printFont, Brushes.Black, 20, (y += 30));//230
+            e.Graphics.DrawString("Cashier:  " + lblCashier.Text, printFont, Brushes.Black, x, (y += 30));//200
+            e.Graphics.DrawString("Customer Name:  " + lblCustomer.Text, printFont, Brushes.Black, 20, y);//230
             e.Graphics.DrawString("--------------------------------------------------------------------------------------------------------------------------", printFont, Brushes.Black, 10, (y += 30));//260 or 290
-            e.Graphics.DrawString("Invoice No: " + frmC.lblTransactionNo.Text, printFont, Brushes.Black, 20, (y += 50));//310 or 340
+            e.Graphics.DrawString("Invoice No: " + lblTransacNo.Text, printFont, Brushes.Black, 20, (y += 50));//310 or 340
             e.Graphics.DrawString("Balance Settlement", printFont, Brushes.Black, 20, (y += 50));//360 or 390
 
 

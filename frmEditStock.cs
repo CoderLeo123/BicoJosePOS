@@ -40,8 +40,11 @@ namespace Capstone
             try
             {        //Perishable
                 string unitMe = "";
-                
-                
+                cn.Open();
+                cm = new SqlCommand("UPDATE tblStockInventory SET Unit_Measure = '" + comBoxUnit.Text + "' WHERE Stock_Num LIKE '" + lblID.Text + "' ", cn);
+                cm.ExecuteNonQuery();
+                cn.Close();
+
                 if (lblCheck.Text == "Yes")
                 {
                     if (MessageBox.Show("Are you sure you want to update this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)

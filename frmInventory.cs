@@ -93,7 +93,15 @@ namespace Capstone
 
         private void dataGridViewExpir_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+            string ITMID = dataGridViewExpir.Rows[e.RowIndex].Cells[4].Value.ToString();
+
+            frmExpListDispose frm = new frmExpListDispose();
+            frm.tabControlExpLi.TabPages.Clear();
+            TabPage tab = new TabPage("Expiration List");
+            tabControlInventory.TabPages.Add(tab);
+            tab.Controls.Add(frm.panelExpiLists);
+            classInvent.LoadNearExpiration(frm.dataGridViewExpLis, frm.txtSearchExpL, ITMID);
+            frm.lblITEMID.Text = ITMID;
         }
 
         private void btnCrittical_Click(object sender, EventArgs e)

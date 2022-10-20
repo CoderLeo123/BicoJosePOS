@@ -157,6 +157,7 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(842, 62);
             this.panel3.TabIndex = 35;
+            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             this.panel3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseDown);
             this.panel3.MouseLeave += new System.EventHandler(this.panel3_MouseLeave);
             this.panel3.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseMove);
@@ -604,9 +605,9 @@
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.panelUsers);
-            this.tabPage3.Location = new System.Drawing.Point(4, 46);
+            this.tabPage3.Location = new System.Drawing.Point(4, 29);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(834, 397);
+            this.tabPage3.Size = new System.Drawing.Size(834, 414);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Users";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -618,7 +619,7 @@
             this.panelUsers.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelUsers.Location = new System.Drawing.Point(0, 0);
             this.panelUsers.Name = "panelUsers";
-            this.panelUsers.Size = new System.Drawing.Size(834, 397);
+            this.panelUsers.Size = new System.Drawing.Size(834, 414);
             this.panelUsers.TabIndex = 1;
             // 
             // panel12
@@ -627,7 +628,7 @@
             this.panel12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel12.Location = new System.Drawing.Point(0, 62);
             this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(834, 335);
+            this.panel12.Size = new System.Drawing.Size(834, 352);
             this.panel12.TabIndex = 1;
             // 
             // dataGridViewUsers
@@ -669,7 +670,7 @@
             this.dataGridViewUsers.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridViewUsers.RowTemplate.Height = 35;
             this.dataGridViewUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewUsers.Size = new System.Drawing.Size(834, 335);
+            this.dataGridViewUsers.Size = new System.Drawing.Size(834, 352);
             this.dataGridViewUsers.TabIndex = 9;
             // 
             // dataGridViewTextBoxColumn5
@@ -789,9 +790,9 @@
             // tabPage4
             // 
             this.tabPage4.Controls.Add(this.panel1Category);
-            this.tabPage4.Location = new System.Drawing.Point(4, 46);
+            this.tabPage4.Location = new System.Drawing.Point(4, 29);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(834, 397);
+            this.tabPage4.Size = new System.Drawing.Size(834, 414);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Categories";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -803,7 +804,7 @@
             this.panel1Category.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1Category.Location = new System.Drawing.Point(0, 0);
             this.panel1Category.Name = "panel1Category";
-            this.panel1Category.Size = new System.Drawing.Size(834, 397);
+            this.panel1Category.Size = new System.Drawing.Size(834, 414);
             this.panel1Category.TabIndex = 1;
             // 
             // panel15
@@ -812,7 +813,7 @@
             this.panel15.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel15.Location = new System.Drawing.Point(0, 54);
             this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(834, 343);
+            this.panel15.Size = new System.Drawing.Size(834, 360);
             this.panel15.TabIndex = 1;
             // 
             // dataGridView1
@@ -853,7 +854,7 @@
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView1.RowTemplate.Height = 35;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(834, 343);
+            this.dataGridView1.Size = new System.Drawing.Size(834, 360);
             this.dataGridView1.TabIndex = 8;
             // 
             // dataGridViewTextBoxColumn8
