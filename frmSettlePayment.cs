@@ -19,6 +19,7 @@ namespace Capstone
         ClassLoadData classLoadData = new ClassLoadData();
         ClassGenerateID classGenerateID = new ClassGenerateID();
         ClassInventory classInventory = new ClassInventory();
+        ClassPaymentOrderMonitoring classPayment = new ClassPaymentOrderMonitoring();
         string title = "BICO-JOSE System";
         double num = 0, curr = 0;
         private bool mouseDown;
@@ -208,8 +209,34 @@ namespace Capstone
                         }
                         else
                         {
-
-                            settlement();
+                            int pLength = 0;
+                            if (lblCheckSettleBalance.Text == "0")
+                            {
+                                PrintPreviewDialog preview = new PrintPreviewDialog();
+                                preview.Document = printDocument;
+                                pLength = 920;
+                                paperSizeUpdate(out pLength);
+                                printDocument.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("RECEIPT", 610, pLength);
+                                preview.PrintPreviewControl.Zoom = 0.75;
+                                preview.Size = new System.Drawing.Size(400, 650);
+                                preview.ShowDialog();
+                                settlement();
+                            }
+                            else if (lblCheckSettleBalance.Text == "1")
+                            {
+                                frmEditPaymentOrder frmEP = new frmEditPaymentOrder();
+                                PrintPreviewDialog preview = new PrintPreviewDialog();
+                                preview.Document = printDocumentBalance;
+                                pLength = 600;
+                                paperSizeUpdate(out pLength);
+                                printDocumentBalance.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("RECEIPT", 610, pLength);
+                                preview.PrintPreviewControl.Zoom = 0.75;
+                                preview.Size = new System.Drawing.Size(400, 650);
+                                preview.ShowDialog();
+                                MessageBox.Show("Payment succesfully", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                classPayment.LoadRecordsUnsettled(frmEP.dataGridViewPaymentStat, frmEP.txtSearchPending);
+                            }
+                            
                         }
                     }
                 }
@@ -254,14 +281,14 @@ namespace Capstone
                 lblPaymentNotice.Visible = false;
                 computeChange(txtTotal, txtPayment, txtChange);
 
-                PrintPreviewDialog preview = new PrintPreviewDialog();
-                preview.Document = printDocument;
-                int pLength = 920;
-                paperSizeUpdate(out pLength);
-                printDocument.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("RECEIPT", 610, pLength);
-                preview.PrintPreviewControl.Zoom = 0.75;
-                preview.Size = new System.Drawing.Size(400, 650);
-                preview.ShowDialog();
+                //PrintPreviewDialog preview = new PrintPreviewDialog();
+                //preview.Document = printDocument;
+                //int pLength = 920;
+                //paperSizeUpdate(out pLength);
+                //printDocument.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("RECEIPT", 610, pLength);
+                //preview.PrintPreviewControl.Zoom = 0.75;
+                //preview.Size = new System.Drawing.Size(400, 650);
+                //preview.ShowDialog();
 
                 cn.Open();
                 cm = new SqlCommand("INSERT INTO tblPaymentStatus (Transaction_No, Customer, Total_Payment, Initial_Deposit, Due_Date, Rem_Balance, Status, Discount_Per_Trans, Settled_Date) VALUES(@Transaction_No, @Customer, @Total_Payment, @Initial_Deposit, @Due_Date, @Rem_Balance, @Status, @Discount_Per_Trans, @Settled_Date)", cn);
@@ -339,7 +366,7 @@ namespace Capstone
                 }
 
 
-                MessageBox.Show("Payment succesfully saved", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Payment succesfully", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 classGenerateID.GenerateTransactionNo(frmC.lblTransactionNo);
                 //frmC.GenerateTransactionNo();
                 classLoadData.LoadCart(frmC.dataGridViewCart, frmC.lblDiscount, frmC.lblSalesTotal, frmC.lblPayment, frmC.lblNetTotal, frmC.btnSettlePayment, frmC.btnAddDiscount, frmC.btnClearCart, frmC.txtSearch, frmC.dataGridViewService);
@@ -728,15 +755,71 @@ namespace Capstone
 
         private void btnReceiptPreview_Click(object sender, EventArgs e)
         {
-            PrintPreviewDialog preview = new PrintPreviewDialog();
-            preview.Document = printDocument;
-            int pLength = 920;
-            paperSizeUpdate(out pLength);
-            printDocument.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("RECEIPT", 610, pLength);
-            preview.PrintPreviewControl.Zoom = 0.75;
-            preview.Size = new System.Drawing.Size(400, 650);            
-            preview.ShowDialog();
-            //printPreviewDialog.ShowDialog();
+            int pLength = 0;
+            if (lblCheckSettleBalance.Text == "0")
+            {
+                PrintPreviewDialog preview = new PrintPreviewDialog();
+                preview.Document = printDocument;
+                pLength = 920;
+                paperSizeUpdate(out pLength);
+                printDocument.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("RECEIPT", 610, pLength);
+                preview.PrintPreviewControl.Zoom = 0.75;
+                preview.Size = new System.Drawing.Size(400, 650);
+                preview.ShowDialog();
+                //printPreviewDialog.ShowDialog();
+            }
+            else if (lblCheckSettleBalance.Text == "1")
+            {
+                PrintPreviewDialog preview = new PrintPreviewDialog();
+                preview.Document = printDocumentBalance;
+                pLength = 600;
+                paperSizeUpdate(out pLength);
+                printDocumentBalance.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("RECEIPT", 610, pLength);
+                preview.PrintPreviewControl.Zoom = 0.75;
+                preview.Size = new System.Drawing.Size(400, 650);
+                preview.ShowDialog();
+            }
+        }
+
+        private void printDocumentBalance_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            //string deposit = "Settlement Date for Remaining Balance:";
+            int x = 0, y = 0; // num = 1; string resultText = ""; int dgvCount = int.Parse(lblRowCount.Text), dgvCountService = int.Parse(lblServRowCount.Text);
+            
+            System.Drawing.Font printFont = new System.Drawing.Font("Arial", 10, System.Drawing.FontStyle.Regular);
+            System.Drawing.Font printFontBold = new System.Drawing.Font("Arial", 15, System.Drawing.FontStyle.Bold);
+            System.Drawing.Font printFontItallic = new System.Drawing.Font("Arial", 12, System.Drawing.FontStyle.Italic);
+            
+            e.Graphics.DrawString("Bico-Jose Optical Clinic", printFontBold, Brushes.Black, 175, 30);
+            e.Graphics.DrawString("Address: 3rd Floor Susana Mart, Tungko San Jose Del Monte Bulacan", printFont, Brushes.Black, 80, 80);
+            y = 140; x = 320;
+            e.Graphics.DrawString("Clinic's Contact: 09178326666", printFont, Brushes.Black, 20, y);//140
+            e.Graphics.DrawString("Date Issued: ", printFont, Brushes.Black, (x += 60), y);
+            e.Graphics.DrawString("Mode of Payment:  " + comBoxMethodPayment.Text, printFont, Brushes.Black, 20, (y += 30));//170
+            e.Graphics.DrawString(DateTime.Now.ToString(), printFont, Brushes.Black, x, y);
+            
+            e.Graphics.DrawString("Cashier:  " + lblCashier.Text, printFont, Brushes.Black, x, y);//200
+            e.Graphics.DrawString("Customer Name:  " + lblCustomer.Text, printFont, Brushes.Black, 20, (y += 30));//230
+            e.Graphics.DrawString("--------------------------------------------------------------------------------------------------------------------------", printFont, Brushes.Black, 10, (y += 30));//260 or 290
+            e.Graphics.DrawString("Invoice No: " + frmC.lblTransactionNo.Text, printFont, Brushes.Black, 20, (y += 50));//310 or 340
+            e.Graphics.DrawString("Balance Settlement", printFont, Brushes.Black, 20, (y += 50));//360 or 390
+
+
+            x = 440;
+            //y = 550;
+            e.Graphics.DrawString("Total Amount: ", printFont, Brushes.Black, 20, (y += 50));//550
+            e.Graphics.DrawString(txtTotal.Text, printFont, Brushes.Black, (x += 70), y);//510 
+
+            e.Graphics.DrawString("Amount Tendered: ", printFont, Brushes.Black, 20, (y += 30));
+            e.Graphics.DrawString(txtPayment.Text, printFont, Brushes.Black, x, y);
+
+            e.Graphics.DrawString("Change: ", printFont, Brushes.Black, 20, (y += 30));
+            e.Graphics.DrawString(txtChange.Text, printFont, Brushes.Black, x, y);//710          
+
+            e.Graphics.DrawString("THIS INVOICE/RECEIPT SHALL BE VALID FOR", printFontItallic, Brushes.Black, 130, (y += 60));//770
+            e.Graphics.DrawString("ONE (1)) WEEK FROM THE DATE OF THE PERMIT TO USE", printFontItallic, Brushes.Black, 70, (y += 30));//800
+            e.Graphics.DrawString("THANKYOU", printFontBold, Brushes.Black, (x -= 280), (y += 30));//830
+
         }
 
         public void paperSizeUpdate(out int paperL)

@@ -443,7 +443,7 @@ namespace Capstone
                 labelSalesTotal.Text = total.ToString("#,##0.00");
                 //frmCashier frmC = new frmCashier(); //frmC.lblDiscount, frmC.lblSalesTotal, frmC.lblPayment, out frmC.lblNetTotal
                 GetCartTotal(labelDiscount, labelSalesTotal, labelPayment, labelNetTotal);
-                LoadRecordServiceAvail(dgv2, out servTotal, out hasRecord);
+                //LoadRecordServiceAvail(dgv2, out servTotal, out hasRecord);
                 //frmC.GetCartTotal();
                 if (hasRecord == true)
                 {

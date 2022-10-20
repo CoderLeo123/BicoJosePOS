@@ -97,7 +97,8 @@ namespace Capstone
             }
             else
             {
-                
+                frm.lblCheckSettleBalance.Text = "0";
+                frm.labelTot.Text = "Total";
                 frm.txtTotal.Text = lblNetTotal.Text;
                 frm.comBoxPaymentTerms.SelectedIndex = 0;
                 frm.comBoxMethodPayment.SelectedIndex = 0;
@@ -314,6 +315,11 @@ namespace Capstone
         }
 
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            
+        }
+
+        private void btnSettleBalance_Click(object sender, EventArgs e)
         {
             
         }
