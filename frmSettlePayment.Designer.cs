@@ -432,9 +432,9 @@
             this.panelDepositDueDate.Controls.Add(this.lblChangeDueDate);
             this.panelDepositDueDate.Controls.Add(this.labelDueDate);
             this.panelDepositDueDate.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelDepositDueDate.Location = new System.Drawing.Point(0, 334);
+            this.panelDepositDueDate.Location = new System.Drawing.Point(0, 333);
             this.panelDepositDueDate.Name = "panelDepositDueDate";
-            this.panelDepositDueDate.Size = new System.Drawing.Size(539, 154);
+            this.panelDepositDueDate.Size = new System.Drawing.Size(539, 155);
             this.panelDepositDueDate.TabIndex = 16;
             this.panelDepositDueDate.Visible = false;
             // 
@@ -855,7 +855,6 @@
         private Button btnEight;
         private Button btnSeven;
         private PictureBox btnCloseSettlePayment;
-        private Panel panel1;
         private Label label5;
         private Panel panel4;
         private Button btnEnter;
@@ -906,5 +905,6 @@
         public DateTimePicker dateTimePickerDueDate;
         public Label lblCheckSettleBalance;
         private System.Drawing.Printing.PrintDocument printDocumentBalance;
+        public Panel panel1;
     }
 }

@@ -35,13 +35,8 @@
             this.btnClose = new System.Windows.Forms.PictureBox();
             this.tabControlEditPayOrd = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panelEditPayment = new System.Windows.Forms.Panel();
-            this.panelEditOrder = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.txtSearchPending = new System.Windows.Forms.TextBox();
             this.dataGridViewPaymentStat = new System.Windows.Forms.DataGridView();
             this.NumPendingSet = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TransRefNoPendingSet = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,20 +47,26 @@
             this.DueDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cashier = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.S = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.lblCurrentTransN = new System.Windows.Forms.Label();
+            this.txtSearchPending = new System.Windows.Forms.TextBox();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.panelEditOrder = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             this.tabControlEditPayOrd.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
             this.panelEditPayment.SuspendLayout();
-            this.panelEditOrder.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPaymentStat)).BeginInit();
+            this.panel2.SuspendLayout();
+            this.panel7.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.panelEditOrder.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -99,6 +100,7 @@
             this.btnClose.Size = new System.Drawing.Size(40, 38);
             this.btnClose.TabIndex = 0;
             this.btnClose.TabStop = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // tabControlEditPayOrd
             // 
@@ -122,17 +124,6 @@
             this.tabPage1.Text = "Payment";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.panelEditOrder);
-            this.tabPage2.Location = new System.Drawing.Point(4, 46);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1193, 440);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Order";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
             // panelEditPayment
             // 
             this.panelEditPayment.Controls.Add(this.panel3);
@@ -143,25 +134,6 @@
             this.panelEditPayment.Size = new System.Drawing.Size(1187, 434);
             this.panelEditPayment.TabIndex = 0;
             // 
-            // panelEditOrder
-            // 
-            this.panelEditOrder.Controls.Add(this.textBox1);
-            this.panelEditOrder.Controls.Add(this.monthCalendar1);
-            this.panelEditOrder.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelEditOrder.Location = new System.Drawing.Point(3, 3);
-            this.panelEditOrder.Name = "panelEditOrder";
-            this.panelEditOrder.Size = new System.Drawing.Size(1187, 434);
-            this.panelEditOrder.TabIndex = 0;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.panel7);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1187, 70);
-            this.panel2.TabIndex = 0;
-            // 
             // panel3
             // 
             this.panel3.Controls.Add(this.dataGridViewPaymentStat);
@@ -170,25 +142,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1187, 364);
             this.panel3.TabIndex = 1;
-            // 
-            // panel7
-            // 
-            this.panel7.BackColor = System.Drawing.Color.DimGray;
-            this.panel7.Controls.Add(this.txtSearchPending);
-            this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel7.Location = new System.Drawing.Point(0, 0);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(1187, 70);
-            this.panel7.TabIndex = 37;
-            // 
-            // txtSearchPending
-            // 
-            this.txtSearchPending.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtSearchPending.Location = new System.Drawing.Point(35, 16);
-            this.txtSearchPending.Name = "txtSearchPending";
-            this.txtSearchPending.PlaceholderText = "Search Here";
-            this.txtSearchPending.Size = new System.Drawing.Size(573, 38);
-            this.txtSearchPending.TabIndex = 0;
             // 
             // dataGridViewPaymentStat
             // 
@@ -255,7 +208,7 @@
             this.TransRefNoPendingSet.Name = "TransRefNoPendingSet";
             this.TransRefNoPendingSet.ReadOnly = true;
             this.TransRefNoPendingSet.Visible = false;
-            this.TransRefNoPendingSet.Width = 180;
+            this.TransRefNoPendingSet.Width = 125;
             // 
             // CustomerNamePendingSet
             // 
@@ -319,11 +272,66 @@
             this.S.Visible = false;
             this.S.Width = 125;
             // 
-            // monthCalendar1
+            // panel2
             // 
-            this.monthCalendar1.Location = new System.Drawing.Point(45, 94);
-            this.monthCalendar1.Name = "monthCalendar1";
-            this.monthCalendar1.TabIndex = 0;
+            this.panel2.Controls.Add(this.panel7);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1187, 70);
+            this.panel2.TabIndex = 0;
+            // 
+            // panel7
+            // 
+            this.panel7.BackColor = System.Drawing.Color.DimGray;
+            this.panel7.Controls.Add(this.lblCurrentTransN);
+            this.panel7.Controls.Add(this.txtSearchPending);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel7.Location = new System.Drawing.Point(0, 0);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(1187, 70);
+            this.panel7.TabIndex = 37;
+            // 
+            // lblCurrentTransN
+            // 
+            this.lblCurrentTransN.AutoSize = true;
+            this.lblCurrentTransN.ForeColor = System.Drawing.Color.Red;
+            this.lblCurrentTransN.Location = new System.Drawing.Point(640, 14);
+            this.lblCurrentTransN.Name = "lblCurrentTransN";
+            this.lblCurrentTransN.Size = new System.Drawing.Size(57, 38);
+            this.lblCurrentTransN.TabIndex = 39;
+            this.lblCurrentTransN.Text = "     ";
+            this.lblCurrentTransN.Visible = false;
+            // 
+            // txtSearchPending
+            // 
+            this.txtSearchPending.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtSearchPending.Location = new System.Drawing.Point(35, 16);
+            this.txtSearchPending.Name = "txtSearchPending";
+            this.txtSearchPending.PlaceholderText = "Search Here";
+            this.txtSearchPending.Size = new System.Drawing.Size(573, 38);
+            this.txtSearchPending.TabIndex = 0;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.panelEditOrder);
+            this.tabPage2.Location = new System.Drawing.Point(4, 29);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1193, 457);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Order";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // panelEditOrder
+            // 
+            this.panelEditOrder.Controls.Add(this.textBox1);
+            this.panelEditOrder.Controls.Add(this.monthCalendar1);
+            this.panelEditOrder.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelEditOrder.Location = new System.Drawing.Point(3, 3);
+            this.panelEditOrder.Name = "panelEditOrder";
+            this.panelEditOrder.Size = new System.Drawing.Size(1187, 451);
+            this.panelEditOrder.TabIndex = 0;
             // 
             // textBox1
             // 
@@ -331,6 +339,12 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(320, 43);
             this.textBox1.TabIndex = 1;
+            // 
+            // monthCalendar1
+            // 
+            this.monthCalendar1.Location = new System.Drawing.Point(45, 94);
+            this.monthCalendar1.Name = "monthCalendar1";
+            this.monthCalendar1.TabIndex = 0;
             // 
             // frmEditPaymentOrder
             // 
@@ -350,15 +364,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).EndInit();
             this.tabControlEditPayOrd.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
             this.panelEditPayment.ResumeLayout(false);
-            this.panelEditOrder.ResumeLayout(false);
-            this.panelEditOrder.PerformLayout();
-            this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPaymentStat)).EndInit();
+            this.panel2.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPaymentStat)).EndInit();
+            this.tabPage2.ResumeLayout(false);
+            this.panelEditOrder.ResumeLayout(false);
+            this.panelEditOrder.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -389,5 +403,6 @@
         private MonthCalendar monthCalendar1;
         public TextBox txtSearchPending;
         public DataGridView dataGridViewPaymentStat;
+        public Label lblCurrentTransN;
     }
 }

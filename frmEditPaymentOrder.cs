@@ -19,7 +19,7 @@ namespace Capstone
         ClassLoadData classLoadData = new ClassLoadData();
         ClassPaymentOrderMonitoring classPayment = new ClassPaymentOrderMonitoring();
         frmCashier frml;
-        string title = "BICO-JOSE System";
+        string title = "BICO-JOSE System", transNo = "";
 
         public frmEditPaymentOrder()
         {
@@ -28,8 +28,18 @@ namespace Capstone
             classPayment.LoadRecordsUnsettled(dataGridViewPaymentStat, txtSearchPending);
         }
 
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         private void dataGridViewPaymentStat_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            lblCurrentTransN.Text = dataGridViewPaymentStat.Rows[e.RowIndex].Cells[1].Value.ToString();
+            string CName = dataGridViewPaymentStat.Rows[e.RowIndex].Cells[2].Value.ToString();
+            string Cashier = dataGridViewPaymentStat.Rows[e.RowIndex].Cells[7].Value.ToString();
+            string Balance = dataGridViewPaymentStat.Rows[e.RowIndex].Cells[5].Value.ToString();
+            
             frmSettlePayment frm = new frmSettlePayment(frml);
             frm.comBoxPaymentTerms.SelectedIndex = 0;
             
@@ -44,11 +54,14 @@ namespace Capstone
             frm.labelDueDate.Text = "Settled Date";
             frm.dateTimePickerDueDate.Value = DateTime.Now;
             frm.lblCheckSettleBalance.Text = "1";
-
-
-            panel1.Size = new Size(539, 339); // 539, 306
-            this.Size = new Size(539, 714); // 539, 680
-
+            frm.lblTransacNo.Text = lblCurrentTransN.Text;
+            frm.lblCustomer.Text = CName;
+            frm.lblCashier.Text = Cashier;
+            frm.txtTotal.Text = Balance;
+            frm.panelDepositDueDate.Size = new Size(0, 0);//539, 62
+            frm.panel1.Size = new Size(539, 339); // 539, 306
+            frm.Size = new Size(539, 714); // 539, 680
+            frm.ShowDialog();
 
             //if (txtFirstName.Text == "" && txtLastName.Text == "")
             //{
