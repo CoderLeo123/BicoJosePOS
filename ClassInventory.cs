@@ -200,7 +200,7 @@ namespace Capstone
             int i = 0;
             dgv.Rows.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT * FROM tblItem WHERE Classification LIKE 'Consumable' AND (Description LIKE '%" + txtSearch.Text + "%' OR Type LIKE '%" + txtSearch.Text + "%') ORDER BY Item_ID", cn);
+            SqlCommand cm = new SqlCommand("SELECT * FROM tblItem WHERE Classification LIKE 'Consumable' AND Quantity > 0 AND (Description LIKE '%" + txtSearch.Text + "%' OR Type LIKE '%" + txtSearch.Text + "%') ORDER BY Item_ID", cn);
             dr = cm.ExecuteReader();//Description, Type, Quantity, Item_ID
             while (dr.Read())
             {                             //                     3-PRODUCT / 3-Product              
@@ -217,12 +217,13 @@ namespace Capstone
             int i = 0;
             dgv.Rows.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT * FROM ViewStockItemType WHERE Classification = 'Consumable' AND Item_ID LIKE '"+ ITMID + "' ORDER BY Item_ID", cn);
+            SqlCommand cm = new SqlCommand("SELECT * FROM StockInventory WHERE Item_ID LIKE '"+ ITMID + "' AND Status LIKE 'Available'", cn);
             dr = cm.ExecuteReader();//Description, Expiration_Date
             while (dr.Read())
-            {                             //                     3-PRODUCT / 3-Product              
-                i += 1;                   //0-#  1-PRODUCT ID / 1-Product_ID       
-                dgv.Rows.Add(i, dr[1].ToString(), dr[2].ToString());
+            {
+                //                              3-STOCK / 3-Quantity              
+                i += 1;  //0-#  1-EXPIRATION / 1-Expiration_Date    3-UNIT / 3-Quantity     
+                dgv.Rows.Add(i, dr[0].ToString(), dr[5].ToString(), dr[2].ToString(), dr[6].ToString());
             }
             dr.Close();
             cn.Close();

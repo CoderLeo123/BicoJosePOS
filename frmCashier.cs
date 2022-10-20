@@ -73,10 +73,14 @@ namespace Capstone
             }
             else
             {
-                int i = dataGridViewCart.SelectedRows[0].Index;
-                frmDiscount frm = new frmDiscount(this);
+                //int i = dataGridViewCart.SelectedRows[0].Index;
                 //frm.txtPriceDiscount.Text = dataGridViewCart[6, i].Value.ToString();                
                 //frm.lblID.Text = dataGridViewCart[11, i].Value.ToString();
+                frmDiscount frm = new frmDiscount(this);
+                frm.tabControlDiscPromo.TabPages.Clear();
+                TabPage tab = new TabPage("Discount");
+                frm.tabControlDiscPromo.TabPages.Add(tab);
+                tab.Controls.Add(frm.panelDiscount);                
                 frm.lblID.Text = lblTransactionNo.Text;
                 frm.txtPriceDiscount.Text = lblSalesTotal.Text;
                 frm.ShowDialog();
@@ -323,6 +327,30 @@ namespace Capstone
         {
             frmEditPaymentOrder frm = new frmEditPaymentOrder();
             frm.ShowDialog();
+        }
+
+        private void btnAddPromo_Click(object sender, EventArgs e)
+        {
+            int i = dataGridViewCart.SelectedRows[0].Index;
+            string Classifi = dataGridViewCart.Rows[i].Cells[14].Value.ToString();
+            if (Classifi == "Consumable")
+            {
+                frmDiscount frm = new frmDiscount(this);
+                frm.tabControlDiscPromo.TabPages.Clear();
+                TabPage tab = new TabPage("Discount");
+                frm.tabControlDiscPromo.TabPages.Add(tab);
+                tab.Controls.Add(frm.panelPromo);
+                frm.ShowDialog();
+            }
+            else
+            {
+                //MessageBox.Show("Only items with expiration can have promo", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+            
+            
+            //frm.txtPriceDiscount.Text = dataGridViewCart[6, i].Value.ToString();                
+            //frm.lblID.Text = dataGridViewCart[11, i].Value.ToString();
         }
     }
 
