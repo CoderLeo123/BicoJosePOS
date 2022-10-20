@@ -224,6 +224,7 @@ namespace Capstone
                             }
                             else if (lblCheckSettleBalance.Text == "1")
                             {
+                                
                                 frmEditPaymentOrder frmEP = new frmEditPaymentOrder();
                                 PrintPreviewDialog preview = new PrintPreviewDialog();
                                 preview.Document = printDocumentBalance;
@@ -257,36 +258,38 @@ namespace Capstone
         }
         public void settleBalance()
         {
+            frmEditPaymentOrder frmEP = new frmEditPaymentOrder();
             string transacNum = lblTransacNo.Text;
-            float total = float.Parse(txtTotal.Text);
-            float payment = float.Parse(txtPayment.Text);//Initial_Deposit
-            float change = float.Parse(txtChange.Text);
-            string pMethod = comBoxMethodPayment.Text;
-            string customer = lblCustomer.Text;
-            //string cashier = lblCashier.Text;
-            string Settled_Date = DateTime.Parse(DateTime.Now.ToString()).ToShortDateString();
-            string Completed_By = frmC.lblCashierName.Text;
-            cn.Open();
-            cm = new SqlCommand("UPDATE tblPaymentStatus SET Settled_Date = @Settled_Date, Completed_By = @Completed_By, Status = 'Settled' WHERE Transaction_No LIKE @Transaction_No ", cn);            
-            cm.Parameters.AddWithValue("@Transaction_No", transacNum);
-            cm.Parameters.AddWithValue("@Settled_Date", Settled_Date);
-            cm.Parameters.AddWithValue("@Completed_By", Completed_By);                       
-            cm.ExecuteNonQuery();
-            cn.Close();
+                float total = float.Parse(txtTotal.Text);
+                float payment = float.Parse(txtPayment.Text);//Initial_Deposit
+                float change = float.Parse(txtChange.Text);
+                string pMethod = comBoxMethodPayment.Text;
+                string customer = lblCustomer.Text;
+                //string cashier = lblCashier.Text;
+                string Settled_Date = DateTime.Now.ToString();
+                string Completed_By = lblCashier.Text;
+                
+                cn.Open();
+                cm = new SqlCommand("UPDATE tblPaymentStatus SET Settled_Date = @Settled_Date, Completed_By = @Completed_By, Status = 'Settled' WHERE Transaction_No LIKE '" + transacNum + "' ", cn);
+                //cm.Parameters.AddWithValue("@Transaction_No", transacNum);
+                cm.Parameters.AddWithValue("@Settled_Date", Settled_Date);
+                cm.Parameters.AddWithValue("@Completed_By", Completed_By);
+                cm.ExecuteNonQuery();
+                cn.Close();
 
-            cn.Open();
-            cm = new SqlCommand("INSERT INTO tblReceiptSettle (Transaction_No, Transaction_Date, Payment_Mode, Customer, Net_Total, Payment, Change, Cashier) VALUES(@Transaction_No, @Transaction_Date, @Payment_Mode, @Customer, @Net_Total, @Payment, @Change, @Cashier)", cn);
-            cm.Parameters.AddWithValue("@Transaction_No", transacNum);
-            cm.Parameters.AddWithValue("@Transaction_Date", Settled_Date);
-            cm.Parameters.AddWithValue("@Payment_Mode", pMethod);            
-            cm.Parameters.AddWithValue("@Customer", customer);                       
-            cm.Parameters.AddWithValue("@Net_Total", total.ToString("00.00"));
-            cm.Parameters.AddWithValue("@Payment", payment.ToString("00.00"));            
-            cm.Parameters.AddWithValue("@Change", change.ToString("00.00"));                       
-            cm.Parameters.AddWithValue("@Cashier", Completed_By);
-            cm.ExecuteNonQuery();
-            cn.Close();
-
+                cn.Open();
+                cm = new SqlCommand("INSERT INTO tblReceiptSettle (Transaction_No, Transaction_Date, Payment_Mode, Customer, Net_Total, Payment, Change, Cashier) VALUES(@Transaction_No, @Transaction_Date, @Payment_Mode, @Customer, @Net_Total, @Payment, @Change, @Cashier)", cn);
+                cm.Parameters.AddWithValue("@Transaction_No", transacNum);
+                cm.Parameters.AddWithValue("@Transaction_Date", Settled_Date);
+                cm.Parameters.AddWithValue("@Payment_Mode", pMethod);
+                cm.Parameters.AddWithValue("@Customer", customer);
+                cm.Parameters.AddWithValue("@Net_Total", total.ToString("00.00"));
+                cm.Parameters.AddWithValue("@Payment", payment.ToString("00.00"));
+                cm.Parameters.AddWithValue("@Change", change.ToString("00.00"));
+                cm.Parameters.AddWithValue("@Cashier", Completed_By);
+                cm.ExecuteNonQuery();
+                cn.Close();
+                classPayment.LoadRecordsUnsettled(frmEP.dataGridViewPaymentStat, frmEP.txtSearchPending);
 
         }
         public void settlement()

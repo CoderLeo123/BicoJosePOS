@@ -39,7 +39,7 @@ namespace Capstone
             string CName = dataGridViewPaymentStat.Rows[e.RowIndex].Cells[2].Value.ToString();
             //string Cashier = dataGridViewPaymentStat.Rows[e.RowIndex].Cells[7].Value.ToString();
             string Balance = dataGridViewPaymentStat.Rows[e.RowIndex].Cells[5].Value.ToString();
-            
+            frmCashier frmC = new frmCashier();
             frmSettlePayment frm = new frmSettlePayment(frml);
             frm.comBoxPaymentTerms.SelectedIndex = 0;
             
@@ -56,7 +56,7 @@ namespace Capstone
             frm.lblCheckSettleBalance.Text = "1";
             frm.lblTransacNo.Text = lblCurrentTransN.Text;
             frm.lblCustomer.Text = CName;
-            //frm.lblCashier.Text = Cashier;
+            frm.lblCashier.Text = frmC.lblCashierName.Text;
             frm.txtTotal.Text = Balance;
             
             frm.panelDepositDueDate.Size = new Size(0, 0);//539, 62

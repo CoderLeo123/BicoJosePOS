@@ -458,31 +458,60 @@ namespace Capstone
                 MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
+        
         public void LoadRecordsTransacHist(DataGridView dgv, TextBox txtSearch, DateTimePicker dateStart, DateTimePicker dateEnd)
         {//dataGridViewTransacHist, txtSearchTransac
             cn = new SqlConnection(dbcon.MyConnection());
             int i = 0;
             dgv.Rows.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT * FROM tblCart WHERE Customer LIKE '%" + txtSearch.Text + "%' OR Cashier LIKE '%" + txtSearch.Text + "%' AND Status = 'Sold' AND Date BETWEEN '" + dateStart.Value.ToShortDateString() + "' AND '" + dateEnd.Value.ToShortDateString() + "' ", cn);
+            SqlCommand cm = new SqlCommand("SELECT DISTINCT Num, Customer, Transaction_No, Cashier, Date FROM ViewPaymentCart WHERE Customer LIKE '%" + txtSearch.Text + "%' OR Cashier LIKE '%" + txtSearch.Text + "%' AND Date BETWEEN '" + dateStart.Value.ToShortDateString() + "' AND '" + dateEnd.Value.ToShortDateString() + "' ", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
-                string TransDate = dr[6].ToString();
+                string TransDate = dr[4].ToString();
 
                 if (TransDate.Substring(0, 9) != "")
                 {
-                    TransDate = dr[6].ToString().Substring(0, 10);
+                    TransDate = dr[4].ToString().Substring(0, 10);
                 }
                 else
                 {
-                    TransDate = dr[6].ToString().Substring(0, 10);
+                    TransDate = dr[4].ToString().Substring(0, 10);
                 }
                 
                         //                                          2-CUSTOMER / 15-Customer                   4-DATE(TRANSACTION) / 6-Date
                 i += 1; //0-#                    1-TRANSACTION NO / 2-Transaction_NO       3-CASHIER / 14-Cashier
-                dgv.Rows.Add(i, dr[0].ToString(), dr[2].ToString(), dr[15].ToString(), dr[14].ToString(), TransDate);
+                dgv.Rows.Add(i, dr[0].ToString(), dr[2].ToString(), dr[1].ToString(), dr[3].ToString(), TransDate);
+            }
+            dr.Close();
+            cn.Close();
+        }
+
+        public void LoadRecordsTransacSettled(DataGridView dgv, TextBox txtSearch, DateTimePicker dateStart, DateTimePicker dateEnd)
+        {//dataGridViewTransacHist, txtSearchTransac
+            cn = new SqlConnection(dbcon.MyConnection());
+            int i = 0;
+            dgv.Rows.Clear();
+            cn.Open();
+            SqlCommand cm = new SqlCommand("SELECT DISTINCT Num, Customer, Transaction_No, Cashier, Transaction_Date FROM tblReceiptSettle WHERE Customer LIKE '%" + txtSearch.Text + "%' OR Cashier LIKE '%" + txtSearch.Text + "%' AND Transaction_Date BETWEEN '" + dateStart.Value.ToShortDateString() + "' AND '" + dateEnd.Value.ToShortDateString() + "' ", cn);
+            dr = cm.ExecuteReader();
+            while (dr.Read())
+            {
+                string TransDate = dr[4].ToString();
+
+                if (TransDate.Substring(0, 9) != "")
+                {
+                    TransDate = dr[4].ToString().Substring(0, 10);
+                }
+                else
+                {
+                    TransDate = dr[4].ToString().Substring(0, 10);
+                }
+
+                //                                          2-CUSTOMER / 15-Customer                   4-DATE(TRANSACTION) / 6-Date
+                i += 1; //0-#                    1-TRANSACTION NO / 2-Transaction_NO       3-CASHIER / 14-Cashier
+                dgv.Rows.Add(i, dr[0].ToString(), dr[2].ToString(), dr[1].ToString(), dr[3].ToString(), TransDate);
             }
             dr.Close();
             cn.Close();

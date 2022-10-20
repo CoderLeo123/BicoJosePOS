@@ -27,6 +27,7 @@ namespace Capstone
             changeDatePriorCurrent(dateTimePickerStartTrans);
             classLoadData.LoadRecordsTransacHist(dataGridViewTransacHist, txtSearchTransac, dateTimePickerStartTrans, dateTimePickerEndTrans);
             classLoadData.LoadRecordsSoldItems(dataGridViewSoldItems, txtSearchSold, dateTimePickerStartSold, dateTimePickerEndSold);
+            classLoadData.LoadRecordsTransacSettled(dataGridViewSettle, txtSearchSettleds, dateTimePickerSettStart, dateTimePickerSettEnd);
         }
         public void changeDatePriorCurrent(DateTimePicker date)
         {
@@ -223,9 +224,74 @@ namespace Capstone
             e.Graphics.DrawString("THANKYOU", printFontBold, Brushes.Black, (x -= 240), (y += 30));//830
 
         }
+
+        private void dataGridViewSettle_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            lblCurrentTransN.Text = dataGridViewSettle.Rows[e.RowIndex].Cells[2].Value.ToString();
+            PrintPreviewDialog preview = new PrintPreviewDialog();
+            preview.Document = printDocumentSettled;
+            int pLength = 600;
+            printDocumentSettled.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("RECEIPT", 610, pLength);
+            preview.PrintPreviewControl.Zoom = 0.75;
+            preview.Size = new System.Drawing.Size(400, 500);
+            preview.ShowDialog();
+        }
+
+        private void printDocumentSettled_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            transNo = lblCurrentTransN.Text;
+            string TransDate = "", PMode = "", Customer = "", NetT = "", Payment = "", Change = "", Cashier = "";
+            classReport.tblReceiptSettle(transNo, out TransDate, out PMode, out Customer, out NetT, out Payment, out Change, out Cashier);
+
+
+            int x = 0, y = 0; // num = 1; string resultText = ""; int dgvCount = int.Parse(lblRowCount.Text), dgvCountService = int.Parse(lblServRowCount.Text);
+
+            System.Drawing.Font printFont = new System.Drawing.Font("Arial", 10, System.Drawing.FontStyle.Regular);
+            System.Drawing.Font printFontBold = new System.Drawing.Font("Arial", 15, System.Drawing.FontStyle.Bold);
+            System.Drawing.Font printFontItallic = new System.Drawing.Font("Arial", 12, System.Drawing.FontStyle.Italic);
+
+            e.Graphics.DrawString("Bico-Jose Optical Clinic", printFontBold, Brushes.Black, 175, 30);
+            e.Graphics.DrawString("Address: 3rd Floor Susana Mart, Tungko San Jose Del Monte Bulacan", printFont, Brushes.Black, 80, 80);
+            y = 140; x = 320;
+            e.Graphics.DrawString("Clinic's Contact: 09178326666", printFont, Brushes.Black, 20, y);//140
+            e.Graphics.DrawString("Date Issued: ", printFont, Brushes.Black, (x += 60), y);
+            e.Graphics.DrawString("Mode of Payment:  " + PMode, printFont, Brushes.Black, 20, (y += 30));//170
+            e.Graphics.DrawString(TransDate, printFont, Brushes.Black, x, y);
+
+            e.Graphics.DrawString("Cashier:  " + Cashier, printFont, Brushes.Black, x, (y += 30));//200
+            e.Graphics.DrawString("Customer Name:  " + Customer, printFont, Brushes.Black, 20, y);//230
+            e.Graphics.DrawString("--------------------------------------------------------------------------------------------------------------------------", printFont, Brushes.Black, 10, (y += 30));//260 or 290
+            e.Graphics.DrawString("Invoice No: " + transNo, printFont, Brushes.Black, 20, (y += 50));//310 or 340
+            e.Graphics.DrawString("Balance Settlement", printFont, Brushes.Black, 20, (y += 50));//360 or 390
+
+
+            x = 440;
+            //y = 550;
+            e.Graphics.DrawString("Total Amount: ", printFont, Brushes.Black, 20, (y += 50));//550
+            e.Graphics.DrawString(NetT, printFont, Brushes.Black, (x += 70), y);//510 
+
+            e.Graphics.DrawString("Amount Tendered: ", printFont, Brushes.Black, 20, (y += 30));
+            e.Graphics.DrawString(Payment, printFont, Brushes.Black, x, y);
+
+            e.Graphics.DrawString("Change: ", printFont, Brushes.Black, 20, (y += 30));
+            e.Graphics.DrawString(Change, printFont, Brushes.Black, x, y);//710          
+
+            e.Graphics.DrawString("THIS INVOICE/RECEIPT SHALL BE VALID FOR", printFontItallic, Brushes.Black, 130, (y += 60));//770
+            e.Graphics.DrawString("ONE (1)) WEEK FROM THE DATE OF THE PERMIT TO USE", printFontItallic, Brushes.Black, 70, (y += 30));//800
+            e.Graphics.DrawString("THANKYOU", printFontBold, Brushes.Black, (x -= 280), (y += 30));//830
+
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         public void paperSizeUpdate(out int paperL)
         {
-            int dgvCount = 0;// int.Parse(lblRowCount.Text);
+            int dgvCount = 0; transNo = lblCurrentTransN.Text;
+            tblAvailedList(transNo, out dgvCount);
+           
             paperL = 0;
             if (dgvCount > 0 && dgvCount <= 4)
             {

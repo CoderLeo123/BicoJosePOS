@@ -35,6 +35,25 @@ namespace Capstone
             dr.Close();
             cn.Close();
         }
+        public void tblReceiptSettle(string transacNo, out string TransDate, out string PMode, out string Customer, out string NetT, out string Payment, out string Change, out string Cashier)
+        {
+            cn = new SqlConnection(dbcon.MyConnection());
+            TransDate = ""; PMode = "";Customer = ""; NetT = ""; Payment = ""; Change = ""; Cashier = "";
+            
+            cn.Open();
+            SqlCommand cm = new SqlCommand("SELECT * FROM tblReceiptSettle WHERE Transaction_No LIKE '" + transacNo + "'", cn);
+            dr = cm.ExecuteReader();
+            while (dr.Read())
+            {
+               
+                TransDate = dr[2].ToString(); PMode = dr[3].ToString(); Customer = dr[4].ToString();
+                 NetT = dr[5].ToString(); Payment = dr[6].ToString();
+                 Change = dr[7].ToString(); Cashier = dr[8].ToString();
+
+            }
+            dr.Close();
+            cn.Close();
+        }
         public void tblAvailedList(string transacNo, out string Desc, out string Price, out string Quant, out string Total, out string UnitM)
         {
             cn = new SqlConnection(dbcon.MyConnection());
