@@ -39,17 +39,18 @@
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.txtPayment = new System.Windows.Forms.TextBox();
             this.txtChange = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.labelTot = new System.Windows.Forms.Label();
+            this.labelPay = new System.Windows.Forms.Label();
+            this.labelCH = new System.Windows.Forms.Label();
             this.comBoxPaymentTerms = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.labelPT = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblCheckSettleBalance = new System.Windows.Forms.Label();
             this.lblServRowCount = new System.Windows.Forms.Label();
             this.lblDPercent = new System.Windows.Forms.Label();
             this.lblDiscount = new System.Windows.Forms.Label();
             this.lblGrossTotal = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.labelBal = new System.Windows.Forms.Label();
             this.txtRemBalances = new System.Windows.Forms.TextBox();
             this.lblRowCount = new System.Windows.Forms.Label();
             this.lblPaymentNotice = new System.Windows.Forms.Label();
@@ -57,11 +58,11 @@
             this.panelDepositDueDate = new System.Windows.Forms.Panel();
             this.dateTimePickerDueDate = new System.Windows.Forms.DateTimePicker();
             this.lblChangeDueDate = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            this.labelDueDate = new System.Windows.Forms.Label();
             this.lblCashier = new System.Windows.Forms.Label();
             this.lblCustomer = new System.Windows.Forms.Label();
             this.comBoxMethodPayment = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.labelPM = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnReceiptPreview = new System.Windows.Forms.Button();
             this.btnBackSpace = new System.Windows.Forms.Button();
@@ -83,6 +84,7 @@
             this.printDocument = new System.Drawing.Printing.PrintDocument();
             this.printDialog = new System.Windows.Forms.PrintDialog();
             this.printPreviewDialog = new System.Windows.Forms.PrintPreviewDialog();
+            this.printDocumentBalance = new System.Drawing.Printing.PrintDocument();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnCloseSettlePayment)).BeginInit();
             this.panel1.SuspendLayout();
@@ -228,35 +230,35 @@
             this.txtChange.Text = "0";
             this.txtChange.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // label1
+            // labelTot
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(12, 112);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(83, 38);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Total ";
+            this.labelTot.AutoSize = true;
+            this.labelTot.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelTot.Location = new System.Drawing.Point(12, 112);
+            this.labelTot.Name = "labelTot";
+            this.labelTot.Size = new System.Drawing.Size(83, 38);
+            this.labelTot.TabIndex = 3;
+            this.labelTot.Text = "Total ";
             // 
-            // label2
+            // labelPay
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(12, 159);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(124, 38);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Payment";
+            this.labelPay.AutoSize = true;
+            this.labelPay.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelPay.Location = new System.Drawing.Point(12, 159);
+            this.labelPay.Name = "labelPay";
+            this.labelPay.Size = new System.Drawing.Size(124, 38);
+            this.labelPay.TabIndex = 4;
+            this.labelPay.Text = "Payment";
             // 
-            // label3
+            // labelCH
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(12, 233);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(111, 38);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Change";
+            this.labelCH.AutoSize = true;
+            this.labelCH.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelCH.Location = new System.Drawing.Point(12, 233);
+            this.labelCH.Name = "labelCH";
+            this.labelCH.Size = new System.Drawing.Size(111, 38);
+            this.labelCH.TabIndex = 5;
+            this.labelCH.Text = "Change";
             // 
             // comBoxPaymentTerms
             // 
@@ -271,24 +273,25 @@
             this.comBoxPaymentTerms.TabIndex = 7;
             this.comBoxPaymentTerms.SelectedIndexChanged += new System.EventHandler(this.comBoxPaymentTerms_SelectedIndexChanged);
             // 
-            // label4
+            // labelPT
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(12, 15);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(205, 38);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Payment Terms";
+            this.labelPT.AutoSize = true;
+            this.labelPT.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelPT.Location = new System.Drawing.Point(12, 15);
+            this.labelPT.Name = "labelPT";
+            this.labelPT.Size = new System.Drawing.Size(205, 38);
+            this.labelPT.TabIndex = 6;
+            this.labelPT.Text = "Payment Terms";
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.lblCheckSettleBalance);
             this.panel1.Controls.Add(this.lblServRowCount);
             this.panel1.Controls.Add(this.lblDPercent);
             this.panel1.Controls.Add(this.lblDiscount);
             this.panel1.Controls.Add(this.lblGrossTotal);
-            this.panel1.Controls.Add(this.label7);
+            this.panel1.Controls.Add(this.labelBal);
             this.panel1.Controls.Add(this.txtRemBalances);
             this.panel1.Controls.Add(this.lblRowCount);
             this.panel1.Controls.Add(this.lblPaymentNotice);
@@ -297,20 +300,31 @@
             this.panel1.Controls.Add(this.lblCashier);
             this.panel1.Controls.Add(this.lblCustomer);
             this.panel1.Controls.Add(this.comBoxMethodPayment);
-            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.labelPM);
             this.panel1.Controls.Add(this.comBoxPaymentTerms);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.labelPT);
+            this.panel1.Controls.Add(this.labelCH);
+            this.panel1.Controls.Add(this.labelTot);
+            this.panel1.Controls.Add(this.labelPay);
             this.panel1.Controls.Add(this.txtTotal);
             this.panel1.Controls.Add(this.txtPayment);
             this.panel1.Controls.Add(this.txtChange);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 66);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(539, 487);
+            this.panel1.Size = new System.Drawing.Size(539, 488);
             this.panel1.TabIndex = 31;
+            // 
+            // lblCheckSettleBalance
+            // 
+            this.lblCheckSettleBalance.AutoSize = true;
+            this.lblCheckSettleBalance.ForeColor = System.Drawing.Color.Red;
+            this.lblCheckSettleBalance.Location = new System.Drawing.Point(503, 168);
+            this.lblCheckSettleBalance.Name = "lblCheckSettleBalance";
+            this.lblCheckSettleBalance.Size = new System.Drawing.Size(26, 31);
+            this.lblCheckSettleBalance.TabIndex = 26;
+            this.lblCheckSettleBalance.Text = "0";
+            this.lblCheckSettleBalance.Visible = false;
             // 
             // lblServRowCount
             // 
@@ -356,15 +370,15 @@
             this.lblGrossTotal.Text = "Gross";
             this.lblGrossTotal.Visible = false;
             // 
-            // label7
+            // labelBal
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(12, 282);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(112, 38);
-            this.label7.TabIndex = 21;
-            this.label7.Text = "Balance";
+            this.labelBal.AutoSize = true;
+            this.labelBal.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelBal.Location = new System.Drawing.Point(12, 282);
+            this.labelBal.Name = "labelBal";
+            this.labelBal.Size = new System.Drawing.Size(112, 38);
+            this.labelBal.TabIndex = 21;
+            this.labelBal.Text = "Balance";
             // 
             // txtRemBalances
             // 
@@ -416,11 +430,11 @@
             // 
             this.panelDepositDueDate.Controls.Add(this.dateTimePickerDueDate);
             this.panelDepositDueDate.Controls.Add(this.lblChangeDueDate);
-            this.panelDepositDueDate.Controls.Add(this.label8);
+            this.panelDepositDueDate.Controls.Add(this.labelDueDate);
             this.panelDepositDueDate.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelDepositDueDate.Location = new System.Drawing.Point(0, 333);
             this.panelDepositDueDate.Name = "panelDepositDueDate";
-            this.panelDepositDueDate.Size = new System.Drawing.Size(539, 154);
+            this.panelDepositDueDate.Size = new System.Drawing.Size(539, 155);
             this.panelDepositDueDate.TabIndex = 16;
             this.panelDepositDueDate.Visible = false;
             // 
@@ -447,15 +461,15 @@
             this.lblChangeDueDate.Visible = false;
             this.lblChangeDueDate.Click += new System.EventHandler(this.lblChangeDueDate_Click);
             // 
-            // label8
+            // labelDueDate
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(18, 13);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(134, 38);
-            this.label8.TabIndex = 15;
-            this.label8.Text = "Due Date";
+            this.labelDueDate.AutoSize = true;
+            this.labelDueDate.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelDueDate.Location = new System.Drawing.Point(18, 13);
+            this.labelDueDate.Name = "labelDueDate";
+            this.labelDueDate.Size = new System.Drawing.Size(134, 38);
+            this.labelDueDate.TabIndex = 15;
+            this.labelDueDate.Text = "Due Date";
             // 
             // lblCashier
             // 
@@ -491,15 +505,15 @@
             this.comBoxMethodPayment.Size = new System.Drawing.Size(220, 39);
             this.comBoxMethodPayment.TabIndex = 10;
             // 
-            // label6
+            // labelPM
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(12, 63);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(262, 38);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "Method of Payment";
+            this.labelPM.AutoSize = true;
+            this.labelPM.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelPM.Location = new System.Drawing.Point(12, 63);
+            this.labelPM.Name = "labelPM";
+            this.labelPM.Size = new System.Drawing.Size(262, 38);
+            this.labelPM.TabIndex = 9;
+            this.labelPM.Text = "Method of Payment";
             // 
             // panel4
             // 
@@ -526,9 +540,9 @@
             this.panel4.Controls.Add(this.btnNine);
             this.panel4.Controls.Add(this.btnSeven);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(0, 553);
+            this.panel4.Location = new System.Drawing.Point(0, 554);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(539, 311);
+            this.panel4.Size = new System.Drawing.Size(539, 297);
             this.panel4.TabIndex = 32;
             // 
             // btnReceiptPreview
@@ -804,11 +818,15 @@
             this.printPreviewDialog.Name = "printPreviewDialog";
             this.printPreviewDialog.Visible = false;
             // 
+            // printDocumentBalance
+            // 
+            this.printDocumentBalance.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocumentBalance_PrintPage);
+            // 
             // frmSettlePayment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(539, 864);
+            this.ClientSize = new System.Drawing.Size(539, 851);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
@@ -833,17 +851,11 @@
         #endregion
 
         private Panel panel2;
-        private Label label4;
-        private Label label3;
-        private Label label2;
-        private Label label1;
         private Button btnNine;
         private Button btnEight;
         private Button btnSeven;
         private PictureBox btnCloseSettlePayment;
-        private Panel panel1;
         private Label label5;
-        private Label label6;
         private Panel panel4;
         private Button btnEnter;
         private Button btnDoubleZero;
@@ -868,9 +880,7 @@
         private Button btnThousand;
         public Label lblCustomer;
         public Label lblCashier;
-        private Label label8;
         public Label lblChangeDueDate;
-        private DateTimePicker dateTimePickerDueDate;
         private Button btnBackSpace;
         public Panel panelDepositDueDate;
         public Label lblTransacNo;
@@ -880,11 +890,21 @@
         private PrintDialog printDialog;
         public PrintPreviewDialog printPreviewDialog;
         public Label lblRowCount;
-        private Label label7;
         public TextBox txtRemBalances;
         public Label lblDPercent;
         public Label lblDiscount;
         public Label lblGrossTotal;
         public Label lblServRowCount;
+        public Label labelPT;
+        public Label labelCH;
+        public Label labelPay;
+        public Label labelTot;
+        public Label labelPM;
+        public Label labelBal;
+        public Label labelDueDate;
+        public DateTimePicker dateTimePickerDueDate;
+        public Label lblCheckSettleBalance;
+        private System.Drawing.Printing.PrintDocument printDocumentBalance;
+        public Panel panel1;
     }
 }

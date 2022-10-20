@@ -136,7 +136,7 @@ namespace Capstone
             {
                 frmEditStock frm = new frmEditStock(this);
                 frm.tabControlStock.TabPages.Clear();
-                TabPage tab = new TabPage("Stock Details");
+                TabPage tab = new TabPage("Stock History");
                 frm.tabControlStock.TabPages.Add(tab);
                 tab.Controls.Add(frm.panelStockDetail);
                 frm.Size = new Size(920, 496);

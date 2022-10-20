@@ -99,9 +99,31 @@ namespace Capstone
             {
                 stockLevel = 3; //Out of Stock level
             }
-
-
         }
+        public void LoadUnitM(string ITMID, out string UM)
+        {//dataGridViewProduct, txtSearchProduct
+            UM = "N/A";
+            try
+            {
+                cn = new SqlConnection(dbcon.MyConnection());
+                
+                cn.Open();
+                SqlCommand cm = new SqlCommand("SELECT Unit_Measure FROM tblStock WHERE Item_ID LIKE '"+ ITMID + "' ORDER BY Num", cn);
+                dr = cm.ExecuteReader();
+                if (dr.Read())
+                {
+                    UM = dr[0].ToString();
+                }
+                dr.Close();
+                cn.Close();
+            }
+            catch (Exception ex)
+            {
+                cn.Close();
+                MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         public void LoadReOrder(DataGridView dgv, TextBox txtSearch)
         {//dataGridViewProduct, txtSearchProduct
             try
@@ -113,9 +135,13 @@ namespace Capstone
                 SqlCommand cm = new SqlCommand("SELECT * FROM tblItem WHERE Stock_Check = 1 AND Stock_Level = 1 AND (Description LIKE '%" + txtSearch.Text + "%' OR Type LIKE '%" + txtSearch.Text + "%' OR Classification LIKE '%" + txtSearch.Text + "%') ORDER BY Item_ID", cn);
                 dr = cm.ExecuteReader();//Description,, Quantity, Type, Classification
                 while (dr.Read())
-                {                             //                     3-PRODUCT / 3-Product              
+                {
+                    string ITID = dr[1].ToString();
+                    string UM = "";
+                    LoadUnitM(ITID, out UM);
+                    //                                         3-PRODUCT / 3-Product              
                     i += 1;                   //0-#  1-PRODUCT ID / 1-Product_ID       
-                    dgv.Rows.Add(i, dr[3].ToString(), dr[10].ToString(), dr[5].ToString(), dr[7].ToString());
+                    dgv.Rows.Add(i, dr[3].ToString(), dr[10].ToString(), dr[5].ToString(), UM, dr[7].ToString());
                 }
                 dr.Close();
                 cn.Close();
@@ -136,9 +162,13 @@ namespace Capstone
             SqlCommand cm = new SqlCommand("SELECT * FROM tblItem WHERE Stock_Check = 1 AND Stock_Level = 2 AND (Description LIKE '%" + txtSearch.Text + "%' OR Type LIKE '%" + txtSearch.Text + "%' OR Classification LIKE '%" + txtSearch.Text + "%') ORDER BY Item_ID", cn);
             dr = cm.ExecuteReader();//Description,, Quantity, Type, Classification
             while (dr.Read())
-            {                             //                     3-PRODUCT / 3-Product              
+            {
+                string ITID = dr[1].ToString();
+                string UM = "";
+                LoadUnitM(ITID, out UM);
+                //                                             3-PRODUCT / 3-Product              
                 i += 1;                   //0-#  1-PRODUCT ID / 1-Product_ID       
-                dgv.Rows.Add(i, dr[3].ToString(), dr[10].ToString(), dr[5].ToString(), dr[7].ToString());
+                dgv.Rows.Add(i, dr[3].ToString(), dr[10].ToString(), dr[5].ToString(), UM, dr[7].ToString());
             }
             dr.Close();
             cn.Close();
@@ -152,9 +182,13 @@ namespace Capstone
             SqlCommand cm = new SqlCommand("SELECT * FROM tblItem WHERE Stock_Check = 1 AND Stock_Level = 3 AND (Description LIKE '%" + txtSearch.Text + "%' OR Type LIKE '%" + txtSearch.Text + "%' OR Classification LIKE '%" + txtSearch.Text + "%') ORDER BY Item_ID", cn);
             dr = cm.ExecuteReader();//Description,, Quantity, Type, Classification
             while (dr.Read())
-            {                             //                     3-PRODUCT / 3-Product              
+            {
+                string ITID = dr[1].ToString();
+                string UM = "";
+                LoadUnitM(ITID, out UM);
+                //                                           3-PRODUCT / 3-Product              
                 i += 1;                   //0-#  1-PRODUCT ID / 1-Product_ID       
-                dgv.Rows.Add(i, dr[3].ToString(), dr[10].ToString(), dr[5].ToString(), dr[7].ToString());
+                dgv.Rows.Add(i, dr[3].ToString(), dr[10].ToString(), dr[5].ToString(), UM, dr[7].ToString());
             }
             dr.Close();
             cn.Close();

@@ -53,6 +53,7 @@
             this.DescriptionInventory = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TypeInventory = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StockOnHandInventory = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnitM = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Class = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
@@ -65,6 +66,7 @@
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnM = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
@@ -77,6 +79,7 @@
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UMe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
@@ -301,6 +304,7 @@
             this.DescriptionInventory,
             this.TypeInventory,
             this.StockOnHandInventory,
+            this.UnitM,
             this.Class});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.Azure;
@@ -357,6 +361,15 @@
             this.StockOnHandInventory.ReadOnly = true;
             this.StockOnHandInventory.Width = 127;
             // 
+            // UnitM
+            // 
+            this.UnitM.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.UnitM.HeaderText = "UNIT";
+            this.UnitM.MinimumWidth = 6;
+            this.UnitM.Name = "UnitM";
+            this.UnitM.ReadOnly = true;
+            this.UnitM.Width = 106;
+            // 
             // Class
             // 
             this.Class.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
@@ -399,10 +412,10 @@
             this.tabPage2.BackColor = System.Drawing.Color.Transparent;
             this.tabPage2.Controls.Add(this.panelCritical);
             this.tabPage2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.tabPage2.Location = new System.Drawing.Point(4, 46);
+            this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1307, 823);
+            this.tabPage2.Size = new System.Drawing.Size(1307, 840);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Critical";
             // 
@@ -413,7 +426,7 @@
             this.panelCritical.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelCritical.Location = new System.Drawing.Point(3, 3);
             this.panelCritical.Name = "panelCritical";
-            this.panelCritical.Size = new System.Drawing.Size(1301, 817);
+            this.panelCritical.Size = new System.Drawing.Size(1301, 834);
             this.panelCritical.TabIndex = 41;
             // 
             // panel14
@@ -422,7 +435,7 @@
             this.panel14.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel14.Location = new System.Drawing.Point(0, 75);
             this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(1301, 742);
+            this.panel14.Size = new System.Drawing.Size(1301, 759);
             this.panel14.TabIndex = 1;
             // 
             // dataGridViewCritical
@@ -446,6 +459,7 @@
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4,
+            this.UnM,
             this.dataGridViewTextBoxColumn5});
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.Azure;
@@ -465,7 +479,7 @@
             this.dataGridViewCritical.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridViewCritical.RowTemplate.Height = 35;
             this.dataGridViewCritical.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewCritical.Size = new System.Drawing.Size(1301, 742);
+            this.dataGridViewCritical.Size = new System.Drawing.Size(1301, 759);
             this.dataGridViewCritical.TabIndex = 6;
             // 
             // dataGridViewTextBoxColumn1
@@ -501,6 +515,15 @@
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
             this.dataGridViewTextBoxColumn4.Width = 127;
+            // 
+            // UnM
+            // 
+            this.UnM.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.UnM.HeaderText = "UNIT";
+            this.UnM.MinimumWidth = 6;
+            this.UnM.Name = "UnM";
+            this.UnM.ReadOnly = true;
+            this.UnM.Width = 106;
             // 
             // dataGridViewTextBoxColumn5
             // 
@@ -542,9 +565,9 @@
             // tabPage4
             // 
             this.tabPage4.Controls.Add(this.panelOutOfStock);
-            this.tabPage4.Location = new System.Drawing.Point(4, 46);
+            this.tabPage4.Location = new System.Drawing.Point(4, 29);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(1307, 823);
+            this.tabPage4.Size = new System.Drawing.Size(1307, 840);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Out of Stock";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -556,7 +579,7 @@
             this.panelOutOfStock.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelOutOfStock.Location = new System.Drawing.Point(0, 0);
             this.panelOutOfStock.Name = "panelOutOfStock";
-            this.panelOutOfStock.Size = new System.Drawing.Size(1307, 823);
+            this.panelOutOfStock.Size = new System.Drawing.Size(1307, 840);
             this.panelOutOfStock.TabIndex = 1;
             // 
             // panel6
@@ -565,7 +588,7 @@
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(0, 74);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(1307, 749);
+            this.panel6.Size = new System.Drawing.Size(1307, 766);
             this.panel6.TabIndex = 41;
             // 
             // dataGridViewOutStock
@@ -589,6 +612,7 @@
             this.dataGridViewTextBoxColumn7,
             this.dataGridViewTextBoxColumn8,
             this.dataGridViewTextBoxColumn9,
+            this.UMe,
             this.dataGridViewTextBoxColumn10});
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.Azure;
@@ -608,7 +632,7 @@
             this.dataGridViewOutStock.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridViewOutStock.RowTemplate.Height = 35;
             this.dataGridViewOutStock.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewOutStock.Size = new System.Drawing.Size(1307, 749);
+            this.dataGridViewOutStock.Size = new System.Drawing.Size(1307, 766);
             this.dataGridViewOutStock.TabIndex = 6;
             // 
             // dataGridViewTextBoxColumn6
@@ -644,6 +668,15 @@
             this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
             this.dataGridViewTextBoxColumn9.ReadOnly = true;
             this.dataGridViewTextBoxColumn9.Width = 127;
+            // 
+            // UMe
+            // 
+            this.UMe.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.UMe.HeaderText = "UNIT";
+            this.UMe.MinimumWidth = 6;
+            this.UMe.Name = "UMe";
+            this.UMe.ReadOnly = true;
+            this.UMe.Width = 106;
             // 
             // dataGridViewTextBoxColumn10
             // 
@@ -885,7 +918,6 @@
         private TabPage tabPage1;
         private TabPage tabPage2;
         private TabPage tabPage4;
-        private DataGridView dataGridViewReOrder;
         private Panel panelOutOfStock;
         private Panel panel9;
         public TextBox txtSearchOutOStock;
@@ -893,21 +925,6 @@
         public TextBox txtSearchReOrder;
         private Panel panel8;
         public TextBox txtSearchCritical;
-        private DataGridViewTextBoxColumn NumInventory;
-        private DataGridViewTextBoxColumn DescriptionInventory;
-        private DataGridViewTextBoxColumn TypeInventory;
-        private DataGridViewTextBoxColumn StockOnHandInventory;
-        private DataGridViewTextBoxColumn Class;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private TabPage tabPage3;
         private Panel panel12;
         public TextBox txtSearchExpirat;
@@ -925,7 +942,6 @@
         public Button btnReOrder;
         public Button btnCrittical;
         public Button btnOutOFStock;
-        private Panel panelReOrder;
         private Panel panel3;
         private Panel panel2;
         private Panel panelCritical;
@@ -936,5 +952,25 @@
         public Panel panelExpiration;
         private Panel panel15;
         private Panel panel11;
+        public DataGridView dataGridViewReOrder;
+        public Panel panelReOrder;
+        private DataGridViewTextBoxColumn NumInventory;
+        private DataGridViewTextBoxColumn DescriptionInventory;
+        private DataGridViewTextBoxColumn TypeInventory;
+        private DataGridViewTextBoxColumn StockOnHandInventory;
+        private DataGridViewTextBoxColumn UnitM;
+        private DataGridViewTextBoxColumn Class;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private DataGridViewTextBoxColumn UnM;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private DataGridViewTextBoxColumn UMe;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
     }
 }
