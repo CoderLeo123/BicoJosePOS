@@ -190,6 +190,7 @@
             this.panelProduct.Name = "panelProduct";
             this.panelProduct.Size = new System.Drawing.Size(885, 491);
             this.panelProduct.TabIndex = 0;
+            this.panelProduct.Paint += new System.Windows.Forms.PaintEventHandler(this.panelProduct_Paint);
             // 
             // txtProdID
             // 

@@ -34,7 +34,8 @@ namespace Capstone
         {
             string colName = dataGridViewExpLis.Columns[e.ColumnIndex].Name;
             string ITMID = lblITEMID.Text;
-            if (colName == "del")
+            int disposeQty = int.Parse(dataGridViewExpLis.Rows[e.RowIndex].Cells[3].Value.ToString());
+            if (colName == "dek")
             {
                 if (MessageBox.Show("Dispose this Item?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
@@ -48,6 +49,12 @@ namespace Capstone
                         cm = new SqlCommand("Update tblStockInventory SET Status = 'Dispose' WHERE id LIKE '" + dataGridViewExpLis.Rows[e.RowIndex].Cells[1].Value.ToString() + "'", cn);
                         cm.ExecuteNonQuery();
                         cn.Close();
+
+                        cn.Open();
+                        cm = new SqlCommand("Update tblItem SET Quantity = Quantity - "+ disposeQty + " WHERE Item_ID LIKE '" + ITMID + "'", cn);
+                        cm.ExecuteNonQuery();
+                        cn.Close();
+
                         MessageBox.Show("Item has been successfully dispose.", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
                         classInvent.LoadNearExpiration(dataGridViewExpLis, txtSearchExpL, ITMID);
                         

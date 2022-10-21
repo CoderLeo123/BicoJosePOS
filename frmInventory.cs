@@ -98,10 +98,11 @@ namespace Capstone
             frmExpListDispose frm = new frmExpListDispose();
             frm.tabControlExpLi.TabPages.Clear();
             TabPage tab = new TabPage("Expiration List");
-            tabControlInventory.TabPages.Add(tab);
+            frm.tabControlExpLi.TabPages.Add(tab);
             tab.Controls.Add(frm.panelExpiLists);
             classInvent.LoadNearExpiration(frm.dataGridViewExpLis, frm.txtSearchExpL, ITMID);
             frm.lblITEMID.Text = ITMID;
+            frm.ShowDialog();
         }
 
         private void btnCrittical_Click(object sender, EventArgs e)

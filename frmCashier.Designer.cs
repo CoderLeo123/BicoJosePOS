@@ -58,7 +58,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.btnAddPromo = new System.Windows.Forms.Button();
             this.btnSettleBalance = new System.Windows.Forms.Button();
             this.btnBrowseService = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
@@ -81,7 +80,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.dataGridViewCart = new System.Windows.Forms.DataGridView();
-            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.NumCart = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DescriptionCart = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Expiration = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -97,6 +95,7 @@
             this.ItemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unitMe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Classif = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.panel2.SuspendLayout();
             this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewService)).BeginInit();
@@ -114,9 +113,9 @@
             this.panel2.Controls.Add(this.panel8);
             this.panel2.Controls.Add(this.panel7);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 782);
+            this.panel2.Location = new System.Drawing.Point(0, 713);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1600, 197);
+            this.panel2.Size = new System.Drawing.Size(1600, 266);
             this.panel2.TabIndex = 1;
             // 
             // panel8
@@ -125,7 +124,7 @@
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel8.Location = new System.Drawing.Point(0, 0);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(1173, 197);
+            this.panel8.Size = new System.Drawing.Size(1173, 266);
             this.panel8.TabIndex = 1;
             // 
             // dataGridViewService
@@ -171,7 +170,7 @@
             this.dataGridViewService.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridViewService.RowTemplate.Height = 29;
             this.dataGridViewService.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewService.Size = new System.Drawing.Size(1173, 197);
+            this.dataGridViewService.Size = new System.Drawing.Size(1173, 266);
             this.dataGridViewService.TabIndex = 4;
             this.dataGridViewService.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewService_CellContentClick);
             // 
@@ -248,14 +247,14 @@
             this.panel7.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel7.Location = new System.Drawing.Point(1173, 0);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(427, 197);
+            this.panel7.Size = new System.Drawing.Size(427, 266);
             this.panel7.TabIndex = 0;
             // 
             // lblDiscPercen
             // 
             this.lblDiscPercen.AutoSize = true;
             this.lblDiscPercen.ForeColor = System.Drawing.Color.Red;
-            this.lblDiscPercen.Location = new System.Drawing.Point(152, 75);
+            this.lblDiscPercen.Location = new System.Drawing.Point(146, 112);
             this.lblDiscPercen.Name = "lblDiscPercen";
             this.lblDiscPercen.Size = new System.Drawing.Size(76, 28);
             this.lblDiscPercen.TabIndex = 23;
@@ -266,7 +265,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(6, 21);
+            this.label3.Location = new System.Drawing.Point(0, 58);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(169, 41);
             this.label3.TabIndex = 0;
@@ -276,7 +275,7 @@
             // 
             this.lblSalesTotal.AutoSize = true;
             this.lblSalesTotal.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblSalesTotal.Location = new System.Drawing.Point(280, 21);
+            this.lblSalesTotal.Location = new System.Drawing.Point(274, 58);
             this.lblSalesTotal.Name = "lblSalesTotal";
             this.lblSalesTotal.Size = new System.Drawing.Size(94, 41);
             this.lblSalesTotal.TabIndex = 2;
@@ -287,7 +286,7 @@
             this.lblNetTotal.AutoSize = true;
             this.lblNetTotal.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblNetTotal.ForeColor = System.Drawing.Color.Red;
-            this.lblNetTotal.Location = new System.Drawing.Point(280, 103);
+            this.lblNetTotal.Location = new System.Drawing.Point(274, 140);
             this.lblNetTotal.Name = "lblNetTotal";
             this.lblNetTotal.Size = new System.Drawing.Size(94, 41);
             this.lblNetTotal.TabIndex = 6;
@@ -297,7 +296,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label10.Location = new System.Drawing.Point(6, 103);
+            this.label10.Location = new System.Drawing.Point(0, 140);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(143, 41);
             this.label10.TabIndex = 4;
@@ -319,7 +318,7 @@
             // 
             this.lblDiscount.AutoSize = true;
             this.lblDiscount.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblDiscount.Location = new System.Drawing.Point(280, 62);
+            this.lblDiscount.Location = new System.Drawing.Point(274, 99);
             this.lblDiscount.Name = "lblDiscount";
             this.lblDiscount.Size = new System.Drawing.Size(94, 41);
             this.lblDiscount.TabIndex = 3;
@@ -340,7 +339,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(6, 62);
+            this.label5.Location = new System.Drawing.Point(0, 99);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(140, 41);
             this.label5.TabIndex = 1;
@@ -399,13 +398,12 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel4.Location = new System.Drawing.Point(1173, 78);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(427, 704);
+            this.panel4.Size = new System.Drawing.Size(427, 635);
             this.panel4.TabIndex = 3;
             // 
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.Cyan;
-            this.panel6.Controls.Add(this.btnAddPromo);
             this.panel6.Controls.Add(this.btnSettleBalance);
             this.panel6.Controls.Add(this.btnBrowseService);
             this.panel6.Controls.Add(this.btnLogout);
@@ -418,26 +416,8 @@
             this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel6.Location = new System.Drawing.Point(0, 0);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(427, 708);
+            this.panel6.Size = new System.Drawing.Size(427, 645);
             this.panel6.TabIndex = 1;
-            // 
-            // btnAddPromo
-            // 
-            this.btnAddPromo.FlatAppearance.BorderSize = 0;
-            this.btnAddPromo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddPromo.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnAddPromo.ForeColor = System.Drawing.Color.Black;
-            this.btnAddPromo.Image = global::Capstone.Properties.Resources.Service;
-            this.btnAddPromo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAddPromo.Location = new System.Drawing.Point(0, 283);
-            this.btnAddPromo.Name = "btnAddPromo";
-            this.btnAddPromo.Size = new System.Drawing.Size(389, 68);
-            this.btnAddPromo.TabIndex = 10;
-            this.btnAddPromo.Text = "    [ F5 ] ADD PROMO";
-            this.btnAddPromo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAddPromo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnAddPromo.UseVisualStyleBackColor = true;
-            this.btnAddPromo.Click += new System.EventHandler(this.btnAddPromo_Click);
             // 
             // btnSettleBalance
             // 
@@ -447,7 +427,7 @@
             this.btnSettleBalance.ForeColor = System.Drawing.Color.Black;
             this.btnSettleBalance.Image = global::Capstone.Properties.Resources.payStat;
             this.btnSettleBalance.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSettleBalance.Location = new System.Drawing.Point(0, 563);
+            this.btnSettleBalance.Location = new System.Drawing.Point(0, 487);
             this.btnSettleBalance.Name = "btnSettleBalance";
             this.btnSettleBalance.Size = new System.Drawing.Size(389, 68);
             this.btnSettleBalance.TabIndex = 9;
@@ -484,7 +464,7 @@
             this.btnLogout.ForeColor = System.Drawing.Color.Black;
             this.btnLogout.Image = global::Capstone.Properties.Resources.Log_out;
             this.btnLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLogout.Location = new System.Drawing.Point(0, 637);
+            this.btnLogout.Location = new System.Drawing.Point(0, 561);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(389, 68);
             this.btnLogout.TabIndex = 7;
@@ -502,7 +482,7 @@
             this.btnDailySales.ForeColor = System.Drawing.Color.Black;
             this.btnDailySales.Image = global::Capstone.Properties.Resources.DailySales;
             this.btnDailySales.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDailySales.Location = new System.Drawing.Point(0, 493);
+            this.btnDailySales.Location = new System.Drawing.Point(0, 417);
             this.btnDailySales.Name = "btnDailySales";
             this.btnDailySales.Size = new System.Drawing.Size(389, 68);
             this.btnDailySales.TabIndex = 5;
@@ -521,7 +501,7 @@
             this.btnClearCart.ForeColor = System.Drawing.Color.Black;
             this.btnClearCart.Image = global::Capstone.Properties.Resources.ClearCart;
             this.btnClearCart.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClearCart.Location = new System.Drawing.Point(0, 419);
+            this.btnClearCart.Location = new System.Drawing.Point(0, 343);
             this.btnClearCart.Name = "btnClearCart";
             this.btnClearCart.Size = new System.Drawing.Size(389, 68);
             this.btnClearCart.TabIndex = 4;
@@ -540,7 +520,7 @@
             this.btnSettlePayment.ForeColor = System.Drawing.Color.Black;
             this.btnSettlePayment.Image = global::Capstone.Properties.Resources.SettlePayment;
             this.btnSettlePayment.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSettlePayment.Location = new System.Drawing.Point(0, 345);
+            this.btnSettlePayment.Location = new System.Drawing.Point(0, 269);
             this.btnSettlePayment.Name = "btnSettlePayment";
             this.btnSettlePayment.Size = new System.Drawing.Size(389, 68);
             this.btnSettlePayment.TabIndex = 3;
@@ -732,7 +712,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(0, 258);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1173, 524);
+            this.panel5.Size = new System.Drawing.Size(1173, 455);
             this.panel5.TabIndex = 5;
             // 
             // dataGridViewCart
@@ -786,13 +766,9 @@
             this.dataGridViewCart.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridViewCart.RowTemplate.Height = 29;
             this.dataGridViewCart.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewCart.Size = new System.Drawing.Size(1173, 524);
+            this.dataGridViewCart.Size = new System.Drawing.Size(1173, 455);
             this.dataGridViewCart.TabIndex = 3;
             this.dataGridViewCart.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewCart_CellContentClick);
-            // 
-            // printDocument1
-            // 
-            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
             // NumCart
             // 
@@ -846,7 +822,7 @@
             this.DiscountCart.Name = "DiscountCart";
             this.DiscountCart.ReadOnly = true;
             this.DiscountCart.Visible = false;
-            this.DiscountCart.Width = 134;
+            this.DiscountCart.Width = 125;
             // 
             // TotalCart
             // 
@@ -925,6 +901,10 @@
             this.Classif.Name = "Classif";
             this.Classif.Visible = false;
             this.Classif.Width = 125;
+            // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
             // frmCashier
             // 
@@ -1010,7 +990,6 @@
         public Label lblDiscPercen;
         public Label lblTotal;
         public Button btnSettleBalance;
-        public Button btnAddPromo;
         private DataGridViewTextBoxColumn NumCart;
         private DataGridViewTextBoxColumn DescriptionCart;
         private DataGridViewTextBoxColumn Expiration;

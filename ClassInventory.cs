@@ -100,9 +100,9 @@ namespace Capstone
                 stockLevel = 3; //Out of Stock level
             }
         }
-        public void LoadUnitM(string ITMID, out string UM)
+        public void LoadUnitM(string ITMID,  DataGridView dgv)
         {//dataGridViewProduct, txtSearchProduct
-            UM = "N/A";
+            //string UM = "N/A";
             try
             {
                 cn = new SqlConnection(dbcon.MyConnection());
@@ -112,36 +112,37 @@ namespace Capstone
                 dr = cm.ExecuteReader();
                 if (dr.Read())
                 {
-                    UM = dr[0].ToString();
+                    //dgv.Rows.Add(dr[3].ToString(), dr[10].ToString(), dr[5].ToString());
                 }
                 dr.Close();
                 cn.Close();
             }
             catch (Exception ex)
             {
-                cn.Close();
+                
                 MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
 
         public void LoadReOrder(DataGridView dgv, TextBox txtSearch)
         {//dataGridViewProduct, txtSearchProduct
             try
             {
+                string UM = "N/A";
                 cn = new SqlConnection(dbcon.MyConnection());
                 int i = 0;
                 dgv.Rows.Clear();
                 cn.Open();
                 SqlCommand cm = new SqlCommand("SELECT * FROM tblItem WHERE Stock_Check = 1 AND Stock_Level = 1 AND (Description LIKE '%" + txtSearch.Text + "%' OR Type LIKE '%" + txtSearch.Text + "%' OR Classification LIKE '%" + txtSearch.Text + "%') ORDER BY Item_ID", cn);
                 dr = cm.ExecuteReader();//Description,, Quantity, Type, Classification
+                
                 while (dr.Read())
                 {
-                    string ITID = dr[1].ToString();
-                    string UM = "";
-                    LoadUnitM(ITID, out UM);
+                    
                     //                                         3-PRODUCT / 3-Product              
                     i += 1;                   //0-#  1-PRODUCT ID / 1-Product_ID       
-                    dgv.Rows.Add(i, dr[3].ToString(), dr[10].ToString(), dr[5].ToString(), UM, dr[7].ToString());
+                    dgv.Rows.Add(i, dr[3].ToString(), dr[10].ToString(), dr[5].ToString(), dr[7].ToString(), dr[1].ToString());
                 }
                 dr.Close();
                 cn.Close();
@@ -156,19 +157,18 @@ namespace Capstone
         public void LoadCritical(DataGridView dgv, TextBox txtSearch)
         {//dataGridViewProduct, txtSearchProduct
             cn = new SqlConnection(dbcon.MyConnection());
-            int i = 0;
+            int i = 0; string UM = "N/A";
             dgv.Rows.Clear();
             cn.Open();
             SqlCommand cm = new SqlCommand("SELECT * FROM tblItem WHERE Stock_Check = 1 AND Stock_Level = 2 AND (Description LIKE '%" + txtSearch.Text + "%' OR Type LIKE '%" + txtSearch.Text + "%' OR Classification LIKE '%" + txtSearch.Text + "%') ORDER BY Item_ID", cn);
             dr = cm.ExecuteReader();//Description,, Quantity, Type, Classification
             while (dr.Read())
             {
-                string ITID = dr[1].ToString();
-                string UM = "";
-                LoadUnitM(ITID, out UM);
+                
+
                 //                                             3-PRODUCT / 3-Product              
                 i += 1;                   //0-#  1-PRODUCT ID / 1-Product_ID       
-                dgv.Rows.Add(i, dr[3].ToString(), dr[10].ToString(), dr[5].ToString(), UM, dr[7].ToString());
+                dgv.Rows.Add(i, dr[3].ToString(), dr[10].ToString(), dr[5].ToString(), dr[7].ToString(), dr[1].ToString());
             }
             dr.Close();
             cn.Close();
@@ -176,19 +176,24 @@ namespace Capstone
         public void LoadOutOfStock(DataGridView dgv, TextBox txtSearch)
         {//dataGridViewProduct, txtSearchProduct
             cn = new SqlConnection(dbcon.MyConnection());
-            int i = 0;
+            string UM = "";
+            
+
+            int i = 0; string ITID=""; 
             dgv.Rows.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT * FROM tblItem WHERE Stock_Check = 1 AND Stock_Level = 3 AND (Description LIKE '%" + txtSearch.Text + "%' OR Type LIKE '%" + txtSearch.Text + "%' OR Classification LIKE '%" + txtSearch.Text + "%') ORDER BY Item_ID", cn);
+             cm = new SqlCommand("SELECT * FROM tblItem WHERE Stock_Check = 1 AND Stock_Level = 3 AND (Description LIKE '%" + txtSearch.Text + "%' OR Type LIKE '%" + txtSearch.Text + "%' OR Classification LIKE '%" + txtSearch.Text + "%') ORDER BY Item_ID", cn);
             dr = cm.ExecuteReader();//Description,, Quantity, Type, Classification
+
             while (dr.Read())
             {
-                string ITID = dr[1].ToString();
-                string UM = "";
-                LoadUnitM(ITID, out UM);
+                //ITID = dr[1].ToString();
+                //LoadUnitM(ITID, out UM);
+               
+
                 //                                           3-PRODUCT / 3-Product              
                 i += 1;                   //0-#  1-PRODUCT ID / 1-Product_ID       
-                dgv.Rows.Add(i, dr[3].ToString(), dr[10].ToString(), dr[5].ToString(), UM, dr[7].ToString());
+                dgv.Rows.Add(i, dr[3].ToString(), dr[10].ToString(), dr[5].ToString(), dr[7].ToString(), dr[1].ToString());
             }
             dr.Close();
             cn.Close();
@@ -217,7 +222,7 @@ namespace Capstone
             int i = 0;
             dgv.Rows.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT * FROM StockInventory WHERE Item_ID LIKE '"+ ITMID + "' AND Status LIKE 'Available'", cn);
+            SqlCommand cm = new SqlCommand("SELECT * FROM tblStockInventory WHERE Item_ID LIKE '"+ ITMID + "' AND Status LIKE 'Available'", cn);
             dr = cm.ExecuteReader();//Description, Expiration_Date
             while (dr.Read())
             {

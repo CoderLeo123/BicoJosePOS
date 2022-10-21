@@ -212,6 +212,7 @@ namespace Capstone
                             int pLength = 0;
                             if (lblCheckSettleBalance.Text == "0")
                             {
+                                pTerms = comBoxPaymentTerms.Text;
                                 PrintPreviewDialog preview = new PrintPreviewDialog();
                                 preview.Document = printDocument;
                                 pLength = 920;

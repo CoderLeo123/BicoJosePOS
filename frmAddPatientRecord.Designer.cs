@@ -55,6 +55,8 @@
             this.txtAddTransRefNo = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
             this.panelAddPresc = new System.Windows.Forms.Panel();
+            this.txtADDOSCYL = new System.Windows.Forms.TextBox();
+            this.txtADDODCYL = new System.Windows.Forms.TextBox();
             this.txtAddOSAXIS = new System.Windows.Forms.TextBox();
             this.txtAddODAXIS = new System.Windows.Forms.TextBox();
             this.txtAddOSPD = new System.Windows.Forms.TextBox();
@@ -66,8 +68,6 @@
             this.btnCancelPatientRecord = new System.Windows.Forms.Button();
             this.btnUpdatePatientRecord = new System.Windows.Forms.Button();
             this.btnSavePatientRecord = new System.Windows.Forms.Button();
-            this.comBoxAddOSCYL = new System.Windows.Forms.ComboBox();
-            this.comBoxAddODCYL = new System.Windows.Forms.ComboBox();
             this.txtAddFeature = new System.Windows.Forms.TextBox();
             this.txtAddNote = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -323,6 +323,8 @@
             this.txtAddContact.Name = "txtAddContact";
             this.txtAddContact.Size = new System.Drawing.Size(439, 34);
             this.txtAddContact.TabIndex = 52;
+            this.txtAddContact.TextChanged += new System.EventHandler(this.txtAddContact_TextChanged);
+            this.txtAddContact.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAddContact_KeyPress);
             // 
             // label25
             // 
@@ -395,6 +397,8 @@
             // panelAddPresc
             // 
             this.panelAddPresc.BackColor = System.Drawing.Color.SeaShell;
+            this.panelAddPresc.Controls.Add(this.txtADDOSCYL);
+            this.panelAddPresc.Controls.Add(this.txtADDODCYL);
             this.panelAddPresc.Controls.Add(this.txtAddOSAXIS);
             this.panelAddPresc.Controls.Add(this.txtAddODAXIS);
             this.panelAddPresc.Controls.Add(this.txtAddOSPD);
@@ -406,8 +410,6 @@
             this.panelAddPresc.Controls.Add(this.btnCancelPatientRecord);
             this.panelAddPresc.Controls.Add(this.btnUpdatePatientRecord);
             this.panelAddPresc.Controls.Add(this.btnSavePatientRecord);
-            this.panelAddPresc.Controls.Add(this.comBoxAddOSCYL);
-            this.panelAddPresc.Controls.Add(this.comBoxAddODCYL);
             this.panelAddPresc.Controls.Add(this.txtAddFeature);
             this.panelAddPresc.Controls.Add(this.txtAddNote);
             this.panelAddPresc.Controls.Add(this.label2);
@@ -425,6 +427,25 @@
             this.panelAddPresc.Name = "panelAddPresc";
             this.panelAddPresc.Size = new System.Drawing.Size(1315, 535);
             this.panelAddPresc.TabIndex = 20;
+            this.panelAddPresc.Paint += new System.Windows.Forms.PaintEventHandler(this.panelAddPresc_Paint);
+            // 
+            // txtADDOSCYL
+            // 
+            this.txtADDOSCYL.BackColor = System.Drawing.Color.LightCyan;
+            this.txtADDOSCYL.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtADDOSCYL.Location = new System.Drawing.Point(273, 183);
+            this.txtADDOSCYL.Name = "txtADDOSCYL";
+            this.txtADDOSCYL.Size = new System.Drawing.Size(101, 34);
+            this.txtADDOSCYL.TabIndex = 64;
+            // 
+            // txtADDODCYL
+            // 
+            this.txtADDODCYL.BackColor = System.Drawing.Color.LightCyan;
+            this.txtADDODCYL.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtADDODCYL.Location = new System.Drawing.Point(273, 120);
+            this.txtADDODCYL.Name = "txtADDODCYL";
+            this.txtADDODCYL.Size = new System.Drawing.Size(101, 34);
+            this.txtADDODCYL.TabIndex = 63;
             // 
             // txtAddOSAXIS
             // 
@@ -434,6 +455,7 @@
             this.txtAddOSAXIS.Name = "txtAddOSAXIS";
             this.txtAddOSAXIS.Size = new System.Drawing.Size(101, 34);
             this.txtAddOSAXIS.TabIndex = 62;
+            this.txtAddOSAXIS.TextChanged += new System.EventHandler(this.txtAddOSAXIS_TextChanged);
             // 
             // txtAddODAXIS
             // 
@@ -545,26 +567,6 @@
             this.btnSavePatientRecord.Text = "Save";
             this.btnSavePatientRecord.UseVisualStyleBackColor = false;
             this.btnSavePatientRecord.Click += new System.EventHandler(this.btnSavePatientRecord_Click);
-            // 
-            // comBoxAddOSCYL
-            // 
-            this.comBoxAddOSCYL.BackColor = System.Drawing.Color.LightCyan;
-            this.comBoxAddOSCYL.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.comBoxAddOSCYL.FormattingEnabled = true;
-            this.comBoxAddOSCYL.Location = new System.Drawing.Point(285, 177);
-            this.comBoxAddOSCYL.Name = "comBoxAddOSCYL";
-            this.comBoxAddOSCYL.Size = new System.Drawing.Size(85, 36);
-            this.comBoxAddOSCYL.TabIndex = 42;
-            // 
-            // comBoxAddODCYL
-            // 
-            this.comBoxAddODCYL.BackColor = System.Drawing.Color.LightCyan;
-            this.comBoxAddODCYL.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.comBoxAddODCYL.FormattingEnabled = true;
-            this.comBoxAddODCYL.Location = new System.Drawing.Point(285, 116);
-            this.comBoxAddODCYL.Name = "comBoxAddODCYL";
-            this.comBoxAddODCYL.Size = new System.Drawing.Size(85, 36);
-            this.comBoxAddODCYL.TabIndex = 41;
             // 
             // txtAddFeature
             // 
@@ -917,12 +919,8 @@
         private Label label18;
         private Label label16;
         private Label label17;
-        private ComboBox comBoxAddOSCYL;
-        private ComboBox comBoxAddODCYL;
         private Label label29;
         private Label label28;
-        private DateTimePicker dateTimePickerCheckUpDate;
-        private TextBox txtAddAge;
         private Label label27;
         private Label label26;
         private Label label25;
@@ -935,8 +933,6 @@
         private Button btnCancelPatientRecord;
         private Button btnUpdatePatientRecord;
         private Button btnSavePatientRecord;
-        private ComboBox comBoxAddGender;
-        private DateTimePicker dateTimePickerBirthDate;
         private Label label11;
         public TextBox txtAddOSSPH;
         public TextBox txtAddODSPH;
@@ -952,5 +948,11 @@
         public TextBox txtAddAddress;
         public TextBox txtAddFName;
         public TextBox txtAddLName;
+        public TextBox txtADDOSCYL;
+        public TextBox txtADDODCYL;
+        public DateTimePicker dateTimePickerCheckUpDate;
+        public TextBox txtAddAge;
+        public ComboBox comBoxAddGender;
+        public DateTimePicker dateTimePickerBirthDate;
     }
 }

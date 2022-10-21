@@ -445,5 +445,10 @@ namespace Capstone
         {
             mouseDown = false;
         }
+
+        private void panelProduct_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

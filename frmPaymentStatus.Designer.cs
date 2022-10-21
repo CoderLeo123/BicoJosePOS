@@ -62,6 +62,7 @@
             this.Cashier = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.S = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel14 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.txtSearchPending = new System.Windows.Forms.TextBox();
             this.dateTimePickerStartPending = new System.Windows.Forms.DateTimePicker();
@@ -97,13 +98,14 @@
             this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panel14 = new System.Windows.Forms.Panel();
+            this.lblUser = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSettled)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPaymentStat)).BeginInit();
             this.panel1.SuspendLayout();
+            this.panel14.SuspendLayout();
             this.panel7.SuspendLayout();
             this.tabControlPayOrdStatus.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -120,7 +122,6 @@
             this.panel12.SuspendLayout();
             this.panel13.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel14.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridViewSettled
@@ -471,6 +472,15 @@
             this.panel1.Size = new System.Drawing.Size(1301, 103);
             this.panel1.TabIndex = 2;
             // 
+            // panel14
+            // 
+            this.panel14.Controls.Add(this.btnClose);
+            this.panel14.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel14.Location = new System.Drawing.Point(1248, 0);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(53, 49);
+            this.panel14.TabIndex = 37;
+            // 
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.Color.DimGray;
@@ -694,6 +704,7 @@
             this.dataGridViewOrderStatus.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewOrderStatus.Size = new System.Drawing.Size(1301, 763);
             this.dataGridViewOrderStatus.TabIndex = 6;
+            this.dataGridViewOrderStatus.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewOrderStatus_CellContentClick);
             // 
             // NumOrderStatus
             // 
@@ -769,6 +780,7 @@
             // panel12
             // 
             this.panel12.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.panel12.Controls.Add(this.lblUser);
             this.panel12.Controls.Add(this.panel13);
             this.panel12.Controls.Add(this.label4);
             this.panel12.Controls.Add(this.pictureBox1);
@@ -857,14 +869,15 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // panel14
+            // lblUser
             // 
-            this.panel14.Controls.Add(this.btnClose);
-            this.panel14.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel14.Location = new System.Drawing.Point(1248, 0);
-            this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(53, 49);
-            this.panel14.TabIndex = 37;
+            this.lblUser.AutoSize = true;
+            this.lblUser.Location = new System.Drawing.Point(575, 12);
+            this.lblUser.Name = "lblUser";
+            this.lblUser.Size = new System.Drawing.Size(57, 38);
+            this.lblUser.TabIndex = 37;
+            this.lblUser.Text = "     ";
+            this.lblUser.Visible = false;
             // 
             // frmPaymentStatus
             // 
@@ -885,6 +898,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPaymentStat)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel14.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             this.tabControlPayOrdStatus.ResumeLayout(false);
@@ -904,7 +918,6 @@
             this.panel13.ResumeLayout(false);
             this.panel13.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel14.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -974,5 +987,6 @@
         private DataGridViewTextBoxColumn DateClaimedOrdStat;
         private DataGridViewTextBoxColumn ReleaseByOrdStat;
         private Panel panel14;
+        public Label lblUser;
     }
 }

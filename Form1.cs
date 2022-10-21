@@ -31,8 +31,8 @@ namespace Capstone
             int outOfStockCount = 0;
             int safetyStockCount = 0;
             int reOrderStockCount = 0;
-            
-                cn.Open();
+            int ExpStockCount = 0;
+            cn.Open();
                 SqlCommand cm = new SqlCommand("SELECT Stock_Level FROM tblItem WHERE Lense_Check = 1 Order by Item_ID", cn);
                 dr = cm.ExecuteReader();
                 while (dr.Read())
@@ -61,16 +61,27 @@ namespace Capstone
             lblCriticalStock.Text = CriticalCount.ToString();
             lblOutOfStock.Text = outOfStockCount.ToString();
             lblReOrder.Text = reOrderStockCount.ToString();
+
+            txtAvailStock.Text = safetyStockCount.ToString();
+            txtCrit.Text = CriticalCount.ToString();
+            txtOutOStk.Text = outOfStockCount.ToString();
+            txtReOrd.Text = reOrderStockCount.ToString();
         }
         public void stockBlinkNotify()
         {
-            blinkLabel(lblCriticalStock, lblCritBlink);
-            blinkLabel(lblReOrder, lblReOrBlink);
-            blinkLabel(lblOutOfStock, lblOofStkBlink);
-            blinkLabel(lblPendingPay, lblPendingBlink);
-            blinkLabel(lblInLab, lblInLabBlink);
+            //blinkLabel(lblCriticalStock, lblCritBlink);
+            //blinkLabel(lblReOrder, lblReOrBlink);
+            //blinkLabel(lblOutOfStock, lblOofStkBlink);
+            //blinkLabel(lblPendingPay, lblPendingBlink);
+            //blinkLabel(lblInLab, lblInLabBlink);
+
+            blinkLabel2(txtAvailStock, Color.Green);
+            blinkLabel2(txtCrit, Color.Yellow);
+            blinkLabel2(txtOutOStk, Color.Red);
+            blinkLabel2(txtReOrd, Color.Blue);
+            
         }
-        public async void blinkLabel(Label labelStock, Label labelBlink)
+        public async void blinkLabel(Label labelStock, Label labelBlink, Color color)
         {
             bool blink = false;
             int stockC = int.Parse(labelStock.Text);
@@ -80,7 +91,25 @@ namespace Capstone
                 while (blink)
                 {
                     await Task.Delay(500);
-                    labelBlink.ForeColor = labelBlink.ForeColor == Color.Red ? Color.Black : Color.Red;
+                    labelBlink.BackColor = labelBlink.BackColor == color ? Color.Black : Color.Red;
+                }
+            }
+            else
+            {
+                blink = false;
+            }
+        }
+        public async void blinkLabel2(TextBox labelBlink, Color color)
+        {
+            bool blink = false;
+            int stockC = int.Parse(labelBlink.Text);
+            if (stockC > 0)
+            {
+                blink = true;
+                while (blink)
+                {
+                    await Task.Delay(500);
+                    labelBlink.BackColor = labelBlink.BackColor == color ? Color.Cyan : color;
                 }
             }
             else
@@ -272,6 +301,7 @@ namespace Capstone
             panelLoad.Controls.Clear();
             panelLoad.Controls.Add(frm);
             frm.BringToFront();
+            frm.lblUser.Text = lblName.Text;
             frm.Show();
         }
 

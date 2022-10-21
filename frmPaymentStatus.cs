@@ -31,5 +31,15 @@ namespace Capstone
         {
             this.Dispose();
         }
+
+        private void dataGridViewOrderStatus_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string colName = dataGridViewOrderStatus.Columns[e.ColumnIndex].Name;
+            string TransNo = dataGridViewOrderStatus.Rows[e.RowIndex].Cells[1].Value.ToString();
+            frmEditOrder frm = new frmEditOrder();
+            frm.txtReleaseBy.Text = lblUser.Text;
+            frm.ShowDialog();
+
+        }
     }
 }

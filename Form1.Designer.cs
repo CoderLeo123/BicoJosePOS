@@ -54,6 +54,13 @@
             this.timerDrpBtnSales = new System.Windows.Forms.Timer(this.components);
             this.panelLoad = new System.Windows.Forms.Panel();
             this.panelDashboard = new System.Windows.Forms.Panel();
+            this.txtExp = new System.Windows.Forms.TextBox();
+            this.txtOutOStk = new System.Windows.Forms.TextBox();
+            this.txtCrit = new System.Windows.Forms.TextBox();
+            this.txtReOrd = new System.Windows.Forms.TextBox();
+            this.txtAvailStock = new System.Windows.Forms.TextBox();
+            this.lblExpired = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.lblMasterCount = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.lblReOrder = new System.Windows.Forms.Label();
@@ -429,6 +436,13 @@
             // 
             // panelDashboard
             // 
+            this.panelDashboard.Controls.Add(this.txtExp);
+            this.panelDashboard.Controls.Add(this.txtOutOStk);
+            this.panelDashboard.Controls.Add(this.txtCrit);
+            this.panelDashboard.Controls.Add(this.txtReOrd);
+            this.panelDashboard.Controls.Add(this.txtAvailStock);
+            this.panelDashboard.Controls.Add(this.lblExpired);
+            this.panelDashboard.Controls.Add(this.label5);
             this.panelDashboard.Controls.Add(this.lblMasterCount);
             this.panelDashboard.Controls.Add(this.label4);
             this.panelDashboard.Controls.Add(this.lblReOrder);
@@ -468,11 +482,95 @@
             this.panelDashboard.Size = new System.Drawing.Size(1317, 948);
             this.panelDashboard.TabIndex = 0;
             // 
+            // txtExp
+            // 
+            this.txtExp.BackColor = System.Drawing.Color.Cyan;
+            this.txtExp.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtExp.Enabled = false;
+            this.txtExp.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtExp.Location = new System.Drawing.Point(360, 404);
+            this.txtExp.Name = "txtExp";
+            this.txtExp.Size = new System.Drawing.Size(147, 40);
+            this.txtExp.TabIndex = 73;
+            this.txtExp.Text = "0";
+            this.txtExp.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtOutOStk
+            // 
+            this.txtOutOStk.BackColor = System.Drawing.Color.Cyan;
+            this.txtOutOStk.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtOutOStk.Enabled = false;
+            this.txtOutOStk.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtOutOStk.Location = new System.Drawing.Point(360, 338);
+            this.txtOutOStk.Name = "txtOutOStk";
+            this.txtOutOStk.Size = new System.Drawing.Size(147, 40);
+            this.txtOutOStk.TabIndex = 72;
+            this.txtOutOStk.Text = "0";
+            this.txtOutOStk.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtCrit
+            // 
+            this.txtCrit.BackColor = System.Drawing.Color.Cyan;
+            this.txtCrit.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtCrit.Enabled = false;
+            this.txtCrit.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtCrit.Location = new System.Drawing.Point(360, 268);
+            this.txtCrit.Name = "txtCrit";
+            this.txtCrit.Size = new System.Drawing.Size(147, 40);
+            this.txtCrit.TabIndex = 71;
+            this.txtCrit.Text = "0";
+            this.txtCrit.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtReOrd
+            // 
+            this.txtReOrd.BackColor = System.Drawing.Color.Cyan;
+            this.txtReOrd.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtReOrd.Enabled = false;
+            this.txtReOrd.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtReOrd.Location = new System.Drawing.Point(360, 207);
+            this.txtReOrd.Name = "txtReOrd";
+            this.txtReOrd.Size = new System.Drawing.Size(147, 40);
+            this.txtReOrd.TabIndex = 70;
+            this.txtReOrd.Text = "0";
+            this.txtReOrd.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtAvailStock
+            // 
+            this.txtAvailStock.BackColor = System.Drawing.Color.Cyan;
+            this.txtAvailStock.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtAvailStock.Enabled = false;
+            this.txtAvailStock.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtAvailStock.Location = new System.Drawing.Point(360, 137);
+            this.txtAvailStock.Name = "txtAvailStock";
+            this.txtAvailStock.Size = new System.Drawing.Size(147, 40);
+            this.txtAvailStock.TabIndex = 69;
+            this.txtAvailStock.Text = "0";
+            this.txtAvailStock.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // lblExpired
+            // 
+            this.lblExpired.AutoSize = true;
+            this.lblExpired.ForeColor = System.Drawing.Color.Red;
+            this.lblExpired.Location = new System.Drawing.Point(306, 404);
+            this.lblExpired.Name = "lblExpired";
+            this.lblExpired.Size = new System.Drawing.Size(32, 38);
+            this.lblExpired.TabIndex = 68;
+            this.lblExpired.Text = "0";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(100, 404);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(114, 38);
+            this.label5.TabIndex = 67;
+            this.label5.Text = "Expired:";
+            // 
             // lblMasterCount
             // 
             this.lblMasterCount.AutoSize = true;
             this.lblMasterCount.ForeColor = System.Drawing.Color.Red;
-            this.lblMasterCount.Location = new System.Drawing.Point(306, 724);
+            this.lblMasterCount.Location = new System.Drawing.Point(924, 724);
             this.lblMasterCount.Name = "lblMasterCount";
             this.lblMasterCount.Size = new System.Drawing.Size(32, 38);
             this.lblMasterCount.TabIndex = 66;
@@ -481,7 +579,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(100, 724);
+            this.label4.Location = new System.Drawing.Point(718, 724);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(108, 38);
             this.label4.TabIndex = 65;
@@ -530,7 +628,7 @@
             // 
             this.lblClaimedOrd.AutoSize = true;
             this.lblClaimedOrd.ForeColor = System.Drawing.Color.Green;
-            this.lblClaimedOrd.Location = new System.Drawing.Point(899, 733);
+            this.lblClaimedOrd.Location = new System.Drawing.Point(289, 762);
             this.lblClaimedOrd.Name = "lblClaimedOrd";
             this.lblClaimedOrd.Size = new System.Drawing.Size(32, 38);
             this.lblClaimedOrd.TabIndex = 57;
@@ -540,7 +638,7 @@
             // 
             this.lblInLab.AutoSize = true;
             this.lblInLab.ForeColor = System.Drawing.Color.Red;
-            this.lblInLab.Location = new System.Drawing.Point(899, 672);
+            this.lblInLab.Location = new System.Drawing.Point(289, 701);
             this.lblInLab.Name = "lblInLab";
             this.lblInLab.Size = new System.Drawing.Size(32, 38);
             this.lblInLab.TabIndex = 56;
@@ -550,7 +648,7 @@
             // 
             this.lblTotalUsers.AutoSize = true;
             this.lblTotalUsers.ForeColor = System.Drawing.Color.Green;
-            this.lblTotalUsers.Location = new System.Drawing.Point(306, 783);
+            this.lblTotalUsers.Location = new System.Drawing.Point(924, 783);
             this.lblTotalUsers.Name = "lblTotalUsers";
             this.lblTotalUsers.Size = new System.Drawing.Size(32, 38);
             this.lblTotalUsers.TabIndex = 55;
@@ -560,7 +658,7 @@
             // 
             this.lblCashier.AutoSize = true;
             this.lblCashier.ForeColor = System.Drawing.Color.Red;
-            this.lblCashier.Location = new System.Drawing.Point(306, 667);
+            this.lblCashier.Location = new System.Drawing.Point(924, 667);
             this.lblCashier.Name = "lblCashier";
             this.lblCashier.Size = new System.Drawing.Size(32, 38);
             this.lblCashier.TabIndex = 54;
@@ -570,7 +668,7 @@
             // 
             this.lblAdmin.AutoSize = true;
             this.lblAdmin.ForeColor = System.Drawing.Color.Red;
-            this.lblAdmin.Location = new System.Drawing.Point(306, 606);
+            this.lblAdmin.Location = new System.Drawing.Point(924, 606);
             this.lblAdmin.Name = "lblAdmin";
             this.lblAdmin.Size = new System.Drawing.Size(32, 38);
             this.lblAdmin.TabIndex = 53;
@@ -614,7 +712,7 @@
             this.btnCategoryDetails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCategoryDetails.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnCategoryDetails.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.btnCategoryDetails.Location = new System.Drawing.Point(847, 851);
+            this.btnCategoryDetails.Location = new System.Drawing.Point(200, 853);
             this.btnCategoryDetails.Name = "btnCategoryDetails";
             this.btnCategoryDetails.Size = new System.Drawing.Size(286, 49);
             this.btnCategoryDetails.TabIndex = 49;
@@ -630,7 +728,7 @@
             this.btnUsersDetails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUsersDetails.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnUsersDetails.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.btnUsersDetails.Location = new System.Drawing.Point(200, 851);
+            this.btnUsersDetails.Location = new System.Drawing.Point(847, 853);
             this.btnUsersDetails.Name = "btnUsersDetails";
             this.btnUsersDetails.Size = new System.Drawing.Size(286, 49);
             this.btnUsersDetails.TabIndex = 48;
@@ -646,7 +744,7 @@
             this.btnStockDetails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStockDetails.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnStockDetails.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.btnStockDetails.Location = new System.Drawing.Point(200, 415);
+            this.btnStockDetails.Location = new System.Drawing.Point(210, 517);
             this.btnStockDetails.Name = "btnStockDetails";
             this.btnStockDetails.Size = new System.Drawing.Size(286, 49);
             this.btnStockDetails.TabIndex = 47;
@@ -672,7 +770,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(710, 728);
+            this.label14.Location = new System.Drawing.Point(100, 757);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(123, 38);
             this.label14.TabIndex = 15;
@@ -681,7 +779,7 @@
             // lblInLabBlink
             // 
             this.lblInLabBlink.AutoSize = true;
-            this.lblInLabBlink.Location = new System.Drawing.Point(710, 667);
+            this.lblInLabBlink.Location = new System.Drawing.Point(100, 696);
             this.lblInLabBlink.Name = "lblInLabBlink";
             this.lblInLabBlink.Size = new System.Drawing.Size(145, 38);
             this.lblInLabBlink.TabIndex = 14;
@@ -690,7 +788,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(100, 783);
+            this.label9.Location = new System.Drawing.Point(718, 783);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(157, 38);
             this.label9.TabIndex = 13;
@@ -699,7 +797,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(100, 667);
+            this.label10.Location = new System.Drawing.Point(718, 667);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(114, 38);
             this.label10.TabIndex = 12;
@@ -708,7 +806,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(100, 606);
+            this.label11.Location = new System.Drawing.Point(718, 606);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(104, 38);
             this.label11.TabIndex = 11;
@@ -765,7 +863,7 @@
             this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox4.Enabled = false;
             this.textBox4.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox4.Location = new System.Drawing.Point(689, 514);
+            this.textBox4.Location = new System.Drawing.Point(67, 592);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(572, 40);
             this.textBox4.TabIndex = 3;
@@ -778,7 +876,7 @@
             this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox3.Enabled = false;
             this.textBox3.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox3.Location = new System.Drawing.Point(67, 514);
+            this.textBox3.Location = new System.Drawing.Point(689, 526);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(572, 40);
             this.textBox3.TabIndex = 2;
@@ -894,5 +992,12 @@
         private Label lblReOrBlink;
         public Label lblMasterCount;
         private Label label4;
+        public TextBox txtExp;
+        public TextBox txtOutOStk;
+        public TextBox txtCrit;
+        public TextBox txtReOrd;
+        public TextBox txtAvailStock;
+        public Label lblExpired;
+        public Label label5;
     }
 }
