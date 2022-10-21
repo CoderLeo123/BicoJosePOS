@@ -80,7 +80,7 @@ namespace Capstone
                 frm.tabControlDiscPromo.TabPages.Clear();
                 TabPage tab = new TabPage("Discount");
                 frm.tabControlDiscPromo.TabPages.Add(tab);
-                tab.Controls.Add(frm.panelDiscount);                
+                tab.Controls.Add(frm.panelPromo);                
                 frm.lblID.Text = lblTransactionNo.Text;
                 frm.txtPriceDiscount.Text = lblSalesTotal.Text;
                 frm.ShowDialog();

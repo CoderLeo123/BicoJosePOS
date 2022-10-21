@@ -69,19 +69,19 @@ namespace Capstone
         }
         public void stockBlinkNotify()
         {
-            blinkLabel(lblCriticalStock, lblCritBlink);
-            blinkLabel(lblReOrder, lblReOrBlink);
-            blinkLabel(lblOutOfStock, lblOofStkBlink);
-            blinkLabel(lblPendingPay, lblPendingBlink);
-            blinkLabel(lblInLab, lblInLabBlink);
+            //blinkLabel(lblCriticalStock, lblCritBlink);
+            //blinkLabel(lblReOrder, lblReOrBlink);
+            //blinkLabel(lblOutOfStock, lblOofStkBlink);
+            //blinkLabel(lblPendingPay, lblPendingBlink);
+            //blinkLabel(lblInLab, lblInLabBlink);
 
-            blinkLabel2(txtAvailStock);
-            blinkLabel2(txtCrit);
-            blinkLabel2(txtOutOStk);
-            blinkLabel2(txtReOrd);
+            blinkLabel2(txtAvailStock, Color.Green);
+            blinkLabel2(txtCrit, Color.Yellow);
+            blinkLabel2(txtOutOStk, Color.Red);
+            blinkLabel2(txtReOrd, Color.Blue);
             
         }
-        public async void blinkLabel(Label labelStock, Label labelBlink)
+        public async void blinkLabel(Label labelStock, Label labelBlink, Color color)
         {
             bool blink = false;
             int stockC = int.Parse(labelStock.Text);
@@ -91,7 +91,7 @@ namespace Capstone
                 while (blink)
                 {
                     await Task.Delay(500);
-                    labelBlink.ForeColor = labelBlink.ForeColor == Color.Red ? Color.Black : Color.Red;
+                    labelBlink.BackColor = labelBlink.BackColor == color ? Color.Black : Color.Red;
                 }
             }
             else
@@ -99,7 +99,7 @@ namespace Capstone
                 blink = false;
             }
         }
-        public async void blinkLabel2(TextBox labelBlink)
+        public async void blinkLabel2(TextBox labelBlink, Color color)
         {
             bool blink = false;
             int stockC = int.Parse(labelBlink.Text);
@@ -109,7 +109,7 @@ namespace Capstone
                 while (blink)
                 {
                     await Task.Delay(500);
-                    labelBlink.ForeColor = labelBlink.ForeColor == Color.Red ? Color.Black : Color.Red;
+                    labelBlink.BackColor = labelBlink.BackColor == color ? Color.Cyan : color;
                 }
             }
             else
@@ -301,6 +301,7 @@ namespace Capstone
             panelLoad.Controls.Clear();
             panelLoad.Controls.Add(frm);
             frm.BringToFront();
+            frm.lblUser.Text = lblName.Text;
             frm.Show();
         }
 

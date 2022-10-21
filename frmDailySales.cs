@@ -20,9 +20,11 @@ namespace Capstone
         ClassReports classReport = new ClassReports();
         string title = "BICO-JOSE System", transNo = "";
         List<ItemList> List = new List<ItemList>();
+        List<ServiceList> SList = new List<ServiceList>();
         public frmDailySales()
         {
             InitializeComponent();
+            cn = new SqlConnection(dbcon.MyConnection());
             changeDatePriorCurrent(dateTimePickerStartSold);
             changeDatePriorCurrent(dateTimePickerStartTrans);
             classLoadData.LoadRecordsTransacHist(dataGridViewTransacHist, txtSearchTransac, dateTimePickerStartTrans, dateTimePickerEndTrans);
@@ -62,10 +64,42 @@ namespace Capstone
         {
             this.Close();
         }
+
+        public void tblServiceList(string transacNo, out int rowCount)
+        {
+            cn = new SqlConnection(dbcon.MyConnection());
+            //Desc = ""; Price = ""; Quant = ""; Total = ""; UnitM = "";
+            rowCount = 0;
+            cn.Open();
+            SqlCommand cm = new SqlCommand("SELECT Name, Price FROM ViewServiceAvailed WHERE Transaction_No LIKE '" + transacNo + "'", cn);
+            dr = cm.ExecuteReader();
+
+            while (dr.Read())
+            {
+                ServiceList List = new ServiceList();
+                List.Name = dr.GetString(0);//"Name"
+                List.Price = dr.GetDouble(1);//"Price"
+
+                SList.Add(List);
+                rowCount++;
+
+            }
+            dr.Close();
+            cn.Close();
+            //rowCount = List.Count;
+        }
+        public class ServiceList
+        {
+            public string Name { get; set; }
+            public double Price { get; set; }
+          
+        }
+
         public void tblAvailedList(string transacNo, out int rowCount)
         {
             cn = new SqlConnection(dbcon.MyConnection());
             //Desc = ""; Price = ""; Quant = ""; Total = ""; UnitM = "";
+            rowCount = 0;
             cn.Open();
             SqlCommand cm = new SqlCommand("SELECT Description, Price, Quantity, Total, Unit_Measure FROM ViewCartStockItem WHERE Transaction_No LIKE '" + transacNo + "'", cn);
             dr = cm.ExecuteReader();
@@ -79,17 +113,13 @@ namespace Capstone
                 IList.Total = dr.GetDouble(3);//"Total"
                 IList.UnitM = dr.GetString(4);//"Unit_Measure"
                 List.Add(IList);
+                rowCount++;
 
-                //Desc = dr[0].ToString(); Price = dr[1].ToString();
-                //Quant = dr[2].ToString(); Total = dr[3].ToString(); UnitM = dr[4].ToString();
-                //if (UnitM == string.Empty || UnitM == null)
-                //{
-                //    UnitM = "--";
-                //}
+
             }
             dr.Close();
             cn.Close();
-            rowCount = List.Count;
+            //rowCount = List.Count;
         }
         public class ItemList
         {
@@ -165,7 +195,7 @@ namespace Capstone
                     num += 1;
                 }
             }
-            
+            tblServiceList(transNo, out SrowCount);
             //y = 430;
             if (SrowCount > 0)
             {
@@ -173,12 +203,13 @@ namespace Capstone
                 num = 1;
                 for (int i = 0; i < SrowCount; i++)
                 {
+                    ServiceList SerList = SList[i];
                     x = 380;
                     e.Graphics.DrawString(num.ToString(), printFont, Brushes.Black, 20, (y += 30));
 
-                    e.Graphics.DrawString(SName, printFont, Brushes.Black, 60, y);//470      Name
+                    e.Graphics.DrawString(SerList.Name, printFont, Brushes.Black, 60, y);//470      Name
 
-                    e.Graphics.DrawString(SPrice, printFont, Brushes.Black, x, y);//320   Price
+                    e.Graphics.DrawString(SerList.Price.ToString("00.00"), printFont, Brushes.Black, x, y);//320   Price
                     num += 1;
                 }
             }

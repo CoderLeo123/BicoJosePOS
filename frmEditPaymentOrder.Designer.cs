@@ -51,10 +51,6 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.lblCurrentTransN = new System.Windows.Forms.Label();
             this.txtSearchPending = new System.Windows.Forms.TextBox();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.panelEditOrder = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
@@ -65,8 +61,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPaymentStat)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel7.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            this.panelEditOrder.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -105,7 +99,6 @@
             // tabControlEditPayOrd
             // 
             this.tabControlEditPayOrd.Controls.Add(this.tabPage1);
-            this.tabControlEditPayOrd.Controls.Add(this.tabPage2);
             this.tabControlEditPayOrd.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlEditPayOrd.Location = new System.Drawing.Point(0, 57);
             this.tabControlEditPayOrd.Name = "tabControlEditPayOrd";
@@ -312,40 +305,6 @@
             this.txtSearchPending.Size = new System.Drawing.Size(573, 38);
             this.txtSearchPending.TabIndex = 0;
             // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.panelEditOrder);
-            this.tabPage2.Location = new System.Drawing.Point(4, 29);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1193, 457);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Order";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // panelEditOrder
-            // 
-            this.panelEditOrder.Controls.Add(this.textBox1);
-            this.panelEditOrder.Controls.Add(this.monthCalendar1);
-            this.panelEditOrder.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelEditOrder.Location = new System.Drawing.Point(3, 3);
-            this.panelEditOrder.Name = "panelEditOrder";
-            this.panelEditOrder.Size = new System.Drawing.Size(1187, 451);
-            this.panelEditOrder.TabIndex = 0;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(45, 25);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(320, 43);
-            this.textBox1.TabIndex = 1;
-            // 
-            // monthCalendar1
-            // 
-            this.monthCalendar1.Location = new System.Drawing.Point(45, 94);
-            this.monthCalendar1.Name = "monthCalendar1";
-            this.monthCalendar1.TabIndex = 0;
-            // 
             // frmEditPaymentOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 37F);
@@ -370,9 +329,6 @@
             this.panel2.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
-            this.panelEditOrder.ResumeLayout(false);
-            this.panelEditOrder.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -385,8 +341,6 @@
         public TabControl tabControlEditPayOrd;
         private TabPage tabPage1;
         public Panel panelEditPayment;
-        private TabPage tabPage2;
-        public Panel panelEditOrder;
         private Panel panel3;
         private Panel panel2;
         private Panel panel7;
@@ -399,8 +353,6 @@
         private DataGridViewTextBoxColumn DueDate;
         private DataGridViewTextBoxColumn Cashier;
         private DataGridViewTextBoxColumn S;
-        private TextBox textBox1;
-        private MonthCalendar monthCalendar1;
         public TextBox txtSearchPending;
         public DataGridView dataGridViewPaymentStat;
         public Label lblCurrentTransN;

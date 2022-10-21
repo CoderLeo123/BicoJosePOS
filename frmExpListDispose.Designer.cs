@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
@@ -40,6 +40,12 @@
             this.panelExpiLists = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.dataGridViewExpLis = new System.Windows.Forms.DataGridView();
+            this.NumService = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Num = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Desc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnMe = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dek = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
             this.lblItemIDCheck = new System.Windows.Forms.Label();
@@ -49,12 +55,6 @@
             this.lblTrans = new System.Windows.Forms.Label();
             this.lblTransNo = new System.Windows.Forms.Label();
             this.txtSearchExpL = new System.Windows.Forms.TextBox();
-            this.NumService = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Num = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Desc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UnMe = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dek = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -167,14 +167,14 @@
             this.dataGridViewExpLis.AllowUserToResizeRows = false;
             this.dataGridViewExpLis.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewExpLis.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewExpLis.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewExpLis.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewExpLis.ColumnHeadersHeight = 40;
             this.dataGridViewExpLis.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridViewExpLis.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -184,14 +184,14 @@
             this.Price,
             this.UnMe,
             this.dek});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Azure;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewExpLis.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Azure;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewExpLis.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewExpLis.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewExpLis.EnableHeadersVisualStyles = false;
             this.dataGridViewExpLis.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
@@ -205,95 +205,6 @@
             this.dataGridViewExpLis.Size = new System.Drawing.Size(736, 410);
             this.dataGridViewExpLis.TabIndex = 8;
             this.dataGridViewExpLis.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewExpLis_CellContentClick);
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.panel9);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel5.Location = new System.Drawing.Point(0, 0);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(736, 57);
-            this.panel5.TabIndex = 0;
-            // 
-            // panel9
-            // 
-            this.panel9.BackColor = System.Drawing.Color.DimGray;
-            this.panel9.Controls.Add(this.lblItemIDCheck);
-            this.panel9.Controls.Add(this.lblITEMID);
-            this.panel9.Controls.Add(this.lblCheck);
-            this.panel9.Controls.Add(this.label7);
-            this.panel9.Controls.Add(this.lblTrans);
-            this.panel9.Controls.Add(this.lblTransNo);
-            this.panel9.Controls.Add(this.txtSearchExpL);
-            this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel9.Location = new System.Drawing.Point(0, 0);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(736, 57);
-            this.panel9.TabIndex = 38;
-            // 
-            // lblItemIDCheck
-            // 
-            this.lblItemIDCheck.AutoSize = true;
-            this.lblItemIDCheck.Location = new System.Drawing.Point(795, 18);
-            this.lblItemIDCheck.Name = "lblItemIDCheck";
-            this.lblItemIDCheck.Size = new System.Drawing.Size(65, 38);
-            this.lblItemIDCheck.TabIndex = 10;
-            this.lblItemIDCheck.Text = "      ";
-            this.lblItemIDCheck.Visible = false;
-            // 
-            // lblITEMID
-            // 
-            this.lblITEMID.AutoSize = true;
-            this.lblITEMID.Location = new System.Drawing.Point(679, 15);
-            this.lblITEMID.Name = "lblITEMID";
-            this.lblITEMID.Size = new System.Drawing.Size(65, 38);
-            this.lblITEMID.TabIndex = 9;
-            this.lblITEMID.Text = "      ";
-            // 
-            // lblCheck
-            // 
-            this.lblCheck.AutoSize = true;
-            this.lblCheck.Location = new System.Drawing.Point(991, 15);
-            this.lblCheck.Name = "lblCheck";
-            this.lblCheck.Size = new System.Drawing.Size(89, 38);
-            this.lblCheck.TabIndex = 4;
-            this.lblCheck.Text = "         ";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(1153, 49);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(91, 38);
-            this.label7.TabIndex = 3;
-            this.label7.Text = "label7";
-            // 
-            // lblTrans
-            // 
-            this.lblTrans.AutoSize = true;
-            this.lblTrans.Location = new System.Drawing.Point(1188, 20);
-            this.lblTrans.Name = "lblTrans";
-            this.lblTrans.Size = new System.Drawing.Size(65, 38);
-            this.lblTrans.TabIndex = 2;
-            this.lblTrans.Text = "      ";
-            this.lblTrans.Visible = false;
-            // 
-            // lblTransNo
-            // 
-            this.lblTransNo.AutoSize = true;
-            this.lblTransNo.Location = new System.Drawing.Point(1162, 15);
-            this.lblTransNo.Name = "lblTransNo";
-            this.lblTransNo.Size = new System.Drawing.Size(0, 38);
-            this.lblTransNo.TabIndex = 1;
-            // 
-            // txtSearchExpL
-            // 
-            this.txtSearchExpL.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtSearchExpL.Location = new System.Drawing.Point(23, 10);
-            this.txtSearchExpL.Name = "txtSearchExpL";
-            this.txtSearchExpL.PlaceholderText = "Search Here";
-            this.txtSearchExpL.Size = new System.Drawing.Size(619, 38);
-            this.txtSearchExpL.TabIndex = 0;
             // 
             // NumService
             // 
@@ -347,6 +258,96 @@
             this.dek.Name = "dek";
             this.dek.ReadOnly = true;
             this.dek.Width = 6;
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.panel9);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel5.Location = new System.Drawing.Point(0, 0);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(736, 57);
+            this.panel5.TabIndex = 0;
+            // 
+            // panel9
+            // 
+            this.panel9.BackColor = System.Drawing.Color.DimGray;
+            this.panel9.Controls.Add(this.lblItemIDCheck);
+            this.panel9.Controls.Add(this.lblITEMID);
+            this.panel9.Controls.Add(this.lblCheck);
+            this.panel9.Controls.Add(this.label7);
+            this.panel9.Controls.Add(this.lblTrans);
+            this.panel9.Controls.Add(this.lblTransNo);
+            this.panel9.Controls.Add(this.txtSearchExpL);
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel9.Location = new System.Drawing.Point(0, 0);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(736, 57);
+            this.panel9.TabIndex = 38;
+            // 
+            // lblItemIDCheck
+            // 
+            this.lblItemIDCheck.AutoSize = true;
+            this.lblItemIDCheck.Location = new System.Drawing.Point(795, 18);
+            this.lblItemIDCheck.Name = "lblItemIDCheck";
+            this.lblItemIDCheck.Size = new System.Drawing.Size(65, 38);
+            this.lblItemIDCheck.TabIndex = 10;
+            this.lblItemIDCheck.Text = "      ";
+            this.lblItemIDCheck.Visible = false;
+            // 
+            // lblITEMID
+            // 
+            this.lblITEMID.AutoSize = true;
+            this.lblITEMID.Location = new System.Drawing.Point(679, 15);
+            this.lblITEMID.Name = "lblITEMID";
+            this.lblITEMID.Size = new System.Drawing.Size(65, 38);
+            this.lblITEMID.TabIndex = 9;
+            this.lblITEMID.Text = "      ";
+            this.lblITEMID.Visible = false;
+            // 
+            // lblCheck
+            // 
+            this.lblCheck.AutoSize = true;
+            this.lblCheck.Location = new System.Drawing.Point(991, 15);
+            this.lblCheck.Name = "lblCheck";
+            this.lblCheck.Size = new System.Drawing.Size(89, 38);
+            this.lblCheck.TabIndex = 4;
+            this.lblCheck.Text = "         ";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(1153, 49);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(91, 38);
+            this.label7.TabIndex = 3;
+            this.label7.Text = "label7";
+            // 
+            // lblTrans
+            // 
+            this.lblTrans.AutoSize = true;
+            this.lblTrans.Location = new System.Drawing.Point(1188, 20);
+            this.lblTrans.Name = "lblTrans";
+            this.lblTrans.Size = new System.Drawing.Size(65, 38);
+            this.lblTrans.TabIndex = 2;
+            this.lblTrans.Text = "      ";
+            this.lblTrans.Visible = false;
+            // 
+            // lblTransNo
+            // 
+            this.lblTransNo.AutoSize = true;
+            this.lblTransNo.Location = new System.Drawing.Point(1162, 15);
+            this.lblTransNo.Name = "lblTransNo";
+            this.lblTransNo.Size = new System.Drawing.Size(0, 38);
+            this.lblTransNo.TabIndex = 1;
+            // 
+            // txtSearchExpL
+            // 
+            this.txtSearchExpL.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtSearchExpL.Location = new System.Drawing.Point(23, 10);
+            this.txtSearchExpL.Name = "txtSearchExpL";
+            this.txtSearchExpL.PlaceholderText = "Search Here";
+            this.txtSearchExpL.Size = new System.Drawing.Size(619, 38);
+            this.txtSearchExpL.TabIndex = 0;
             // 
             // frmExpListDispose
             // 

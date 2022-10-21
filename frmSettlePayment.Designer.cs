@@ -343,9 +343,9 @@
             this.lblDPercent.ForeColor = System.Drawing.Color.Red;
             this.lblDPercent.Location = new System.Drawing.Point(153, 299);
             this.lblDPercent.Name = "lblDPercent";
-            this.lblDPercent.Size = new System.Drawing.Size(106, 31);
+            this.lblDPercent.Size = new System.Drawing.Size(32, 31);
             this.lblDPercent.TabIndex = 24;
-            this.lblDPercent.Text = "DPercent";
+            this.lblDPercent.Text = "--";
             this.lblDPercent.Visible = false;
             // 
             // lblDiscount
