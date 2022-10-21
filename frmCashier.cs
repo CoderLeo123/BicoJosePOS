@@ -331,21 +331,21 @@ namespace Capstone
 
         private void btnAddPromo_Click(object sender, EventArgs e)
         {
-            int i = dataGridViewCart.SelectedRows[0].Index;
-            string Classifi = dataGridViewCart.Rows[i].Cells[14].Value.ToString();
-            if (Classifi == "Consumable")
-            {
-                frmDiscount frm = new frmDiscount(this);
-                frm.tabControlDiscPromo.TabPages.Clear();
-                TabPage tab = new TabPage("Discount");
-                frm.tabControlDiscPromo.TabPages.Add(tab);
-                tab.Controls.Add(frm.panelPromo);
-                frm.ShowDialog();
-            }
-            else
-            {
-                //MessageBox.Show("Only items with expiration can have promo", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            //int i = dataGridViewCart.SelectedRows[0].Index;
+            //string Classifi = dataGridViewCart.Rows[i].Cells[14].Value.ToString();
+            //if (Classifi == "Consumable")
+            //{
+            //    frmDiscount frm = new frmDiscount(this);
+            //    frm.tabControlDiscPromo.TabPages.Clear();
+            //    TabPage tab = new TabPage("Discount");
+            //    frm.tabControlDiscPromo.TabPages.Add(tab);
+            //    tab.Controls.Add(frm.panelPromo);
+            //    frm.ShowDialog();
+            //}
+            //else
+            //{
+            //    //MessageBox.Show("Only items with expiration can have promo", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
 
             
             
