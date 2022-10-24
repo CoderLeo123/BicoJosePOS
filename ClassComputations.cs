@@ -14,7 +14,7 @@ namespace Capstone
         DBConnection dbcon = new DBConnection();
         SqlDataReader dr;
         string title = "BICO-JOSE System";
-
+        
         public void GetCartTotal(Label labelDiscount, Label labelSalesTotal, Label labelPayment, Label labelNetTotal)
         {//lblDiscount, lblSalesTotal, lblPayment, lblNetTotal
             double discount = double.Parse(labelDiscount.Text);
@@ -65,8 +65,7 @@ namespace Capstone
                 }
             }
         }
-
-        
+       
 
     }
 }
