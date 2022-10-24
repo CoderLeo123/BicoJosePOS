@@ -287,8 +287,17 @@ namespace Capstone
             panelLoad.Controls.Clear();
             panelLoad.Controls.Add(frm);
             frm.BringToFront();
-            frm.lblCashier.Text = lblCashier.Text;
-            
+            frm.lblCashier.Text = lblName.Text;
+
+            frm.tabControlReports.TabPages.Clear();
+            TabPage tab = new TabPage("Sales Report");
+            frm.tabControlReports.TabPages.Add(tab);
+            tab.Controls.Add(frm.panelSaleRep);
+
+            TabPage tab2 = new TabPage("Balance Report");
+            frm.tabControlReports.TabPages.Add(tab2);
+            tab2.Controls.Add(frm.panelBalRep);
+
             classReport.loadSalesPerDay(frm.dataGridViewSalesR, "Total_Sale");
             classReport.loadSalesPerDay(frm.dataGridViewBalR, "Total_Bal");
             frmR.dateSelect(frm.dataGridViewInitial);

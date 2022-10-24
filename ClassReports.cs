@@ -201,13 +201,17 @@ namespace Capstone
         public void loadSalesPerDay(DataGridView dgv, string Col)
         {
             cn = new SqlConnection(dbcon.MyConnection());
-            int i = 0;
+            int i = 0;string bal; double balan;
             dgv.Rows.Clear();
             cn.Open();
             SqlCommand cm = new SqlCommand("SELECT Date, "+ Col + " FROM tblSalesReport", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
+
+                //bal = float.Parse(dr[1].ToString()); bal.ToString("00.00")
+                //bal = double.Parse(dr[1].ToString()).ToString("00.00");
+                //balan = Convert.ToDouble(dr[1].ToString()); balan.ToString("00.00")
                 i += 1;    
                 dgv.Rows.Add(i, dr[0].ToString(), dr[1].ToString());
 

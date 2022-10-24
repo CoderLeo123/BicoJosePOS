@@ -40,7 +40,7 @@ namespace Capstone
             loopUpdateDgv(dataGridViewInitial);
             
             previewSales();
-            previewBalance();
+            //previewBalance();
             
         }
         public void dateSelect(DataGridView dgv)
@@ -214,13 +214,22 @@ namespace Capstone
                 e.Graphics.DrawString("Bico-Jose Optical Clinic", printFontBold, Brushes.Black, (leftMargin + 240), yPos);
                 e.Graphics.DrawString("Address: 3rd Floor Susana Mart, Tungko San Jose Del Monte Bulacan", printFont, Brushes.Black, (leftMargin + 70), (yPos += offSetY)); //offSetY += (float)fontHeigth;
                 e.Graphics.DrawString("Clinic's Contact: 09178326666", printFont, Brushes.Black, (leftMargin + 220), (yPos += offSetY)); //offSetY += (float)fontHeigth;
-                e.Graphics.DrawString("SALES REPORT", printFontBold, Brushes.Black, (leftMargin + 260), (yPos += (offSetY * 3))); //offSetY += ((float)fontHeigth * 3);
-                e.Graphics.DrawString("#", printFont, Brushes.Black, (leftMargin + 30), (yPos += (offSetY*3)));
+                //e.Graphics.DrawString("SALES REPORT", printFontBold, Brushes.Black, (leftMargin + 260), (yPos += (offSetY * 3))); //offSetY += ((float)fontHeigth * 3);
+                e.Graphics.DrawString("#", printFont, Brushes.Black, (leftMargin + 30), (yPos += (offSetY*6)));
                 e.Graphics.DrawString("    Date", printFont, Brushes.Black, (leftMargin + 130), yPos);
                 e.Graphics.DrawString("    Amount", printFont, Brushes.Black, (leftMargin + 280), yPos);
             }
             void body()
             {
+                if (balance == true)
+                {
+                    e.Graphics.DrawString("BALANCE REPORT", printFontBold, Brushes.Black, (leftMargin + 260), (yPos -= (offSetY * 3)));
+                }
+                else if (balance == false)
+                {
+                    e.Graphics.DrawString("SALES REPORT", printFontBold, Brushes.Black, (leftMargin + 260), (yPos -= (offSetY * 3)));
+                }
+                yPos += (offSetY * 3);
                 if (BalRow > 0)
                 {
                     for (int i = 0; i < BalRow - 1; i++)
@@ -230,11 +239,11 @@ namespace Capstone
                         e.Graphics.DrawString(num.ToString(), printFont, Brushes.Black, (leftMargin + 30), (yPos += offSetY));
 
                         e.Graphics.DrawString(data.Date, printFont, Brushes.Black, (leftMargin + 130), yPos);//Date
-                        if(balance = true)
+                        if(balance == true)
                         {
                             e.Graphics.DrawString("₱ " + data.Balance.ToString("00.00"), printFont, Brushes.Black, (leftMargin + 280), yPos);//Balance
                         } 
-                        else if (balance = false)
+                        else if (balance == false)
                         {
                             e.Graphics.DrawString("₱ " + data.Payment.ToString("00.00"), printFont, Brushes.Black, (leftMargin + 280), yPos);//Balance
                         }
@@ -250,7 +259,7 @@ namespace Capstone
                 e.Graphics.DrawString(lblCashier.Text, printFont, Brushes.Black, (leftMargin + 30), (footerStartY += fontHeigth));
                 e.Graphics.DrawString(printDate, printFont, Brushes.Black, (rightMargin + 437), footerStartY);
                 e.Graphics.DrawString("____________________", printFont, Brushes.Black, leftMargin, (footerStartY += 2));
-                e.Graphics.DrawString("         Cashier", printFont, Brushes.Black, (leftMargin + 10), (footerStartY += fontHeigth));
+                e.Graphics.DrawString("         Admin", printFont, Brushes.Black, (leftMargin + 10), (footerStartY += fontHeigth));
                 e.Graphics.DrawString("Page " + currPage + " of " + totalPage, printFont, Brushes.Black, (rightMargin + 100), (pageHeigth - (fontHeigth * 2)));
             }
             header();            
@@ -280,12 +289,27 @@ namespace Capstone
             this.Close();
         }
 
+        private void tabControlReports_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+            
+            if (tabControlReports.SelectedIndex == 0)
+            {
+                previewSales();
+            }
+            else if (tabControlReports.SelectedIndex == 1)
+            {
+                previewBalance();
+            }
+
+        }
+
         public void previewSales()
         {
             balance = false;
             printPreviewControl.Document = printDocumentBal; // 800, 800 = 8" x 8"
-            printDocumentSales.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("SHORT", sWidth, sLength);
-            printPreviewControl.Zoom = .5;
+            printDocumentBal.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("SHORT", sWidth, sLength);
+            printPreviewControl.Zoom = .6;
             printPreviewControl.StartPage = 0;
         }
         public void previewBalance()
@@ -293,7 +317,7 @@ namespace Capstone
             balance = true;
             printPreviewControlBal.Document = printDocumentBal;            
             printDocumentBal.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("SHORT", sWidth, sLength);
-            printPreviewControlBal.Zoom = .5;
+            printPreviewControlBal.Zoom = .6;
             printPreviewControlBal.StartPage = 0;
         }
         private void btnSaveProduct_Click(object sender, EventArgs e)
@@ -306,7 +330,7 @@ namespace Capstone
             //printPreviewControl.Zoom = 0.75;
             ////printPreviewControl.Size = new System.Drawing.Size(400, 650);
             ////printPreviewControl.ShowDialog();
-            previewSales();
+            
         }
     }
 }
