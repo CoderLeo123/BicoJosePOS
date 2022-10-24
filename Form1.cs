@@ -9,8 +9,9 @@ namespace Capstone
         DBConnection dbcon = new DBConnection();
         SqlDataReader dr;
         ClassInventory classInvent = new ClassInventory();
+        ClassReports classReport = new ClassReports();
         Boolean isCollapsed1, isCollapsed2, isCollapsed3 = true;
-        
+        frmReports frmR = new frmReports();
         public frmAdmin()
         {
             InitializeComponent();
@@ -22,6 +23,10 @@ namespace Capstone
             frmLogin frmL = new frmLogin();
             frmL.Hide();
             stockBlinkNotify();
+
+            //frmR.dateSelect(frmR.dataGridViewInitial);
+            //classReport.loadSalesPerDay(frmR.dataGridViewSalesR, "Total_Sale");
+            //classReport.loadSalesPerDay(frmR.dataGridViewBalR, "Total_Bal");
         }
         public void Stock()
         {
@@ -282,6 +287,18 @@ namespace Capstone
             panelLoad.Controls.Clear();
             panelLoad.Controls.Add(frm);
             frm.BringToFront();
+            frm.lblCashier.Text = lblCashier.Text;
+            
+            classReport.loadSalesPerDay(frm.dataGridViewSalesR, "Total_Sale");
+            classReport.loadSalesPerDay(frm.dataGridViewBalR, "Total_Bal");
+            frmR.dateSelect(frm.dataGridViewInitial);
+            
+            //frmR.lblCheckCell.Text = frmR.dataGridViewInitial.Rows[0].Cells[1].Value?.ToString();
+            //frm.tabControlReports.TabPages.Clear();
+            //TabPage tab = new TabPage("Check");
+            //frm.tabControlReports.TabPages.Add(tab);
+            //tab.Controls.Add(frm.dataGridViewInitial);
+
             frm.Show();
 
             //isCollapsed3 = true;

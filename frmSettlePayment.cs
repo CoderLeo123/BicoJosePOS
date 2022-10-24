@@ -720,7 +720,7 @@ namespace Capstone
                     e.Graphics.DrawString(resultText, printFont, Brushes.Black, 60, y);
 
                     getValueIfAnyElseBlank(dgvCount, frmC.dataGridViewCart, out resultText, i, 3);//Price
-                    e.Graphics.DrawString(resultText, printFont, Brushes.Black, x, y);
+                    e.Graphics.DrawString("₱ " + resultText, printFont, Brushes.Black, x, y);
 
                     getValueIfAnyElseBlank(dgvCount, frmC.dataGridViewCart, out resultText, i, 4);//Qty
                     e.Graphics.DrawString(resultText, printFont, Brushes.Black, (x += 60), y);
@@ -730,7 +730,7 @@ namespace Capstone
                     e.Graphics.DrawString(resultText, printFont, Brushes.Black, (x += 50), y);
 
                     getValueIfAnyElseBlank(dgvCount, frmC.dataGridViewCart, out resultText, i, 6);//Total
-                    e.Graphics.DrawString(resultText, printFont, Brushes.Black, (x += 50), y);//330
+                    e.Graphics.DrawString("₱ " + resultText, printFont, Brushes.Black, (x += 50), y);//330
                     num += 1;
                 }
             }
@@ -747,7 +747,7 @@ namespace Capstone
                     getValueIfAnyElseBlank(dgvCountService, frmC.dataGridViewService, out resultText, i, 1);//frmC.dataGridViewService.Rows[0].Cells[1].Value.ToString()
                     e.Graphics.DrawString(resultText, printFont, Brushes.Black, 60, y);//470      Name
                     getValueIfAnyElseBlank(dgvCountService, frmC.dataGridViewService, out resultText, i, 3);//frmC.dataGridViewService.Rows[0].Cells[3].Value.ToString()
-                    e.Graphics.DrawString(resultText, printFont, Brushes.Black, x, y);//320   Price
+                    e.Graphics.DrawString("₱ " + resultText, printFont, Brushes.Black, x, y);//320   Price
                     num += 1;
                 }
             }
@@ -755,35 +755,35 @@ namespace Capstone
 
             //y = 550;
             e.Graphics.DrawString("Total Amount: ", printFont, Brushes.Black, 20, (y += 50));//550
-            e.Graphics.DrawString(frmC.lblSalesTotal.Text, printFont, Brushes.Black, (x += 70), y);//510 
+            e.Graphics.DrawString("₱ " + frmC.lblSalesTotal.Text, printFont, Brushes.Black, (x += 70), y);//510 
 
             e.Graphics.DrawString("Discount: ", printFont, Brushes.Black, 20, (y += 30));
-            e.Graphics.DrawString(frmC.lblDiscount.Text, printFont, Brushes.Black, x, y);//370
+            e.Graphics.DrawString("₱ " + frmC.lblDiscount.Text, printFont, Brushes.Black, x, y);//370
             getValueIfAnyElseBlank(dgvCount, frmC.dataGridViewCart, out resultText, 0, 5);//frmC.dataGridViewCart.Rows[0].Cells[5].Value.ToString()
             e.Graphics.DrawString("("+ resultText + "%)", printFont, Brushes.Black, (x -= 70), y);//440
 
             e.Graphics.DrawString("Total Due: ", printFont, Brushes.Black, 20, (y += 30));
-            e.Graphics.DrawString(txtTotal.Text, printFont, Brushes.Black, (x += 70), y);//510
+            e.Graphics.DrawString("₱ " + txtTotal.Text, printFont, Brushes.Black, (x += 70), y);//510
 
             e.Graphics.DrawString("Amount Tendered: ", printFont, Brushes.Black, 20, (y += 30));
-            e.Graphics.DrawString(txtPayment.Text, printFont, Brushes.Black, x, y);
+            e.Graphics.DrawString("₱ " + txtPayment.Text, printFont, Brushes.Black, x, y);
             
             if (comBoxPaymentTerms.Text.Equals("Deposit"))
             {
                 e.Graphics.DrawString("Remaining Balance: ", printFont, Brushes.Black, 20, (y += 30));
-                e.Graphics.DrawString(txtRemBalances.Text, printFont, Brushes.Black, x, y);
+                e.Graphics.DrawString("₱ " + txtRemBalances.Text, printFont, Brushes.Black, x, y);
 
                 e.Graphics.DrawString("Change: ", printFont, Brushes.Black, 20, (y += 30));
-                e.Graphics.DrawString("-", printFont, Brushes.Black, x, y);//710
+                e.Graphics.DrawString("₱ -", printFont, Brushes.Black, x, y);//710
 
             }
             else
             {
                 e.Graphics.DrawString("Remaining Balance: ", printFont, Brushes.Black, 20, (y += 30));
-                e.Graphics.DrawString("-", printFont, Brushes.Black, x, y);
+                e.Graphics.DrawString("₱ -", printFont, Brushes.Black, x, y);
 
                 e.Graphics.DrawString("Change: ", printFont, Brushes.Black, 20, (y += 30));
-                e.Graphics.DrawString(txtChange.Text, printFont, Brushes.Black, x, y);//710
+                e.Graphics.DrawString("₱ " + txtChange.Text, printFont, Brushes.Black, x, y);//710
 
             }
 
@@ -849,13 +849,13 @@ namespace Capstone
             x = 440;
             //y = 550;
             e.Graphics.DrawString("Total Amount: ", printFont, Brushes.Black, 20, (y += 50));//550
-            e.Graphics.DrawString(txtTotal.Text, printFont, Brushes.Black, (x += 70), y);//510 
+            e.Graphics.DrawString("₱ " + txtTotal.Text, printFont, Brushes.Black, (x += 70), y);//510 
 
             e.Graphics.DrawString("Amount Tendered: ", printFont, Brushes.Black, 20, (y += 30));
-            e.Graphics.DrawString(txtPayment.Text, printFont, Brushes.Black, x, y);
+            e.Graphics.DrawString("₱ " + txtPayment.Text, printFont, Brushes.Black, x, y);
 
             e.Graphics.DrawString("Change: ", printFont, Brushes.Black, 20, (y += 30));
-            e.Graphics.DrawString(txtChange.Text, printFont, Brushes.Black, x, y);//710          
+            e.Graphics.DrawString("₱ " + txtChange.Text, printFont, Brushes.Black, x, y);//710          
 
             e.Graphics.DrawString("THIS INVOICE/RECEIPT SHALL BE VALID FOR", printFontItallic, Brushes.Black, 130, (y += 60));//770
             e.Graphics.DrawString("ONE (1)) WEEK FROM THE DATE OF THE PERMIT TO USE", printFontItallic, Brushes.Black, 70, (y += 30));//800
