@@ -63,10 +63,10 @@ namespace Capstone
                 }
                 dr.Close();
                 cn.Close();
-            lblAvailableStock.Text = safetyStockCount.ToString();
-            lblCriticalStock.Text = CriticalCount.ToString();
-            lblOutOfStock.Text = outOfStockCount.ToString();
-            lblReOrder.Text = reOrderStockCount.ToString();
+            //lblAvailableStock.Text = safetyStockCount.ToString();
+            //lblCriticalStock.Text = CriticalCount.ToString();
+            //lblOutOfStock.Text = outOfStockCount.ToString();
+            //lblReOrder.Text = reOrderStockCount.ToString();
 
             txtAvailStock.Text = safetyStockCount.ToString();
             txtCrit.Text = CriticalCount.ToString();
@@ -500,21 +500,21 @@ namespace Capstone
 
         private void btnStockDetails_Click(object sender, EventArgs e)
         {
-            frmDashboardDetails frm = new frmDashboardDetails();
+            //frmDashboardDetails frm = new frmDashboardDetails();
             
-            frm.tabControlDashboardDetails.TabPages.Clear();
-            TabPage tab = new TabPage("Critical");
-            frm.tabControlDashboardDetails.TabPages.Add(tab);
-            tab.Controls.Add(frm.panelCritical);
-            TabPage tab2 = new TabPage("Out of Stock");
-            frm.tabControlDashboardDetails.TabPages.Add(tab2);
+            //frm.tabControlDashboardDetails.TabPages.Clear();
+            //TabPage tab = new TabPage("Critical");
+            //frm.tabControlDashboardDetails.TabPages.Add(tab);
+            //tab.Controls.Add(frm.panelCritical);
+            //TabPage tab2 = new TabPage("Out of Stock");
+            //frm.tabControlDashboardDetails.TabPages.Add(tab2);
             
-            tab2.Controls.Add(frm.panelOutOfStock);
-            frm.LoadUsers();
+            //tab2.Controls.Add(frm.panelOutOfStock);
+            //frm.LoadUsers();
             
-            frm.LoadCriticalStock();
-            frm.LoadOutOfStock();
-            frm.ShowDialog();
+            //frm.LoadCriticalStock();
+            //frm.LoadOutOfStock();
+            //frm.ShowDialog();
         }
         public void Users()
         {
@@ -560,13 +560,13 @@ namespace Capstone
         }
         private void btnUsersDetails_Click(object sender, EventArgs e)
         {
-            frmDashboardDetails frm = new frmDashboardDetails();
-            frm.tabControlDashboardDetails.TabPages.Clear();
-            TabPage tab = new TabPage("USER INFO");
-            frm.tabControlDashboardDetails.TabPages.Add(tab);
-            tab.Controls.Add(frm.panelUsers);
-            frm.LoadUsers();
-            frm.ShowDialog();
+            //frmDashboardDetails frm = new frmDashboardDetails();
+            //frm.tabControlDashboardDetails.TabPages.Clear();
+            //TabPage tab = new TabPage("USER INFO");
+            //frm.tabControlDashboardDetails.TabPages.Add(tab);
+            //tab.Controls.Add(frm.panelUsers);
+            //frm.LoadUsers();
+            //frm.ShowDialog();
         }
 
         private void btnCategoryDetails_Click(object sender, EventArgs e)
@@ -580,6 +580,16 @@ namespace Capstone
 
             frmLogin frm = new frmLogin();
             frm.ShowDialog();
+        }
+
+        private void panelDashboard_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void txtAvailStock_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
         private void btnLogout_Click(object sender, EventArgs e)//btnCashier

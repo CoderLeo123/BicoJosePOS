@@ -40,9 +40,9 @@ namespace Capstone
             cm = new SqlCommand("SELECT * FROM ViewItemProductType WHERE Stock_Check > "+lenseCheckValue +" ORDER BY Item_ID", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
-            {                                //                  2-DESCRIPTION / 1-Description          4-PRODUCT / 4-Product              6-CLASSIFICATION / 7-Classification
-                i += 1;                      //  1-ITEM ID / 0-Item_ID                 3-TYPE / 2-Type                    5-PRICE / 5-Price
-                dataGridViewSearchItem.Rows.Add(i, dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), dr[6].ToString());
+            {                                //                  2-DESCRIPTION / 1-Description          4-PRODUCT / 3-Product              6-CLASSIFICATION / 7-Classification
+                i += 1;                      //  1-ITEM ID / 0-Item_ID                 3-TYPE / 2-Type                    5-PRICE / 4-Price
+                dataGridViewSearchItem.Rows.Add(i, dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), "₱ " + dr[4].ToString(), dr[6].ToString());
             }
             dr.Close();
             cn.Close();

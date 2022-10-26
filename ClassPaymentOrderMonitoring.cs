@@ -25,9 +25,9 @@ namespace Capstone
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
-                //                              2-NAME / 2-Customer                   4-DEPOSIT/ 4-Initial_Deposit        6-DUE DATE/ 6-Due_Date                8-STATUS / 8-Status
-                i += 1; //0-#  1-TRANS NO / 1-Transaction_No         3-PAYMENT / 3-Total_Payment         5-BALANCE/ 5-Rem_Balance          7-CASHIER / 7-Cashier
-                dgv.Rows.Add(i, dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), dr[5].ToString(), dr[6].ToString(), dr[7].ToString(), dr[8].ToString());
+                //                              2-NAME / 2-Customer                             4-DEPOSIT/ 4-Initial_Deposit                 6-DUE DATE/ 6-Due_Date                8-STATUS / 8-Status
+                i += 1; //0-#  1-TRANS NO / 1-Transaction_No         3-PAYMENT / 3-Total_Payment                         5-BALANCE/ 5-Rem_Balance            7-CASHIER / 7-Cashier
+                dgv.Rows.Add(i, dr[1].ToString(), dr[2].ToString(), "₱ " + dr[3].ToString(), "₱ " + dr[4].ToString(), "₱ " + dr[5].ToString(), dr[6].ToString(), dr[7].ToString(), dr[8].ToString());
             }
             dr.Close();
             cn.Close();
@@ -59,7 +59,7 @@ namespace Capstone
 
                 //                              2-NAME / 2-Customer                   4-SETTLED DATE/ 10-Settled_Date          8-STATUS / 8-Status
                 i += 1; //0-#  1-TRANS NO / 1-Transaction_No        3-BALANCE/ 5-Rem_Balance          5-COMPLETED BY / 11-Completed_By
-                dgv.Rows.Add(i, dr[1].ToString(), dr[2].ToString(), dr[5].ToString(), dr[10].ToString(), dr[11].ToString(), dr[8].ToString());
+                dgv.Rows.Add(i, dr[1].ToString(), dr[2].ToString(), "₱ " + dr[5].ToString(), dr[10].ToString(), dr[11].ToString(), dr[8].ToString());
             }
             dr.Close();
             cn.Close();

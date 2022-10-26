@@ -27,12 +27,13 @@ namespace Capstone
         List<ItemList> IList = new List<ItemList>();
         List<ServiceList> SerList = new List<ServiceList>();
         string balSale = ""; bool balance = false;
-
+        bool transaction = false; bool sales = false;
+        bool settled = false; bool sold = false;
         public frmReports()
         {
             InitializeComponent();
             cn = new SqlConnection(dbcon.MyConnection());
-
+            textRightAlign();
             changeDatePriorCurrent(dateTimePickerStartSold);
             changeDatePriorCurrent(dateTimePickerStartTrans);
             classLoadData.LoadRecordsTransacHist(dataGridViewTransHist, txtSearchTransHist, dateTimePickerStartTrans, dateTimePickerEndTrans);
@@ -348,42 +349,107 @@ namespace Capstone
                 e.Graphics.DrawString("Address: 3rd Floor Susana Mart, Tungko San Jose Del Monte Bulacan", printFont, Brushes.Black, (leftMargin + 70), (yPos += offSetY)); //offSetY += (float)fontHeigth;
                 e.Graphics.DrawString("Clinic's Contact: 09178326666", printFont, Brushes.Black, (leftMargin + 220), (yPos += offSetY)); //offSetY += (float)fontHeigth;
                 //e.Graphics.DrawString("SALES REPORT", printFontBold, Brushes.Black, (leftMargin + 260), (yPos += (offSetY * 3))); //offSetY += ((float)fontHeigth * 3);
-                e.Graphics.DrawString("#", printFont, Brushes.Black, (leftMargin + 30), (yPos += (offSetY*6)));
-                e.Graphics.DrawString("    Date", printFont, Brushes.Black, (leftMargin + 130), yPos);
-                e.Graphics.DrawString("    Amount", printFont, Brushes.Black, (leftMargin + 280), yPos);
+                //e.Graphics.DrawString("#", printFont, Brushes.Black, (leftMargin + 30), (yPos += (offSetY*6)));
+                //e.Graphics.DrawString("    Date", printFont, Brushes.Black, (leftMargin + 130), yPos);
+                //e.Graphics.DrawString("    Amount", printFont, Brushes.Black, (leftMargin + 280), yPos);
             }
             void body()
             {
                 if (balance == true)
                 {
-                    e.Graphics.DrawString("BALANCE REPORT", printFontBold, Brushes.Black, (leftMargin + 260), (yPos -= (offSetY * 3)));
+                    e.Graphics.DrawString("#", printFont, Brushes.Black, (leftMargin + 30), (yPos += (offSetY * 6)));
+                    e.Graphics.DrawString("    Date", printFont, Brushes.Black, (leftMargin + 130), yPos);
+                    e.Graphics.DrawString("    Amount", printFont, Brushes.Black, (leftMargin + 280), yPos);
+                    e.Graphics.DrawString("DAILY BALANCE REPORT", printFontBold, Brushes.Black, (leftMargin + 260), (yPos -= (offSetY * 3)));
+                    yPos += (offSetY * 3);                    
+                    
+                    if (BalRow > 0)
+                    {
+                        for (int i = 0; i < BalRow - 1; i++)
+                        {
+                            SalesReport data = SList[i];
+                            //offSetY += (float)fontHeigth;
+                            e.Graphics.DrawString(num.ToString(), printFont, Brushes.Black, (leftMargin + 30), (yPos += offSetY));
+
+                            e.Graphics.DrawString(data.Date, printFont, Brushes.Black, (leftMargin + 130), yPos);//Date
+                            
+                                e.Graphics.DrawString("₱ " + data.Balance.ToString("00.00"), printFont, Brushes.Black, (leftMargin + 280), yPos);//Balance
+                            
+                            
+
+                            num += 1;
+                        }
+                    }
                 }
                 else if (balance == false)
                 {
-                    e.Graphics.DrawString("SALES REPORT", printFontBold, Brushes.Black, (leftMargin + 260), (yPos -= (offSetY * 3)));
-                }
-                yPos += (offSetY * 3);
-                if (BalRow > 0)
-                {
-                    for (int i = 0; i < BalRow - 1; i++)
+                    e.Graphics.DrawString("#", printFont, Brushes.Black, (leftMargin + 30), (yPos += (offSetY * 6)));
+                    e.Graphics.DrawString("    Date", printFont, Brushes.Black, (leftMargin + 130), yPos);
+                    e.Graphics.DrawString("    Amount", printFont, Brushes.Black, (leftMargin + 280), yPos);
+                    e.Graphics.DrawString("DAILY SALES REPORT", printFontBold, Brushes.Black, (leftMargin + 260), (yPos -= (offSetY * 3)));
+                    yPos += (offSetY * 3);
+                    
+                    if (BalRow > 0)
                     {
-                        SalesReport data = SList[i];
-                        //offSetY += (float)fontHeigth;
-                        e.Graphics.DrawString(num.ToString(), printFont, Brushes.Black, (leftMargin + 30), (yPos += offSetY));
+                        for (int i = 0; i < BalRow - 1; i++)
+                        {
+                            SalesReport data = SList[i];
+                            //offSetY += (float)fontHeigth;
+                            e.Graphics.DrawString(num.ToString(), printFont, Brushes.Black, (leftMargin + 30), (yPos += offSetY));
 
-                        e.Graphics.DrawString(data.Date, printFont, Brushes.Black, (leftMargin + 130), yPos);//Date
-                        if(balance == true)
-                        {
-                            e.Graphics.DrawString("₱ " + data.Balance.ToString("00.00"), printFont, Brushes.Black, (leftMargin + 280), yPos);//Balance
-                        } 
-                        else if (balance == false)
-                        {
-                            e.Graphics.DrawString("₱ " + data.Payment.ToString("00.00"), printFont, Brushes.Black, (leftMargin + 280), yPos);//Balance
+                            e.Graphics.DrawString(data.Date, printFont, Brushes.Black, (leftMargin + 130), yPos);//Date
+                            
+                            
+                                e.Graphics.DrawString("₱ " + data.Payment.ToString("00.00"), printFont, Brushes.Black, (leftMargin + 280), yPos);//Balance
+                            
+
+                            num += 1;
                         }
-
-                        num += 1;
                     }
                 }
+                else if (transaction == true)
+                {
+                    e.Graphics.DrawString("#", printFont, Brushes.Black, (leftMargin + 30), (yPos += (offSetY * 6)));
+                    e.Graphics.DrawString("    INVOICE", printFont, Brushes.Black, (leftMargin + 130), yPos);
+                    e.Graphics.DrawString("    CUSTOMER", printFont, Brushes.Black, (leftMargin + 280), yPos);
+                    e.Graphics.DrawString("    CASHIER", printFont, Brushes.Black, (leftMargin + 430), yPos);
+                    e.Graphics.DrawString("    DATE", printFont, Brushes.Black, (leftMargin + 580), yPos);
+                    e.Graphics.DrawString("TRANSACTION HISTORY", printFontBold, Brushes.Black, (leftMargin + 260), (yPos -= (offSetY * 3)));
+                    yPos += (offSetY * 3);
+                    
+               
+                    
+                }
+                else if (settled == false)
+                {
+                    e.Graphics.DrawString("SETTLED TRANSACTION", printFontBold, Brushes.Black, (leftMargin + 260), (yPos -= (offSetY * 3)));
+                }
+                else if (sold == false)
+                {
+                    e.Graphics.DrawString("SOLD ITEMS", printFontBold, Brushes.Black, (leftMargin + 260), (yPos -= (offSetY * 3)));
+                }
+                //yPos += (offSetY * 3);
+                //if (BalRow > 0)
+                //{
+                //    for (int i = 0; i < BalRow - 1; i++)
+                //    {
+                //        SalesReport data = SList[i];
+                //        //offSetY += (float)fontHeigth;
+                //        e.Graphics.DrawString(num.ToString(), printFont, Brushes.Black, (leftMargin + 30), (yPos += offSetY));
+
+                //        e.Graphics.DrawString(data.Date, printFont, Brushes.Black, (leftMargin + 130), yPos);//Date
+                //        if(balance == true)
+                //        {
+                //            e.Graphics.DrawString("₱ " + data.Balance.ToString("00.00"), printFont, Brushes.Black, (leftMargin + 280), yPos);//Balance
+                //        } 
+                //        else if (balance == false)
+                //        {
+                //            e.Graphics.DrawString("₱ " + data.Payment.ToString("00.00"), printFont, Brushes.Black, (leftMargin + 280), yPos);//Balance
+                //        }
+
+                //        num += 1;
+                //    }
+                //}
             }
             void footer()
             { //'print footer
@@ -687,6 +753,39 @@ namespace Capstone
 
         }
 
+        private void printPreviewDialogTransH_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblCashier_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPreviewTH_Click(object sender, EventArgs e)
+        {
+            PrintPreviewDialog preview = new PrintPreviewDialog();
+            transaction = true;
+            preview.Document = printDocumentBal;
+            //printPreviewControl.Document = printDocumentBal; // 800, 800 = 8" x 8"
+            printDocumentBal.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("SHORT", sWidth, sLength);
+
+            preview.PrintPreviewControl.StartPage = 0;
+            
+            //pLength = 920;
+            //paperSizeUpdate(out pLength);
+            //printDocument.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("RECEIPT", 610, pLength);
+            preview.PrintPreviewControl.Zoom = 0.75;
+            preview.Size = new System.Drawing.Size(900, 900);
+            preview.ShowDialog();
+        }
+
         public void checkWhatIsPress(bool btnReO, bool btnCrit, bool btnOutS, bool btnExp)
         {
             if (btnReO == true)
@@ -717,6 +816,13 @@ namespace Capstone
             {
                 changeThisBtn.BackColor = Color.LimeGreen;
             }
+        }
+        public void textRightAlign()
+        {
+            //DataGridViewColumn column1 = dataGridViewSalesR.Columns[1];
+            //column1.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            this.dataGridViewSalesR.Columns["Sa"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
         }
         private void btnSaveProduct_Click(object sender, EventArgs e)
         {
