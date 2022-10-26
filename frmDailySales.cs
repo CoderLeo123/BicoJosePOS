@@ -47,7 +47,7 @@ namespace Capstone
 
             PrintPreviewDialog preview = new PrintPreviewDialog();
             preview.Document = printDocument;
-            int pLength = 950;
+            int pLength = 1000;
             paperSizeUpdate(out pLength);
             printDocument.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("RECEIPT", 610, pLength);
             preview.PrintPreviewControl.Zoom = 0.75;
@@ -69,7 +69,7 @@ namespace Capstone
         {
             cn = new SqlConnection(dbcon.MyConnection());
             //Desc = ""; Price = ""; Quant = ""; Total = ""; UnitM = "";
-            rowCount = 0;
+            rowCount = 0; SList.Clear();
             cn.Open();
             SqlCommand cm = new SqlCommand("SELECT Name, Price FROM ViewServiceAvailed WHERE Transaction_No LIKE '" + transacNo + "'", cn);
             dr = cm.ExecuteReader();
@@ -99,7 +99,7 @@ namespace Capstone
         {
             cn = new SqlConnection(dbcon.MyConnection());
             //Desc = ""; Price = ""; Quant = ""; Total = ""; UnitM = "";
-            rowCount = 0;
+            rowCount = 0; List.Clear();
             cn.Open();
             SqlCommand cm = new SqlCommand("SELECT Description, Price, Quantity, Total, Unit_Measure FROM ViewCartStockItem WHERE Transaction_No LIKE '" + transacNo + "'", cn);
             dr = cm.ExecuteReader();
@@ -112,6 +112,7 @@ namespace Capstone
                 IList.Qty = dr.GetInt32(2);//"Quantity"
                 IList.Total = dr.GetDouble(3);//"Total"
                 IList.UnitM = dr.GetString(4);//"Unit_Measure"
+                
                 List.Add(IList);
                 rowCount++;
 
@@ -175,7 +176,7 @@ namespace Capstone
                 for (int i = 0; i < ITMrowCount; i++)
                 {
                     ItemList Itms = List[i];
-                    x = 380;
+                    x = 370;
                     e.Graphics.DrawString(num.ToString(), printFont, Brushes.Black, 20, (y += 30));//330
 
                     //Description
@@ -185,13 +186,13 @@ namespace Capstone
                     e.Graphics.DrawString("₱ " + Itms.Price.ToString("00.00"), printFont, Brushes.Black, x, y); ;
 
                     //Qty
-                    e.Graphics.DrawString(Itms.Qty.ToString(), printFont, Brushes.Black, (x += 60), y);
+                    e.Graphics.DrawString(Itms.Qty.ToString(), printFont, Brushes.Black, (x += 80), y);
 
                     //Unit
-                    e.Graphics.DrawString(Itms.UnitM, printFont, Brushes.Black, (x += 50), y);
+                    e.Graphics.DrawString(Itms.UnitM, printFont, Brushes.Black, (x += 38), y);
 
                     //Total
-                    e.Graphics.DrawString("₱ " + Itms.Total.ToString("00.00"), printFont, Brushes.Black, (x += 50), y);//330
+                    e.Graphics.DrawString("₱ " + Itms.Total.ToString("00.00"), printFont, Brushes.Black, (x += 40), y);//330
                     num += 1;
                 }
             }
@@ -204,7 +205,7 @@ namespace Capstone
                 for (int i = 0; i < SrowCount; i++)
                 {
                     ServiceList SerList = SList[i];
-                    x = 380;
+                    x = 370;
                     e.Graphics.DrawString(num.ToString(), printFont, Brushes.Black, 20, (y += 30));
 
                     e.Graphics.DrawString(SerList.Name, printFont, Brushes.Black, 60, y);//470      Name
@@ -216,15 +217,15 @@ namespace Capstone
             x = 440;
             //y = 550;
             e.Graphics.DrawString("Total Amount: ", printFont, Brushes.Black, 20, (y += 50));//550
-            e.Graphics.DrawString("₱ " + GrossT, printFont, Brushes.Black, (x += 70), y);//390 
+            e.Graphics.DrawString("₱ " + GrossT, printFont, Brushes.Black, (x += 50), y);//390 
 
             e.Graphics.DrawString("Discount: ", printFont, Brushes.Black, 20, (y += 30));
             e.Graphics.DrawString("₱ " + Discoun, printFont, Brushes.Black, x, y);//370
             //getValueIfAnyElseBlank(frmC.dataGridViewCart, out resultText, 0, 5);//frmC.dataGridViewCart.Rows[0].Cells[5].Value.ToString()
-            e.Graphics.DrawString("(" + DisPerc + "%)", printFont, Brushes.Black, (x -= 70), y);//320
+            e.Graphics.DrawString("(" + DisPerc + "%)", printFont, Brushes.Black, (x -= 80), y);//320
 
             e.Graphics.DrawString("Total Due: ", printFont, Brushes.Black, 20, (y += 30));
-            e.Graphics.DrawString("₱ " + NetT, printFont, Brushes.Black, (x += 70), y);
+            e.Graphics.DrawString("₱ " + NetT, printFont, Brushes.Black, (x += 80), y);
 
             e.Graphics.DrawString("Amount Tendered: ", printFont, Brushes.Black, 20, (y += 30));
             e.Graphics.DrawString("₱ " + Payment, printFont, Brushes.Black, x, y);
@@ -326,23 +327,23 @@ namespace Capstone
             paperL = 0;
             if (dgvCount > 0 && dgvCount <= 4)
             {
-                paperL = 950;
+                paperL = 1000;
             }
             else if (dgvCount > 4 && dgvCount <= 7)// + 3 items = 30 * 3 = 90
             {
-                paperL = 1040;
+                paperL = 1090;
             }
             else if (dgvCount > 7 && dgvCount <= 10)// + 3 items = 30 * 3 = 90
             {
-                paperL = 1130;
+                paperL = 1180;
             }
             else if (dgvCount > 10 && dgvCount <= 13)// + 3 items = 30 * 3 = 90
             {
-                paperL = 1220;
+                paperL = 1270;
             }
             else
             {
-                paperL = 950;
+                paperL = 1000;
             }
 
         }

@@ -8,6 +8,7 @@ namespace Capstone
         SqlCommand cm = new SqlCommand();
         DBConnection dbcon = new DBConnection();
         SqlDataReader dr;
+        ClassLoadData classLoadData = new ClassLoadData();
         ClassInventory classInvent = new ClassInventory();
         ClassReports classReport = new ClassReports();
         Boolean isCollapsed1, isCollapsed2, isCollapsed3 = true;
@@ -293,15 +294,16 @@ namespace Capstone
             TabPage tab = new TabPage("Sales Report");
             frm.tabControlReports.TabPages.Add(tab);
             tab.Controls.Add(frm.panelSaleRep);
-
-            TabPage tab2 = new TabPage("Balance Report");
-            frm.tabControlReports.TabPages.Add(tab2);
-            tab2.Controls.Add(frm.panelBalRep);
-
+            frmR.checkWhatIsPress(true, false, false, false);
             classReport.loadSalesPerDay(frm.dataGridViewSalesR, "Total_Sale");
             classReport.loadSalesPerDay(frm.dataGridViewBalR, "Total_Bal");
             frmR.dateSelect(frm.dataGridViewInitial);
-            
+            frmR.changeDatePriorCurrent(frmR.dateTimePickerStartSold);
+            frmR.changeDatePriorCurrent(frmR.dateTimePickerStartTrans);
+            classLoadData.LoadRecordsTransacHist(frmR.dataGridViewTransHist, frmR.txtSearchTransHist, frmR.dateTimePickerStartTrans, frmR.dateTimePickerEndTrans);
+            classLoadData.LoadRecordsSoldItems(frmR.dataGridViewSoldItems, frmR.txtSearchSold, frmR.dateTimePickerStartSold, frmR.dateTimePickerEndSold);
+            classLoadData.LoadRecordsTransacSettled(frmR.dataGridViewSettle, frmR.txtSearchSettleds, frmR.dateTimePickerSettStart, frmR.dateTimePickerSettEnd);
+
             //frmR.lblCheckCell.Text = frmR.dataGridViewInitial.Rows[0].Cells[1].Value?.ToString();
             //frm.tabControlReports.TabPages.Clear();
             //TabPage tab = new TabPage("Check");

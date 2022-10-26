@@ -81,7 +81,7 @@
             this.dateTimePickerEndSold = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.panel11 = new System.Windows.Forms.Panel();
+            this.panelSettled = new System.Windows.Forms.Panel();
             this.panel12 = new System.Windows.Forms.Panel();
             this.dataGridViewSettle = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -124,7 +124,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel10.SuspendLayout();
             this.tabPage3.SuspendLayout();
-            this.panel11.SuspendLayout();
+            this.panelSettled.SuspendLayout();
             this.panel12.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSettle)).BeginInit();
             this.panel13.SuspendLayout();
@@ -667,7 +667,7 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.panel11);
+            this.tabPage3.Controls.Add(this.panelSettled);
             this.tabPage3.Location = new System.Drawing.Point(4, 46);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(1485, 880);
@@ -675,15 +675,15 @@
             this.tabPage3.Text = "Settled";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // panel11
+            // panelSettled
             // 
-            this.panel11.Controls.Add(this.panel12);
-            this.panel11.Controls.Add(this.panel13);
-            this.panel11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel11.Location = new System.Drawing.Point(0, 0);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(1485, 880);
-            this.panel11.TabIndex = 6;
+            this.panelSettled.Controls.Add(this.panel12);
+            this.panelSettled.Controls.Add(this.panel13);
+            this.panelSettled.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelSettled.Location = new System.Drawing.Point(0, 0);
+            this.panelSettled.Name = "panelSettled";
+            this.panelSettled.Size = new System.Drawing.Size(1485, 880);
+            this.panelSettled.TabIndex = 6;
             // 
             // panel12
             // 
@@ -969,7 +969,7 @@
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
             this.tabPage3.ResumeLayout(false);
-            this.panel11.ResumeLayout(false);
+            this.panelSettled.ResumeLayout(false);
             this.panel12.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSettle)).EndInit();
             this.panel13.ResumeLayout(false);
@@ -1033,7 +1033,7 @@
         private PrintPreviewDialog printPreviewDialog;
         public Label lblCurrentTransN;
         private TabPage tabPage3;
-        public Panel panel11;
+        public Panel panelSettled;
         private Panel panel12;
         public DataGridView dataGridViewSettle;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
