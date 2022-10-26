@@ -714,7 +714,7 @@ namespace Capstone
             {
                 for(int i = 0; i < dgvCount; i++)
                 {
-                    x = 380; // 320 + 60
+                    x = 370; // 320 + 60
                     e.Graphics.DrawString(num.ToString(), printFont, Brushes.Black, 20, (y += 30));//330
                     getValueIfAnyElseBlank(dgvCount, frmC.dataGridViewCart, out resultText, i, 1);//Description
                     e.Graphics.DrawString(resultText, printFont, Brushes.Black, 60, y);
@@ -723,14 +723,14 @@ namespace Capstone
                     e.Graphics.DrawString("₱ " + resultText, printFont, Brushes.Black, x, y);
 
                     getValueIfAnyElseBlank(dgvCount, frmC.dataGridViewCart, out resultText, i, 4);//Qty
-                    e.Graphics.DrawString(resultText, printFont, Brushes.Black, (x += 60), y);
+                    e.Graphics.DrawString(resultText, printFont, Brushes.Black, (x += 80), y);
 
                     
                     getValueIfAnyElseBlank(dgvCount, frmC.dataGridViewCart, out resultText, i, 13);//Unit
-                    e.Graphics.DrawString(resultText, printFont, Brushes.Black, (x += 50), y);
+                    e.Graphics.DrawString(resultText, printFont, Brushes.Black, (x += 38), y);
 
                     getValueIfAnyElseBlank(dgvCount, frmC.dataGridViewCart, out resultText, i, 6);//Total
-                    e.Graphics.DrawString("₱ " + resultText, printFont, Brushes.Black, (x += 50), y);//330
+                    e.Graphics.DrawString("₱ " + resultText, printFont, Brushes.Black, (x += 40), y);//330
                     num += 1;
                 }
             }
@@ -741,7 +741,7 @@ namespace Capstone
                 num = 1;
                 for (int i = 0; i < dgvCountService; i++)
                 {
-                    x = 380;
+                    x = 370;
                     //y = 430;
                     e.Graphics.DrawString(num.ToString(), printFont, Brushes.Black, 20, (y += 30));
                     getValueIfAnyElseBlank(dgvCountService, frmC.dataGridViewService, out resultText, i, 1);//frmC.dataGridViewService.Rows[0].Cells[1].Value.ToString()
@@ -755,15 +755,15 @@ namespace Capstone
 
             //y = 550;
             e.Graphics.DrawString("Total Amount: ", printFont, Brushes.Black, 20, (y += 50));//550
-            e.Graphics.DrawString("₱ " + frmC.lblSalesTotal.Text, printFont, Brushes.Black, (x += 70), y);//510 
+            e.Graphics.DrawString("₱ " + frmC.lblSalesTotal.Text, printFont, Brushes.Black, (x += 50), y);//510 
 
             e.Graphics.DrawString("Discount: ", printFont, Brushes.Black, 20, (y += 30));
             e.Graphics.DrawString("₱ " + frmC.lblDiscount.Text, printFont, Brushes.Black, x, y);//370
             getValueIfAnyElseBlank(dgvCount, frmC.dataGridViewCart, out resultText, 0, 5);//frmC.dataGridViewCart.Rows[0].Cells[5].Value.ToString()
-            e.Graphics.DrawString("("+ resultText + "%)", printFont, Brushes.Black, (x -= 70), y);//440
+            e.Graphics.DrawString("("+ resultText + "%)", printFont, Brushes.Black, (x -= 80), y);//440
 
             e.Graphics.DrawString("Total Due: ", printFont, Brushes.Black, 20, (y += 30));
-            e.Graphics.DrawString("₱ " + txtTotal.Text, printFont, Brushes.Black, (x += 70), y);//510
+            e.Graphics.DrawString("₱ " + txtTotal.Text, printFont, Brushes.Black, (x += 80), y);//510
 
             e.Graphics.DrawString("Amount Tendered: ", printFont, Brushes.Black, 20, (y += 30));
             e.Graphics.DrawString("₱ " + txtPayment.Text, printFont, Brushes.Black, x, y);
@@ -869,23 +869,23 @@ namespace Capstone
             paperL = 0;
             if (dgvCount > 0 && dgvCount <= 4)
             {
-                paperL = 950;
+                paperL = 1000;
             }
             else if (dgvCount > 4 && dgvCount <= 7)// + 3 items = 30 * 3 = 90
             {
-                paperL = 1040;
+                paperL = 1090;
             }
             else if (dgvCount > 7 && dgvCount <= 10)// + 3 items = 30 * 3 = 90
             {
-                paperL = 1130;
+                paperL = 1180;
             }
             else if (dgvCount > 10 && dgvCount <= 13)// + 3 items = 30 * 3 = 90
             {
-                paperL = 1220;
+                paperL = 1270;
             }
             else
             {
-                paperL = 950;
+                paperL = 1000;
             }
 
         }
