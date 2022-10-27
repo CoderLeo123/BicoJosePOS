@@ -660,12 +660,7 @@ namespace Capstone
                 try
                 {
                     result = dgv.Rows[rows].Cells[col].Value.ToString();
-                    //int slength = result.Length;
-                    //if (slength > 38)
-                    //{
-                    //    int xAxis = 60;
-                    //    int yAxis = 30;
-                    //}
+                   
                 }
                 catch (Exception ex)
                 {

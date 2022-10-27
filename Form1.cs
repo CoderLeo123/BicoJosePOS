@@ -11,6 +11,7 @@ namespace Capstone
         ClassLoadData classLoadData = new ClassLoadData();
         ClassInventory classInvent = new ClassInventory();
         ClassReports classReport = new ClassReports();
+        ClassLoginAndSignUp classLoginMethod = new ClassLoginAndSignUp();
         Boolean isCollapsed1, isCollapsed2, isCollapsed3 = true;
         frmReports frmR = new frmReports();
         public frmAdmin()
@@ -483,9 +484,14 @@ namespace Capstone
             panelLoad.Controls.Clear();
             panelLoad.Controls.Add(frm);
             frm.BringToFront();
+            
+            frm.tabControlUser.TabPages.Clear();
+            TabPage tab = new TabPage("LOGIN SESSION");
+            frm.tabControlUser.TabPages.Add(tab);
+            tab.Controls.Add(frm.panelSession);
+
+            frm.checkWhatIsPress(false, true);
             frm.Show();
-            //btnCollapsed();
-            //timerStart();
         }
 
         private void panel3_Paint(object sender, PaintEventArgs e)
@@ -576,8 +582,11 @@ namespace Capstone
 
         private void btnLogout_Click_1(object sender, EventArgs e)
         {
+            string ID = lblUserNum.Text;
+            string loginTime = DateTime.Now.ToString();
+            classLoginMethod.insertLogOutDateTime(ID, loginTime);
             this.Dispose(); this.Close();
-
+            
             frmLogin frm = new frmLogin();
             frm.ShowDialog();
         }
@@ -597,6 +606,7 @@ namespace Capstone
              this.Dispose(); this.Close();
            
             frmCashier frm = new frmCashier();
+            frm.lblUserNum.Text = lblUserNum.Text;
             frm.ShowDialog();
         }
 

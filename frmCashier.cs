@@ -20,6 +20,7 @@ namespace Capstone
         ClassLoadData classLoadData = new ClassLoadData();
         ClassGenerateID classGenerateID = new ClassGenerateID();
         ClassInventory classInventory = new ClassInventory();
+        ClassLoginAndSignUp classLoginMethod = new ClassLoginAndSignUp();
         string title = "BICO-JOSE System";
         string num; int count;
 
@@ -57,6 +58,9 @@ namespace Capstone
         
         private void btnLogout_Click(object sender, EventArgs e)
         {
+            string ID = lblUserNum.Text;
+            string loginTime = DateTime.Now.ToString();
+            classLoginMethod.insertLogOutDateTime(ID, loginTime);
             this.Close();
             this.Dispose();
             frmLogin frm = new frmLogin();

@@ -54,6 +54,7 @@ namespace Capstone
         {
             this.Dispose(); this.Close();
         }
+       
         //public void insertFirstAdmin(string user_ID, string UserName, string password, string FName, string LName, string userType)
         //{
         //    string Name = FName + " " + LName;
@@ -95,8 +96,10 @@ namespace Capstone
             string CompleteName = "";
             string Pass = "";
             string ID = "";
+            string num = "";
             string type = "";
-            classLoginMethod.selectDataTblUser(out ID, out UName, out CompleteName, out type, txtUsername, txtPassword, out found);// for checking
+            string loginTime = DateTime.Now.ToString();
+            classLoginMethod.selectDataTblUser(out num, out ID, out UName, out CompleteName, out type, txtUsername, txtPassword, out found);// for checking
             
 
 
@@ -110,10 +113,12 @@ namespace Capstone
             }
             else if (found == true)
             {
+                classLoginMethod.insertLoginDateTime(ID, loginTime);
                 if (type.Equals("Admin"))
                 {
                     frmAdmin frm = new frmAdmin();
                     frm.lblName.Text = CompleteName;
+                    frm.lblUserNum.Text = num;
                     frm.btnBackupArch.Visible = false;
                     frm.btnUserSettings.Visible = false;
                     frm.btnCashier.Visible = false;
@@ -125,6 +130,7 @@ namespace Capstone
                 {
                     frmCashier frm = new frmCashier();
                     frm.lblCashierName.Text = CompleteName;
+                    frm.lblUserNum.Text = num;
                     frm.ShowDialog();
                     this.Dispose(); this.Close();
                 }
@@ -132,6 +138,7 @@ namespace Capstone
                 {
                     frmAdmin frm = new frmAdmin();
                     frm.lblName.Text = CompleteName;
+                    frm.lblUserNum.Text = num;
                     frm.ShowDialog();
                     //frmLogin frmL = new frmLogin();
                     //frmL.Close();

@@ -43,6 +43,9 @@
             this.ServID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ServNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.lblDiscPercen = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.lblSalesTotal = new System.Windows.Forms.Label();
@@ -96,9 +99,7 @@
             this.unitMe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Classif = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
+            this.lblUserNum = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewService)).BeginInit();
@@ -256,6 +257,37 @@
             this.panel7.Size = new System.Drawing.Size(427, 266);
             this.panel7.TabIndex = 0;
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label12.ForeColor = System.Drawing.Color.Red;
+            this.label12.Location = new System.Drawing.Point(217, 140);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(37, 41);
+            this.label12.TabIndex = 26;
+            this.label12.Text = "₱";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label9.Location = new System.Drawing.Point(217, 99);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(37, 41);
+            this.label9.TabIndex = 25;
+            this.label9.Text = "₱";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label8.Location = new System.Drawing.Point(217, 58);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(37, 41);
+            this.label8.TabIndex = 24;
+            this.label8.Text = "₱";
+            // 
             // lblDiscPercen
             // 
             this.lblDiscPercen.AutoSize = true;
@@ -356,6 +388,7 @@
             this.panel3.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.panel3.BackgroundImage = global::Capstone.Properties.Resources.eye_glasses__1_;
             this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panel3.Controls.Add(this.lblUserNum);
             this.panel3.Controls.Add(this.lblTotal);
             this.panel3.Controls.Add(this.lblCashierName);
             this.panel3.Controls.Add(this.label1);
@@ -912,36 +945,15 @@
             // 
             this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
-            // label8
+            // lblUserNum
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(217, 58);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(37, 41);
-            this.label8.TabIndex = 24;
-            this.label8.Text = "₱";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label9.Location = new System.Drawing.Point(217, 99);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(37, 41);
-            this.label9.TabIndex = 25;
-            this.label9.Text = "₱";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label12.ForeColor = System.Drawing.Color.Red;
-            this.label12.Location = new System.Drawing.Point(217, 140);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(37, 41);
-            this.label12.TabIndex = 26;
-            this.label12.Text = "₱";
+            this.lblUserNum.AutoSize = true;
+            this.lblUserNum.Location = new System.Drawing.Point(485, 10);
+            this.lblUserNum.Name = "lblUserNum";
+            this.lblUserNum.Size = new System.Drawing.Size(62, 28);
+            this.lblUserNum.TabIndex = 8;
+            this.lblUserNum.Text = "          ";
+            this.lblUserNum.Visible = false;
             // 
             // frmCashier
             // 
@@ -1045,5 +1057,6 @@
         public Label label12;
         public Label label9;
         public Label label8;
+        public Label lblUserNum;
     }
 }

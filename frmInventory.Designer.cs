@@ -36,6 +36,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel13 = new System.Windows.Forms.Panel();
             this.btnExpira = new System.Windows.Forms.Button();
@@ -96,6 +98,19 @@
             this.panel11 = new System.Windows.Forms.Panel();
             this.panel12 = new System.Windows.Forms.Panel();
             this.txtSearchExpirat = new System.Windows.Forms.TextBox();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.panelDispose = new System.Windows.Forms.Panel();
+            this.panel16 = new System.Windows.Forms.Panel();
+            this.dataGridViewDispose = new System.Windows.Forms.DataGridView();
+            this.panel17 = new System.Windows.Forms.Panel();
+            this.panel18 = new System.Windows.Forms.Panel();
+            this.txtSearchDispose = new System.Windows.Forms.TextBox();
+            this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ex = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel13.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnCloseInventory)).BeginInit();
@@ -124,6 +139,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewExpir)).BeginInit();
             this.panel11.SuspendLayout();
             this.panel12.SuspendLayout();
+            this.tabPage5.SuspendLayout();
+            this.panelDispose.SuspendLayout();
+            this.panel16.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDispose)).BeginInit();
+            this.panel17.SuspendLayout();
+            this.panel18.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -246,6 +267,7 @@
             this.tabControlInventory.Controls.Add(this.tabPage2);
             this.tabControlInventory.Controls.Add(this.tabPage4);
             this.tabControlInventory.Controls.Add(this.tabPage3);
+            this.tabControlInventory.Controls.Add(this.tabPage5);
             this.tabControlInventory.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlInventory.Location = new System.Drawing.Point(0, 57);
             this.tabControlInventory.Name = "tabControlInventory";
@@ -411,10 +433,10 @@
             this.tabPage2.BackColor = System.Drawing.Color.Transparent;
             this.tabPage2.Controls.Add(this.panelCritical);
             this.tabPage2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.tabPage2.Location = new System.Drawing.Point(4, 46);
+            this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1307, 823);
+            this.tabPage2.Size = new System.Drawing.Size(1307, 840);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Critical";
             // 
@@ -425,7 +447,7 @@
             this.panelCritical.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelCritical.Location = new System.Drawing.Point(3, 3);
             this.panelCritical.Name = "panelCritical";
-            this.panelCritical.Size = new System.Drawing.Size(1301, 817);
+            this.panelCritical.Size = new System.Drawing.Size(1301, 834);
             this.panelCritical.TabIndex = 41;
             // 
             // panel14
@@ -434,7 +456,7 @@
             this.panel14.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel14.Location = new System.Drawing.Point(0, 75);
             this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(1301, 742);
+            this.panel14.Size = new System.Drawing.Size(1301, 759);
             this.panel14.TabIndex = 1;
             // 
             // dataGridViewCritical
@@ -478,7 +500,7 @@
             this.dataGridViewCritical.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridViewCritical.RowTemplate.Height = 35;
             this.dataGridViewCritical.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewCritical.Size = new System.Drawing.Size(1301, 742);
+            this.dataGridViewCritical.Size = new System.Drawing.Size(1301, 759);
             this.dataGridViewCritical.TabIndex = 6;
             // 
             // dataGridViewTextBoxColumn1
@@ -563,9 +585,9 @@
             // tabPage4
             // 
             this.tabPage4.Controls.Add(this.panelOutOfStock);
-            this.tabPage4.Location = new System.Drawing.Point(4, 46);
+            this.tabPage4.Location = new System.Drawing.Point(4, 29);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(1307, 823);
+            this.tabPage4.Size = new System.Drawing.Size(1307, 840);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Out of Stock";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -577,7 +599,7 @@
             this.panelOutOfStock.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelOutOfStock.Location = new System.Drawing.Point(0, 0);
             this.panelOutOfStock.Name = "panelOutOfStock";
-            this.panelOutOfStock.Size = new System.Drawing.Size(1307, 823);
+            this.panelOutOfStock.Size = new System.Drawing.Size(1307, 840);
             this.panelOutOfStock.TabIndex = 1;
             // 
             // panel6
@@ -586,7 +608,7 @@
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(0, 74);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(1307, 749);
+            this.panel6.Size = new System.Drawing.Size(1307, 766);
             this.panel6.TabIndex = 41;
             // 
             // dataGridViewOutStock
@@ -630,7 +652,7 @@
             this.dataGridViewOutStock.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridViewOutStock.RowTemplate.Height = 35;
             this.dataGridViewOutStock.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewOutStock.Size = new System.Drawing.Size(1307, 749);
+            this.dataGridViewOutStock.Size = new System.Drawing.Size(1307, 766);
             this.dataGridViewOutStock.TabIndex = 6;
             // 
             // dataGridViewTextBoxColumn6
@@ -715,9 +737,9 @@
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.panelExpiration);
-            this.tabPage3.Location = new System.Drawing.Point(4, 46);
+            this.tabPage3.Location = new System.Drawing.Point(4, 29);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1307, 823);
+            this.tabPage3.Size = new System.Drawing.Size(1307, 840);
             this.tabPage3.TabIndex = 4;
             this.tabPage3.Text = "Expiration";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -729,7 +751,7 @@
             this.panelExpiration.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelExpiration.Location = new System.Drawing.Point(0, 0);
             this.panelExpiration.Name = "panelExpiration";
-            this.panelExpiration.Size = new System.Drawing.Size(1307, 823);
+            this.panelExpiration.Size = new System.Drawing.Size(1307, 840);
             this.panelExpiration.TabIndex = 40;
             // 
             // panel15
@@ -738,7 +760,7 @@
             this.panel15.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel15.Location = new System.Drawing.Point(0, 70);
             this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(1307, 753);
+            this.panel15.Size = new System.Drawing.Size(1307, 770);
             this.panel15.TabIndex = 1;
             // 
             // dataGridViewExpir
@@ -781,7 +803,7 @@
             this.dataGridViewExpir.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridViewExpir.RowTemplate.Height = 35;
             this.dataGridViewExpir.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewExpir.Size = new System.Drawing.Size(1307, 753);
+            this.dataGridViewExpir.Size = new System.Drawing.Size(1307, 770);
             this.dataGridViewExpir.TabIndex = 7;
             this.dataGridViewExpir.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewExpir_CellContentClick);
             // 
@@ -857,6 +879,158 @@
             this.txtSearchExpirat.Size = new System.Drawing.Size(619, 38);
             this.txtSearchExpirat.TabIndex = 0;
             // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.panelDispose);
+            this.tabPage5.Location = new System.Drawing.Point(4, 46);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Size = new System.Drawing.Size(1307, 823);
+            this.tabPage5.TabIndex = 5;
+            this.tabPage5.Text = "Dispose";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // panelDispose
+            // 
+            this.panelDispose.Controls.Add(this.panel16);
+            this.panelDispose.Controls.Add(this.panel17);
+            this.panelDispose.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelDispose.Location = new System.Drawing.Point(0, 0);
+            this.panelDispose.Name = "panelDispose";
+            this.panelDispose.Size = new System.Drawing.Size(1307, 823);
+            this.panelDispose.TabIndex = 3;
+            // 
+            // panel16
+            // 
+            this.panel16.Controls.Add(this.dataGridViewDispose);
+            this.panel16.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel16.Location = new System.Drawing.Point(0, 72);
+            this.panel16.Name = "panel16";
+            this.panel16.Size = new System.Drawing.Size(1307, 751);
+            this.panel16.TabIndex = 1;
+            // 
+            // dataGridViewDispose
+            // 
+            this.dataGridViewDispose.AllowUserToResizeColumns = false;
+            this.dataGridViewDispose.AllowUserToResizeRows = false;
+            this.dataGridViewDispose.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridViewDispose.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewDispose.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            this.dataGridViewDispose.ColumnHeadersHeight = 40;
+            this.dataGridViewDispose.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridViewDispose.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn16,
+            this.dataGridViewTextBoxColumn17,
+            this.dataGridViewTextBoxColumn18,
+            this.dataGridViewTextBoxColumn19,
+            this.Ex,
+            this.dataGridViewTextBoxColumn21});
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.Azure;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewDispose.DefaultCellStyle = dataGridViewCellStyle10;
+            this.dataGridViewDispose.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewDispose.EnableHeadersVisualStyles = false;
+            this.dataGridViewDispose.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.dataGridViewDispose.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewDispose.Name = "dataGridViewDispose";
+            this.dataGridViewDispose.RowHeadersVisible = false;
+            this.dataGridViewDispose.RowHeadersWidth = 51;
+            this.dataGridViewDispose.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dataGridViewDispose.RowTemplate.Height = 35;
+            this.dataGridViewDispose.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewDispose.Size = new System.Drawing.Size(1307, 751);
+            this.dataGridViewDispose.TabIndex = 5;
+            // 
+            // panel17
+            // 
+            this.panel17.Controls.Add(this.panel18);
+            this.panel17.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel17.Location = new System.Drawing.Point(0, 0);
+            this.panel17.Name = "panel17";
+            this.panel17.Size = new System.Drawing.Size(1307, 72);
+            this.panel17.TabIndex = 0;
+            // 
+            // panel18
+            // 
+            this.panel18.BackColor = System.Drawing.Color.DimGray;
+            this.panel18.Controls.Add(this.txtSearchDispose);
+            this.panel18.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel18.Location = new System.Drawing.Point(0, 0);
+            this.panel18.Name = "panel18";
+            this.panel18.Size = new System.Drawing.Size(1307, 72);
+            this.panel18.TabIndex = 40;
+            // 
+            // txtSearchDispose
+            // 
+            this.txtSearchDispose.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtSearchDispose.Location = new System.Drawing.Point(18, 17);
+            this.txtSearchDispose.Name = "txtSearchDispose";
+            this.txtSearchDispose.PlaceholderText = "Search Here";
+            this.txtSearchDispose.Size = new System.Drawing.Size(619, 38);
+            this.txtSearchDispose.TabIndex = 0;
+            // 
+            // dataGridViewTextBoxColumn16
+            // 
+            this.dataGridViewTextBoxColumn16.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewTextBoxColumn16.HeaderText = "#";
+            this.dataGridViewTextBoxColumn16.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
+            this.dataGridViewTextBoxColumn16.ReadOnly = true;
+            this.dataGridViewTextBoxColumn16.Width = 61;
+            // 
+            // dataGridViewTextBoxColumn17
+            // 
+            this.dataGridViewTextBoxColumn17.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn17.HeaderText = "DESCRIPTION";
+            this.dataGridViewTextBoxColumn17.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
+            this.dataGridViewTextBoxColumn17.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn18
+            // 
+            this.dataGridViewTextBoxColumn18.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn18.HeaderText = "TYPE";
+            this.dataGridViewTextBoxColumn18.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
+            this.dataGridViewTextBoxColumn18.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn19
+            // 
+            this.dataGridViewTextBoxColumn19.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.dataGridViewTextBoxColumn19.HeaderText = "STOCK";
+            this.dataGridViewTextBoxColumn19.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
+            this.dataGridViewTextBoxColumn19.ReadOnly = true;
+            this.dataGridViewTextBoxColumn19.Width = 127;
+            // 
+            // Ex
+            // 
+            this.Ex.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Ex.HeaderText = "EXPIRATION";
+            this.Ex.MinimumWidth = 6;
+            this.Ex.Name = "Ex";
+            this.Ex.ReadOnly = true;
+            this.Ex.Width = 195;
+            // 
+            // dataGridViewTextBoxColumn21
+            // 
+            this.dataGridViewTextBoxColumn21.HeaderText = "ITMID";
+            this.dataGridViewTextBoxColumn21.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn21.Name = "dataGridViewTextBoxColumn21";
+            this.dataGridViewTextBoxColumn21.Visible = false;
+            this.dataGridViewTextBoxColumn21.Width = 125;
+            // 
             // frmInventory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 37F);
@@ -903,6 +1077,13 @@
             this.panel11.ResumeLayout(false);
             this.panel12.ResumeLayout(false);
             this.panel12.PerformLayout();
+            this.tabPage5.ResumeLayout(false);
+            this.panelDispose.ResumeLayout(false);
+            this.panel16.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDispose)).EndInit();
+            this.panel17.ResumeLayout(false);
+            this.panel18.ResumeLayout(false);
+            this.panel18.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -969,5 +1150,18 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private DataGridViewTextBoxColumn ID;
+        private TabPage tabPage5;
+        public Panel panelDispose;
+        private Panel panel16;
+        public DataGridView dataGridViewDispose;
+        private Panel panel17;
+        private Panel panel18;
+        public TextBox txtSearchDispose;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;
+        private DataGridViewTextBoxColumn Ex;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn21;
     }
 }

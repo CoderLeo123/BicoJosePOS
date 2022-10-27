@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lblUserNum = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnCashier = new System.Windows.Forms.Button();
@@ -97,6 +98,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.DarkGoldenrod;
+            this.panel2.Controls.Add(this.lblUserNum);
             this.panel2.Controls.Add(this.panel4);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.lblName);
@@ -106,6 +108,16 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(281, 948);
             this.panel2.TabIndex = 1;
+            // 
+            // lblUserNum
+            // 
+            this.lblUserNum.AutoSize = true;
+            this.lblUserNum.Location = new System.Drawing.Point(11, 33);
+            this.lblUserNum.Name = "lblUserNum";
+            this.lblUserNum.Size = new System.Drawing.Size(49, 20);
+            this.lblUserNum.TabIndex = 7;
+            this.lblUserNum.Text = "          ";
+            this.lblUserNum.Visible = false;
             // 
             // panel4
             // 
@@ -797,6 +809,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.dropPanelSales.ResumeLayout(false);
             this.dropPanelProducts.ResumeLayout(false);
@@ -865,5 +878,6 @@
         public TextBox txtReOrd;
         public TextBox txtAvailStock;
         public Label label5;
+        public Label lblUserNum;
     }
 }

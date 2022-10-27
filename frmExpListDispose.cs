@@ -18,11 +18,12 @@ namespace Capstone
         SqlDataReader dr;
         ClassInventory classInvent = new ClassInventory();
         string title = "BICO-JOSE System";
-        public frmExpListDispose()
+        frmInventory frmL;
+        public frmExpListDispose(frmInventory frmL)
         {
             InitializeComponent();
             cn = new SqlConnection(dbcon.MyConnection());
-
+            this.frmL = frmL;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -57,7 +58,8 @@ namespace Capstone
 
                         MessageBox.Show("Item has been successfully dispose.", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
                         classInvent.LoadNearExpiration(dataGridViewExpLis, txtSearchExpL, ITMID);
-                        
+                        classInvent.LoadItemWithExpiration(frmL.dataGridViewDispose, frmL.txtSearchDispose);
+                        classInvent.LoadDispose(frmL.dataGridViewDispose, frmL.txtSearchDispose);
                     }
                     
 
