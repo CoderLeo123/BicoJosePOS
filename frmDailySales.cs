@@ -30,12 +30,18 @@ namespace Capstone
             classLoadData.LoadRecordsTransacHist(dataGridViewTransacHist, txtSearchTransac, dateTimePickerStartTrans, dateTimePickerEndTrans);
             classLoadData.LoadRecordsSoldItems(dataGridViewSoldItems, txtSearchSold, dateTimePickerStartSold, dateTimePickerEndSold);
             classLoadData.LoadRecordsTransacSettled(dataGridViewSettle, txtSearchSettleds, dateTimePickerSettStart, dateTimePickerSettEnd);
+            textRightAlign();
         }
         public void changeDatePriorCurrent(DateTimePicker date)
         {
             date.Value = DateTime.Today.AddDays(-3);
         }
-
+        public void textRightAlign()
+        {
+            
+            this.dataGridViewSoldItems.Columns["Price"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            this.dataGridViewSoldItems.Columns["Total"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+        }
         private void btnCloseDailySales_Click(object sender, EventArgs e)
         {
             this.Close();

@@ -249,13 +249,13 @@ namespace Capstone
             {
                 dataGridViewSelected[2, e.RowIndex].Value = intialStock.ToString();
                 total = float.Parse(price.ToString()) * int.Parse(qty.ToString());
-                dataGridViewSelected[3, e.RowIndex].Value = "₱ " + total.ToString("#.##");
+                dataGridViewSelected[3, e.RowIndex].Value = total.ToString("#.##");
                 dataGridViewSelected.BeginEdit(true);
 
             }
             else
             {
-                dataGridViewSelected[3, e.RowIndex].Value = "₱ " + total.ToString("#.##");
+                dataGridViewSelected[3, e.RowIndex].Value =  total.ToString("#.##");
                 dataGridViewSelected.Rows[e.RowIndex].Cells["Qty"].ReadOnly = true;
             }
             

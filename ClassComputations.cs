@@ -23,7 +23,7 @@ namespace Capstone
             double netTotal = grossSales - discount;
             //double change = netTotal - payment;
             //labelNetTotal = new Label();
-            labelNetTotal.Text = "₱ " + netTotal.ToString("#,##0.00");
+            labelNetTotal.Text = netTotal.ToString("#,##0.00");
             //return labelNetTotal;
         }
 

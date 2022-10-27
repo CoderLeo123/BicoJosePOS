@@ -38,7 +38,7 @@
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priServ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.del = new System.Windows.Forms.DataGridViewImageColumn();
             this.ServID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ServNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -96,6 +96,9 @@
             this.unitMe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Classif = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewService)).BeginInit();
@@ -148,7 +151,7 @@
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
+            this.priServ,
             this.del,
             this.ServID,
             this.ServNum});
@@ -199,14 +202,14 @@
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn4
+            // priServ
             // 
-            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dataGridViewTextBoxColumn4.HeaderText = "PRICE";
-            this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Width = 89;
+            this.priServ.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.priServ.HeaderText = "PRICE";
+            this.priServ.MinimumWidth = 6;
+            this.priServ.Name = "priServ";
+            this.priServ.ReadOnly = true;
+            this.priServ.Width = 89;
             // 
             // del
             // 
@@ -235,6 +238,9 @@
             // 
             // panel7
             // 
+            this.panel7.Controls.Add(this.label12);
+            this.panel7.Controls.Add(this.label9);
+            this.panel7.Controls.Add(this.label8);
             this.panel7.Controls.Add(this.lblDiscPercen);
             this.panel7.Controls.Add(this.label3);
             this.panel7.Controls.Add(this.lblSalesTotal);
@@ -256,9 +262,9 @@
             this.lblDiscPercen.ForeColor = System.Drawing.Color.Red;
             this.lblDiscPercen.Location = new System.Drawing.Point(146, 112);
             this.lblDiscPercen.Name = "lblDiscPercen";
-            this.lblDiscPercen.Size = new System.Drawing.Size(76, 28);
+            this.lblDiscPercen.Size = new System.Drawing.Size(28, 28);
             this.lblDiscPercen.TabIndex = 23;
-            this.lblDiscPercen.Text = "Percent";
+            this.lblDiscPercen.Text = "--";
             this.lblDiscPercen.Visible = false;
             // 
             // label3
@@ -906,6 +912,37 @@
             // 
             this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label8.Location = new System.Drawing.Point(217, 58);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(37, 41);
+            this.label8.TabIndex = 24;
+            this.label8.Text = "₱";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label9.Location = new System.Drawing.Point(217, 99);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(37, 41);
+            this.label9.TabIndex = 25;
+            this.label9.Text = "₱";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label12.ForeColor = System.Drawing.Color.Red;
+            this.label12.Location = new System.Drawing.Point(217, 140);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(37, 41);
+            this.label12.TabIndex = 26;
+            this.label12.Text = "₱";
+            // 
             // frmCashier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
@@ -978,13 +1015,6 @@
         public Button btnBrowseService;
         private Label label11;
         private Label label2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private DataGridViewImageColumn del;
-        private DataGridViewTextBoxColumn ServID;
-        private DataGridViewTextBoxColumn ServNum;
         public System.Drawing.Printing.PrintDocument printDocument1;
         public Label lblDate;
         public Label lblDiscPercen;
@@ -1005,5 +1035,15 @@
         private DataGridViewTextBoxColumn ItemID;
         private DataGridViewTextBoxColumn unitMe;
         private DataGridViewTextBoxColumn Classif;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private DataGridViewTextBoxColumn priServ;
+        private DataGridViewImageColumn del;
+        private DataGridViewTextBoxColumn ServID;
+        private DataGridViewTextBoxColumn ServNum;
+        public Label label12;
+        public Label label9;
+        public Label label8;
     }
 }

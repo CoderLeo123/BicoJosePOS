@@ -157,7 +157,7 @@ namespace Capstone
 
                          //     2-DESCRIPTION / 1-Description       4-PRODUCT / 3-Product                  5-QUANTITY / 5-Quantity                          7-TYPE ID / 5-Type_ID
                 i += 1;   // 0-#                  3-TYPE / 2-Type                     5-PRICE / 4-Price                   7-CLASSIFICATION / 6-Classification
-                dgv.Rows.Add(i, dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), "₱ " + dr[4].ToString(), Quantity, dr[6].ToString(), dr[0].ToString(), Properties.Resources.Edit, Properties.Resources._Delete);
+                dgv.Rows.Add(i, dr[1].ToString(), dr[2].ToString(), dr[3].ToString(),dr[4].ToString(), Quantity, dr[6].ToString(), dr[0].ToString(), Properties.Resources.Edit, Properties.Resources._Delete);
             }
             dr.Close();
             cn.Close();
@@ -174,7 +174,7 @@ namespace Capstone
             while (dr.Read())
             {                            //                       2-NAME / 2-Name                   4-PRICE / 4-Price
                 i += 1;                //0-#  1-SERVICE ID / 1-Service_ID       3-DESCRIPTION / 3-Description
-                dgv.Rows.Add(i, dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), "₱ " + dr[4].ToString());
+                dgv.Rows.Add(i, dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString());
             }
             dr.Close();
             cn.Close();
@@ -349,7 +349,7 @@ namespace Capstone
 
                     //                             2-DESCRIPTION / 1-Description       4-PRODUCT / 3-Product               6-STOCK / 5-Quantity                                                                                                                                      
                     i += 1;  // 0-Num   1-Item ID / 0-Item_ID                3-TYPE / 2-Type               5-PRICE / 4-Price                 7-CLASSIFICATION / 6-Classification                           
-                    dgv.Rows.Add(i, dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), "₱ " + dr[4].ToString(), Quantity, dr[6].ToString());
+                    dgv.Rows.Add(i, dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), Quantity, dr[6].ToString());
                 }
                 dr.Close();
                 cn.Close();
@@ -373,7 +373,7 @@ namespace Capstone
 
                     //                             2-DESCRIPTION / 1-Description       4-PRODUCT / 3-Product               6-STOCK / 5-Quantity                                                                                                                                      
                     i += 1;  // 0-Num   1-Item ID / 0-Item_ID                3-TYPE / 2-Type               5-PRICE / 4-Price                 7-CLASSIFICATION / 6-Classification                           
-                    dgv.Rows.Add(i, dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), "₱ " + dr[4].ToString(), Quantity, dr[6].ToString());
+                    dgv.Rows.Add(i, dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), Quantity, dr[6].ToString());
                 }
                 dr.Close();
                 cn.Close();
@@ -431,7 +431,7 @@ namespace Capstone
 
                                // 0-Num                2-EXPIRATION / 2-Expiration_Date                                  4-QUANTITY / 3-Quantity                        6-TOTAL / 5-TOTAL                                                                                                                       11-CartID / 12-Num
                     i += 1;    // 1-DESCRIPTION / 1-Description           3-PRICE / 4-Price                                             5-DISCOUNT / 11-Discount                                                    7-Plus                         8-Minus                 9-Delete              10-StockID / 0-Stock_Num           12-ItemID / 9-Item_ID
-                    dgv.Rows.Add(i, dr[1].ToString(), ExpirationDate, "₱ " + double.Parse(dr[4].ToString()).ToString("00.00"), dr[3].ToString(), dr[11].ToString(), "₱ " + double.Parse(dr[5].ToString()).ToString("00.00"), Properties.Resources._Add, Properties.Resources.Minus, Properties.Resources._Delete, dr[0].ToString(), dr[12].ToString(), dr[9].ToString(), dr[17].ToString(), dr[18].ToString());
+                    dgv.Rows.Add(i, dr[1].ToString(), ExpirationDate, double.Parse(dr[4].ToString()).ToString("00.00"), dr[3].ToString(), dr[11].ToString(),  double.Parse(dr[5].ToString()).ToString("00.00"), Properties.Resources._Add, Properties.Resources.Minus, Properties.Resources._Delete, dr[0].ToString(), dr[12].ToString(), dr[9].ToString(), dr[17].ToString(), dr[18].ToString());
                     hasRecord = true;
                 }
                 dr.Close();
@@ -439,8 +439,8 @@ namespace Capstone
                 
                 total += double.Parse(servTotal);
                 ComputeDiscount(discount, total, out discountResult);
-                labelDiscount.Text = "₱ " + discountResult.ToString("#,##0.00");
-                labelSalesTotal.Text = "₱ " + total.ToString("#,##0.00");
+                labelDiscount.Text = discountResult.ToString("#,##0.00");
+                labelSalesTotal.Text = total.ToString("#,##0.00");
                 //frmCashier frmC = new frmCashier(); //frmC.lblDiscount, frmC.lblSalesTotal, frmC.lblPayment, out frmC.lblNetTotal
                 GetCartTotal(labelDiscount, labelSalesTotal, labelPayment, labelNetTotal);
                 //LoadRecordServiceAvail(dgv2, out servTotal, out hasRecord);
@@ -557,7 +557,7 @@ namespace Capstone
 
                                     //                          2-DESCRIPTION / 1-Description                  4-PRICE / 4-Price                  4-TOTAL / 5-Total
                 i += 1; //0-#                    1-TRANSACTION NO / 7-Transaction_NO      3-EXPIRATION / 2-Expiration_Date           4-QTY / 3-Quantity            4-DATE / 6-Date
-                dgv.Rows.Add(i, dr[0].ToString(), dr[7].ToString(), dr[1].ToString(), ExpirationDate, "₱ " + dr[4].ToString(), dr[3].ToString(), dr[5].ToString(), TransDate);
+                dgv.Rows.Add(i, dr[0].ToString(), dr[7].ToString(), dr[1].ToString(), ExpirationDate, dr[4].ToString(), dr[3].ToString(), dr[5].ToString(), TransDate);
             }
             dr.Close();
             cn.Close();
@@ -577,7 +577,7 @@ namespace Capstone
                 {
                     //                          2-DESCRIPTION / 3-Description                                       3-ServiceID / 2-Service_ID 
                     i += 1; //0-#  1-NAME / 7-Name                          3-PRICE / 4-Price          
-                    dgv.Rows.Add(i, dr[2].ToString(), dr[3].ToString(), "₱ " + dr[4].ToString(), Properties.Resources.addToCart, dr[1].ToString());
+                    dgv.Rows.Add(i, dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), Properties.Resources.addToCart, dr[1].ToString());
                 }
                 dr.Close();
                 cn.Close();
@@ -605,7 +605,7 @@ namespace Capstone
                 totalVar += Double.Parse(dr[3].ToString());
                 //                          2-DESCRIPTION / 1-Description                                       5-SID / 2-Service_ID   
                 i += 1; //0-#  1-NAME / 7-Name                      3-PRICE / 2-Price          
-                dgv.Rows.Add(i, dr[1].ToString(), dr[2].ToString(), "₱ " + dr[3].ToString(), Properties.Resources._Delete, dr[0].ToString(), dr[9].ToString());
+                dgv.Rows.Add(i, dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), Properties.Resources._Delete, dr[0].ToString(), dr[9].ToString());
                 hasRecord = true;
             }
             dr.Close();

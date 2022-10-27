@@ -16,13 +16,15 @@ namespace Capstone
         SqlCommand cm = new SqlCommand();
         DBConnection dbcon = new DBConnection();
         ClassGenerateID classGenerateID = new ClassGenerateID();
-        ClassLoadData classLoadData = new ClassLoadData();
+        ClassPaymentOrderMonitoring classLoad = new ClassPaymentOrderMonitoring();
         SqlDataReader dr;
         string title = "BICO-JOSE System";
-        public frmEditOrder()
+        frmPaymentStatus frmL;
+        public frmEditOrder(frmPaymentStatus frmL)
         {
             InitializeComponent();
             cn = new SqlConnection(dbcon.MyConnection());
+            this.frmL = frmL;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -57,9 +59,11 @@ namespace Capstone
                     cm.ExecuteNonQuery();
                     cn.Close();
                     MessageBox.Show("Record has been successfully saved.");
-                    ;
+                    
                     this.Close();
                 }
+                classLoad.LoadRecordsOrder(frmL.dataGridViewOrderStatus, frmL.txtSearchOrderStatus);
+                classLoad.LoadRecordsOrderClaimed(frmL.dataGridViewClaimedOrd, frmL.txtSearchClaimed);
             }
             catch (Exception ex)
             {

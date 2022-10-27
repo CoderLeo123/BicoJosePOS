@@ -303,7 +303,7 @@ namespace Capstone
             classLoadData.LoadRecordsTransacHist(frmR.dataGridViewTransHist, frmR.txtSearchTransHist, frmR.dateTimePickerStartTrans, frmR.dateTimePickerEndTrans);
             classLoadData.LoadRecordsSoldItems(frmR.dataGridViewSoldItems, frmR.txtSearchSold, frmR.dateTimePickerStartSold, frmR.dateTimePickerEndSold);
             classLoadData.LoadRecordsTransacSettled(frmR.dataGridViewSettle, frmR.txtSearchSettleds, frmR.dateTimePickerSettStart, frmR.dateTimePickerSettEnd);
-
+            frm.pesoPaint = true;
             //frmR.lblCheckCell.Text = frmR.dataGridViewInitial.Rows[0].Cells[1].Value?.ToString();
             //frm.tabControlReports.TabPages.Clear();
             //TabPage tab = new TabPage("Check");

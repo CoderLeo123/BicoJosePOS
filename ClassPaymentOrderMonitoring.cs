@@ -69,8 +69,8 @@ namespace Capstone
             cn = new SqlConnection(dbcon.MyConnection());
             int i = 0;
             dgv.Rows.Clear();
-            cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT * FROM tblOrderStatus WHERE Status = 'In The Lab' AND Customer LIKE '%" + txtSearch.Text + "%' Order by Transaction_No", cn);
+            cn.Open();//Status = 'In The Lab'
+            SqlCommand cm = new SqlCommand("SELECT * FROM tblOrderStatus WHERE Status = 'In The Lab' AND Customer LIKE '%" + txtSearch.Text + "%' Order by Transaction_No ASC", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
@@ -81,7 +81,23 @@ namespace Capstone
             dr.Close();
             cn.Close();
         }
-
+        public void LoadRecordsOrderClaimed(DataGridView dgv, TextBox txtSearch)
+        {//dataGridViewProduct, txtSearchProduct
+            cn = new SqlConnection(dbcon.MyConnection());
+            int i = 0;
+            dgv.Rows.Clear();
+            cn.Open();//Status = 'In The Lab'
+            SqlCommand cm = new SqlCommand("SELECT * FROM tblOrderStatus WHERE Customer Status = 'Claimed' AND LIKE '%" + txtSearch.Text + "%' Order by Transaction_No", cn);
+            dr = cm.ExecuteReader();
+            while (dr.Read())
+            {
+                //                              2-CUSTOMER / 2-Customer                             6-RELEASE BY / 6-Release_By
+                i += 1; //0-#  1-TRANS NO / 1-Transaction_No        3-STATUS/ 3-Status      5-DATE CLAIMED / 5-Date_Claimed
+                dgv.Rows.Add(i, dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[5].ToString(), dr[6].ToString());
+            }
+            dr.Close();
+            cn.Close();
+        }
 
     }
 }

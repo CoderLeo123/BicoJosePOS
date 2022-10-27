@@ -31,10 +31,16 @@ namespace Capstone
             classLoadData.LoadRecordsItem(dataGridViewItems, txtSearch);
             classLoadData.LoadRecordsService(dataGridViewService, txtSearchService);
             //LoadRecordsService();
-
+            textRightAlign();
         }
-        
 
+        public void textRightAlign()
+        {
+
+            this.dataGridViewItems.Columns["PriceItems"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            this.dataGridViewService.Columns["PriceService"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            
+        }
         private void label1_Click(object sender, EventArgs e)
         {
 

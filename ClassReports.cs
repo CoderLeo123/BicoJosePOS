@@ -213,7 +213,7 @@ namespace Capstone
                 //bal = double.Parse(dr[1].ToString()).ToString("00.00");
                 //balan = Convert.ToDouble(dr[1].ToString()); balan.ToString("00.00")
                 i += 1;    
-                dgv.Rows.Add(i, dr[0].ToString(), "₱ " + dr[1].ToString());
+                dgv.Rows.Add(i, dr[0].ToString(), Properties.Resources.icons8_peso_symbol_24, dr[1].ToString());
 
             }
             dr.Close();

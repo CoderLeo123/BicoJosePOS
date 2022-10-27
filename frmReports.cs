@@ -20,7 +20,7 @@ namespace Capstone
         ClassLoadData classLoadData = new ClassLoadData();
         ClassReports classReport = new ClassReports();
         int sWidth = 850, sLength = 1050, lLength = 1400;
-        int rowCount = 0;
+        int rowCount = 0, once = 2;
         string title = "BICO-JOSE System", transNo = "";
         List<ClassReports.SalesReport> List = new List<ClassReports.SalesReport>();
         List<SalesReport> SList = new List<SalesReport>();
@@ -28,7 +28,7 @@ namespace Capstone
         List<ServiceList> SerList = new List<ServiceList>();
         string balSale = ""; bool balance = false;
         bool transaction = false; bool sales = false;
-        bool settled = false; bool sold = false;
+        bool settled = false; bool sold = false; public bool pesoPaint = true;
         public frmReports()
         {
             InitializeComponent();
@@ -52,7 +52,7 @@ namespace Capstone
             previewTransHist();
             lblSettledID.Text = dataGridViewSettle.Rows[0].Cells[2].Value?.ToString();
             previewSettled();
-
+            pesoPaint = true;
 
         }
         public void dateSelect(DataGridView dgv)
@@ -718,6 +718,11 @@ namespace Capstone
             classReport.loadSalesPerDay(dataGridViewBalR, "Total_Bal");
             previewBalance();
             checkWhatIsPress(false, true, false, false);
+            pesoPaint = true;
+            dataGridViewBalR.Columns[3].HeaderText = "balance";
+            //var eventArgs = new DataGridViewCellEventArgs(1, 3);
+            //dataGridViewBalR_CellPainting(sender, eventArgs);
+            
         }
 
         private void btnHistoryTransSett_Click(object sender, EventArgs e)
@@ -805,6 +810,108 @@ namespace Capstone
                 colorChange(true, btnSoldItems); colorChange(false, btnSalesRep); colorChange(false, btnBalanceRep); colorChange(false, btnHistoryTransSett);
             }
         }
+
+        private void dataGridViewBalR_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            void createGraphicsColumn()
+            {
+                var image = Properties.Resources.icons8_peso_symbol_24;
+                
+                    if (e.RowIndex != -1 && e.ColumnIndex == 3)
+                    {
+                        if ((e.PaintParts & DataGridViewPaintParts.Background) != DataGridViewPaintParts.None)
+                        {
+                            e.Graphics.DrawImage(image, e.CellBounds.Left, e.CellBounds.Top - 1, 27, 27);
+                            //pesoPaint = true;
+                        }
+                        if (!e.Handled)
+                        {
+                            e.Handled = true;
+                            e.PaintContent(e.CellBounds);
+                        }
+
+                        //pesoPaint = true;
+                    }
+
+                }
+
+            //int u = 1; e.RowIndex != -1 && 
+            //once++;
+            //if (once > 0)
+            //{
+            //    //pesoPaint = true;
+            //    createGraphicsColumn();
+            //    once--;
+            //}
+            //lcreateGraphicsColumn();
+
+            //pesoPaint = true;
+            //if(lblCellPaint.Text == "Check")
+            //{
+            //    createGraphicsColumn();
+            //    lblCellPaint.Text = "";
+            //    pesoPaint = false;
+            //}
+            if (pesoPaint == true)
+            {
+                createGraphicsColumn();
+
+                pesoPaint = false;
+            }
+            
+            
+            //else if (pesoPaint == false)
+            //{
+            //    e.Handled = true;
+            //    e.PaintContent(e.CellBounds);
+            //}
+
+            //for(int i = 0; i< dataGridViewBalR.RowCount; i++)
+            //{
+            //    if (e.RowIndex == i && e.ColumnIndex == 3)
+            //    {
+            //        using (Image img = Image.FromFile(@"C:\Users\leomar\source\repos\BicoJosePOS\Icon\icons8-peso-symbol-24.png"))
+            //        {
+            //            e.Graphics.DrawImage(img, e.CellBounds.Left, e.CellBounds.Top - 1, 27, 27);
+
+            //            e.PaintContent(e.ClipBounds);
+            //            e.Handled = true;
+            //        }
+            //    }
+
+            //}
+
+        }
+     
+      
+        private void dataGridViewSalesR_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+          
+        }
+
+        private void dataGridViewBalR_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            pesoPaint = false;
+            
+        }
+
+        private void dataGridViewBalR_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
+        {
+           pesoPaint = true;
+        }
+
+        private void dataGridViewBalR_ColumnHeaderCellChanged(object sender, DataGridViewColumnEventArgs e)
+        {
+            //lblSettledID.Visible = true;
+            //lblSettledID.Text = "bala";
+            //pesoPaint = true;
+        }
+
+        private void dataGridViewBalR_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            //pesoPaint = true;
+        }
+
         public void colorChange(bool press, Button changeThisBtn)
         {
             if (press == true)
@@ -819,9 +926,9 @@ namespace Capstone
         }
         public void textRightAlign()
         {
-            //DataGridViewColumn column1 = dataGridViewSalesR.Columns[1];
-            //column1.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-
+           
+            this.dataGridViewBalR.Columns["ba"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            this.dataGridViewSoldItems.Columns["Price"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             this.dataGridViewSalesR.Columns["Sa"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
         }
         private void btnSaveProduct_Click(object sender, EventArgs e)
