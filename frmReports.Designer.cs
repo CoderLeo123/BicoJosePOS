@@ -407,6 +407,7 @@
             // 
             // dataGridViewSalesR
             // 
+            this.dataGridViewSalesR.AllowUserToAddRows = false;
             this.dataGridViewSalesR.AllowUserToResizeColumns = false;
             this.dataGridViewSalesR.AllowUserToResizeRows = false;
             this.dataGridViewSalesR.BackgroundColor = System.Drawing.Color.White;
@@ -473,7 +474,7 @@
             this.Column2.MinimumWidth = 6;
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
-            this.Column2.Width = 24;
+            this.Column2.Width = 6;
             // 
             // Sa
             // 
@@ -536,10 +537,10 @@
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.panelBalRep);
-            this.tabPage2.Location = new System.Drawing.Point(4, 29);
+            this.tabPage2.Location = new System.Drawing.Point(4, 46);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1307, 840);
+            this.tabPage2.Size = new System.Drawing.Size(1307, 823);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Balance Report";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -551,7 +552,7 @@
             this.panelBalRep.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelBalRep.Location = new System.Drawing.Point(3, 3);
             this.panelBalRep.Name = "panelBalRep";
-            this.panelBalRep.Size = new System.Drawing.Size(1301, 834);
+            this.panelBalRep.Size = new System.Drawing.Size(1301, 817);
             this.panelBalRep.TabIndex = 3;
             // 
             // panel9
@@ -561,7 +562,7 @@
             this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel9.Location = new System.Drawing.Point(0, 72);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(1301, 762);
+            this.panel9.Size = new System.Drawing.Size(1301, 745);
             this.panel9.TabIndex = 1;
             // 
             // printPreviewControlBal
@@ -569,11 +570,12 @@
             this.printPreviewControlBal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.printPreviewControlBal.Location = new System.Drawing.Point(607, 0);
             this.printPreviewControlBal.Name = "printPreviewControlBal";
-            this.printPreviewControlBal.Size = new System.Drawing.Size(694, 762);
+            this.printPreviewControlBal.Size = new System.Drawing.Size(694, 745);
             this.printPreviewControlBal.TabIndex = 6;
             // 
             // dataGridViewBalR
             // 
+            this.dataGridViewBalR.AllowUserToAddRows = false;
             this.dataGridViewBalR.AllowUserToResizeColumns = false;
             this.dataGridViewBalR.AllowUserToResizeRows = false;
             this.dataGridViewBalR.BackgroundColor = System.Drawing.Color.White;
@@ -611,7 +613,7 @@
             this.dataGridViewBalR.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridViewBalR.RowTemplate.Height = 35;
             this.dataGridViewBalR.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewBalR.Size = new System.Drawing.Size(607, 762);
+            this.dataGridViewBalR.Size = new System.Drawing.Size(607, 745);
             this.dataGridViewBalR.TabIndex = 5;
             this.dataGridViewBalR.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewBalR_CellContentClick);
             this.dataGridViewBalR.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewBalR_CellMouseUp);
@@ -643,7 +645,7 @@
             this.Column3.MinimumWidth = 6;
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
-            this.Column3.Width = 24;
+            this.Column3.Width = 6;
             // 
             // ba
             // 
@@ -721,6 +723,7 @@
             // 
             // dataGridViewTransHist
             // 
+            this.dataGridViewTransHist.AllowUserToAddRows = false;
             this.dataGridViewTransHist.AllowUserToResizeColumns = false;
             this.dataGridViewTransHist.AllowUserToResizeRows = false;
             this.dataGridViewTransHist.BackgroundColor = System.Drawing.Color.White;
@@ -1052,6 +1055,7 @@
             // 
             // dataGridViewSoldItems
             // 
+            this.dataGridViewSoldItems.AllowUserToAddRows = false;
             this.dataGridViewSoldItems.AllowUserToResizeColumns = false;
             this.dataGridViewSoldItems.AllowUserToResizeRows = false;
             this.dataGridViewSoldItems.BackgroundColor = System.Drawing.Color.White;
@@ -1223,6 +1227,7 @@
             this.btnPreviewSold.TabIndex = 52;
             this.btnPreviewSold.Text = "Preview";
             this.btnPreviewSold.UseVisualStyleBackColor = false;
+            this.btnPreviewSold.Click += new System.EventHandler(this.btnPreviewSold_Click);
             // 
             // button5
             // 
@@ -1345,6 +1350,7 @@
             // 
             // dataGridViewSettle
             // 
+            this.dataGridViewSettle.AllowUserToAddRows = false;
             this.dataGridViewSettle.AllowUserToResizeColumns = false;
             this.dataGridViewSettle.AllowUserToResizeRows = false;
             this.dataGridViewSettle.BackgroundColor = System.Drawing.Color.White;
@@ -1488,6 +1494,7 @@
             this.btnPreviewSettl.TabIndex = 52;
             this.btnPreviewSettl.Text = "Preview";
             this.btnPreviewSettl.UseVisualStyleBackColor = false;
+            this.btnPreviewSettl.Click += new System.EventHandler(this.btnPreviewSettl_Click);
             // 
             // button4
             // 

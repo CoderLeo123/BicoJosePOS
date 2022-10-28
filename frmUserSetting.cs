@@ -156,15 +156,15 @@ namespace Capstone
         {
             cn = new SqlConnection(dbcon.MyConnection());
             int i = 0;
-            dataGridViewUsers.Rows.Clear();
+            dataGridViewSession.Rows.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT * FROM tblLoginSession Order by Num ASC", cn);
+            SqlCommand cm = new SqlCommand("SELECT * FROM ViewLoginSession Order by Num ASC", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
                 //                                                               2-ROLE / 5-User_Type       
                 i += 1; //          0-#  1-NAME / 4-Name       1-USERNAME / 2-Username               2-ID / 5-User_ID  
-                dataGridViewUsers.Rows.Add(i, dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString());
+                dataGridViewSession.Rows.Add(i, dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString());
             }
             dr.Close();
             cn.Close();

@@ -114,6 +114,7 @@ namespace Capstone
             else if (found == true)
             {
                 classLoginMethod.insertLoginDateTime(ID, loginTime);
+                classLoginMethod.selectNumSession(out num, loginTime);
                 if (type.Equals("Admin"))
                 {
                     frmAdmin frm = new frmAdmin();

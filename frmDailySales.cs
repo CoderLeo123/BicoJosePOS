@@ -34,7 +34,7 @@ namespace Capstone
         }
         public void changeDatePriorCurrent(DateTimePicker date)
         {
-            date.Value = DateTime.Today.AddDays(-3);
+            date.Value = DateTime.Today.AddDays(-30);
         }
         public void textRightAlign()
         {

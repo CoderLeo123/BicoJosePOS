@@ -117,7 +117,6 @@
             this.lblUserNum.Size = new System.Drawing.Size(49, 20);
             this.lblUserNum.TabIndex = 7;
             this.lblUserNum.Text = "          ";
-            this.lblUserNum.Visible = false;
             // 
             // panel4
             // 

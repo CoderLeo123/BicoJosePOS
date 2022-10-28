@@ -188,12 +188,27 @@ namespace Capstone
             cm.ExecuteNonQuery();
             cn.Close();
         }
-
+        public void selectNumSession(out string user_num, string logIn)
+        {
+            cn = new SqlConnection(dbcon.MyConnection());
+            user_num = ""; 
+            cn.Open();
+            SqlCommand cm = new SqlCommand("SELECT Num FROM tblLoginSession WHERE Login_DateTime LIKE @logIn", cn);
+            cm.Parameters.AddWithValue("@logIn", logIn);            
+            dr = cm.ExecuteReader();
+            dr.Read();
+            if (dr.HasRows)
+            {                               
+                user_num = dr[0].ToString();                
+            }            
+            dr.Close();
+            cn.Close();
+        }
         public void insertLogOutDateTime(string User_num, string Logout_DateTime)
         {
             cn = new SqlConnection(dbcon.MyConnection());
             cn.Open();
-            SqlCommand cm = new SqlCommand("UPDATE tblLoginSession SET Logout_DateTime = @Logout_DateTime WHERE Num = User_num)", cn);
+            SqlCommand cm = new SqlCommand("UPDATE tblLoginSession SET Logout_DateTime = @Logout_DateTime WHERE Num = @User_num", cn);
             cm.Parameters.AddWithValue("@User_num", User_num);
             cm.Parameters.AddWithValue("@Logout_DateTime", Logout_DateTime);
             cm.ExecuteNonQuery();

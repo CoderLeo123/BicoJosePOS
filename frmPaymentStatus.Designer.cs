@@ -154,6 +154,7 @@
             // 
             // dataGridViewSettled
             // 
+            this.dataGridViewSettled.AllowUserToAddRows = false;
             this.dataGridViewSettled.AllowUserToResizeColumns = false;
             this.dataGridViewSettled.AllowUserToResizeRows = false;
             this.dataGridViewSettled.BackgroundColor = System.Drawing.Color.White;
@@ -363,6 +364,7 @@
             // 
             // dataGridViewPaymentStat
             // 
+            this.dataGridViewPaymentStat.AllowUserToAddRows = false;
             this.dataGridViewPaymentStat.AllowUserToResizeColumns = false;
             this.dataGridViewPaymentStat.AllowUserToResizeRows = false;
             this.dataGridViewPaymentStat.BackgroundColor = System.Drawing.Color.White;
@@ -710,6 +712,7 @@
             // 
             // dataGridViewClaimedOrd
             // 
+            this.dataGridViewClaimedOrd.AllowUserToAddRows = false;
             this.dataGridViewClaimedOrd.AllowUserToResizeColumns = false;
             this.dataGridViewClaimedOrd.AllowUserToResizeRows = false;
             this.dataGridViewClaimedOrd.BackgroundColor = System.Drawing.Color.White;
@@ -885,6 +888,7 @@
             // 
             // dataGridViewOrderStatus
             // 
+            this.dataGridViewOrderStatus.AllowUserToAddRows = false;
             this.dataGridViewOrderStatus.AllowUserToResizeColumns = false;
             this.dataGridViewOrderStatus.AllowUserToResizeRows = false;
             this.dataGridViewOrderStatus.BackgroundColor = System.Drawing.Color.White;
@@ -1000,7 +1004,7 @@
             this.Ed.MinimumWidth = 6;
             this.Ed.Name = "Ed";
             this.Ed.ReadOnly = true;
-            this.Ed.Width = 24;
+            this.Ed.Width = 6;
             // 
             // panel10
             // 

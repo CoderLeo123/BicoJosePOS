@@ -38,8 +38,8 @@ namespace Capstone
         private void dataGridViewOrderStatus_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             string colName = dataGridViewOrderStatus.Columns[e.ColumnIndex].Name;
-            transNo = dataGridViewOrderStatus.Rows[e.RowIndex].Cells[1].Value.ToString();
-            lblCurrentTransN.Text = dataGridViewOrderStatus.Rows[e.RowIndex].Cells[1].Value.ToString();
+            transNo = dataGridViewOrderStatus.Rows[e.RowIndex].Cells[1].Value?.ToString();
+            lblCurrentTransN.Text = dataGridViewOrderStatus.Rows[e.RowIndex].Cells[1].Value?.ToString();
             if (colName == "Ed")
             {
                 frmEditOrder frm = new frmEditOrder(this);

@@ -87,7 +87,7 @@ namespace Capstone
             int i = 0;
             dgv.Rows.Clear();
             cn.Open();//Status = 'In The Lab'
-            SqlCommand cm = new SqlCommand("SELECT * FROM tblOrderStatus WHERE Customer Status = 'Claimed' AND LIKE '%" + txtSearch.Text + "%' Order by Transaction_No", cn);
+            SqlCommand cm = new SqlCommand("SELECT * FROM tblOrderStatus WHERE Status = 'Claimed' AND Customer LIKE '%" + txtSearch.Text + "%' Order by Transaction_No", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
