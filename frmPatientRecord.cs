@@ -47,6 +47,7 @@ namespace Capstone
 
             classGenerateID.GeneratePatientID(frm.txtAddPatientID);
             classGenerateID.GeneratePrescriptionID(frm.txtAddPrescNum);
+            frm.comBoxAddGender.SelectedIndex = 0;
             frm.ShowDialog();
         }
         public void LoadPrescription(string PID, out string ODSPH, out string ODCYL, out string ODAXIS, out string ODADD, out string ODPD, out string OSSPH, out string OSCYL, out string OSAXIS, out string OSADD, out string OSPD)
@@ -61,19 +62,25 @@ namespace Capstone
             while (dr.Read())
             {
                 ODSPH = dr[1].ToString(); ODCYL = dr[2].ToString(); ODAXIS = dr[3].ToString(); ODADD = dr[4].ToString(); ODPD = dr[5].ToString();
-                ODSPH = dr[6].ToString(); ODCYL = dr[7].ToString(); ODAXIS = dr[8].ToString(); ODADD = dr[9].ToString(); ODPD = dr[10].ToString();
+                OSSPH = dr[6].ToString(); OSCYL = dr[7].ToString(); OSAXIS = dr[8].ToString(); OSADD = dr[9].ToString(); OSPD = dr[10].ToString();
             }
             dr.Close();
             cn.Close();
         }
+        public void displayPrescription(string ODSPH, string ODCYL, string ODAXIS, string ODADD, string ODPD, string OSSPH, string OSCYL, string OSAXIS, string OSADD, string OSPD)
+        {
+            txtODSPH.Text = ODSPH; txtODCYL.Text = ODCYL; txtODAXIS.Text = ODAXIS; txtODADD.Text = ODADD; txtODPD.Text = ODPD;
+            txtOSSPH.Text = OSSPH; txtOSCYL.Text = OSCYL; txtOSAXIS.Text = OSAXIS;
+            txtOSADD.Text = OSADD; txtOSPD.Text = OSPD;
+        }
         private void dataGridViewPatientRecord_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             string colName = dataGridViewPatientRecord.Columns[e.ColumnIndex].Name;
-            string PatID = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[3].Value.ToString();
+            string PatID = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[1].Value?.ToString();
             string ODSPH, ODCYL, ODAXIS, ODADD, ODPD, OSSPH, OSCYL, OSAXIS, OSADD, OSPD;
 
             LoadPrescription(PatID, out ODSPH, out ODCYL, out ODAXIS, out ODADD, out ODPD, out OSSPH, out OSCYL, out OSAXIS, out OSADD, out OSPD);
-
+            displayPrescription(ODSPH, ODCYL, ODAXIS, ODADD, ODPD, OSSPH, OSCYL, OSAXIS, OSADD, OSPD);
             if (colName == "EditPRecord")
             {
                 frmAddPatientRecord frm = new frmAddPatientRecord(this);
@@ -101,6 +108,25 @@ namespace Capstone
 
                 frm.ShowDialog();
 
+            }else if (colName == "del")
+            {
+                if (MessageBox.Show("Remove this Item?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    cn.Open();
+                    cm = new SqlCommand("DELETE FROM tblPatientRecord WHERE Patient_ID LIKE '" + PatID + "'", cn);
+                    cm.ExecuteNonQuery();
+                    cn.Close();
+                    MessageBox.Show("Record has been successfully deleted.", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    //LoadStock();
+                    classLoadData.LoadRecordsPatient(dataGridViewPatientRecord, txtSearchPatientRecord);
+                }
+                
+            }
+            else
+            {
+                LoadPrescription(PatID, out ODSPH, out ODCYL, out ODAXIS, out ODADD, out ODPD, out OSSPH, out OSCYL, out OSAXIS, out OSADD, out OSPD);
+                displayPrescription(ODSPH, ODCYL, ODAXIS, ODADD, ODPD, OSSPH, OSCYL, OSAXIS, OSADD, OSPD);
             }
             
 

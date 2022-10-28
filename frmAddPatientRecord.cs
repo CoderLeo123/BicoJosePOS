@@ -18,6 +18,7 @@ namespace Capstone
         SqlDataReader dr;
         ClassComputations classCompute = new ClassComputations();
         ClassLoadData classLoadData = new ClassLoadData();
+        ClassLoginAndSignUp classLoginMethod = new ClassLoginAndSignUp();
         string title = "BICO-JOSE System";
         frmPatientRecord frmL;
         public frmAddPatientRecord(frmPatientRecord frmA)
@@ -25,6 +26,24 @@ namespace Capstone
             InitializeComponent();
             cn = new SqlConnection(dbcon.MyConnection());
             frmL = frmA;
+        }
+        public void MethodCheckForBlank()
+        {
+            classLoginMethod.checkForBlank(txtAddFName, lblFNotice, "First Name");
+            classLoginMethod.checkForBlank(txtAddLName, lblLNotice, "Cabug Name");
+            classLoginMethod.checkForBlank(txtAddAddress, lblAddNotice, "Address");
+            classLoginMethod.checkForBlank(txtAddContact, lblConNotice, "Contact");
+
+            classLoginMethod.checkForBlank(txtAddODSPH, lblSpODNotice, "Right SPH");
+            classLoginMethod.checkForBlank(txtADDODCYL, lblCyODNotice, "Right CYL");
+            classLoginMethod.checkForBlank(txtAddODAXIS, lblAxODNotice, "Right AXIS");
+            classLoginMethod.checkForBlank(txtAddODPD, lblPdODNotice, "Right PD");
+
+            classLoginMethod.checkForBlank(txtAddOSSPH, lblSpOSNotice, "Left SPH");
+            classLoginMethod.checkForBlank(txtADDOSCYL, lblCyOSNotice, "Left CYL");
+            classLoginMethod.checkForBlank(txtAddOSAXIS, lblAxOSNotice, "Left AXIS");
+            classLoginMethod.checkForBlank(txtAddODPD, lblPDOSNotice, "Left PD");
+            //classLoginMethod.textMinimumCharacter(txtPasswordCreate, lblPasswordNotice);
         }
 
         private void btnClosePatientRecord_Click(object sender, EventArgs e)
@@ -95,12 +114,13 @@ namespace Capstone
             string OSCYL = txtADDOSCYL.Text;
             string OSAXIS = txtAddOSAXIS.Text;
             string OSPD = txtAddOSPD.Text;
-
+            string checkUp = dateTimePickerCheckUpDate.Value.ToString();
+            string birth = dateTimePickerBirthDate.Value.ToString();
             string CName = txtAddFName.Text + " " + txtAddLName.Text;
-            int ageCalculated = 0;
+            int ageCalculated = int.Parse(txtAddAge.Text);
 
-            if (firstName == "" && lastName == "" && address == "" && contact == "" && gender == "" && age == "" && ODSPH == "" &&
-                ODCYL == "" && ODAXIS == "" && ODPD == "" && OSSPH == "" && OSCYL == "" && OSAXIS == "" && OSPD == "")
+            if (firstName != "" && lastName != "" && address != "" && contact != "" && gender != "" && age != "" && ODSPH != "" &&
+                ODCYL != "" && ODAXIS != "" && ODPD != "" && OSSPH != "" && OSCYL != "" && OSAXIS != "" && OSPD != "")
             {
                 cn.Open();
                 cm = new SqlCommand("INSERT INTO tblPatientRecord (Patient_ID, Customer_Name, Address, Contact, Age, Gender, Check_Up_Date, Prescript_No, Birth_Date) VALUES(@Patient_ID, @Customer_Name, @Address, @Contact, @Age, @Gender, @Check_Up_Date, @Prescript_No, @Birth_Date)", cn);
@@ -111,8 +131,8 @@ namespace Capstone
                 cm.Parameters.AddWithValue("@Contact", txtAddContact.Text);
                 cm.Parameters.AddWithValue("@Age", ageCalculated);
                 cm.Parameters.AddWithValue("@Gender", comBoxAddGender.Text);
-                cm.Parameters.AddWithValue("@Check_Up_Date", dateTimePickerCheckUpDate.Value.ToShortTimeString());
-                cm.Parameters.AddWithValue("@Birth_Date", dateTimePickerBirthDate.Value.ToShortTimeString());
+                cm.Parameters.AddWithValue("@Check_Up_Date", checkUp);
+                cm.Parameters.AddWithValue("@Birth_Date", birth);
 
                 cm.ExecuteNonQuery();
                 cn.Close();
@@ -141,8 +161,12 @@ namespace Capstone
                 Clear();
 
                 classLoadData.LoadRecordsPatient(frmL.dataGridViewPatientRecord, frmL.txtSearchPatientRecord);
+                this.Close();
             }
-            
+            else
+            {
+                MethodCheckForBlank();
+            }
             
         }
 
@@ -170,21 +194,83 @@ namespace Capstone
         {
 
         }
-
+       
         private void txtAddContact_KeyPress(object sender, KeyPressEventArgs e)
+        {   
+            if (e.KeyChar == 46){ }//accept . character
+            else if (e.KeyChar == 8) {}//accept backspace
+            else if ((e.KeyChar < 48) || (e.KeyChar > 57)){e.Handled = true;  }
+            //ascii code 48 - 57 = characters between 0 - 9
+        }
+
+        private void txtAddODPD_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == 46)
-            {
-                //accept . character
-            }
-            else if (e.KeyChar == 8)
-            {
-                //accept backspace
-            }
-            else if ((e.KeyChar < 48) || (e.KeyChar > 57))
-            {
-                //ascii code 48 - 57 = characters between 0 - 9
-                e.Handled = true;
+            if (e.KeyChar == 46) { }//accept . character
+            else if (e.KeyChar == 8) { }//accept backspace
+            else if ((e.KeyChar < 48) || (e.KeyChar > 57)) { e.Handled = true; }
+            //ascii code 48 - 57 = characters between 0 - 9
+        }
+
+        private void txtAddOSPD_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 46) { }//accept . character
+            else if (e.KeyChar == 8) { }//accept backspace
+            else if ((e.KeyChar < 48) || (e.KeyChar > 57)) { e.Handled = true; }
+            //ascii code 48 - 57 = characters between 0 - 9
+        }
+
+        private void txtAddODAXIS_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 46) { }//accept . character
+            else if (e.KeyChar == 8) { }//accept backspace
+            else if ((e.KeyChar < 48) || (e.KeyChar > 57)) { e.Handled = true; }
+            //ascii code 48 - 57 = characters between 0 - 9
+        }
+
+        private void txtAddOSAXIS_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 46) { }//accept . character
+            else if (e.KeyChar == 8) { }//accept backspace
+            
+            else if ((e.KeyChar < 48) || (e.KeyChar > 57)) { e.Handled = true; }
+            //ascii code 48 - 57 = characters between 0 - 9
+        }
+
+        private void txtADDODCYL_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf('.') > -1) { e.Handled = true; }
+            
+            // only allow minus sign at the beginning
+            if (e.KeyChar == '-' && (sender as TextBox).Text.Length > 0) { e.Handled = true; }
+               
+
+
+            if (e.KeyChar == 8) { }//accept backspace
+           
+            else if ((e.KeyChar < 48) || (e.KeyChar > 57)) { e.Handled = true; }
+            //ascii code 48 - 57 = characters between 0 - 9
+        }
+
+        private void txtADDOSCYL_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf('.') > -1) { e.Handled = true; }
+
+            // only allow minus sign at the beginning
+            if (e.KeyChar == '-' && (sender as TextBox).Text.Length > 0) { e.Handled = true; }
+
+            if (e.KeyChar == 8) { }//accept backspace
+           
+            else if ((e.KeyChar < 48) || (e.KeyChar > 57)) { e.Handled = true; }
+            //ascii code 48 - 57 = characters between 0 - 9
+        }
+
+        private void dateTimePickerCheckUpDate_ValueChanged(object sender, EventArgs e)
+        {
+            int years = DateTime.Now.Year - dateTimePickerBirthDate.Value.Year;
+            if (dateTimePickerBirthDate.Value.AddYears(years) < DateTime.Now)
+            { 
+                years--;
+                txtAddAge.Text = years.ToString();
             }
         }
     }

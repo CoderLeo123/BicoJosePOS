@@ -117,6 +117,7 @@
             this.lblUserNum.Size = new System.Drawing.Size(49, 20);
             this.lblUserNum.TabIndex = 7;
             this.lblUserNum.Text = "          ";
+            this.lblUserNum.Visible = false;
             // 
             // panel4
             // 
@@ -403,6 +404,8 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Image = global::Capstone.Properties.Resources.User;
+            this.pictureBox1.InitialImage = global::Capstone.Properties.Resources.User;
             this.pictureBox1.Location = new System.Drawing.Point(68, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(138, 125);
@@ -480,11 +483,11 @@
             this.txtExp.BackColor = System.Drawing.Color.Cyan;
             this.txtExp.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtExp.Enabled = false;
-            this.txtExp.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txtExp.Font = new System.Drawing.Font("Segoe UI", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.txtExp.ForeColor = System.Drawing.SystemColors.InactiveBorder;
             this.txtExp.Location = new System.Drawing.Point(360, 404);
             this.txtExp.Name = "txtExp";
-            this.txtExp.Size = new System.Drawing.Size(147, 40);
+            this.txtExp.Size = new System.Drawing.Size(147, 50);
             this.txtExp.TabIndex = 73;
             this.txtExp.Text = "0";
             this.txtExp.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -494,11 +497,11 @@
             this.txtOutOStk.BackColor = System.Drawing.Color.Cyan;
             this.txtOutOStk.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtOutOStk.Enabled = false;
-            this.txtOutOStk.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txtOutOStk.Font = new System.Drawing.Font("Segoe UI", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.txtOutOStk.ForeColor = System.Drawing.SystemColors.InactiveBorder;
             this.txtOutOStk.Location = new System.Drawing.Point(360, 338);
             this.txtOutOStk.Name = "txtOutOStk";
-            this.txtOutOStk.Size = new System.Drawing.Size(147, 40);
+            this.txtOutOStk.Size = new System.Drawing.Size(147, 50);
             this.txtOutOStk.TabIndex = 72;
             this.txtOutOStk.Text = "0";
             this.txtOutOStk.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -508,11 +511,11 @@
             this.txtCrit.BackColor = System.Drawing.Color.Cyan;
             this.txtCrit.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtCrit.Enabled = false;
-            this.txtCrit.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txtCrit.Font = new System.Drawing.Font("Segoe UI", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.txtCrit.ForeColor = System.Drawing.SystemColors.InactiveBorder;
             this.txtCrit.Location = new System.Drawing.Point(360, 268);
             this.txtCrit.Name = "txtCrit";
-            this.txtCrit.Size = new System.Drawing.Size(147, 40);
+            this.txtCrit.Size = new System.Drawing.Size(147, 50);
             this.txtCrit.TabIndex = 71;
             this.txtCrit.Text = "0";
             this.txtCrit.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -522,11 +525,11 @@
             this.txtReOrd.BackColor = System.Drawing.Color.Cyan;
             this.txtReOrd.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtReOrd.Enabled = false;
-            this.txtReOrd.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txtReOrd.Font = new System.Drawing.Font("Segoe UI", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.txtReOrd.ForeColor = System.Drawing.SystemColors.InactiveBorder;
             this.txtReOrd.Location = new System.Drawing.Point(360, 207);
             this.txtReOrd.Name = "txtReOrd";
-            this.txtReOrd.Size = new System.Drawing.Size(147, 40);
+            this.txtReOrd.Size = new System.Drawing.Size(147, 50);
             this.txtReOrd.TabIndex = 70;
             this.txtReOrd.Text = "0";
             this.txtReOrd.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -536,11 +539,11 @@
             this.txtAvailStock.BackColor = System.Drawing.Color.Cyan;
             this.txtAvailStock.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtAvailStock.Enabled = false;
-            this.txtAvailStock.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txtAvailStock.Font = new System.Drawing.Font("Segoe UI", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.txtAvailStock.ForeColor = System.Drawing.SystemColors.InactiveBorder;
             this.txtAvailStock.Location = new System.Drawing.Point(360, 137);
             this.txtAvailStock.Name = "txtAvailStock";
-            this.txtAvailStock.Size = new System.Drawing.Size(147, 40);
+            this.txtAvailStock.Size = new System.Drawing.Size(147, 50);
             this.txtAvailStock.TabIndex = 69;
             this.txtAvailStock.Text = "0";
             this.txtAvailStock.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;

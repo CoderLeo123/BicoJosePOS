@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.btnAddPR = new System.Windows.Forms.Button();
@@ -42,19 +43,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridViewPatientRecord = new System.Windows.Forms.DataGridView();
-            this.NumPRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Fname = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Lname = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PatientIDPRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CustomerNamePRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AddressPRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ContactPRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AgePRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GenderPRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CheckUpDatePRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EditPRecord = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panelPresc = new System.Windows.Forms.Panel();
+            this.txtOSPD = new System.Windows.Forms.TextBox();
             this.txtODPD = new System.Windows.Forms.TextBox();
             this.txtFeature = new System.Windows.Forms.TextBox();
             this.txtNote = new System.Windows.Forms.TextBox();
@@ -93,7 +84,16 @@
             this.label18 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
-            this.txtOSPD = new System.Windows.Forms.TextBox();
+            this.NumPRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PatientIDPRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CustomerNamePRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AddressPRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ContactPRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AgePRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GenderPRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CheckUpDatePRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EditPRecord = new System.Windows.Forms.DataGridViewImageColumn();
+            this.del = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClosePatientRecord)).BeginInit();
@@ -234,24 +234,23 @@
             // 
             // dataGridViewPatientRecord
             // 
+            this.dataGridViewPatientRecord.AllowUserToAddRows = false;
             this.dataGridViewPatientRecord.AllowUserToResizeColumns = false;
             this.dataGridViewPatientRecord.AllowUserToResizeRows = false;
             this.dataGridViewPatientRecord.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewPatientRecord.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewPatientRecord.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewPatientRecord.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewPatientRecord.ColumnHeadersHeight = 40;
             this.dataGridViewPatientRecord.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridViewPatientRecord.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NumPRecord,
-            this.Fname,
-            this.Lname,
             this.PatientIDPRecord,
             this.CustomerNamePRecord,
             this.AddressPRecord,
@@ -259,114 +258,37 @@
             this.AgePRecord,
             this.GenderPRecord,
             this.CheckUpDatePRecord,
-            this.EditPRecord});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Azure;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewPatientRecord.DefaultCellStyle = dataGridViewCellStyle4;
+            this.EditPRecord,
+            this.del});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Azure;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewPatientRecord.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewPatientRecord.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewPatientRecord.EnableHeadersVisualStyles = false;
             this.dataGridViewPatientRecord.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.dataGridViewPatientRecord.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewPatientRecord.Name = "dataGridViewPatientRecord";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewPatientRecord.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewPatientRecord.RowHeadersVisible = false;
             this.dataGridViewPatientRecord.RowHeadersWidth = 51;
             this.dataGridViewPatientRecord.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dataGridViewPatientRecord.RowTemplate.Height = 29;
+            this.dataGridViewPatientRecord.RowTemplate.Height = 35;
             this.dataGridViewPatientRecord.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewPatientRecord.Size = new System.Drawing.Size(1315, 362);
             this.dataGridViewPatientRecord.TabIndex = 6;
             this.dataGridViewPatientRecord.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPatientRecord_CellContentClick);
-            // 
-            // NumPRecord
-            // 
-            this.NumPRecord.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.NumPRecord.HeaderText = "#";
-            this.NumPRecord.MinimumWidth = 6;
-            this.NumPRecord.Name = "NumPRecord";
-            this.NumPRecord.Width = 51;
-            // 
-            // Fname
-            // 
-            this.Fname.HeaderText = "FNAME";
-            this.Fname.MinimumWidth = 6;
-            this.Fname.Name = "Fname";
-            this.Fname.Visible = false;
-            this.Fname.Width = 125;
-            // 
-            // Lname
-            // 
-            this.Lname.HeaderText = "LNAME";
-            this.Lname.MinimumWidth = 6;
-            this.Lname.Name = "Lname";
-            this.Lname.Visible = false;
-            this.Lname.Width = 125;
-            // 
-            // PatientIDPRecord
-            // 
-            this.PatientIDPRecord.HeaderText = "PATIENT ID";
-            this.PatientIDPRecord.MinimumWidth = 6;
-            this.PatientIDPRecord.Name = "PatientIDPRecord";
-            this.PatientIDPRecord.Width = 125;
-            // 
-            // CustomerNamePRecord
-            // 
-            this.CustomerNamePRecord.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CustomerNamePRecord.HeaderText = "NAME";
-            this.CustomerNamePRecord.MinimumWidth = 6;
-            this.CustomerNamePRecord.Name = "CustomerNamePRecord";
-            // 
-            // AddressPRecord
-            // 
-            this.AddressPRecord.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.AddressPRecord.HeaderText = "ADDRESS";
-            this.AddressPRecord.MinimumWidth = 6;
-            this.AddressPRecord.Name = "AddressPRecord";
-            // 
-            // ContactPRecord
-            // 
-            this.ContactPRecord.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.ContactPRecord.HeaderText = "CONTACT";
-            this.ContactPRecord.MinimumWidth = 6;
-            this.ContactPRecord.Name = "ContactPRecord";
-            this.ContactPRecord.Width = 131;
-            // 
-            // AgePRecord
-            // 
-            this.AgePRecord.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.AgePRecord.HeaderText = "AGE";
-            this.AgePRecord.MinimumWidth = 6;
-            this.AgePRecord.Name = "AgePRecord";
-            this.AgePRecord.Width = 78;
-            // 
-            // GenderPRecord
-            // 
-            this.GenderPRecord.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.GenderPRecord.HeaderText = "GENDER";
-            this.GenderPRecord.MinimumWidth = 6;
-            this.GenderPRecord.Name = "GenderPRecord";
-            this.GenderPRecord.Width = 119;
-            // 
-            // CheckUpDatePRecord
-            // 
-            this.CheckUpDatePRecord.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.CheckUpDatePRecord.HeaderText = "CHECK-UP DATE";
-            this.CheckUpDatePRecord.MinimumWidth = 6;
-            this.CheckUpDatePRecord.Name = "CheckUpDatePRecord";
-            this.CheckUpDatePRecord.Width = 193;
-            // 
-            // EditPRecord
-            // 
-            this.EditPRecord.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.EditPRecord.HeaderText = "";
-            this.EditPRecord.Image = global::Capstone.Properties.Resources.Edit;
-            this.EditPRecord.MinimumWidth = 6;
-            this.EditPRecord.Name = "EditPRecord";
-            this.EditPRecord.Width = 24;
             // 
             // panel3
             // 
@@ -411,12 +333,23 @@
             this.panelPresc.Size = new System.Drawing.Size(930, 511);
             this.panelPresc.TabIndex = 19;
             // 
+            // txtOSPD
+            // 
+            this.txtOSPD.BackColor = System.Drawing.Color.LightCyan;
+            this.txtOSPD.Enabled = false;
+            this.txtOSPD.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtOSPD.Location = new System.Drawing.Point(694, 174);
+            this.txtOSPD.Name = "txtOSPD";
+            this.txtOSPD.PlaceholderText = "     ---";
+            this.txtOSPD.Size = new System.Drawing.Size(85, 34);
+            this.txtOSPD.TabIndex = 38;
+            // 
             // txtODPD
             // 
             this.txtODPD.BackColor = System.Drawing.Color.LightCyan;
             this.txtODPD.Enabled = false;
             this.txtODPD.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtODPD.Location = new System.Drawing.Point(690, 133);
+            this.txtODPD.Location = new System.Drawing.Point(694, 110);
             this.txtODPD.Name = "txtODPD";
             this.txtODPD.PlaceholderText = "     ---";
             this.txtODPD.Size = new System.Drawing.Size(85, 34);
@@ -427,7 +360,7 @@
             this.txtFeature.BackColor = System.Drawing.Color.LightCyan;
             this.txtFeature.Enabled = false;
             this.txtFeature.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtFeature.Location = new System.Drawing.Point(691, 301);
+            this.txtFeature.Location = new System.Drawing.Point(695, 278);
             this.txtFeature.Multiline = true;
             this.txtFeature.Name = "txtFeature";
             this.txtFeature.PlaceholderText = "E.g. Multicoated, etc..";
@@ -439,7 +372,7 @@
             this.txtNote.BackColor = System.Drawing.Color.LightCyan;
             this.txtNote.Enabled = false;
             this.txtNote.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtNote.Location = new System.Drawing.Point(132, 350);
+            this.txtNote.Location = new System.Drawing.Point(136, 327);
             this.txtNote.Multiline = true;
             this.txtNote.Name = "txtNote";
             this.txtNote.PlaceholderText = "E.g. Notify thru contacts remaining balance";
@@ -451,7 +384,7 @@
             this.txtDueDate.BackColor = System.Drawing.Color.LightCyan;
             this.txtDueDate.Enabled = false;
             this.txtDueDate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtDueDate.Location = new System.Drawing.Point(188, 274);
+            this.txtDueDate.Location = new System.Drawing.Point(192, 251);
             this.txtDueDate.Name = "txtDueDate";
             this.txtDueDate.PlaceholderText = "     --/--/--";
             this.txtDueDate.Size = new System.Drawing.Size(452, 34);
@@ -462,7 +395,7 @@
             this.txtOSADD.BackColor = System.Drawing.Color.LightCyan;
             this.txtOSADD.Enabled = false;
             this.txtOSADD.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtOSADD.Location = new System.Drawing.Point(555, 197);
+            this.txtOSADD.Location = new System.Drawing.Point(559, 174);
             this.txtOSADD.Name = "txtOSADD";
             this.txtOSADD.PlaceholderText = "     ---";
             this.txtOSADD.Size = new System.Drawing.Size(85, 34);
@@ -473,7 +406,7 @@
             this.txtODADD.BackColor = System.Drawing.Color.LightCyan;
             this.txtODADD.Enabled = false;
             this.txtODADD.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtODADD.Location = new System.Drawing.Point(555, 134);
+            this.txtODADD.Location = new System.Drawing.Point(559, 111);
             this.txtODADD.Name = "txtODADD";
             this.txtODADD.PlaceholderText = "     ---";
             this.txtODADD.Size = new System.Drawing.Size(85, 34);
@@ -484,7 +417,7 @@
             this.txtOSAXIS.BackColor = System.Drawing.Color.LightCyan;
             this.txtOSAXIS.Enabled = false;
             this.txtOSAXIS.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtOSAXIS.Location = new System.Drawing.Point(419, 197);
+            this.txtOSAXIS.Location = new System.Drawing.Point(423, 174);
             this.txtOSAXIS.Name = "txtOSAXIS";
             this.txtOSAXIS.PlaceholderText = "     ---";
             this.txtOSAXIS.Size = new System.Drawing.Size(85, 34);
@@ -495,7 +428,7 @@
             this.txtODAXIS.BackColor = System.Drawing.Color.LightCyan;
             this.txtODAXIS.Enabled = false;
             this.txtODAXIS.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtODAXIS.Location = new System.Drawing.Point(419, 134);
+            this.txtODAXIS.Location = new System.Drawing.Point(423, 111);
             this.txtODAXIS.Name = "txtODAXIS";
             this.txtODAXIS.PlaceholderText = "     ---";
             this.txtODAXIS.Size = new System.Drawing.Size(85, 34);
@@ -506,7 +439,7 @@
             this.txtOSCYL.BackColor = System.Drawing.Color.LightCyan;
             this.txtOSCYL.Enabled = false;
             this.txtOSCYL.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtOSCYL.Location = new System.Drawing.Point(276, 197);
+            this.txtOSCYL.Location = new System.Drawing.Point(280, 174);
             this.txtOSCYL.Name = "txtOSCYL";
             this.txtOSCYL.PlaceholderText = "     ---";
             this.txtOSCYL.Size = new System.Drawing.Size(85, 34);
@@ -517,7 +450,7 @@
             this.txtODCYL.BackColor = System.Drawing.Color.LightCyan;
             this.txtODCYL.Enabled = false;
             this.txtODCYL.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtODCYL.Location = new System.Drawing.Point(276, 134);
+            this.txtODCYL.Location = new System.Drawing.Point(280, 111);
             this.txtODCYL.Name = "txtODCYL";
             this.txtODCYL.PlaceholderText = "     ---";
             this.txtODCYL.Size = new System.Drawing.Size(85, 34);
@@ -528,7 +461,7 @@
             this.txtOSSPH.BackColor = System.Drawing.Color.LightCyan;
             this.txtOSSPH.Enabled = false;
             this.txtOSSPH.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtOSSPH.Location = new System.Drawing.Point(134, 197);
+            this.txtOSSPH.Location = new System.Drawing.Point(138, 174);
             this.txtOSSPH.Name = "txtOSSPH";
             this.txtOSSPH.PlaceholderText = "     ---";
             this.txtOSSPH.Size = new System.Drawing.Size(85, 34);
@@ -539,7 +472,7 @@
             this.txtODSPH.BackColor = System.Drawing.Color.LightCyan;
             this.txtODSPH.Enabled = false;
             this.txtODSPH.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtODSPH.Location = new System.Drawing.Point(134, 134);
+            this.txtODSPH.Location = new System.Drawing.Point(138, 111);
             this.txtODSPH.Name = "txtODSPH";
             this.txtODSPH.PlaceholderText = "     ---";
             this.txtODSPH.Size = new System.Drawing.Size(85, 34);
@@ -549,7 +482,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label14.Location = new System.Drawing.Point(29, 270);
+            this.label14.Location = new System.Drawing.Point(33, 247);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(134, 38);
             this.label14.TabIndex = 24;
@@ -569,7 +502,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(419, 81);
+            this.label8.Location = new System.Drawing.Point(423, 58);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(74, 38);
             this.label8.TabIndex = 18;
@@ -579,7 +512,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label13.Location = new System.Drawing.Point(29, 346);
+            this.label13.Location = new System.Drawing.Point(33, 323);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(78, 38);
             this.label13.TabIndex = 23;
@@ -589,7 +522,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(289, 81);
+            this.label7.Location = new System.Drawing.Point(293, 58);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(62, 38);
             this.label7.TabIndex = 17;
@@ -599,7 +532,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label9.Location = new System.Drawing.Point(555, 81);
+            this.label9.Location = new System.Drawing.Point(559, 58);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(75, 38);
             this.label9.TabIndex = 19;
@@ -609,7 +542,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label12.Location = new System.Drawing.Point(690, 260);
+            this.label12.Location = new System.Drawing.Point(694, 237);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(133, 38);
             this.label12.TabIndex = 22;
@@ -619,7 +552,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(151, 81);
+            this.label6.Location = new System.Drawing.Point(155, 58);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(68, 38);
             this.label6.TabIndex = 16;
@@ -629,7 +562,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(29, 134);
+            this.label4.Location = new System.Drawing.Point(33, 111);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(58, 38);
             this.label4.TabIndex = 14;
@@ -639,7 +572,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label10.Location = new System.Drawing.Point(691, 81);
+            this.label10.Location = new System.Drawing.Point(695, 58);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(53, 38);
             this.label10.TabIndex = 20;
@@ -649,7 +582,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(29, 197);
+            this.label5.Location = new System.Drawing.Point(33, 174);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(53, 38);
             this.label5.TabIndex = 15;
@@ -683,7 +616,7 @@
             this.txtBalance.BackColor = System.Drawing.Color.LightCyan;
             this.txtBalance.Enabled = false;
             this.txtBalance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtBalance.Location = new System.Drawing.Point(197, 415);
+            this.txtBalance.Location = new System.Drawing.Point(200, 378);
             this.txtBalance.Name = "txtBalance";
             this.txtBalance.PlaceholderText = "0.00";
             this.txtBalance.Size = new System.Drawing.Size(146, 34);
@@ -694,7 +627,7 @@
             this.txtDeposit.BackColor = System.Drawing.Color.LightCyan;
             this.txtDeposit.Enabled = false;
             this.txtDeposit.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtDeposit.Location = new System.Drawing.Point(197, 365);
+            this.txtDeposit.Location = new System.Drawing.Point(200, 328);
             this.txtDeposit.Name = "txtDeposit";
             this.txtDeposit.PlaceholderText = "0.00";
             this.txtDeposit.Size = new System.Drawing.Size(146, 34);
@@ -705,7 +638,7 @@
             this.txtTotal.BackColor = System.Drawing.Color.LightCyan;
             this.txtTotal.Enabled = false;
             this.txtTotal.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtTotal.Location = new System.Drawing.Point(197, 315);
+            this.txtTotal.Location = new System.Drawing.Point(200, 278);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.PlaceholderText = "0.00";
             this.txtTotal.Size = new System.Drawing.Size(146, 34);
@@ -716,7 +649,7 @@
             this.txtOthersPrice.BackColor = System.Drawing.Color.LightCyan;
             this.txtOthersPrice.Enabled = false;
             this.txtOthersPrice.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtOthersPrice.Location = new System.Drawing.Point(197, 211);
+            this.txtOthersPrice.Location = new System.Drawing.Point(200, 174);
             this.txtOthersPrice.Name = "txtOthersPrice";
             this.txtOthersPrice.PlaceholderText = "0.00";
             this.txtOthersPrice.Size = new System.Drawing.Size(146, 34);
@@ -727,7 +660,7 @@
             this.txtFramePrice.BackColor = System.Drawing.Color.LightCyan;
             this.txtFramePrice.Enabled = false;
             this.txtFramePrice.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtFramePrice.Location = new System.Drawing.Point(197, 161);
+            this.txtFramePrice.Location = new System.Drawing.Point(200, 124);
             this.txtFramePrice.Name = "txtFramePrice";
             this.txtFramePrice.PlaceholderText = "0.00";
             this.txtFramePrice.Size = new System.Drawing.Size(146, 34);
@@ -738,7 +671,7 @@
             this.txtLensePrice.BackColor = System.Drawing.Color.LightCyan;
             this.txtLensePrice.Enabled = false;
             this.txtLensePrice.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtLensePrice.Location = new System.Drawing.Point(197, 111);
+            this.txtLensePrice.Location = new System.Drawing.Point(200, 74);
             this.txtLensePrice.Name = "txtLensePrice";
             this.txtLensePrice.PlaceholderText = "0.00";
             this.txtLensePrice.Size = new System.Drawing.Size(146, 34);
@@ -748,7 +681,7 @@
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label21.Location = new System.Drawing.Point(39, 260);
+            this.label21.Location = new System.Drawing.Point(42, 223);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(321, 38);
             this.label21.TabIndex = 19;
@@ -758,7 +691,7 @@
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label20.Location = new System.Drawing.Point(14, 411);
+            this.label20.Location = new System.Drawing.Point(17, 374);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(112, 38);
             this.label20.TabIndex = 18;
@@ -768,7 +701,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label15.Location = new System.Drawing.Point(14, 107);
+            this.label15.Location = new System.Drawing.Point(17, 70);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(142, 38);
             this.label15.TabIndex = 13;
@@ -778,7 +711,7 @@
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label19.Location = new System.Drawing.Point(14, 361);
+            this.label19.Location = new System.Drawing.Point(17, 324);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(112, 38);
             this.label19.TabIndex = 17;
@@ -798,7 +731,7 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label18.Location = new System.Drawing.Point(14, 311);
+            this.label18.Location = new System.Drawing.Point(17, 274);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(137, 38);
             this.label18.TabIndex = 16;
@@ -808,7 +741,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label16.Location = new System.Drawing.Point(14, 157);
+            this.label16.Location = new System.Drawing.Point(17, 120);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(163, 38);
             this.label16.TabIndex = 14;
@@ -818,22 +751,99 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label17.Location = new System.Drawing.Point(14, 207);
+            this.label17.Location = new System.Drawing.Point(17, 170);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(100, 38);
             this.label17.TabIndex = 15;
             this.label17.Text = "Others";
             // 
-            // txtOSPD
+            // NumPRecord
             // 
-            this.txtOSPD.BackColor = System.Drawing.Color.LightCyan;
-            this.txtOSPD.Enabled = false;
-            this.txtOSPD.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtOSPD.Location = new System.Drawing.Point(690, 197);
-            this.txtOSPD.Name = "txtOSPD";
-            this.txtOSPD.PlaceholderText = "     ---";
-            this.txtOSPD.Size = new System.Drawing.Size(85, 34);
-            this.txtOSPD.TabIndex = 38;
+            this.NumPRecord.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.NumPRecord.HeaderText = "#";
+            this.NumPRecord.MinimumWidth = 6;
+            this.NumPRecord.Name = "NumPRecord";
+            this.NumPRecord.Width = 51;
+            // 
+            // PatientIDPRecord
+            // 
+            this.PatientIDPRecord.HeaderText = "PATIENT ID";
+            this.PatientIDPRecord.MinimumWidth = 6;
+            this.PatientIDPRecord.Name = "PatientIDPRecord";
+            this.PatientIDPRecord.Visible = false;
+            this.PatientIDPRecord.Width = 125;
+            // 
+            // CustomerNamePRecord
+            // 
+            this.CustomerNamePRecord.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CustomerNamePRecord.HeaderText = "NAME";
+            this.CustomerNamePRecord.MinimumWidth = 6;
+            this.CustomerNamePRecord.Name = "CustomerNamePRecord";
+            this.CustomerNamePRecord.ReadOnly = true;
+            // 
+            // AddressPRecord
+            // 
+            this.AddressPRecord.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.AddressPRecord.HeaderText = "ADDRESS";
+            this.AddressPRecord.MinimumWidth = 6;
+            this.AddressPRecord.Name = "AddressPRecord";
+            this.AddressPRecord.ReadOnly = true;
+            // 
+            // ContactPRecord
+            // 
+            this.ContactPRecord.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.ContactPRecord.HeaderText = "CONTACT";
+            this.ContactPRecord.MinimumWidth = 6;
+            this.ContactPRecord.Name = "ContactPRecord";
+            this.ContactPRecord.ReadOnly = true;
+            this.ContactPRecord.Width = 131;
+            // 
+            // AgePRecord
+            // 
+            this.AgePRecord.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.AgePRecord.HeaderText = "AGE";
+            this.AgePRecord.MinimumWidth = 6;
+            this.AgePRecord.Name = "AgePRecord";
+            this.AgePRecord.ReadOnly = true;
+            this.AgePRecord.Width = 78;
+            // 
+            // GenderPRecord
+            // 
+            this.GenderPRecord.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.GenderPRecord.HeaderText = "GENDER";
+            this.GenderPRecord.MinimumWidth = 6;
+            this.GenderPRecord.Name = "GenderPRecord";
+            this.GenderPRecord.ReadOnly = true;
+            this.GenderPRecord.Width = 119;
+            // 
+            // CheckUpDatePRecord
+            // 
+            this.CheckUpDatePRecord.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.CheckUpDatePRecord.HeaderText = "CHECK-UP DATE";
+            this.CheckUpDatePRecord.MinimumWidth = 6;
+            this.CheckUpDatePRecord.Name = "CheckUpDatePRecord";
+            this.CheckUpDatePRecord.ReadOnly = true;
+            this.CheckUpDatePRecord.Width = 193;
+            // 
+            // EditPRecord
+            // 
+            this.EditPRecord.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.EditPRecord.HeaderText = "";
+            this.EditPRecord.Image = global::Capstone.Properties.Resources.Edit;
+            this.EditPRecord.MinimumWidth = 6;
+            this.EditPRecord.Name = "EditPRecord";
+            this.EditPRecord.ReadOnly = true;
+            this.EditPRecord.Width = 6;
+            // 
+            // del
+            // 
+            this.del.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.del.HeaderText = "";
+            this.del.Image = global::Capstone.Properties.Resources._Delete;
+            this.del.MinimumWidth = 6;
+            this.del.Name = "del";
+            this.del.ReadOnly = true;
+            this.del.Width = 6;
             // 
             // frmPatientRecord
             // 
@@ -918,9 +928,8 @@
         private Button btnAddPR;
         public DataGridView dataGridViewPatientRecord;
         public TextBox txtSearchPatientRecord;
+        private TextBox txtOSPD;
         private DataGridViewTextBoxColumn NumPRecord;
-        private DataGridViewTextBoxColumn Fname;
-        private DataGridViewTextBoxColumn Lname;
         private DataGridViewTextBoxColumn PatientIDPRecord;
         private DataGridViewTextBoxColumn CustomerNamePRecord;
         private DataGridViewTextBoxColumn AddressPRecord;
@@ -929,6 +938,6 @@
         private DataGridViewTextBoxColumn GenderPRecord;
         private DataGridViewTextBoxColumn CheckUpDatePRecord;
         private DataGridViewImageColumn EditPRecord;
-        private TextBox txtOSPD;
+        private DataGridViewImageColumn del;
     }
 }
