@@ -88,6 +88,10 @@ namespace Capstone
             tabControlInventory.TabPages.Add(tab);
             tab.Controls.Add(panelExpiration);
             classInvent.LoadItemWithExpiration(dataGridViewExpir, txtSearchExpirat);
+            TabPage tab2 = new TabPage("DISPOSE ITEMS");
+            tabControlInventory.TabPages.Add(tab2);
+            tab2.Controls.Add(panelDispose);
+            classInvent.LoadDispose(dataGridViewDispose, txtSearchDispose);
             checkWhatIsPress(false, false, false, true);
         }
 
@@ -95,7 +99,7 @@ namespace Capstone
         {
             string ITMID = dataGridViewExpir.Rows[e.RowIndex].Cells[4].Value.ToString();
 
-            frmExpListDispose frm = new frmExpListDispose();
+            frmExpListDispose frm = new frmExpListDispose(this);
             frm.tabControlExpLi.TabPages.Clear();
             TabPage tab = new TabPage("Expiration List");
             frm.tabControlExpLi.TabPages.Add(tab);

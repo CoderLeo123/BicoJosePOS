@@ -20,19 +20,20 @@ namespace Capstone
         ClassLoadData classLoadData = new ClassLoadData();
         ClassReports classReport = new ClassReports();
         int sWidth = 850, sLength = 1050, lLength = 1400;
-        int rowCount = 0;
+        int rowCount = 0, once = 2;
         string title = "BICO-JOSE System", transNo = "";
         List<ClassReports.SalesReport> List = new List<ClassReports.SalesReport>();
         List<SalesReport> SList = new List<SalesReport>();
         List<ItemList> IList = new List<ItemList>();
         List<ServiceList> SerList = new List<ServiceList>();
         string balSale = ""; bool balance = false;
-
+        bool transaction = false; bool sales = false;
+        bool settled = false; bool sold = false; public bool pesoPaint = true;
         public frmReports()
         {
             InitializeComponent();
             cn = new SqlConnection(dbcon.MyConnection());
-
+            textRightAlign();
             changeDatePriorCurrent(dateTimePickerStartSold);
             changeDatePriorCurrent(dateTimePickerStartTrans);
             classLoadData.LoadRecordsTransacHist(dataGridViewTransHist, txtSearchTransHist, dateTimePickerStartTrans, dateTimePickerEndTrans);
@@ -48,10 +49,10 @@ namespace Capstone
             previewSales();
 
             lblCurrentTransN.Text = dataGridViewTransHist.Rows[0].Cells[2].Value?.ToString();
-            previewTransHist();
+            previewTransHistReceipt();
             lblSettledID.Text = dataGridViewSettle.Rows[0].Cells[2].Value?.ToString();
-            previewSettled();
-
+            previewSettledReceipt();
+            pesoPaint = true;
 
         }
         public void dateSelect(DataGridView dgv)
@@ -321,8 +322,11 @@ namespace Capstone
             System.Drawing.Font printFont = new System.Drawing.Font("Arial", 12, System.Drawing.FontStyle.Regular);
             System.Drawing.Font printFontBold = new System.Drawing.Font("Arial", 12, System.Drawing.FontStyle.Bold);
             
-            string printDate = DateTime.Today.ToLongDateString();
+            string printDate = DateTime.Today.ToLongDateString(); string resultText = "";
             int BalRow = 0, num = 1; getRowCount(dataGridViewInitial, out BalRow);
+            int TransRow = 0; getRowCount(dataGridViewTransHist, out TransRow);
+            int SettRow = 0; getRowCount(dataGridViewSettle, out SettRow);
+            int SoldRow = 0; getRowCount(dataGridViewSoldItems, out SoldRow);
             int currPage = 1, totalPage = 1;
             float pageWidth = e.PageSettings.PrintableArea.Width; //850 ; 1/4 = 212.5; 1/2 = 425; 3/4 = 637.5
             float pageHeigth = e.PageSettings.PrintableArea.Height; //1100
@@ -337,6 +341,7 @@ namespace Capstone
             
             float yPos = 0;
             float offSetY = 0;
+            float offSetX = leftMargin;
             float footerStartY = pageHeigth - ((fontHeigth * 4) + bottomMargin);
             float BodyStartY = fontHeigth * 5;
             offSetY += (float)fontHeigth;
@@ -348,42 +353,177 @@ namespace Capstone
                 e.Graphics.DrawString("Address: 3rd Floor Susana Mart, Tungko San Jose Del Monte Bulacan", printFont, Brushes.Black, (leftMargin + 70), (yPos += offSetY)); //offSetY += (float)fontHeigth;
                 e.Graphics.DrawString("Clinic's Contact: 09178326666", printFont, Brushes.Black, (leftMargin + 220), (yPos += offSetY)); //offSetY += (float)fontHeigth;
                 //e.Graphics.DrawString("SALES REPORT", printFontBold, Brushes.Black, (leftMargin + 260), (yPos += (offSetY * 3))); //offSetY += ((float)fontHeigth * 3);
-                e.Graphics.DrawString("#", printFont, Brushes.Black, (leftMargin + 30), (yPos += (offSetY*6)));
-                e.Graphics.DrawString("    Date", printFont, Brushes.Black, (leftMargin + 130), yPos);
-                e.Graphics.DrawString("    Amount", printFont, Brushes.Black, (leftMargin + 280), yPos);
+                //e.Graphics.DrawString("#", printFont, Brushes.Black, (leftMargin + 30), (yPos += (offSetY*6)));
+                //e.Graphics.DrawString("    Date", printFont, Brushes.Black, (leftMargin + 130), yPos);
+                //e.Graphics.DrawString("    Amount", printFont, Brushes.Black, (leftMargin + 280), yPos);
             }
             void body()
             {
                 if (balance == true)
                 {
-                    e.Graphics.DrawString("BALANCE REPORT", printFontBold, Brushes.Black, (leftMargin + 260), (yPos -= (offSetY * 3)));
-                }
-                else if (balance == false)
-                {
-                    e.Graphics.DrawString("SALES REPORT", printFontBold, Brushes.Black, (leftMargin + 260), (yPos -= (offSetY * 3)));
-                }
-                yPos += (offSetY * 3);
-                if (BalRow > 0)
-                {
-                    for (int i = 0; i < BalRow - 1; i++)
+                    e.Graphics.DrawString("#", printFont, Brushes.Black, (leftMargin + 30), (yPos += (offSetY * 6)));
+                    e.Graphics.DrawString("    Date", printFont, Brushes.Black, (leftMargin + 130), yPos);
+                    e.Graphics.DrawString("    Amount", printFont, Brushes.Black, (leftMargin + 280), yPos);
+                    e.Graphics.DrawString("DAILY BALANCE REPORT", printFontBold, Brushes.Black, (leftMargin + 240), (yPos -= (offSetY * 3)));
+                    yPos += (offSetY * 3);                    
+                    
+                    if (BalRow > 0)
                     {
-                        SalesReport data = SList[i];
-                        //offSetY += (float)fontHeigth;
-                        e.Graphics.DrawString(num.ToString(), printFont, Brushes.Black, (leftMargin + 30), (yPos += offSetY));
+                        for (int i = 0; i < BalRow - 1; i++)
+                        {
+                            SalesReport data = SList[i];
+                            //offSetY += (float)fontHeigth;
+                            e.Graphics.DrawString(num.ToString(), printFont, Brushes.Black, (leftMargin + 30), (yPos += offSetY));
 
-                        e.Graphics.DrawString(data.Date, printFont, Brushes.Black, (leftMargin + 130), yPos);//Date
-                        if(balance == true)
-                        {
-                            e.Graphics.DrawString("₱ " + data.Balance.ToString("00.00"), printFont, Brushes.Black, (leftMargin + 280), yPos);//Balance
-                        } 
-                        else if (balance == false)
-                        {
-                            e.Graphics.DrawString("₱ " + data.Payment.ToString("00.00"), printFont, Brushes.Black, (leftMargin + 280), yPos);//Balance
+                            e.Graphics.DrawString(data.Date, printFont, Brushes.Black, (leftMargin + 130), yPos);//Date
+                            
+                                e.Graphics.DrawString("₱ " + data.Balance.ToString("00.00"), printFont, Brushes.Black, (leftMargin + 280), yPos);//Balance
+                            
+                            
+
+                            num += 1;
                         }
-
-                        num += 1;
                     }
                 }
+                else if (sales == true)
+                {
+                    e.Graphics.DrawString("#", printFont, Brushes.Black, (leftMargin + 30), (yPos += (offSetY * 6)));
+                    e.Graphics.DrawString("    Date", printFont, Brushes.Black, (leftMargin + 130), yPos);
+                    e.Graphics.DrawString("    Amount", printFont, Brushes.Black, (leftMargin + 280), yPos);
+                    e.Graphics.DrawString("DAILY SALES REPORT", printFontBold, Brushes.Black, (leftMargin + 240), (yPos -= (offSetY * 3)));
+                    yPos += (offSetY * 3);
+                    
+                    if (BalRow > 0)
+                    {
+                        for (int i = 0; i < BalRow - 1; i++)
+                        {
+                            SalesReport data = SList[i];
+                            //offSetY += (float)fontHeigth;
+                            e.Graphics.DrawString(num.ToString(), printFont, Brushes.Black, (leftMargin + 30), (yPos += offSetY));
+
+                            e.Graphics.DrawString(data.Date, printFont, Brushes.Black, (leftMargin + 130), yPos);//Date
+                       
+                                e.Graphics.DrawString("₱ " + data.Payment.ToString("00.00"), printFont, Brushes.Black, (leftMargin + 280), yPos);//Balance
+                            
+                            num += 1;
+                        }
+                    }
+                }
+                else if (transaction == true)
+                {
+                    e.Graphics.DrawString("#", printFont, Brushes.Black, (offSetX), (yPos += (offSetY * 6)));
+                    e.Graphics.DrawString("    INVOICE", printFont, Brushes.Black, (offSetX += 100), yPos);
+                    e.Graphics.DrawString("    CUSTOMER", printFont, Brushes.Black, (offSetX += 150), yPos);
+                    e.Graphics.DrawString("    CASHIER", printFont, Brushes.Black, (offSetX += 170), yPos);
+                    e.Graphics.DrawString("    DATE", printFont, Brushes.Black, (offSetX += 150), yPos);
+                    e.Graphics.DrawString("TRANSACTION HISTORY", printFontBold, Brushes.Black, (leftMargin + 240), (yPos -= (offSetY * 3)));
+                    yPos += (offSetY * 3); 
+                    if (TransRow > 0)
+                    {
+                        for (int i = 0; i < TransRow - 1; i++)
+                        {
+                            offSetX = leftMargin;                            
+                            //offSetY += (float)fontHeigth;
+                            e.Graphics.DrawString(num.ToString(), printFont, Brushes.Black, (offSetX), (yPos += offSetY));
+
+                            getValueIfAnyElseBlank(TransRow, dataGridViewTransHist, out resultText, i, 2);
+                            e.Graphics.DrawString(resultText, printFont, Brushes.Black, (offSetX += 100), yPos);//INVOICE
+
+                            getValueIfAnyElseBlank(TransRow, dataGridViewTransHist, out resultText, i, 3);
+                            e.Graphics.DrawString(resultText, printFont, Brushes.Black, (offSetX += 170), yPos);//CUSTOMER
+
+                            getValueIfAnyElseBlank(TransRow, dataGridViewTransHist, out resultText, i, 4);
+                            e.Graphics.DrawString(resultText, printFont, Brushes.Black, (offSetX += 150), yPos);//CASHIER
+
+                            getValueIfAnyElseBlank(TransRow, dataGridViewTransHist, out resultText, i, 5);
+                            e.Graphics.DrawString(resultText, printFont, Brushes.Black, (offSetX += 150), yPos);//DATE                            
+                            num += 1;
+                        }
+                    }
+                }
+                else if (settled == true)
+                {
+                    e.Graphics.DrawString("#", printFont, Brushes.Black, (offSetX), (yPos += (offSetY * 6)));
+                    e.Graphics.DrawString("    INVOICE", printFont, Brushes.Black, (offSetX += 100), yPos);
+                    e.Graphics.DrawString("    CUSTOMER", printFont, Brushes.Black, (offSetX += 150), yPos);
+                    e.Graphics.DrawString("    CASHIER", printFont, Brushes.Black, (offSetX += 170), yPos);
+                    e.Graphics.DrawString("    DATE", printFont, Brushes.Black, (offSetX += 150), yPos);
+                    e.Graphics.DrawString("SETTLED TRANSACTION", printFontBold, Brushes.Black, (leftMargin + 240), (yPos -= (offSetY * 3)));
+                    
+                    if (SettRow > 0)
+                    {
+                        yPos += (offSetY * 3);
+                        for (int i = 0; i < SettRow - 1; i++)
+                        {
+                            offSetX = leftMargin;
+                            //offSetY += (float)fontHeigth;
+                            e.Graphics.DrawString(num.ToString(), printFont, Brushes.Black, (offSetX), (yPos += offSetY));
+
+                            getValueIfAnyElseBlank(SettRow, dataGridViewSettle, out resultText, i, 2);
+                            e.Graphics.DrawString(resultText, printFont, Brushes.Black, (offSetX += 100), yPos);//INVOICE
+
+                            getValueIfAnyElseBlank(SettRow, dataGridViewSettle, out resultText, i, 3);
+                            e.Graphics.DrawString(resultText, printFont, Brushes.Black, (offSetX += 170), yPos);//CUSTOMER
+
+                            getValueIfAnyElseBlank(SettRow, dataGridViewSettle, out resultText, i, 4);
+                            e.Graphics.DrawString(resultText, printFont, Brushes.Black, (offSetX += 150), yPos);//CASHIER
+
+                            getValueIfAnyElseBlank(SettRow, dataGridViewSettle, out resultText, i, 5);
+                            e.Graphics.DrawString(resultText, printFont, Brushes.Black, (offSetX += 150), yPos);//DATE                            
+                            num += 1;
+                        }
+                    }
+                }
+                else if (sold == true)
+                {
+                    offSetX -= 50;
+                    e.Graphics.DrawString("#", printFont, Brushes.Black, (offSetX), (yPos += (offSetY * 6)));
+                    e.Graphics.DrawString("    INVOICE", printFont, Brushes.Black, (offSetX += 40), yPos);
+                    e.Graphics.DrawString("    DESCRIPTION", printFont, Brushes.Black, (offSetX += 150), yPos);
+                    //e.Graphics.DrawString("    EXPIRATION", printFont, Brushes.Black, (offSetX += 100), yPos);
+                    e.Graphics.DrawString("    PRICE", printFont, Brushes.Black, (offSetX += 230), yPos);
+                    e.Graphics.DrawString("    QTY", printFont, Brushes.Black, (offSetX += 80), yPos);
+                    //e.Graphics.DrawString("    UNIT", printFont, Brushes.Black, (offSetX += 100), yPos);
+                    e.Graphics.DrawString("    TOTAL", printFont, Brushes.Black, (offSetX += 60), yPos);
+                    e.Graphics.DrawString("    DATE", printFont, Brushes.Black, (offSetX += 110), yPos);
+                    e.Graphics.DrawString("SOLD ITEMS", printFontBold, Brushes.Black, (leftMargin + 260), (yPos -= (offSetY * 3)));
+                    if (SoldRow > 0)
+                    {
+                        yPos += (offSetY * 3);
+                        for (int i = 0; i < SoldRow - 1; i++)
+                        {
+                            offSetX = leftMargin - 50;
+                            //offSetY += (float)fontHeigth;
+                            e.Graphics.DrawString(num.ToString(), printFont, Brushes.Black, (offSetX), (yPos += offSetY));
+
+                            getValueIfAnyElseBlank(SoldRow, dataGridViewSoldItems, out resultText, i, 2);
+                            e.Graphics.DrawString(resultText, printFont, Brushes.Black, (offSetX += 30), yPos);//INVOICE
+
+                            getValueIfAnyElseBlank(SoldRow, dataGridViewSoldItems, out resultText, i, 3);
+                            e.Graphics.DrawString(resultText, printFont, Brushes.Black, (offSetX += 150), yPos);//DESCRIPTION
+
+                            //getValueIfAnyElseBlank(SoldRow, dataGridViewSoldItems, out resultText, i, 4);
+                            //e.Graphics.DrawString(resultText, printFont, Brushes.Black, (offSetX += 150), yPos);//EXPIRATION
+
+                            getValueIfAnyElseBlank(SoldRow, dataGridViewSoldItems, out resultText, i, 5);
+                            e.Graphics.DrawString("₱ " + resultText, printFont, Brushes.Black, (offSetX += 260), yPos);//PRICE
+
+                            getValueIfAnyElseBlank(SoldRow, dataGridViewSoldItems, out resultText, i, 6);
+                            e.Graphics.DrawString(resultText, printFont, Brushes.Black, (offSetX += 90), yPos);//QTY    
+
+                            //getValueIfAnyElseBlank(SoldRow, dataGridViewSoldItems, out resultText, i, 2);
+                            //e.Graphics.DrawString(resultText, printFont, Brushes.Black, (offSetX += 100), yPos);//UNIT
+
+                            getValueIfAnyElseBlank(SoldRow, dataGridViewSoldItems, out resultText, i, 7);
+                            e.Graphics.DrawString("₱ " + resultText, printFont, Brushes.Black, (offSetX += 40), yPos);//TOTAL
+
+                            getValueIfAnyElseBlank(SoldRow, dataGridViewSoldItems, out resultText, i, 8);
+                            e.Graphics.DrawString(resultText, printFont, Brushes.Black, (offSetX += 100), yPos);//DATE    
+                            num += 1;
+                        }
+                    }
+                }
+                
             }
             void footer()
             { //'print footer
@@ -416,7 +556,27 @@ namespace Capstone
                 e.HasMorePages = false;
             }
         }
+        public void getValueIfAnyElseBlank(int dgvCount, DataGridView dgv, out string result, int rows, int col)
+        {
+            result = "N/A";
+            if (dgvCount == 0)
+            {
+                result = "--";
+            }
+            else
+            {
+                try
+                {
+                    result = dgv.Rows[rows].Cells[col].Value?.ToString();
 
+                }
+                catch (Exception ex)
+                {
+                    cn.Close();
+                    MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
         private void btnCloseReports_Click(object sender, EventArgs e)
         {
            
@@ -436,33 +596,68 @@ namespace Capstone
             }
 
         }
-
+        public void previewTransList()
+        {
+            PrintPreviewDialog preview = new PrintPreviewDialog();
+            sales = false; balance = false; transaction = true; settled = false; sold = false;
+            preview.Document = printDocumentBal; // 800, 800 = 8" x 8"
+            printDocumentBal.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("SHORT", sWidth, sLength);
+            preview.PrintPreviewControl.StartPage = 0;
+            preview.PrintPreviewControl.Zoom = 0.75;
+            preview.Size = new System.Drawing.Size(800, 800);
+            preview.ShowDialog();
+        }
+        public void previewSettledList()
+        {
+            PrintPreviewDialog preview = new PrintPreviewDialog();
+            balance = false; sales = false; transaction = false; settled = true; sold = false;
+            preview.Document = printDocumentBal;
+            printDocumentBal.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("SHORT", sWidth, sLength);
+            preview.PrintPreviewControl.StartPage = 0;
+            preview.PrintPreviewControl.Zoom = 0.75;
+            preview.Size = new System.Drawing.Size(800, 800);
+            preview.ShowDialog();
+        }
+        public void previewSoldList()
+        {
+            PrintPreviewDialog preview = new PrintPreviewDialog();
+            sales = false; balance = false; transaction = false; settled = false; sold = true;
+            preview.Document = printDocumentBal; // 800, 800 = 8" x 8"
+            printDocumentBal.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("SHORT", sWidth, sLength);
+            preview.PrintPreviewControl.StartPage = 0;
+            preview.PrintPreviewControl.Zoom = 0.75;
+            preview.Size = new System.Drawing.Size(800, 800);
+            preview.ShowDialog();
+        }
+       
         public void previewSales()
         {
-            balance = false;
-            printPreviewControl.Document = printDocumentBal; // 800, 800 = 8" x 8"
+            
+            sales = true; balance = false; transaction = false; settled = false; sold = false;
+            printPreviewControl.Document = printDocumentBal;    // 800, 800 = 8" x 8"
             printDocumentBal.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("SHORT", sWidth, sLength);
             printPreviewControl.Zoom = .6;
             printPreviewControl.StartPage = 0;
         }
         public void previewBalance()
         {
-            balance = true;
-            printPreviewControlBal.Document = printDocumentBal;            
+            
+            balance = true; sales = false; transaction = false; settled = false; sold = false;
+            printPreviewControl.Document = printDocumentBal;
             printDocumentBal.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("SHORT", sWidth, sLength);
-            printPreviewControlBal.Zoom = .6;
-            printPreviewControlBal.StartPage = 0;
+            printPreviewControl.Zoom = .6;
+            printPreviewControl.StartPage = 0;
         }
-        public void previewTransHist()
+        public void previewTransHistReceipt()
         {
             int pLength = 1000;
             paperSizeUpdate(out pLength);
-            printPreviewControlTransH.Document = printDocumentSales; //
+            printPreviewControlTransH.Document = printDocumentSales; 
             printDocumentSales.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("RECEIPT", 610, pLength);
             printPreviewControlTransH.Zoom = .6;
             printPreviewControlTransH.StartPage = 0;
         }
-        public void previewSettled()
+        public void previewSettledReceipt()
         {
             int pLength = 600;
             //paperSizeUpdate(out pLength);
@@ -473,7 +668,7 @@ namespace Capstone
         }
         public void changeDatePriorCurrent(DateTimePicker date)
         {
-            date.Value = DateTime.Today.AddDays(-3);
+            date.Value = DateTime.Today.AddDays(-30);
         }
         public void tblServiceList(string transacNo, out int rowCount)
         {
@@ -508,7 +703,7 @@ namespace Capstone
         private void dataGridViewTransHist_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             lblCurrentTransN.Text = dataGridViewTransHist.Rows[e.RowIndex].Cells[2].Value?.ToString();
-            previewTransHist();
+            previewTransHistReceipt();
             //int pLength = 950;
             //paperSizeUpdate(out pLength);
             //printPreviewControlTransH.Document = printDocumentSales; //
@@ -599,7 +794,7 @@ namespace Capstone
         private void dataGridViewSettle_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             lblSettledID.Text = dataGridViewSettle.Rows[e.RowIndex].Cells[2].Value?.ToString();
-            previewSettled();
+            previewSettledReceipt();
         }
 
         
@@ -652,6 +847,11 @@ namespace Capstone
             classReport.loadSalesPerDay(dataGridViewBalR, "Total_Bal");
             previewBalance();
             checkWhatIsPress(false, true, false, false);
+            pesoPaint = true;
+            dataGridViewBalR.Columns[3].HeaderText = "balance";
+            //var eventArgs = new DataGridViewCellEventArgs(1, 3);
+            //dataGridViewBalR_CellPainting(sender, eventArgs);
+            
         }
 
         private void btnHistoryTransSett_Click(object sender, EventArgs e)
@@ -664,14 +864,14 @@ namespace Capstone
             classLoadData.LoadRecordsTransacHist(dataGridViewTransHist, txtSearchTransHist, dateTimePickerStartTrans, dateTimePickerEndTrans);
 
             lblCurrentTransN.Text = dataGridViewTransHist.Rows[0].Cells[2].Value?.ToString();
-            previewTransHist();
+            previewTransHistReceipt();
             
             TabPage tab4 = new TabPage("SETTLED");
             tabControlReports.TabPages.Add(tab4);
             tab4.Controls.Add(panelSettled);
             classLoadData.LoadRecordsTransacSettled(dataGridViewSettle, txtSearchSettleds, dateTimePickerSettStart, dateTimePickerSettEnd);
             lblSettledID.Text = dataGridViewSettle.Rows[0].Cells[2].Value?.ToString();
-            previewSettled();
+            previewSettledReceipt();
 
             checkWhatIsPress(false, false, true, false);
         }
@@ -685,6 +885,39 @@ namespace Capstone
             classLoadData.LoadRecordsSoldItems(dataGridViewSoldItems, txtSearchSold, dateTimePickerStartSold, dateTimePickerEndSold);
             checkWhatIsPress(false, false, false, true);
 
+        }
+
+        private void printPreviewDialogTransH_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblCashier_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPreviewTH_Click(object sender, EventArgs e)
+        {
+
+            previewTransList();
+            //PrintPreviewDialog preview = new PrintPreviewDialog();
+            //transaction = true;
+            //preview.Document = printDocumentBal;
+            
+            //printDocumentBal.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("SHORT", sWidth, sLength);
+
+            //preview.PrintPreviewControl.StartPage = 0;
+            
+            ////
+            //preview.PrintPreviewControl.Zoom = 0.75;
+            //preview.Size = new System.Drawing.Size(900, 900);
+            //preview.ShowDialog();
         }
 
         public void checkWhatIsPress(bool btnReO, bool btnCrit, bool btnOutS, bool btnExp)
@@ -706,6 +939,118 @@ namespace Capstone
                 colorChange(true, btnSoldItems); colorChange(false, btnSalesRep); colorChange(false, btnBalanceRep); colorChange(false, btnHistoryTransSett);
             }
         }
+
+        private void dataGridViewBalR_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            void createGraphicsColumn()
+            {
+                var image = Properties.Resources.icons8_peso_symbol_24;
+                
+                    if (e.RowIndex != -1 && e.ColumnIndex == 3)
+                    {
+                        if ((e.PaintParts & DataGridViewPaintParts.Background) != DataGridViewPaintParts.None)
+                        {
+                            e.Graphics.DrawImage(image, e.CellBounds.Left, e.CellBounds.Top - 1, 27, 27);
+                            //pesoPaint = true;
+                        }
+                        if (!e.Handled)
+                        {
+                            e.Handled = true;
+                            e.PaintContent(e.CellBounds);
+                        }
+
+                        //pesoPaint = true;
+                    }
+
+                }
+
+            //int u = 1; e.RowIndex != -1 && 
+            //once++;
+            //if (once > 0)
+            //{
+            //    //pesoPaint = true;
+            //    createGraphicsColumn();
+            //    once--;
+            //}
+            //lcreateGraphicsColumn();
+
+            //pesoPaint = true;
+            //if(lblCellPaint.Text == "Check")
+            //{
+            //    createGraphicsColumn();
+            //    lblCellPaint.Text = "";
+            //    pesoPaint = false;
+            //}
+            if (pesoPaint == true)
+            {
+                createGraphicsColumn();
+
+                pesoPaint = false;
+            }
+            
+            
+            //else if (pesoPaint == false)
+            //{
+            //    e.Handled = true;
+            //    e.PaintContent(e.CellBounds);
+            //}
+
+            //for(int i = 0; i< dataGridViewBalR.RowCount; i++)
+            //{
+            //    if (e.RowIndex == i && e.ColumnIndex == 3)
+            //    {
+            //        using (Image img = Image.FromFile(@"C:\Users\leomar\source\repos\BicoJosePOS\Icon\icons8-peso-symbol-24.png"))
+            //        {
+            //            e.Graphics.DrawImage(img, e.CellBounds.Left, e.CellBounds.Top - 1, 27, 27);
+
+            //            e.PaintContent(e.ClipBounds);
+            //            e.Handled = true;
+            //        }
+            //    }
+
+            //}
+
+        }
+     
+      
+        private void dataGridViewSalesR_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+          
+        }
+
+        private void dataGridViewBalR_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            pesoPaint = false;
+            
+        }
+
+        private void dataGridViewBalR_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
+        {
+           pesoPaint = true;
+        }
+
+        private void dataGridViewBalR_ColumnHeaderCellChanged(object sender, DataGridViewColumnEventArgs e)
+        {
+            //lblSettledID.Visible = true;
+            //lblSettledID.Text = "bala";
+            //pesoPaint = true;
+        }
+
+        private void btnPreviewSold_Click(object sender, EventArgs e)
+        {
+            previewSoldList();
+        }
+
+        private void btnPreviewSettl_Click(object sender, EventArgs e)
+        {
+            previewSettledList();
+        }
+
+        private void dataGridViewBalR_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            //pesoPaint = true;
+        }
+
         public void colorChange(bool press, Button changeThisBtn)
         {
             if (press == true)
@@ -717,6 +1062,13 @@ namespace Capstone
             {
                 changeThisBtn.BackColor = Color.LimeGreen;
             }
+        }
+        public void textRightAlign()
+        {
+           
+            this.dataGridViewBalR.Columns["ba"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            this.dataGridViewSoldItems.Columns["Price"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            this.dataGridViewSalesR.Columns["Sa"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
         }
         private void btnSaveProduct_Click(object sender, EventArgs e)
         {

@@ -255,7 +255,7 @@ namespace Capstone
             }
             else
             {
-                dataGridViewSelected[3, e.RowIndex].Value = total.ToString("#.##");
+                dataGridViewSelected[3, e.RowIndex].Value =  total.ToString("#.##");
                 dataGridViewSelected.Rows[e.RowIndex].Cells["Qty"].ReadOnly = true;
             }
             

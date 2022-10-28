@@ -149,10 +149,10 @@ namespace Capstone
             cm.ExecuteNonQuery();
             cn.Close();
         }
-        public void selectDataTblUser(out string user_ID, out string UserName, out string name, out string userType, TextBox txtUser, TextBox txtPass, out bool found)
+        public void selectDataTblUser(out string user_num, out string user_ID, out string UserName, out string name, out string userType, TextBox txtUser, TextBox txtPass, out bool found)
         {
             cn = new SqlConnection(dbcon.MyConnection());
-            user_ID = ""; UserName = ""; name = ""; userType = "";
+            user_num = ""; user_ID = ""; UserName = ""; name = ""; userType = "";
             cn.Open();
             SqlCommand cm = new SqlCommand("SELECT * FROM tblUser WHERE Username = @Username AND Password = @Password", cn);
             cm.Parameters.AddWithValue("@Username", txtUser.Text);
@@ -163,7 +163,8 @@ namespace Capstone
             {
                 UserName = dr[2].ToString();
                 name = dr[4].ToString();
-                user_ID = dr[0].ToString();
+                user_ID = dr[1].ToString();
+                user_num = dr[0].ToString();
                 userType = dr[5].ToString();
                 found = true;
                 
@@ -175,6 +176,42 @@ namespace Capstone
                 //MessageBox.Show("Incorrect credentials", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             dr.Close();
+            cn.Close();
+        }
+        public void insertLoginDateTime(string user_ID, string Login_DateTime)
+        {
+            cn = new SqlConnection(dbcon.MyConnection());          
+            cn.Open();
+            SqlCommand cm = new SqlCommand("INSERT INTO tblLoginSession (User_ID, Login_DateTime) VALUES(@User_ID, @Login_DateTime)", cn);
+            cm.Parameters.AddWithValue("@User_ID", user_ID);
+            cm.Parameters.AddWithValue("@Login_DateTime", Login_DateTime);            
+            cm.ExecuteNonQuery();
+            cn.Close();
+        }
+        public void selectNumSession(out string user_num, string logIn)
+        {
+            cn = new SqlConnection(dbcon.MyConnection());
+            user_num = ""; 
+            cn.Open();
+            SqlCommand cm = new SqlCommand("SELECT Num FROM tblLoginSession WHERE Login_DateTime LIKE @logIn", cn);
+            cm.Parameters.AddWithValue("@logIn", logIn);            
+            dr = cm.ExecuteReader();
+            dr.Read();
+            if (dr.HasRows)
+            {                               
+                user_num = dr[0].ToString();                
+            }            
+            dr.Close();
+            cn.Close();
+        }
+        public void insertLogOutDateTime(string User_num, string Logout_DateTime)
+        {
+            cn = new SqlConnection(dbcon.MyConnection());
+            cn.Open();
+            SqlCommand cm = new SqlCommand("UPDATE tblLoginSession SET Logout_DateTime = @Logout_DateTime WHERE Num = @User_num", cn);
+            cm.Parameters.AddWithValue("@User_num", User_num);
+            cm.Parameters.AddWithValue("@Logout_DateTime", Logout_DateTime);
+            cm.ExecuteNonQuery();
             cn.Close();
         }
 

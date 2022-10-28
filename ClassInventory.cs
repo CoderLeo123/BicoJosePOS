@@ -234,6 +234,24 @@ namespace Capstone
             cn.Close();
         }
 
+        public void LoadDispose(DataGridView dgv, TextBox txtSearch)
+        {//dataGridViewProduct, txtSearchProduct
+            cn = new SqlConnection(dbcon.MyConnection());
+            int i = 0;
+            dgv.Rows.Clear();
+            cn.Open();
+            SqlCommand cm = new SqlCommand("SELECT * FROM ViewStockItemInventory WHERE Status LIKE 'Dispose'", cn);
+            dr = cm.ExecuteReader();//Description, Expiration_Date
+            while (dr.Read())
+            {
+                //                              3-STOCK / 3-Quantity              
+                i += 1;  //0-#  1-EXPIRATION / 1-Expiration_Date    3-UNIT / 3-Quantity     
+                dgv.Rows.Add(i, dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), dr[0].ToString());
+            }
+            dr.Close();
+            cn.Close();
+        }
+
 
     }
 }

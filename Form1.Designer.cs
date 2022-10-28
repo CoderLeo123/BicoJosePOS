@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lblUserNum = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnCashier = new System.Windows.Forms.Button();
@@ -59,11 +60,9 @@
             this.txtCrit = new System.Windows.Forms.TextBox();
             this.txtReOrd = new System.Windows.Forms.TextBox();
             this.txtAvailStock = new System.Windows.Forms.TextBox();
-            this.lblExpired = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.lblMasterCount = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.lblReOrder = new System.Windows.Forms.Label();
             this.lblReOrBlink = new System.Windows.Forms.Label();
             this.lblSettledPay = new System.Windows.Forms.Label();
             this.lblPendingPay = new System.Windows.Forms.Label();
@@ -72,13 +71,6 @@
             this.lblTotalUsers = new System.Windows.Forms.Label();
             this.lblCashier = new System.Windows.Forms.Label();
             this.lblAdmin = new System.Windows.Forms.Label();
-            this.lblOutOfStock = new System.Windows.Forms.Label();
-            this.lblCriticalStock = new System.Windows.Forms.Label();
-            this.lblAvailableStock = new System.Windows.Forms.Label();
-            this.btnCategoryDetails = new System.Windows.Forms.Button();
-            this.btnUsersDetails = new System.Windows.Forms.Button();
-            this.btnStockDetails = new System.Windows.Forms.Button();
-            this.btnSalesDetails = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.lblInLabBlink = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -106,6 +98,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.DarkGoldenrod;
+            this.panel2.Controls.Add(this.lblUserNum);
             this.panel2.Controls.Add(this.panel4);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.lblName);
@@ -115,6 +108,15 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(281, 948);
             this.panel2.TabIndex = 1;
+            // 
+            // lblUserNum
+            // 
+            this.lblUserNum.AutoSize = true;
+            this.lblUserNum.Location = new System.Drawing.Point(11, 33);
+            this.lblUserNum.Name = "lblUserNum";
+            this.lblUserNum.Size = new System.Drawing.Size(49, 20);
+            this.lblUserNum.TabIndex = 7;
+            this.lblUserNum.Text = "          ";
             // 
             // panel4
             // 
@@ -401,7 +403,6 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Capstone.Properties.Resources.User;
             this.pictureBox1.Location = new System.Drawing.Point(68, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(138, 125);
@@ -441,11 +442,9 @@
             this.panelDashboard.Controls.Add(this.txtCrit);
             this.panelDashboard.Controls.Add(this.txtReOrd);
             this.panelDashboard.Controls.Add(this.txtAvailStock);
-            this.panelDashboard.Controls.Add(this.lblExpired);
             this.panelDashboard.Controls.Add(this.label5);
             this.panelDashboard.Controls.Add(this.lblMasterCount);
             this.panelDashboard.Controls.Add(this.label4);
-            this.panelDashboard.Controls.Add(this.lblReOrder);
             this.panelDashboard.Controls.Add(this.lblReOrBlink);
             this.panelDashboard.Controls.Add(this.lblSettledPay);
             this.panelDashboard.Controls.Add(this.lblPendingPay);
@@ -454,13 +453,6 @@
             this.panelDashboard.Controls.Add(this.lblTotalUsers);
             this.panelDashboard.Controls.Add(this.lblCashier);
             this.panelDashboard.Controls.Add(this.lblAdmin);
-            this.panelDashboard.Controls.Add(this.lblOutOfStock);
-            this.panelDashboard.Controls.Add(this.lblCriticalStock);
-            this.panelDashboard.Controls.Add(this.lblAvailableStock);
-            this.panelDashboard.Controls.Add(this.btnCategoryDetails);
-            this.panelDashboard.Controls.Add(this.btnUsersDetails);
-            this.panelDashboard.Controls.Add(this.btnStockDetails);
-            this.panelDashboard.Controls.Add(this.btnSalesDetails);
             this.panelDashboard.Controls.Add(this.label14);
             this.panelDashboard.Controls.Add(this.lblInLabBlink);
             this.panelDashboard.Controls.Add(this.label9);
@@ -481,13 +473,15 @@
             this.panelDashboard.Name = "panelDashboard";
             this.panelDashboard.Size = new System.Drawing.Size(1317, 948);
             this.panelDashboard.TabIndex = 0;
+            this.panelDashboard.Paint += new System.Windows.Forms.PaintEventHandler(this.panelDashboard_Paint);
             // 
             // txtExp
             // 
             this.txtExp.BackColor = System.Drawing.Color.Cyan;
             this.txtExp.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtExp.Enabled = false;
-            this.txtExp.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtExp.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txtExp.ForeColor = System.Drawing.SystemColors.InactiveBorder;
             this.txtExp.Location = new System.Drawing.Point(360, 404);
             this.txtExp.Name = "txtExp";
             this.txtExp.Size = new System.Drawing.Size(147, 40);
@@ -500,7 +494,8 @@
             this.txtOutOStk.BackColor = System.Drawing.Color.Cyan;
             this.txtOutOStk.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtOutOStk.Enabled = false;
-            this.txtOutOStk.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtOutOStk.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txtOutOStk.ForeColor = System.Drawing.SystemColors.InactiveBorder;
             this.txtOutOStk.Location = new System.Drawing.Point(360, 338);
             this.txtOutOStk.Name = "txtOutOStk";
             this.txtOutOStk.Size = new System.Drawing.Size(147, 40);
@@ -513,7 +508,8 @@
             this.txtCrit.BackColor = System.Drawing.Color.Cyan;
             this.txtCrit.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtCrit.Enabled = false;
-            this.txtCrit.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtCrit.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txtCrit.ForeColor = System.Drawing.SystemColors.InactiveBorder;
             this.txtCrit.Location = new System.Drawing.Point(360, 268);
             this.txtCrit.Name = "txtCrit";
             this.txtCrit.Size = new System.Drawing.Size(147, 40);
@@ -526,7 +522,8 @@
             this.txtReOrd.BackColor = System.Drawing.Color.Cyan;
             this.txtReOrd.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtReOrd.Enabled = false;
-            this.txtReOrd.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtReOrd.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txtReOrd.ForeColor = System.Drawing.SystemColors.InactiveBorder;
             this.txtReOrd.Location = new System.Drawing.Point(360, 207);
             this.txtReOrd.Name = "txtReOrd";
             this.txtReOrd.Size = new System.Drawing.Size(147, 40);
@@ -539,23 +536,15 @@
             this.txtAvailStock.BackColor = System.Drawing.Color.Cyan;
             this.txtAvailStock.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtAvailStock.Enabled = false;
-            this.txtAvailStock.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtAvailStock.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txtAvailStock.ForeColor = System.Drawing.SystemColors.InactiveBorder;
             this.txtAvailStock.Location = new System.Drawing.Point(360, 137);
             this.txtAvailStock.Name = "txtAvailStock";
             this.txtAvailStock.Size = new System.Drawing.Size(147, 40);
             this.txtAvailStock.TabIndex = 69;
             this.txtAvailStock.Text = "0";
             this.txtAvailStock.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // lblExpired
-            // 
-            this.lblExpired.AutoSize = true;
-            this.lblExpired.ForeColor = System.Drawing.Color.Red;
-            this.lblExpired.Location = new System.Drawing.Point(306, 404);
-            this.lblExpired.Name = "lblExpired";
-            this.lblExpired.Size = new System.Drawing.Size(32, 38);
-            this.lblExpired.TabIndex = 68;
-            this.lblExpired.Text = "0";
+            this.txtAvailStock.TextChanged += new System.EventHandler(this.txtAvailStock_TextChanged);
             // 
             // label5
             // 
@@ -584,16 +573,6 @@
             this.label4.Size = new System.Drawing.Size(108, 38);
             this.label4.TabIndex = 65;
             this.label4.Text = "Master:";
-            // 
-            // lblReOrder
-            // 
-            this.lblReOrder.AutoSize = true;
-            this.lblReOrder.ForeColor = System.Drawing.Color.Blue;
-            this.lblReOrder.Location = new System.Drawing.Point(306, 201);
-            this.lblReOrder.Name = "lblReOrder";
-            this.lblReOrder.Size = new System.Drawing.Size(32, 38);
-            this.lblReOrder.TabIndex = 64;
-            this.lblReOrder.Text = "0";
             // 
             // lblReOrBlink
             // 
@@ -673,99 +652,6 @@
             this.lblAdmin.Size = new System.Drawing.Size(32, 38);
             this.lblAdmin.TabIndex = 53;
             this.lblAdmin.Text = "0";
-            // 
-            // lblOutOfStock
-            // 
-            this.lblOutOfStock.AutoSize = true;
-            this.lblOutOfStock.ForeColor = System.Drawing.Color.Red;
-            this.lblOutOfStock.Location = new System.Drawing.Point(306, 332);
-            this.lblOutOfStock.Name = "lblOutOfStock";
-            this.lblOutOfStock.Size = new System.Drawing.Size(32, 38);
-            this.lblOutOfStock.TabIndex = 52;
-            this.lblOutOfStock.Text = "0";
-            // 
-            // lblCriticalStock
-            // 
-            this.lblCriticalStock.AutoSize = true;
-            this.lblCriticalStock.ForeColor = System.Drawing.Color.Gold;
-            this.lblCriticalStock.Location = new System.Drawing.Point(306, 266);
-            this.lblCriticalStock.Name = "lblCriticalStock";
-            this.lblCriticalStock.Size = new System.Drawing.Size(32, 38);
-            this.lblCriticalStock.TabIndex = 51;
-            this.lblCriticalStock.Text = "0";
-            // 
-            // lblAvailableStock
-            // 
-            this.lblAvailableStock.AutoSize = true;
-            this.lblAvailableStock.ForeColor = System.Drawing.Color.Green;
-            this.lblAvailableStock.Location = new System.Drawing.Point(306, 140);
-            this.lblAvailableStock.Name = "lblAvailableStock";
-            this.lblAvailableStock.Size = new System.Drawing.Size(32, 38);
-            this.lblAvailableStock.TabIndex = 50;
-            this.lblAvailableStock.Text = "0";
-            // 
-            // btnCategoryDetails
-            // 
-            this.btnCategoryDetails.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.btnCategoryDetails.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCategoryDetails.FlatAppearance.BorderSize = 0;
-            this.btnCategoryDetails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCategoryDetails.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnCategoryDetails.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.btnCategoryDetails.Location = new System.Drawing.Point(200, 853);
-            this.btnCategoryDetails.Name = "btnCategoryDetails";
-            this.btnCategoryDetails.Size = new System.Drawing.Size(286, 49);
-            this.btnCategoryDetails.TabIndex = 49;
-            this.btnCategoryDetails.Text = "View Details";
-            this.btnCategoryDetails.UseVisualStyleBackColor = false;
-            this.btnCategoryDetails.Click += new System.EventHandler(this.btnCategoryDetails_Click);
-            // 
-            // btnUsersDetails
-            // 
-            this.btnUsersDetails.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.btnUsersDetails.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnUsersDetails.FlatAppearance.BorderSize = 0;
-            this.btnUsersDetails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUsersDetails.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnUsersDetails.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.btnUsersDetails.Location = new System.Drawing.Point(847, 853);
-            this.btnUsersDetails.Name = "btnUsersDetails";
-            this.btnUsersDetails.Size = new System.Drawing.Size(286, 49);
-            this.btnUsersDetails.TabIndex = 48;
-            this.btnUsersDetails.Text = "View Details";
-            this.btnUsersDetails.UseVisualStyleBackColor = false;
-            this.btnUsersDetails.Click += new System.EventHandler(this.btnUsersDetails_Click);
-            // 
-            // btnStockDetails
-            // 
-            this.btnStockDetails.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.btnStockDetails.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnStockDetails.FlatAppearance.BorderSize = 0;
-            this.btnStockDetails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStockDetails.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnStockDetails.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.btnStockDetails.Location = new System.Drawing.Point(210, 517);
-            this.btnStockDetails.Name = "btnStockDetails";
-            this.btnStockDetails.Size = new System.Drawing.Size(286, 49);
-            this.btnStockDetails.TabIndex = 47;
-            this.btnStockDetails.Text = "View Details";
-            this.btnStockDetails.UseVisualStyleBackColor = false;
-            this.btnStockDetails.Click += new System.EventHandler(this.btnStockDetails_Click);
-            // 
-            // btnSalesDetails
-            // 
-            this.btnSalesDetails.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.btnSalesDetails.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSalesDetails.FlatAppearance.BorderSize = 0;
-            this.btnSalesDetails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSalesDetails.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnSalesDetails.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.btnSalesDetails.Location = new System.Drawing.Point(847, 415);
-            this.btnSalesDetails.Name = "btnSalesDetails";
-            this.btnSalesDetails.Size = new System.Drawing.Size(286, 49);
-            this.btnSalesDetails.TabIndex = 46;
-            this.btnSalesDetails.Text = "View Details";
-            this.btnSalesDetails.UseVisualStyleBackColor = false;
             // 
             // label14
             // 
@@ -922,6 +808,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.dropPanelSales.ResumeLayout(false);
             this.dropPanelProducts.ResumeLayout(false);
@@ -970,13 +857,6 @@
         public Label lblTotalUsers;
         public Label lblCashier;
         public Label lblAdmin;
-        public Label lblOutOfStock;
-        public Label lblCriticalStock;
-        public Label lblAvailableStock;
-        public Button btnCategoryDetails;
-        public Button btnUsersDetails;
-        public Button btnStockDetails;
-        public Button btnSalesDetails;
         public Button btnUserSettings;
         public Button btnBackupArch;
         public Button btnInventory;
@@ -988,7 +868,6 @@
         public Button dropBtnPayment;
         private Button btnLogout;
         public Button btnCashier;
-        public Label lblReOrder;
         private Label lblReOrBlink;
         public Label lblMasterCount;
         private Label label4;
@@ -997,7 +876,7 @@
         public TextBox txtCrit;
         public TextBox txtReOrd;
         public TextBox txtAvailStock;
-        public Label lblExpired;
         public Label label5;
+        public Label lblUserNum;
     }
 }

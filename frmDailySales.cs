@@ -30,12 +30,18 @@ namespace Capstone
             classLoadData.LoadRecordsTransacHist(dataGridViewTransacHist, txtSearchTransac, dateTimePickerStartTrans, dateTimePickerEndTrans);
             classLoadData.LoadRecordsSoldItems(dataGridViewSoldItems, txtSearchSold, dateTimePickerStartSold, dateTimePickerEndSold);
             classLoadData.LoadRecordsTransacSettled(dataGridViewSettle, txtSearchSettleds, dateTimePickerSettStart, dateTimePickerSettEnd);
+            textRightAlign();
         }
         public void changeDatePriorCurrent(DateTimePicker date)
         {
-            date.Value = DateTime.Today.AddDays(-3);
+            date.Value = DateTime.Today.AddDays(-30);
         }
-
+        public void textRightAlign()
+        {
+            
+            this.dataGridViewSoldItems.Columns["Price"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            this.dataGridViewSoldItems.Columns["Total"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+        }
         private void btnCloseDailySales_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -300,13 +306,13 @@ namespace Capstone
             x = 440;
             //y = 550;
             e.Graphics.DrawString("Total Amount: ", printFont, Brushes.Black, 20, (y += 50));//550
-            e.Graphics.DrawString(NetT, printFont, Brushes.Black, (x += 70), y);//510 
+            e.Graphics.DrawString("₱ " + NetT, printFont, Brushes.Black, (x += 70), y);//510 
 
             e.Graphics.DrawString("Amount Tendered: ", printFont, Brushes.Black, 20, (y += 30));
-            e.Graphics.DrawString(Payment, printFont, Brushes.Black, x, y);
+            e.Graphics.DrawString("₱ " + Payment, printFont, Brushes.Black, x, y);
 
             e.Graphics.DrawString("Change: ", printFont, Brushes.Black, 20, (y += 30));
-            e.Graphics.DrawString(Change, printFont, Brushes.Black, x, y);//710          
+            e.Graphics.DrawString("₱ " + Change, printFont, Brushes.Black, x, y);//710          
 
             e.Graphics.DrawString("THIS INVOICE/RECEIPT SHALL BE VALID FOR", printFontItallic, Brushes.Black, 130, (y += 60));//770
             e.Graphics.DrawString("ONE (1)) WEEK FROM THE DATE OF THE PERMIT TO USE", printFontItallic, Brushes.Black, 70, (y += 30));//800

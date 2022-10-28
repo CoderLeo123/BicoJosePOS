@@ -11,6 +11,7 @@ namespace Capstone
         ClassLoadData classLoadData = new ClassLoadData();
         ClassInventory classInvent = new ClassInventory();
         ClassReports classReport = new ClassReports();
+        ClassLoginAndSignUp classLoginMethod = new ClassLoginAndSignUp();
         Boolean isCollapsed1, isCollapsed2, isCollapsed3 = true;
         frmReports frmR = new frmReports();
         public frmAdmin()
@@ -63,10 +64,10 @@ namespace Capstone
                 }
                 dr.Close();
                 cn.Close();
-            lblAvailableStock.Text = safetyStockCount.ToString();
-            lblCriticalStock.Text = CriticalCount.ToString();
-            lblOutOfStock.Text = outOfStockCount.ToString();
-            lblReOrder.Text = reOrderStockCount.ToString();
+            //lblAvailableStock.Text = safetyStockCount.ToString();
+            //lblCriticalStock.Text = CriticalCount.ToString();
+            //lblOutOfStock.Text = outOfStockCount.ToString();
+            //lblReOrder.Text = reOrderStockCount.ToString();
 
             txtAvailStock.Text = safetyStockCount.ToString();
             txtCrit.Text = CriticalCount.ToString();
@@ -303,7 +304,7 @@ namespace Capstone
             classLoadData.LoadRecordsTransacHist(frmR.dataGridViewTransHist, frmR.txtSearchTransHist, frmR.dateTimePickerStartTrans, frmR.dateTimePickerEndTrans);
             classLoadData.LoadRecordsSoldItems(frmR.dataGridViewSoldItems, frmR.txtSearchSold, frmR.dateTimePickerStartSold, frmR.dateTimePickerEndSold);
             classLoadData.LoadRecordsTransacSettled(frmR.dataGridViewSettle, frmR.txtSearchSettleds, frmR.dateTimePickerSettStart, frmR.dateTimePickerSettEnd);
-
+            frm.pesoPaint = true;
             //frmR.lblCheckCell.Text = frmR.dataGridViewInitial.Rows[0].Cells[1].Value?.ToString();
             //frm.tabControlReports.TabPages.Clear();
             //TabPage tab = new TabPage("Check");
@@ -483,9 +484,14 @@ namespace Capstone
             panelLoad.Controls.Clear();
             panelLoad.Controls.Add(frm);
             frm.BringToFront();
+            
+            frm.tabControlUser.TabPages.Clear();
+            TabPage tab = new TabPage("LOGIN SESSION");
+            frm.tabControlUser.TabPages.Add(tab);
+            tab.Controls.Add(frm.panelSession);
+
+            frm.checkWhatIsPress(false, true);
             frm.Show();
-            //btnCollapsed();
-            //timerStart();
         }
 
         private void panel3_Paint(object sender, PaintEventArgs e)
@@ -500,21 +506,21 @@ namespace Capstone
 
         private void btnStockDetails_Click(object sender, EventArgs e)
         {
-            frmDashboardDetails frm = new frmDashboardDetails();
+            //frmDashboardDetails frm = new frmDashboardDetails();
             
-            frm.tabControlDashboardDetails.TabPages.Clear();
-            TabPage tab = new TabPage("Critical");
-            frm.tabControlDashboardDetails.TabPages.Add(tab);
-            tab.Controls.Add(frm.panelCritical);
-            TabPage tab2 = new TabPage("Out of Stock");
-            frm.tabControlDashboardDetails.TabPages.Add(tab2);
+            //frm.tabControlDashboardDetails.TabPages.Clear();
+            //TabPage tab = new TabPage("Critical");
+            //frm.tabControlDashboardDetails.TabPages.Add(tab);
+            //tab.Controls.Add(frm.panelCritical);
+            //TabPage tab2 = new TabPage("Out of Stock");
+            //frm.tabControlDashboardDetails.TabPages.Add(tab2);
             
-            tab2.Controls.Add(frm.panelOutOfStock);
-            frm.LoadUsers();
+            //tab2.Controls.Add(frm.panelOutOfStock);
+            //frm.LoadUsers();
             
-            frm.LoadCriticalStock();
-            frm.LoadOutOfStock();
-            frm.ShowDialog();
+            //frm.LoadCriticalStock();
+            //frm.LoadOutOfStock();
+            //frm.ShowDialog();
         }
         public void Users()
         {
@@ -560,13 +566,13 @@ namespace Capstone
         }
         private void btnUsersDetails_Click(object sender, EventArgs e)
         {
-            frmDashboardDetails frm = new frmDashboardDetails();
-            frm.tabControlDashboardDetails.TabPages.Clear();
-            TabPage tab = new TabPage("USER INFO");
-            frm.tabControlDashboardDetails.TabPages.Add(tab);
-            tab.Controls.Add(frm.panelUsers);
-            frm.LoadUsers();
-            frm.ShowDialog();
+            //frmDashboardDetails frm = new frmDashboardDetails();
+            //frm.tabControlDashboardDetails.TabPages.Clear();
+            //TabPage tab = new TabPage("USER INFO");
+            //frm.tabControlDashboardDetails.TabPages.Add(tab);
+            //tab.Controls.Add(frm.panelUsers);
+            //frm.LoadUsers();
+            //frm.ShowDialog();
         }
 
         private void btnCategoryDetails_Click(object sender, EventArgs e)
@@ -576,10 +582,23 @@ namespace Capstone
 
         private void btnLogout_Click_1(object sender, EventArgs e)
         {
+            string ID = lblUserNum.Text;
+            string loginTime = DateTime.Now.ToString();
+            classLoginMethod.insertLogOutDateTime(ID, loginTime);
             this.Dispose(); this.Close();
-
+            
             frmLogin frm = new frmLogin();
             frm.ShowDialog();
+        }
+
+        private void panelDashboard_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void txtAvailStock_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
         private void btnLogout_Click(object sender, EventArgs e)//btnCashier
@@ -587,6 +606,7 @@ namespace Capstone
              this.Dispose(); this.Close();
            
             frmCashier frm = new frmCashier();
+            frm.lblUserNum.Text = lblUserNum.Text;
             frm.ShowDialog();
         }
 

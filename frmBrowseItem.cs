@@ -34,8 +34,15 @@ namespace Capstone
             this.frmC = frmC;
             classLoadData.LoadCart(frmC.dataGridViewCart, frmC.lblDiscount, frmC.lblSalesTotal, frmC.lblPayment, frmC.lblNetTotal, frmC.btnSettlePayment, frmC.btnAddDiscount, frmC.btnClearCart, frmC.txtSearch, frmC.dataGridViewService);
             //LoadCart();
+            textRightAlign();
         }
-       
+        public void textRightAlign()
+        {
+
+            this.dataGridViewBrowse.Columns["PriceBrowseItem"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+
+        }
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             this.Close();

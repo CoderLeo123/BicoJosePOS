@@ -20,7 +20,7 @@ namespace Capstone
         {
             InitializeComponent();
             cn = new SqlConnection(dbcon.MyConnection());
-            LoadUsers();
+            LoadUsers(); LoadSession();
             if (dataGridViewUsers.Rows.Count > 0)
             {
                 dataGridViewUsers.Rows[0].Selected = true;
@@ -30,7 +30,32 @@ namespace Capstone
                 
             
         }
+        public void colorChange(bool press, Button changeThisBtn)
+        {
+            if (press == true)
+            {
+                changeThisBtn.BackColor = Color.Red;
 
+            }
+            else if (press == false)
+            {
+                changeThisBtn.BackColor = Color.LimeGreen;
+            }
+        }
+
+
+        public void checkWhatIsPress(bool btnReO, bool btnCrit)
+        {
+            if (btnReO == true)
+            {
+                colorChange(true, btnSetting); colorChange(false, btnSession); 
+            }
+            else if (btnCrit == true)
+            {
+                colorChange(true, btnSession); colorChange(false, btnSetting);
+            }
+           
+        }
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Dispose(); this.Close();
@@ -127,6 +152,23 @@ namespace Capstone
             dr.Close();
             cn.Close();
         }
+        public void LoadSession()
+        {
+            cn = new SqlConnection(dbcon.MyConnection());
+            int i = 0;
+            dataGridViewSession.Rows.Clear();
+            cn.Open();
+            SqlCommand cm = new SqlCommand("SELECT * FROM ViewLoginSession Order by Num ASC", cn);
+            dr = cm.ExecuteReader();
+            while (dr.Read())
+            {
+                //                                                               2-ROLE / 5-User_Type       
+                i += 1; //          0-#  1-NAME / 4-Name       1-USERNAME / 2-Username               2-ID / 5-User_ID  
+                dataGridViewSession.Rows.Add(i, dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString());
+            }
+            dr.Close();
+            cn.Close();
+        }
         private void linkLabelViewPass_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             
@@ -153,6 +195,26 @@ namespace Capstone
         private void dataGridViewUsers_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             lblUsID.Text = dataGridViewUsers.Rows[e.RowIndex].Cells[4].Value.ToString();
+        }
+
+        private void btnSetting_Click(object sender, EventArgs e)
+        {
+            tabControlUser.TabPages.Clear();
+            TabPage tab = new TabPage("SETTING");
+            tabControlUser.TabPages.Add(tab);
+            tab.Controls.Add(panelSetting);
+            LoadUsers();
+            checkWhatIsPress(true, false);
+        }
+
+        private void btnSession_Click(object sender, EventArgs e)
+        {
+            tabControlUser.TabPages.Clear();
+            TabPage tab = new TabPage("LOGIN SESSION");
+            tabControlUser.TabPages.Add(tab);
+            tab.Controls.Add(panelSession);
+            LoadSession();
+            checkWhatIsPress(false, true);
         }
     }
 }

@@ -20,6 +20,7 @@ namespace Capstone
         ClassLoadData classLoadData = new ClassLoadData();
         ClassGenerateID classGenerateID = new ClassGenerateID();
         ClassInventory classInventory = new ClassInventory();
+        ClassLoginAndSignUp classLoginMethod = new ClassLoginAndSignUp();
         string title = "BICO-JOSE System";
         string num; int count;
 
@@ -30,8 +31,15 @@ namespace Capstone
             lblDate.Text = DateTime.Parse(DateTime.Now.ToString()).ToShortDateString();
             classLoadData.LoadCart(dataGridViewCart, lblDiscount, lblSalesTotal, lblPayment, lblNetTotal, btnSettlePayment, btnAddDiscount, btnClearCart, txtSearch, dataGridViewService);
             //classLoadData.LoadRecordServiceAvail(dataGridViewService, lblSalesTotal);
+            textRightAlign();
         }
-        
+        public void textRightAlign()
+        {
+
+            this.dataGridViewCart.Columns["PriceCart"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            this.dataGridViewCart.Columns["TotalCart"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            this.dataGridViewService.Columns["priServ"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+        }
         private void button2_Click(object sender, EventArgs e) //Browse Item btn
         {
             if (lblTransactionNo.Text == string.Empty)
@@ -50,6 +58,9 @@ namespace Capstone
         
         private void btnLogout_Click(object sender, EventArgs e)
         {
+            string ID = lblUserNum.Text;
+            string loginTime = DateTime.Now.ToString();
+            classLoginMethod.insertLogOutDateTime(ID, loginTime);
             this.Close();
             this.Dispose();
             frmLogin frm = new frmLogin();
