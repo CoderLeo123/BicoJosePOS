@@ -41,7 +41,6 @@ namespace Capstone
                 if (MessageBox.Show("Dispose this Item?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     frmPermission frmP = new frmPermission();
-
                     frmP.ShowDialog();
 
                     if (frmP.lblGrant.Text == "1")

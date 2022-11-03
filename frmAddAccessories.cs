@@ -26,7 +26,6 @@ namespace Capstone
 
         public frmAddAccessories(frmProductsList frmAdd)
         {
-
             InitializeComponent();
             cn = new SqlConnection(dbcon.MyConnection());
             frmList = frmAdd;
@@ -64,14 +63,9 @@ namespace Capstone
             txtProduct.Clear();
             txtProduct.Focus();
 
-        }
-        
-
-
+        }       
         private void btnSaveAccessories_Click(object sender, EventArgs e)
-        {
-            
-            
+        {                        
         }
 
         private void btnCancelAccessories_Click(object sender, EventArgs e)
@@ -85,37 +79,23 @@ namespace Capstone
         }
 
         private void comBoxTypeAccessories_TextChanged(object sender, EventArgs e)
-        {
-            
-            
-            
+        {                                    
         }
 
         private void comBoxTypeAccessories_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //LoadProductItem();
+        {            
         }
 
         private void frmAddAccessories_Load(object sender, EventArgs e)
         {
-
         }
 
         private void txtDescription_TextChanged(object sender, EventArgs e)
         {
-
-        }
-
-        //private void GenerateID_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        //{
-            
-        //}
-
+        }      
         private void btnUpdateAccessories_Click(object sender, EventArgs e)
-        {
-            
+        {            
         }
-
         private void txtPrice_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 46)
@@ -134,17 +114,12 @@ namespace Capstone
         }
 
         private void comBoxType_TextUpdate(object sender, EventArgs e)
-        {
-            
+        {            
         }
 
         private void comBoxType_MouseClick(object sender, MouseEventArgs e)
-        {
-            
-        }
-
-        
-
+        {            
+        }        
         private void comBoxType_SelectedIndexChanged(object sender, EventArgs e)
         {
             classLoadData.LoadProductItem(txtProduct, txtTypeID, comBoxType);

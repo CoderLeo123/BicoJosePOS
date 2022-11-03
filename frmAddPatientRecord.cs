@@ -92,76 +92,89 @@ namespace Capstone
             txtAddOthersPrice.Clear();
             txtAddTotal.Clear();
             txtAddDeposit.Clear();
-            txtAddBalance.Clear();
-            
-
+            txtAddBalance.Clear();            
         }
+        public void getValueGeneralInfo(out string firstName, out string lastName, out string address, out string contact, out string gender, out string age, out string checkUp, out string birth)
+        {
+             firstName = txtAddFName.Text;
+             lastName = txtAddLName.Text;
+             address = txtAddAddress.Text;
+             contact = txtAddContact.Text;
+             gender = comBoxAddGender.Text;
+             age = txtAddAge.Text;
+            checkUp = dateTimePickerCheckUpDate.Value.ToString();
+             birth = dateTimePickerBirthDate.Value.ToString();
+             
+        }
+        public void getValueOD(out string ODSPH, out string ODCYL, out string ODAXIS, out string ODPD)
+        {
+            ODSPH = txtAddODSPH.Text;
+             ODCYL = txtADDODCYL.Text;
+             ODAXIS = txtAddODAXIS.Text;
+             ODPD = txtAddODPD.Text;
+        }
+        public void getValueOS(out string OSSPH, out string OSCYL, out string OSAXIS, out string OSPD)
+        {
+            OSSPH = txtAddOSSPH.Text;
+             OSCYL = txtADDOSCYL.Text;
+             OSAXIS = txtAddOSAXIS.Text;
+             OSPD = txtAddOSPD.Text;
+        }
+
         private void btnSavePatientRecord_Click(object sender, EventArgs e)
         {
-            string firstName = txtAddFName.Text;
-            string lastName = txtAddLName.Text;
-            string address = txtAddAddress.Text;
-            string contact = txtAddContact.Text;
-            string gender = comBoxAddGender.Text;
-            string age = txtAddAge.Text;
-
-            string ODSPH = txtAddODSPH.Text;
-            string ODCYL = txtADDODCYL.Text;
-            string ODAXIS = txtAddODAXIS.Text;
-            string ODPD = txtAddODPD.Text;
-
-            string OSSPH = txtAddOSSPH.Text;
-            string OSCYL = txtADDOSCYL.Text;
-            string OSAXIS = txtAddOSAXIS.Text;
-            string OSPD = txtAddOSPD.Text;
-            string checkUp = dateTimePickerCheckUpDate.Value.ToString();
-            string birth = dateTimePickerBirthDate.Value.ToString();
+            string firstName ="", lastName = "", address = "", contact = "", gender = "", age = "", checkUp = "", birth = "";
+            getValueGeneralInfo(out firstName, out lastName, out address, out contact, out gender, out age, out checkUp, out birth);
+            string ODSPH = "", ODCYL = "", ODAXIS = "", ODPD = "";
+            getValueOD(out ODSPH, out ODCYL, out ODAXIS, out ODPD);
+            string OSSPH = "", OSCYL = "", OSAXIS = "", OSPD = "";
+            getValueOS(out OSSPH, out OSCYL, out OSAXIS, out OSPD);
+            //int ageCalculated = int.Parse(txtAddAge.Text); 
             string CName = txtAddFName.Text + " " + txtAddLName.Text;
-            int ageCalculated = int.Parse(txtAddAge.Text);
 
             if (firstName != "" && lastName != "" && address != "" && contact != "" && gender != "" && age != "" && ODSPH != "" &&
                 ODCYL != "" && ODAXIS != "" && ODPD != "" && OSSPH != "" && OSCYL != "" && OSAXIS != "" && OSPD != "")
             {
-                cn.Open();
-                cm = new SqlCommand("INSERT INTO tblPatientRecord (Patient_ID, Customer_Name, Address, Contact, Age, Gender, Check_Up_Date, Prescript_No, Birth_Date) VALUES(@Patient_ID, @Customer_Name, @Address, @Contact, @Age, @Gender, @Check_Up_Date, @Prescript_No, @Birth_Date)", cn);
-                cm.Parameters.AddWithValue("@Patient_ID", txtAddPatientID.Text);
-                cm.Parameters.AddWithValue("@Prescript_No", txtAddPrescNum.Text);
-                cm.Parameters.AddWithValue("@Customer_Name", CName);
-                cm.Parameters.AddWithValue("@Address", txtAddAddress.Text);
-                cm.Parameters.AddWithValue("@Contact", txtAddContact.Text);
-                cm.Parameters.AddWithValue("@Age", ageCalculated);
-                cm.Parameters.AddWithValue("@Gender", comBoxAddGender.Text);
-                cm.Parameters.AddWithValue("@Check_Up_Date", checkUp);
-                cm.Parameters.AddWithValue("@Birth_Date", birth);
+                if (MessageBox.Show("Are you sure you want to save this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    cn.Open();
+                    cm = new SqlCommand("INSERT INTO tblPatientRecord (Patient_ID, Customer_Name, Address, Contact, Age, Gender, Check_Up_Date, Prescript_No, Birth_Date) VALUES(@Patient_ID, @Customer_Name, @Address, @Contact, @Age, @Gender, @Check_Up_Date, @Prescript_No, @Birth_Date)", cn);
+                    cm.Parameters.AddWithValue("@Patient_ID", txtAddPatientID.Text);
+                    cm.Parameters.AddWithValue("@Prescript_No", txtAddPrescNum.Text);
+                    cm.Parameters.AddWithValue("@Customer_Name", CName);
+                    cm.Parameters.AddWithValue("@Address", txtAddAddress.Text);
+                    cm.Parameters.AddWithValue("@Contact", txtAddContact.Text);
+                    cm.Parameters.AddWithValue("@Age", age);
+                    cm.Parameters.AddWithValue("@Gender", comBoxAddGender.Text);
+                    cm.Parameters.AddWithValue("@Check_Up_Date", checkUp);
+                    cm.Parameters.AddWithValue("@Birth_Date", birth);
+                    cm.ExecuteNonQuery();
+                    cn.Close();
 
-                cm.ExecuteNonQuery();
-                cn.Close();
+                    cn.Open();
+                    cm = new SqlCommand("INSERT INTO tblPrescription (Patient_ID, Prescript_No, SPH_OD, CYL_OD, AXIS_OD, PD_OD, ADD_OD, SPH_OS, CYL_OS, AXIS_OS, ADD_OS, PD_OS) VALUES(@Patient_ID, @Prescript_No, @SPH_OD, @CYL_OD, @AXIS_OD, @PD_OD, @ADD_OD, @SPH_OS, @CYL_OS, @AXIS_OS, @ADD_OS, @PD_OS)", cn);
+                    cm.Parameters.AddWithValue("@Patient_ID", txtAddPatientID.Text);
+                    cm.Parameters.AddWithValue("@Prescript_No", txtAddPrescNum.Text);
+                    cm.Parameters.AddWithValue("@SPH_OD", txtAddODSPH.Text);
+                    cm.Parameters.AddWithValue("@CYL_OD", txtADDODCYL.Text);
+                    cm.Parameters.AddWithValue("@AXIS_OD", txtAddODAXIS.Text);
+                    cm.Parameters.AddWithValue("@PD_OD", txtAddODPD.Text);
+                    cm.Parameters.AddWithValue("@ADD_OD", txtAddODADD.Text);
+                    cm.Parameters.AddWithValue("@SPH_OS", txtAddOSSPH.Text);
+                    cm.Parameters.AddWithValue("@CYL_OS", txtADDODCYL.Text);
+                    cm.Parameters.AddWithValue("@AXIS_OS", txtAddOSAXIS.Text);
+                    cm.Parameters.AddWithValue("@PD_OS", txtAddOSPD.Text);
+                    cm.Parameters.AddWithValue("@ADD_OS", txtAddOSADD.Text);
 
+                    cm.ExecuteNonQuery();
+                    cn.Close();
 
-                cn.Open();
-                cm = new SqlCommand("INSERT INTO tblPrescription (Patient_ID, Prescript_No, SPH_OD, CYL_OD, AXIS_OD, PD_OD, ADD_OD, SPH_OS, CYL_OS, AXIS_OS, ADD_OS, PD_OS) VALUES(@Patient_ID, @Prescript_No, @SPH_OD, @CYL_OD, @AXIS_OD, @PD_OD, @ADD_OD, @SPH_OS, @CYL_OS, @AXIS_OS, @ADD_OS, @PD_OS)", cn);
-                cm.Parameters.AddWithValue("@Patient_ID", txtAddPatientID.Text);
-                cm.Parameters.AddWithValue("@Prescript_No", txtAddPrescNum.Text);
-                cm.Parameters.AddWithValue("@SPH_OD", txtAddODSPH.Text);
-                cm.Parameters.AddWithValue("@CYL_OD", txtADDODCYL.Text);
-                cm.Parameters.AddWithValue("@AXIS_OD", txtAddODAXIS.Text);
-                cm.Parameters.AddWithValue("@PD_OD", txtAddODPD.Text);
-                cm.Parameters.AddWithValue("@ADD_OD", txtAddODADD.Text);
+                    MessageBox.Show("Record has been successfully saved.");
+                    Clear();
 
-                cm.Parameters.AddWithValue("@SPH_OS", txtAddOSSPH.Text);
-                cm.Parameters.AddWithValue("@CYL_OS", txtADDODCYL.Text);
-                cm.Parameters.AddWithValue("@AXIS_OS", txtAddOSAXIS.Text);
-                cm.Parameters.AddWithValue("@PD_OS", txtAddOSPD.Text);
-                cm.Parameters.AddWithValue("@ADD_OS", txtAddOSADD.Text);
-
-                cm.ExecuteNonQuery();
-                cn.Close();
-
-                MessageBox.Show("Record has been successfully saved.");
-                Clear();
-
-                classLoadData.LoadRecordsPatient(frmL.dataGridViewPatientRecord, frmL.txtSearchPatientRecord);
-                this.Close();
+                    classLoadData.LoadRecordsPatient(frmL.dataGridViewPatientRecord, frmL.txtSearchPatientRecord);
+                    this.Close();
+                }
             }
             else
             {
@@ -273,5 +286,64 @@ namespace Capstone
                 txtAddAge.Text = years.ToString();
             }
         }
+
+        private void btnUpdatePatientRecord_Click(object sender, EventArgs e)
+        {
+            string firstName = "", lastName = "", address = "", contact = "", gender = "", age = "", checkUp = "", birth = "";
+            getValueGeneralInfo(out firstName, out lastName, out address, out contact, out gender, out age, out checkUp, out birth);
+            string ODSPH = "", ODCYL = "", ODAXIS = "", ODPD = "";
+            getValueOD(out ODSPH, out ODCYL, out ODAXIS, out ODPD);
+            string OSSPH = "", OSCYL = "", OSAXIS = "", OSPD = "";
+            getValueOS(out OSSPH, out OSCYL, out OSAXIS, out OSPD);
+            string CName = firstName + " " + lastName;
+
+            if (firstName != "" && lastName != "" && address != "" && contact != "" && gender != "" && age != "" && ODSPH != "" &&
+                ODCYL != "" && ODAXIS != "" && ODPD != "" && OSSPH != "" && OSCYL != "" && OSAXIS != "" && OSPD != "")
+            {
+
+                if (MessageBox.Show("Are you sure you want to update this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    cn.Open();
+                    cm = new SqlCommand("UPDATE tblPrescription SET Customer_Name = @Customer_Name, Address = @Address, Contact = @Contact, Age = @Age, Gender = @Gender, Check_Up_Date = @Check_Up_Date, Birth_Date = @Birth_Date WHERE Patient_ID LIKE '" + txtAddPatientID.Text + "'", cn);                    
+                    cm.Parameters.AddWithValue("@Customer_Name", CName);
+                    cm.Parameters.AddWithValue("@Address", address);
+                    cm.Parameters.AddWithValue("@Contact", contact);
+                    cm.Parameters.AddWithValue("@Age", age);
+                    cm.Parameters.AddWithValue("@Gender", gender);
+                    cm.Parameters.AddWithValue("@Check_Up_Date", checkUp);
+                    cm.Parameters.AddWithValue("@Birth_Date", birth);
+                    cm.ExecuteNonQuery();
+                    cn.Close();
+
+                    cn.Open();
+                    cm = new SqlCommand("UPDATE tblPatientRecord SET SPH_OD = @SPH_OD, CYL_OD = @CYL_OD, AXIS_OD = @AXIS_OD, PD_OD = @PD_OD, ADD_OD = @ADD_OD, SPH_OS = @SPH_OS, CYL_OS = @CYL_OS, AXIS_OS = @AXIS_OS, PD_OS = @PD_OS, ADD_OS = @ADD_OS WHERE Patient_ID LIKE '" + txtAddPatientID.Text + "'", cn);
+                    cm.Parameters.AddWithValue("@SPH_OD", ODSPH);
+                    cm.Parameters.AddWithValue("@CYL_OD", ODCYL);
+                    cm.Parameters.AddWithValue("@AXIS_OD", ODAXIS);
+                    cm.Parameters.AddWithValue("@PD_OD", ODPD);
+                    cm.Parameters.AddWithValue("@ADD_OD", txtAddODADD.Text);
+                    cm.Parameters.AddWithValue("@SPH_OS", OSSPH);
+                    cm.Parameters.AddWithValue("@CYL_OS", OSCYL);
+                    cm.Parameters.AddWithValue("@AXIS_OS", OSAXIS);
+                    cm.Parameters.AddWithValue("@PD_OS", OSPD);
+                    cm.Parameters.AddWithValue("@ADD_OS", txtAddOSADD.Text);
+                    cm.ExecuteNonQuery();
+                    cn.Close();
+
+                    MessageBox.Show("Record has been successfully updated.");
+                    Clear();
+
+                    classLoadData.LoadRecordsPatient(frmL.dataGridViewPatientRecord, frmL.txtSearchPatientRecord);
+                    this.Close();
+                }
+            }
+            else
+            {
+                MethodCheckForBlank();
+            }
+
+        }
+
+
     }
 }

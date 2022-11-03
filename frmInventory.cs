@@ -118,5 +118,6 @@ namespace Capstone
             classInvent.LoadCritical(dataGridViewCritical, txtSearchCritical);            
             checkWhatIsPress(false, true, false, false);
         }
+
     }
 }

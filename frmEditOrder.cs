@@ -63,7 +63,36 @@ namespace Capstone
                     this.Close();
                 }
                 classLoad.LoadRecordsOrder(frmL.dataGridViewOrderStatus, frmL.txtSearchOrderStatus);
-                classLoad.LoadRecordsOrderClaimed(frmL.dataGridViewClaimedOrd, frmL.txtSearchClaimed);
+                classLoad.LoadRecordsOrderClaimed(frmL.dataGridViewArrival, frmL.txtSearchArrival);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void btnArrival_Click(object sender, EventArgs e)
+        {
+            string receivedBy = txtReceivedBy.Text;
+            string arrivedDate = dateTimePickerArrival.Value.ToString();
+            string TransNo = lblTransNo.Text;
+            try
+            {
+                if (MessageBox.Show("Are you sure you want to save this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    cn.Open();
+                    cm = new SqlCommand("UPDATE tblOrderStatus SET Status = 'Arrived', Received_By = @Received_By, Arrival_Date = @Date_Arrived WHERE Transaction_No LIKE '" + TransNo + "'", cn);
+                    cm.Parameters.AddWithValue("@Received_By", receivedBy);
+                    cm.Parameters.AddWithValue("@Date_Arrived", arrivedDate);
+
+                    cm.ExecuteNonQuery();
+                    cn.Close();
+                    MessageBox.Show("Record has been successfully saved.");
+
+                    this.Close();
+                }
+                classLoad.LoadRecordsOrder(frmL.dataGridViewOrderStatus, frmL.txtSearchOrderStatus);
+                classLoad.LoadRecordsOrderArrived(frmL.dataGridViewArrival, frmL.txtSearchArrival);
             }
             catch (Exception ex)
             {

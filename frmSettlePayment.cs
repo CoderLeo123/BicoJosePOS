@@ -269,12 +269,19 @@ namespace Capstone
                 //string cashier = lblCashier.Text;
                 string Settled_Date = DateTime.Now.ToString();
                 string Completed_By = lblCashier.Text;
-                
+                //string PaymentStatus = "Settled";
+
                 cn.Open();
                 cm = new SqlCommand("UPDATE tblPaymentStatus SET Settled_Date = @Settled_Date, Completed_By = @Completed_By, Status = 'Settled' WHERE Transaction_No LIKE '" + transacNum + "' ", cn);
                 //cm.Parameters.AddWithValue("@Transaction_No", transacNum);
                 cm.Parameters.AddWithValue("@Settled_Date", Settled_Date);
                 cm.Parameters.AddWithValue("@Completed_By", Completed_By);
+                cm.ExecuteNonQuery();
+                cn.Close();
+
+                cn.Open();
+                cm = new SqlCommand("UPDATE tblOrderStatus SET Payment_Status = 'Settled' WHERE Transaction_No LIKE '" + transacNum + "' ", cn);                
+                //cm.Parameters.AddWithValue("@Payment_Status", PaymentStatus);                
                 cm.ExecuteNonQuery();
                 cn.Close();
 
@@ -291,6 +298,7 @@ namespace Capstone
                 cm.ExecuteNonQuery();
                 cn.Close();
                 classPayment.LoadRecordsUnsettled(frmEP.dataGridViewPaymentStat, frmEP.txtSearchPending);
+                
 
         }
         public void settlement()
@@ -317,6 +325,7 @@ namespace Capstone
                 string finalDiscount = lblDiscount.Text;
                 string settlementDate = "Pending";
                 string ITMID = "";
+                string paymentStatus = "";
                 checkPaymentTerms(out status, pTerms, total, payment, out remainBalance, out settlementDate);
 
                 lblPaymentNotice.Visible = false;
@@ -345,15 +354,17 @@ namespace Capstone
 
                 cm.ExecuteNonQuery();
                 cn.Close();
-                checkOrderIfDeposit(out status, pTerms, out claimDate);
+
+                checkOrderIfDeposit(out status, pTerms, out claimDate, out paymentStatus);
                 cn.Open();
-                cm = new SqlCommand("INSERT INTO tblOrderStatus (Transaction_No, Customer, Expected_Arrival, Status, Date_Claimed, Release_By) VALUES(@Transaction_No, @Customer, @Expected_Arrival, @Status, @Date_Claimed, @Release_By)", cn);
+                cm = new SqlCommand("INSERT INTO tblOrderStatus (Transaction_No, Customer, Expected_Arrival, Status, Date_Claimed, Release_By, Payment_Status) VALUES(@Transaction_No, @Customer, @Expected_Arrival, @Status, @Date_Claimed, @Release_By, @Payment_Status)", cn);
                 cm.Parameters.AddWithValue("@Transaction_No", lblTransacNo.Text);
                 cm.Parameters.AddWithValue("@Customer", customer);
                 cm.Parameters.AddWithValue("@Expected_Arrival", dueDate);
                 cm.Parameters.AddWithValue("@Status", status);
                 cm.Parameters.AddWithValue("@Date_Claimed", claimDate);
                 cm.Parameters.AddWithValue("@Release_By", releaseBy);
+                cm.Parameters.AddWithValue("@Payment_Status", paymentStatus);
                 //cm.Parameters.AddWithValue("@Cart_ID", frmC.dataGridViewCart.Rows[i].Cells[11].Value.ToString());
                 cm.ExecuteNonQuery();
                 cn.Close();
@@ -424,23 +435,26 @@ namespace Capstone
             }
         }
 
-        public void checkOrderIfDeposit(out string statusValue, string paymentTerms, out string dateClaim)
+        public void checkOrderIfDeposit(out string statusValue, string paymentTerms, out string dateClaim, out string paymentStat)
         {
             try
             {
                 statusValue = "";
                 dateClaim = "";
+                paymentStat = "";
                 if (paymentTerms == "Full")
                 {
                     statusValue = "In The Lab";
                     //dateClaim = DateTime.Today.AddDays(3).ToShortDateString();
                     dateClaim = "Unclaimed";
+                    paymentStat = "Settled";
                 }
                 else if (paymentTerms == "Deposit")
                 {
                     statusValue = "In The Lab";
                     //dateClaim = DateTime.Today.AddDays(3).ToShortDateString();
                     dateClaim = "Unclaimed";
+                    paymentStat = "Pending";
                 }
             }
             catch (Exception ex)
@@ -448,6 +462,7 @@ namespace Capstone
                 MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 statusValue = "In The Lab";
                 dateClaim = "";
+                paymentStat = "";
                 return;
             }
         } 

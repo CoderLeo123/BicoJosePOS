@@ -727,6 +727,7 @@
             this.btnUpdatePatientRecord.TabIndex = 46;
             this.btnUpdatePatientRecord.Text = "Update";
             this.btnUpdatePatientRecord.UseVisualStyleBackColor = false;
+            this.btnUpdatePatientRecord.Click += new System.EventHandler(this.btnUpdatePatientRecord_Click);
             // 
             // btnSavePatientRecord
             // 
