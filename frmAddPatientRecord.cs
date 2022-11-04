@@ -19,6 +19,7 @@ namespace Capstone
         ClassComputations classCompute = new ClassComputations();
         ClassLoadData classLoadData = new ClassLoadData();
         ClassLoginAndSignUp classLoginMethod = new ClassLoginAndSignUp();
+        ClassPatientTransaction classPatient = new ClassPatientTransaction();
         string title = "BICO-JOSE System";
         frmPatientRecord frmL;
         public frmAddPatientRecord(frmPatientRecord frmA)
@@ -84,15 +85,15 @@ namespace Capstone
             txtAddAddress.Clear();
             txtAddContact.Clear();
             txtAddAge.Clear();
-            txtAddTransRefNo.Clear();
+            //txtAddTransRefNo.Clear();
             txtAddNote.Clear();
-            txtAddFeature.Clear();
-            txtAddLensePrice.Clear();
-            txtAddFramePrice.Clear();
-            txtAddOthersPrice.Clear();
-            txtAddTotal.Clear();
-            txtAddDeposit.Clear();
-            txtAddBalance.Clear();            
+            //txtAddFeature.Clear();
+            //txtAddLensePrice.Clear();
+            //txtAddFramePrice.Clear();
+           // txtAddOthersPrice.Clear();
+            //txtAddTotal.Clear();
+            //txtAddDeposit.Clear();
+            //txtAddBalance.Clear();            
         }
         public void getValueGeneralInfo(out string firstName, out string lastName, out string address, out string contact, out string gender, out string age, out string checkUp, out string birth)
         {
@@ -296,7 +297,7 @@ namespace Capstone
             string OSSPH = "", OSCYL = "", OSAXIS = "", OSPD = "";
             getValueOS(out OSSPH, out OSCYL, out OSAXIS, out OSPD);
             string CName = firstName + " " + lastName;
-
+            string pID = txtAddPatientID.Text;
             if (firstName != "" && lastName != "" && address != "" && contact != "" && gender != "" && age != "" && ODSPH != "" &&
                 ODCYL != "" && ODAXIS != "" && ODPD != "" && OSSPH != "" && OSCYL != "" && OSAXIS != "" && OSPD != "")
             {
@@ -334,6 +335,7 @@ namespace Capstone
                     Clear();
 
                     classLoadData.LoadRecordsPatient(frmL.dataGridViewPatientRecord, frmL.txtSearchPatientRecord);
+                    classPatient.LoadPatientTransactionList(frmL.dataGridViewTrans, pID);
                     this.Close();
                 }
             }
@@ -344,6 +346,40 @@ namespace Capstone
 
         }
 
+        private void btnSearchTrans_Click(object sender, EventArgs e)
+        {
+            frmTransactionPatient frm = new frmTransactionPatient(this);
+            frm.txtSearchRTrans.Text = txtAddFName.Text;
+            frm.txtSearchSTrans.Text = txtAddFName.Text;
+            frm.lblPatientID.Text = txtAddPatientID.Text;
+            classPatient.LoadRecordsTransacHist(frm.dataGridViewRTrans, frm.txtSearchRTrans);
+            classPatient.LoadRecordsTransacSettled(frm.dataGridViewSTrans, frm.txtSearchSTrans);
+            frm.ShowDialog();
+        }
+
+        private void dataGridViewTrans_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string colName = dataGridViewTrans.Columns[e.ColumnIndex].Name;
+            string num = dataGridViewTrans.Rows[e.RowIndex].Cells[1].Value?.ToString();
+            string pID = txtAddPatientID.Text;
+            if (colName == "dek")
+            {
+                if (MessageBox.Show("Remove this transaction?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    frmPermission frmP = new frmPermission();
+                    frmP.ShowDialog();
+                    if (frmP.lblGrant.Text == "1")
+                    {
+                        cn.Open();
+                        cm = new SqlCommand("DELETE FROM tblPatientTransaction WHERE Num LIKE '" + num + "'", cn);
+                        cm.ExecuteNonQuery();
+                        cn.Close();
+                        MessageBox.Show("Transaction has been successfully removed.", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        classPatient.LoadPatientTransactionList(dataGridViewTrans, pID);
+                    }
+                }
+            }
+        }
 
     }
 }

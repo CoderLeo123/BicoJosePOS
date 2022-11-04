@@ -270,7 +270,7 @@ namespace Capstone
                 string Settled_Date = DateTime.Now.ToString();
                 string Completed_By = lblCashier.Text;
                 //string PaymentStatus = "Settled";
-
+                string NEWtransacNum = lblNewTransactionSet.Text;
                 cn.Open();
                 cm = new SqlCommand("UPDATE tblPaymentStatus SET Settled_Date = @Settled_Date, Completed_By = @Completed_By, Status = 'Settled' WHERE Transaction_No LIKE '" + transacNum + "' ", cn);
                 //cm.Parameters.AddWithValue("@Transaction_No", transacNum);
@@ -287,7 +287,7 @@ namespace Capstone
 
                 cn.Open();
                 cm = new SqlCommand("INSERT INTO tblReceiptSettle (Transaction_No, Transaction_Date, Payment_Mode, Customer, Net_Total, Payment, Change, Cashier) VALUES(@Transaction_No, @Transaction_Date, @Payment_Mode, @Customer, @Net_Total, @Payment, @Change, @Cashier)", cn);
-                cm.Parameters.AddWithValue("@Transaction_No", transacNum);
+                cm.Parameters.AddWithValue("@Transaction_No", NEWtransacNum);
                 cm.Parameters.AddWithValue("@Transaction_Date", Settled_Date);
                 cm.Parameters.AddWithValue("@Payment_Mode", pMethod);
                 cm.Parameters.AddWithValue("@Customer", customer);

@@ -85,6 +85,7 @@
             this.printDialog = new System.Windows.Forms.PrintDialog();
             this.printPreviewDialog = new System.Windows.Forms.PrintPreviewDialog();
             this.printDocumentBalance = new System.Drawing.Printing.PrintDocument();
+            this.lblNewTransactionSet = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnCloseSettlePayment)).BeginInit();
             this.panel1.SuspendLayout();
@@ -286,6 +287,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.lblNewTransactionSet);
             this.panel1.Controls.Add(this.lblCheckSettleBalance);
             this.panel1.Controls.Add(this.lblServRowCount);
             this.panel1.Controls.Add(this.lblDPercent);
@@ -822,6 +824,17 @@
             // 
             this.printDocumentBalance.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocumentBalance_PrintPage);
             // 
+            // lblNewTransactionSet
+            // 
+            this.lblNewTransactionSet.AutoSize = true;
+            this.lblNewTransactionSet.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblNewTransactionSet.Location = new System.Drawing.Point(272, 20);
+            this.lblNewTransactionSet.Name = "lblNewTransactionSet";
+            this.lblNewTransactionSet.Size = new System.Drawing.Size(26, 31);
+            this.lblNewTransactionSet.TabIndex = 27;
+            this.lblNewTransactionSet.Text = "0";
+            this.lblNewTransactionSet.Visible = false;
+            // 
             // frmSettlePayment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 31F);
@@ -906,5 +919,6 @@
         public Label lblCheckSettleBalance;
         private System.Drawing.Printing.PrintDocument printDocumentBalance;
         public Panel panel1;
+        public Label lblNewTransactionSet;
     }
 }

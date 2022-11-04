@@ -18,7 +18,8 @@ namespace Capstone
         SqlDataReader dr;
         ClassGenerateID classGenerateID = new ClassGenerateID();
         ClassLoadData classLoadData = new ClassLoadData();
-        string title = "BICO-JOSE System";
+        ClassPatientTransaction classPatient = new ClassPatientTransaction();
+        string title = "BICO-JOSE System", transNo = ""; int paperWidth = 850, paperLength = 550;
         public frmPatientRecord()
         {
             InitializeComponent();
@@ -134,11 +135,72 @@ namespace Capstone
             {
                 LoadPrescription(PatID, out ODSPH, out ODCYL, out ODAXIS, out ODADD, out ODPD, out OSSPH, out OSCYL, out OSAXIS, out OSADD, out OSPD);
                 displayPrescription(ODSPH, ODCYL, ODAXIS, ODADD, ODPD, OSSPH, OSCYL, OSAXIS, OSADD, OSPD);
+                classPatient.LoadPatientTransactionList(dataGridViewTrans, PatID);
             }
             
 
 
 
+        }
+
+        private void dataGridViewTrans_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            lblCurrentTransN.Text = dataGridViewTrans.Rows[e.RowIndex].Cells[2].Value?.ToString();
+            previewFinalReceipt();
+        }
+        public void previewFinalReceipt()
+        {
+            PrintPreviewDialog preview = new PrintPreviewDialog();
+            
+            preview.Document = printDocumentFinalReceipt; // 800, 800 = 8" x 8"
+            printDocumentFinalReceipt.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("SHORT Half", paperWidth, paperLength);
+            preview.PrintPreviewControl.StartPage = 0;
+            preview.PrintPreviewControl.Zoom = 0.75;
+            preview.Size = new System.Drawing.Size(900, 700);
+            preview.ShowDialog();
+        }
+        private void printDocumentFinalReceipt_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            transNo = lblCurrentTransN.Text;
+
+            System.Drawing.Font printFont = new System.Drawing.Font("Times New Roman", 12, System.Drawing.FontStyle.Regular);
+            System.Drawing.Font printFontBold = new System.Drawing.Font("Times New Roman", 12, System.Drawing.FontStyle.Bold);
+
+            float leftMargin = e.MarginBounds.Left - 50; //50            
+            float topMargin = leftMargin; //50
+            float rightMargin = e.MarginBounds.Left; //100
+            float bottomMargin = leftMargin; //50
+            float pageHeigth = e.PageSettings.PrintableArea.Height; //1100
+            float fontHeigth = printFont.GetHeight();
+            float yPos = 0;
+            float offSetY = 0;
+            float offSetX = leftMargin;
+
+            offSetY += (float)fontHeigth;
+            yPos = topMargin;
+
+            void header()
+            {
+                
+                e.Graphics.DrawString("Bico-Jose Optical Clinic", printFontBold, Brushes.Black, (leftMargin + 240), yPos);
+                e.Graphics.DrawString("Bico-Jose Optical Clinic 3rd Floor Susana Mart,", printFont, Brushes.Black, (leftMargin + 70), (yPos += offSetY)); //offSetY += (float)fontHeigth;
+                e.Graphics.DrawString("Brgy. Tungkong Mangga, City of SJDM, Bulacan ", printFont, Brushes.Black, (leftMargin + 70), (yPos += offSetY)); //offSetY += (float)fontHeigth;
+                e.Graphics.DrawString("(+63) 917 832 6686", printFont, Brushes.Black, (leftMargin + 220), (yPos += offSetY)); //offSetY += (float)fontHeigth;
+                e.Graphics.DrawString("___________________________________________________________________________________________________________________________________", printFont, Brushes.Black, (leftMargin + 220), (yPos += offSetY)); //offSetY += (float)fontHeigth;
+
+            }
+
+            void generalInfo()
+            {
+                e.Graphics.DrawString("Px's Name:", printFontBold, Brushes.Black, (leftMargin + 240), yPos);
+                e.Graphics.DrawString("Address: ", printFont, Brushes.Black, (leftMargin + 70), (yPos += offSetY)); //offSetY += (float)fontHeigth;
+                e.Graphics.DrawString("Age: ", printFont, Brushes.Black, (leftMargin + 70), (yPos += offSetY)); //offSetY += (float)fontHeigth;
+                e.Graphics.DrawString("Phone: ", printFont, Brushes.Black, (leftMargin + 70), (yPos += offSetY)); //offSetY += (float)fontHeigth;
+                e.Graphics.DrawString("Date: ", printFont, Brushes.Black, (leftMargin + 70), (yPos += offSetY)); //offSetY += (float)fontHeigth;
+
+            }
+            header();
+            generalInfo();
         }
 
 

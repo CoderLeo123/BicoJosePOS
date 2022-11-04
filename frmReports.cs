@@ -196,7 +196,7 @@ namespace Capstone
             e.Graphics.DrawString("Bico-Jose Optical Clinic", printFontBold, Brushes.Black, 175, 30);
             e.Graphics.DrawString("Address: 3rd Floor Susana Mart, Tungko San Jose Del Monte Bulacan", printFont, Brushes.Black, 80, 80);
             y = 140; x = 320;
-            e.Graphics.DrawString("Clinic's Contact: 09178326666", printFont, Brushes.Black, 20, y);//140
+            e.Graphics.DrawString("Clinic's Contact: 09178326686", printFont, Brushes.Black, 20, y);//140
             e.Graphics.DrawString("Date Issued: ", printFont, Brushes.Black, (x += 60), y);
             e.Graphics.DrawString("Mode of Payment:  " + PMode, printFont, Brushes.Black, 20, (y += 30));//170
             e.Graphics.DrawString(TransDate, printFont, Brushes.Black, x, y);
@@ -351,7 +351,7 @@ namespace Capstone
                 //'print header
                 e.Graphics.DrawString("Bico-Jose Optical Clinic", printFontBold, Brushes.Black, (leftMargin + 240), yPos);
                 e.Graphics.DrawString("Address: 3rd Floor Susana Mart, Tungko San Jose Del Monte Bulacan", printFont, Brushes.Black, (leftMargin + 70), (yPos += offSetY)); //offSetY += (float)fontHeigth;
-                e.Graphics.DrawString("Clinic's Contact: 09178326666", printFont, Brushes.Black, (leftMargin + 220), (yPos += offSetY)); //offSetY += (float)fontHeigth;
+                e.Graphics.DrawString("Clinic's Contact: 09178326686", printFont, Brushes.Black, (leftMargin + 220), (yPos += offSetY)); //offSetY += (float)fontHeigth;
                 //e.Graphics.DrawString("SALES REPORT", printFontBold, Brushes.Black, (leftMargin + 260), (yPos += (offSetY * 3))); //offSetY += ((float)fontHeigth * 3);
                 //e.Graphics.DrawString("#", printFont, Brushes.Black, (leftMargin + 30), (yPos += (offSetY*6)));
                 //e.Graphics.DrawString("    Date", printFont, Brushes.Black, (leftMargin + 130), yPos);
