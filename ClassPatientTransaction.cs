@@ -91,5 +91,98 @@ namespace Capstone
             cn.Close();
         }
 
+        public void LoadPatientDetails(string pID, out string FullName, out string Address, out string Phone, out string Age, out string Date, out string Note)
+        {
+            FullName = ""; Address = ""; Phone = ""; Age = ""; Date = ""; Note = "";
+            cn = new SqlConnection(dbcon.MyConnection());           
+            cn.Open();
+            SqlCommand cm = new SqlCommand("SELECT * FROM tblPatientRecord WHERE Patient_ID LIKE '%" + pID + "%'", cn);
+            dr = cm.ExecuteReader();
+            while (dr.Read())
+            {
+                FullName = dr[2].ToString(); Address = dr[3].ToString(); Phone = dr[4].ToString(); 
+                Age = dr[5].ToString(); Date = dr[7].ToString(); Note = dr[11].ToString(); 
+            }
+            dr.Close();
+            cn.Close();
+        }
+        public void LoadPrescription(DataGridView dgv, string prescID)
+        {
+            cn = new SqlConnection(dbcon.MyConnection());
+            
+            dgv.Rows.Clear();
+            cn.Open();
+            SqlCommand cm = new SqlCommand("SELECT * FROM tblPrescription WHERE Prescription_No LIKE '%" + prescID + "%'", cn);
+            dr = cm.ExecuteReader();
+            while (dr.Read())
+            {
+                
+                dgv.Rows.Add("OD", dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), dr[5].ToString());
+                dgv.Rows.Add("OS", dr[6].ToString(), dr[7].ToString(), dr[8].ToString(), dr[9].ToString(), dr[10].ToString());
+            }
+            dr.Close();
+            cn.Close();
+        }
+        public void LoadTransaction(string transNo, out string FramePrice, out string LensPrice, out string TotalCost, out string NetTotal, out string Deposit, out string Balance, out string Discount)
+        {
+            FramePrice = ""; LensPrice = ""; TotalCost = ""; NetTotal = ""; Deposit = ""; Balance = ""; Discount = "";
+
+            cn = new SqlConnection(dbcon.MyConnection());
+            cn.Open();
+            SqlCommand cm = new SqlCommand("SELECT * FROM tblReceipt WHERE Transaction_No LIKE '%" + transNo + "%'", cn);
+            dr = cm.ExecuteReader();
+            while (dr.Read())
+            {
+                FramePrice = dr[15].ToString(); LensPrice = dr[16].ToString(); TotalCost = dr[6].ToString();
+                NetTotal = dr[8].ToString(); Deposit = dr[9].ToString(); Balance = dr[10].ToString(); Discount = dr[7].ToString();
+            }
+            dr.Close();
+            cn.Close();
+        }
+        public void LoadSettled(string transNo, out string NetTotal, out string Payment)
+        {
+            NetTotal = ""; Payment = "";
+
+            cn = new SqlConnection(dbcon.MyConnection());
+            cn.Open();
+            SqlCommand cm = new SqlCommand("SELECT Net_Total, Payment FROM tblReceiptSettle WHERE Transaction_No LIKE '%" + transNo + "%'", cn);
+            dr = cm.ExecuteReader();
+            while (dr.Read())
+            {
+                
+                NetTotal = dr[0].ToString(); Payment = dr[1].ToString(); 
+            }
+            dr.Close();
+            cn.Close();
+        }
+        public void LoadItems(DataGridView dgv, string transNo)
+        {
+            cn = new SqlConnection(dbcon.MyConnection());
+            dgv.Rows.Clear();
+            cn.Open();
+            SqlCommand cm = new SqlCommand("SELECT Quatity, Description FROM ViewCartStockItem WHERE Transaction_No LIKE '%" + transNo + "%' AND Lense_Check = 1", cn);
+            dr = cm.ExecuteReader();
+            while (dr.Read())
+            {
+                dgv.Rows.Add(dr[0].ToString(), dr[1].ToString());                
+            }
+            dr.Close();
+            cn.Close();
+        }
+        public void LoadLense(DataGridView dgv, string transNo)
+        {
+            cn = new SqlConnection(dbcon.MyConnection());
+            dgv.Rows.Clear();
+            cn.Open();
+            SqlCommand cm = new SqlCommand("SELECT Quatity, Description FROM ViewCartStockItem WHERE Transaction_No LIKE '%" + transNo + "%' AND Lense_Check = 0", cn);
+            dr = cm.ExecuteReader();
+            while (dr.Read())
+            {
+                dgv.Rows.Add(dr[0].ToString(), dr[1].ToString());
+            }
+            dr.Close();
+            cn.Close();
+        }
+
     }
 }

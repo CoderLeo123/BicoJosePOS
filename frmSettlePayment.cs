@@ -326,6 +326,8 @@ namespace Capstone
                 string settlementDate = "Pending";
                 string ITMID = "";
                 string paymentStatus = "";
+                float frameTotal = 0;
+                float lenseTotal = 0;
                 checkPaymentTerms(out status, pTerms, total, payment, out remainBalance, out settlementDate);
 
                 lblPaymentNotice.Visible = false;
@@ -369,8 +371,9 @@ namespace Capstone
                 cm.ExecuteNonQuery();
                 cn.Close();
 
+                calculateFrameLenseTotal(frmC.dataGridViewCart, transacNum, out frameTotal, out lenseTotal);
                 cn.Open();
-                cm = new SqlCommand("INSERT INTO tblReceipt (Transaction_No, Transaction_Date, Payment_Mode, Payment_Terms, Customer, Gross_Total, Discount, Net_Total, Payment, Balance, Change, Discount_Percent, Settled_Date, Cashier) VALUES(@Transaction_No, @Transaction_Date, @Payment_Mode, @Payment_Terms, @Customer, @Gross_Total, @Discount, @Net_Total, @Payment, @Balance, @Change, @Discount_Percent, @Settled_Date, @Cashier)", cn);
+                cm = new SqlCommand("INSERT INTO tblReceipt (Transaction_No, Transaction_Date, Payment_Mode, Payment_Terms, Customer, Gross_Total, Discount, Net_Total, Payment, Balance, Change, Discount_Percent, Settled_Date, Cashier, Frame_Total, Lense_Total) VALUES(@Transaction_No, @Transaction_Date, @Payment_Mode, @Payment_Terms, @Customer, @Gross_Total, @Discount, @Net_Total, @Payment, @Balance, @Change, @Discount_Percent, @Settled_Date, @Cashier, @Frame_Total, @Lense_Total)", cn);
                 cm.Parameters.AddWithValue("@Transaction_No", lblTransacNo.Text);
                 cm.Parameters.AddWithValue("@Transaction_Date", transDate);
                 cm.Parameters.AddWithValue("@Payment_Mode", pMethod);
@@ -385,6 +388,8 @@ namespace Capstone
                 cm.Parameters.AddWithValue("@Discount_Percent", discountPer);
                 cm.Parameters.AddWithValue("@Settled_Date", settlementDate);
                 cm.Parameters.AddWithValue("@Cashier", cashier);
+                cm.Parameters.AddWithValue("@Frame_Total", frameTotal.ToString("#,##0.00"));
+                cm.Parameters.AddWithValue("@Lense_Total", lenseTotal.ToString("#,##0.00"));
                 cm.ExecuteNonQuery();
                 cn.Close();
 
@@ -662,9 +667,7 @@ namespace Capstone
         }
         public void getValueIfAnyElseBlank(int dgvCount, DataGridView dgv, out string result, int rows, int col)
         {
-            result = "N/A";
-            
-                
+            result = "N/A";                            
                 //dgvCount = int.Parse(lblRowCount.Text);
                 if (dgvCount == 0)
                 {
@@ -900,5 +903,32 @@ namespace Capstone
 
         }
 
+        public void calculateFrameLenseTotal(DataGridView dgv, string transNo, out float frameTotal, out float lenseTotal)
+        {
+            frameTotal = 0; lenseTotal = 0;
+
+            cn = new SqlConnection(dbcon.MyConnection());            
+            cn.Open();
+            SqlCommand cm = new SqlCommand("SELECT Total from tblCart WHERE Transaction_No LIKE '%" + transNo + "%' AND Lense_Check > 0 ", cn);
+            dr = cm.ExecuteReader();
+            while (dr.Read())
+            {
+                frameTotal += float.Parse(dr[0].ToString());
+            }
+            dr.Close();
+            cn.Close();
+
+            cn = new SqlConnection(dbcon.MyConnection());
+            cn.Open();
+            cm = new SqlCommand("SELECT Total from tblCart WHERE Transaction_No LIKE '%" + transNo + "%' AND Lense_Check = 0 ", cn);
+            dr = cm.ExecuteReader();
+            while (dr.Read())
+            {
+                lenseTotal += float.Parse(dr[0].ToString());
+            }
+            dr.Close();
+            cn.Close();
+        }
+        
     }
 }

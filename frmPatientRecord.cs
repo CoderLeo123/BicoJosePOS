@@ -136,6 +136,7 @@ namespace Capstone
                 LoadPrescription(PatID, out ODSPH, out ODCYL, out ODAXIS, out ODADD, out ODPD, out OSSPH, out OSCYL, out OSAXIS, out OSADD, out OSPD);
                 displayPrescription(ODSPH, ODCYL, ODAXIS, ODADD, ODPD, OSSPH, OSCYL, OSAXIS, OSADD, OSPD);
                 classPatient.LoadPatientTransactionList(dataGridViewTrans, PatID);
+                
             }
             
 
@@ -145,8 +146,20 @@ namespace Capstone
 
         private void dataGridViewTrans_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            lblCurrentTransN.Text = dataGridViewTrans.Rows[e.RowIndex].Cells[2].Value?.ToString();
-            previewFinalReceipt();
+            string pID = "", prescID = "", transNo = "", transType = "";
+            transNo = dataGridViewTrans.Rows[e.RowIndex].Cells[2].Value?.ToString();
+            transType = dataGridViewTrans.Rows[e.RowIndex].Cells[5].Value?.ToString();
+            pID = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[1].Value?.ToString();
+            prescID = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[7].Value?.ToString();
+            //previewFinalReceipt();
+
+            frmFinalReceipt frm = new frmFinalReceipt();            
+            frm.lblPatientID.Text = pID;
+            frm.lblTransNo.Text = transNo;
+            frm.lblPrescriptNo.Text = prescID;
+            frm.lblTransType.Text = transType;
+            frm.displayValue(pID, prescID, transNo);
+            frm.ShowDialog();
         }
         public void previewFinalReceipt()
         {

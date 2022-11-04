@@ -145,6 +145,7 @@ namespace Capstone
                 string id = lblItemIDCheck.Text; // Item_ID
                 string classification = dataGridViewBrowse[7, e.RowIndex].Value.ToString();
                 string Stock2 = dataGridViewBrowse[6, e.RowIndex].Value.ToString(); //STOCK quantity
+                string lense_check = dataGridViewBrowse[8, e.RowIndex].Value?.ToString();
                 //string Stock = lblStock.Text;
                 string Stock_Num = "";
                 frmExpiration frmE = new frmExpiration(this);
@@ -199,7 +200,7 @@ namespace Capstone
                         float price = float.Parse(dataGridViewBrowse[5, e.RowIndex].Value.ToString());
                         
                         cn.Open();
-                        cm = new SqlCommand("INSERT INTO tblCart (Stock_Num, Item_ID, Transaction_No, Quantity, Price, Total, Date, Status) VALUES (@Stock_Num, @Item_ID, @TransactionNo, @Quantity, @Price, @Total, @Date, 'Cart')", cn);
+                        cm = new SqlCommand("INSERT INTO tblCart (Stock_Num, Item_ID, Transaction_No, Quantity, Price, Total, Date, Status, Lense_Check) VALUES (@Stock_Num, @Item_ID, @TransactionNo, @Quantity, @Price, @Total, @Date, 'Cart', @Lense_Check)", cn);
                         //cm.Parameters.AddWithValue("@Stock_ID", frmB.dataGridViewBrowse[1, i].Value.ToString());
                         cm.Parameters.AddWithValue("@Stock_Num", int.Parse(Stock_Num));
                         cm.Parameters.AddWithValue("@Item_ID", dataGridViewBrowse[1, e.RowIndex].Value.ToString());
@@ -207,7 +208,8 @@ namespace Capstone
                         cm.Parameters.AddWithValue("@Quantity", 1);
                         cm.Parameters.AddWithValue("@Price", price.ToString("00.00")); 
                         cm.Parameters.AddWithValue("@Date", DateTime.Now);
-                        cm.Parameters.AddWithValue("@Total", price.ToString("00.00"));
+                        cm.Parameters.AddWithValue("@Total", price.ToString("00.00")); //lense_check
+                        cm.Parameters.AddWithValue("@Lense_Check", lense_check);
                         cm.ExecuteNonQuery();
                         cn.Close();
                         LoadCart();
@@ -233,7 +235,7 @@ namespace Capstone
                             frmE.lblName2.Text = dataGridViewBrowse[2, e.RowIndex].Value.ToString();
                             frmE.lblPrice2.Text = dataGridViewBrowse[5, e.RowIndex].Value.ToString();
                             frmE.lblItemIDPass.Text = dataGridViewBrowse[1, e.RowIndex].Value.ToString();
-                            frmE.lblTotal.Text = "0";
+                            frmE.lblTotal.Text = "0"; frmE.lblLenseCheck.Text = lense_check;
                             frmE.txtQuantity.Text = "0";
                             frmE.txtQuantity.Focus();
                             frmE.txtQuantity.SelectAll();

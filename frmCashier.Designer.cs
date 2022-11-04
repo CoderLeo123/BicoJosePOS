@@ -56,6 +56,7 @@
             this.lblPayment = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.lblUserNum = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
             this.lblCashierName = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -83,6 +84,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.dataGridViewCart = new System.Windows.Forms.DataGridView();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.NumCart = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DescriptionCart = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Expiration = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -98,8 +100,7 @@
             this.ItemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unitMe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Classif = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
-            this.lblUserNum = new System.Windows.Forms.Label();
+            this.LenseChe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2.SuspendLayout();
             this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewService)).BeginInit();
@@ -397,6 +398,16 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1600, 78);
             this.panel3.TabIndex = 2;
+            // 
+            // lblUserNum
+            // 
+            this.lblUserNum.AutoSize = true;
+            this.lblUserNum.Location = new System.Drawing.Point(485, 10);
+            this.lblUserNum.Name = "lblUserNum";
+            this.lblUserNum.Size = new System.Drawing.Size(62, 28);
+            this.lblUserNum.TabIndex = 8;
+            this.lblUserNum.Text = "          ";
+            this.lblUserNum.Visible = false;
             // 
             // lblTotal
             // 
@@ -786,7 +797,8 @@
             this.sd,
             this.ItemID,
             this.unitMe,
-            this.Classif});
+            this.Classif,
+            this.LenseChe});
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.Azure;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -808,6 +820,10 @@
             this.dataGridViewCart.Size = new System.Drawing.Size(1173, 455);
             this.dataGridViewCart.TabIndex = 3;
             this.dataGridViewCart.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewCart_CellContentClick);
+            // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
             // NumCart
             // 
@@ -861,7 +877,7 @@
             this.DiscountCart.Name = "DiscountCart";
             this.DiscountCart.ReadOnly = true;
             this.DiscountCart.Visible = false;
-            this.DiscountCart.Width = 125;
+            this.DiscountCart.Width = 134;
             // 
             // TotalCart
             // 
@@ -941,19 +957,13 @@
             this.Classif.Visible = false;
             this.Classif.Width = 125;
             // 
-            // printDocument1
+            // LenseChe
             // 
-            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
-            // 
-            // lblUserNum
-            // 
-            this.lblUserNum.AutoSize = true;
-            this.lblUserNum.Location = new System.Drawing.Point(485, 10);
-            this.lblUserNum.Name = "lblUserNum";
-            this.lblUserNum.Size = new System.Drawing.Size(62, 28);
-            this.lblUserNum.TabIndex = 8;
-            this.lblUserNum.Text = "          ";
-            this.lblUserNum.Visible = false;
+            this.LenseChe.HeaderText = "LenseCheck";
+            this.LenseChe.MinimumWidth = 6;
+            this.LenseChe.Name = "LenseChe";
+            this.LenseChe.Visible = false;
+            this.LenseChe.Width = 125;
             // 
             // frmCashier
             // 
@@ -1032,6 +1042,17 @@
         public Label lblDiscPercen;
         public Label lblTotal;
         public Button btnSettleBalance;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private DataGridViewTextBoxColumn priServ;
+        private DataGridViewImageColumn del;
+        private DataGridViewTextBoxColumn ServID;
+        private DataGridViewTextBoxColumn ServNum;
+        public Label label12;
+        public Label label9;
+        public Label label8;
+        public Label lblUserNum;
         private DataGridViewTextBoxColumn NumCart;
         private DataGridViewTextBoxColumn DescriptionCart;
         private DataGridViewTextBoxColumn Expiration;
@@ -1047,16 +1068,6 @@
         private DataGridViewTextBoxColumn ItemID;
         private DataGridViewTextBoxColumn unitMe;
         private DataGridViewTextBoxColumn Classif;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private DataGridViewTextBoxColumn priServ;
-        private DataGridViewImageColumn del;
-        private DataGridViewTextBoxColumn ServID;
-        private DataGridViewTextBoxColumn ServNum;
-        public Label label12;
-        public Label label9;
-        public Label label8;
-        public Label lblUserNum;
+        private DataGridViewTextBoxColumn LenseChe;
     }
 }

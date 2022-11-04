@@ -60,6 +60,7 @@
             this.PriceBrowseItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Classification = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LensChe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AddToCart = new System.Windows.Forms.DataGridViewImageColumn();
             this.StockID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StockNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -157,6 +158,7 @@
             this.PriceBrowseItem,
             this.Stock,
             this.Classification,
+            this.LensChe,
             this.AddToCart,
             this.StockID,
             this.StockNum,
@@ -411,6 +413,14 @@
             this.Classification.ReadOnly = true;
             this.Classification.Width = 185;
             // 
+            // LensChe
+            // 
+            this.LensChe.HeaderText = "LenseCheck";
+            this.LensChe.MinimumWidth = 6;
+            this.LensChe.Name = "LensChe";
+            this.LensChe.Visible = false;
+            this.LensChe.Width = 125;
+            // 
             // AddToCart
             // 
             this.AddToCart.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -498,6 +508,7 @@
         private DataGridViewTextBoxColumn PriceBrowseItem;
         private DataGridViewTextBoxColumn Stock;
         private DataGridViewTextBoxColumn Classification;
+        private DataGridViewTextBoxColumn LensChe;
         private DataGridViewImageColumn AddToCart;
         private DataGridViewTextBoxColumn StockID;
         private DataGridViewTextBoxColumn StockNum;

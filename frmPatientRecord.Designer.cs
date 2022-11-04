@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPatientRecord));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblCurrentTransN = new System.Windows.Forms.Label();
             this.lblPatientID = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.btnAddPR = new System.Windows.Forms.Button();
@@ -47,16 +48,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridViewPatientRecord = new System.Windows.Forms.DataGridView();
-            this.NumPRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PatientIDPRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CustomerNamePRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AddressPRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ContactPRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AgePRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GenderPRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CheckUpDatePRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EditPRecord = new System.Windows.Forms.DataGridViewImageColumn();
-            this.del = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panelPresc = new System.Windows.Forms.Panel();
             this.txtOSPD = new System.Windows.Forms.TextBox();
@@ -100,7 +91,17 @@
             this.lblTransNo = new System.Windows.Forms.Label();
             this.printDocumentFinalReceipt = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog = new System.Windows.Forms.PrintPreviewDialog();
-            this.lblCurrentTransN = new System.Windows.Forms.Label();
+            this.NumPRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PatientIDPRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CustomerNamePRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AddressPRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ContactPRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AgePRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GenderPRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CheckUpDatePRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.presct = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EditPRecord = new System.Windows.Forms.DataGridViewImageColumn();
+            this.del = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClosePatientRecord)).BeginInit();
@@ -130,6 +131,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1315, 120);
             this.panel1.TabIndex = 4;
+            // 
+            // lblCurrentTransN
+            // 
+            this.lblCurrentTransN.AutoSize = true;
+            this.lblCurrentTransN.Location = new System.Drawing.Point(661, 26);
+            this.lblCurrentTransN.Name = "lblCurrentTransN";
+            this.lblCurrentTransN.Size = new System.Drawing.Size(41, 20);
+            this.lblCurrentTransN.TabIndex = 41;
+            this.lblCurrentTransN.Text = "        ";
+            this.lblCurrentTransN.Visible = false;
             // 
             // lblPatientID
             // 
@@ -263,14 +274,14 @@
             this.dataGridViewPatientRecord.AllowUserToResizeRows = false;
             this.dataGridViewPatientRecord.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewPatientRecord.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewPatientRecord.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewPatientRecord.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewPatientRecord.ColumnHeadersHeight = 40;
             this.dataGridViewPatientRecord.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridViewPatientRecord.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -282,29 +293,30 @@
             this.AgePRecord,
             this.GenderPRecord,
             this.CheckUpDatePRecord,
+            this.presct,
             this.EditPRecord,
             this.del});
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.Azure;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewPatientRecord.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Azure;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewPatientRecord.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewPatientRecord.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewPatientRecord.EnableHeadersVisualStyles = false;
             this.dataGridViewPatientRecord.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.dataGridViewPatientRecord.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewPatientRecord.Name = "dataGridViewPatientRecord";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewPatientRecord.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewPatientRecord.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewPatientRecord.RowHeadersVisible = false;
             this.dataGridViewPatientRecord.RowHeadersWidth = 51;
             this.dataGridViewPatientRecord.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
@@ -313,94 +325,6 @@
             this.dataGridViewPatientRecord.Size = new System.Drawing.Size(1315, 362);
             this.dataGridViewPatientRecord.TabIndex = 6;
             this.dataGridViewPatientRecord.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPatientRecord_CellContentClick);
-            // 
-            // NumPRecord
-            // 
-            this.NumPRecord.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.NumPRecord.HeaderText = "#";
-            this.NumPRecord.MinimumWidth = 6;
-            this.NumPRecord.Name = "NumPRecord";
-            this.NumPRecord.Width = 51;
-            // 
-            // PatientIDPRecord
-            // 
-            this.PatientIDPRecord.HeaderText = "PATIENT ID";
-            this.PatientIDPRecord.MinimumWidth = 6;
-            this.PatientIDPRecord.Name = "PatientIDPRecord";
-            this.PatientIDPRecord.Visible = false;
-            this.PatientIDPRecord.Width = 125;
-            // 
-            // CustomerNamePRecord
-            // 
-            this.CustomerNamePRecord.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CustomerNamePRecord.HeaderText = "NAME";
-            this.CustomerNamePRecord.MinimumWidth = 6;
-            this.CustomerNamePRecord.Name = "CustomerNamePRecord";
-            this.CustomerNamePRecord.ReadOnly = true;
-            // 
-            // AddressPRecord
-            // 
-            this.AddressPRecord.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.AddressPRecord.HeaderText = "ADDRESS";
-            this.AddressPRecord.MinimumWidth = 6;
-            this.AddressPRecord.Name = "AddressPRecord";
-            this.AddressPRecord.ReadOnly = true;
-            // 
-            // ContactPRecord
-            // 
-            this.ContactPRecord.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.ContactPRecord.HeaderText = "CONTACT";
-            this.ContactPRecord.MinimumWidth = 6;
-            this.ContactPRecord.Name = "ContactPRecord";
-            this.ContactPRecord.ReadOnly = true;
-            this.ContactPRecord.Width = 131;
-            // 
-            // AgePRecord
-            // 
-            this.AgePRecord.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.AgePRecord.HeaderText = "AGE";
-            this.AgePRecord.MinimumWidth = 6;
-            this.AgePRecord.Name = "AgePRecord";
-            this.AgePRecord.ReadOnly = true;
-            this.AgePRecord.Width = 78;
-            // 
-            // GenderPRecord
-            // 
-            this.GenderPRecord.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.GenderPRecord.HeaderText = "GENDER";
-            this.GenderPRecord.MinimumWidth = 6;
-            this.GenderPRecord.Name = "GenderPRecord";
-            this.GenderPRecord.ReadOnly = true;
-            this.GenderPRecord.Width = 119;
-            // 
-            // CheckUpDatePRecord
-            // 
-            this.CheckUpDatePRecord.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.CheckUpDatePRecord.HeaderText = "CHECK-UP DATE";
-            this.CheckUpDatePRecord.MinimumWidth = 6;
-            this.CheckUpDatePRecord.Name = "CheckUpDatePRecord";
-            this.CheckUpDatePRecord.ReadOnly = true;
-            this.CheckUpDatePRecord.Width = 193;
-            // 
-            // EditPRecord
-            // 
-            this.EditPRecord.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.EditPRecord.HeaderText = "";
-            this.EditPRecord.Image = global::Capstone.Properties.Resources.Edit;
-            this.EditPRecord.MinimumWidth = 6;
-            this.EditPRecord.Name = "EditPRecord";
-            this.EditPRecord.ReadOnly = true;
-            this.EditPRecord.Width = 6;
-            // 
-            // del
-            // 
-            this.del.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.del.HeaderText = "";
-            this.del.Image = global::Capstone.Properties.Resources._Delete;
-            this.del.MinimumWidth = 6;
-            this.del.Name = "del";
-            this.del.ReadOnly = true;
-            this.del.Width = 6;
             // 
             // panel3
             // 
@@ -689,14 +613,14 @@
             this.dataGridViewTrans.AllowUserToResizeRows = false;
             this.dataGridViewTrans.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewTrans.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewTrans.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTrans.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewTrans.ColumnHeadersHeight = 40;
             this.dataGridViewTrans.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridViewTrans.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -706,14 +630,14 @@
             this.UnMe,
             this.Price,
             this.Type});
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.Azure;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewTrans.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Azure;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTrans.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewTrans.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewTrans.EnableHeadersVisualStyles = false;
             this.dataGridViewTrans.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
@@ -887,15 +811,101 @@
             this.printPreviewDialog.Name = "printPreviewDialog";
             this.printPreviewDialog.Visible = false;
             // 
-            // lblCurrentTransN
+            // NumPRecord
             // 
-            this.lblCurrentTransN.AutoSize = true;
-            this.lblCurrentTransN.Location = new System.Drawing.Point(661, 26);
-            this.lblCurrentTransN.Name = "lblCurrentTransN";
-            this.lblCurrentTransN.Size = new System.Drawing.Size(41, 20);
-            this.lblCurrentTransN.TabIndex = 41;
-            this.lblCurrentTransN.Text = "        ";
-            this.lblCurrentTransN.Visible = false;
+            this.NumPRecord.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.NumPRecord.HeaderText = "#";
+            this.NumPRecord.MinimumWidth = 6;
+            this.NumPRecord.Name = "NumPRecord";
+            this.NumPRecord.Width = 51;
+            // 
+            // PatientIDPRecord
+            // 
+            this.PatientIDPRecord.HeaderText = "PATIENT ID";
+            this.PatientIDPRecord.MinimumWidth = 6;
+            this.PatientIDPRecord.Name = "PatientIDPRecord";
+            this.PatientIDPRecord.Visible = false;
+            this.PatientIDPRecord.Width = 125;
+            // 
+            // CustomerNamePRecord
+            // 
+            this.CustomerNamePRecord.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CustomerNamePRecord.HeaderText = "NAME";
+            this.CustomerNamePRecord.MinimumWidth = 6;
+            this.CustomerNamePRecord.Name = "CustomerNamePRecord";
+            this.CustomerNamePRecord.ReadOnly = true;
+            // 
+            // AddressPRecord
+            // 
+            this.AddressPRecord.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.AddressPRecord.HeaderText = "ADDRESS";
+            this.AddressPRecord.MinimumWidth = 6;
+            this.AddressPRecord.Name = "AddressPRecord";
+            this.AddressPRecord.ReadOnly = true;
+            // 
+            // ContactPRecord
+            // 
+            this.ContactPRecord.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.ContactPRecord.HeaderText = "CONTACT";
+            this.ContactPRecord.MinimumWidth = 6;
+            this.ContactPRecord.Name = "ContactPRecord";
+            this.ContactPRecord.ReadOnly = true;
+            this.ContactPRecord.Width = 131;
+            // 
+            // AgePRecord
+            // 
+            this.AgePRecord.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.AgePRecord.HeaderText = "AGE";
+            this.AgePRecord.MinimumWidth = 6;
+            this.AgePRecord.Name = "AgePRecord";
+            this.AgePRecord.ReadOnly = true;
+            this.AgePRecord.Width = 78;
+            // 
+            // GenderPRecord
+            // 
+            this.GenderPRecord.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.GenderPRecord.HeaderText = "GENDER";
+            this.GenderPRecord.MinimumWidth = 6;
+            this.GenderPRecord.Name = "GenderPRecord";
+            this.GenderPRecord.ReadOnly = true;
+            this.GenderPRecord.Width = 119;
+            // 
+            // CheckUpDatePRecord
+            // 
+            this.CheckUpDatePRecord.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.CheckUpDatePRecord.HeaderText = "CHECK-UP DATE";
+            this.CheckUpDatePRecord.MinimumWidth = 6;
+            this.CheckUpDatePRecord.Name = "CheckUpDatePRecord";
+            this.CheckUpDatePRecord.ReadOnly = true;
+            this.CheckUpDatePRecord.Width = 193;
+            // 
+            // presct
+            // 
+            this.presct.HeaderText = "Prescrip";
+            this.presct.MinimumWidth = 6;
+            this.presct.Name = "presct";
+            this.presct.Visible = false;
+            this.presct.Width = 125;
+            // 
+            // EditPRecord
+            // 
+            this.EditPRecord.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.EditPRecord.HeaderText = "";
+            this.EditPRecord.Image = global::Capstone.Properties.Resources.Edit;
+            this.EditPRecord.MinimumWidth = 6;
+            this.EditPRecord.Name = "EditPRecord";
+            this.EditPRecord.ReadOnly = true;
+            this.EditPRecord.Width = 6;
+            // 
+            // del
+            // 
+            this.del.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.del.HeaderText = "";
+            this.del.Image = global::Capstone.Properties.Resources._Delete;
+            this.del.MinimumWidth = 6;
+            this.del.Name = "del";
+            this.del.ReadOnly = true;
+            this.del.Width = 6;
             // 
             // frmPatientRecord
             // 
@@ -968,16 +978,6 @@
         public DataGridView dataGridViewPatientRecord;
         public TextBox txtSearchPatientRecord;
         private TextBox txtOSPD;
-        private DataGridViewTextBoxColumn NumPRecord;
-        private DataGridViewTextBoxColumn PatientIDPRecord;
-        private DataGridViewTextBoxColumn CustomerNamePRecord;
-        private DataGridViewTextBoxColumn AddressPRecord;
-        private DataGridViewTextBoxColumn ContactPRecord;
-        private DataGridViewTextBoxColumn AgePRecord;
-        private DataGridViewTextBoxColumn GenderPRecord;
-        private DataGridViewTextBoxColumn CheckUpDatePRecord;
-        private DataGridViewImageColumn EditPRecord;
-        private DataGridViewImageColumn del;
         public Panel panelExpiLists;
         private Panel panel7;
         public DataGridView dataGridViewTrans;
@@ -1000,5 +1000,16 @@
         private System.Drawing.Printing.PrintDocument printDocumentFinalReceipt;
         private PrintPreviewDialog printPreviewDialog;
         private Label lblCurrentTransN;
+        private DataGridViewTextBoxColumn NumPRecord;
+        private DataGridViewTextBoxColumn PatientIDPRecord;
+        private DataGridViewTextBoxColumn CustomerNamePRecord;
+        private DataGridViewTextBoxColumn AddressPRecord;
+        private DataGridViewTextBoxColumn ContactPRecord;
+        private DataGridViewTextBoxColumn AgePRecord;
+        private DataGridViewTextBoxColumn GenderPRecord;
+        private DataGridViewTextBoxColumn CheckUpDatePRecord;
+        private DataGridViewTextBoxColumn presct;
+        private DataGridViewImageColumn EditPRecord;
+        private DataGridViewImageColumn del;
     }
 }
