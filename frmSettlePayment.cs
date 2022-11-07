@@ -515,7 +515,7 @@ namespace Capstone
                 {
                     statusValue = "Pending";
                     remBalance = total - payment;
-                    settledDate = "Pending";
+                    settledDate = dateTimePickerDueDate.Value.ToString();
                     completedBy = "Undefined";
                 }
             }

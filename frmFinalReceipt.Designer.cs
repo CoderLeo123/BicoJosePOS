@@ -43,26 +43,30 @@
             this.lblPatientID = new System.Windows.Forms.Label();
             this.btnPrint = new System.Windows.Forms.Button();
             this.panelReceipt = new System.Windows.Forms.Panel();
+            this.panelWhole = new System.Windows.Forms.Panel();
+            this.panelLens = new System.Windows.Forms.Panel();
+            this.dataGridViewLense = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panelDueNote = new System.Windows.Forms.Panel();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.lblNote = new System.Windows.Forms.Label();
+            this.lblDueDate = new System.Windows.Forms.Label();
+            this.panelFrame = new System.Windows.Forms.Panel();
+            this.dataGridViewItems = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.lblName = new System.Windows.Forms.Label();
-            this.lblDueDate = new System.Windows.Forms.Label();
-            this.lblNote = new System.Windows.Forms.Label();
             this.lblPhone = new System.Windows.Forms.Label();
             this.lblAddress = new System.Windows.Forms.Label();
             this.lblDate = new System.Windows.Forms.Label();
             this.lblAge = new System.Windows.Forms.Label();
-            this.dataGridViewLense = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label24 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.dataGridViewItems = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.lblDiscount = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -97,24 +101,20 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.printDocument = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog = new System.Windows.Forms.PrintPreviewDialog();
-            this.panelWhole = new System.Windows.Forms.Panel();
-            this.panelFrame = new System.Windows.Forms.Panel();
-            this.panelDueNote = new System.Windows.Forms.Panel();
-            this.panelLens = new System.Windows.Forms.Panel();
             this.panelTOP.SuspendLayout();
             this.panelReceipt.SuspendLayout();
+            this.panelWhole.SuspendLayout();
+            this.panelLens.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLense)).BeginInit();
+            this.panelDueNote.SuspendLayout();
+            this.panelFrame.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLense)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewItems)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPresc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panelWhole.SuspendLayout();
-            this.panelFrame.SuspendLayout();
-            this.panelDueNote.SuspendLayout();
-            this.panelLens.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelTOP
@@ -221,95 +221,24 @@
             this.panelReceipt.Size = new System.Drawing.Size(1159, 761);
             this.panelReceipt.TabIndex = 1;
             // 
-            // pictureBox4
+            // panelWhole
             // 
-            this.pictureBox4.Image = global::Capstone.Properties.Resources.facebook;
-            this.pictureBox4.Location = new System.Drawing.Point(400, 131);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(52, 57);
-            this.pictureBox4.TabIndex = 27;
-            this.pictureBox4.TabStop = false;
+            this.panelWhole.Controls.Add(this.panelLens);
+            this.panelWhole.Controls.Add(this.panelDueNote);
+            this.panelWhole.Controls.Add(this.panelFrame);
+            this.panelWhole.Location = new System.Drawing.Point(18, 514);
+            this.panelWhole.Name = "panelWhole";
+            this.panelWhole.Size = new System.Drawing.Size(517, 247);
+            this.panelWhole.TabIndex = 28;
             // 
-            // pictureBox3
+            // panelLens
             // 
-            this.pictureBox3.Image = global::Capstone.Properties.Resources.map;
-            this.pictureBox3.Location = new System.Drawing.Point(400, 76);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(52, 57);
-            this.pictureBox3.TabIndex = 26;
-            this.pictureBox3.TabStop = false;
-            // 
-            // lblName
-            // 
-            this.lblName.AutoSize = true;
-            this.lblName.Font = new System.Drawing.Font("Times New Roman", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblName.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.lblName.Location = new System.Drawing.Point(441, 238);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(81, 42);
-            this.lblName.TabIndex = 25;
-            this.lblName.Text = "       ";
-            // 
-            // lblDueDate
-            // 
-            this.lblDueDate.AutoSize = true;
-            this.lblDueDate.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblDueDate.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.lblDueDate.Location = new System.Drawing.Point(229, 43);
-            this.lblDueDate.Name = "lblDueDate";
-            this.lblDueDate.Size = new System.Drawing.Size(64, 33);
-            this.lblDueDate.TabIndex = 24;
-            this.lblDueDate.Text = "       ";
-            // 
-            // lblNote
-            // 
-            this.lblNote.AutoSize = true;
-            this.lblNote.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblNote.Location = new System.Drawing.Point(135, 9);
-            this.lblNote.Name = "lblNote";
-            this.lblNote.Size = new System.Drawing.Size(54, 26);
-            this.lblNote.TabIndex = 23;
-            this.lblNote.Text = "       ";
-            // 
-            // lblPhone
-            // 
-            this.lblPhone.AutoSize = true;
-            this.lblPhone.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblPhone.Location = new System.Drawing.Point(235, 332);
-            this.lblPhone.Name = "lblPhone";
-            this.lblPhone.Size = new System.Drawing.Size(54, 26);
-            this.lblPhone.TabIndex = 22;
-            this.lblPhone.Text = "       ";
-            // 
-            // lblAddress
-            // 
-            this.lblAddress.AutoSize = true;
-            this.lblAddress.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblAddress.Location = new System.Drawing.Point(235, 294);
-            this.lblAddress.Name = "lblAddress";
-            this.lblAddress.Size = new System.Drawing.Size(54, 26);
-            this.lblAddress.TabIndex = 21;
-            this.lblAddress.Text = "       ";
-            // 
-            // lblDate
-            // 
-            this.lblDate.AutoSize = true;
-            this.lblDate.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblDate.Location = new System.Drawing.Point(796, 332);
-            this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(54, 26);
-            this.lblDate.TabIndex = 20;
-            this.lblDate.Text = "       ";
-            // 
-            // lblAge
-            // 
-            this.lblAge.AutoSize = true;
-            this.lblAge.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblAge.Location = new System.Drawing.Point(796, 294);
-            this.lblAge.Name = "lblAge";
-            this.lblAge.Size = new System.Drawing.Size(54, 26);
-            this.lblAge.TabIndex = 19;
-            this.lblAge.Text = "       ";
+            this.panelLens.Controls.Add(this.dataGridViewLense);
+            this.panelLens.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelLens.Location = new System.Drawing.Point(0, 85);
+            this.panelLens.Name = "panelLens";
+            this.panelLens.Size = new System.Drawing.Size(517, 77);
+            this.panelLens.TabIndex = 2;
             // 
             // dataGridViewLense
             // 
@@ -318,6 +247,7 @@
             this.dataGridViewLense.AllowUserToResizeRows = false;
             this.dataGridViewLense.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewLense.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridViewLense.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dataGridViewLense.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
@@ -370,45 +300,17 @@
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
-            // label24
+            // panelDueNote
             // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label24.Location = new System.Drawing.Point(40, 364);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(57, 32);
-            this.label24.TabIndex = 17;
-            this.label24.Text = "Rx:";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label23.Location = new System.Drawing.Point(110, 251);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(115, 26);
-            this.label23.TabIndex = 16;
-            this.label23.Text = "Px\'s Name:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.BackColor = System.Drawing.Color.White;
-            this.textBox1.Location = new System.Drawing.Point(575, 361);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(429, 38);
-            this.textBox1.TabIndex = 15;
-            this.textBox1.Text = "IN SETTLEMENT OF THE FOLLOWING";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label21.Location = new System.Drawing.Point(3, 50);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(124, 26);
-            this.label21.TabIndex = 14;
-            this.label21.Text = "DUE DATE:";
+            this.panelDueNote.Controls.Add(this.label22);
+            this.panelDueNote.Controls.Add(this.label21);
+            this.panelDueNote.Controls.Add(this.lblNote);
+            this.panelDueNote.Controls.Add(this.lblDueDate);
+            this.panelDueNote.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelDueNote.Location = new System.Drawing.Point(0, 162);
+            this.panelDueNote.Name = "panelDueNote";
+            this.panelDueNote.Size = new System.Drawing.Size(517, 85);
+            this.panelDueNote.TabIndex = 1;
             // 
             // label22
             // 
@@ -420,6 +322,46 @@
             this.label22.TabIndex = 13;
             this.label22.Text = "Note:";
             // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label21.Location = new System.Drawing.Point(3, 50);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(124, 26);
+            this.label21.TabIndex = 14;
+            this.label21.Text = "DUE DATE:";
+            // 
+            // lblNote
+            // 
+            this.lblNote.AutoSize = true;
+            this.lblNote.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblNote.Location = new System.Drawing.Point(135, 9);
+            this.lblNote.Name = "lblNote";
+            this.lblNote.Size = new System.Drawing.Size(54, 26);
+            this.lblNote.TabIndex = 23;
+            this.lblNote.Text = "       ";
+            // 
+            // lblDueDate
+            // 
+            this.lblDueDate.AutoSize = true;
+            this.lblDueDate.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblDueDate.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.lblDueDate.Location = new System.Drawing.Point(135, 43);
+            this.lblDueDate.Name = "lblDueDate";
+            this.lblDueDate.Size = new System.Drawing.Size(64, 33);
+            this.lblDueDate.TabIndex = 24;
+            this.lblDueDate.Text = "       ";
+            // 
+            // panelFrame
+            // 
+            this.panelFrame.Controls.Add(this.dataGridViewItems);
+            this.panelFrame.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelFrame.Location = new System.Drawing.Point(0, 0);
+            this.panelFrame.Name = "panelFrame";
+            this.panelFrame.Size = new System.Drawing.Size(517, 85);
+            this.panelFrame.TabIndex = 0;
+            // 
             // dataGridViewItems
             // 
             this.dataGridViewItems.AllowUserToAddRows = false;
@@ -427,6 +369,7 @@
             this.dataGridViewItems.AllowUserToResizeRows = false;
             this.dataGridViewItems.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewItems.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridViewItems.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dataGridViewItems.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
@@ -486,6 +429,105 @@
             this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::Capstone.Properties.Resources.facebook;
+            this.pictureBox4.Location = new System.Drawing.Point(400, 131);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(52, 57);
+            this.pictureBox4.TabIndex = 27;
+            this.pictureBox4.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::Capstone.Properties.Resources.map;
+            this.pictureBox3.Location = new System.Drawing.Point(400, 76);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(52, 57);
+            this.pictureBox3.TabIndex = 26;
+            this.pictureBox3.TabStop = false;
+            // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.Font = new System.Drawing.Font("Times New Roman", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblName.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.lblName.Location = new System.Drawing.Point(441, 238);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(81, 42);
+            this.lblName.TabIndex = 25;
+            this.lblName.Text = "       ";
+            // 
+            // lblPhone
+            // 
+            this.lblPhone.AutoSize = true;
+            this.lblPhone.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblPhone.Location = new System.Drawing.Point(235, 332);
+            this.lblPhone.Name = "lblPhone";
+            this.lblPhone.Size = new System.Drawing.Size(54, 26);
+            this.lblPhone.TabIndex = 22;
+            this.lblPhone.Text = "       ";
+            // 
+            // lblAddress
+            // 
+            this.lblAddress.AutoSize = true;
+            this.lblAddress.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblAddress.Location = new System.Drawing.Point(235, 294);
+            this.lblAddress.Name = "lblAddress";
+            this.lblAddress.Size = new System.Drawing.Size(54, 26);
+            this.lblAddress.TabIndex = 21;
+            this.lblAddress.Text = "       ";
+            // 
+            // lblDate
+            // 
+            this.lblDate.AutoSize = true;
+            this.lblDate.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblDate.Location = new System.Drawing.Point(796, 332);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(54, 26);
+            this.lblDate.TabIndex = 20;
+            this.lblDate.Text = "       ";
+            // 
+            // lblAge
+            // 
+            this.lblAge.AutoSize = true;
+            this.lblAge.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblAge.Location = new System.Drawing.Point(796, 294);
+            this.lblAge.Name = "lblAge";
+            this.lblAge.Size = new System.Drawing.Size(54, 26);
+            this.lblAge.TabIndex = 19;
+            this.lblAge.Text = "       ";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label24.Location = new System.Drawing.Point(40, 364);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(57, 32);
+            this.label24.TabIndex = 17;
+            this.label24.Text = "Rx:";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label23.Location = new System.Drawing.Point(110, 251);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(115, 26);
+            this.label23.TabIndex = 16;
+            this.label23.Text = "Px\'s Name:";
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.White;
+            this.textBox1.Location = new System.Drawing.Point(575, 361);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(429, 38);
+            this.textBox1.TabIndex = 15;
+            this.textBox1.Text = "IN SETTLEMENT OF THE FOLLOWING";
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // tableLayoutPanel1
             // 
@@ -706,7 +748,7 @@
             this.dataGridViewPresc.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridViewPresc.RowTemplate.Height = 35;
             this.dataGridViewPresc.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewPresc.Size = new System.Drawing.Size(517, 118);
+            this.dataGridViewPresc.Size = new System.Drawing.Size(517, 113);
             this.dataGridViewPresc.TabIndex = 10;
             // 
             // NumService
@@ -843,10 +885,10 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(0, 182);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(984, 31);
+            this.label1.Size = new System.Drawing.Size(1014, 31);
             this.label1.TabIndex = 1;
             this.label1.Text = "_________________________________________________________________________________" +
-    "________________";
+    "___________________";
             // 
             // pictureBox1
             // 
@@ -871,46 +913,6 @@
             this.printPreviewDialog.Name = "printPreviewDialog";
             this.printPreviewDialog.Visible = false;
             // 
-            // panelWhole
-            // 
-            this.panelWhole.Controls.Add(this.panelLens);
-            this.panelWhole.Controls.Add(this.panelDueNote);
-            this.panelWhole.Controls.Add(this.panelFrame);
-            this.panelWhole.Location = new System.Drawing.Point(18, 523);
-            this.panelWhole.Name = "panelWhole";
-            this.panelWhole.Size = new System.Drawing.Size(517, 247);
-            this.panelWhole.TabIndex = 28;
-            // 
-            // panelFrame
-            // 
-            this.panelFrame.Controls.Add(this.dataGridViewItems);
-            this.panelFrame.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelFrame.Location = new System.Drawing.Point(0, 0);
-            this.panelFrame.Name = "panelFrame";
-            this.panelFrame.Size = new System.Drawing.Size(517, 85);
-            this.panelFrame.TabIndex = 0;
-            // 
-            // panelDueNote
-            // 
-            this.panelDueNote.Controls.Add(this.label22);
-            this.panelDueNote.Controls.Add(this.label21);
-            this.panelDueNote.Controls.Add(this.lblNote);
-            this.panelDueNote.Controls.Add(this.lblDueDate);
-            this.panelDueNote.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelDueNote.Location = new System.Drawing.Point(0, 162);
-            this.panelDueNote.Name = "panelDueNote";
-            this.panelDueNote.Size = new System.Drawing.Size(517, 85);
-            this.panelDueNote.TabIndex = 1;
-            // 
-            // panelLens
-            // 
-            this.panelLens.Controls.Add(this.dataGridViewLense);
-            this.panelLens.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelLens.Location = new System.Drawing.Point(0, 85);
-            this.panelLens.Name = "panelLens";
-            this.panelLens.Size = new System.Drawing.Size(517, 77);
-            this.panelLens.TabIndex = 2;
-            // 
             // frmFinalReceipt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 31F);
@@ -927,20 +929,20 @@
             this.panelTOP.PerformLayout();
             this.panelReceipt.ResumeLayout(false);
             this.panelReceipt.PerformLayout();
+            this.panelWhole.ResumeLayout(false);
+            this.panelLens.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLense)).EndInit();
+            this.panelDueNote.ResumeLayout(false);
+            this.panelDueNote.PerformLayout();
+            this.panelFrame.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLense)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewItems)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPresc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panelWhole.ResumeLayout(false);
-            this.panelFrame.ResumeLayout(false);
-            this.panelDueNote.ResumeLayout(false);
-            this.panelDueNote.PerformLayout();
-            this.panelLens.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

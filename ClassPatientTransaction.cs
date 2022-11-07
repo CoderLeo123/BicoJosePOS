@@ -123,9 +123,9 @@ namespace Capstone
             dr.Close();
             cn.Close();
         }
-        public void LoadTransaction(string transNo, out string FramePrice, out string LensPrice, out string TotalCost, out string NetTotal, out string Deposit, out string Balance, out string Discount)
+        public void LoadTransaction(string transNo, out string FramePrice, out string LensPrice, out string TotalCost, out string NetTotal, out string Deposit, out string Balance, out string Discount, out string DueDate)
         {
-            FramePrice = ""; LensPrice = ""; TotalCost = ""; NetTotal = ""; Deposit = ""; Balance = ""; Discount = "";
+            FramePrice = ""; LensPrice = ""; TotalCost = ""; NetTotal = ""; Deposit = ""; Balance = ""; Discount = ""; DueDate = "";
 
             cn = new SqlConnection(dbcon.MyConnection());
             cn.Open();
@@ -134,14 +134,15 @@ namespace Capstone
             while (dr.Read())
             {
                 FramePrice = dr[15].ToString(); LensPrice = dr[16].ToString(); TotalCost = dr[6].ToString();
-                NetTotal = dr[8].ToString(); Deposit = dr[9].ToString(); Balance = dr[10].ToString(); Discount = dr[7].ToString();
+                NetTotal = dr[8].ToString(); Deposit = dr[9].ToString(); Balance = dr[10].ToString();
+                Discount = dr[7].ToString(); DueDate = DateTime.Parse(dr[13].ToString()).ToLongDateString();
             }
             dr.Close();
             cn.Close();
         }
-        public void LoadSettled(string transNo, out string NetTotal, out string Payment)
+        public void LoadSettled(string transNo, out string NetTotal, out string Payment, out string DueDate)
         {
-            NetTotal = ""; Payment = "";
+            NetTotal = ""; Payment = ""; DueDate = "";
 
             cn = new SqlConnection(dbcon.MyConnection());
             cn.Open();
@@ -150,27 +151,30 @@ namespace Capstone
             while (dr.Read())
             {
                 
-                NetTotal = dr[0].ToString(); Payment = dr[1].ToString(); 
+                NetTotal = dr[0].ToString(); Payment = dr[1].ToString(); DueDate = DateTime.Parse(dr[13].ToString()).ToLongDateString();
             }
             dr.Close();
             cn.Close();
         }
-        public void LoadItems(DataGridView dgv, string transNo)
+        public void LoadItems(DataGridView dgv, string transNo, out int RowCount)
         {
+            RowCount = 0;
             cn = new SqlConnection(dbcon.MyConnection());
-            dgv.Rows.Clear();
+            dgv.Rows.Clear(); 
             cn.Open();
             SqlCommand cm = new SqlCommand("SELECT Quantity, Description FROM ViewCartStockItem WHERE Transaction_No LIKE '%" + transNo + "%' AND Lense_Check = 1", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
+                RowCount++;
                 dgv.Rows.Add(dr[0].ToString(), dr[1].ToString());                
             }
             dr.Close();
             cn.Close();
         }
-        public void LoadLense(DataGridView dgv, string transNo)
+        public void LoadLense(DataGridView dgv, string transNo, out int RowCount)
         {
+            RowCount = 0;
             cn = new SqlConnection(dbcon.MyConnection());
             dgv.Rows.Clear();
             cn.Open();
@@ -178,6 +182,7 @@ namespace Capstone
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
+                RowCount++;
                 dgv.Rows.Add(dr[0].ToString(), dr[1].ToString());
             }
             dr.Close();
