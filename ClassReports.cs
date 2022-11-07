@@ -192,8 +192,8 @@ namespace Capstone
 
             cn.Open();
             SqlCommand cm = new SqlCommand("UPDATE tblSalesReport SET Total_Sale = @Total_Sale, Total_Bal = @Total_Bal WHERE Date LIKE '" + date + "'", cn);
-            cm.Parameters.AddWithValue("@Total_Sale", payment);
-            cm.Parameters.AddWithValue("@Total_Bal", balance);
+            cm.Parameters.AddWithValue("@Total_Sale", payment.ToString("#,##0.00"));
+            cm.Parameters.AddWithValue("@Total_Bal", balance.ToString("#,##0.00"));
             cm.ExecuteNonQuery();
             cn.Close();
 

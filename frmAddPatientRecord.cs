@@ -97,7 +97,9 @@ namespace Capstone
         }
         public void getValueGeneralInfo(out string firstName, out string lastName, out string address, out string contact, out string gender, out string age, out string checkUp, out string birth)
         {
-             firstName = txtAddFName.Text;
+            //dateTimePickerCheckUpDate.Format = DateTimePickerFormat.Custom;
+            //dateTimePickerCheckUpDate.CustomFormat = "MM/dd/yyyy hh:mm:ss";
+            firstName = txtAddFName.Text;
              lastName = txtAddLName.Text;
              address = txtAddAddress.Text;
              contact = txtAddContact.Text;
@@ -105,7 +107,9 @@ namespace Capstone
              age = txtAddAge.Text;
             checkUp = dateTimePickerCheckUpDate.Value.ToString();
              birth = dateTimePickerBirthDate.Value.ToString();
-             
+            //dateTimePicker1.Format = DateTimePickerFormat.Custom;
+            //dateTimePicker1.CustomFormat = "MM/dd/yyyy hh:mm:ss";
+
         }
         public void getValueOD(out string ODSPH, out string ODCYL, out string ODAXIS, out string ODPD)
         {
@@ -131,7 +135,7 @@ namespace Capstone
             string OSSPH = "", OSCYL = "", OSAXIS = "", OSPD = "";
             getValueOS(out OSSPH, out OSCYL, out OSAXIS, out OSPD);
             //int ageCalculated = int.Parse(txtAddAge.Text); 
-            string CName = txtAddFName.Text + " " + txtAddLName.Text;
+            string CName = firstName + " " + lastName;
 
             if (firstName != "" && lastName != "" && address != "" && contact != "" && gender != "" && age != "" && ODSPH != "" &&
                 ODCYL != "" && ODAXIS != "" && ODPD != "" && OSSPH != "" && OSCYL != "" && OSAXIS != "" && OSPD != "")
@@ -139,7 +143,7 @@ namespace Capstone
                 if (MessageBox.Show("Are you sure you want to save this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     cn.Open();
-                    cm = new SqlCommand("INSERT INTO tblPatientRecord (Patient_ID, Customer_Name, Address, Contact, Age, Gender, Check_Up_Date, Prescript_No, Birth_Date) VALUES(@Patient_ID, @Customer_Name, @Address, @Contact, @Age, @Gender, @Check_Up_Date, @Prescript_No, @Birth_Date)", cn);
+                    cm = new SqlCommand("INSERT INTO tblPatientRecord (Patient_ID, Customer_Name, Address, Contact, Age, Gender, Check_Up_Date, Prescript_No, Birth_Date, First_Name, Last_Name) VALUES(@Patient_ID, @Customer_Name, @Address, @Contact, @Age, @Gender, @Check_Up_Date, @Prescript_No, @Birth_Date, @First_Name, @Last_Name)", cn);
                     cm.Parameters.AddWithValue("@Patient_ID", txtAddPatientID.Text);
                     cm.Parameters.AddWithValue("@Prescript_No", txtAddPrescNum.Text);
                     cm.Parameters.AddWithValue("@Customer_Name", CName);
@@ -149,6 +153,9 @@ namespace Capstone
                     cm.Parameters.AddWithValue("@Gender", comBoxAddGender.Text);
                     cm.Parameters.AddWithValue("@Check_Up_Date", checkUp);
                     cm.Parameters.AddWithValue("@Birth_Date", birth);
+                    cm.Parameters.AddWithValue("@First_Name", firstName);
+                    cm.Parameters.AddWithValue("@Last_Name", lastName);
+                    cm.Parameters.AddWithValue("@Note", txtAddNote.Text);
                     cm.ExecuteNonQuery();
                     cn.Close();
 
@@ -187,7 +194,7 @@ namespace Capstone
         private void dateTimePickerBirthDate_ValueChanged(object sender, EventArgs e)
         {
             int years = DateTime.Now.Year - dateTimePickerBirthDate.Value.Year;
-            if(dateTimePickerBirthDate.Value.AddYears(years) > DateTime.Now)
+            if(dateTimePickerBirthDate.Value.AddYears(years) < DateTime.Now)
             {
                 years--;
                 txtAddAge.Text = years.ToString();
@@ -280,12 +287,14 @@ namespace Capstone
 
         private void dateTimePickerCheckUpDate_ValueChanged(object sender, EventArgs e)
         {
-            int years = DateTime.Now.Year - dateTimePickerBirthDate.Value.Year;
-            if (dateTimePickerBirthDate.Value.AddYears(years) < DateTime.Now)
-            { 
-                years--;
-                txtAddAge.Text = years.ToString();
-            }
+            //int years = DateTime.Now.Year - dateTimePickerBirthDate.Value.Year;
+            //if (dateTimePickerBirthDate.Value.AddYears(years) < DateTime.Now)
+            //{ 
+            //    years--;
+            //    txtAddAge.Text = years.ToString();
+            //}
+            //dateTimePicker1.Format = DateTimePickerFormat.Custom;
+            //dateTimePicker1.CustomFormat = "MM/dd/yyyy hh:mm:ss";
         }
 
         private void btnUpdatePatientRecord_Click(object sender, EventArgs e)
@@ -305,7 +314,7 @@ namespace Capstone
                 if (MessageBox.Show("Are you sure you want to update this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     cn.Open();
-                    cm = new SqlCommand("UPDATE tblPrescription SET Customer_Name = @Customer_Name, Address = @Address, Contact = @Contact, Age = @Age, Gender = @Gender, Check_Up_Date = @Check_Up_Date, Birth_Date = @Birth_Date WHERE Patient_ID LIKE '" + txtAddPatientID.Text + "'", cn);                    
+                    cm = new SqlCommand("UPDATE tblPatientRecord SET Customer_Name = @Customer_Name, Address = @Address, Contact = @Contact, Age = @Age, Gender = @Gender, Check_Up_Date = @Check_Up_Date, Birth_Date = @Birth_Date, First_Name = @First_Name, Last_Name = @Last_Name, Note = @Note WHERE Patient_ID LIKE '" + pID + "'", cn);                    
                     cm.Parameters.AddWithValue("@Customer_Name", CName);
                     cm.Parameters.AddWithValue("@Address", address);
                     cm.Parameters.AddWithValue("@Contact", contact);
@@ -313,11 +322,14 @@ namespace Capstone
                     cm.Parameters.AddWithValue("@Gender", gender);
                     cm.Parameters.AddWithValue("@Check_Up_Date", checkUp);
                     cm.Parameters.AddWithValue("@Birth_Date", birth);
+                    cm.Parameters.AddWithValue("@First_Name", firstName);
+                    cm.Parameters.AddWithValue("@Last_Name", lastName);
+                    cm.Parameters.AddWithValue("@Note", txtAddNote.Text);
                     cm.ExecuteNonQuery();
                     cn.Close();
 
                     cn.Open();
-                    cm = new SqlCommand("UPDATE tblPatientRecord SET SPH_OD = @SPH_OD, CYL_OD = @CYL_OD, AXIS_OD = @AXIS_OD, PD_OD = @PD_OD, ADD_OD = @ADD_OD, SPH_OS = @SPH_OS, CYL_OS = @CYL_OS, AXIS_OS = @AXIS_OS, PD_OS = @PD_OS, ADD_OS = @ADD_OS WHERE Patient_ID LIKE '" + txtAddPatientID.Text + "'", cn);
+                    cm = new SqlCommand("UPDATE tblPrescription SET SPH_OD = @SPH_OD, CYL_OD = @CYL_OD, AXIS_OD = @AXIS_OD, PD_OD = @PD_OD, ADD_OD = @ADD_OD, SPH_OS = @SPH_OS, CYL_OS = @CYL_OS, AXIS_OS = @AXIS_OS, PD_OS = @PD_OS, ADD_OS = @ADD_OS WHERE Patient_ID LIKE '" + pID + "'", cn);
                     cm.Parameters.AddWithValue("@SPH_OD", ODSPH);
                     cm.Parameters.AddWithValue("@CYL_OD", ODCYL);
                     cm.Parameters.AddWithValue("@AXIS_OD", ODAXIS);

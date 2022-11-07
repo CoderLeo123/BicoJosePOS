@@ -31,7 +31,7 @@ namespace Capstone
             { 
                         //                     2-PATIENT NAME / 2-Customer_Name       4-CONTACT / 4-Contact             6-GENDER / 6-Gender 
                 i += 1; //0-#  1-PATIENT ID / 1-Patient_ID         3-ADDRESS / 3-Address                 5-AGE / 5-Age                   7-CHECK-UP DATE / 7-Check_Up_Date 
-                dgv.Rows.Add(i, dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), dr[5].ToString(), dr[6].ToString(), dr[7].ToString());
+                dgv.Rows.Add(i, dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), dr[5].ToString(), dr[6].ToString(), DateTime.Parse(dr[7].ToString()).ToShortDateString(), dr[9].ToString(), dr[12].ToString(), dr[13].ToString(), DateTime.Parse(dr[10].ToString()).ToShortDateString());
             }
             dr.Close();
             cn.Close();

@@ -35,6 +35,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPatientRecord));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblPrescript = new System.Windows.Forms.Label();
             this.lblCurrentTransN = new System.Windows.Forms.Label();
             this.lblPatientID = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -100,6 +101,9 @@
             this.GenderPRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CheckUpDatePRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.presct = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fna = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Lna = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.birthDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EditPRecord = new System.Windows.Forms.DataGridViewImageColumn();
             this.del = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel1.SuspendLayout();
@@ -121,6 +125,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.panel1.Controls.Add(this.lblPrescript);
             this.panel1.Controls.Add(this.lblCurrentTransN);
             this.panel1.Controls.Add(this.lblPatientID);
             this.panel1.Controls.Add(this.panel5);
@@ -131,6 +136,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1315, 120);
             this.panel1.TabIndex = 4;
+            // 
+            // lblPrescript
+            // 
+            this.lblPrescript.AutoSize = true;
+            this.lblPrescript.Location = new System.Drawing.Point(677, 9);
+            this.lblPrescript.Name = "lblPrescript";
+            this.lblPrescript.Size = new System.Drawing.Size(25, 20);
+            this.lblPrescript.TabIndex = 42;
+            this.lblPrescript.Text = "    ";
+            this.lblPrescript.Visible = false;
             // 
             // lblCurrentTransN
             // 
@@ -145,7 +160,7 @@
             // lblPatientID
             // 
             this.lblPatientID.AutoSize = true;
-            this.lblPatientID.Location = new System.Drawing.Point(549, 11);
+            this.lblPatientID.Location = new System.Drawing.Point(543, 11);
             this.lblPatientID.Name = "lblPatientID";
             this.lblPatientID.Size = new System.Drawing.Size(25, 20);
             this.lblPatientID.TabIndex = 40;
@@ -294,6 +309,9 @@
             this.GenderPRecord,
             this.CheckUpDatePRecord,
             this.presct,
+            this.Fna,
+            this.Lna,
+            this.birthDate,
             this.EditPRecord,
             this.del});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -887,6 +905,30 @@
             this.presct.Visible = false;
             this.presct.Width = 125;
             // 
+            // Fna
+            // 
+            this.Fna.HeaderText = "Fname";
+            this.Fna.MinimumWidth = 6;
+            this.Fna.Name = "Fna";
+            this.Fna.Visible = false;
+            this.Fna.Width = 125;
+            // 
+            // Lna
+            // 
+            this.Lna.HeaderText = "LName";
+            this.Lna.MinimumWidth = 6;
+            this.Lna.Name = "Lna";
+            this.Lna.Visible = false;
+            this.Lna.Width = 125;
+            // 
+            // birthDate
+            // 
+            this.birthDate.HeaderText = "birthDate";
+            this.birthDate.MinimumWidth = 6;
+            this.birthDate.Name = "birthDate";
+            this.birthDate.Visible = false;
+            this.birthDate.Width = 125;
+            // 
             // EditPRecord
             // 
             this.EditPRecord.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -1000,6 +1042,7 @@
         private System.Drawing.Printing.PrintDocument printDocumentFinalReceipt;
         private PrintPreviewDialog printPreviewDialog;
         private Label lblCurrentTransN;
+        public Label lblPrescript;
         private DataGridViewTextBoxColumn NumPRecord;
         private DataGridViewTextBoxColumn PatientIDPRecord;
         private DataGridViewTextBoxColumn CustomerNamePRecord;
@@ -1009,6 +1052,9 @@
         private DataGridViewTextBoxColumn GenderPRecord;
         private DataGridViewTextBoxColumn CheckUpDatePRecord;
         private DataGridViewTextBoxColumn presct;
+        private DataGridViewTextBoxColumn Fna;
+        private DataGridViewTextBoxColumn Lna;
+        private DataGridViewTextBoxColumn birthDate;
         private DataGridViewImageColumn EditPRecord;
         private DataGridViewImageColumn del;
     }

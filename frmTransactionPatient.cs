@@ -25,6 +25,7 @@ namespace Capstone
         public frmTransactionPatient(frmAddPatientRecord frmL)
         {
             InitializeComponent();
+            cn = new SqlConnection(dbcon.MyConnection());
             this.frmL = frmL;
         }
 
@@ -36,16 +37,6 @@ namespace Capstone
         private void dataGridViewRTrans_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             lblCurrentTransN.Text = dataGridViewRTrans.Rows[e.RowIndex].Cells[1].Value?.ToString();
-
-            PrintPreviewDialog preview = new PrintPreviewDialog();
-            preview.Document = printDocumentReceipt;
-            int pLength = 1000;
-            paperSizeUpdate(out pLength);
-            printDocumentReceipt.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("RECEIPT", 610, pLength);
-            preview.PrintPreviewControl.Zoom = 0.75;
-            preview.Size = new System.Drawing.Size(400, 650);
-            preview.ShowDialog();
-
             string colName = dataGridViewRTrans.Columns[e.ColumnIndex].Name;
             string pID = lblPatientID.Text; string Type = "Regular";
             string TransNo = dataGridViewRTrans.Rows[e.RowIndex].Cells[1].Value?.ToString();
@@ -90,6 +81,18 @@ namespace Capstone
                 }
                 classPatient.LoadPatientTransactionList(frmL.dataGridViewTrans, pID);
             }
+            else
+            {
+                PrintPreviewDialog preview = new PrintPreviewDialog();
+                preview.Document = printDocumentReceipt;
+                int pLength = 1000;
+                paperSizeUpdate(out pLength);
+                printDocumentReceipt.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("RECEIPT", 610, pLength);
+                preview.PrintPreviewControl.Zoom = 0.75;
+                preview.Size = new System.Drawing.Size(400, 650);
+                preview.ShowDialog();
+            }
+
         }
 
         private void dataGridViewSTrans_CellContentClick(object sender, DataGridViewCellEventArgs e)

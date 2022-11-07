@@ -100,6 +100,7 @@ namespace Capstone
         private void dataGridViewService_CellContentClick(object sender, DataGridViewCellEventArgs e) //dataGridViewProduct
         {
             string colName = dataGridViewProduct.Columns[e.ColumnIndex].Name;
+            string product = dataGridViewProduct[4, e.RowIndex].Value.ToString();
             if (colName == "EditProduct")
             {
                 frmAddAccessories frm = new frmAddAccessories(this);
@@ -110,6 +111,8 @@ namespace Capstone
 
                 frm.txtProdID.Text = dataGridViewProduct[1, e.RowIndex].Value.ToString();
                 frm.txtProdName.Text = dataGridViewProduct[2, e.RowIndex].Value.ToString();
+                frm.comBoxProductType.SelectedIndex = frm.comBoxProductType.Items.IndexOf(product);
+                //frm.comBoxProductType.SelectedItem = product;
                 frm.btnSaveProduct.Enabled = false;
                 frm.btnUpdateProduct.Enabled = true;
                 frm.Size = new Size(672, 357);

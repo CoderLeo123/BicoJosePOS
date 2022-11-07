@@ -329,7 +329,7 @@ namespace Capstone
                     if ((e.KeyChar == 13))//enter
                     {
                         cn.Open();
-                        cm = new SqlCommand("INSERT INTO tblCart (Stock_Num, Item_ID, Transaction_No, Quantity, Price, Total, Date, Status) VALUES (@Stock_Num, @Item_ID, @TransactionNo, @Quantity, @Price, @Total, @Date, 'Cart')", cn);
+                        cm = new SqlCommand("INSERT INTO tblCart (Stock_Num, Item_ID, Transaction_No, Quantity, Price, Total, Date, Status, Lense_Check) VALUES (@Stock_Num, @Item_ID, @TransactionNo, @Quantity, @Price, @Total, @Date, 'Cart', @Lense_Check)", cn);
                         //cm.Parameters.AddWithValue("@Stock_ID", frmB.dataGridViewBrowse[1, i].Value.ToString());
                         cm.Parameters.AddWithValue("@Stock_Num", dataGridViewNC[1, 0].Value.ToString());
                         cm.Parameters.AddWithValue("@Item_ID", lblItemIDPass.Text);
@@ -339,7 +339,8 @@ namespace Capstone
                         cm.Parameters.AddWithValue("@Date", DateTime.Now);
                         cm.Parameters.AddWithValue("@Total", lblTotal.Text);
                         cm.Parameters.AddWithValue("@UnitM", lblTotal.Text);
-                        cm.ExecuteNonQuery();
+                    cm.Parameters.AddWithValue("@Lense_Check", lblLenseCheck.Text);
+                    cm.ExecuteNonQuery();
                         cn.Close();
                         MessageBox.Show("Successfully Added!", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
                         frmB.LoadCart();

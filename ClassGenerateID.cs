@@ -120,7 +120,21 @@ namespace Capstone
             }
         }
 
-
+        public void selectAndIncrementT(string table, string column, Label Id, int index1Length2, int length1, int index2)
+        {//"tblProduct", "Product_ID", productID
+            //SELECT TOP 1 Product_ID FROM tblProduct ORDER BY Product_ID DESC
+            //string P_ID; int count;
+            cn = new SqlConnection(dbcon.MyConnection());
+            cn.Open();
+            SqlCommand cm = new SqlCommand("SELECT TOP 1 " + column + " FROM " + table + " ORDER BY " + column + " DESC", cn);
+            dr = cm.ExecuteReader();
+            dr.Read();
+            P_ID = dr[0].ToString();
+            count = int.Parse(P_ID.Substring(index1Length2, length1)); //1001    1, 4
+            Id.Text = P_ID.Substring(index2, index1Length2) + (count + 1); //P1002   0, 1
+            dr.Close();
+            cn.Close();
+        }
         public void selectAndIncrement(string table, string column, TextBox Id, int index1Length2, int length1, int index2)
         {//"tblProduct", "Product_ID", productID
             //SELECT TOP 1 Product_ID FROM tblProduct ORDER BY Product_ID DESC
@@ -334,6 +348,7 @@ namespace Capstone
             {
                 cn = new SqlConnection(dbcon.MyConnection());
                 string date = DateTime.Now.ToString("yyyyMMdd");
+                string final = "";
                 cn.Open();
                 SqlCommand cm = new SqlCommand("SELECT TOP 1 Transaction_No FROM tblCart ORDER BY Transaction_No DESC", cn);
                 dr = cm.ExecuteReader();
@@ -342,20 +357,27 @@ namespace Capstone
                 {
                     trans_num = dr[0].ToString(); //2022081710001
                     count = int.Parse(trans_num.Substring(8, 5)); //10001
-                    labelTransactionNo.Text = date + (count + 1); //2022081710002
+                    final = date + (count + 1);
+                    labelTransactionNo.Text = final; //2022081710002
                 }
                 else
                 {
                     cn.Close();
                     
-                    cn.Open();
+                    //cn.Open();
                     //DateTime current = DateTime.Now.Date;
                     //string shortdate = current.Date;
+                    string initialT = date + "10000";
                     labelTransactionNo.Text = date + "10001";
-                    cm = new SqlCommand("INSERT INTO tblCart (Transaction_No) VALUES(@Date)", cn);
-                    cm.Parameters.AddWithValue("@Date", labelTransactionNo.Text);
-                    cm.ExecuteNonQuery();
-                    cn.Close();
+
+                    insertIntialID("tblCart", "Transaction_No", initialT);
+                    selectAndIncrementT("tblCart", "Transaction_No", labelTransactionNo, 8, 5, 0);
+                    deleteInitialID("tblCart", "Transaction_No", initialT);
+
+                    //cm = new SqlCommand("INSERT INTO tblCart (Transaction_No) VALUES(@Date)", cn);
+                    //cm.Parameters.AddWithValue("@Date", labelTransactionNo.Text);
+                    //cm.ExecuteNonQuery();
+                    //cn.Close();
                     //GenerateTransactionNo();
 
                 }

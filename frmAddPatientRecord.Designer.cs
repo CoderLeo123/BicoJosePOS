@@ -31,6 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblCurrentTransN = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnClosePatientRecord = new System.Windows.Forms.PictureBox();
             this.panelAddInfo = new System.Windows.Forms.Panel();
@@ -93,16 +94,6 @@
             this.panelAddTrans = new System.Windows.Forms.Panel();
             this.panelExpiLists = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.btnSearchTrans = new System.Windows.Forms.Button();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.lblTransNo = new System.Windows.Forms.Label();
-            this.lblTrans = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.lblCheck = new System.Windows.Forms.Label();
-            this.lblITEMID = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.lblItemIDCheck = new System.Windows.Forms.Label();
-            this.panel9 = new System.Windows.Forms.Panel();
             this.dataGridViewTrans = new System.Windows.Forms.DataGridView();
             this.NumService = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Num = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -111,7 +102,16 @@
             this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Typ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dek = new System.Windows.Forms.DataGridViewImageColumn();
-            this.lblCurrentTransN = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.lblItemIDCheck = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lblITEMID = new System.Windows.Forms.Label();
+            this.lblCheck = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.lblTrans = new System.Windows.Forms.Label();
+            this.lblTransNo = new System.Windows.Forms.Label();
+            this.btnSearchTrans = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClosePatientRecord)).BeginInit();
             this.panelAddInfo.SuspendLayout();
@@ -119,9 +119,9 @@
             this.panelAddTrans.SuspendLayout();
             this.panelExpiLists.SuspendLayout();
             this.panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTrans)).BeginInit();
             this.panel5.SuspendLayout();
             this.panel9.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTrans)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -135,6 +135,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1315, 57);
             this.panel1.TabIndex = 5;
+            // 
+            // lblCurrentTransN
+            // 
+            this.lblCurrentTransN.AutoSize = true;
+            this.lblCurrentTransN.Location = new System.Drawing.Point(755, 22);
+            this.lblCurrentTransN.Name = "lblCurrentTransN";
+            this.lblCurrentTransN.Size = new System.Drawing.Size(29, 20);
+            this.lblCurrentTransN.TabIndex = 5;
+            this.lblCurrentTransN.Text = "     ";
+            this.lblCurrentTransN.Visible = false;
             // 
             // label1
             // 
@@ -395,6 +405,7 @@
             this.txtAddContact.BackColor = System.Drawing.Color.LightCyan;
             this.txtAddContact.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtAddContact.Location = new System.Drawing.Point(152, 196);
+            this.txtAddContact.MaxLength = 12;
             this.txtAddContact.Name = "txtAddContact";
             this.txtAddContact.Size = new System.Drawing.Size(439, 34);
             this.txtAddContact.TabIndex = 52;
@@ -865,113 +876,6 @@
             this.panel7.Size = new System.Drawing.Size(587, 417);
             this.panel7.TabIndex = 1;
             // 
-            // btnSearchTrans
-            // 
-            this.btnSearchTrans.BackColor = System.Drawing.Color.LimeGreen;
-            this.btnSearchTrans.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSearchTrans.FlatAppearance.BorderSize = 0;
-            this.btnSearchTrans.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearchTrans.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnSearchTrans.ForeColor = System.Drawing.Color.White;
-            this.btnSearchTrans.Location = new System.Drawing.Point(13, 494);
-            this.btnSearchTrans.Name = "btnSearchTrans";
-            this.btnSearchTrans.Size = new System.Drawing.Size(153, 49);
-            this.btnSearchTrans.TabIndex = 87;
-            this.btnSearchTrans.Text = "Search";
-            this.btnSearchTrans.UseVisualStyleBackColor = false;
-            this.btnSearchTrans.Click += new System.EventHandler(this.btnSearchTrans_Click);
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.panel9);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel5.Location = new System.Drawing.Point(0, 0);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(587, 57);
-            this.panel5.TabIndex = 0;
-            // 
-            // lblTransNo
-            // 
-            this.lblTransNo.AutoSize = true;
-            this.lblTransNo.Location = new System.Drawing.Point(1162, 15);
-            this.lblTransNo.Name = "lblTransNo";
-            this.lblTransNo.Size = new System.Drawing.Size(0, 20);
-            this.lblTransNo.TabIndex = 1;
-            // 
-            // lblTrans
-            // 
-            this.lblTrans.AutoSize = true;
-            this.lblTrans.Location = new System.Drawing.Point(1188, 20);
-            this.lblTrans.Name = "lblTrans";
-            this.lblTrans.Size = new System.Drawing.Size(33, 20);
-            this.lblTrans.TabIndex = 2;
-            this.lblTrans.Text = "      ";
-            this.lblTrans.Visible = false;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(1153, 49);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(58, 20);
-            this.label12.TabIndex = 3;
-            this.label12.Text = "label12";
-            // 
-            // lblCheck
-            // 
-            this.lblCheck.AutoSize = true;
-            this.lblCheck.Location = new System.Drawing.Point(991, 15);
-            this.lblCheck.Name = "lblCheck";
-            this.lblCheck.Size = new System.Drawing.Size(45, 20);
-            this.lblCheck.TabIndex = 4;
-            this.lblCheck.Text = "         ";
-            // 
-            // lblITEMID
-            // 
-            this.lblITEMID.AutoSize = true;
-            this.lblITEMID.Location = new System.Drawing.Point(679, 15);
-            this.lblITEMID.Name = "lblITEMID";
-            this.lblITEMID.Size = new System.Drawing.Size(33, 20);
-            this.lblITEMID.TabIndex = 9;
-            this.lblITEMID.Text = "      ";
-            this.lblITEMID.Visible = false;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(218, 9);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(180, 41);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Transaction";
-            // 
-            // lblItemIDCheck
-            // 
-            this.lblItemIDCheck.AutoSize = true;
-            this.lblItemIDCheck.Location = new System.Drawing.Point(795, 18);
-            this.lblItemIDCheck.Name = "lblItemIDCheck";
-            this.lblItemIDCheck.Size = new System.Drawing.Size(33, 20);
-            this.lblItemIDCheck.TabIndex = 10;
-            this.lblItemIDCheck.Text = "      ";
-            this.lblItemIDCheck.Visible = false;
-            // 
-            // panel9
-            // 
-            this.panel9.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.panel9.Controls.Add(this.lblItemIDCheck);
-            this.panel9.Controls.Add(this.label3);
-            this.panel9.Controls.Add(this.lblITEMID);
-            this.panel9.Controls.Add(this.lblCheck);
-            this.panel9.Controls.Add(this.label12);
-            this.panel9.Controls.Add(this.lblTrans);
-            this.panel9.Controls.Add(this.lblTransNo);
-            this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel9.Location = new System.Drawing.Point(0, 0);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(587, 57);
-            this.panel9.TabIndex = 38;
-            // 
             // dataGridViewTrans
             // 
             this.dataGridViewTrans.AllowUserToAddRows = false;
@@ -1053,7 +957,7 @@
             this.UnMe.Name = "UnMe";
             this.UnMe.ReadOnly = true;
             this.UnMe.Visible = false;
-            this.UnMe.Width = 122;
+            this.UnMe.Width = 125;
             // 
             // Price
             // 
@@ -1082,15 +986,112 @@
             this.dek.ReadOnly = true;
             this.dek.Width = 6;
             // 
-            // lblCurrentTransN
+            // panel5
             // 
-            this.lblCurrentTransN.AutoSize = true;
-            this.lblCurrentTransN.Location = new System.Drawing.Point(755, 22);
-            this.lblCurrentTransN.Name = "lblCurrentTransN";
-            this.lblCurrentTransN.Size = new System.Drawing.Size(29, 20);
-            this.lblCurrentTransN.TabIndex = 5;
-            this.lblCurrentTransN.Text = "     ";
-            this.lblCurrentTransN.Visible = false;
+            this.panel5.Controls.Add(this.panel9);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel5.Location = new System.Drawing.Point(0, 0);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(587, 57);
+            this.panel5.TabIndex = 0;
+            // 
+            // panel9
+            // 
+            this.panel9.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.panel9.Controls.Add(this.lblItemIDCheck);
+            this.panel9.Controls.Add(this.label3);
+            this.panel9.Controls.Add(this.lblITEMID);
+            this.panel9.Controls.Add(this.lblCheck);
+            this.panel9.Controls.Add(this.label12);
+            this.panel9.Controls.Add(this.lblTrans);
+            this.panel9.Controls.Add(this.lblTransNo);
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel9.Location = new System.Drawing.Point(0, 0);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(587, 57);
+            this.panel9.TabIndex = 38;
+            // 
+            // lblItemIDCheck
+            // 
+            this.lblItemIDCheck.AutoSize = true;
+            this.lblItemIDCheck.Location = new System.Drawing.Point(795, 18);
+            this.lblItemIDCheck.Name = "lblItemIDCheck";
+            this.lblItemIDCheck.Size = new System.Drawing.Size(33, 20);
+            this.lblItemIDCheck.TabIndex = 10;
+            this.lblItemIDCheck.Text = "      ";
+            this.lblItemIDCheck.Visible = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(218, 9);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(180, 41);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Transaction";
+            // 
+            // lblITEMID
+            // 
+            this.lblITEMID.AutoSize = true;
+            this.lblITEMID.Location = new System.Drawing.Point(679, 15);
+            this.lblITEMID.Name = "lblITEMID";
+            this.lblITEMID.Size = new System.Drawing.Size(33, 20);
+            this.lblITEMID.TabIndex = 9;
+            this.lblITEMID.Text = "      ";
+            this.lblITEMID.Visible = false;
+            // 
+            // lblCheck
+            // 
+            this.lblCheck.AutoSize = true;
+            this.lblCheck.Location = new System.Drawing.Point(991, 15);
+            this.lblCheck.Name = "lblCheck";
+            this.lblCheck.Size = new System.Drawing.Size(45, 20);
+            this.lblCheck.TabIndex = 4;
+            this.lblCheck.Text = "         ";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(1153, 49);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(58, 20);
+            this.label12.TabIndex = 3;
+            this.label12.Text = "label12";
+            // 
+            // lblTrans
+            // 
+            this.lblTrans.AutoSize = true;
+            this.lblTrans.Location = new System.Drawing.Point(1188, 20);
+            this.lblTrans.Name = "lblTrans";
+            this.lblTrans.Size = new System.Drawing.Size(33, 20);
+            this.lblTrans.TabIndex = 2;
+            this.lblTrans.Text = "      ";
+            this.lblTrans.Visible = false;
+            // 
+            // lblTransNo
+            // 
+            this.lblTransNo.AutoSize = true;
+            this.lblTransNo.Location = new System.Drawing.Point(1162, 15);
+            this.lblTransNo.Name = "lblTransNo";
+            this.lblTransNo.Size = new System.Drawing.Size(0, 20);
+            this.lblTransNo.TabIndex = 1;
+            // 
+            // btnSearchTrans
+            // 
+            this.btnSearchTrans.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnSearchTrans.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSearchTrans.FlatAppearance.BorderSize = 0;
+            this.btnSearchTrans.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearchTrans.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnSearchTrans.ForeColor = System.Drawing.Color.White;
+            this.btnSearchTrans.Location = new System.Drawing.Point(13, 494);
+            this.btnSearchTrans.Name = "btnSearchTrans";
+            this.btnSearchTrans.Size = new System.Drawing.Size(153, 49);
+            this.btnSearchTrans.TabIndex = 87;
+            this.btnSearchTrans.Text = "Search";
+            this.btnSearchTrans.UseVisualStyleBackColor = false;
+            this.btnSearchTrans.Click += new System.EventHandler(this.btnSearchTrans_Click);
             // 
             // frmAddPatientRecord
             // 
@@ -1115,10 +1116,10 @@
             this.panelAddTrans.ResumeLayout(false);
             this.panelExpiLists.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTrans)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTrans)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1151,8 +1152,6 @@
         private Label label30;
         private Label label31;
         private Button btnCancelPatientRecord;
-        private Button btnUpdatePatientRecord;
-        private Button btnSavePatientRecord;
         private Label label11;
         public TextBox txtAddOSSPH;
         public TextBox txtAddODSPH;
@@ -1207,5 +1206,7 @@
         private DataGridViewTextBoxColumn Typ;
         private DataGridViewImageColumn dek;
         private Label lblCurrentTransN;
+        public Button btnUpdatePatientRecord;
+        public Button btnSavePatientRecord;
     }
 }

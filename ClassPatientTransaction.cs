@@ -101,7 +101,7 @@ namespace Capstone
             while (dr.Read())
             {
                 FullName = dr[2].ToString(); Address = dr[3].ToString(); Phone = dr[4].ToString(); 
-                Age = dr[5].ToString(); Date = dr[7].ToString(); Note = dr[11].ToString(); 
+                Age = dr[5].ToString(); Date = DateTime.Parse(dr[7].ToString()).ToShortDateString(); Note = dr[11].ToString(); 
             }
             dr.Close();
             cn.Close();
@@ -112,7 +112,7 @@ namespace Capstone
             
             dgv.Rows.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT * FROM tblPrescription WHERE Prescription_No LIKE '%" + prescID + "%'", cn);
+            SqlCommand cm = new SqlCommand("SELECT * FROM tblPrescription WHERE Prescript_No LIKE '%" + prescID + "%'", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
@@ -160,7 +160,7 @@ namespace Capstone
             cn = new SqlConnection(dbcon.MyConnection());
             dgv.Rows.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT Quatity, Description FROM ViewCartStockItem WHERE Transaction_No LIKE '%" + transNo + "%' AND Lense_Check = 1", cn);
+            SqlCommand cm = new SqlCommand("SELECT Quantity, Description FROM ViewCartStockItem WHERE Transaction_No LIKE '%" + transNo + "%' AND Lense_Check = 1", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
@@ -174,7 +174,7 @@ namespace Capstone
             cn = new SqlConnection(dbcon.MyConnection());
             dgv.Rows.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT Quatity, Description FROM ViewCartStockItem WHERE Transaction_No LIKE '%" + transNo + "%' AND Lense_Check = 0", cn);
+            SqlCommand cm = new SqlCommand("SELECT Quantity, Description FROM ViewCartStockItem WHERE Transaction_No LIKE '%" + transNo + "%' AND Lense_Check = 0", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {

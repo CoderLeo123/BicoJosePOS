@@ -679,7 +679,7 @@ namespace Capstone
                 {
                     lblPaymentNotice.Visible = false;
                     computeChange(txtTotal, txtPayment, txtChange);
-                    txtChange.Text = "0";
+                    //txtChange.Text = "0";
                 }
                 
             }

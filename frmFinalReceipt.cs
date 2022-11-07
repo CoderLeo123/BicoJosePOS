@@ -84,13 +84,13 @@ namespace Capstone
             {
                 classPatient.LoadSettled(transNo, out TotalCost, out Deposit);
             }
-            lblFrame.Text = FramePrice;
-            lblLens.Text = LensPrice;
-            lblTotalCost.Text = TotalCost;
-            lblDiscount.Text = Discount;
-            lblNetTotal.Text = NetTotal;
-            lblDeposit.Text = Deposit;
-            lblBalance.Text = Balance;
+            lblFrame.Text = "₱ "+FramePrice;
+            lblLens.Text = "₱ " + LensPrice;
+            lblTotalCost.Text = "₱ " + TotalCost;
+            lblDiscount.Text = "₱ " + Discount;
+            lblNetTotal.Text = "₱ " + NetTotal;
+            lblDeposit.Text = "₱ " + Deposit;
+            lblBalance.Text = "₱ " + Balance;
         }
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
