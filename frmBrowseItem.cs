@@ -11,7 +11,7 @@ using System.Data.SqlClient;
 
 namespace Capstone
 {
-    
+
     public partial class frmBrowseItem : Form
     {
         SqlConnection cn = new SqlConnection();
@@ -23,7 +23,7 @@ namespace Capstone
         string title = "BICO-JOSE System";
         frmCashier frmC;
         string check = "";
-        
+
 
         public frmBrowseItem(frmCashier frmC)
         {
@@ -32,7 +32,7 @@ namespace Capstone
             classLoadData.LoadRecordsBrowse(dataGridViewBrowse, txtSearch);
             //LoadRecordsBrowse();
             this.frmC = frmC;
-            classLoadData.LoadCart(frmC.dataGridViewCart, frmC.lblDiscount, frmC.lblSalesTotal, frmC.lblPayment, frmC.lblNetTotal, frmC.btnSettlePayment, frmC.btnAddDiscount, frmC.btnClearCart, frmC.txtSearch, frmC.dataGridViewService);
+            classLoadData.LoadCart(frmC.dataGridViewCart, frmC.lblDiscount, frmC.lblSalesTotal, frmC.lblPayment, frmC.lblNetTotal, frmC.btnSettlePayment, frmC.btnAddDiscount, frmC.btnClearCart, frmC.txtSearch, frmC.dataGridViewService, frmC.lblNetNoComa, frmC.lblGrossNoComma);
             //LoadCart();
             textRightAlign();
         }
@@ -47,14 +47,14 @@ namespace Capstone
         {
             this.Close();
         }
-        
+
         public void LoadCart()
         {
             try
             {
                 string servTotal = ""; Boolean hasRecord = false;
                 classLoadData.LoadRecordServiceAvail(frmC.dataGridViewService, out servTotal, out hasRecord);
-                
+
                 int i = 0;
                 double total = 0;
                 double discount = 0;
@@ -85,7 +85,7 @@ namespace Capstone
                     total += Double.Parse(dr[5].ToString());
                     discount = Double.Parse(dr[11].ToString());
 
-                                             // 0-Num                2-EXPIRATION / 2-Expiration_Date     4-QUANTITY / 3-Quantity              6-TOTAL / 5-TOTAL                                                                                                       10-CartID / 12-Num
+                    // 0-Num                2-EXPIRATION / 2-Expiration_Date     4-QUANTITY / 3-Quantity              6-TOTAL / 5-TOTAL                                                                                                       10-CartID / 12-Num
                     i += 1;                 // 1-DESCRIPTION / 1-Description           3-PRICE / 4-Price                 5-DISCOUNT / 11-Discount                      7-Plus                         8-Minus                 9-Delete              10-StockID / 0-Stock_Num           10-ItemID / 9-Item_ID
                     frmC.dataGridViewCart.Rows.Add(i, dr[1].ToString(), ExpirationDate, dr[4].ToString(), dr[3].ToString(), dr[11].ToString(), dr[5].ToString(), Properties.Resources._Add, Properties.Resources.Minus, Properties.Resources._Delete, dr[0].ToString(), dr[12].ToString(), dr[9].ToString(), dr[17].ToString(), dr[18].ToString());
                     hasRecord = true;
@@ -94,9 +94,10 @@ namespace Capstone
                 cn.Close();
                 total += double.Parse(servTotal);
                 classLoadData.ComputeDiscount(discount, total, out discountResult);
-                frmC.lblDiscount.Text = discountResult.ToString("#,##0.00");
+                frmC.lblDiscount.Text = discountResult.ToString("0.00");
                 frmC.lblSalesTotal.Text = total.ToString("#,##0.00");
-                classCompute.GetCartTotal(frmC.lblDiscount, frmC.lblSalesTotal, frmC.lblPayment, frmC.lblNetTotal);
+                frmC.lblGrossNoComma.Text = total.ToString("0.00");
+                classCompute.GetCartTotal(frmC.lblDiscount, frmC.lblSalesTotal, frmC.lblPayment, frmC.lblNetTotal, frmC.lblNetNoComa);
                 //frmC.GetCartTotal();
                 if (hasRecord == true)
                 {
@@ -134,17 +135,29 @@ namespace Capstone
                 MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        
         private void dataGridViewBrowse_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
+                // void ifBlankThenZero(out string result)
+                //{
+                //    result = "1";
+                //    result = dataGridViewBrowse[8, e.RowIndex].Value?.ToString();
+                //    if(result == "")
+                //    {
+                //        result = "0";
+                //    }
+                //}
                 string colName = dataGridViewBrowse.Columns[e.ColumnIndex].Name;
                 lblItemIDCheck.Text = dataGridViewBrowse[1, e.RowIndex].Value.ToString();
                 lblItemIDCheck.Visible = true;
                 string id = lblItemIDCheck.Text; // Item_ID
                 string classification = dataGridViewBrowse[7, e.RowIndex].Value.ToString();
                 string Stock2 = dataGridViewBrowse[6, e.RowIndex].Value.ToString(); //STOCK quantity
+                string lense_check = dataGridViewBrowse[8, e.RowIndex].Value?.ToString();                
+                //ifBlankThenZero(out lense_check);
+                lblLensecheck.Text = lense_check;
                 //string Stock = lblStock.Text;
                 string Stock_Num = "";
                 frmExpiration frmE = new frmExpiration(this);
@@ -199,7 +212,7 @@ namespace Capstone
                         float price = float.Parse(dataGridViewBrowse[5, e.RowIndex].Value.ToString());
                         
                         cn.Open();
-                        cm = new SqlCommand("INSERT INTO tblCart (Stock_Num, Item_ID, Transaction_No, Quantity, Price, Total, Date, Status) VALUES (@Stock_Num, @Item_ID, @TransactionNo, @Quantity, @Price, @Total, @Date, 'Cart')", cn);
+                        cm = new SqlCommand("INSERT INTO tblCart (Stock_Num, Item_ID, Transaction_No, Quantity, Price, Total, Date, Lense_Check, Status) VALUES (@Stock_Num, @Item_ID, @TransactionNo, @Quantity, @Price, @Total, @Date, @Lense_Check, 'Cart')", cn);
                         //cm.Parameters.AddWithValue("@Stock_ID", frmB.dataGridViewBrowse[1, i].Value.ToString());
                         cm.Parameters.AddWithValue("@Stock_Num", int.Parse(Stock_Num));
                         cm.Parameters.AddWithValue("@Item_ID", dataGridViewBrowse[1, e.RowIndex].Value.ToString());
@@ -207,7 +220,8 @@ namespace Capstone
                         cm.Parameters.AddWithValue("@Quantity", 1);
                         cm.Parameters.AddWithValue("@Price", price.ToString("00.00")); 
                         cm.Parameters.AddWithValue("@Date", DateTime.Now);
-                        cm.Parameters.AddWithValue("@Total", price.ToString("00.00"));
+                        cm.Parameters.AddWithValue("@Total", price.ToString("00.00")); //lense_check
+                        cm.Parameters.AddWithValue("@Lense_Check", lense_check);
                         cm.ExecuteNonQuery();
                         cn.Close();
                         LoadCart();
@@ -233,7 +247,8 @@ namespace Capstone
                             frmE.lblName2.Text = dataGridViewBrowse[2, e.RowIndex].Value.ToString();
                             frmE.lblPrice2.Text = dataGridViewBrowse[5, e.RowIndex].Value.ToString();
                             frmE.lblItemIDPass.Text = dataGridViewBrowse[1, e.RowIndex].Value.ToString();
-                            frmE.lblTotal.Text = "0";
+                            frmE.lblTotal.Text = "0"; 
+                            frmE.lblLenseCheck.Text = lense_check;
                             frmE.txtQuantity.Text = "0";
                             frmE.txtQuantity.Focus();
                             frmE.txtQuantity.SelectAll();

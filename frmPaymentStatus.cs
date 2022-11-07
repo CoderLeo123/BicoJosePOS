@@ -27,14 +27,39 @@ namespace Capstone
             classLoad.LoadRecordsSettled(dataGridViewSettled, txtSearchSettled);
             classLoad.LoadRecordsUnsettled(dataGridViewPaymentStat, txtSearchPending);
             classLoad.LoadRecordsOrder(dataGridViewOrderStatus, txtSearchOrderStatus);
-            classLoad.LoadRecordsOrderClaimed(dataGridViewClaimedOrd, txtSearchClaimed);
+            classLoad.LoadRecordsOrderClaimed(dataGridViewArrival, txtSearchArrival);
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Dispose();
         }
+        public void colorChange(bool press, Button changeThisBtn)
+        {
+            if (press == true)
+            {
+                changeThisBtn.BackColor = Color.Red;
 
+            }
+            else if (press == false)
+            {
+                changeThisBtn.BackColor = Color.LimeGreen;
+            }
+        }
+
+
+        public void checkWhatIsPress(bool btnReO, bool btnCrit)
+        {
+            if (btnReO == true)
+            {
+                colorChange(true, btnPayment); colorChange(false, btnOrder);
+            }
+            else if (btnCrit == true)
+            {
+                colorChange(true, btnOrder); colorChange(false, btnPayment);
+            }
+            
+        }
         private void dataGridViewOrderStatus_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             string colName = dataGridViewOrderStatus.Columns[e.ColumnIndex].Name;
@@ -43,9 +68,16 @@ namespace Capstone
             if (colName == "Ed")
             {
                 frmEditOrder frm = new frmEditOrder(this);
-                frm.txtReleaseBy.Text = lblUser.Text;
-                frm.lblTransNo.Text = transNo;
+                frm.tabControlEditOrder.TabPages.Clear();
+                frm.Size = new Size(763, 678);
+                TabPage tab = new TabPage("Arrival");
+                frm.tabControlEditOrder.TabPages.Add(tab);
+                tab.Controls.Add(frm.panelArrived);
+                frm.txtReceivedBy.Text = lblUser.Text;
+                frm.lblTrans.Text = transNo;
                 frm.ShowDialog();
+
+           
             }
             else
             {
@@ -55,7 +87,7 @@ namespace Capstone
                 //paperSizeUpdate(out pLength);
                 printDocumenItems.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("RECEIPT", 620, pLength);
                 preview.PrintPreviewControl.Zoom = 0.75;
-                preview.Size = new System.Drawing.Size(400, 650);
+                preview.Size = new System.Drawing.Size(450, 500);
                 preview.ShowDialog();
             }
                 
@@ -159,6 +191,65 @@ namespace Capstone
                     e.Graphics.DrawString("₱ " + Itms.Total.ToString("00.00"), printFont, Brushes.Black, (x += 40), y);//330
                     num += 1;
                 }
+            }
+
+        }
+
+        private void btnPayment_Click(object sender, EventArgs e)
+        {
+            tabControlPayOrdStatus.TabPages.Clear();
+            TabPage tab = new TabPage("Payment Status");
+            tabControlPayOrdStatus.TabPages.Add(tab);
+            tab.Controls.Add(panelPayment);
+            classLoad.LoadRecordsSettled(dataGridViewSettled, txtSearchSettled);
+            classLoad.LoadRecordsUnsettled(dataGridViewPaymentStat, txtSearchPending);            
+            checkWhatIsPress(true, false);
+        }
+
+        private void btnOrder_Click(object sender, EventArgs e)
+        {
+            tabControlPayOrdStatus.TabPages.Clear();
+            TabPage tab = new TabPage("Order Status");
+            tabControlPayOrdStatus.TabPages.Add(tab);
+            tab.Controls.Add(panelOrder);            
+            classLoad.LoadRecordsOrder(dataGridViewOrderStatus, txtSearchOrderStatus);
+            classLoad.LoadRecordsOrderArrived(dataGridViewArrival, txtSearchArrival);
+
+            TabPage tab2 = new TabPage("Claimed Order");
+            tabControlPayOrdStatus.TabPages.Add(tab2);
+            tab2.Controls.Add(panelClaimed);
+            classLoad.LoadRecordsOrderClaimed(dataGridViewClaimed, txtSearchClaimed);
+            checkWhatIsPress(false, true);
+        }
+
+        private void dataGridViewArrival_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string pStat = dataGridViewArrival.Rows[e.RowIndex].Cells[6].Value?.ToString();
+            string colName = dataGridViewArrival.Columns[e.ColumnIndex].Name;
+            transNo = dataGridViewArrival.Rows[e.RowIndex].Cells[1].Value?.ToString();
+            lblCurrentTransN.Text = dataGridViewArrival.Rows[e.RowIndex].Cells[1].Value?.ToString();
+            if (colName == "Edi")
+            {
+                frmEditOrder frm = new frmEditOrder(this);
+                frm.tabControlEditOrder.TabPages.Clear();
+                frm.Size = new Size(763, 450);
+                TabPage tab = new TabPage("Item Release");
+                frm.tabControlEditOrder.TabPages.Add(tab);
+                tab.Controls.Add(frm.panelClaimed);
+                frm.txtReleaseBy.Text = lblUser.Text;
+                frm.lblTransNo.Text = transNo;
+                frm.txtPaymentStatus.Text = pStat;
+
+                if (pStat != "Settled")
+                {
+                    frm.btnSaveOrder.Enabled = false;
+                }
+                else
+                {
+                    frm.btnSaveOrder.Enabled = true;
+                }
+
+                frm.ShowDialog();
             }
 
         }

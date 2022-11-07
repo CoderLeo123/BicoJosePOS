@@ -96,7 +96,7 @@ namespace Capstone
                         cm = new SqlCommand("UPDATE tblCart SET Discount = '" + txtDiscount.Text + "' WHERE Transaction_No LIKE '%" + lblID.Text + "'", cn);
                         cm.ExecuteNonQuery();
                         cn.Close();
-                        classLoadData.LoadCart(frmC.dataGridViewCart, frmC.lblDiscount, frmC.lblSalesTotal, frmC.lblPayment, frmC.lblNetTotal, frmC.btnSettlePayment, frmC.btnAddDiscount, frmC.btnClearCart, frmC.txtSearch, frmC.dataGridViewService);
+                        classLoadData.LoadCart(frmC.dataGridViewCart, frmC.lblDiscount, frmC.lblSalesTotal, frmC.lblPayment, frmC.lblNetTotal, frmC.btnSettlePayment, frmC.btnAddDiscount, frmC.btnClearCart, frmC.txtSearch, frmC.dataGridViewService, frmC.lblNetNoComa, frmC.lblGrossNoComma);
                         //frmC.LoadCart();
                         this.Close();
 

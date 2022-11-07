@@ -26,7 +26,7 @@ namespace Capstone
         List<SalesReport> SList = new List<SalesReport>();
         List<ItemList> IList = new List<ItemList>();
         List<ServiceList> SerList = new List<ServiceList>();
-        string balSale = ""; bool balance = false;
+        string balSale = "", result = ""; bool balance = false;
         bool transaction = false; bool sales = false;
         bool settled = false; bool sold = false; public bool pesoPaint = true;
         public frmReports()
@@ -39,21 +39,31 @@ namespace Capstone
             classLoadData.LoadRecordsTransacHist(dataGridViewTransHist, txtSearchTransHist, dateTimePickerStartTrans, dateTimePickerEndTrans);
             classLoadData.LoadRecordsSoldItems(dataGridViewSoldItems, txtSearchSold, dateTimePickerStartSold, dateTimePickerEndSold);
             classLoadData.LoadRecordsTransacSettled(dataGridViewSettle, txtSearchSettleds, dateTimePickerSettStart, dateTimePickerSettEnd);
-            deleteData(); 
+            deleteData();
             dateSelect(dataGridViewInitial);
             //lblCheckCell.Text = dataGridViewInitial.Rows[0].Cells[1].Value?.ToString();
             //lblCheckCell.Text = dataGridViewInitial[1, 0].Value.ToString();
             calculateTotalPaymentBalance();
             insertData();
-            loopUpdateDgv(dataGridViewInitial);            
+            loopUpdateDgv(dataGridViewInitial);
             previewSales();
-
-            lblCurrentTransN.Text = dataGridViewTransHist.Rows[0].Cells[2].Value?.ToString();
+            checkForBlank(dataGridViewTransHist, out result);
+            lblCurrentTransN.Text = result;
+            checkForBlank(dataGridViewSettle, out result);
             previewTransHistReceipt();
-            lblSettledID.Text = dataGridViewSettle.Rows[0].Cells[2].Value?.ToString();
+            lblSettledID.Text = result;
             previewSettledReceipt();
             pesoPaint = true;
 
+        }
+        public void checkForBlank(DataGridView dgv, out string result)
+        {
+            result = "";
+            if (dgv.Rows.Count > 0)
+            {
+                result = dgv.Rows[0].Cells[2].Value?.ToString();
+            }
+            
         }
         public void dateSelect(DataGridView dgv)
         {//dataGridViewInitial
@@ -194,9 +204,10 @@ namespace Capstone
             System.Drawing.Font printFontBold = new System.Drawing.Font("Arial", 15, System.Drawing.FontStyle.Bold);
             System.Drawing.Font printFontItallic = new System.Drawing.Font("Arial", 12, System.Drawing.FontStyle.Italic);
             e.Graphics.DrawString("Bico-Jose Optical Clinic", printFontBold, Brushes.Black, 175, 30);
-            e.Graphics.DrawString("Address: 3rd Floor Susana Mart, Tungko San Jose Del Monte Bulacan", printFont, Brushes.Black, 80, 80);
+            e.Graphics.DrawString("Address: 3rd Floor Susana Mart, Tungko San Jose Del Monte Bulacan", printFont, Brushes.Black, 80, 60);
+            e.Graphics.DrawString("Clinic's Contact: 09178326686", printFont, Brushes.Black, 185, 80);
             y = 140; x = 320;
-            e.Graphics.DrawString("Clinic's Contact: 09178326666", printFont, Brushes.Black, 20, y);//140
+            e.Graphics.DrawString("TIN: 748-219-944-00000", printFont, Brushes.Black, 20, y);//140
             e.Graphics.DrawString("Date Issued: ", printFont, Brushes.Black, (x += 60), y);
             e.Graphics.DrawString("Mode of Payment:  " + PMode, printFont, Brushes.Black, 20, (y += 30));//170
             e.Graphics.DrawString(TransDate, printFont, Brushes.Black, x, y);
@@ -351,7 +362,7 @@ namespace Capstone
                 //'print header
                 e.Graphics.DrawString("Bico-Jose Optical Clinic", printFontBold, Brushes.Black, (leftMargin + 240), yPos);
                 e.Graphics.DrawString("Address: 3rd Floor Susana Mart, Tungko San Jose Del Monte Bulacan", printFont, Brushes.Black, (leftMargin + 70), (yPos += offSetY)); //offSetY += (float)fontHeigth;
-                e.Graphics.DrawString("Clinic's Contact: 09178326666", printFont, Brushes.Black, (leftMargin + 220), (yPos += offSetY)); //offSetY += (float)fontHeigth;
+                e.Graphics.DrawString("Clinic's Contact: 09178326686", printFont, Brushes.Black, (leftMargin + 220), (yPos += offSetY)); //offSetY += (float)fontHeigth;
                 //e.Graphics.DrawString("SALES REPORT", printFontBold, Brushes.Black, (leftMargin + 260), (yPos += (offSetY * 3))); //offSetY += ((float)fontHeigth * 3);
                 //e.Graphics.DrawString("#", printFont, Brushes.Black, (leftMargin + 30), (yPos += (offSetY*6)));
                 //e.Graphics.DrawString("    Date", printFont, Brushes.Black, (leftMargin + 130), yPos);
@@ -377,10 +388,7 @@ namespace Capstone
 
                             e.Graphics.DrawString(data.Date, printFont, Brushes.Black, (leftMargin + 130), yPos);//Date
                             
-                                e.Graphics.DrawString("₱ " + data.Balance.ToString("00.00"), printFont, Brushes.Black, (leftMargin + 280), yPos);//Balance
-                            
-                            
-
+                                e.Graphics.DrawString("₱ " + data.Balance.ToString("00.00"), printFont, Brushes.Black, (leftMargin + 280), yPos);//Balance                                                        
                             num += 1;
                         }
                     }
@@ -583,9 +591,7 @@ namespace Capstone
         }
 
         private void tabControlReports_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-            
+        {                        
             if (tabControlReports.SelectedIndex == 0)
             {
                 previewSales();
@@ -636,7 +642,7 @@ namespace Capstone
             sales = true; balance = false; transaction = false; settled = false; sold = false;
             printPreviewControl.Document = printDocumentBal;    // 800, 800 = 8" x 8"
             printDocumentBal.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("SHORT", sWidth, sLength);
-            printPreviewControl.Zoom = .6;
+            printPreviewControl.Zoom = .75;
             printPreviewControl.StartPage = 0;
         }
         public void previewBalance()
@@ -645,7 +651,7 @@ namespace Capstone
             balance = true; sales = false; transaction = false; settled = false; sold = false;
             printPreviewControl.Document = printDocumentBal;
             printDocumentBal.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("SHORT", sWidth, sLength);
-            printPreviewControl.Zoom = .6;
+            printPreviewControl.Zoom = .75;
             printPreviewControl.StartPage = 0;
         }
         public void previewTransHistReceipt()
@@ -654,7 +660,7 @@ namespace Capstone
             paperSizeUpdate(out pLength);
             printPreviewControlTransH.Document = printDocumentSales; 
             printDocumentSales.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("RECEIPT", 610, pLength);
-            printPreviewControlTransH.Zoom = .6;
+            printPreviewControlTransH.Zoom = .75;
             printPreviewControlTransH.StartPage = 0;
         }
         public void previewSettledReceipt()
@@ -663,7 +669,7 @@ namespace Capstone
             //paperSizeUpdate(out pLength);
             printPreviewControlSettledP.Document = printDocumentSettledReceipt; //
             printDocumentSettledReceipt.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("RECEIPT", 610, pLength);
-            printPreviewControlSettledP.Zoom = .6;
+            printPreviewControlSettledP.Zoom = .75;
             printPreviewControlSettledP.StartPage = 0;
         }
         public void changeDatePriorCurrent(DateTimePicker date)
@@ -749,8 +755,8 @@ namespace Capstone
         private void printDocumentSettledReceipt_PrintPage(object sender, PrintPageEventArgs e)
         {
             transNo = lblSettledID.Text;
-            string TransDate = "", PMode = "", Customer = "", NetT = "", Payment = "", Change = "", Cashier = "";
-            classReport.tblReceiptSettle(transNo, out TransDate, out PMode, out Customer, out NetT, out Payment, out Change, out Cashier);
+            string TransDate = "", PMode = "", Customer = "", NetT = "", Payment = "", Change = "", Cashier = "", oldTrans = "";
+            classReport.tblReceiptSettle(transNo, out TransDate, out PMode, out Customer, out NetT, out Payment, out Change, out Cashier, out oldTrans);
 
 
             int x = 0, y = 0; // num = 1; string resultText = ""; int dgvCount = int.Parse(lblRowCount.Text), dgvCountService = int.Parse(lblServRowCount.Text);
@@ -760,9 +766,10 @@ namespace Capstone
             System.Drawing.Font printFontItallic = new System.Drawing.Font("Arial", 12, System.Drawing.FontStyle.Italic);
 
             e.Graphics.DrawString("Bico-Jose Optical Clinic", printFontBold, Brushes.Black, 175, 30);
-            e.Graphics.DrawString("Address: 3rd Floor Susana Mart, Tungko San Jose Del Monte Bulacan", printFont, Brushes.Black, 80, 80);
+            e.Graphics.DrawString("Address: 3rd Floor Susana Mart, Tungko San Jose Del Monte Bulacan", printFont, Brushes.Black, 80, 60);
+            e.Graphics.DrawString("Clinic's Contact: 09178326686", printFont, Brushes.Black, 185, 80);
             y = 140; x = 320;
-            e.Graphics.DrawString("Clinic's Contact: 09178326666", printFont, Brushes.Black, 20, y);//140
+            e.Graphics.DrawString("TIN: 748-219-944-00000", printFont, Brushes.Black, 20, y);//140
             e.Graphics.DrawString("Date Issued: ", printFont, Brushes.Black, (x += 60), y);
             e.Graphics.DrawString("Mode of Payment:  " + PMode, printFont, Brushes.Black, 20, (y += 30));//170
             e.Graphics.DrawString(TransDate, printFont, Brushes.Black, x, y);
@@ -771,8 +778,8 @@ namespace Capstone
             e.Graphics.DrawString("Customer Name:  " + Customer, printFont, Brushes.Black, 20, y);//230
             e.Graphics.DrawString("--------------------------------------------------------------------------------------------------------------------------", printFont, Brushes.Black, 10, (y += 30));//260 or 290
             e.Graphics.DrawString("Invoice No: " + transNo, printFont, Brushes.Black, 20, (y += 50));//310 or 340
-            e.Graphics.DrawString("Balance Settlement", printFont, Brushes.Black, 20, (y += 50));//360 or 390
-
+            e.Graphics.DrawString("Balance Settlement for Transaction No:" + oldTrans, printFont, Brushes.Black, 20, (y += 50));//360 or 390
+            //e.Graphics.DrawString("For Transaction No:" + oldTrans, printFont, Brushes.Black, 20, (y += 50));//360 or 390
 
             x = 440;
             //y = 550;
@@ -847,8 +854,8 @@ namespace Capstone
             classReport.loadSalesPerDay(dataGridViewBalR, "Total_Bal");
             previewBalance();
             checkWhatIsPress(false, true, false, false);
-            pesoPaint = true;
-            dataGridViewBalR.Columns[3].HeaderText = "balance";
+            //pesoPaint = true;
+            //dataGridViewBalR.Columns[3].HeaderText = "balance";
             //var eventArgs = new DataGridViewCellEventArgs(1, 3);
             //dataGridViewBalR_CellPainting(sender, eventArgs);
             
@@ -862,15 +869,16 @@ namespace Capstone
             tab3.Controls.Add(panelSalesHistory);
             changeDatePriorCurrent(dateTimePickerStartTrans);
             classLoadData.LoadRecordsTransacHist(dataGridViewTransHist, txtSearchTransHist, dateTimePickerStartTrans, dateTimePickerEndTrans);
-
-            lblCurrentTransN.Text = dataGridViewTransHist.Rows[0].Cells[2].Value?.ToString();
+            checkForBlank(dataGridViewTransHist, out result);
+            lblCurrentTransN.Text = result;
             previewTransHistReceipt();
             
             TabPage tab4 = new TabPage("SETTLED");
             tabControlReports.TabPages.Add(tab4);
             tab4.Controls.Add(panelSettled);
             classLoadData.LoadRecordsTransacSettled(dataGridViewSettle, txtSearchSettleds, dateTimePickerSettStart, dateTimePickerSettEnd);
-            lblSettledID.Text = dataGridViewSettle.Rows[0].Cells[2].Value?.ToString();
+            checkForBlank(dataGridViewSettle, out result);
+            lblSettledID.Text = result;
             previewSettledReceipt();
 
             checkWhatIsPress(false, false, true, false);

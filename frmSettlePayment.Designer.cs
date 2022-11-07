@@ -45,6 +45,7 @@
             this.comBoxPaymentTerms = new System.Windows.Forms.ComboBox();
             this.labelPT = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblNewTransactionSet = new System.Windows.Forms.Label();
             this.lblCheckSettleBalance = new System.Windows.Forms.Label();
             this.lblServRowCount = new System.Windows.Forms.Label();
             this.lblDPercent = new System.Windows.Forms.Label();
@@ -286,6 +287,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.lblNewTransactionSet);
             this.panel1.Controls.Add(this.lblCheckSettleBalance);
             this.panel1.Controls.Add(this.lblServRowCount);
             this.panel1.Controls.Add(this.lblDPercent);
@@ -314,6 +316,17 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(539, 488);
             this.panel1.TabIndex = 31;
+            // 
+            // lblNewTransactionSet
+            // 
+            this.lblNewTransactionSet.AutoSize = true;
+            this.lblNewTransactionSet.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblNewTransactionSet.Location = new System.Drawing.Point(272, 20);
+            this.lblNewTransactionSet.Name = "lblNewTransactionSet";
+            this.lblNewTransactionSet.Size = new System.Drawing.Size(26, 31);
+            this.lblNewTransactionSet.TabIndex = 27;
+            this.lblNewTransactionSet.Text = "0";
+            this.lblNewTransactionSet.Visible = false;
             // 
             // lblCheckSettleBalance
             // 
@@ -906,5 +919,6 @@
         public Label lblCheckSettleBalance;
         private System.Drawing.Printing.PrintDocument printDocumentBalance;
         public Panel panel1;
+        public Label lblNewTransactionSet;
     }
 }

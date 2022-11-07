@@ -206,12 +206,13 @@ namespace Capstone
                     {
                         
                         cn.Open();
-                        cm = new SqlCommand("INSERT INTO tblCart (Stock_Num, Item_ID, Transaction_No, Quantity, Price, Total, Date, Status) VALUES (@Stock_Num, @Item_ID, @TransactionNo, @Quantity, @Price, @Total, @Date, 'Cart')", cn);
+                        cm = new SqlCommand("INSERT INTO tblCart (Stock_Num, Item_ID, Transaction_No, Quantity, Price, Total, Date, Status, Lense_Check) VALUES (@Stock_Num, @Item_ID, @TransactionNo, @Quantity, @Price, @Total, @Date, 'Cart', @Lense_Check)", cn);
                         cm.Parameters.AddWithValue("@Stock_Num", dataGridViewSelected.Rows[i].Cells[6].Value.ToString());
                         cm.Parameters.AddWithValue("@Item_ID", frmB.dataGridViewBrowse.Rows[0].Cells[1].Value.ToString());
                         cm.Parameters.AddWithValue("@TransactionNo", frmB.lblTrans.Text);
                         cm.Parameters.AddWithValue("@Quantity", dataGridViewSelected.Rows[i].Cells[2].Value.ToString());
                         cm.Parameters.AddWithValue("@Price", lblPrice.Text);
+                        cm.Parameters.AddWithValue("@Lense_Check", lblLenseCheck.Text);
                         cm.Parameters.AddWithValue("@Date", DateTime.Now);
                         cm.Parameters.AddWithValue("@Total", dataGridViewSelected.Rows[i].Cells[3].Value.ToString());
                         cm.ExecuteNonQuery();

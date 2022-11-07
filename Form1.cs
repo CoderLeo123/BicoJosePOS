@@ -12,6 +12,7 @@ namespace Capstone
         ClassInventory classInvent = new ClassInventory();
         ClassReports classReport = new ClassReports();
         ClassLoginAndSignUp classLoginMethod = new ClassLoginAndSignUp();
+        ClassPaymentOrderMonitoring classLoad = new ClassPaymentOrderMonitoring();
         Boolean isCollapsed1, isCollapsed2, isCollapsed3 = true;
         frmReports frmR = new frmReports();
         public frmAdmin()
@@ -332,6 +333,12 @@ namespace Capstone
             frm.BringToFront();
             frm.lblUser.Text = lblName.Text;
             frm.Show();
+            frm.tabControlPayOrdStatus.TabPages.Clear();
+            TabPage tab = new TabPage("Payment Status");
+            frm.tabControlPayOrdStatus.TabPages.Add(tab);
+            tab.Controls.Add(frm.panelPayment);
+            classLoad.LoadRecordsSettled(frm.dataGridViewSettled, frm.txtSearchSettled);
+            classLoad.LoadRecordsUnsettled(frm.dataGridViewPaymentStat, frm.txtSearchPending);
         }
 
         private void dropBtnProducts_Click_1(object sender, EventArgs e)

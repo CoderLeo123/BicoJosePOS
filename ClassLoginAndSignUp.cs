@@ -67,8 +67,8 @@ namespace Capstone
         {
             if (checkText.Text == "")
             {
-                labelNotice.Visible = true;
-                labelNotice.Text = "Don't leave the " + name + " blank";
+                labelNotice.Visible = true;//"Don't leave " + name + " blank"
+                labelNotice.Text = name + " is blank";
                 
             }
             else

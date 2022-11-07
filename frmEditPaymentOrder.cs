@@ -18,6 +18,7 @@ namespace Capstone
         SqlDataReader dr;
         ClassLoadData classLoadData = new ClassLoadData();
         ClassPaymentOrderMonitoring classPayment = new ClassPaymentOrderMonitoring();
+        ClassGenerateID classGenerateID = new ClassGenerateID();
         frmCashier frml;
         string title = "BICO-JOSE System", transNo = "";
 
@@ -39,13 +40,15 @@ namespace Capstone
             string CName = dataGridViewPaymentStat.Rows[e.RowIndex].Cells[2].Value.ToString();
             //string Cashier = dataGridViewPaymentStat.Rows[e.RowIndex].Cells[7].Value.ToString();
             string Balance = dataGridViewPaymentStat.Rows[e.RowIndex].Cells[5].Value.ToString();
+            
             frmCashier frmC = new frmCashier();
             frmSettlePayment frm = new frmSettlePayment(frml);
             frm.comBoxPaymentTerms.SelectedIndex = 0;
-            
+            classGenerateID.GenerateTransactionNo(frm.lblNewTransactionSet);
             frm.comBoxPaymentTerms.Visible = false;
-            frm.labelPT.Visible = false;
-            
+            frm.labelPT.Text = "Transaction No"; //Payment Terms
+            frm.lblNewTransactionSet.Visible = true;
+
             frm.labelBal.Visible = false;
             frm.txtRemBalances.Visible = false;
             frm.lblChangeDueDate.Visible = false;

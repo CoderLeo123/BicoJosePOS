@@ -18,7 +18,8 @@ namespace Capstone
         SqlDataReader dr;
         ClassGenerateID classGenerateID = new ClassGenerateID();
         ClassLoadData classLoadData = new ClassLoadData();
-        string title = "BICO-JOSE System";
+        ClassPatientTransaction classPatient = new ClassPatientTransaction();
+        string title = "BICO-JOSE System", transNo = ""; int paperWidth = 850, paperLength = 550;
         public frmPatientRecord()
         {
             InitializeComponent();
@@ -40,13 +41,14 @@ namespace Capstone
         {
             
         }
-
+        
         private void btnAddPR_Click(object sender, EventArgs e)
         {
             frmAddPatientRecord frm = new frmAddPatientRecord(this);
 
             classGenerateID.GeneratePatientID(frm.txtAddPatientID);
             classGenerateID.GeneratePrescriptionID(frm.txtAddPrescNum);
+            frm.comBoxAddGender.SelectedIndex = 0;
             frm.ShowDialog();
         }
         public void LoadPrescription(string PID, out string ODSPH, out string ODCYL, out string ODAXIS, out string ODADD, out string ODPD, out string OSSPH, out string OSCYL, out string OSAXIS, out string OSADD, out string OSPD)
@@ -61,51 +63,170 @@ namespace Capstone
             while (dr.Read())
             {
                 ODSPH = dr[1].ToString(); ODCYL = dr[2].ToString(); ODAXIS = dr[3].ToString(); ODADD = dr[4].ToString(); ODPD = dr[5].ToString();
-                ODSPH = dr[6].ToString(); ODCYL = dr[7].ToString(); ODAXIS = dr[8].ToString(); ODADD = dr[9].ToString(); ODPD = dr[10].ToString();
+                OSSPH = dr[6].ToString(); OSCYL = dr[7].ToString(); OSAXIS = dr[8].ToString(); OSADD = dr[9].ToString(); OSPD = dr[10].ToString();
             }
             dr.Close();
             cn.Close();
         }
+        public void displayPrescription(string ODSPH, string ODCYL, string ODAXIS, string ODADD, string ODPD, string OSSPH, string OSCYL, string OSAXIS, string OSADD, string OSPD)
+        {
+            txtODSPH.Text = ODSPH; txtODCYL.Text = ODCYL; txtODAXIS.Text = ODAXIS; txtODADD.Text = ODADD; txtODPD.Text = ODPD;
+            txtOSSPH.Text = OSSPH; txtOSCYL.Text = OSCYL; txtOSAXIS.Text = OSAXIS;
+            txtOSADD.Text = OSADD; txtOSPD.Text = OSPD;
+        }
         private void dataGridViewPatientRecord_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             string colName = dataGridViewPatientRecord.Columns[e.ColumnIndex].Name;
-            string PatID = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[3].Value.ToString();
+            string PatID = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[1].Value?.ToString();
             string ODSPH, ODCYL, ODAXIS, ODADD, ODPD, OSSPH, OSCYL, OSAXIS, OSADD, OSPD;
-
+            int genderIndex = 0;
             LoadPrescription(PatID, out ODSPH, out ODCYL, out ODAXIS, out ODADD, out ODPD, out OSSPH, out OSCYL, out OSAXIS, out OSADD, out OSPD);
-
+            displayPrescription(ODSPH, ODCYL, ODAXIS, ODADD, ODPD, OSSPH, OSCYL, OSAXIS, OSADD, OSPD);
             if (colName == "EditPRecord")
             {
-                frmAddPatientRecord frm = new frmAddPatientRecord(this);
-                frm.txtAddFName.Text = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[1].Value.ToString();
-                frm.txtAddLName.Text = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[2].Value.ToString();
-                frm.txtAddAddress.Text = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[5].Value.ToString();
-                frm.txtAddContact.Text = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[6].Value.ToString();
-                frm.comBoxAddGender.Text = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[8].Value.ToString();
-                frm.txtAddAge.Text = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[7].Value.ToString();
-                frm.txtAddPatientID.Text = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[3].Value.ToString();
+                frmPermission frmP = new frmPermission();
+                frmP.ShowDialog();
+                if (frmP.lblGrant.Text == "1")
+                {
+                    frmAddPatientRecord frm = new frmAddPatientRecord(this);
+                    frm.txtAddFName.Text = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[1].Value.ToString();
+                    frm.txtAddLName.Text = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[2].Value.ToString();
+                    frm.txtAddAddress.Text = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[5].Value.ToString();
+                    frm.txtAddContact.Text = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[6].Value.ToString();
+                    checkGender(out genderIndex);
+                    frm.comBoxAddGender.SelectedIndex = genderIndex;
+                    frm.txtAddAge.Text = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[7].Value.ToString();
+                    frm.txtAddPatientID.Text = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[3].Value.ToString();
+
+                    frm.txtAddODSPH.Text = txtODSPH.Text;
+                    frm.txtADDODCYL.Text = txtODCYL.Text;
+                    frm.txtAddODAXIS.Text = txtODAXIS.Text;
+                    frm.txtAddODADD.Text = txtODADD.Text;
+                    frm.txtAddODPD.Text = txtODPD.Text;
+
+                    frm.txtAddOSSPH.Text = txtOSSPH.Text;
+                    frm.txtADDOSCYL.Text = txtOSCYL.Text;
+                    frm.txtAddOSAXIS.Text = txtOSAXIS.Text;
+                    frm.txtAddOSADD.Text = txtOSADD.Text;
+                    frm.txtAddOSPD.Text = txtOSPD.Text;
+
+                    frm.ShowDialog();
+                }
+            }
+            else if (colName == "del")
+            {
+                frmPermission frmP = new frmPermission();
+                frmP.ShowDialog();
+                if (frmP.lblGrant.Text == "1")
+                {
+                    if (MessageBox.Show("Remove this Item?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        cn.Open();
+                        cm = new SqlCommand("DELETE FROM tblPatientRecord WHERE Patient_ID LIKE '" + PatID + "'", cn);
+                        cm.ExecuteNonQuery();
+                        cn.Close();
+                        MessageBox.Show("Record has been successfully deleted.", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        //LoadStock();
+                        classLoadData.LoadRecordsPatient(dataGridViewPatientRecord, txtSearchPatientRecord);
+                    }
+                }
+            }
+            else
+            {
+                LoadPrescription(PatID, out ODSPH, out ODCYL, out ODAXIS, out ODADD, out ODPD, out OSSPH, out OSCYL, out OSAXIS, out OSADD, out OSPD);
+                displayPrescription(ODSPH, ODCYL, ODAXIS, ODADD, ODPD, OSSPH, OSCYL, OSAXIS, OSADD, OSPD);
+                classPatient.LoadPatientTransactionList(dataGridViewTrans, PatID);
                 
+            }
 
-                frm.txtAddODSPH.Text = txtODSPH.Text;
-                frm.txtADDODCYL.Text = txtODCYL.Text;
-                frm.txtAddODAXIS.Text = txtODAXIS.Text;
-                frm.txtAddODADD.Text = txtODADD.Text;
-                frm.txtAddODPD.Text = txtODPD.Text;
+             void checkGender(out int result)
+            {
+                result = 0;
+                string check = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[8].Value?.ToString();
+                if (check == "Male")
+                {
+                    result = 0;
+                }
+                else if (check == "Female")
+                {
+                    result = 1;
+                }
+            }
 
-                frm.txtAddOSSPH.Text = txtOSSPH.Text;
-                frm.txtADDOSCYL.Text = txtOSCYL.Text;
-                frm.txtAddOSAXIS.Text = txtOSAXIS.Text;
-                frm.txtAddOSADD.Text = txtOSADD.Text;
-                frm.txtAddOSPD.Text = txtOSPD.Text;
 
+        }
 
-                frm.ShowDialog();
+        private void dataGridViewTrans_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string pID = "", prescID = "", transNo = "", transType = "";
+            transNo = dataGridViewTrans.Rows[e.RowIndex].Cells[2].Value?.ToString();
+            transType = dataGridViewTrans.Rows[e.RowIndex].Cells[5].Value?.ToString();
+            pID = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[1].Value?.ToString();
+            prescID = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[7].Value?.ToString();
+            //previewFinalReceipt();
+
+            frmFinalReceipt frm = new frmFinalReceipt();            
+            frm.lblPatientID.Text = pID;
+            frm.lblTransNo.Text = transNo;
+            frm.lblPrescriptNo.Text = prescID;
+            frm.lblTransType.Text = transType;
+            frm.displayValue(pID, prescID, transNo);
+            frm.ShowDialog();
+        }
+        public void previewFinalReceipt()
+        {
+            PrintPreviewDialog preview = new PrintPreviewDialog();
+            
+            preview.Document = printDocumentFinalReceipt; // 800, 800 = 8" x 8"
+            printDocumentFinalReceipt.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("SHORT Half", paperWidth, paperLength);
+            preview.PrintPreviewControl.StartPage = 0;
+            preview.PrintPreviewControl.Zoom = 0.75;
+            preview.Size = new System.Drawing.Size(900, 700);
+            preview.ShowDialog();
+        }
+        private void printDocumentFinalReceipt_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            transNo = lblCurrentTransN.Text;
+
+            System.Drawing.Font printFont = new System.Drawing.Font("Times New Roman", 12, System.Drawing.FontStyle.Regular);
+            System.Drawing.Font printFontBold = new System.Drawing.Font("Times New Roman", 12, System.Drawing.FontStyle.Bold);
+
+            float leftMargin = e.MarginBounds.Left - 50; //50            
+            float topMargin = leftMargin; //50
+            float rightMargin = e.MarginBounds.Left; //100
+            float bottomMargin = leftMargin; //50
+            float pageHeigth = e.PageSettings.PrintableArea.Height; //1100
+            float fontHeigth = printFont.GetHeight();
+            float yPos = 0;
+            float offSetY = 0;
+            float offSetX = leftMargin;
+
+            offSetY += (float)fontHeigth;
+            yPos = topMargin;
+
+            void header()
+            {
+                
+                e.Graphics.DrawString("Bico-Jose Optical Clinic", printFontBold, Brushes.Black, (leftMargin + 240), yPos);
+                e.Graphics.DrawString("Bico-Jose Optical Clinic 3rd Floor Susana Mart,", printFont, Brushes.Black, (leftMargin + 70), (yPos += offSetY)); //offSetY += (float)fontHeigth;
+                e.Graphics.DrawString("Brgy. Tungkong Mangga, City of SJDM, Bulacan ", printFont, Brushes.Black, (leftMargin + 70), (yPos += offSetY)); //offSetY += (float)fontHeigth;
+                e.Graphics.DrawString("(+63) 917 832 6686", printFont, Brushes.Black, (leftMargin + 220), (yPos += offSetY)); //offSetY += (float)fontHeigth;
+                e.Graphics.DrawString("___________________________________________________________________________________________________________________________________", printFont, Brushes.Black, (leftMargin + 220), (yPos += offSetY)); //offSetY += (float)fontHeigth;
 
             }
-            
 
+            void generalInfo()
+            {
+                e.Graphics.DrawString("Px's Name:", printFontBold, Brushes.Black, (leftMargin + 240), yPos);
+                e.Graphics.DrawString("Address: ", printFont, Brushes.Black, (leftMargin + 70), (yPos += offSetY)); //offSetY += (float)fontHeigth;
+                e.Graphics.DrawString("Age: ", printFont, Brushes.Black, (leftMargin + 70), (yPos += offSetY)); //offSetY += (float)fontHeigth;
+                e.Graphics.DrawString("Phone: ", printFont, Brushes.Black, (leftMargin + 70), (yPos += offSetY)); //offSetY += (float)fontHeigth;
+                e.Graphics.DrawString("Date: ", printFont, Brushes.Black, (leftMargin + 70), (yPos += offSetY)); //offSetY += (float)fontHeigth;
 
-
+            }
+            header();
+            generalInfo();
         }
 
 

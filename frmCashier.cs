@@ -29,7 +29,7 @@ namespace Capstone
             InitializeComponent();
             cn = new SqlConnection(dbcon.MyConnection());
             lblDate.Text = DateTime.Parse(DateTime.Now.ToString()).ToShortDateString();
-            classLoadData.LoadCart(dataGridViewCart, lblDiscount, lblSalesTotal, lblPayment, lblNetTotal, btnSettlePayment, btnAddDiscount, btnClearCart, txtSearch, dataGridViewService);
+            classLoadData.LoadCart(dataGridViewCart, lblDiscount, lblSalesTotal, lblPayment, lblNetTotal, btnSettlePayment, btnAddDiscount, btnClearCart, txtSearch, dataGridViewService, lblNetNoComa, lblGrossNoComma);
             //classLoadData.LoadRecordServiceAvail(dataGridViewService, lblSalesTotal);
             textRightAlign();
         }
@@ -97,7 +97,7 @@ namespace Capstone
                 frm.ShowDialog();
             }
         }
-
+        
         private void btnSettlePayment_Click(object sender, EventArgs e)
         {
             frmSettlePayment frm = new frmSettlePayment(this);
@@ -114,13 +114,13 @@ namespace Capstone
             {
                 frm.lblCheckSettleBalance.Text = "0";
                 frm.labelTot.Text = "Total";
-                frm.txtTotal.Text = lblNetTotal.Text;
+                frm.txtTotal.Text = lblNetNoComa.Text;
                 frm.comBoxPaymentTerms.SelectedIndex = 0;
                 frm.comBoxMethodPayment.SelectedIndex = 0;
                 frm.lblCustomer.Text = txtFirstName.Text + " " + txtLastName.Text;
                 frm.lblCashier.Text = lblCashierName.Text;
                 frm.lblTransacNo.Text = lblTransactionNo.Text;
-                frm.lblGrossTotal.Text = lblSalesTotal.Text;
+                frm.lblGrossTotal.Text = lblGrossNoComma.Text;
                 frm.lblDiscount.Text = lblDiscount.Text;
                 frm.lblDPercent.Text = lblDiscPercen.Text;
                  
@@ -146,7 +146,8 @@ namespace Capstone
         private void btnNewTransaction_Click(object sender, EventArgs e)
         {
             classGenerateID.GenerateTransactionNo(lblTransactionNo);
-            classLoadData.LoadCart(dataGridViewCart, lblDiscount, lblSalesTotal, lblPayment, lblNetTotal, btnSettlePayment, btnAddDiscount, btnClearCart, txtSearch, dataGridViewService);
+            classLoadData.LoadCart(dataGridViewCart, lblDiscount, lblSalesTotal, lblPayment, lblNetTotal, btnSettlePayment, btnAddDiscount, btnClearCart, txtSearch, dataGridViewService, lblNetNoComa, lblGrossNoComma);
+            comBoxDiscountType.SelectedIndex = 0;
         }
         public void returnQuantity(string itemID, int CartQty)
         {
@@ -197,7 +198,7 @@ namespace Capstone
                     cm.ExecuteNonQuery();
                     cn.Close();
                     MessageBox.Show("Record has been successfully deleted.", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    classLoadData.LoadCart(dataGridViewCart, lblDiscount, lblSalesTotal, lblPayment, lblNetTotal, btnSettlePayment, btnAddDiscount, btnClearCart, txtSearch, dataGridViewService);
+                    classLoadData.LoadCart(dataGridViewCart, lblDiscount, lblSalesTotal, lblPayment, lblNetTotal, btnSettlePayment, btnAddDiscount, btnClearCart, txtSearch, dataGridViewService, lblNetNoComa, lblGrossNoComma);
                     //LoadCart();
                     returnQuantity(ItemID, cartQty);
                     classInventory.determineStockLevel(ItemID);
@@ -224,7 +225,7 @@ namespace Capstone
                 reducedQuantity(ItemID, qtyCart);
                 classInventory.determineStockLevel(ItemID);
                 
-                classLoadData.LoadCart(dataGridViewCart, lblDiscount, lblSalesTotal, lblPayment, lblNetTotal, btnSettlePayment, btnAddDiscount, btnClearCart, txtSearch, dataGridViewService);
+                classLoadData.LoadCart(dataGridViewCart, lblDiscount, lblSalesTotal, lblPayment, lblNetTotal, btnSettlePayment, btnAddDiscount, btnClearCart, txtSearch, dataGridViewService, lblNetNoComa, lblGrossNoComma);
             }
             else if (colName == "MinusCart")
             {
@@ -247,7 +248,7 @@ namespace Capstone
                 
                 returnQuantity(ItemID, qtyCart);
                 classInventory.determineStockLevel(ItemID);
-                classLoadData.LoadCart(dataGridViewCart, lblDiscount, lblSalesTotal, lblPayment, lblNetTotal, btnSettlePayment, btnAddDiscount, btnClearCart, txtSearch, dataGridViewService);
+                classLoadData.LoadCart(dataGridViewCart, lblDiscount, lblSalesTotal, lblPayment, lblNetTotal, btnSettlePayment, btnAddDiscount, btnClearCart, txtSearch, dataGridViewService, lblNetNoComa, lblGrossNoComma);
             }
 
         }
@@ -258,13 +259,13 @@ namespace Capstone
             {
                 if (txtSearch.Text == String.Empty)
                 {
-                    classLoadData.LoadCart(dataGridViewCart, lblDiscount, lblSalesTotal, lblPayment, lblNetTotal, btnSettlePayment, btnAddDiscount, btnClearCart, txtSearch, dataGridViewService);
+                    classLoadData.LoadCart(dataGridViewCart, lblDiscount, lblSalesTotal, lblPayment, lblNetTotal, btnSettlePayment, btnAddDiscount, btnClearCart, txtSearch, dataGridViewService, lblNetNoComa, lblGrossNoComma);
                     //LoadCart();
                     return;
                 }
                 else
                 {
-                    classLoadData.LoadCart(dataGridViewCart, lblDiscount, lblSalesTotal, lblPayment, lblNetTotal, btnSettlePayment, btnAddDiscount, btnClearCart, txtSearch, dataGridViewService);
+                    classLoadData.LoadCart(dataGridViewCart, lblDiscount, lblSalesTotal, lblPayment, lblNetTotal, btnSettlePayment, btnAddDiscount, btnClearCart, txtSearch, dataGridViewService, lblNetNoComa, lblGrossNoComma);
                     //LoadCart();
                 }
             }
@@ -316,7 +317,7 @@ namespace Capstone
                     cm.ExecuteNonQuery();
                     cn.Close();
                     MessageBox.Show("Record has been successfully deleted.", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    classLoadData.LoadCart(dataGridViewCart, lblDiscount, lblSalesTotal, lblPayment, lblNetTotal, btnSettlePayment, btnAddDiscount, btnClearCart, txtSearch, dataGridViewService);
+                    classLoadData.LoadCart(dataGridViewCart, lblDiscount, lblSalesTotal, lblPayment, lblNetTotal, btnSettlePayment, btnAddDiscount, btnClearCart, txtSearch, dataGridViewService, lblNetNoComa, lblGrossNoComma);
                     //classLoadData.LoadRecordServiceAvail(dataGridViewService, lblSalesTotal);
                     //LoadCart();
 
@@ -356,12 +357,33 @@ namespace Capstone
             //else
             //{
             //    //MessageBox.Show("Only items with expiration can have promo", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //}
-
-            
-            
+            //}                        
             //frm.txtPriceDiscount.Text = dataGridViewCart[6, i].Value.ToString();                
             //frm.lblID.Text = dataGridViewCart[11, i].Value.ToString();
+        }
+
+        private void comBoxDiscountType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            float discountPerc = 0;
+            string transNo = lblTransactionNo.Text;
+            if(comBoxDiscountType.SelectedIndex == 1)
+            {
+                discountPerc = 10;
+                lblDiscPercen.Text = "10";
+            }
+            else if (comBoxDiscountType.SelectedIndex == 0)
+            {
+                discountPerc = 0;
+                lblDiscPercen.Text = "0";
+
+            }
+
+            cn.Open();
+            cm = new SqlCommand("UPDATE tblCart SET Discount = " + discountPerc + " WHERE Transaction_No LIKE '%" + transNo + "%'", cn);
+            cm.ExecuteNonQuery();
+            cn.Close();
+            classLoadData.LoadCart(dataGridViewCart, lblDiscount, lblSalesTotal, lblPayment, lblNetTotal, btnSettlePayment, btnAddDiscount, btnClearCart, txtSearch, dataGridViewService, lblNetNoComa, lblGrossNoComma);
+        
         }
     }
 

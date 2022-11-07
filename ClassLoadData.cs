@@ -337,9 +337,11 @@ namespace Capstone
                 {
                     string Quantity = dr[5].ToString();//Quantity
                     string LenseCheck = dr[8].ToString();//Lense_Check
+                    string checkLense;
                     if (LenseCheck.Equals("0"))
                     {
                         Quantity = "N/A";
+                        checkLense = "0";
                     }
                     else
                     {
@@ -349,7 +351,7 @@ namespace Capstone
 
                     //                             2-DESCRIPTION / 1-Description       4-PRODUCT / 3-Product               6-STOCK / 5-Quantity                                                                                                                                      
                     i += 1;  // 0-Num   1-Item ID / 0-Item_ID                3-TYPE / 2-Type               5-PRICE / 4-Price                 7-CLASSIFICATION / 6-Classification                           
-                    dgv.Rows.Add(i, dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), Quantity, dr[6].ToString());
+                    dgv.Rows.Add(i, dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), Quantity, dr[6].ToString(), dr[8].ToString());
                 }
                 dr.Close();
                 cn.Close();
@@ -373,7 +375,7 @@ namespace Capstone
 
                     //                             2-DESCRIPTION / 1-Description       4-PRODUCT / 3-Product               6-STOCK / 5-Quantity                                                                                                                                      
                     i += 1;  // 0-Num   1-Item ID / 0-Item_ID                3-TYPE / 2-Type               5-PRICE / 4-Price                 7-CLASSIFICATION / 6-Classification                           
-                    dgv.Rows.Add(i, dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), Quantity, dr[6].ToString());
+                    dgv.Rows.Add(i, dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), Quantity, dr[6].ToString(), LenseCheck);
                 }
                 dr.Close();
                 cn.Close();
@@ -390,7 +392,7 @@ namespace Capstone
             double result = textPrice * discount;
             textDiscountedResult = result;
         }
-        public void LoadCart(DataGridView dgv, Label labelDiscount, Label labelSalesTotal, Label labelPayment, Label labelNetTotal, Button buttonSettle, Button buttonDiscount, Button buttonClear, TextBox textSearch, DataGridView dgv2)
+        public void LoadCart(DataGridView dgv, Label labelDiscount, Label labelSalesTotal, Label labelPayment, Label labelNetTotal, Button buttonSettle, Button buttonDiscount, Button buttonClear, TextBox textSearch, DataGridView dgv2, Label lblNetNoComa, Label lblGrossNoComma)
         {                           //dataGridViewCart, lblDiscount, lblSalesTotal, lblPayment, lblNetTotal, btnSettlePayment, btnAddDiscount, btnClearCart, txtSearch, dataGridViewService
             try
             {
@@ -439,10 +441,10 @@ namespace Capstone
                 
                 total += double.Parse(servTotal);
                 ComputeDiscount(discount, total, out discountResult);
-                labelDiscount.Text = discountResult.ToString("#,##0.00");
+                labelDiscount.Text = discountResult.ToString("0.00");
                 labelSalesTotal.Text = total.ToString("#,##0.00");
-                //frmCashier frmC = new frmCashier(); //frmC.lblDiscount, frmC.lblSalesTotal, frmC.lblPayment, out frmC.lblNetTotal
-                GetCartTotal(labelDiscount, labelSalesTotal, labelPayment, labelNetTotal);
+                lblGrossNoComma.Text = total.ToString("0.00");
+                GetCartTotal(labelDiscount, labelSalesTotal, labelPayment, labelNetTotal, lblNetNoComa);
                 //LoadRecordServiceAvail(dgv2, out servTotal, out hasRecord);
                 //frmC.GetCartTotal();
                 if (hasRecord == true)
