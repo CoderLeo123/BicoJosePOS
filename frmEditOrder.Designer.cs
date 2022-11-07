@@ -56,6 +56,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnSaveOrder = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.printDocumentAr = new System.Drawing.Printing.PrintDocument();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -89,6 +90,9 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(763, 61);
             this.panel3.TabIndex = 19;
+            this.panel3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseDown);
+            this.panel3.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseMove);
+            this.panel3.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseUp);
             // 
             // panel4
             // 
@@ -259,10 +263,10 @@
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.panelClaimed);
-            this.tabPage2.Location = new System.Drawing.Point(4, 46);
+            this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(755, 567);
+            this.tabPage2.Size = new System.Drawing.Size(755, 584);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Claim";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -280,7 +284,7 @@
             this.panelClaimed.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelClaimed.Location = new System.Drawing.Point(3, 3);
             this.panelClaimed.Name = "panelClaimed";
-            this.panelClaimed.Size = new System.Drawing.Size(749, 561);
+            this.panelClaimed.Size = new System.Drawing.Size(749, 578);
             this.panelClaimed.TabIndex = 0;
             // 
             // txtPaymentStatus
@@ -361,6 +365,10 @@
             this.label3.TabIndex = 3;
             this.label3.Text = "Release By";
             // 
+            // printDocumentAr
+            // 
+            this.printDocumentAr.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocumentAr_PrintPage);
+            // 
             // frmEditOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 37F);
@@ -423,5 +431,6 @@
         private Panel panelFill;
         public PrintPreviewControl printPreviewControlArvl;
         private Panel panelTop;
+        private System.Drawing.Printing.PrintDocument printDocumentAr;
     }
 }

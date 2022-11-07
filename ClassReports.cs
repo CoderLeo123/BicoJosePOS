@@ -36,11 +36,11 @@ namespace Capstone
             dr.Close();
             cn.Close();
         }
-        public void tblReceiptSettle(string transacNo, out string TransDate, out string PMode, out string Customer, out string NetT, out string Payment, out string Change, out string Cashier)
+        public void tblReceiptSettle(string transacNo, out string TransDate, out string PMode, out string Customer, out string NetT, out string Payment, out string Change, out string Cashier, out string oldTrans)
         {
             cn = new SqlConnection(dbcon.MyConnection());
-            TransDate = ""; PMode = "";Customer = ""; NetT = ""; Payment = ""; Change = ""; Cashier = "";
-            
+            TransDate = ""; PMode = "";Customer = ""; NetT = ""; Payment = ""; Change = ""; Cashier = ""; oldTrans = "";
+
             cn.Open();
             SqlCommand cm = new SqlCommand("SELECT * FROM tblReceiptSettle WHERE Transaction_No LIKE '" + transacNo + "'", cn);
             dr = cm.ExecuteReader();
@@ -50,6 +50,7 @@ namespace Capstone
                 TransDate = dr[2].ToString(); PMode = dr[3].ToString(); Customer = dr[4].ToString();
                  NetT = dr[5].ToString(); Payment = dr[6].ToString();
                  Change = dr[7].ToString(); Cashier = dr[8].ToString();
+                oldTrans = dr[1].ToString();
 
             }
             dr.Close();

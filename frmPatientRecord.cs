@@ -41,7 +41,7 @@ namespace Capstone
         {
             
         }
-
+        
         private void btnAddPR_Click(object sender, EventArgs e)
         {
             frmAddPatientRecord frm = new frmAddPatientRecord(this);
@@ -79,7 +79,7 @@ namespace Capstone
             string colName = dataGridViewPatientRecord.Columns[e.ColumnIndex].Name;
             string PatID = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[1].Value?.ToString();
             string ODSPH, ODCYL, ODAXIS, ODADD, ODPD, OSSPH, OSCYL, OSAXIS, OSADD, OSPD;
-
+            int genderIndex = 0;
             LoadPrescription(PatID, out ODSPH, out ODCYL, out ODAXIS, out ODADD, out ODPD, out OSSPH, out OSCYL, out OSAXIS, out OSADD, out OSPD);
             displayPrescription(ODSPH, ODCYL, ODAXIS, ODADD, ODPD, OSSPH, OSCYL, OSAXIS, OSADD, OSPD);
             if (colName == "EditPRecord")
@@ -93,7 +93,8 @@ namespace Capstone
                     frm.txtAddLName.Text = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[2].Value.ToString();
                     frm.txtAddAddress.Text = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[5].Value.ToString();
                     frm.txtAddContact.Text = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[6].Value.ToString();
-                    frm.comBoxAddGender.Text = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[8].Value.ToString();
+                    checkGender(out genderIndex);
+                    frm.comBoxAddGender.SelectedIndex = genderIndex;
                     frm.txtAddAge.Text = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[7].Value.ToString();
                     frm.txtAddPatientID.Text = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[3].Value.ToString();
 
@@ -138,8 +139,20 @@ namespace Capstone
                 classPatient.LoadPatientTransactionList(dataGridViewTrans, PatID);
                 
             }
-            
 
+             void checkGender(out int result)
+            {
+                result = 0;
+                string check = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[8].Value?.ToString();
+                if (check == "Male")
+                {
+                    result = 0;
+                }
+                else if (check == "Female")
+                {
+                    result = 1;
+                }
+            }
 
 
         }

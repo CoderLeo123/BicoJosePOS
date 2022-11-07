@@ -43,6 +43,7 @@
             this.dataGridViewBrowse = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lblLensecheck = new System.Windows.Forms.Label();
             this.lblItemIDCheck = new System.Windows.Forms.Label();
             this.lblStock = new System.Windows.Forms.Label();
             this.lblCheck = new System.Windows.Forms.Label();
@@ -208,6 +209,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.DimGray;
+            this.panel2.Controls.Add(this.lblLensecheck);
             this.panel2.Controls.Add(this.lblItemIDCheck);
             this.panel2.Controls.Add(this.lblStock);
             this.panel2.Controls.Add(this.lblCheck);
@@ -220,6 +222,16 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1315, 54);
             this.panel2.TabIndex = 36;
+            // 
+            // lblLensecheck
+            // 
+            this.lblLensecheck.AutoSize = true;
+            this.lblLensecheck.Location = new System.Drawing.Point(780, 15);
+            this.lblLensecheck.Name = "lblLensecheck";
+            this.lblLensecheck.Size = new System.Drawing.Size(62, 28);
+            this.lblLensecheck.TabIndex = 11;
+            this.lblLensecheck.Text = "         l";
+            this.lblLensecheck.Visible = false;
             // 
             // lblItemIDCheck
             // 
@@ -418,7 +430,6 @@
             this.LensChe.HeaderText = "LenseCheck";
             this.LensChe.MinimumWidth = 6;
             this.LensChe.Name = "LensChe";
-            this.LensChe.Visible = false;
             this.LensChe.Width = 125;
             // 
             // AddToCart
@@ -500,6 +511,7 @@
         private Label label2;
         public Label lblStock;
         public Label lblItemIDCheck;
+        public Label lblLensecheck;
         private DataGridViewTextBoxColumn NumBrowseItem;
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn DescBrowseItem;

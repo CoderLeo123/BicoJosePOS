@@ -77,10 +77,7 @@ namespace Capstone
                 frm.lblTrans.Text = transNo;
                 frm.ShowDialog();
 
-                frm.printPreviewControlArvl.Document = printDocumenItems; //
-                printDocumenItems.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("ORDER", 610, 400);
-                frm.printPreviewControlArvl.Zoom = 1;
-                frm.printPreviewControlArvl.StartPage = 0;
+           
             }
             else
             {
@@ -90,7 +87,7 @@ namespace Capstone
                 //paperSizeUpdate(out pLength);
                 printDocumenItems.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("RECEIPT", 620, pLength);
                 preview.PrintPreviewControl.Zoom = 0.75;
-                preview.Size = new System.Drawing.Size(400, 650);
+                preview.Size = new System.Drawing.Size(450, 500);
                 preview.ShowDialog();
             }
                 
@@ -231,7 +228,7 @@ namespace Capstone
             string colName = dataGridViewArrival.Columns[e.ColumnIndex].Name;
             transNo = dataGridViewArrival.Rows[e.RowIndex].Cells[1].Value?.ToString();
             lblCurrentTransN.Text = dataGridViewArrival.Rows[e.RowIndex].Cells[1].Value?.ToString();
-            if (colName == "Ed")
+            if (colName == "Edi")
             {
                 frmEditOrder frm = new frmEditOrder(this);
                 frm.tabControlEditOrder.TabPages.Clear();

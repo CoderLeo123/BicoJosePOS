@@ -45,6 +45,7 @@
             this.comBoxPaymentTerms = new System.Windows.Forms.ComboBox();
             this.labelPT = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblNewTransactionSet = new System.Windows.Forms.Label();
             this.lblCheckSettleBalance = new System.Windows.Forms.Label();
             this.lblServRowCount = new System.Windows.Forms.Label();
             this.lblDPercent = new System.Windows.Forms.Label();
@@ -85,7 +86,6 @@
             this.printDialog = new System.Windows.Forms.PrintDialog();
             this.printPreviewDialog = new System.Windows.Forms.PrintPreviewDialog();
             this.printDocumentBalance = new System.Drawing.Printing.PrintDocument();
-            this.lblNewTransactionSet = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnCloseSettlePayment)).BeginInit();
             this.panel1.SuspendLayout();
@@ -316,6 +316,17 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(539, 488);
             this.panel1.TabIndex = 31;
+            // 
+            // lblNewTransactionSet
+            // 
+            this.lblNewTransactionSet.AutoSize = true;
+            this.lblNewTransactionSet.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblNewTransactionSet.Location = new System.Drawing.Point(272, 20);
+            this.lblNewTransactionSet.Name = "lblNewTransactionSet";
+            this.lblNewTransactionSet.Size = new System.Drawing.Size(26, 31);
+            this.lblNewTransactionSet.TabIndex = 27;
+            this.lblNewTransactionSet.Text = "0";
+            this.lblNewTransactionSet.Visible = false;
             // 
             // lblCheckSettleBalance
             // 
@@ -823,17 +834,6 @@
             // printDocumentBalance
             // 
             this.printDocumentBalance.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocumentBalance_PrintPage);
-            // 
-            // lblNewTransactionSet
-            // 
-            this.lblNewTransactionSet.AutoSize = true;
-            this.lblNewTransactionSet.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblNewTransactionSet.Location = new System.Drawing.Point(272, 20);
-            this.lblNewTransactionSet.Name = "lblNewTransactionSet";
-            this.lblNewTransactionSet.Size = new System.Drawing.Size(26, 31);
-            this.lblNewTransactionSet.TabIndex = 27;
-            this.lblNewTransactionSet.Text = "0";
-            this.lblNewTransactionSet.Visible = false;
             // 
             // frmSettlePayment
             // 

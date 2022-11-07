@@ -14,8 +14,8 @@ namespace Capstone
         DBConnection dbcon = new DBConnection();
         SqlDataReader dr;
         string title = "BICO-JOSE System";
-        
-        public void GetCartTotal(Label labelDiscount, Label labelSalesTotal, Label labelPayment, Label labelNetTotal)
+        //lblNetNoComa
+        public void GetCartTotal(Label labelDiscount, Label labelSalesTotal, Label labelPayment, Label labelNetTotal, Label lblNetNoComa)
         {//lblDiscount, lblSalesTotal, lblPayment, lblNetTotal
             double discount = double.Parse(labelDiscount.Text);
             double grossSales = double.Parse(labelSalesTotal.Text);
@@ -24,6 +24,7 @@ namespace Capstone
             //double change = netTotal - payment;
             //labelNetTotal = new Label();
             labelNetTotal.Text = netTotal.ToString("#,##0.00");
+            lblNetNoComa.Text = netTotal.ToString("0.00");
             //return labelNetTotal;
         }
 
@@ -32,7 +33,7 @@ namespace Capstone
             try
             {
                 float total = float.Parse(labelPrice.Text) * float.Parse(textQuantity.Text);
-                labelTotal.Text = "₱ " + total.ToString("#.##");
+                labelTotal.Text = total.ToString("#.##");
             }
             catch (Exception ex)
             {
@@ -54,7 +55,7 @@ namespace Capstone
                     try
                     {
                         total = float.Parse(price.ToString()) * int.Parse(qty.ToString());
-                        dgv.Rows[i].Cells[6].Value = "₱ " + total.ToString("00.00");
+                        dgv.Rows[i].Cells[6].Value = total.ToString("00.00");
 
                     }
                     catch (Exception ex)

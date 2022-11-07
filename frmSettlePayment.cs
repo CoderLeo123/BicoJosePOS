@@ -77,17 +77,17 @@ namespace Capstone
             double remBal = TotalVar - paymentInput;
             if (paymentInput < initialDepRequired)
             {
-                Payment.Text = initialDepRequired.ToString();                
+                Payment.Text = initialDepRequired.ToString("00.00");                
                 Payment.SelectAll();
                 Payment.Focus();
                 
                 lblPaymentNotice.Text = "Ateast 50 percent: " + initialDepRequired.ToString("00.00");
                 lblPaymentNotice.Visible = true;
-                txtRemBalances.Text = remBal.ToString();
+                txtRemBalances.Text = remBal.ToString("00.00");
             }
             else
             {
-                txtRemBalances.Text = remBal.ToString();
+                txtRemBalances.Text = remBal.ToString("00.00");
             }       
         }
 
@@ -187,8 +187,9 @@ namespace Capstone
         {
 
             //int dgvCount = lblRowCount.Text.ToString();
-            try
-            {
+            //try
+            //{
+                int pLength = 0;
                 string pTerms = comBoxPaymentTerms.Text;
                 //frmCashier frmC = new frmCashier();
                 if (pTerms == "Full")
@@ -209,7 +210,7 @@ namespace Capstone
                         }
                         else
                         {
-                            int pLength = 0;
+                            
                             if (lblCheckSettleBalance.Text == "0")
                             {
                                 pTerms = comBoxPaymentTerms.Text;
@@ -222,7 +223,9 @@ namespace Capstone
                                 preview.Size = new System.Drawing.Size(400, 650);
                                 preview.ShowDialog();
                                 settlement();
-                            }
+                                clearCashier();
+                            this.Dispose();
+                        }
                             else if (lblCheckSettleBalance.Text == "1")
                             {
                                 
@@ -237,6 +240,7 @@ namespace Capstone
                                 preview.ShowDialog();
                                 MessageBox.Show("Payment succesfully", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 settleBalance();
+                                
                                 classPayment.LoadRecordsUnsettled(frmEP.dataGridViewPaymentStat, frmEP.txtSearchPending);                                
                                 this.Dispose();
 
@@ -247,15 +251,32 @@ namespace Capstone
                 }
                 else if(pTerms == "Deposit")
                 {
+                    pTerms = comBoxPaymentTerms.Text;
+                    PrintPreviewDialog preview = new PrintPreviewDialog();
+                    preview.Document = printDocument;
+                    pLength = 920;
+                    paperSizeUpdate(out pLength);
+                    printDocument.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("RECEIPT", 610, pLength);
+                    preview.PrintPreviewControl.Zoom = 0.75;
+                    preview.Size = new System.Drawing.Size(400, 650);
+                    preview.ShowDialog();
                     settlement();
-                }
+                    clearCashier();
+                this.Dispose();
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //MessageBox.Show("Insufficient amount. Please enter the correct amount!", title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    //MessageBox.Show("Insufficient amount. Please enter the correct amount!", title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    return;
+            //}
+        }
+        public void clearCashier()
+        {
+            frmC.txtFirstName.Text = "";
+            frmC.txtLastName.Text = "";
+            frmC.comBoxDiscountType.SelectedIndex = 0;
         }
         public void settleBalance()
         {
@@ -287,7 +308,8 @@ namespace Capstone
 
                 cn.Open();
                 cm = new SqlCommand("INSERT INTO tblReceiptSettle (Transaction_No, Transaction_Date, Payment_Mode, Customer, Net_Total, Payment, Change, Cashier) VALUES(@Transaction_No, @Transaction_Date, @Payment_Mode, @Customer, @Net_Total, @Payment, @Change, @Cashier)", cn);
-                cm.Parameters.AddWithValue("@Transaction_No", NEWtransacNum);
+                cm.Parameters.AddWithValue("@Transaction_No", transacNum);
+                cm.Parameters.AddWithValue("@New_TransacNo", NEWtransacNum);
                 cm.Parameters.AddWithValue("@Transaction_Date", Settled_Date);
                 cm.Parameters.AddWithValue("@Payment_Mode", pMethod);
                 cm.Parameters.AddWithValue("@Customer", customer);
@@ -303,15 +325,15 @@ namespace Capstone
         }
         public void settlement()
         {
-            try
-            {
+            //try
+            //{
                 string transacNum = lblTransacNo.Text;
                 //int transacNum = int.Parse(transacInput);
                 float payment = float.Parse(txtPayment.Text);//Initial_Deposit
                 float change = float.Parse(txtChange.Text);
-                string transDate = DateTime.Parse(DateTime.Now.ToString()).ToShortDateString();
-                string discountPer = lblDPercent.Text;
-                string gross = frmC.lblSalesTotal.Text;
+                string transDate = DateTime.Now.ToString();//DateTime.Parse(DateTime.Now.ToString()).ToShortDateString()
+            string discountPer = lblDPercent.Text;
+                float gross = float.Parse(lblGrossTotal.Text);
                 string pMethod = comBoxMethodPayment.Text;
                 string pTerms = comBoxPaymentTerms.Text;
                 string cashier = lblCashier.Text;
@@ -322,13 +344,14 @@ namespace Capstone
                 string status = "";
                 string claimDate = ""; //DateTime.Today.AddDays(3).ToShortDateString()
                 string releaseBy = "Undefined";
+            string completedBy = "";
                 string finalDiscount = lblDiscount.Text;
                 string settlementDate = "Pending";
                 string ITMID = "";
                 string paymentStatus = "";
-                float frameTotal = 0;
-                float lenseTotal = 0;
-                checkPaymentTerms(out status, pTerms, total, payment, out remainBalance, out settlementDate);
+                double frameTotal = 0;
+                double lenseTotal = 0;
+                checkPaymentTerms(out status, pTerms, total, payment, out remainBalance, out settlementDate, out completedBy, cashier);
 
                 lblPaymentNotice.Visible = false;
                 computeChange(txtTotal, txtPayment, txtChange);
@@ -353,8 +376,8 @@ namespace Capstone
                 cm.Parameters.AddWithValue("@Status", status);
                 cm.Parameters.AddWithValue("@Discount_Per_Trans", finalDiscount);
                 cm.Parameters.AddWithValue("@Settled_Date", settlementDate);
-
-                cm.ExecuteNonQuery();
+                cm.Parameters.AddWithValue("@Completed_By", completedBy);
+            cm.ExecuteNonQuery();
                 cn.Close();
 
                 checkOrderIfDeposit(out status, pTerms, out claimDate, out paymentStatus);
@@ -374,12 +397,12 @@ namespace Capstone
                 calculateFrameLenseTotal(frmC.dataGridViewCart, transacNum, out frameTotal, out lenseTotal);
                 cn.Open();
                 cm = new SqlCommand("INSERT INTO tblReceipt (Transaction_No, Transaction_Date, Payment_Mode, Payment_Terms, Customer, Gross_Total, Discount, Net_Total, Payment, Balance, Change, Discount_Percent, Settled_Date, Cashier, Frame_Total, Lense_Total) VALUES(@Transaction_No, @Transaction_Date, @Payment_Mode, @Payment_Terms, @Customer, @Gross_Total, @Discount, @Net_Total, @Payment, @Balance, @Change, @Discount_Percent, @Settled_Date, @Cashier, @Frame_Total, @Lense_Total)", cn);
-                cm.Parameters.AddWithValue("@Transaction_No", lblTransacNo.Text);
-                cm.Parameters.AddWithValue("@Transaction_Date", transDate);
+                cm.Parameters.AddWithValue("@Transaction_No", lblTransacNo.Text);//, Frame_Total, Lense_Total
+                cm.Parameters.AddWithValue("@Transaction_Date", transDate);//, @Frame_Total, @Lense_Total
                 cm.Parameters.AddWithValue("@Payment_Mode", pMethod);
                 cm.Parameters.AddWithValue("@Payment_Terms", pTerms);
                 cm.Parameters.AddWithValue("@Customer", customer);
-                cm.Parameters.AddWithValue("@Gross_Total", gross);
+                cm.Parameters.AddWithValue("@Gross_Total", gross.ToString("#,##0.00"));
                 cm.Parameters.AddWithValue("@Discount", finalDiscount);
                 cm.Parameters.AddWithValue("@Net_Total", total.ToString("#,##0.00"));
                 cm.Parameters.AddWithValue("@Payment", payment.ToString("#,##0.00"));
@@ -426,18 +449,18 @@ namespace Capstone
                 MessageBox.Show("Payment succesfully", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 classGenerateID.GenerateTransactionNo(frmC.lblTransactionNo);
                 //frmC.GenerateTransactionNo();
-                classLoadData.LoadCart(frmC.dataGridViewCart, frmC.lblDiscount, frmC.lblSalesTotal, frmC.lblPayment, frmC.lblNetTotal, frmC.btnSettlePayment, frmC.btnAddDiscount, frmC.btnClearCart, frmC.txtSearch, frmC.dataGridViewService);
+                classLoadData.LoadCart(frmC.dataGridViewCart, frmC.lblDiscount, frmC.lblSalesTotal, frmC.lblPayment, frmC.lblNetTotal, frmC.btnSettlePayment, frmC.btnAddDiscount, frmC.btnClearCart, frmC.txtSearch, frmC.dataGridViewService, frmC.lblNetNoComa, frmC.lblGrossNoComma);
                 
                 //frmC.LoadCart();
 
                 this.Dispose();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //MessageBox.Show("Insufficient amount. Please enter the correct amount!", title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    //MessageBox.Show("Insufficient amount. Please enter the correct amount!", title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    return;
+            //}
         }
 
         public void checkOrderIfDeposit(out string statusValue, string paymentTerms, out string dateClaim, out string paymentStat)
@@ -472,24 +495,28 @@ namespace Capstone
             }
         } 
 
-        public void checkPaymentTerms(out string statusValue, string paymentTerms, float total, float payment, out float remBalance, out string settledDate)
+        public void checkPaymentTerms(out string statusValue, string paymentTerms, float total, float payment, out float remBalance, out string settledDate, out string completedBy, string cashier)
         {
             try
             {
                 statusValue = "";
                 settledDate = "";
+                completedBy = "";
                 remBalance = total - payment;
+
                 if (paymentTerms == "Full")
                 {
                     statusValue = "Settled";
-                    remBalance = 0;
-                    settledDate = DateTime.Today.ToShortDateString();
+                    remBalance = 0;//DateTime.Today.ToShortDateString()
+                    settledDate = DateTime.Now.ToString();
+                    completedBy = cashier;
                 }
                 else if (paymentTerms == "Deposit")
                 {
                     statusValue = "Pending";
                     remBalance = total - payment;
                     settledDate = "Pending";
+                    completedBy = "Undefined";
                 }
             }
             catch (Exception ex)
@@ -498,6 +525,7 @@ namespace Capstone
                 statusValue = "Pending";
                 remBalance = total - payment;
                 settledDate = "";
+                completedBy = "";
             }            
         }
         
@@ -651,6 +679,7 @@ namespace Capstone
                 {
                     lblPaymentNotice.Visible = false;
                     computeChange(txtTotal, txtPayment, txtChange);
+                    txtChange.Text = "0";
                 }
                 
             }
@@ -700,9 +729,10 @@ namespace Capstone
             System.Drawing.Font printFontBold = new System.Drawing.Font("Arial", 15, System.Drawing.FontStyle.Bold);
             System.Drawing.Font printFontItallic = new System.Drawing.Font("Arial", 12, System.Drawing.FontStyle.Italic);
             e.Graphics.DrawString("Bico-Jose Optical Clinic", printFontBold, Brushes.Black, 175, 30);
-            e.Graphics.DrawString("Address: 3rd Floor Susana Mart, Tungko San Jose Del Monte Bulacan", printFont, Brushes.Black, 80, 80);
+            e.Graphics.DrawString("Address: 3rd Floor Susana Mart, Tungko San Jose Del Monte Bulacan", printFont, Brushes.Black, 80, 60);
+            e.Graphics.DrawString("Clinic's Contact: 09178326686", printFont, Brushes.Black, 185, 80);
             y = 140; x = 320;
-            e.Graphics.DrawString("Clinic's Contact: 09178326666", printFont, Brushes.Black, 20, y);//140
+            e.Graphics.DrawString("TIN: 748-219-944-00000", printFont, Brushes.Black, 20, y);//140
             e.Graphics.DrawString("Date Issued: ", printFont, Brushes.Black, (x += 60), y);            
             e.Graphics.DrawString("Mode of Payment:  " + comBoxMethodPayment.Text, printFont, Brushes.Black, 20, (y += 30));//170
             e.Graphics.DrawString(DateTime.Now.ToString(), printFont, Brushes.Black, x, y);
@@ -845,9 +875,10 @@ namespace Capstone
             System.Drawing.Font printFontItallic = new System.Drawing.Font("Arial", 12, System.Drawing.FontStyle.Italic);
             
             e.Graphics.DrawString("Bico-Jose Optical Clinic", printFontBold, Brushes.Black, 175, 30);
-            e.Graphics.DrawString("Address: 3rd Floor Susana Mart, Tungko San Jose Del Monte Bulacan", printFont, Brushes.Black, 80, 80);
+            e.Graphics.DrawString("Address: 3rd Floor Susana Mart, Tungko San Jose Del Monte Bulacan", printFont, Brushes.Black, 80, 60);
+            e.Graphics.DrawString("Clinic's Contact: 09178326686", printFont, Brushes.Black, 185, 80);            
             y = 140; x = 320;
-            e.Graphics.DrawString("Clinic's Contact: 09178326666", printFont, Brushes.Black, 20, y);//140
+            e.Graphics.DrawString("TIN: 748-219-944-00000", printFont, Brushes.Black, 20, y);//140
             e.Graphics.DrawString("Date Issued: ", printFont, Brushes.Black, (x += 60), y);
             e.Graphics.DrawString("Mode of Payment:  " + comBoxMethodPayment.Text, printFont, Brushes.Black, 20, (y += 30));//170
             e.Graphics.DrawString(DateTime.Now.ToString(), printFont, Brushes.Black, x, y);
@@ -903,9 +934,24 @@ namespace Capstone
 
         }
 
-        public void calculateFrameLenseTotal(DataGridView dgv, string transNo, out float frameTotal, out float lenseTotal)
+        public void calculateFrameLenseTotal(DataGridView dgv, string transNo, out double frameTotal, out double lenseTotal)
         {
             frameTotal = 0; lenseTotal = 0;
+            string pass = "", result = "";
+
+            void ifBlankThenZero(out string result, string pass)
+            {
+                result = pass;
+                if (result == "")
+                {
+                    result = "0";
+                }
+                else
+                {
+                    result = pass;
+                }
+
+            }
 
             cn = new SqlConnection(dbcon.MyConnection());            
             cn.Open();
@@ -913,7 +959,9 @@ namespace Capstone
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
-                frameTotal += float.Parse(dr[0].ToString());
+                //pass = dr[0].ToString();
+                //ifBlankThenZero(out result, pass);
+                frameTotal += double.Parse(dr[0].ToString());
             }
             dr.Close();
             cn.Close();
@@ -924,7 +972,9 @@ namespace Capstone
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
-                lenseTotal += float.Parse(dr[0].ToString());
+                //pass = dr[0].ToString();
+                //ifBlankThenZero(out result, pass);
+                lenseTotal += double.Parse(dr[0].ToString());
             }
             dr.Close();
             cn.Close();

@@ -67,6 +67,7 @@
             this.lblInitialStock = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.NONCONSUMABLE = new System.Windows.Forms.TabPage();
+            this.lblLenseCheck = new System.Windows.Forms.Label();
             this.lblItemIDPass = new System.Windows.Forms.Label();
             this.lblStockNumPass = new System.Windows.Forms.Label();
             this.dataGridViewNC = new System.Windows.Forms.DataGridView();
@@ -82,7 +83,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txtQuantity = new System.Windows.Forms.TextBox();
-            this.lblLenseCheck = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -518,6 +520,16 @@
             this.NONCONSUMABLE.Text = "Non-Consumable";
             this.NONCONSUMABLE.UseVisualStyleBackColor = true;
             // 
+            // lblLenseCheck
+            // 
+            this.lblLenseCheck.AutoSize = true;
+            this.lblLenseCheck.Location = new System.Drawing.Point(579, 223);
+            this.lblLenseCheck.Name = "lblLenseCheck";
+            this.lblLenseCheck.Size = new System.Drawing.Size(32, 38);
+            this.lblLenseCheck.TabIndex = 12;
+            this.lblLenseCheck.Text = "1";
+            this.lblLenseCheck.Visible = false;
+            // 
             // lblItemIDPass
             // 
             this.lblItemIDPass.AutoSize = true;
@@ -638,6 +650,8 @@
             // panelNC
             // 
             this.panelNC.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panelNC.Controls.Add(this.label8);
+            this.panelNC.Controls.Add(this.label4);
             this.panelNC.Controls.Add(this.lblPrice2);
             this.panelNC.Controls.Add(this.lblTotal);
             this.panelNC.Controls.Add(this.label6);
@@ -673,7 +687,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(86, 277);
+            this.label6.Location = new System.Drawing.Point(114, 277);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(141, 62);
             this.label6.TabIndex = 41;
@@ -683,7 +697,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(62, 200);
+            this.label7.Location = new System.Drawing.Point(13, 200);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(243, 62);
             this.label7.TabIndex = 40;
@@ -701,15 +715,26 @@
             this.txtQuantity.TextChanged += new System.EventHandler(this.txtQuantity_TextChanged);
             this.txtQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuantity_KeyPress);
             // 
-            // lblLenseCheck
+            // label4
             // 
-            this.lblLenseCheck.AutoSize = true;
-            this.lblLenseCheck.Location = new System.Drawing.Point(579, 223);
-            this.lblLenseCheck.Name = "lblLenseCheck";
-            this.lblLenseCheck.Size = new System.Drawing.Size(32, 38);
-            this.lblLenseCheck.TabIndex = 12;
-            this.lblLenseCheck.Text = "1";
-            this.lblLenseCheck.Visible = false;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 28.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label4.ForeColor = System.Drawing.Color.Red;
+            this.label4.Location = new System.Drawing.Point(247, 200);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(55, 62);
+            this.label4.TabIndex = 44;
+            this.label4.Text = "₱";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label8.Location = new System.Drawing.Point(247, 262);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(70, 81);
+            this.label8.TabIndex = 45;
+            this.label8.Text = "₱";
             // 
             // frmExpiration
             // 
@@ -798,5 +823,7 @@
         private DataGridViewImageColumn Select;
         private DataGridViewTextBoxColumn ID;
         public Label lblLenseCheck;
+        public Label label4;
+        public Label label8;
     }
 }

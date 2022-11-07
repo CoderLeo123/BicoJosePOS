@@ -43,6 +43,8 @@
             this.ServID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ServNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.lblGrossNoComma = new System.Windows.Forms.Label();
+            this.lblNetNoComa = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -72,6 +74,8 @@
             this.btnBrowseItem = new System.Windows.Forms.Button();
             this.btnNewTransaction = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label13 = new System.Windows.Forms.Label();
+            this.comBoxDiscountType = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -84,7 +88,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.dataGridViewCart = new System.Windows.Forms.DataGridView();
-            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.NumCart = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DescriptionCart = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Expiration = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -101,6 +104,7 @@
             this.unitMe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Classif = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LenseChe = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.panel2.SuspendLayout();
             this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewService)).BeginInit();
@@ -240,6 +244,8 @@
             // 
             // panel7
             // 
+            this.panel7.Controls.Add(this.lblGrossNoComma);
+            this.panel7.Controls.Add(this.lblNetNoComa);
             this.panel7.Controls.Add(this.label12);
             this.panel7.Controls.Add(this.label9);
             this.panel7.Controls.Add(this.label8);
@@ -257,6 +263,28 @@
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(427, 266);
             this.panel7.TabIndex = 0;
+            // 
+            // lblGrossNoComma
+            // 
+            this.lblGrossNoComma.AutoSize = true;
+            this.lblGrossNoComma.ForeColor = System.Drawing.Color.Red;
+            this.lblGrossNoComma.Location = new System.Drawing.Point(175, 68);
+            this.lblGrossNoComma.Name = "lblGrossNoComma";
+            this.lblGrossNoComma.Size = new System.Drawing.Size(28, 28);
+            this.lblGrossNoComma.TabIndex = 28;
+            this.lblGrossNoComma.Text = "--";
+            this.lblGrossNoComma.Visible = false;
+            // 
+            // lblNetNoComa
+            // 
+            this.lblNetNoComa.AutoSize = true;
+            this.lblNetNoComa.ForeColor = System.Drawing.Color.Red;
+            this.lblNetNoComa.Location = new System.Drawing.Point(149, 153);
+            this.lblNetNoComa.Name = "lblNetNoComa";
+            this.lblNetNoComa.Size = new System.Drawing.Size(28, 28);
+            this.lblNetNoComa.TabIndex = 27;
+            this.lblNetNoComa.Text = "--";
+            this.lblNetNoComa.Visible = false;
             // 
             // label12
             // 
@@ -638,6 +666,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label13);
+            this.panel1.Controls.Add(this.comBoxDiscountType);
             this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label7);
@@ -654,6 +684,31 @@
             this.panel1.Size = new System.Drawing.Size(1173, 180);
             this.panel1.TabIndex = 4;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label13.Location = new System.Drawing.Point(560, 68);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(261, 45);
+            this.label13.TabIndex = 11;
+            this.label13.Text = "Transaction Date";
+            // 
+            // comBoxDiscountType
+            // 
+            this.comBoxDiscountType.BackColor = System.Drawing.SystemColors.Control;
+            this.comBoxDiscountType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comBoxDiscountType.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.comBoxDiscountType.FormattingEnabled = true;
+            this.comBoxDiscountType.Items.AddRange(new object[] {
+            "Regular",
+            "Senior/PWD"});
+            this.comBoxDiscountType.Location = new System.Drawing.Point(862, 73);
+            this.comBoxDiscountType.Name = "comBoxDiscountType";
+            this.comBoxDiscountType.Size = new System.Drawing.Size(183, 39);
+            this.comBoxDiscountType.TabIndex = 10;
+            this.comBoxDiscountType.SelectedIndexChanged += new System.EventHandler(this.comBoxDiscountType_SelectedIndexChanged);
             // 
             // label11
             // 
@@ -821,10 +876,6 @@
             this.dataGridViewCart.TabIndex = 3;
             this.dataGridViewCart.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewCart_CellContentClick);
             // 
-            // printDocument1
-            // 
-            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
-            // 
             // NumCart
             // 
             this.NumCart.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -877,7 +928,7 @@
             this.DiscountCart.Name = "DiscountCart";
             this.DiscountCart.ReadOnly = true;
             this.DiscountCart.Visible = false;
-            this.DiscountCart.Width = 134;
+            this.DiscountCart.Width = 125;
             // 
             // TotalCart
             // 
@@ -964,6 +1015,10 @@
             this.LenseChe.Name = "LenseChe";
             this.LenseChe.Visible = false;
             this.LenseChe.Width = 125;
+            // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
             // frmCashier
             // 
@@ -1069,5 +1124,9 @@
         private DataGridViewTextBoxColumn unitMe;
         private DataGridViewTextBoxColumn Classif;
         private DataGridViewTextBoxColumn LenseChe;
+        private Label label13;
+        public ComboBox comBoxDiscountType;
+        public Label lblNetNoComa;
+        public Label lblGrossNoComma;
     }
 }
