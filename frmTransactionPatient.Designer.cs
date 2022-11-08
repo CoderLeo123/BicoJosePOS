@@ -52,12 +52,6 @@
             this.panelRTrans = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.dataGridViewRTrans = new System.Windows.Forms.DataGridView();
-            this.NumService = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Desc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UnMe = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TDATE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ADD = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
@@ -73,7 +67,15 @@
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OLD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ad = new System.Windows.Forms.DataGridViewImageColumn();
+            this.NumService = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Desc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnMe = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TDATE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OldTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ADD = new System.Windows.Forms.DataGridViewImageColumn();
             this.panelTop.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -212,6 +214,7 @@
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn5,
+            this.OLD,
             this.ad});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.Azure;
@@ -336,6 +339,7 @@
             this.Price,
             this.UnMe,
             this.TDATE,
+            this.OldTra,
             this.ADD});
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.Azure;
@@ -358,59 +362,6 @@
             this.dataGridViewRTrans.Size = new System.Drawing.Size(1027, 307);
             this.dataGridViewRTrans.TabIndex = 8;
             this.dataGridViewRTrans.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRTrans_CellContentClick);
-            // 
-            // NumService
-            // 
-            this.NumService.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.NumService.HeaderText = "#";
-            this.NumService.MinimumWidth = 6;
-            this.NumService.Name = "NumService";
-            this.NumService.ReadOnly = true;
-            this.NumService.Width = 61;
-            // 
-            // Desc
-            // 
-            this.Desc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Desc.HeaderText = "INVOICE";
-            this.Desc.MinimumWidth = 6;
-            this.Desc.Name = "Desc";
-            this.Desc.ReadOnly = true;
-            // 
-            // Price
-            // 
-            this.Price.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Price.HeaderText = "CUSTOMER";
-            this.Price.MinimumWidth = 6;
-            this.Price.Name = "Price";
-            this.Price.ReadOnly = true;
-            // 
-            // UnMe
-            // 
-            this.UnMe.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.UnMe.HeaderText = "CASHIER";
-            this.UnMe.MinimumWidth = 6;
-            this.UnMe.Name = "UnMe";
-            this.UnMe.ReadOnly = true;
-            this.UnMe.Width = 152;
-            // 
-            // TDATE
-            // 
-            this.TDATE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.TDATE.HeaderText = "DATE";
-            this.TDATE.MinimumWidth = 6;
-            this.TDATE.Name = "TDATE";
-            this.TDATE.ReadOnly = true;
-            this.TDATE.Width = 108;
-            // 
-            // ADD
-            // 
-            this.ADD.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ADD.HeaderText = "";
-            this.ADD.Image = global::Capstone.Properties.Resources.AddNew;
-            this.ADD.MinimumWidth = 6;
-            this.ADD.Name = "ADD";
-            this.ADD.ReadOnly = true;
-            this.ADD.Width = 6;
             // 
             // panel5
             // 
@@ -543,6 +494,14 @@
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
             this.dataGridViewTextBoxColumn5.Width = 108;
             // 
+            // OLD
+            // 
+            this.OLD.HeaderText = "Oldtrans";
+            this.OLD.MinimumWidth = 6;
+            this.OLD.Name = "OLD";
+            this.OLD.Visible = false;
+            this.OLD.Width = 125;
+            // 
             // ad
             // 
             this.ad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -552,6 +511,67 @@
             this.ad.Name = "ad";
             this.ad.ReadOnly = true;
             this.ad.Width = 6;
+            // 
+            // NumService
+            // 
+            this.NumService.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.NumService.HeaderText = "#";
+            this.NumService.MinimumWidth = 6;
+            this.NumService.Name = "NumService";
+            this.NumService.ReadOnly = true;
+            this.NumService.Width = 61;
+            // 
+            // Desc
+            // 
+            this.Desc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Desc.HeaderText = "INVOICE";
+            this.Desc.MinimumWidth = 6;
+            this.Desc.Name = "Desc";
+            this.Desc.ReadOnly = true;
+            // 
+            // Price
+            // 
+            this.Price.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Price.HeaderText = "CUSTOMER";
+            this.Price.MinimumWidth = 6;
+            this.Price.Name = "Price";
+            this.Price.ReadOnly = true;
+            // 
+            // UnMe
+            // 
+            this.UnMe.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.UnMe.HeaderText = "CASHIER";
+            this.UnMe.MinimumWidth = 6;
+            this.UnMe.Name = "UnMe";
+            this.UnMe.ReadOnly = true;
+            this.UnMe.Width = 152;
+            // 
+            // TDATE
+            // 
+            this.TDATE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.TDATE.HeaderText = "DATE";
+            this.TDATE.MinimumWidth = 6;
+            this.TDATE.Name = "TDATE";
+            this.TDATE.ReadOnly = true;
+            this.TDATE.Width = 108;
+            // 
+            // OldTra
+            // 
+            this.OldTra.HeaderText = "OldTrans";
+            this.OldTra.MinimumWidth = 6;
+            this.OldTra.Name = "OldTra";
+            this.OldTra.Visible = false;
+            this.OldTra.Width = 125;
+            // 
+            // ADD
+            // 
+            this.ADD.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ADD.HeaderText = "";
+            this.ADD.Image = global::Capstone.Properties.Resources.AddNew;
+            this.ADD.MinimumWidth = 6;
+            this.ADD.Name = "ADD";
+            this.ADD.ReadOnly = true;
+            this.ADD.Width = 6;
             // 
             // frmTransactionPatient
             // 
@@ -603,12 +623,6 @@
         private Panel panel5;
         private Panel panel9;
         public TextBox txtSearchRTrans;
-        private DataGridViewTextBoxColumn NumService;
-        private DataGridViewTextBoxColumn Desc;
-        private DataGridViewTextBoxColumn Price;
-        private DataGridViewTextBoxColumn UnMe;
-        private DataGridViewTextBoxColumn TDATE;
-        private DataGridViewImageColumn ADD;
         private Label label3;
         public Panel panelSett;
         private Panel panel2;
@@ -633,6 +647,14 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private DataGridViewTextBoxColumn OLD;
         private DataGridViewImageColumn ad;
+        private DataGridViewTextBoxColumn NumService;
+        private DataGridViewTextBoxColumn Desc;
+        private DataGridViewTextBoxColumn Price;
+        private DataGridViewTextBoxColumn UnMe;
+        private DataGridViewTextBoxColumn TDATE;
+        private DataGridViewTextBoxColumn OldTra;
+        private DataGridViewImageColumn ADD;
     }
 }

@@ -37,6 +37,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFinalReceipt));
             this.panelTOP = new System.Windows.Forms.Panel();
+            this.lblOldTransNo = new System.Windows.Forms.Label();
             this.lblTransType = new System.Windows.Forms.Label();
             this.lblPrescriptNo = new System.Windows.Forms.Label();
             this.lblTransNo = new System.Windows.Forms.Label();
@@ -50,7 +51,7 @@
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelDueNote = new System.Windows.Forms.Panel();
             this.label22 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
+            this.lblDueDateText = new System.Windows.Forms.Label();
             this.lblNote = new System.Windows.Forms.Label();
             this.lblDueDate = new System.Windows.Forms.Label();
             this.panelFrame = new System.Windows.Forms.Panel();
@@ -74,9 +75,9 @@
             this.lblFrame = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
+            this.lblTotalText = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
+            this.lblDepositText = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.lblTotalCost = new System.Windows.Forms.Label();
             this.lblNetTotal = new System.Windows.Forms.Label();
@@ -119,6 +120,7 @@
             // 
             // panelTOP
             // 
+            this.panelTOP.Controls.Add(this.lblOldTransNo);
             this.panelTOP.Controls.Add(this.lblTransType);
             this.panelTOP.Controls.Add(this.lblPrescriptNo);
             this.panelTOP.Controls.Add(this.lblTransNo);
@@ -127,8 +129,19 @@
             this.panelTOP.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelTOP.Location = new System.Drawing.Point(0, 761);
             this.panelTOP.Name = "panelTOP";
-            this.panelTOP.Size = new System.Drawing.Size(1159, 84);
+            this.panelTOP.Size = new System.Drawing.Size(1018, 84);
             this.panelTOP.TabIndex = 0;
+            // 
+            // lblOldTransNo
+            // 
+            this.lblOldTransNo.AutoSize = true;
+            this.lblOldTransNo.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblOldTransNo.Location = new System.Drawing.Point(67, 41);
+            this.lblOldTransNo.Name = "lblOldTransNo";
+            this.lblOldTransNo.Size = new System.Drawing.Size(54, 26);
+            this.lblOldTransNo.TabIndex = 25;
+            this.lblOldTransNo.Text = "       ";
+            this.lblOldTransNo.Visible = false;
             // 
             // lblTransType
             // 
@@ -218,7 +231,7 @@
             this.panelReceipt.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelReceipt.Location = new System.Drawing.Point(0, 0);
             this.panelReceipt.Name = "panelReceipt";
-            this.panelReceipt.Size = new System.Drawing.Size(1159, 761);
+            this.panelReceipt.Size = new System.Drawing.Size(1018, 761);
             this.panelReceipt.TabIndex = 1;
             // 
             // panelWhole
@@ -303,7 +316,7 @@
             // panelDueNote
             // 
             this.panelDueNote.Controls.Add(this.label22);
-            this.panelDueNote.Controls.Add(this.label21);
+            this.panelDueNote.Controls.Add(this.lblDueDateText);
             this.panelDueNote.Controls.Add(this.lblNote);
             this.panelDueNote.Controls.Add(this.lblDueDate);
             this.panelDueNote.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -322,15 +335,15 @@
             this.label22.TabIndex = 13;
             this.label22.Text = "Note:";
             // 
-            // label21
+            // lblDueDateText
             // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label21.Location = new System.Drawing.Point(3, 50);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(124, 26);
-            this.label21.TabIndex = 14;
-            this.label21.Text = "DUE DATE:";
+            this.lblDueDateText.AutoSize = true;
+            this.lblDueDateText.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblDueDateText.Location = new System.Drawing.Point(3, 50);
+            this.lblDueDateText.Name = "lblDueDateText";
+            this.lblDueDateText.Size = new System.Drawing.Size(124, 26);
+            this.lblDueDateText.TabIndex = 14;
+            this.lblDueDateText.Text = "DUE DATE:";
             // 
             // lblNote
             // 
@@ -347,7 +360,7 @@
             this.lblDueDate.AutoSize = true;
             this.lblDueDate.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblDueDate.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.lblDueDate.Location = new System.Drawing.Point(135, 43);
+            this.lblDueDate.Location = new System.Drawing.Point(168, 43);
             this.lblDueDate.Name = "lblDueDate";
             this.lblDueDate.Size = new System.Drawing.Size(64, 33);
             this.lblDueDate.TabIndex = 24;
@@ -541,9 +554,9 @@
             this.tableLayoutPanel1.Controls.Add(this.lblFrame, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label9, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label10, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label13, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.lblTotalText, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.label14, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.label15, 0, 6);
+            this.tableLayoutPanel1.Controls.Add(this.lblDepositText, 0, 6);
             this.tableLayoutPanel1.Controls.Add(this.label16, 0, 7);
             this.tableLayoutPanel1.Controls.Add(this.lblTotalCost, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.lblNetTotal, 1, 5);
@@ -624,15 +637,15 @@
             this.label10.TabIndex = 1;
             this.label10.Text = "Lens:";
             // 
-            // label13
+            // lblTotalText
             // 
-            this.label13.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(48, 133);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(119, 31);
-            this.label13.TabIndex = 4;
-            this.label13.Text = "Total Cost:";
+            this.lblTotalText.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lblTotalText.AutoSize = true;
+            this.lblTotalText.Location = new System.Drawing.Point(48, 133);
+            this.lblTotalText.Name = "lblTotalText";
+            this.lblTotalText.Size = new System.Drawing.Size(119, 31);
+            this.lblTotalText.TabIndex = 4;
+            this.lblTotalText.Text = "Total Cost:";
             // 
             // label14
             // 
@@ -644,15 +657,15 @@
             this.label14.TabIndex = 5;
             this.label14.Text = " ";
             // 
-            // label15
+            // lblDepositText
             // 
-            this.label15.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(58, 256);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(98, 31);
-            this.label15.TabIndex = 6;
-            this.label15.Text = "Deposit:";
+            this.lblDepositText.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lblDepositText.AutoSize = true;
+            this.lblDepositText.Location = new System.Drawing.Point(58, 256);
+            this.lblDepositText.Name = "lblDepositText";
+            this.lblDepositText.Size = new System.Drawing.Size(98, 31);
+            this.lblDepositText.TabIndex = 6;
+            this.lblDepositText.Text = "Deposit:";
             // 
             // label16
             // 
@@ -883,7 +896,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(0, 182);
+            this.label1.Location = new System.Drawing.Point(12, 175);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(1014, 31);
             this.label1.TabIndex = 1;
@@ -917,7 +930,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1159, 845);
+            this.ClientSize = new System.Drawing.Size(1018, 845);
             this.Controls.Add(this.panelReceipt);
             this.Controls.Add(this.panelTOP);
             this.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -975,16 +988,16 @@
         private Label lblFrame;
         private Label label9;
         private Label label10;
-        private Label label13;
+        private Label lblTotalText;
         private Label label14;
-        private Label label15;
+        private Label lblDepositText;
         private Label label16;
         private Label lblTotalCost;
         private Label lblNetTotal;
         private Label lblDeposit;
         private Label lblBalance;
         private TextBox textBox1;
-        private Label label21;
+        private Label lblDueDateText;
         private Label label22;
         public DataGridView dataGridViewItems;
         public DataGridView dataGridViewLense;
@@ -1014,5 +1027,6 @@
         public Panel panelLens;
         public Panel panelDueNote;
         public Panel panelFrame;
+        public Label lblOldTransNo;
     }
 }

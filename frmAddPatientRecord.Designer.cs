@@ -95,13 +95,6 @@
             this.panelExpiLists = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.dataGridViewTrans = new System.Windows.Forms.DataGridView();
-            this.NumService = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Num = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Desc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UnMe = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Typ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dek = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
             this.lblItemIDCheck = new System.Windows.Forms.Label();
@@ -112,6 +105,14 @@
             this.lblTrans = new System.Windows.Forms.Label();
             this.lblTransNo = new System.Windows.Forms.Label();
             this.btnSearchTrans = new System.Windows.Forms.Button();
+            this.NumService = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Num = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Desc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnMe = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Typ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.oldTransac = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dek = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClosePatientRecord)).BeginInit();
             this.panelAddInfo.SuspendLayout();
@@ -900,6 +901,7 @@
             this.UnMe,
             this.Price,
             this.Typ,
+            this.oldTransac,
             this.dek});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.Azure;
@@ -922,69 +924,6 @@
             this.dataGridViewTrans.Size = new System.Drawing.Size(587, 417);
             this.dataGridViewTrans.TabIndex = 8;
             this.dataGridViewTrans.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewTrans_CellContentClick);
-            // 
-            // NumService
-            // 
-            this.NumService.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.NumService.HeaderText = "#";
-            this.NumService.MinimumWidth = 6;
-            this.NumService.Name = "NumService";
-            this.NumService.ReadOnly = true;
-            this.NumService.Width = 61;
-            // 
-            // Num
-            // 
-            this.Num.HeaderText = "NUM";
-            this.Num.MinimumWidth = 6;
-            this.Num.Name = "Num";
-            this.Num.ReadOnly = true;
-            this.Num.Visible = false;
-            this.Num.Width = 125;
-            // 
-            // Desc
-            // 
-            this.Desc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Desc.HeaderText = "INVOICE";
-            this.Desc.MinimumWidth = 6;
-            this.Desc.Name = "Desc";
-            this.Desc.ReadOnly = true;
-            // 
-            // UnMe
-            // 
-            this.UnMe.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.UnMe.HeaderText = "NAME";
-            this.UnMe.MinimumWidth = 6;
-            this.UnMe.Name = "UnMe";
-            this.UnMe.ReadOnly = true;
-            this.UnMe.Visible = false;
-            this.UnMe.Width = 125;
-            // 
-            // Price
-            // 
-            this.Price.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Price.HeaderText = "DATE";
-            this.Price.MinimumWidth = 6;
-            this.Price.Name = "Price";
-            this.Price.ReadOnly = true;
-            // 
-            // Typ
-            // 
-            this.Typ.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Typ.HeaderText = "TYPE";
-            this.Typ.MinimumWidth = 6;
-            this.Typ.Name = "Typ";
-            this.Typ.ReadOnly = true;
-            this.Typ.Width = 105;
-            // 
-            // dek
-            // 
-            this.dek.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dek.HeaderText = "";
-            this.dek.Image = global::Capstone.Properties.Resources._Delete;
-            this.dek.MinimumWidth = 6;
-            this.dek.Name = "dek";
-            this.dek.ReadOnly = true;
-            this.dek.Width = 6;
             // 
             // panel5
             // 
@@ -1093,6 +1032,77 @@
             this.btnSearchTrans.UseVisualStyleBackColor = false;
             this.btnSearchTrans.Click += new System.EventHandler(this.btnSearchTrans_Click);
             // 
+            // NumService
+            // 
+            this.NumService.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.NumService.HeaderText = "#";
+            this.NumService.MinimumWidth = 6;
+            this.NumService.Name = "NumService";
+            this.NumService.ReadOnly = true;
+            this.NumService.Width = 61;
+            // 
+            // Num
+            // 
+            this.Num.HeaderText = "NUM";
+            this.Num.MinimumWidth = 6;
+            this.Num.Name = "Num";
+            this.Num.ReadOnly = true;
+            this.Num.Visible = false;
+            this.Num.Width = 125;
+            // 
+            // Desc
+            // 
+            this.Desc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Desc.HeaderText = "INVOICE";
+            this.Desc.MinimumWidth = 6;
+            this.Desc.Name = "Desc";
+            this.Desc.ReadOnly = true;
+            // 
+            // UnMe
+            // 
+            this.UnMe.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.UnMe.HeaderText = "NAME";
+            this.UnMe.MinimumWidth = 6;
+            this.UnMe.Name = "UnMe";
+            this.UnMe.ReadOnly = true;
+            this.UnMe.Visible = false;
+            this.UnMe.Width = 122;
+            // 
+            // Price
+            // 
+            this.Price.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Price.HeaderText = "DATE";
+            this.Price.MinimumWidth = 6;
+            this.Price.Name = "Price";
+            this.Price.ReadOnly = true;
+            // 
+            // Typ
+            // 
+            this.Typ.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Typ.HeaderText = "TYPE";
+            this.Typ.MinimumWidth = 6;
+            this.Typ.Name = "Typ";
+            this.Typ.ReadOnly = true;
+            this.Typ.Width = 105;
+            // 
+            // oldTransac
+            // 
+            this.oldTransac.HeaderText = "oldTraan";
+            this.oldTransac.MinimumWidth = 6;
+            this.oldTransac.Name = "oldTransac";
+            this.oldTransac.Visible = false;
+            this.oldTransac.Width = 125;
+            // 
+            // dek
+            // 
+            this.dek.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dek.HeaderText = "";
+            this.dek.Image = global::Capstone.Properties.Resources._Delete;
+            this.dek.MinimumWidth = 6;
+            this.dek.Name = "dek";
+            this.dek.ReadOnly = true;
+            this.dek.Width = 6;
+            // 
             // frmAddPatientRecord
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -1198,15 +1208,16 @@
         private Label label12;
         public Label lblTrans;
         private Label lblTransNo;
+        private Label lblCurrentTransN;
+        public Button btnUpdatePatientRecord;
+        public Button btnSavePatientRecord;
         private DataGridViewTextBoxColumn NumService;
         private DataGridViewTextBoxColumn Num;
         private DataGridViewTextBoxColumn Desc;
         private DataGridViewTextBoxColumn UnMe;
         private DataGridViewTextBoxColumn Price;
         private DataGridViewTextBoxColumn Typ;
+        private DataGridViewTextBoxColumn oldTransac;
         private DataGridViewImageColumn dek;
-        private Label lblCurrentTransN;
-        public Button btnUpdatePatientRecord;
-        public Button btnSavePatientRecord;
     }
 }

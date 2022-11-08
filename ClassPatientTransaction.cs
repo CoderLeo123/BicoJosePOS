@@ -50,7 +50,7 @@ namespace Capstone
             int i = 0;
             dgv.Rows.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT DISTINCT Num, Customer, New_TransacNo, Cashier, Transaction_Date FROM tblReceiptSettle WHERE Customer LIKE '%" + txtSearch.Text + "%' OR Cashier LIKE '%" + txtSearch.Text + "%' ", cn);
+            SqlCommand cm = new SqlCommand("SELECT DISTINCT Num, Customer, New_TransacNo, Cashier, Transaction_Date, Transaction_No FROM tblReceiptSettle WHERE Customer LIKE '%" + txtSearch.Text + "%' OR Cashier LIKE '%" + txtSearch.Text + "%' ", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
@@ -67,7 +67,7 @@ namespace Capstone
 
                 //                                          2-CUSTOMER / 15-Customer                   4-DATE(TRANSACTION) / 6-Date
                 i += 1; //0-#                    1-TRANSACTION NO / 2-Transaction_NO       3-CASHIER / 14-Cashier
-                dgv.Rows.Add(i, dr[2].ToString(), dr[1].ToString(), dr[3].ToString(), TransDate);
+                dgv.Rows.Add(i, dr[2].ToString(), dr[1].ToString(), dr[3].ToString(), TransDate, dr[5].ToString());
             }
             dr.Close();
             cn.Close();
@@ -85,7 +85,7 @@ namespace Capstone
               
                 //          2-NUM / 0-num                               2-NAME / 5-Name                   4-TYPE / 4-Type
                 i += 1; //0-#                1-INVOICE/ 2-Transaction_No      3-DATE / 3-Transaction_Date
-                dgv.Rows.Add(i, dr[0].ToString(), dr[2].ToString(), dr[5].ToString(), dr[3].ToString(), dr[4].ToString());
+                dgv.Rows.Add(i, dr[0].ToString(), dr[2].ToString(), dr[5].ToString(), dr[3].ToString(), dr[4].ToString(), dr[6].ToString());
             }
             dr.Close();
             cn.Close();

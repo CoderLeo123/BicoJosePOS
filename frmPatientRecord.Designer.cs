@@ -49,6 +49,20 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridViewPatientRecord = new System.Windows.Forms.DataGridView();
+            this.NumPRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PatientIDPRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CustomerNamePRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AddressPRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ContactPRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AgePRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GenderPRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CheckUpDatePRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.presct = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fna = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Lna = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.birthDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EditPRecord = new System.Windows.Forms.DataGridViewImageColumn();
+            this.del = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panelPresc = new System.Windows.Forms.Panel();
             this.txtOSPD = new System.Windows.Forms.TextBox();
@@ -75,12 +89,6 @@
             this.panelExpiLists = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.dataGridViewTrans = new System.Windows.Forms.DataGridView();
-            this.NumService = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Num = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Desc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UnMe = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
             this.lblItemIDCheck = new System.Windows.Forms.Label();
@@ -92,20 +100,13 @@
             this.lblTransNo = new System.Windows.Forms.Label();
             this.printDocumentFinalReceipt = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog = new System.Windows.Forms.PrintPreviewDialog();
-            this.NumPRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PatientIDPRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CustomerNamePRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AddressPRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ContactPRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AgePRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GenderPRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CheckUpDatePRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.presct = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Fna = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Lna = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.birthDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EditPRecord = new System.Windows.Forms.DataGridViewImageColumn();
-            this.del = new System.Windows.Forms.DataGridViewImageColumn();
+            this.NumService = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Num = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Desc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnMe = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OldT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClosePatientRecord)).BeginInit();
@@ -343,6 +344,126 @@
             this.dataGridViewPatientRecord.Size = new System.Drawing.Size(1315, 362);
             this.dataGridViewPatientRecord.TabIndex = 6;
             this.dataGridViewPatientRecord.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPatientRecord_CellContentClick);
+            // 
+            // NumPRecord
+            // 
+            this.NumPRecord.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.NumPRecord.HeaderText = "#";
+            this.NumPRecord.MinimumWidth = 6;
+            this.NumPRecord.Name = "NumPRecord";
+            this.NumPRecord.Width = 51;
+            // 
+            // PatientIDPRecord
+            // 
+            this.PatientIDPRecord.HeaderText = "PATIENT ID";
+            this.PatientIDPRecord.MinimumWidth = 6;
+            this.PatientIDPRecord.Name = "PatientIDPRecord";
+            this.PatientIDPRecord.Visible = false;
+            this.PatientIDPRecord.Width = 125;
+            // 
+            // CustomerNamePRecord
+            // 
+            this.CustomerNamePRecord.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CustomerNamePRecord.HeaderText = "NAME";
+            this.CustomerNamePRecord.MinimumWidth = 6;
+            this.CustomerNamePRecord.Name = "CustomerNamePRecord";
+            this.CustomerNamePRecord.ReadOnly = true;
+            // 
+            // AddressPRecord
+            // 
+            this.AddressPRecord.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.AddressPRecord.HeaderText = "ADDRESS";
+            this.AddressPRecord.MinimumWidth = 6;
+            this.AddressPRecord.Name = "AddressPRecord";
+            this.AddressPRecord.ReadOnly = true;
+            // 
+            // ContactPRecord
+            // 
+            this.ContactPRecord.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.ContactPRecord.HeaderText = "CONTACT";
+            this.ContactPRecord.MinimumWidth = 6;
+            this.ContactPRecord.Name = "ContactPRecord";
+            this.ContactPRecord.ReadOnly = true;
+            this.ContactPRecord.Width = 131;
+            // 
+            // AgePRecord
+            // 
+            this.AgePRecord.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.AgePRecord.HeaderText = "AGE";
+            this.AgePRecord.MinimumWidth = 6;
+            this.AgePRecord.Name = "AgePRecord";
+            this.AgePRecord.ReadOnly = true;
+            this.AgePRecord.Width = 78;
+            // 
+            // GenderPRecord
+            // 
+            this.GenderPRecord.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.GenderPRecord.HeaderText = "GENDER";
+            this.GenderPRecord.MinimumWidth = 6;
+            this.GenderPRecord.Name = "GenderPRecord";
+            this.GenderPRecord.ReadOnly = true;
+            this.GenderPRecord.Width = 119;
+            // 
+            // CheckUpDatePRecord
+            // 
+            this.CheckUpDatePRecord.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.CheckUpDatePRecord.HeaderText = "CHECK-UP DATE";
+            this.CheckUpDatePRecord.MinimumWidth = 6;
+            this.CheckUpDatePRecord.Name = "CheckUpDatePRecord";
+            this.CheckUpDatePRecord.ReadOnly = true;
+            this.CheckUpDatePRecord.Width = 193;
+            // 
+            // presct
+            // 
+            this.presct.HeaderText = "Prescrip";
+            this.presct.MinimumWidth = 6;
+            this.presct.Name = "presct";
+            this.presct.Visible = false;
+            this.presct.Width = 125;
+            // 
+            // Fna
+            // 
+            this.Fna.HeaderText = "Fname";
+            this.Fna.MinimumWidth = 6;
+            this.Fna.Name = "Fna";
+            this.Fna.Visible = false;
+            this.Fna.Width = 125;
+            // 
+            // Lna
+            // 
+            this.Lna.HeaderText = "LName";
+            this.Lna.MinimumWidth = 6;
+            this.Lna.Name = "Lna";
+            this.Lna.Visible = false;
+            this.Lna.Width = 125;
+            // 
+            // birthDate
+            // 
+            this.birthDate.HeaderText = "birthDate";
+            this.birthDate.MinimumWidth = 6;
+            this.birthDate.Name = "birthDate";
+            this.birthDate.Visible = false;
+            this.birthDate.Width = 125;
+            // 
+            // EditPRecord
+            // 
+            this.EditPRecord.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.EditPRecord.HeaderText = "";
+            this.EditPRecord.Image = global::Capstone.Properties.Resources.Edit;
+            this.EditPRecord.MinimumWidth = 6;
+            this.EditPRecord.Name = "EditPRecord";
+            this.EditPRecord.ReadOnly = true;
+            this.EditPRecord.Width = 6;
+            // 
+            // del
+            // 
+            this.del.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.del.HeaderText = "";
+            this.del.Image = global::Capstone.Properties.Resources._Delete;
+            this.del.MinimumWidth = 6;
+            this.del.Name = "del";
+            this.del.ReadOnly = true;
+            this.del.Width = 6;
             // 
             // panel3
             // 
@@ -647,10 +768,11 @@
             this.Desc,
             this.UnMe,
             this.Price,
-            this.Type});
+            this.Type,
+            this.OldT});
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.Azure;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.ControlText;
@@ -669,59 +791,6 @@
             this.dataGridViewTrans.Size = new System.Drawing.Size(607, 391);
             this.dataGridViewTrans.TabIndex = 8;
             this.dataGridViewTrans.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewTrans_CellContentClick);
-            // 
-            // NumService
-            // 
-            this.NumService.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.NumService.HeaderText = "#";
-            this.NumService.MinimumWidth = 6;
-            this.NumService.Name = "NumService";
-            this.NumService.ReadOnly = true;
-            this.NumService.Width = 61;
-            // 
-            // Num
-            // 
-            this.Num.HeaderText = "NUM";
-            this.Num.MinimumWidth = 6;
-            this.Num.Name = "Num";
-            this.Num.ReadOnly = true;
-            this.Num.Visible = false;
-            this.Num.Width = 125;
-            // 
-            // Desc
-            // 
-            this.Desc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Desc.HeaderText = "INVOICE";
-            this.Desc.MinimumWidth = 6;
-            this.Desc.Name = "Desc";
-            this.Desc.ReadOnly = true;
-            // 
-            // UnMe
-            // 
-            this.UnMe.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.UnMe.HeaderText = "NAME";
-            this.UnMe.MinimumWidth = 6;
-            this.UnMe.Name = "UnMe";
-            this.UnMe.ReadOnly = true;
-            this.UnMe.Visible = false;
-            this.UnMe.Width = 125;
-            // 
-            // Price
-            // 
-            this.Price.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Price.HeaderText = "DATE";
-            this.Price.MinimumWidth = 6;
-            this.Price.Name = "Price";
-            this.Price.ReadOnly = true;
-            // 
-            // Type
-            // 
-            this.Type.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Type.HeaderText = "TYPE";
-            this.Type.MinimumWidth = 6;
-            this.Type.Name = "Type";
-            this.Type.ReadOnly = true;
-            this.Type.Width = 105;
             // 
             // panel6
             // 
@@ -829,125 +898,68 @@
             this.printPreviewDialog.Name = "printPreviewDialog";
             this.printPreviewDialog.Visible = false;
             // 
-            // NumPRecord
+            // NumService
             // 
-            this.NumPRecord.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.NumPRecord.HeaderText = "#";
-            this.NumPRecord.MinimumWidth = 6;
-            this.NumPRecord.Name = "NumPRecord";
-            this.NumPRecord.Width = 51;
+            this.NumService.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.NumService.HeaderText = "#";
+            this.NumService.MinimumWidth = 6;
+            this.NumService.Name = "NumService";
+            this.NumService.ReadOnly = true;
+            this.NumService.Width = 61;
             // 
-            // PatientIDPRecord
+            // Num
             // 
-            this.PatientIDPRecord.HeaderText = "PATIENT ID";
-            this.PatientIDPRecord.MinimumWidth = 6;
-            this.PatientIDPRecord.Name = "PatientIDPRecord";
-            this.PatientIDPRecord.Visible = false;
-            this.PatientIDPRecord.Width = 125;
+            this.Num.HeaderText = "NUM";
+            this.Num.MinimumWidth = 6;
+            this.Num.Name = "Num";
+            this.Num.ReadOnly = true;
+            this.Num.Visible = false;
+            this.Num.Width = 125;
             // 
-            // CustomerNamePRecord
+            // Desc
             // 
-            this.CustomerNamePRecord.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CustomerNamePRecord.HeaderText = "NAME";
-            this.CustomerNamePRecord.MinimumWidth = 6;
-            this.CustomerNamePRecord.Name = "CustomerNamePRecord";
-            this.CustomerNamePRecord.ReadOnly = true;
+            this.Desc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Desc.HeaderText = "INVOICE";
+            this.Desc.MinimumWidth = 6;
+            this.Desc.Name = "Desc";
+            this.Desc.ReadOnly = true;
             // 
-            // AddressPRecord
+            // UnMe
             // 
-            this.AddressPRecord.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.AddressPRecord.HeaderText = "ADDRESS";
-            this.AddressPRecord.MinimumWidth = 6;
-            this.AddressPRecord.Name = "AddressPRecord";
-            this.AddressPRecord.ReadOnly = true;
+            this.UnMe.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.UnMe.HeaderText = "NAME";
+            this.UnMe.MinimumWidth = 6;
+            this.UnMe.Name = "UnMe";
+            this.UnMe.ReadOnly = true;
+            this.UnMe.Visible = false;
+            this.UnMe.Width = 122;
             // 
-            // ContactPRecord
+            // Price
             // 
-            this.ContactPRecord.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.ContactPRecord.HeaderText = "CONTACT";
-            this.ContactPRecord.MinimumWidth = 6;
-            this.ContactPRecord.Name = "ContactPRecord";
-            this.ContactPRecord.ReadOnly = true;
-            this.ContactPRecord.Width = 131;
+            this.Price.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Price.HeaderText = "DATE";
+            this.Price.MinimumWidth = 6;
+            this.Price.Name = "Price";
+            this.Price.ReadOnly = true;
             // 
-            // AgePRecord
+            // Type
             // 
-            this.AgePRecord.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.AgePRecord.HeaderText = "AGE";
-            this.AgePRecord.MinimumWidth = 6;
-            this.AgePRecord.Name = "AgePRecord";
-            this.AgePRecord.ReadOnly = true;
-            this.AgePRecord.Width = 78;
+            this.Type.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Type.HeaderText = "TYPE";
+            this.Type.MinimumWidth = 6;
+            this.Type.Name = "Type";
+            this.Type.ReadOnly = true;
+            this.Type.Width = 105;
             // 
-            // GenderPRecord
+            // OldT
             // 
-            this.GenderPRecord.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.GenderPRecord.HeaderText = "GENDER";
-            this.GenderPRecord.MinimumWidth = 6;
-            this.GenderPRecord.Name = "GenderPRecord";
-            this.GenderPRecord.ReadOnly = true;
-            this.GenderPRecord.Width = 119;
-            // 
-            // CheckUpDatePRecord
-            // 
-            this.CheckUpDatePRecord.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.CheckUpDatePRecord.HeaderText = "CHECK-UP DATE";
-            this.CheckUpDatePRecord.MinimumWidth = 6;
-            this.CheckUpDatePRecord.Name = "CheckUpDatePRecord";
-            this.CheckUpDatePRecord.ReadOnly = true;
-            this.CheckUpDatePRecord.Width = 193;
-            // 
-            // presct
-            // 
-            this.presct.HeaderText = "Prescrip";
-            this.presct.MinimumWidth = 6;
-            this.presct.Name = "presct";
-            this.presct.Visible = false;
-            this.presct.Width = 125;
-            // 
-            // Fna
-            // 
-            this.Fna.HeaderText = "Fname";
-            this.Fna.MinimumWidth = 6;
-            this.Fna.Name = "Fna";
-            this.Fna.Visible = false;
-            this.Fna.Width = 125;
-            // 
-            // Lna
-            // 
-            this.Lna.HeaderText = "LName";
-            this.Lna.MinimumWidth = 6;
-            this.Lna.Name = "Lna";
-            this.Lna.Visible = false;
-            this.Lna.Width = 125;
-            // 
-            // birthDate
-            // 
-            this.birthDate.HeaderText = "birthDate";
-            this.birthDate.MinimumWidth = 6;
-            this.birthDate.Name = "birthDate";
-            this.birthDate.Visible = false;
-            this.birthDate.Width = 125;
-            // 
-            // EditPRecord
-            // 
-            this.EditPRecord.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.EditPRecord.HeaderText = "";
-            this.EditPRecord.Image = global::Capstone.Properties.Resources.Edit;
-            this.EditPRecord.MinimumWidth = 6;
-            this.EditPRecord.Name = "EditPRecord";
-            this.EditPRecord.ReadOnly = true;
-            this.EditPRecord.Width = 6;
-            // 
-            // del
-            // 
-            this.del.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.del.HeaderText = "";
-            this.del.Image = global::Capstone.Properties.Resources._Delete;
-            this.del.MinimumWidth = 6;
-            this.del.Name = "del";
-            this.del.ReadOnly = true;
-            this.del.Width = 6;
+            this.OldT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.OldT.HeaderText = "OldTrans";
+            this.OldT.MinimumWidth = 6;
+            this.OldT.Name = "OldT";
+            this.OldT.ReadOnly = true;
+            this.OldT.Visible = false;
+            this.OldT.Width = 153;
             // 
             // frmPatientRecord
             // 
@@ -1033,12 +1045,6 @@
         public Label lblTrans;
         private Label lblTransNo;
         public Label lblPatientID;
-        private DataGridViewTextBoxColumn NumService;
-        private DataGridViewTextBoxColumn Num;
-        private DataGridViewTextBoxColumn Desc;
-        private DataGridViewTextBoxColumn UnMe;
-        private DataGridViewTextBoxColumn Price;
-        private DataGridViewTextBoxColumn Type;
         private System.Drawing.Printing.PrintDocument printDocumentFinalReceipt;
         private PrintPreviewDialog printPreviewDialog;
         private Label lblCurrentTransN;
@@ -1057,5 +1063,12 @@
         private DataGridViewTextBoxColumn birthDate;
         private DataGridViewImageColumn EditPRecord;
         private DataGridViewImageColumn del;
+        private DataGridViewTextBoxColumn NumService;
+        private DataGridViewTextBoxColumn Num;
+        private DataGridViewTextBoxColumn Desc;
+        private DataGridViewTextBoxColumn UnMe;
+        private DataGridViewTextBoxColumn Price;
+        private DataGridViewTextBoxColumn Type;
+        private DataGridViewTextBoxColumn OldT;
     }
 }

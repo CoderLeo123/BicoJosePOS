@@ -64,9 +64,10 @@ namespace Capstone
                         //cn.Close();
 
                         cn.Open();
-                        cm = new SqlCommand("INSERT INTO tblPatientTransaction (Patient_ID, Transaction_No, Transaction_Date, Type, Name) VALUES(@Patient_ID, @Transaction_No, @Transaction_Date, @Type, @Name)", cn);
+                        cm = new SqlCommand("INSERT INTO tblPatientTransaction (Patient_ID, Transaction_No, Transaction_Date, Type, Name, Old_TransNo) VALUES(@Patient_ID, @Transaction_No, @Transaction_Date, @Type, @Name, @Old_TransNo)", cn);
                         cm.Parameters.AddWithValue("@Patient_ID", pID);
                         cm.Parameters.AddWithValue("@Transaction_No", TransNo);
+                        cm.Parameters.AddWithValue("@Old_TransNo", TransNo);
                         cm.Parameters.AddWithValue("@Transaction_Date", TDate);
                         cm.Parameters.AddWithValue("@Type", Type);
                         cm.Parameters.AddWithValue("@Name", Cname);
@@ -102,6 +103,7 @@ namespace Capstone
             string colName = dataGridViewSTrans.Columns[e.ColumnIndex].Name;
             string pID = lblPatientID.Text; string Type = "Settlement";
             string TransNo = dataGridViewSTrans.Rows[e.RowIndex].Cells[1].Value?.ToString();
+            string oldTrans = dataGridViewSTrans.Rows[e.RowIndex].Cells[5].Value?.ToString();
             string Cname = dataGridViewSTrans.Rows[e.RowIndex].Cells[2].Value?.ToString();
             string TDate = dataGridViewSTrans.Rows[e.RowIndex].Cells[4].Value?.ToString();
             if (colName == "ad")
@@ -124,9 +126,10 @@ namespace Capstone
                         //cm.ExecuteNonQuery();
                         //cn.Close();
                         cn.Open();
-                        cm = new SqlCommand("INSERT INTO tblPatientTransaction (Patient_ID, Transaction_No, Transaction_Date, Type, Name) VALUES(@Patient_ID, @Transaction_No, @Transaction_Date, @Type, @Name)", cn);
+                        cm = new SqlCommand("INSERT INTO tblPatientTransaction (Patient_ID, Transaction_No, Transaction_Date, Type, Name, Old_TransNo) VALUES(@Patient_ID, @Transaction_No, @Transaction_Date, @Type, @Name, @Old_TransNo)", cn);
                         cm.Parameters.AddWithValue("@Patient_ID", pID);
                         cm.Parameters.AddWithValue("@Transaction_No", TransNo);
+                        cm.Parameters.AddWithValue("@Old_TransNo", oldTrans);
                         cm.Parameters.AddWithValue("@Transaction_Date", TDate);
                         cm.Parameters.AddWithValue("@Type", Type);
                         cm.Parameters.AddWithValue("@Name", Cname);

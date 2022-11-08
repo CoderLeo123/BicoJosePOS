@@ -181,8 +181,9 @@ namespace Capstone
 
         private void dataGridViewTrans_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            string pID = "", prescID = "", transNo = "", transType = "";
+            string pID = "", prescID = "", transNo = "", transType = "", oldTrans = "";
             transNo = dataGridViewTrans.Rows[e.RowIndex].Cells[2].Value?.ToString();
+            oldTrans = dataGridViewTrans.Rows[e.RowIndex].Cells[6].Value?.ToString();
             transType = dataGridViewTrans.Rows[e.RowIndex].Cells[5].Value?.ToString();
             pID = lblPatientID.Text;
             prescID = lblPrescript.Text;
@@ -191,9 +192,20 @@ namespace Capstone
             frmFinalReceipt frm = new frmFinalReceipt();            
             frm.lblPatientID.Text = pID;
             frm.lblTransNo.Text = transNo;
+            frm.lblOldTransNo.Text = oldTrans;
             frm.lblPrescriptNo.Text = prescID;
             frm.lblTransType.Text = transType;
-            frm.displayValue(pID, prescID, transNo);
+            frm.displayValue(pID, prescID, transNo, oldTrans, transType);
+            if (transType == "Regular")
+            {
+                frm.displayValue(pID, prescID, transNo, oldTrans, transType);
+            }
+            else if (transType == "Settlement")
+            {
+                frm.displayValue(pID, prescID, oldTrans, transNo, transType);
+
+            }
+
             frm.ShowDialog();
         }
         public void previewFinalReceipt()
