@@ -80,6 +80,7 @@ namespace Capstone
                     return;
                 }
                 classPatient.LoadPatientTransactionList(frmL.dataGridViewTrans, pID);
+                classPatient.LoadRecordsTransacHist(dataGridViewRTrans, txtSearchRTrans);
             }
             else
             {
@@ -97,21 +98,13 @@ namespace Capstone
 
         private void dataGridViewSTrans_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            lblTransSNo.Text = dataGridViewSTrans.Rows[e.RowIndex].Cells[1].Value?.ToString();
-            PrintPreviewDialog preview = new PrintPreviewDialog();
-            preview.Document = printDocumentSettled;
-            int pLength = 600;
-            printDocumentSettled.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("RECEIPT", 610, pLength);
-            preview.PrintPreviewControl.Zoom = 0.75;
-            preview.Size = new System.Drawing.Size(400, 500);
-            preview.ShowDialog();
-
-            string colName = dataGridViewRTrans.Columns[e.ColumnIndex].Name;
+            lblTransSNo.Text = dataGridViewSTrans.Rows[e.RowIndex].Cells[1].Value?.ToString();            
+            string colName = dataGridViewSTrans.Columns[e.ColumnIndex].Name;
             string pID = lblPatientID.Text; string Type = "Settlement";
-            string TransNo = dataGridViewRTrans.Rows[e.RowIndex].Cells[1].Value?.ToString();
-            string Cname = dataGridViewRTrans.Rows[e.RowIndex].Cells[2].Value?.ToString();
-            string TDate = dataGridViewRTrans.Rows[e.RowIndex].Cells[4].Value?.ToString();
-            if (colName == "ADD")
+            string TransNo = dataGridViewSTrans.Rows[e.RowIndex].Cells[1].Value?.ToString();
+            string Cname = dataGridViewSTrans.Rows[e.RowIndex].Cells[2].Value?.ToString();
+            string TDate = dataGridViewSTrans.Rows[e.RowIndex].Cells[4].Value?.ToString();
+            if (colName == "ad")
             {
                 cn.Open();
                 cm = new SqlCommand("SELECT Patient_ID FROM tblReceiptSettle WHERE Transaction_No LIKE '" + TransNo + "' ", cn);
@@ -146,7 +139,19 @@ namespace Capstone
                     MessageBox.Show("Selected transaction is already on the patient record", title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
+                
+                classPatient.LoadRecordsTransacSettled(dataGridViewSTrans, txtSearchSTrans);
                 classPatient.LoadPatientTransactionList(frmL.dataGridViewTrans, pID);
+            }
+            else
+            {
+                PrintPreviewDialog preview = new PrintPreviewDialog();
+                preview.Document = printDocumentSettled;
+                int pLength = 600;
+                printDocumentSettled.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("RECEIPT", 610, pLength);
+                preview.PrintPreviewControl.Zoom = 0.75;
+                preview.Size = new System.Drawing.Size(400, 500);
+                preview.ShowDialog();
             }
         }
 
@@ -371,8 +376,8 @@ namespace Capstone
         private void printDocumentSettled_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
             transNo = lblCurrentTransN.Text;
-            string TransDate = "", PMode = "", Customer = "", NetT = "", Payment = "", Change = "", Cashier = "", oldTrans = "";
-            classReport.tblReceiptSettle(transNo, out TransDate, out PMode, out Customer, out NetT, out Payment, out Change, out Cashier, out oldTrans);
+            string TransDate = "", PMode = "", Customer = "", NetT = "", Payment = "", Change = "", Cashier = "", oldTrans = "", newTrans = "";
+            classReport.tblReceiptSettle(transNo, out TransDate, out PMode, out Customer, out NetT, out Payment, out Change, out Cashier, out oldTrans, out newTrans);
 
 
             int x = 0, y = 0; // num = 1; string resultText = ""; int dgvCount = int.Parse(lblRowCount.Text), dgvCountService = int.Parse(lblServRowCount.Text);
@@ -393,8 +398,8 @@ namespace Capstone
             e.Graphics.DrawString("Cashier:  " + Cashier, printFont, Brushes.Black, x, (y += 30));//200
             e.Graphics.DrawString("Customer Name:  " + Customer, printFont, Brushes.Black, 20, y);//230
             e.Graphics.DrawString("--------------------------------------------------------------------------------------------------------------------------", printFont, Brushes.Black, 10, (y += 30));//260 or 290
-            e.Graphics.DrawString("Invoice No: " + transNo, printFont, Brushes.Black, 20, (y += 50));//310 or 340
-            e.Graphics.DrawString("Balance Settlement for Transaction No:" + oldTrans, printFont, Brushes.Black, 20, (y += 50));//360 or 390
+            e.Graphics.DrawString("Invoice No: " + oldTrans, printFont, Brushes.Black, 20, (y += 50));//310 or 340
+            e.Graphics.DrawString("Balance Settlement for Transaction No:" + newTrans, printFont, Brushes.Black, 20, (y += 50));//360 or 390
 
 
             x = 440;

@@ -307,7 +307,7 @@ namespace Capstone
                 cn.Close();
 
                 cn.Open();
-                cm = new SqlCommand("INSERT INTO tblReceiptSettle (Transaction_No, Transaction_Date, Payment_Mode, Customer, Net_Total, Payment, Change, Cashier) VALUES(@Transaction_No, @Transaction_Date, @Payment_Mode, @Customer, @Net_Total, @Payment, @Change, @Cashier)", cn);
+                cm = new SqlCommand("INSERT INTO tblReceiptSettle (Transaction_No, Transaction_Date, Payment_Mode, Customer, Net_Total, Payment, Change, Cashier, New_TransacNo) VALUES(@Transaction_No, @Transaction_Date, @Payment_Mode, @Customer, @Net_Total, @Payment, @Change, @Cashier, @New_TransacNo)", cn);
                 cm.Parameters.AddWithValue("@Transaction_No", transacNum);
                 cm.Parameters.AddWithValue("@New_TransacNo", NEWtransacNum);
                 cm.Parameters.AddWithValue("@Transaction_Date", Settled_Date);
@@ -886,8 +886,8 @@ namespace Capstone
             e.Graphics.DrawString("Cashier:  " + lblCashier.Text, printFont, Brushes.Black, x, (y += 30));//200
             e.Graphics.DrawString("Customer Name:  " + lblCustomer.Text, printFont, Brushes.Black, 20, y);//230
             e.Graphics.DrawString("--------------------------------------------------------------------------------------------------------------------------", printFont, Brushes.Black, 10, (y += 30));//260 or 290
-            e.Graphics.DrawString("Invoice No: " + lblTransacNo.Text, printFont, Brushes.Black, 20, (y += 50));//310 or 340
-            e.Graphics.DrawString("Balance Settlement", printFont, Brushes.Black, 20, (y += 50));//360 or 390
+            e.Graphics.DrawString("Invoice No: " + lblNewTransactionSet.Text, printFont, Brushes.Black, 20, (y += 50));//310 or 340
+            e.Graphics.DrawString("Balance Settlement for Transaction No:" + lblTransacNo.Text, printFont, Brushes.Black, 20, (y += 50));//360 or 390
 
 
             x = 440;

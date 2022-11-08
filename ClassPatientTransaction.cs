@@ -50,7 +50,7 @@ namespace Capstone
             int i = 0;
             dgv.Rows.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT DISTINCT Num, Customer, Transaction_No, Cashier, Transaction_Date FROM tblReceiptSettle WHERE Customer LIKE '%" + txtSearch.Text + "%' OR Cashier LIKE '%" + txtSearch.Text + "%' ", cn);
+            SqlCommand cm = new SqlCommand("SELECT DISTINCT Num, Customer, New_TransacNo, Cashier, Transaction_Date FROM tblReceiptSettle WHERE Customer LIKE '%" + txtSearch.Text + "%' OR Cashier LIKE '%" + txtSearch.Text + "%' ", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
@@ -146,12 +146,12 @@ namespace Capstone
 
             cn = new SqlConnection(dbcon.MyConnection());
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT Net_Total, Payment FROM tblReceiptSettle WHERE Transaction_No LIKE '%" + transNo + "%'", cn);
+            SqlCommand cm = new SqlCommand("SELECT Net_Total, Payment, Transaction_Date FROM tblReceiptSettle WHERE New_TransacNo LIKE '%" + transNo + "%'", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
                 
-                NetTotal = dr[0].ToString(); Payment = dr[1].ToString(); DueDate = DateTime.Parse(dr[13].ToString()).ToLongDateString();
+                NetTotal = dr[0].ToString(); Payment = dr[1].ToString(); DueDate = DateTime.Parse(dr[2].ToString()).ToLongDateString();
             }
             dr.Close();
             cn.Close();

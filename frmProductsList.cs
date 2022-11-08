@@ -63,6 +63,8 @@ namespace Capstone
         private void dataGridViewProducts_CellContentClick_1(object sender, DataGridViewCellEventArgs e) //dataGridViewType
         {
              string colName = dataGridViewType.Columns[e.ColumnIndex].Name;
+            string product = dataGridViewType[4, e.RowIndex].Value.ToString();
+            int indextProduct = 0;
             if (colName == "Edit")
             {
                 frmAddAccessories frm = new frmAddAccessories(this);
@@ -72,13 +74,16 @@ namespace Capstone
                 frm.tabControlCreateNew.TabPages.Add(tab);
                 tab.Controls.Add(frm.panelType);
 
+                classLoadData.LoadProduct(frm.comBoxProductType);
+                indextProduct = frm.comBoxProductType.Items.IndexOf(product);
+                frm.comBoxProductType.SelectedIndex = indextProduct;
+
                 frm.txtTypID.Text = dataGridViewType[1, e.RowIndex].Value.ToString();
                 frm.txtProductIDType.Text = dataGridViewType[3, e.RowIndex].Value.ToString();
-                frm.txtType.Text = dataGridViewType[2, e.RowIndex].Value.ToString();
-                frm.comBoxProductType.Text = dataGridViewType[4, e.RowIndex].Value.ToString();
+                frm.txtType.Text = dataGridViewType[2, e.RowIndex].Value.ToString();                
                 frm.btnSaveType.Enabled = false;
                 frm.btnUpdateType.Enabled = true;
-                classLoadData.LoadProduct(frm.comBoxProductType);
+                
                 //frm.LoadProduct();
                 frm.Size = new Size(830, 441);
                 frm.ShowDialog();
@@ -110,9 +115,7 @@ namespace Capstone
                 tab.Controls.Add(frm.panelProduct);
 
                 frm.txtProdID.Text = dataGridViewProduct[1, e.RowIndex].Value.ToString();
-                frm.txtProdName.Text = dataGridViewProduct[2, e.RowIndex].Value.ToString();
-                frm.comBoxProductType.SelectedIndex = frm.comBoxProductType.Items.IndexOf(product);
-                //frm.comBoxProductType.SelectedItem = product;
+                frm.txtProdName.Text = dataGridViewProduct[2, e.RowIndex].Value.ToString();       
                 frm.btnSaveProduct.Enabled = false;
                 frm.btnUpdateProduct.Enabled = true;
                 frm.Size = new Size(672, 357);
@@ -218,6 +221,9 @@ namespace Capstone
         private void dataGridViewItems_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             string colName = dataGridViewItems.Columns[e.ColumnIndex].Name;
+            string type = dataGridViewItems[2, e.RowIndex].Value.ToString();
+            string classi = dataGridViewItems[6, e.RowIndex].Value.ToString();
+            int indexType = 0; int indexClass = 0;
             if (colName == "EditItems")
             {
                 frmAddAccessories frm = new frmAddAccessories(this);
@@ -226,13 +232,19 @@ namespace Capstone
                 TabPage tab = new TabPage("Item");
                 frm.tabControlCreateNew.TabPages.Add(tab);
                 tab.Controls.Add(frm.panelItem);
+                //for load comboBox
+                classLoadData.LoadType(frm.comBoxType);
+                indexType = frm.comBoxType.Items.IndexOf(type);
+                frm.comBoxType.SelectedIndex = indexType;
+                //for predefined collection on comboBox               
+                frm.comBoxClassification.SelectedItem = classi;
 
                 frm.txtID.Text = dataGridViewItems[7, e.RowIndex].Value.ToString();
                 frm.txtDescription.Text = dataGridViewItems[1, e.RowIndex].Value.ToString();
-                frm.comBoxType.SelectedItem = dataGridViewItems[2, e.RowIndex].Value.ToString();
+                //frm.comBoxType.SelectedItem = dataGridViewItems[2, e.RowIndex].Value.ToString();
                 frm.txtProduct.Text = dataGridViewItems[3, e.RowIndex].Value.ToString();
                 frm.txtPrice.Text = dataGridViewItems[4, e.RowIndex].Value.ToString();
-                frm.comBoxClassification.Text = dataGridViewItems[6, e.RowIndex].Value.ToString();
+                //frm.comBoxClassification.Text = dataGridViewItems[6, e.RowIndex].Value.ToString();
                 frm.btnSaveItem.Enabled = false;
                 frm.btnUpdateItem.Enabled = true;
                 classLoadData.LoadType(frm.comBoxType);

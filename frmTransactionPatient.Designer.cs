@@ -43,17 +43,12 @@
             this.panelSett = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridViewSTrans = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.txtSearchSTrans = new System.Windows.Forms.TextBox();
             this.panelTransSett = new System.Windows.Forms.Panel();
+            this.panelFFiL = new System.Windows.Forms.Panel();
             this.panelRTrans = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.dataGridViewRTrans = new System.Windows.Forms.DataGridView();
@@ -67,13 +62,18 @@
             this.panel9 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.txtSearchRTrans = new System.Windows.Forms.TextBox();
+            this.panelTTTOP = new System.Windows.Forms.Panel();
             this.printDocumentReceipt = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog = new System.Windows.Forms.PrintPreviewDialog();
             this.printDocumentSettled = new System.Drawing.Printing.PrintDocument();
             this.tabControlTranPatient = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.panelTTTOP = new System.Windows.Forms.Panel();
-            this.panelFFiL = new System.Windows.Forms.Panel();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ad = new System.Windows.Forms.DataGridViewImageColumn();
             this.panelTop.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -84,15 +84,15 @@
             this.panel4.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panelTransSett.SuspendLayout();
+            this.panelFFiL.SuspendLayout();
             this.panelRTrans.SuspendLayout();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRTrans)).BeginInit();
             this.panel5.SuspendLayout();
             this.panel9.SuspendLayout();
+            this.panelTTTOP.SuspendLayout();
             this.tabControlTranPatient.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.panelTTTOP.SuspendLayout();
-            this.panelFFiL.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelTop
@@ -212,7 +212,7 @@
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn5,
-            this.dataGridViewImageColumn1});
+            this.ad});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.Azure;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -234,59 +234,6 @@
             this.dataGridViewSTrans.Size = new System.Drawing.Size(1027, 260);
             this.dataGridViewSTrans.TabIndex = 8;
             this.dataGridViewSTrans.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSTrans_CellContentClick);
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataGridViewTextBoxColumn1.HeaderText = "#";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 61;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn2.HeaderText = "INVOICE";
-            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn3.HeaderText = "CUSTOMER";
-            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dataGridViewTextBoxColumn4.HeaderText = "CASHIER";
-            this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Width = 152;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dataGridViewTextBoxColumn5.HeaderText = "DATE";
-            this.dataGridViewTextBoxColumn5.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            this.dataGridViewTextBoxColumn5.Width = 108;
-            // 
-            // dataGridViewImageColumn1
-            // 
-            this.dataGridViewImageColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataGridViewImageColumn1.HeaderText = "";
-            this.dataGridViewImageColumn1.Image = global::Capstone.Properties.Resources.AddNew;
-            this.dataGridViewImageColumn1.MinimumWidth = 6;
-            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
-            this.dataGridViewImageColumn1.ReadOnly = true;
-            this.dataGridViewImageColumn1.Width = 6;
             // 
             // panel4
             // 
@@ -337,6 +284,15 @@
             this.panelTransSett.Name = "panelTransSett";
             this.panelTransSett.Size = new System.Drawing.Size(1027, 681);
             this.panelTransSett.TabIndex = 2;
+            // 
+            // panelFFiL
+            // 
+            this.panelFFiL.Controls.Add(this.panelRTrans);
+            this.panelFFiL.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelFFiL.Location = new System.Drawing.Point(0, 317);
+            this.panelFFiL.Name = "panelFFiL";
+            this.panelFFiL.Size = new System.Drawing.Size(1027, 364);
+            this.panelFFiL.TabIndex = 1;
             // 
             // panelRTrans
             // 
@@ -496,6 +452,15 @@
             this.txtSearchRTrans.Size = new System.Drawing.Size(619, 38);
             this.txtSearchRTrans.TabIndex = 0;
             // 
+            // panelTTTOP
+            // 
+            this.panelTTTOP.Controls.Add(this.panelSett);
+            this.panelTTTOP.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelTTTOP.Location = new System.Drawing.Point(0, 0);
+            this.panelTTTOP.Name = "panelTTTOP";
+            this.panelTTTOP.Size = new System.Drawing.Size(1027, 317);
+            this.panelTTTOP.TabIndex = 0;
+            // 
             // printDocumentReceipt
             // 
             this.printDocumentReceipt.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocumentReceipt_PrintPage);
@@ -535,23 +500,58 @@
             this.tabPage1.Text = "Transaction";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // panelTTTOP
+            // dataGridViewTextBoxColumn1
             // 
-            this.panelTTTOP.Controls.Add(this.panelSett);
-            this.panelTTTOP.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelTTTOP.Location = new System.Drawing.Point(0, 0);
-            this.panelTTTOP.Name = "panelTTTOP";
-            this.panelTTTOP.Size = new System.Drawing.Size(1027, 317);
-            this.panelTTTOP.TabIndex = 0;
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewTextBoxColumn1.HeaderText = "#";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 61;
             // 
-            // panelFFiL
+            // dataGridViewTextBoxColumn2
             // 
-            this.panelFFiL.Controls.Add(this.panelRTrans);
-            this.panelFFiL.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelFFiL.Location = new System.Drawing.Point(0, 317);
-            this.panelFFiL.Name = "panelFFiL";
-            this.panelFFiL.Size = new System.Drawing.Size(1027, 364);
-            this.panelFFiL.TabIndex = 1;
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn2.HeaderText = "INVOICE";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn3.HeaderText = "CUSTOMER";
+            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.dataGridViewTextBoxColumn4.HeaderText = "CASHIER";
+            this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Width = 152;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.dataGridViewTextBoxColumn5.HeaderText = "DATE";
+            this.dataGridViewTextBoxColumn5.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Width = 108;
+            // 
+            // ad
+            // 
+            this.ad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ad.HeaderText = "";
+            this.ad.Image = global::Capstone.Properties.Resources.AddNew;
+            this.ad.MinimumWidth = 6;
+            this.ad.Name = "ad";
+            this.ad.ReadOnly = true;
+            this.ad.Width = 6;
             // 
             // frmTransactionPatient
             // 
@@ -577,16 +577,16 @@
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
             this.panelTransSett.ResumeLayout(false);
+            this.panelFFiL.ResumeLayout(false);
             this.panelRTrans.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRTrans)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
+            this.panelTTTOP.ResumeLayout(false);
             this.tabControlTranPatient.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.panelTTTOP.ResumeLayout(false);
-            this.panelFFiL.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -613,12 +613,6 @@
         public Panel panelSett;
         private Panel panel2;
         public DataGridView dataGridViewSTrans;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private DataGridViewImageColumn dataGridViewImageColumn1;
         private Panel panel4;
         private Panel panel8;
         private Label label1;
@@ -634,5 +628,11 @@
         private TabControl tabControlTranPatient;
         private TabPage tabPage1;
         public Panel panelTransSett;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private DataGridViewImageColumn ad;
     }
 }

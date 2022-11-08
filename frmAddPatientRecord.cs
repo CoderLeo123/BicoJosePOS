@@ -27,6 +27,7 @@ namespace Capstone
             InitializeComponent();
             cn = new SqlConnection(dbcon.MyConnection());
             frmL = frmA;
+            //classPatient.LoadPatientTransactionList(frmL.dataGridViewTrans, pID);
         }
         public void MethodCheckForBlank()
         {
@@ -355,7 +356,7 @@ namespace Capstone
             {
                 MethodCheckForBlank();
             }
-
+            MethodCheckForBlank();
         }
 
         private void btnSearchTrans_Click(object sender, EventArgs e)

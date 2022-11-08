@@ -84,7 +84,7 @@ namespace Capstone
             int genderIndex = 0; DateTime newDateTime;
             string checkUpDate = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[7].Value?.ToString();
             string birthDate = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[11].Value?.ToString();
-            string gender = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[5].Value?.ToString();
+            string gender = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[6].Value?.ToString();
             lblPrescript.Text = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[8].Value?.ToString();
             lblPatientID.Text = PatID;
             LoadPrescription(PatID, out ODSPH, out ODCYL, out ODAXIS, out ODADD, out ODPD, out OSSPH, out OSCYL, out OSAXIS, out OSADD, out OSPD);
@@ -102,7 +102,7 @@ namespace Capstone
                     frm.txtAddContact.Text = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[4].Value?.ToString();
                     //checkGender(out genderIndex);
                     //frm.comBoxAddGender.SelectedIndex = genderIndex;
-                    frm.comBoxAddGender.SelectedIndex = frm.comBoxAddGender.Items.IndexOf(gender);
+                    frm.comBoxAddGender.SelectedItem = gender;
                     frm.txtAddAge.Text = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[5].Value?.ToString();
                     frm.txtAddPatientID.Text = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[1].Value?.ToString();
                     frm.txtAddPrescNum.Text = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[8].Value?.ToString();
@@ -131,6 +131,7 @@ namespace Capstone
                     frm.txtAddOSPD.Text = txtOSPD.Text;
                     frm.btnSavePatientRecord.Enabled = false;
                     frm.btnUpdatePatientRecord.Enabled = true;
+                    classPatient.LoadPatientTransactionList(frm.dataGridViewTrans, PatID); 
                     frm.ShowDialog();
                 }
             }

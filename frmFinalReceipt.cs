@@ -57,39 +57,42 @@ namespace Capstone
         public void displayValue(string pID, string prescID, string transNo)
         {
             string transType = lblTransType.Text;
-            pID = lblPatientID.Text; prescID = lblPrescriptNo.Text; transNo = lblTransNo.Text;
+            pID = lblPatientID.Text; prescID = lblPrescriptNo.Text; 
+           
             string FullName = "", Address = "", Phone = "", Age = "", Date = "", Note = "", DueDate = "";
-            string FramePrice = "₱ 0.00", LensPrice = "₱ 0.00", TotalCost = "", NetTotal = "₱ 0.00", Deposit = "", Balance = "₱ 0.00", Discount = "₱ 0.00";
+            string FramePrice = "0.00", LensPrice = "0.00", TotalCost = "0.00", NetTotal = "0.00", Deposit = "0.00", Balance = "0.00", Discount = "0.00";
             int FRowCount = 1, LRowCount = 1, Frameheight = 85, WholeHeight = 247, frm = 892;
             classPatient.LoadPatientDetails(pID, out FullName, out Address, out Phone, out Age, out Date, out Note);
             classPatient.LoadPrescription(dataGridViewPresc, prescID);
-            classPatient.LoadItems(dataGridViewItems, transNo, out FRowCount);
-            classPatient.LoadLense(dataGridViewLense, transNo, out LRowCount);
             
-            determinPanelFormHeight(FRowCount, out Frameheight, out WholeHeight, out frm, Frameheight, WholeHeight, frm);
-            changePanelFormSize(Frameheight, WholeHeight, frm, 0);
-
-            determinPanelFormHeight(LRowCount, out Frameheight, out WholeHeight, out frm, Frameheight, WholeHeight, frm);
-            changePanelFormSize(Frameheight, WholeHeight, frm, 1);
-
             lblName.Text = FullName;
             lblAddress.Text = Address;
             lblPhone.Text = Phone;
             lblAge.Text = Age;
             lblDate.Text = Date;
             lblNote.Text = Note;
-            
+
+                                  
 
             if (transType == "Regular")
             {
-
+                transNo = lblTransNo.Text;
                 classPatient.LoadTransaction(transNo, out FramePrice, out LensPrice, out TotalCost, out NetTotal, out Deposit, out Balance, out Discount, out DueDate);
 
             }
-            else if (transType == "Settled")
+            else if (transType == "Settlement")
             {
+                transNo = lblTransNo.Text;
                 classPatient.LoadSettled(transNo, out TotalCost, out Deposit, out DueDate);
             }
+            classPatient.LoadItems(dataGridViewItems, transNo, out FRowCount);
+            classPatient.LoadLense(dataGridViewLense, transNo, out LRowCount);
+            determinPanelFormHeight(FRowCount, out Frameheight, out WholeHeight, out frm, Frameheight, WholeHeight, frm);
+            changePanelFormSize(Frameheight, WholeHeight, frm, 0);
+
+            determinPanelFormHeight(LRowCount, out Frameheight, out WholeHeight, out frm, Frameheight, WholeHeight, frm);
+            changePanelFormSize(Frameheight, WholeHeight, frm, 1);
+
             lblFrame.Text = "₱ " + FramePrice;
             lblLens.Text = "₱ " + LensPrice;
             lblTotalCost.Text = "₱ " + TotalCost;
@@ -103,7 +106,7 @@ namespace Capstone
         public void determinPanelFormHeight(int RowCount, out int Frameheight, out int WholeHeight, out int frm, int currFrame, int currWhole, int currFrm)
         {//Frame = 517, 85; NoteDue = 517, 85; Lens = 517, 77; whole = 517, 247; frm = 1177, 892;
             //Frameheight = 85; WholeHeight = 247; frm = 892;
-            int temp = 18;
+            int temp = 26;
             Frameheight = currFrame- temp; WholeHeight = currWhole - temp; frm = currFrm - temp;
             int offset = 0;
             for (int i = 1; i < 10; i++)
