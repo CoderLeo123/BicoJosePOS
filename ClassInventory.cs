@@ -87,7 +87,7 @@ namespace Capstone
             {
                 stockLevel = 0;//Safety level 
             }
-            else if (currentStock <= reOrderLev && currentStock > critLev)
+            else if (currentStock < safeLev && currentStock > critLev)
             {
                 stockLevel = 1; //Re Order level
             }
@@ -140,6 +140,34 @@ namespace Capstone
                 while (dr.Read())
                 {
                     
+                    //                                         3-PRODUCT / 3-Product              
+                    i += 1;                   //0-#  1-PRODUCT ID / 1-Product_ID       
+                    dgv.Rows.Add(i, dr[3].ToString(), dr[10].ToString(), dr[5].ToString(), dr[7].ToString(), dr[1].ToString());
+                }
+                dr.Close();
+                cn.Close();
+            }
+            catch (Exception ex)
+            {
+                cn.Close();
+                MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        public void LoadSafety(DataGridView dgv, TextBox txtSearch)
+        {//dataGridViewProduct, txtSearchProduct
+            try
+            {
+                string UM = "N/A";
+                cn = new SqlConnection(dbcon.MyConnection());
+                int i = 0;
+                dgv.Rows.Clear();
+                cn.Open();
+                SqlCommand cm = new SqlCommand("SELECT * FROM tblItem WHERE Stock_Check = 1 AND Stock_Level = 0 AND (Description LIKE '%" + txtSearch.Text + "%' OR Type LIKE '%" + txtSearch.Text + "%' OR Classification LIKE '%" + txtSearch.Text + "%') ORDER BY Item_ID", cn);
+                dr = cm.ExecuteReader();//Description,, Quantity, Type, Classification
+
+                while (dr.Read())
+                {
+
                     //                                         3-PRODUCT / 3-Product              
                     i += 1;                   //0-#  1-PRODUCT ID / 1-Product_ID       
                     dgv.Rows.Add(i, dr[3].ToString(), dr[10].ToString(), dr[5].ToString(), dr[7].ToString(), dr[1].ToString());

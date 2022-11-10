@@ -124,6 +124,7 @@ namespace Capstone
                     frm.btnUserSettings.Visible = false;
                     frm.btnCashier.Visible = false;
                     frm.btnPatientR.Visible = false;
+                    frm.labelTitle.Text = "Administrator";
                     frm.ShowDialog();
                     this.Dispose(); this.Close();
                 }
@@ -140,6 +141,7 @@ namespace Capstone
                     frmAdmin frm = new frmAdmin();
                     frm.lblName.Text = CompleteName;
                     frm.lblUserNum.Text = num;
+                    frm.labelTitle.Text = "Master";
                     frm.ShowDialog();
                     //frmLogin frmL = new frmLogin();
                     //frmL.Close();

@@ -16,6 +16,7 @@ namespace Capstone
         SqlCommand cm = new SqlCommand();
         DBConnection dbcon = new DBConnection();
         SqlDataReader dr;
+        string title = "BICO-JOSE System";
         public frmUserSetting()
         {
             InitializeComponent();
@@ -27,8 +28,8 @@ namespace Capstone
                 lblUsID.Text = dataGridViewUsers.Rows[0].Cells[4].Value.ToString();
 
             }
-                
-            
+
+
         }
         public void colorChange(bool press, Button changeThisBtn)
         {
@@ -48,13 +49,13 @@ namespace Capstone
         {
             if (btnReO == true)
             {
-                colorChange(true, btnSetting); colorChange(false, btnSession); 
+                colorChange(true, btnSetting); colorChange(false, btnSession);
             }
             else if (btnCrit == true)
             {
                 colorChange(true, btnSession); colorChange(false, btnSetting);
             }
-           
+
         }
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -91,7 +92,7 @@ namespace Capstone
             frmPermission frmP = new frmPermission();
             frmP.lblWhatForm.Text = "ResetPass";
             frmP.ShowDialog();
-            
+
 
             if (frmP.lblGrant.Text == "1")
             {
@@ -103,7 +104,7 @@ namespace Capstone
                 frm.Size = new Size(647, 517);
                 //frm.txtUserNameForgot.Text = dataGridViewUsers.Rows[e.RowIndex].Cells[4].Value.ToString();
                 frm.ShowDialog();
-                
+
                 lblUserNotices.Visible = false;
             }
             else
@@ -112,16 +113,16 @@ namespace Capstone
                 lblUserNotices.Text = "Request not permitted";
             }
 
-            
-            
+
+
         }
         public void LoadUserPassword()
         {
             cn = new SqlConnection(dbcon.MyConnection());
-            
-            
+
+
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT Password FROM tblUser WHERE User_ID LIKE '"+ lblUsID.Text + "'", cn);
+            SqlCommand cm = new SqlCommand("SELECT Password FROM tblUser WHERE User_ID LIKE '" + lblUsID.Text + "'", cn);
             dr = cm.ExecuteReader();
             if (dr.Read())
             {
@@ -158,7 +159,7 @@ namespace Capstone
             int i = 0;
             dataGridViewSession.Rows.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT * FROM ViewLoginSession Order by Num DESC", cn);
+            SqlCommand cm = new SqlCommand("SELECT * FROM ViewLoginSession WHERE (Name LIKE '%" + txtSearchSession.Text + "%' OR User_Type LIKE '%" + txtSearchSession.Text + "%') Order by Num DESC", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
@@ -171,12 +172,12 @@ namespace Capstone
         }
         private void linkLabelViewPass_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            
+
             frmPermission frm = new frmPermission();
             frm.lblWhatForm.Text = "UserSetting";
             frm.ShowDialog();
 
-           
+
             if (frm.lblGrant.Text == "1")
             {
                 LoadUserPassword();
@@ -189,7 +190,7 @@ namespace Capstone
                 lblUserNotices.Text = "Request not permitted";
                 lblPermitted.Text = "Denied";
             }
-            
+
         }
 
         private void dataGridViewUsers_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -215,6 +216,75 @@ namespace Capstone
             tab.Controls.Add(panelSession);
             LoadSession();
             checkWhatIsPress(false, true);
+        }
+
+        private void txtSearchSession_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtSearchSession.Text == String.Empty)
+                {
+                    LoadSession();
+                    return;
+                }
+                else
+                {
+                    LoadSession();
+                }
+            }
+            catch (Exception ex)
+            {
+                cn.Close();
+                MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+        public void populateDgvDelete()
+        {
+            dataGridViewDelete.Rows.Clear();
+            dataGridViewDelete.Rows.Add("Hide"); dataGridViewDelete.Rows.Add("tblItem"); dataGridViewDelete.Rows.Add("tblCart");
+            dataGridViewDelete.Rows.Add("tblStock"); dataGridViewDelete.Rows.Add("tblStockInventory"); dataGridViewDelete.Rows.Add("tblReceipt");
+            dataGridViewDelete.Rows.Add("tblReceiptSettle"); dataGridViewDelete.Rows.Add("tblLoginSession"); dataGridViewDelete.Rows.Add("tblServiceAvailed");
+            dataGridViewDelete.Rows.Add("tblPatientRecord"); dataGridViewDelete.Rows.Add("tblOrderStatus"); dataGridViewDelete.Rows.Add("tblPaymentStatus");
+            dataGridViewDelete.Rows.Add("tblPatientTransaction"); dataGridViewDelete.Rows.Add("tblPrescription"); dataGridViewDelete.Rows.Add("tblProduct");
+            dataGridViewDelete.Rows.Add("tblType"); dataGridViewDelete.Rows.Add("tblUnitMeasure"); dataGridViewDelete.Rows.Add("tblUser"); dataGridViewDelete.Rows.Add("tblSalesReport");
+            dataGridViewDelete.Rows.Add("tblServices"); 
+        }
+        private void labelTitle_Click(object sender, EventArgs e)
+        {
+            frmPermission frm = new frmPermission();
+            frm.lblWhatForm.Text = "UserSetting";
+            frm.ShowDialog();
+            populateDgvDelete();
+            if (frm.lblGrant.Text == "1")
+            {
+                dataGridViewDelete.Visible = true;
+            }
+        }
+        
+        public void deleteTable(string tableName)
+        {
+            cn.Open();
+            cm = new SqlCommand("DELETE FROM "+ tableName + "", cn);
+            cm.ExecuteNonQuery();
+            cn.Close();
+
+        }
+        private void dataGridViewDelete_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string tbl = dataGridViewDelete.Rows[e.RowIndex].Cells[0].Value?.ToString();
+            if (tbl == "Hide")
+            {
+                dataGridViewDelete.Visible = false;
+
+            }
+            else if (tbl != "Hide")
+            {
+                if (MessageBox.Show("Erase the records of this table?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    deleteTable(tbl);
+                }
+            }
+
         }
     }
 }

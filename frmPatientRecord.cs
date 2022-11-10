@@ -209,6 +209,28 @@ namespace Capstone
 
             frm.ShowDialog();
         }
+
+        private void txtSearchPatientRecord_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtSearchPatientRecord.Text == String.Empty)
+                {
+                    classLoadData.LoadRecordsPatient(dataGridViewPatientRecord, txtSearchPatientRecord);
+                    return;
+                }
+                else
+                {
+                    classLoadData.LoadRecordsPatient(dataGridViewPatientRecord, txtSearchPatientRecord);
+                }
+            }
+            catch (Exception ex)
+            {
+                cn.Close();
+                MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
         public void previewFinalReceipt()
         {
             PrintPreviewDialog preview = new PrintPreviewDialog();

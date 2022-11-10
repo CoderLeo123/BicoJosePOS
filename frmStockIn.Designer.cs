@@ -672,7 +672,7 @@
             this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtSearch.Location = new System.Drawing.Point(16, 22);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.PlaceholderText = "Search Description Here";
+            this.txtSearch.PlaceholderText = "Search Description or Type Here";
             this.txtSearch.Size = new System.Drawing.Size(717, 43);
             this.txtSearch.TabIndex = 23;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);

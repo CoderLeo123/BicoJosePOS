@@ -278,7 +278,21 @@ namespace Capstone
 
         private void btnClearCart_Click(object sender, EventArgs e)
         {
-            dataGridViewCart.Rows.Clear();
+            //dataGridViewCart.Rows.Clear();
+            if (dataGridViewCart.Rows.Count > 0)
+            {
+                if (MessageBox.Show("Remove these Items?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    for (int i = 0; i < dataGridViewCart.Rows.Count; i++)
+                    {
+                        cn.Open();
+                        cm = new SqlCommand("DELETE FROM tblCart WHERE num Status 'Cart'", cn);
+                        cm.ExecuteNonQuery();
+                        cn.Close();
+                    }
+                    classLoadData.LoadCart(dataGridViewCart, lblDiscount, lblSalesTotal, lblPayment, lblNetTotal, btnSettlePayment, btnAddDiscount, btnClearCart, txtSearch, dataGridViewService, lblNetNoComa, lblGrossNoComma);
+                }
+            }
 
         }
 

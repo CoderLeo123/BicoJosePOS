@@ -246,6 +246,8 @@
             // 
             this.comBoxUnit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comBoxUnit.FormattingEnabled = true;
+            this.comBoxUnit.Items.AddRange(new object[] {
+            "pcs"});
             this.comBoxUnit.Location = new System.Drawing.Point(249, 228);
             this.comBoxUnit.Name = "comBoxUnit";
             this.comBoxUnit.Size = new System.Drawing.Size(199, 45);
@@ -344,7 +346,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(519, 189);
+            this.tabPage2.Size = new System.Drawing.Size(798, 406);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Add";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -358,7 +360,7 @@
             this.panelAddUnit.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelAddUnit.Location = new System.Drawing.Point(3, 3);
             this.panelAddUnit.Name = "panelAddUnit";
-            this.panelAddUnit.Size = new System.Drawing.Size(513, 183);
+            this.panelAddUnit.Size = new System.Drawing.Size(792, 400);
             this.panelAddUnit.TabIndex = 56;
             this.panelAddUnit.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
@@ -416,7 +418,7 @@
             this.tabPage3.Controls.Add(this.panelStockDetail);
             this.tabPage3.Location = new System.Drawing.Point(4, 29);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(519, 189);
+            this.tabPage3.Size = new System.Drawing.Size(798, 406);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Stock Details";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -428,7 +430,7 @@
             this.panelStockDetail.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelStockDetail.Location = new System.Drawing.Point(0, 0);
             this.panelStockDetail.Name = "panelStockDetail";
-            this.panelStockDetail.Size = new System.Drawing.Size(519, 189);
+            this.panelStockDetail.Size = new System.Drawing.Size(798, 406);
             this.panelStockDetail.TabIndex = 0;
             // 
             // panel5
@@ -437,7 +439,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(0, 64);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(519, 125);
+            this.panel5.Size = new System.Drawing.Size(798, 342);
             this.panel5.TabIndex = 8;
             // 
             // dataGridViewDetails
@@ -483,7 +485,7 @@
             this.dataGridViewDetails.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridViewDetails.RowTemplate.Height = 35;
             this.dataGridViewDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewDetails.Size = new System.Drawing.Size(519, 125);
+            this.dataGridViewDetails.Size = new System.Drawing.Size(798, 342);
             this.dataGridViewDetails.TabIndex = 6;
             this.dataGridViewDetails.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDetails_CellClick);
             // 
@@ -551,7 +553,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(519, 64);
+            this.panel4.Size = new System.Drawing.Size(798, 64);
             this.panel4.TabIndex = 7;
             // 
             // labelItemID

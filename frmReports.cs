@@ -26,9 +26,11 @@ namespace Capstone
         List<SalesReport> SList = new List<SalesReport>();
         List<ItemList> IList = new List<ItemList>();
         List<ServiceList> SerList = new List<ServiceList>();
+        List<duplicateTransDate> dup = new List<duplicateTransDate>();
         string balSale = "", result = ""; bool balance = false;
         bool transaction = false; bool sales = false;
         bool settled = false; bool sold = false; public bool pesoPaint = true;
+        int row = 0;
         public frmReports()
         {
             InitializeComponent();
@@ -41,6 +43,8 @@ namespace Capstone
             classLoadData.LoadRecordsTransacSettled(dataGridViewSettle, txtSearchSettleds, dateTimePickerSettStart, dateTimePickerSettEnd);
             deleteData();
             dateSelect(dataGridViewInitial);
+            //dateSelect(dataGridViewInitial, out row);
+            //filterDate(row);
             //lblCheckCell.Text = dataGridViewInitial.Rows[0].Cells[1].Value?.ToString();
             //lblCheckCell.Text = dataGridViewInitial[1, 0].Value.ToString();
             calculateTotalPaymentBalance();
@@ -68,19 +72,37 @@ namespace Capstone
         public void dateSelect(DataGridView dgv)
         {//dataGridViewInitial
             cn = new SqlConnection(dbcon.MyConnection());
-            int i = 0;
-            dgv.Rows.Clear();
+             row = 0; string transDate = "";
+            duplicateTransDate List = new duplicateTransDate();
+            dup.Clear();
+            List.Date = "";
+            dup.Add(List);
+            dgv.Rows.Clear();            
             cn.Open();
             SqlCommand cm = new SqlCommand("SELECT DISTINCT Transaction_Date FROM tblReceipt", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
-                i += 1;
-                dgv.Rows.Add(i, DateTime.Parse(dr[0].ToString()).ToShortDateString());
-                
+                row += 1;
+                //dgv.Rows.Add(row, DateTime.Parse(dr[0].ToString()).ToShortDateString());
+                transDate = DateTime.Parse(dr[0].ToString()).ToShortDateString();
+                //List.Date = transDate;
+                //dup.Add(List);
+                if (!(List.Date.Contains(transDate))) //we can also use !listWithoutDuplicates.Any(x => x.Equals(item))
+                {
+                    List.Date = transDate;
+                    dup.Add(List);
+                    dgv.Rows.Add(row, transDate);
+                }
             }
             dr.Close();
             cn.Close();
+            //dgv.Rows.Add(row, "234324");
+        }
+
+        public class duplicateTransDate
+        {
+            public string Date { get; set; }           
         }
         public void computeSalePerDay(string transDate)
         {//string transDate = dgv.Rows[e.RowIndex].Cells[0].Value.ToString();
@@ -1045,6 +1067,72 @@ namespace Capstone
         private void btnPreviewSold_Click(object sender, EventArgs e)
         {
             previewSoldList();
+        }
+
+        private void txtSearchTransHist_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtSearchTransHist.Text == String.Empty)
+                {
+                    classLoadData.LoadRecordsTransacHist(dataGridViewTransHist, txtSearchTransHist, dateTimePickerStartTrans, dateTimePickerEndTrans);
+
+                    return;
+                }
+                else
+                {
+                    classLoadData.LoadRecordsTransacHist(dataGridViewTransHist, txtSearchTransHist, dateTimePickerStartTrans, dateTimePickerEndTrans);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                cn.Close();
+                MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void txtSearchSold_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtSearchSold.Text == String.Empty)
+                {
+                    classLoadData.LoadRecordsSoldItems(dataGridViewSoldItems, txtSearchSold, dateTimePickerStartSold, dateTimePickerEndSold);
+                    return;
+                }
+                else
+                {
+                    classLoadData.LoadRecordsSoldItems(dataGridViewSoldItems, txtSearchSold, dateTimePickerStartSold, dateTimePickerEndSold);
+                }
+            }
+            catch (Exception ex)
+            {
+                cn.Close();
+                MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void txtSearchSettleds_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtSearchSettleds.Text == String.Empty)
+                {
+                    classLoadData.LoadRecordsTransacSettled(dataGridViewSettle, txtSearchSettleds, dateTimePickerSettStart, dateTimePickerSettEnd);
+                    return;
+                }
+                else
+                {
+                    classLoadData.LoadRecordsTransacSettled(dataGridViewSettle, txtSearchSettleds, dateTimePickerSettStart, dateTimePickerSettEnd);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                cn.Close();
+                MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void btnPreviewSettl_Click(object sender, EventArgs e)

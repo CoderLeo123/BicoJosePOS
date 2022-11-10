@@ -166,7 +166,7 @@
             this.UM});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.Azure;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
@@ -188,7 +188,7 @@
             this.dataGridViewBrowse.RowHeadersVisible = false;
             this.dataGridViewBrowse.RowHeadersWidth = 51;
             this.dataGridViewBrowse.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dataGridViewBrowse.RowTemplate.Height = 29;
+            this.dataGridViewBrowse.RowTemplate.Height = 35;
             this.dataGridViewBrowse.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewBrowse.Size = new System.Drawing.Size(1315, 810);
             this.dataGridViewBrowse.TabIndex = 7;
