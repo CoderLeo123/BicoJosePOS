@@ -45,19 +45,6 @@
             this.btnSaveStockIn = new System.Windows.Forms.Button();
             this.btnClearStock = new System.Windows.Forms.Button();
             this.dataGridViewStockItems = new System.Windows.Forms.DataGridView();
-            this.NumStockIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EDIT = new System.Windows.Forms.DataGridViewImageColumn();
-            this.DeleteStockIn = new System.Windows.Forms.DataGridViewImageColumn();
-            this.STOCK_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DescStockIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QuantityStockIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EXPIRATION = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StockInDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StockInBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ITEM_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TypeStockIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.individualID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblCheck = new System.Windows.Forms.Label();
             this.ClickSearchItem = new System.Windows.Forms.LinkLabel();
@@ -81,6 +68,19 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.txtSearch = new System.Windows.Forms.TextBox();
+            this.NumStockIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EDIT = new System.Windows.Forms.DataGridViewImageColumn();
+            this.DeleteStockIn = new System.Windows.Forms.DataGridViewImageColumn();
+            this.STOCK_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DescStockIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QuantityStockIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EXPIRATION = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StockInDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StockInBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ITEM_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TypeStockIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.individualID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
@@ -282,125 +282,6 @@
             this.dataGridViewStockItems.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewStockItems_CellContentClick);
             this.dataGridViewStockItems.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridViewStockItems_RowsAdded);
             this.dataGridViewStockItems.SelectionChanged += new System.EventHandler(this.dataGridViewStockItems_SelectionChanged);
-            // 
-            // NumStockIn
-            // 
-            this.NumStockIn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.NumStockIn.Frozen = true;
-            this.NumStockIn.HeaderText = "#";
-            this.NumStockIn.MinimumWidth = 6;
-            this.NumStockIn.Name = "NumStockIn";
-            this.NumStockIn.ReadOnly = true;
-            this.NumStockIn.Width = 55;
-            // 
-            // EDIT
-            // 
-            this.EDIT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.EDIT.Frozen = true;
-            this.EDIT.HeaderText = "";
-            this.EDIT.Image = global::Capstone.Properties.Resources.Edit;
-            this.EDIT.MinimumWidth = 6;
-            this.EDIT.Name = "EDIT";
-            this.EDIT.Width = 6;
-            // 
-            // DeleteStockIn
-            // 
-            this.DeleteStockIn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.DeleteStockIn.Frozen = true;
-            this.DeleteStockIn.HeaderText = "";
-            this.DeleteStockIn.MinimumWidth = 6;
-            this.DeleteStockIn.Name = "DeleteStockIn";
-            this.DeleteStockIn.Width = 6;
-            // 
-            // STOCK_ID
-            // 
-            this.STOCK_ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.STOCK_ID.HeaderText = "STOCK ID";
-            this.STOCK_ID.MinimumWidth = 6;
-            this.STOCK_ID.Name = "STOCK_ID";
-            this.STOCK_ID.ReadOnly = true;
-            this.STOCK_ID.Visible = false;
-            this.STOCK_ID.Width = 125;
-            // 
-            // DescStockIn
-            // 
-            this.DescStockIn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.DescStockIn.HeaderText = "DESCRIPTION";
-            this.DescStockIn.MinimumWidth = 6;
-            this.DescStockIn.Name = "DescStockIn";
-            this.DescStockIn.ReadOnly = true;
-            // 
-            // QuantityStockIn
-            // 
-            this.QuantityStockIn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.QuantityStockIn.HeaderText = "QTY";
-            this.QuantityStockIn.MinimumWidth = 6;
-            this.QuantityStockIn.Name = "QuantityStockIn";
-            this.QuantityStockIn.ReadOnly = true;
-            this.QuantityStockIn.Width = 82;
-            // 
-            // EXPIRATION
-            // 
-            this.EXPIRATION.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.EXPIRATION.HeaderText = "EXPIRATION";
-            this.EXPIRATION.MaxInputLength = 7;
-            this.EXPIRATION.MinimumWidth = 6;
-            this.EXPIRATION.Name = "EXPIRATION";
-            this.EXPIRATION.ReadOnly = true;
-            this.EXPIRATION.Width = 165;
-            // 
-            // StockInDate
-            // 
-            this.StockInDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.StockInDate.HeaderText = "STOCK IN DATE";
-            this.StockInDate.MinimumWidth = 6;
-            this.StockInDate.Name = "StockInDate";
-            this.StockInDate.ReadOnly = true;
-            this.StockInDate.Width = 195;
-            // 
-            // StockInBy
-            // 
-            this.StockInBy.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.StockInBy.HeaderText = "STOCK IN BY";
-            this.StockInBy.MinimumWidth = 6;
-            this.StockInBy.Name = "StockInBy";
-            this.StockInBy.ReadOnly = true;
-            this.StockInBy.Width = 168;
-            // 
-            // ITEM_ID
-            // 
-            this.ITEM_ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.ITEM_ID.HeaderText = "ITEM ID";
-            this.ITEM_ID.MinimumWidth = 6;
-            this.ITEM_ID.Name = "ITEM_ID";
-            this.ITEM_ID.ReadOnly = true;
-            this.ITEM_ID.Visible = false;
-            this.ITEM_ID.Width = 125;
-            // 
-            // TypeStockIn
-            // 
-            this.TypeStockIn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.TypeStockIn.HeaderText = "TYPE";
-            this.TypeStockIn.MinimumWidth = 6;
-            this.TypeStockIn.Name = "TypeStockIn";
-            this.TypeStockIn.ReadOnly = true;
-            // 
-            // Column1
-            // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column1.HeaderText = "";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.Visible = false;
-            // 
-            // individualID
-            // 
-            this.individualID.HeaderText = "num";
-            this.individualID.MinimumWidth = 6;
-            this.individualID.Name = "individualID";
-            this.individualID.ReadOnly = true;
-            this.individualID.Visible = false;
-            this.individualID.Width = 125;
             // 
             // panel2
             // 
@@ -677,6 +558,125 @@
             this.txtSearch.TabIndex = 23;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
+            // NumStockIn
+            // 
+            this.NumStockIn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.NumStockIn.Frozen = true;
+            this.NumStockIn.HeaderText = "#";
+            this.NumStockIn.MinimumWidth = 6;
+            this.NumStockIn.Name = "NumStockIn";
+            this.NumStockIn.ReadOnly = true;
+            this.NumStockIn.Width = 55;
+            // 
+            // EDIT
+            // 
+            this.EDIT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.EDIT.Frozen = true;
+            this.EDIT.HeaderText = "";
+            this.EDIT.Image = global::Capstone.Properties.Resources.Edit;
+            this.EDIT.MinimumWidth = 6;
+            this.EDIT.Name = "EDIT";
+            this.EDIT.Width = 6;
+            // 
+            // DeleteStockIn
+            // 
+            this.DeleteStockIn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.DeleteStockIn.Frozen = true;
+            this.DeleteStockIn.HeaderText = "";
+            this.DeleteStockIn.MinimumWidth = 6;
+            this.DeleteStockIn.Name = "DeleteStockIn";
+            this.DeleteStockIn.Width = 6;
+            // 
+            // STOCK_ID
+            // 
+            this.STOCK_ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.STOCK_ID.HeaderText = "STOCK ID";
+            this.STOCK_ID.MinimumWidth = 6;
+            this.STOCK_ID.Name = "STOCK_ID";
+            this.STOCK_ID.ReadOnly = true;
+            this.STOCK_ID.Visible = false;
+            this.STOCK_ID.Width = 136;
+            // 
+            // DescStockIn
+            // 
+            this.DescStockIn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.DescStockIn.HeaderText = "DESCRIPTION";
+            this.DescStockIn.MinimumWidth = 6;
+            this.DescStockIn.Name = "DescStockIn";
+            this.DescStockIn.ReadOnly = true;
+            // 
+            // QuantityStockIn
+            // 
+            this.QuantityStockIn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.QuantityStockIn.HeaderText = "QTY";
+            this.QuantityStockIn.MinimumWidth = 6;
+            this.QuantityStockIn.Name = "QuantityStockIn";
+            this.QuantityStockIn.ReadOnly = true;
+            this.QuantityStockIn.Width = 82;
+            // 
+            // EXPIRATION
+            // 
+            this.EXPIRATION.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.EXPIRATION.HeaderText = "EXPIRATION";
+            this.EXPIRATION.MaxInputLength = 7;
+            this.EXPIRATION.MinimumWidth = 6;
+            this.EXPIRATION.Name = "EXPIRATION";
+            this.EXPIRATION.ReadOnly = true;
+            this.EXPIRATION.Width = 165;
+            // 
+            // StockInDate
+            // 
+            this.StockInDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.StockInDate.HeaderText = "STOCK IN DATE";
+            this.StockInDate.MinimumWidth = 6;
+            this.StockInDate.Name = "StockInDate";
+            this.StockInDate.ReadOnly = true;
+            this.StockInDate.Width = 195;
+            // 
+            // StockInBy
+            // 
+            this.StockInBy.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.StockInBy.HeaderText = "STOCK IN BY";
+            this.StockInBy.MinimumWidth = 6;
+            this.StockInBy.Name = "StockInBy";
+            this.StockInBy.ReadOnly = true;
+            this.StockInBy.Width = 168;
+            // 
+            // ITEM_ID
+            // 
+            this.ITEM_ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.ITEM_ID.HeaderText = "ITEM ID";
+            this.ITEM_ID.MinimumWidth = 6;
+            this.ITEM_ID.Name = "ITEM_ID";
+            this.ITEM_ID.ReadOnly = true;
+            this.ITEM_ID.Visible = false;
+            this.ITEM_ID.Width = 120;
+            // 
+            // TypeStockIn
+            // 
+            this.TypeStockIn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.TypeStockIn.HeaderText = "TYPE";
+            this.TypeStockIn.MinimumWidth = 6;
+            this.TypeStockIn.Name = "TypeStockIn";
+            this.TypeStockIn.ReadOnly = true;
+            // 
+            // Column1
+            // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column1.HeaderText = "UnitMe";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            this.Column1.Visible = false;
+            // 
+            // individualID
+            // 
+            this.individualID.HeaderText = "num";
+            this.individualID.MinimumWidth = 6;
+            this.individualID.Name = "individualID";
+            this.individualID.ReadOnly = true;
+            this.individualID.Visible = false;
+            this.individualID.Width = 125;
+            // 
             // frmStockIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -736,6 +736,16 @@
         private Panel panelStockOnHand;
         private Panel panel5;
         private Panel panel6;
+        public Label label3;
+        private Panel panel7;
+        private Panel panel8;
+        public Button btnClearStock;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private DataGridViewTextBoxColumn Classification;
         private DataGridViewTextBoxColumn NumStockIn;
         private DataGridViewImageColumn EDIT;
         private DataGridViewImageColumn DeleteStockIn;
@@ -749,15 +759,5 @@
         private DataGridViewTextBoxColumn TypeStockIn;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn individualID;
-        public Label label3;
-        private Panel panel7;
-        private Panel panel8;
-        public Button btnClearStock;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
-        private DataGridViewTextBoxColumn Classification;
     }
 }

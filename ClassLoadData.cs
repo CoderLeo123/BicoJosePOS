@@ -240,7 +240,7 @@ namespace Capstone
                     i += 1;
                     //                                                                      4-DESCRIPTION / 1-Description       6-EXPIRATION / 2-Expiration_Date                                      8-STOCK IN BY / 4-Stock_In_By            10-TYPE / 6-Type
                     //0-# / i         1/Edit                    2/Delete           3-STOCK ID / 0-Stock_ID            5-QTY / 10-Quantity                              7-STOCK IN DATE / 3-Stock_In_Date                            9-ITEM ID / 5-Item_ID                12-num / 11-num 
-                    dgv.Rows.Add(i, Properties.Resources.Edit, Properties.Resources._Delete, dr[0].ToString(), dr[1].ToString(), quantity.ToString(), ExpirationDate, DateTime.Parse(dr[3].ToString()).ToShortDateString(), dr[4].ToString(), dr[5].ToString(), dr[6].ToString(), dr[9].ToString());
+                    dgv.Rows.Add(i, Properties.Resources.Edit, Properties.Resources._Delete, dr[0].ToString(), dr[1].ToString(), quantity.ToString(), ExpirationDate, DateTime.Parse(dr[3].ToString()).ToShortDateString(), dr[4].ToString(), dr[5].ToString(), dr[6].ToString(), dr[9].ToString(), dr[11].ToString());
 
                 }
                 dr.Close();
@@ -298,7 +298,7 @@ namespace Capstone
                     }
                     else
                     {
-                        if (ExpirationDate.Substring(0, 9) != "") //9 = date
+                        if (ExpirationDate.Substring(0 ,8) != "") //9 = date
                         {
                             ExpirationDate = dr[2].ToString();//.Substring(0, 9);//00/00/0000 = 9 
                         }
@@ -315,13 +315,13 @@ namespace Capstone
                 }
                 dr.Close();
                 cn.Close();
-            }
+        }
             catch (Exception ex)
             {
                 cn.Close();
                 MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
+}
 
         public void LoadRecordsBrowse(DataGridView dgv, TextBox textSearch)
         {//dataGridViewBrowse, txtSearch

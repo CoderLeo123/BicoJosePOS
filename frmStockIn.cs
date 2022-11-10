@@ -255,15 +255,25 @@ namespace Capstone
                                 cm.ExecuteNonQuery();
                                 cn.Close();
 
+                                //cn.Open();
+                                ////cm = new SqlCommand("UPDATE tblStockInventory SET Stock_Num = '" + dataGridViewStockItems.Rows[i].Cells[11].Value?.ToString() + "', Expiration_Date = '" + DateTime.Parse(dataGridViewStockItems.Rows[i].Cells[6].Value?.ToString()).ToShortDateString() + "', Quantity = " + int.Parse(dataGridViewStockItems.Rows[i].Cells[5].Value?.ToString()) + " WHERE Item_ID LIKE '" + ITMID + "' AND Stock_ID LIKE '" + StkID + "'", cn);
+                                //cm = new SqlCommand("UPDATE tblStockInventory SET Quantity = " + int.Parse(dataGridViewStockItems.Rows[i].Cells[5].Value?.ToString()) + ", Expiration_Date = '" + DateTime.Parse(dataGridViewStockItems.Rows[i].Cells[6].Value?.ToString()).ToShortDateString() + "', Stock_ID = '"+StkID+ "', Item_ID = '" + ITMID + "' WHERE Stock_Num LIKE '" + dataGridViewStockItems.Rows[i].Cells[11].Value?.ToString() + "'", cn);
+                                ////cm.Parameters.AddWithValue("@Stock_ID", frmList.txtStockID.Text);
+                                ////, Unit_Measure = '"+ dataGridViewStockItems.Rows[i].Cells[11].Value?.ToString() + "'
+                                //cm.ExecuteNonQuery();
+                                //cn.Close();
+
                                 cn.Open();
-                                cm = new SqlCommand("UPDATE tblStockInventory SET Stock_Num = '" + dataGridViewStockItems.Rows[i].Cells[11].Value?.ToString() + "', Expiration_Date = '" + DateTime.Parse(dataGridViewStockItems.Rows[i].Cells[6].Value?.ToString()).ToShortDateString() + "', Quantity = " + int.Parse(dataGridViewStockItems.Rows[i].Cells[5].Value?.ToString()) + " WHERE Item_ID LIKE '" + ITMID + "' AND Stock_ID LIKE '" + StkID + "'", cn);
-                                //cm.Parameters.AddWithValue("@Stock_ID", frmList.txtStockID.Text);
+                                cm = new SqlCommand("INSERT INTO tblStockInventory (Stock_ID, Item_ID, Stock_Num, Quantity, Expiration_Date, Status, Unit_Measure) VALUES(@Stock_ID, @Item_ID, @Stock_Num, @Quantity, @Expiration_Date, 'Available', @Unit_Measure)", cn);
+                                cm.Parameters.AddWithValue("@Stock_ID", StkID);
+                                cm.Parameters.AddWithValue("@Stock_Num", dataGridViewStockItems.Rows[i].Cells[11].Value?.ToString());
+                                cm.Parameters.AddWithValue("@Quantity", int.Parse(dataGridViewStockItems.Rows[i].Cells[5].Value?.ToString()));
+                                cm.Parameters.AddWithValue("@Expiration_Date", DateTime.Parse(dataGridViewStockItems.Rows[i].Cells[6].Value?.ToString()).ToShortDateString());
+                                cm.Parameters.AddWithValue("@Item_ID", ITMID);
+                                cm.Parameters.AddWithValue("@Unit_Measure", dataGridViewStockItems.Rows[i].Cells[12].Value?.ToString());
                                 cm.ExecuteNonQuery();
                                 cn.Close();
                             }
-
-                            
-                            
 
                         }
                         catch (Exception ex)
