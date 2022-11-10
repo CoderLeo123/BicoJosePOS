@@ -65,7 +65,7 @@ namespace Capstone
         private void linkLabelCreateNew_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             frmPermission frmP = new frmPermission();
-            frmP.lblWhatForm.Text = "ResetPass";
+            frmP.lblWhatForm.Text = "Sign Up";
             frmP.ShowDialog();
 
             if (frmP.lblGrant.Text == "1")
@@ -76,6 +76,9 @@ namespace Capstone
                 frm.tabControlRegister.TabPages.Add(tab);
                 tab.Controls.Add(frm.panelSignUp);
                 frm.comBoxUserType.SelectedIndex = 0;
+                frm.labelTitle.Text = "Create new user account";
+                frm.btnCreateAccount.Visible = true;
+                frm.btnEditUser.Visible = false;
                 frm.ShowDialog();
                 lblUserNotices.Visible = false;
             }
@@ -148,7 +151,7 @@ namespace Capstone
             {
                 //                                                               2-ROLE / 5-User_Type       
                 i += 1; //          0-#  1-NAME / 4-Name       1-USERNAME / 2-Username               2-ID / 5-User_ID  
-                dataGridViewUsers.Rows.Add(i, dr[4].ToString(), dr[2].ToString(), dr[5].ToString(), dr[1].ToString());
+                dataGridViewUsers.Rows.Add(i, dr[4].ToString(), dr[2].ToString(), dr[5].ToString(), dr[1].ToString(), dr[6].ToString(), dr[7].ToString(), dr[3].ToString());
             }
             dr.Close();
             cn.Close();
@@ -193,9 +196,68 @@ namespace Capstone
 
         }
 
+        
+
         private void dataGridViewUsers_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             lblUsID.Text = dataGridViewUsers.Rows[e.RowIndex].Cells[4].Value.ToString();
+            string userID = dataGridViewUsers.Rows[e.RowIndex].Cells[4].Value.ToString();
+            string colName = dataGridViewUsers.Columns[e.ColumnIndex].Name;
+            string role = dataGridViewUsers.Rows[e.RowIndex].Cells[3].Value?.ToString();
+            string FName = dataGridViewUsers.Rows[e.RowIndex].Cells[5].Value?.ToString();
+            string LName = dataGridViewUsers.Rows[e.RowIndex].Cells[6].Value?.ToString();
+            string UserN = dataGridViewUsers.Rows[e.RowIndex].Cells[2].Value?.ToString();
+            string Pass = dataGridViewUsers.Rows[e.RowIndex].Cells[7].Value?.ToString();
+            
+            if (colName == "Edit")
+            {
+                frmPermission frmP = new frmPermission();
+                frmP.ShowDialog();
+                if (frmP.lblGrant.Text == "1")
+                {
+
+                    frmSignUpForgotPass frm = new frmSignUpForgotPass();
+                    frm.tabControlRegister.TabPages.Clear();
+                    TabPage tab = new TabPage("Edit User");
+                    frm.tabControlRegister.TabPages.Add(tab);
+                    tab.Controls.Add(frm.panelSignUp);
+                    if(role == "Master")
+                    {
+                        frm.comBoxUserType.Visible = false;
+
+                    }
+                    frm.comBoxUserType.SelectedItem = role;
+                    frm.labelTitle.Text = "Edit User";
+                    frm.btnCreateAccount.Visible = false;
+                    frm.btnEditUser.Visible = true;
+                    frm.txtFirstN.Text = FName;
+                    frm.txtLastN.Text = LName;
+                    frm.txtUserNameCreate.Text = UserN;
+                    frm.txtPasswordCreate.Text = Pass;
+                    frm.txtConfirmPass.Text = Pass;
+                    frm.lblUserID.Text = userID;
+                    //frm.comBoxUserType.SelectedIndex = 0;
+                    frm.ShowDialog();
+                    lblUserNotices.Visible = false;
+                }
+            }
+            else if (colName == "Del")
+            {
+                frmPermission frmP = new frmPermission();
+                frmP.ShowDialog();
+                if (frmP.lblGrant.Text == "1")
+                {
+                    if (MessageBox.Show("Remove this user?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        cn.Open();
+                        cm = new SqlCommand("DELETE FROM tblUser WHERE User_ID LIKE '" + userID + "'", cn);
+                        cm.ExecuteNonQuery();
+                        cn.Close();
+                        MessageBox.Show("User has been successfully deleted.", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    }
+                }
+            }
         }
 
         private void btnSetting_Click(object sender, EventArgs e)

@@ -32,7 +32,7 @@ namespace Capstone
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            this.Dispose();
+            //this.Dispose();
         }
         public void colorChange(bool press, Button changeThisBtn)
         {

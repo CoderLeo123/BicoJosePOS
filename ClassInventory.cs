@@ -250,7 +250,7 @@ namespace Capstone
             int i = 0;
             dgv.Rows.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT * FROM tblStockInventory WHERE Item_ID LIKE '"+ ITMID + "' AND Status LIKE 'Available'", cn);
+            SqlCommand cm = new SqlCommand("SELECT * FROM tblStockInventory WHERE Item_ID LIKE '"+ ITMID + "' AND Status LIKE 'Available' ORDER BY Expiration_Date DESC", cn);
             dr = cm.ExecuteReader();//Description, Expiration_Date
             while (dr.Read())
             {

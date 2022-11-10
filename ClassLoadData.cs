@@ -285,7 +285,7 @@ namespace Capstone
                 int i = 0;
                 dgv.Rows.Clear();
                 cn.Open();
-                SqlCommand cm = new SqlCommand("SELECT Stock_In_Date, Quantity, Expiration_Date, Stock_In_By, Unit_Measure FROM tblStock WHERE Item_ID LIKE '%" + labelID.Text + "%' ORDER BY Num DESC", cn);
+                SqlCommand cm = new SqlCommand("SELECT Stock_In_Date, Quantity, Expiration_Date, Stock_In_By, Unit_Measure FROM tblStock WHERE Item_ID LIKE '%" + labelID.Text + "%' ORDER BY Expiration_Date DESC", cn);
                 dr = cm.ExecuteReader();
                 while (dr.Read())
                 {

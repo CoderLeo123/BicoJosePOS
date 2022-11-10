@@ -43,6 +43,7 @@
             this.labelTitle = new System.Windows.Forms.Label();
             this.panelSetting = new System.Windows.Forms.Panel();
             this.dataGridViewDelete = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblPermitted = new System.Windows.Forms.Label();
             this.lblUserNotices = new System.Windows.Forms.Label();
             this.lblUsID = new System.Windows.Forms.Label();
@@ -54,11 +55,6 @@
             this.panelCritical = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.dataGridViewUsers = new System.Windows.Forms.DataGridView();
-            this.NumService = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Desc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Typ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AYD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
             this.lblItemIDCheck = new System.Windows.Forms.Label();
@@ -88,7 +84,16 @@
             this.label6 = new System.Windows.Forms.Label();
             this.dateTimePickerEndSession = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NumService = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Desc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Typ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AYD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Password = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Edit = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Del = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -260,6 +265,14 @@
             this.dataGridViewDelete.Visible = false;
             this.dataGridViewDelete.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDelete_CellContentClick);
             // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn2.HeaderText = "NAME";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
             // lblPermitted
             // 
             this.lblPermitted.AutoSize = true;
@@ -384,7 +397,12 @@
             this.Desc,
             this.Typ,
             this.Price,
-            this.AYD});
+            this.AYD,
+            this.FName,
+            this.LName,
+            this.Password,
+            this.Edit,
+            this.Del});
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.Azure;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -406,49 +424,6 @@
             this.dataGridViewUsers.Size = new System.Drawing.Size(949, 279);
             this.dataGridViewUsers.TabIndex = 8;
             this.dataGridViewUsers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewUsers_CellContentClick);
-            // 
-            // NumService
-            // 
-            this.NumService.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.NumService.HeaderText = "#";
-            this.NumService.MinimumWidth = 6;
-            this.NumService.Name = "NumService";
-            this.NumService.ReadOnly = true;
-            this.NumService.Width = 61;
-            // 
-            // Desc
-            // 
-            this.Desc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Desc.HeaderText = "NAME";
-            this.Desc.MinimumWidth = 6;
-            this.Desc.Name = "Desc";
-            this.Desc.ReadOnly = true;
-            // 
-            // Typ
-            // 
-            this.Typ.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Typ.HeaderText = "USERNAME";
-            this.Typ.MinimumWidth = 6;
-            this.Typ.Name = "Typ";
-            this.Typ.ReadOnly = true;
-            // 
-            // Price
-            // 
-            this.Price.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Price.HeaderText = "ROLE";
-            this.Price.MinimumWidth = 6;
-            this.Price.Name = "Price";
-            this.Price.ReadOnly = true;
-            this.Price.Width = 109;
-            // 
-            // AYD
-            // 
-            this.AYD.HeaderText = "USER ID";
-            this.AYD.MinimumWidth = 6;
-            this.AYD.Name = "AYD";
-            this.AYD.ReadOnly = true;
-            this.AYD.Visible = false;
-            this.AYD.Width = 125;
             // 
             // panel6
             // 
@@ -778,13 +753,92 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Completely Settled";
             // 
-            // dataGridViewTextBoxColumn2
+            // NumService
             // 
-            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn2.HeaderText = "NAME";
-            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.NumService.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.NumService.HeaderText = "#";
+            this.NumService.MinimumWidth = 6;
+            this.NumService.Name = "NumService";
+            this.NumService.ReadOnly = true;
+            this.NumService.Width = 61;
+            // 
+            // Desc
+            // 
+            this.Desc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Desc.HeaderText = "NAME";
+            this.Desc.MinimumWidth = 6;
+            this.Desc.Name = "Desc";
+            this.Desc.ReadOnly = true;
+            // 
+            // Typ
+            // 
+            this.Typ.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Typ.HeaderText = "USERNAME";
+            this.Typ.MinimumWidth = 6;
+            this.Typ.Name = "Typ";
+            this.Typ.ReadOnly = true;
+            // 
+            // Price
+            // 
+            this.Price.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Price.HeaderText = "ROLE";
+            this.Price.MinimumWidth = 6;
+            this.Price.Name = "Price";
+            this.Price.ReadOnly = true;
+            this.Price.Width = 109;
+            // 
+            // AYD
+            // 
+            this.AYD.HeaderText = "USER ID";
+            this.AYD.MinimumWidth = 6;
+            this.AYD.Name = "AYD";
+            this.AYD.ReadOnly = true;
+            this.AYD.Visible = false;
+            this.AYD.Width = 125;
+            // 
+            // FName
+            // 
+            this.FName.HeaderText = "FName";
+            this.FName.MinimumWidth = 6;
+            this.FName.Name = "FName";
+            this.FName.Visible = false;
+            this.FName.Width = 125;
+            // 
+            // LName
+            // 
+            this.LName.HeaderText = "LName";
+            this.LName.MinimumWidth = 6;
+            this.LName.Name = "LName";
+            this.LName.Visible = false;
+            this.LName.Width = 125;
+            // 
+            // Password
+            // 
+            this.Password.HeaderText = "Password";
+            this.Password.MinimumWidth = 6;
+            this.Password.Name = "Password";
+            this.Password.Visible = false;
+            this.Password.Width = 125;
+            // 
+            // Edit
+            // 
+            this.Edit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Edit.HeaderText = "";
+            this.Edit.Image = global::Capstone.Properties.Resources.Edit;
+            this.Edit.MinimumWidth = 6;
+            this.Edit.Name = "Edit";
+            this.Edit.ReadOnly = true;
+            this.Edit.Width = 6;
+            // 
+            // Del
+            // 
+            this.Del.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Del.HeaderText = "";
+            this.Del.Image = global::Capstone.Properties.Resources._Delete;
+            this.Del.MinimumWidth = 6;
+            this.Del.Name = "Del";
+            this.Del.ReadOnly = true;
+            this.Del.Width = 6;
             // 
             // frmUserSetting
             // 
@@ -853,11 +907,6 @@
         public LinkLabel linkLabelViewPass;
         public LinkLabel linkLabelCreateNew;
         public TextBox txtViewPass;
-        private DataGridViewTextBoxColumn NumService;
-        private DataGridViewTextBoxColumn Desc;
-        private DataGridViewTextBoxColumn Typ;
-        private DataGridViewTextBoxColumn Price;
-        private DataGridViewTextBoxColumn AYD;
         public Label lblUsID;
         private Label lblUserNotices;
         public Label lblPermitted;
@@ -886,5 +935,15 @@
         public Button btnSession;
         public DataGridView dataGridViewDelete;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn NumService;
+        private DataGridViewTextBoxColumn Desc;
+        private DataGridViewTextBoxColumn Typ;
+        private DataGridViewTextBoxColumn Price;
+        private DataGridViewTextBoxColumn AYD;
+        private DataGridViewTextBoxColumn FName;
+        private DataGridViewTextBoxColumn LName;
+        private DataGridViewTextBoxColumn Password;
+        private DataGridViewImageColumn Edit;
+        private DataGridViewImageColumn Del;
     }
 }
