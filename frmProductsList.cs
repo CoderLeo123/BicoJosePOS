@@ -63,6 +63,8 @@ namespace Capstone
         private void dataGridViewProducts_CellContentClick_1(object sender, DataGridViewCellEventArgs e) //dataGridViewType
         {
              string colName = dataGridViewType.Columns[e.ColumnIndex].Name;
+            string product = dataGridViewType[4, e.RowIndex].Value.ToString();
+            int indextProduct = 0;
             if (colName == "Edit")
             {
                 frmAddAccessories frm = new frmAddAccessories(this);
@@ -71,14 +73,18 @@ namespace Capstone
                 TabPage tab = new TabPage("Type");
                 frm.tabControlCreateNew.TabPages.Add(tab);
                 tab.Controls.Add(frm.panelType);
+                frm.labelTitle.Text = "Edit Type";
+
+                classLoadData.LoadProduct(frm.comBoxProductType);
+                indextProduct = frm.comBoxProductType.Items.IndexOf(product);
+                frm.comBoxProductType.SelectedIndex = indextProduct;
 
                 frm.txtTypID.Text = dataGridViewType[1, e.RowIndex].Value.ToString();
                 frm.txtProductIDType.Text = dataGridViewType[3, e.RowIndex].Value.ToString();
-                frm.txtType.Text = dataGridViewType[2, e.RowIndex].Value.ToString();
-                frm.comBoxProductType.Text = dataGridViewType[4, e.RowIndex].Value.ToString();
+                frm.txtType.Text = dataGridViewType[2, e.RowIndex].Value.ToString();                
                 frm.btnSaveType.Enabled = false;
                 frm.btnUpdateType.Enabled = true;
-                classLoadData.LoadProduct(frm.comBoxProductType);
+                
                 //frm.LoadProduct();
                 frm.Size = new Size(830, 441);
                 frm.ShowDialog();
@@ -100,6 +106,7 @@ namespace Capstone
         private void dataGridViewService_CellContentClick(object sender, DataGridViewCellEventArgs e) //dataGridViewProduct
         {
             string colName = dataGridViewProduct.Columns[e.ColumnIndex].Name;
+            string product = dataGridViewProduct[4, e.RowIndex].Value.ToString();
             if (colName == "EditProduct")
             {
                 frmAddAccessories frm = new frmAddAccessories(this);
@@ -107,9 +114,10 @@ namespace Capstone
                 TabPage tab = new TabPage("Product");
                 frm.tabControlCreateNew.TabPages.Add(tab);
                 tab.Controls.Add(frm.panelProduct);
+                frm.labelTitle.Text = "Edit Product";
 
                 frm.txtProdID.Text = dataGridViewProduct[1, e.RowIndex].Value.ToString();
-                frm.txtProdName.Text = dataGridViewProduct[2, e.RowIndex].Value.ToString();
+                frm.txtProdName.Text = dataGridViewProduct[2, e.RowIndex].Value.ToString();       
                 frm.btnSaveProduct.Enabled = false;
                 frm.btnUpdateProduct.Enabled = true;
                 frm.Size = new Size(672, 357);
@@ -160,6 +168,7 @@ namespace Capstone
             TabPage tab = new TabPage("Product");
             frm.tabControlCreateNew.TabPages.Add(tab);
             tab.Controls.Add(frm.panelProduct);
+            frm.labelTitle.Text = "Create New";
             classGenerateID.GenerateProductID(frm.txtProdID);
             
             //frm.GenerateProductID();
@@ -177,6 +186,7 @@ namespace Capstone
             TabPage tab = new TabPage("Type");
             frm.tabControlCreateNew.TabPages.Add(tab);
             tab.Controls.Add(frm.panelType);
+            frm.labelTitle.Text = "Create New";
             classLoadData.LoadProduct(frm.comBoxProductType);
             frm.comBoxProductType.SelectedIndex = 0;
             //frm.LoadProduct();
@@ -215,6 +225,9 @@ namespace Capstone
         private void dataGridViewItems_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             string colName = dataGridViewItems.Columns[e.ColumnIndex].Name;
+            string type = dataGridViewItems[2, e.RowIndex].Value.ToString();
+            string classi = dataGridViewItems[6, e.RowIndex].Value.ToString();
+            int indexType = 0; int indexClass = 0;
             if (colName == "EditItems")
             {
                 frmAddAccessories frm = new frmAddAccessories(this);
@@ -223,13 +236,20 @@ namespace Capstone
                 TabPage tab = new TabPage("Item");
                 frm.tabControlCreateNew.TabPages.Add(tab);
                 tab.Controls.Add(frm.panelItem);
+                frm.labelTitle.Text = "Edit Item";
+                //for load comboBox
+                classLoadData.LoadType(frm.comBoxType);
+                indexType = frm.comBoxType.Items.IndexOf(type);
+                frm.comBoxType.SelectedIndex = indexType;
+                //for predefined collection on comboBox               
+                frm.comBoxClassification.SelectedItem = classi;
 
                 frm.txtID.Text = dataGridViewItems[7, e.RowIndex].Value.ToString();
                 frm.txtDescription.Text = dataGridViewItems[1, e.RowIndex].Value.ToString();
-                frm.comBoxType.SelectedItem = dataGridViewItems[2, e.RowIndex].Value.ToString();
+                //frm.comBoxType.SelectedItem = dataGridViewItems[2, e.RowIndex].Value.ToString();
                 frm.txtProduct.Text = dataGridViewItems[3, e.RowIndex].Value.ToString();
                 frm.txtPrice.Text = dataGridViewItems[4, e.RowIndex].Value.ToString();
-                frm.comBoxClassification.Text = dataGridViewItems[6, e.RowIndex].Value.ToString();
+                //frm.comBoxClassification.Text = dataGridViewItems[6, e.RowIndex].Value.ToString();
                 frm.btnSaveItem.Enabled = false;
                 frm.btnUpdateItem.Enabled = true;
                 classLoadData.LoadType(frm.comBoxType);
@@ -260,7 +280,7 @@ namespace Capstone
             TabPage tab = new TabPage("Item");
             frm.tabControlCreateNew.TabPages.Add(tab);
             tab.Controls.Add(frm.panelItem);
-            
+            frm.labelTitle.Text = "Create New";
             frm.comBoxClassification.SelectedIndex = 0;
             classLoadData.LoadType(frm.comBoxType);
             frm.comBoxType.SelectedIndex = 0;
@@ -316,6 +336,7 @@ namespace Capstone
                 TabPage tab = new TabPage("Service");
                 frm.tabControlCreateNew.TabPages.Add(tab);
                 tab.Controls.Add(frm.panelService);
+                frm.labelTitle.Text = "Edit Service";
 
                 frm.txtServiceID.Text = dataGridViewService[1, e.RowIndex].Value.ToString();
                 frm.txtServiceName.Text = dataGridViewService[2, e.RowIndex].Value.ToString();

@@ -158,7 +158,7 @@ namespace Capstone
             int i = 0;
             dataGridViewSession.Rows.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT * FROM ViewLoginSession Order by Num ASC", cn);
+            SqlCommand cm = new SqlCommand("SELECT * FROM ViewLoginSession Order by Num DESC", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {

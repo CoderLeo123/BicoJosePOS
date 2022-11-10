@@ -25,13 +25,13 @@ namespace Capstone
             int i = 0;
             dgv.Rows.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT * FROM tblPatientRecord WHERE Customer_Name LIKE '%" + txtSearch.Text + "%' Order by Patient_ID", cn);
+            SqlCommand cm = new SqlCommand("SELECT * FROM tblPatientRecord WHERE Customer_Name LIKE '%" + txtSearch.Text + "%' Order by Patient_ID DESC", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             { 
                         //                     2-PATIENT NAME / 2-Customer_Name       4-CONTACT / 4-Contact             6-GENDER / 6-Gender 
                 i += 1; //0-#  1-PATIENT ID / 1-Patient_ID         3-ADDRESS / 3-Address                 5-AGE / 5-Age                   7-CHECK-UP DATE / 7-Check_Up_Date 
-                dgv.Rows.Add(i, dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), dr[5].ToString(), dr[6].ToString(), dr[7].ToString());
+                dgv.Rows.Add(i, dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), dr[5].ToString(), dr[6].ToString(), DateTime.Parse(dr[7].ToString()).ToShortDateString(), dr[9].ToString(), dr[12].ToString(), dr[13].ToString(), DateTime.Parse(dr[10].ToString()).ToShortDateString());
             }
             dr.Close();
             cn.Close();
@@ -139,7 +139,7 @@ namespace Capstone
             int i = 0;
             dgv.Rows.Clear();
             cn.Open();//ViewItemProductType
-            SqlCommand cm = new SqlCommand("SELECT * FROM ViewItemProductType WHERE Description LIKE '%" + txtSearch.Text + "%' OR Type LIKE '%" + txtSearch.Text + "%' Order by Item_ID", cn);
+            SqlCommand cm = new SqlCommand("SELECT * FROM ViewItemProductType WHERE Description LIKE '%" + txtSearch.Text + "%' OR Type LIKE '%" + txtSearch.Text + "%' Order by Item_ID DESC", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
@@ -285,7 +285,7 @@ namespace Capstone
                 int i = 0;
                 dgv.Rows.Clear();
                 cn.Open();
-                SqlCommand cm = new SqlCommand("SELECT Stock_In_Date, Quantity, Expiration_Date, Stock_In_By, Unit_Measure FROM tblStock WHERE Item_ID LIKE '%" + labelID.Text + "%' ORDER BY Num ASC", cn);
+                SqlCommand cm = new SqlCommand("SELECT Stock_In_Date, Quantity, Expiration_Date, Stock_In_By, Unit_Measure FROM tblStock WHERE Item_ID LIKE '%" + labelID.Text + "%' ORDER BY Num DESC", cn);
                 dr = cm.ExecuteReader();
                 while (dr.Read())
                 {
@@ -467,7 +467,7 @@ namespace Capstone
             int i = 0;
             dgv.Rows.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT DISTINCT Num, Customer, Transaction_No, Cashier, Date FROM ViewPaymentCart WHERE Customer LIKE '%" + txtSearch.Text + "%' OR Cashier LIKE '%" + txtSearch.Text + "%' AND Date BETWEEN '" + dateStart.Value.ToShortDateString() + "' AND '" + dateEnd.Value.ToShortDateString() + "' ", cn);
+            SqlCommand cm = new SqlCommand("SELECT DISTINCT Num, Customer, Transaction_No, Cashier, Date FROM ViewPaymentCart WHERE Customer LIKE '%" + txtSearch.Text + "%' OR Cashier LIKE '%" + txtSearch.Text + "%' AND Date BETWEEN '" + dateStart.Value.ToShortDateString() + "' AND '" + dateEnd.Value.ToShortDateString() + "' ORDER BY Transaction_No DESC", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
@@ -496,7 +496,7 @@ namespace Capstone
             int i = 0;
             dgv.Rows.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT DISTINCT Num, Customer, Transaction_No, Cashier, Transaction_Date FROM tblReceiptSettle WHERE Customer LIKE '%" + txtSearch.Text + "%' OR Cashier LIKE '%" + txtSearch.Text + "%' AND Transaction_Date BETWEEN '" + dateStart.Value.ToShortDateString() + "' AND '" + dateEnd.Value.ToShortDateString() + "' ", cn);
+            SqlCommand cm = new SqlCommand("SELECT DISTINCT Num, Customer, New_TransacNo, Cashier, Transaction_Date FROM tblReceiptSettle WHERE Customer LIKE '%" + txtSearch.Text + "%' OR Cashier LIKE '%" + txtSearch.Text + "%' AND Transaction_Date BETWEEN '" + dateStart.Value.ToShortDateString() + "' AND '" + dateEnd.Value.ToShortDateString() + "' ORDER BY New_TransacNo DESC", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
@@ -525,7 +525,7 @@ namespace Capstone
             int i = 0;
             dgv.Rows.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT * FROM ViewCartStockItem WHERE Description LIKE '%" + txtSearch.Text + "%' AND Status = 'Sold' AND Date BETWEEN '" + dateStart.Value.ToShortDateString() + "' AND '" + dateEnd.Value.ToShortDateString() + "' ", cn);
+            SqlCommand cm = new SqlCommand("SELECT * FROM ViewCartStockItem WHERE Description LIKE '%" + txtSearch.Text + "%' AND Status = 'Sold' AND Date BETWEEN '" + dateStart.Value.ToShortDateString() + "' AND '" + dateEnd.Value.ToShortDateString() + "' ORDER BY Transaction_No DESC", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {

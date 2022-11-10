@@ -76,7 +76,7 @@ namespace Capstone
             while (dr.Read())
             {
                 i += 1;
-                dgv.Rows.Add(i, dr[0].ToString());
+                dgv.Rows.Add(i, DateTime.Parse(dr[0].ToString()).ToShortDateString());
                 
             }
             dr.Close();
@@ -159,10 +159,8 @@ namespace Capstone
             cn.Close();
         }
         public void insertData()
-        {
-            
-            string pass = "";            
-            
+        {            
+            string pass = "";                        
             if (dataGridViewInitial.Rows.Count > 0)
             {
 
@@ -183,8 +181,8 @@ namespace Capstone
             cn = new SqlConnection(dbcon.MyConnection());
             cn.Open();
             SqlCommand cm = new SqlCommand("UPDATE tblSalesReport SET Total_Sale = @Total_Sale, Total_Bal = @Total_Bal WHERE Date LIKE '" + date + "'", cn);
-            cm.Parameters.AddWithValue("@Total_Sale", payment);
-            cm.Parameters.AddWithValue("@Total_Bal", balance);
+            cm.Parameters.AddWithValue("@Total_Sale", payment.ToString("#,##0.00"));
+            cm.Parameters.AddWithValue("@Total_Bal", balance.ToString("#,##0.00"));
             cm.ExecuteNonQuery();
             cn.Close();
 
@@ -649,10 +647,10 @@ namespace Capstone
         {
             
             balance = true; sales = false; transaction = false; settled = false; sold = false;
-            printPreviewControl.Document = printDocumentBal;
+            printPreviewControlBal.Document = printDocumentBal;
             printDocumentBal.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("SHORT", sWidth, sLength);
-            printPreviewControl.Zoom = .75;
-            printPreviewControl.StartPage = 0;
+            printPreviewControlBal.Zoom = .75;
+            printPreviewControlBal.StartPage = 0;
         }
         public void previewTransHistReceipt()
         {
@@ -755,8 +753,8 @@ namespace Capstone
         private void printDocumentSettledReceipt_PrintPage(object sender, PrintPageEventArgs e)
         {
             transNo = lblSettledID.Text;
-            string TransDate = "", PMode = "", Customer = "", NetT = "", Payment = "", Change = "", Cashier = "", oldTrans = "";
-            classReport.tblReceiptSettle(transNo, out TransDate, out PMode, out Customer, out NetT, out Payment, out Change, out Cashier, out oldTrans);
+            string TransDate = "", PMode = "", Customer = "", NetT = "", Payment = "", Change = "", Cashier = "", oldTrans = "", newTrans = "";
+            classReport.tblReceiptSettle(transNo, out TransDate, out PMode, out Customer, out NetT, out Payment, out Change, out Cashier, out oldTrans, out newTrans);
 
 
             int x = 0, y = 0; // num = 1; string resultText = ""; int dgvCount = int.Parse(lblRowCount.Text), dgvCountService = int.Parse(lblServRowCount.Text);
@@ -777,7 +775,7 @@ namespace Capstone
             e.Graphics.DrawString("Cashier:  " + Cashier, printFont, Brushes.Black, x, (y += 30));//200
             e.Graphics.DrawString("Customer Name:  " + Customer, printFont, Brushes.Black, 20, y);//230
             e.Graphics.DrawString("--------------------------------------------------------------------------------------------------------------------------", printFont, Brushes.Black, 10, (y += 30));//260 or 290
-            e.Graphics.DrawString("Invoice No: " + transNo, printFont, Brushes.Black, 20, (y += 50));//310 or 340
+            e.Graphics.DrawString("Invoice No: " + newTrans, printFont, Brushes.Black, 20, (y += 50));//310 or 340
             e.Graphics.DrawString("Balance Settlement for Transaction No:" + oldTrans, printFont, Brushes.Black, 20, (y += 50));//360 or 390
             //e.Graphics.DrawString("For Transaction No:" + oldTrans, printFont, Brushes.Black, 20, (y += 50));//360 or 390
 

@@ -36,13 +36,13 @@ namespace Capstone
             dr.Close();
             cn.Close();
         }
-        public void tblReceiptSettle(string transacNo, out string TransDate, out string PMode, out string Customer, out string NetT, out string Payment, out string Change, out string Cashier, out string oldTrans)
+        public void tblReceiptSettle(string transacNo, out string TransDate, out string PMode, out string Customer, out string NetT, out string Payment, out string Change, out string Cashier, out string oldTrans, out string newTrans)
         {
             cn = new SqlConnection(dbcon.MyConnection());
-            TransDate = ""; PMode = "";Customer = ""; NetT = ""; Payment = ""; Change = ""; Cashier = ""; oldTrans = "";
+            TransDate = ""; PMode = "";Customer = ""; NetT = ""; Payment = ""; Change = ""; Cashier = ""; oldTrans = ""; newTrans = "";
 
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT * FROM tblReceiptSettle WHERE Transaction_No LIKE '" + transacNo + "'", cn);
+            SqlCommand cm = new SqlCommand("SELECT * FROM tblReceiptSettle WHERE New_TransacNo LIKE '" + transacNo + "'", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
@@ -50,7 +50,7 @@ namespace Capstone
                 TransDate = dr[2].ToString(); PMode = dr[3].ToString(); Customer = dr[4].ToString();
                  NetT = dr[5].ToString(); Payment = dr[6].ToString();
                  Change = dr[7].ToString(); Cashier = dr[8].ToString();
-                oldTrans = dr[1].ToString();
+                oldTrans = dr[1].ToString(); newTrans = dr[10].ToString();
 
             }
             dr.Close();
@@ -192,8 +192,8 @@ namespace Capstone
 
             cn.Open();
             SqlCommand cm = new SqlCommand("UPDATE tblSalesReport SET Total_Sale = @Total_Sale, Total_Bal = @Total_Bal WHERE Date LIKE '" + date + "'", cn);
-            cm.Parameters.AddWithValue("@Total_Sale", payment);
-            cm.Parameters.AddWithValue("@Total_Bal", balance);
+            cm.Parameters.AddWithValue("@Total_Sale", payment.ToString("#,##0.00"));
+            cm.Parameters.AddWithValue("@Total_Bal", balance.ToString("#,##0.00"));
             cm.ExecuteNonQuery();
             cn.Close();
 
@@ -214,7 +214,7 @@ namespace Capstone
                 //bal = double.Parse(dr[1].ToString()).ToString("00.00");
                 //balan = Convert.ToDouble(dr[1].ToString()); balan.ToString("00.00")
                 i += 1;    
-                dgv.Rows.Add(i, dr[0].ToString(), Properties.Resources.icons8_peso_symbol_24, dr[1].ToString());
+                dgv.Rows.Add(i, DateTime.Parse(dr[0].ToString()).ToShortDateString(), Properties.Resources.icons8_peso_symbol_24, dr[1].ToString());
 
             }
             dr.Close();

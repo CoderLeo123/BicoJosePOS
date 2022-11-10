@@ -44,6 +44,7 @@ namespace Capstone
             frmCashier frmC = new frmCashier();
             frmSettlePayment frm = new frmSettlePayment(frml);
             frm.comBoxPaymentTerms.SelectedIndex = 0;
+            frm.comBoxMethodPayment.SelectedIndex = 0;
             classGenerateID.GenerateTransactionNo(frm.lblNewTransactionSet);
             frm.comBoxPaymentTerms.Visible = false;
             frm.labelPT.Text = "Transaction No"; //Payment Terms

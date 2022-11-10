@@ -40,6 +40,13 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPaymentStatus));
             this.dataGridViewSettled = new System.Windows.Forms.DataGridView();
+            this.NumSettled = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TransRefNoSettled = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CustNameSettled = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalPaymentSettled = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SettledDatePaymentStat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CompletedBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Monitorings = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
@@ -98,14 +105,6 @@
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
             this.dataGridViewOrderStatus = new System.Windows.Forms.DataGridView();
-            this.NumOrderStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CustomerNameOrdStat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StatusOrdStat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ExpectedArrival = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DateClaimedOrdStat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ReleaseByOrdStat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ed = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel10 = new System.Windows.Forms.Panel();
             this.panel12 = new System.Windows.Forms.Panel();
             this.lblCurrentTransN = new System.Windows.Forms.Label();
@@ -143,13 +142,14 @@
             this.btnOrder = new System.Windows.Forms.Button();
             this.btnCloseInventory = new System.Windows.Forms.PictureBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.NumSettled = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TransRefNoSettled = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CustNameSettled = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TotalPaymentSettled = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SettledDatePaymentStat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CompletedBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Monitorings = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NumOrderStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CustomerNameOrdStat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StatusOrdStat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ExpectedArrival = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DateClaimedOrdStat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ReleaseByOrdStat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ed = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSettled)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -236,6 +236,68 @@
             this.dataGridViewSettled.Size = new System.Drawing.Size(1301, 240);
             this.dataGridViewSettled.TabIndex = 5;
             // 
+            // NumSettled
+            // 
+            this.NumSettled.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.NumSettled.HeaderText = "#";
+            this.NumSettled.MinimumWidth = 6;
+            this.NumSettled.Name = "NumSettled";
+            this.NumSettled.ReadOnly = true;
+            this.NumSettled.Width = 61;
+            // 
+            // TransRefNoSettled
+            // 
+            this.TransRefNoSettled.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.TransRefNoSettled.HeaderText = "TRANS NO";
+            this.TransRefNoSettled.MinimumWidth = 6;
+            this.TransRefNoSettled.Name = "TransRefNoSettled";
+            this.TransRefNoSettled.ReadOnly = true;
+            this.TransRefNoSettled.Visible = false;
+            this.TransRefNoSettled.Width = 125;
+            // 
+            // CustNameSettled
+            // 
+            this.CustNameSettled.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CustNameSettled.HeaderText = "NAME";
+            this.CustNameSettled.MinimumWidth = 6;
+            this.CustNameSettled.Name = "CustNameSettled";
+            this.CustNameSettled.ReadOnly = true;
+            // 
+            // TotalPaymentSettled
+            // 
+            this.TotalPaymentSettled.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.TotalPaymentSettled.HeaderText = "BALANCE";
+            this.TotalPaymentSettled.MinimumWidth = 6;
+            this.TotalPaymentSettled.Name = "TotalPaymentSettled";
+            this.TotalPaymentSettled.Visible = false;
+            this.TotalPaymentSettled.Width = 125;
+            // 
+            // SettledDatePaymentStat
+            // 
+            this.SettledDatePaymentStat.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.SettledDatePaymentStat.HeaderText = "SETTLED DATE";
+            this.SettledDatePaymentStat.MinimumWidth = 6;
+            this.SettledDatePaymentStat.Name = "SettledDatePaymentStat";
+            this.SettledDatePaymentStat.ReadOnly = true;
+            this.SettledDatePaymentStat.Width = 223;
+            // 
+            // CompletedBy
+            // 
+            this.CompletedBy.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.CompletedBy.HeaderText = "COMPLETED BY";
+            this.CompletedBy.MinimumWidth = 6;
+            this.CompletedBy.Name = "CompletedBy";
+            this.CompletedBy.ReadOnly = true;
+            this.CompletedBy.Width = 236;
+            // 
+            // Monitorings
+            // 
+            this.Monitorings.HeaderText = "STATUS";
+            this.Monitorings.MinimumWidth = 6;
+            this.Monitorings.Name = "Monitorings";
+            this.Monitorings.ReadOnly = true;
+            this.Monitorings.Width = 125;
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -277,7 +339,7 @@
             this.txtSearchSettled.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtSearchSettled.Location = new System.Drawing.Point(684, 9);
             this.txtSearchSettled.Name = "txtSearchSettled";
-            this.txtSearchSettled.PlaceholderText = "Search Here";
+            this.txtSearchSettled.PlaceholderText = "Search Name Here";
             this.txtSearchSettled.Size = new System.Drawing.Size(592, 38);
             this.txtSearchSettled.TabIndex = 0;
             // 
@@ -290,6 +352,7 @@
             this.dateTimePickerStartSettled.Name = "dateTimePickerStartSettled";
             this.dateTimePickerStartSettled.Size = new System.Drawing.Size(158, 34);
             this.dateTimePickerStartSettled.TabIndex = 33;
+            this.dateTimePickerStartSettled.Visible = false;
             // 
             // label6
             // 
@@ -302,6 +365,7 @@
             this.label6.Size = new System.Drawing.Size(277, 31);
             this.label6.TabIndex = 32;
             this.label6.Text = "Filter By Date (From - To)";
+            this.label6.Visible = false;
             // 
             // dateTimePicker8
             // 
@@ -312,6 +376,7 @@
             this.dateTimePicker8.Name = "dateTimePicker8";
             this.dateTimePicker8.Size = new System.Drawing.Size(158, 34);
             this.dateTimePicker8.TabIndex = 34;
+            this.dateTimePicker8.Visible = false;
             // 
             // label1
             // 
@@ -337,6 +402,7 @@
             this.btnClose.Size = new System.Drawing.Size(40, 38);
             this.btnClose.TabIndex = 0;
             this.btnClose.TabStop = false;
+            this.btnClose.Visible = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // dataGridViewPaymentStat
@@ -506,7 +572,7 @@
             this.txtSearchPending.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtSearchPending.Location = new System.Drawing.Point(703, 9);
             this.txtSearchPending.Name = "txtSearchPending";
-            this.txtSearchPending.PlaceholderText = "Search Here";
+            this.txtSearchPending.PlaceholderText = "Search Name Here";
             this.txtSearchPending.Size = new System.Drawing.Size(573, 38);
             this.txtSearchPending.TabIndex = 0;
             // 
@@ -519,6 +585,7 @@
             this.dateTimePickerStartPending.Name = "dateTimePickerStartPending";
             this.dateTimePickerStartPending.Size = new System.Drawing.Size(158, 34);
             this.dateTimePickerStartPending.TabIndex = 33;
+            this.dateTimePickerStartPending.Visible = false;
             // 
             // label5
             // 
@@ -531,6 +598,7 @@
             this.label5.Size = new System.Drawing.Size(277, 31);
             this.label5.TabIndex = 32;
             this.label5.Text = "Filter By Date (From - To)";
+            this.label5.Visible = false;
             // 
             // dateTimePicker6
             // 
@@ -541,6 +609,7 @@
             this.dateTimePicker6.Name = "dateTimePicker6";
             this.dateTimePicker6.Size = new System.Drawing.Size(158, 34);
             this.dateTimePicker6.TabIndex = 34;
+            this.dateTimePicker6.Visible = false;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -834,7 +903,7 @@
             this.txtSearchArrival.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtSearchArrival.Location = new System.Drawing.Point(684, 9);
             this.txtSearchArrival.Name = "txtSearchArrival";
-            this.txtSearchArrival.PlaceholderText = "Search Here";
+            this.txtSearchArrival.PlaceholderText = "Search Customer Here";
             this.txtSearchArrival.Size = new System.Drawing.Size(592, 38);
             this.txtSearchArrival.TabIndex = 0;
             // 
@@ -847,6 +916,7 @@
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(158, 34);
             this.dateTimePicker1.TabIndex = 33;
+            this.dateTimePicker1.Visible = false;
             // 
             // label7
             // 
@@ -859,6 +929,7 @@
             this.label7.Size = new System.Drawing.Size(277, 31);
             this.label7.TabIndex = 32;
             this.label7.Text = "Filter By Date (From - To)";
+            this.label7.Visible = false;
             // 
             // dateTimePicker2
             // 
@@ -869,6 +940,7 @@
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(158, 34);
             this.dateTimePicker2.TabIndex = 34;
+            this.dateTimePicker2.Visible = false;
             // 
             // label8
             // 
@@ -929,77 +1001,6 @@
             this.dataGridViewOrderStatus.Size = new System.Drawing.Size(1301, 346);
             this.dataGridViewOrderStatus.TabIndex = 6;
             this.dataGridViewOrderStatus.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewOrderStatus_CellContentClick);
-            // 
-            // NumOrderStatus
-            // 
-            this.NumOrderStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.NumOrderStatus.HeaderText = "#";
-            this.NumOrderStatus.MinimumWidth = 6;
-            this.NumOrderStatus.Name = "NumOrderStatus";
-            this.NumOrderStatus.ReadOnly = true;
-            this.NumOrderStatus.Width = 61;
-            // 
-            // TNO
-            // 
-            this.TNO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.TNO.HeaderText = "TRANS NO";
-            this.TNO.MinimumWidth = 6;
-            this.TNO.Name = "TNO";
-            this.TNO.ReadOnly = true;
-            this.TNO.Width = 180;
-            // 
-            // CustomerNameOrdStat
-            // 
-            this.CustomerNameOrdStat.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CustomerNameOrdStat.HeaderText = "CUSTOMER";
-            this.CustomerNameOrdStat.MinimumWidth = 6;
-            this.CustomerNameOrdStat.Name = "CustomerNameOrdStat";
-            this.CustomerNameOrdStat.ReadOnly = true;
-            // 
-            // StatusOrdStat
-            // 
-            this.StatusOrdStat.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.StatusOrdStat.HeaderText = "STATUS";
-            this.StatusOrdStat.MinimumWidth = 6;
-            this.StatusOrdStat.Name = "StatusOrdStat";
-            this.StatusOrdStat.Width = 137;
-            // 
-            // ExpectedArrival
-            // 
-            this.ExpectedArrival.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ExpectedArrival.HeaderText = "EXPECTED ARRIVAL";
-            this.ExpectedArrival.MinimumWidth = 6;
-            this.ExpectedArrival.Name = "ExpectedArrival";
-            this.ExpectedArrival.ReadOnly = true;
-            // 
-            // DateClaimedOrdStat
-            // 
-            this.DateClaimedOrdStat.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.DateClaimedOrdStat.HeaderText = "DATE CLAIMED";
-            this.DateClaimedOrdStat.MinimumWidth = 6;
-            this.DateClaimedOrdStat.Name = "DateClaimedOrdStat";
-            this.DateClaimedOrdStat.ReadOnly = true;
-            this.DateClaimedOrdStat.Visible = false;
-            this.DateClaimedOrdStat.Width = 125;
-            // 
-            // ReleaseByOrdStat
-            // 
-            this.ReleaseByOrdStat.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ReleaseByOrdStat.HeaderText = "RECEIVED BY";
-            this.ReleaseByOrdStat.MinimumWidth = 6;
-            this.ReleaseByOrdStat.Name = "ReleaseByOrdStat";
-            this.ReleaseByOrdStat.ReadOnly = true;
-            this.ReleaseByOrdStat.Visible = false;
-            // 
-            // Ed
-            // 
-            this.Ed.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Ed.HeaderText = "";
-            this.Ed.Image = global::Capstone.Properties.Resources.Edit;
-            this.Ed.MinimumWidth = 6;
-            this.Ed.Name = "Ed";
-            this.Ed.ReadOnly = true;
-            this.Ed.Width = 6;
             // 
             // panel10
             // 
@@ -1062,7 +1063,7 @@
             this.txtSearchOrderStatus.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtSearchOrderStatus.Location = new System.Drawing.Point(685, 10);
             this.txtSearchOrderStatus.Name = "txtSearchOrderStatus";
-            this.txtSearchOrderStatus.PlaceholderText = "Search Here";
+            this.txtSearchOrderStatus.PlaceholderText = "Search Customer Here";
             this.txtSearchOrderStatus.Size = new System.Drawing.Size(570, 38);
             this.txtSearchOrderStatus.TabIndex = 0;
             // 
@@ -1075,6 +1076,7 @@
             this.dateTimePicker3.Name = "dateTimePicker3";
             this.dateTimePicker3.Size = new System.Drawing.Size(158, 34);
             this.dateTimePicker3.TabIndex = 33;
+            this.dateTimePicker3.Visible = false;
             // 
             // label3
             // 
@@ -1087,6 +1089,7 @@
             this.label3.Size = new System.Drawing.Size(277, 31);
             this.label3.TabIndex = 32;
             this.label3.Text = "Filter By Date (From - To)";
+            this.label3.Visible = false;
             // 
             // dateTimePicker4
             // 
@@ -1097,6 +1100,7 @@
             this.dateTimePicker4.Name = "dateTimePicker4";
             this.dateTimePicker4.Size = new System.Drawing.Size(158, 34);
             this.dateTimePicker4.TabIndex = 34;
+            this.dateTimePicker4.Visible = false;
             // 
             // label4
             // 
@@ -1289,7 +1293,7 @@
             this.txtSearchClaimed.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtSearchClaimed.Location = new System.Drawing.Point(684, 9);
             this.txtSearchClaimed.Name = "txtSearchClaimed";
-            this.txtSearchClaimed.PlaceholderText = "Search Here";
+            this.txtSearchClaimed.PlaceholderText = "Search Customer Here";
             this.txtSearchClaimed.Size = new System.Drawing.Size(592, 38);
             this.txtSearchClaimed.TabIndex = 0;
             // 
@@ -1302,6 +1306,7 @@
             this.dateTimePicker5.Name = "dateTimePicker5";
             this.dateTimePicker5.Size = new System.Drawing.Size(158, 34);
             this.dateTimePicker5.TabIndex = 33;
+            this.dateTimePicker5.Visible = false;
             // 
             // label9
             // 
@@ -1314,6 +1319,7 @@
             this.label9.Size = new System.Drawing.Size(277, 31);
             this.label9.TabIndex = 32;
             this.label9.Text = "Filter By Date (From - To)";
+            this.label9.Visible = false;
             // 
             // dateTimePicker7
             // 
@@ -1324,6 +1330,7 @@
             this.dateTimePicker7.Name = "dateTimePicker7";
             this.dateTimePicker7.Size = new System.Drawing.Size(158, 34);
             this.dateTimePicker7.TabIndex = 34;
+            this.dateTimePicker7.Visible = false;
             // 
             // label10
             // 
@@ -1430,67 +1437,76 @@
             this.label11.TabIndex = 4;
             this.label11.Text = "Payment and Order Monitoring";
             // 
-            // NumSettled
+            // NumOrderStatus
             // 
-            this.NumSettled.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.NumSettled.HeaderText = "#";
-            this.NumSettled.MinimumWidth = 6;
-            this.NumSettled.Name = "NumSettled";
-            this.NumSettled.ReadOnly = true;
-            this.NumSettled.Width = 61;
+            this.NumOrderStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.NumOrderStatus.HeaderText = "#";
+            this.NumOrderStatus.MinimumWidth = 6;
+            this.NumOrderStatus.Name = "NumOrderStatus";
+            this.NumOrderStatus.ReadOnly = true;
+            this.NumOrderStatus.Width = 61;
             // 
-            // TransRefNoSettled
+            // TNO
             // 
-            this.TransRefNoSettled.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.TransRefNoSettled.HeaderText = "TRANS NO";
-            this.TransRefNoSettled.MinimumWidth = 6;
-            this.TransRefNoSettled.Name = "TransRefNoSettled";
-            this.TransRefNoSettled.ReadOnly = true;
-            this.TransRefNoSettled.Visible = false;
-            this.TransRefNoSettled.Width = 180;
+            this.TNO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.TNO.HeaderText = "INVOICE NO";
+            this.TNO.MinimumWidth = 6;
+            this.TNO.Name = "TNO";
+            this.TNO.ReadOnly = true;
+            this.TNO.Width = 197;
             // 
-            // CustNameSettled
+            // CustomerNameOrdStat
             // 
-            this.CustNameSettled.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CustNameSettled.HeaderText = "NAME";
-            this.CustNameSettled.MinimumWidth = 6;
-            this.CustNameSettled.Name = "CustNameSettled";
-            this.CustNameSettled.ReadOnly = true;
+            this.CustomerNameOrdStat.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CustomerNameOrdStat.HeaderText = "CUSTOMER";
+            this.CustomerNameOrdStat.MinimumWidth = 6;
+            this.CustomerNameOrdStat.Name = "CustomerNameOrdStat";
+            this.CustomerNameOrdStat.ReadOnly = true;
             // 
-            // TotalPaymentSettled
+            // StatusOrdStat
             // 
-            this.TotalPaymentSettled.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.TotalPaymentSettled.HeaderText = "BALANCE";
-            this.TotalPaymentSettled.MinimumWidth = 6;
-            this.TotalPaymentSettled.Name = "TotalPaymentSettled";
-            this.TotalPaymentSettled.Visible = false;
-            this.TotalPaymentSettled.Width = 162;
+            this.StatusOrdStat.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.StatusOrdStat.HeaderText = "STATUS";
+            this.StatusOrdStat.MinimumWidth = 6;
+            this.StatusOrdStat.Name = "StatusOrdStat";
+            this.StatusOrdStat.Width = 137;
             // 
-            // SettledDatePaymentStat
+            // ExpectedArrival
             // 
-            this.SettledDatePaymentStat.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.SettledDatePaymentStat.HeaderText = "SETTLED DATE";
-            this.SettledDatePaymentStat.MinimumWidth = 6;
-            this.SettledDatePaymentStat.Name = "SettledDatePaymentStat";
-            this.SettledDatePaymentStat.ReadOnly = true;
-            this.SettledDatePaymentStat.Width = 223;
+            this.ExpectedArrival.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ExpectedArrival.HeaderText = "EXPECTED ARRIVAL";
+            this.ExpectedArrival.MinimumWidth = 6;
+            this.ExpectedArrival.Name = "ExpectedArrival";
+            this.ExpectedArrival.ReadOnly = true;
             // 
-            // CompletedBy
+            // DateClaimedOrdStat
             // 
-            this.CompletedBy.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.CompletedBy.HeaderText = "COMPLETED BY";
-            this.CompletedBy.MinimumWidth = 6;
-            this.CompletedBy.Name = "CompletedBy";
-            this.CompletedBy.ReadOnly = true;
-            this.CompletedBy.Width = 236;
+            this.DateClaimedOrdStat.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.DateClaimedOrdStat.HeaderText = "DATE CLAIMED";
+            this.DateClaimedOrdStat.MinimumWidth = 6;
+            this.DateClaimedOrdStat.Name = "DateClaimedOrdStat";
+            this.DateClaimedOrdStat.ReadOnly = true;
+            this.DateClaimedOrdStat.Visible = false;
+            this.DateClaimedOrdStat.Width = 231;
             // 
-            // Monitorings
+            // ReleaseByOrdStat
             // 
-            this.Monitorings.HeaderText = "STATUS";
-            this.Monitorings.MinimumWidth = 6;
-            this.Monitorings.Name = "Monitorings";
-            this.Monitorings.ReadOnly = true;
-            this.Monitorings.Width = 125;
+            this.ReleaseByOrdStat.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ReleaseByOrdStat.HeaderText = "RECEIVED BY";
+            this.ReleaseByOrdStat.MinimumWidth = 6;
+            this.ReleaseByOrdStat.Name = "ReleaseByOrdStat";
+            this.ReleaseByOrdStat.ReadOnly = true;
+            this.ReleaseByOrdStat.Visible = false;
+            // 
+            // Ed
+            // 
+            this.Ed.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Ed.HeaderText = "";
+            this.Ed.Image = global::Capstone.Properties.Resources.Edit;
+            this.Ed.MinimumWidth = 6;
+            this.Ed.Name = "Ed";
+            this.Ed.ReadOnly = true;
+            this.Ed.Width = 6;
             // 
             // frmPaymentStatus
             // 
@@ -1653,6 +1669,13 @@
         public TextBox txtSearchPending;
         public TabControl tabControlPayOrdStatus;
         public Panel panelPayment;
+        private DataGridViewTextBoxColumn NumSettled;
+        private DataGridViewTextBoxColumn TransRefNoSettled;
+        private DataGridViewTextBoxColumn CustNameSettled;
+        private DataGridViewTextBoxColumn TotalPaymentSettled;
+        private DataGridViewTextBoxColumn SettledDatePaymentStat;
+        private DataGridViewTextBoxColumn CompletedBy;
+        private DataGridViewTextBoxColumn Monitorings;
         private DataGridViewTextBoxColumn NumOrderStatus;
         private DataGridViewTextBoxColumn TNO;
         private DataGridViewTextBoxColumn CustomerNameOrdStat;
@@ -1661,12 +1684,5 @@
         private DataGridViewTextBoxColumn DateClaimedOrdStat;
         private DataGridViewTextBoxColumn ReleaseByOrdStat;
         private DataGridViewImageColumn Ed;
-        private DataGridViewTextBoxColumn NumSettled;
-        private DataGridViewTextBoxColumn TransRefNoSettled;
-        private DataGridViewTextBoxColumn CustNameSettled;
-        private DataGridViewTextBoxColumn TotalPaymentSettled;
-        private DataGridViewTextBoxColumn SettledDatePaymentStat;
-        private DataGridViewTextBoxColumn CompletedBy;
-        private DataGridViewTextBoxColumn Monitorings;
     }
 }

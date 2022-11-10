@@ -34,34 +34,40 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFinalReceipt));
             this.panelTOP = new System.Windows.Forms.Panel();
+            this.lblOldTransNo = new System.Windows.Forms.Label();
             this.lblTransType = new System.Windows.Forms.Label();
             this.lblPrescriptNo = new System.Windows.Forms.Label();
             this.lblTransNo = new System.Windows.Forms.Label();
             this.lblPatientID = new System.Windows.Forms.Label();
             this.btnPrint = new System.Windows.Forms.Button();
             this.panelReceipt = new System.Windows.Forms.Panel();
+            this.panelWhole = new System.Windows.Forms.Panel();
+            this.panelLens = new System.Windows.Forms.Panel();
+            this.dataGridViewLense = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panelDueNote = new System.Windows.Forms.Panel();
+            this.label22 = new System.Windows.Forms.Label();
+            this.lblDueDateText = new System.Windows.Forms.Label();
+            this.lblNote = new System.Windows.Forms.Label();
+            this.lblDueDate = new System.Windows.Forms.Label();
+            this.panelFrame = new System.Windows.Forms.Panel();
+            this.dataGridViewItems = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.lblName = new System.Windows.Forms.Label();
-            this.lblDueDate = new System.Windows.Forms.Label();
-            this.lblNote = new System.Windows.Forms.Label();
             this.lblPhone = new System.Windows.Forms.Label();
             this.lblAddress = new System.Windows.Forms.Label();
             this.lblDate = new System.Windows.Forms.Label();
             this.lblAge = new System.Windows.Forms.Label();
-            this.dataGridViewLense = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label24 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.dataGridViewItems = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.lblDiscount = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -69,9 +75,9 @@
             this.lblFrame = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
+            this.lblTotalText = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
+            this.lblDepositText = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.lblTotalCost = new System.Windows.Forms.Label();
             this.lblNetTotal = new System.Windows.Forms.Label();
@@ -98,10 +104,14 @@
             this.printPreviewDialog = new System.Windows.Forms.PrintPreviewDialog();
             this.panelTOP.SuspendLayout();
             this.panelReceipt.SuspendLayout();
+            this.panelWhole.SuspendLayout();
+            this.panelLens.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLense)).BeginInit();
+            this.panelDueNote.SuspendLayout();
+            this.panelFrame.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLense)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewItems)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPresc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -110,6 +120,7 @@
             // 
             // panelTOP
             // 
+            this.panelTOP.Controls.Add(this.lblOldTransNo);
             this.panelTOP.Controls.Add(this.lblTransType);
             this.panelTOP.Controls.Add(this.lblPrescriptNo);
             this.panelTOP.Controls.Add(this.lblTransNo);
@@ -118,8 +129,19 @@
             this.panelTOP.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelTOP.Location = new System.Drawing.Point(0, 761);
             this.panelTOP.Name = "panelTOP";
-            this.panelTOP.Size = new System.Drawing.Size(1159, 84);
+            this.panelTOP.Size = new System.Drawing.Size(1018, 84);
             this.panelTOP.TabIndex = 0;
+            // 
+            // lblOldTransNo
+            // 
+            this.lblOldTransNo.AutoSize = true;
+            this.lblOldTransNo.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblOldTransNo.Location = new System.Drawing.Point(67, 41);
+            this.lblOldTransNo.Name = "lblOldTransNo";
+            this.lblOldTransNo.Size = new System.Drawing.Size(54, 26);
+            this.lblOldTransNo.TabIndex = 25;
+            this.lblOldTransNo.Text = "       ";
+            this.lblOldTransNo.Visible = false;
             // 
             // lblTransType
             // 
@@ -183,22 +205,17 @@
             // panelReceipt
             // 
             this.panelReceipt.BackColor = System.Drawing.Color.White;
+            this.panelReceipt.Controls.Add(this.panelWhole);
             this.panelReceipt.Controls.Add(this.pictureBox4);
             this.panelReceipt.Controls.Add(this.pictureBox3);
             this.panelReceipt.Controls.Add(this.lblName);
-            this.panelReceipt.Controls.Add(this.lblDueDate);
-            this.panelReceipt.Controls.Add(this.lblNote);
             this.panelReceipt.Controls.Add(this.lblPhone);
             this.panelReceipt.Controls.Add(this.lblAddress);
             this.panelReceipt.Controls.Add(this.lblDate);
             this.panelReceipt.Controls.Add(this.lblAge);
-            this.panelReceipt.Controls.Add(this.dataGridViewLense);
             this.panelReceipt.Controls.Add(this.label24);
             this.panelReceipt.Controls.Add(this.label23);
             this.panelReceipt.Controls.Add(this.textBox1);
-            this.panelReceipt.Controls.Add(this.label21);
-            this.panelReceipt.Controls.Add(this.label22);
-            this.panelReceipt.Controls.Add(this.dataGridViewItems);
             this.panelReceipt.Controls.Add(this.tableLayoutPanel1);
             this.panelReceipt.Controls.Add(this.dataGridViewPresc);
             this.panelReceipt.Controls.Add(this.label7);
@@ -214,8 +231,217 @@
             this.panelReceipt.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelReceipt.Location = new System.Drawing.Point(0, 0);
             this.panelReceipt.Name = "panelReceipt";
-            this.panelReceipt.Size = new System.Drawing.Size(1159, 761);
+            this.panelReceipt.Size = new System.Drawing.Size(1018, 761);
             this.panelReceipt.TabIndex = 1;
+            // 
+            // panelWhole
+            // 
+            this.panelWhole.Controls.Add(this.panelLens);
+            this.panelWhole.Controls.Add(this.panelDueNote);
+            this.panelWhole.Controls.Add(this.panelFrame);
+            this.panelWhole.Location = new System.Drawing.Point(18, 514);
+            this.panelWhole.Name = "panelWhole";
+            this.panelWhole.Size = new System.Drawing.Size(517, 247);
+            this.panelWhole.TabIndex = 28;
+            // 
+            // panelLens
+            // 
+            this.panelLens.Controls.Add(this.dataGridViewLense);
+            this.panelLens.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelLens.Location = new System.Drawing.Point(0, 85);
+            this.panelLens.Name = "panelLens";
+            this.panelLens.Size = new System.Drawing.Size(517, 77);
+            this.panelLens.TabIndex = 2;
+            // 
+            // dataGridViewLense
+            // 
+            this.dataGridViewLense.AllowUserToAddRows = false;
+            this.dataGridViewLense.AllowUserToResizeColumns = false;
+            this.dataGridViewLense.AllowUserToResizeRows = false;
+            this.dataGridViewLense.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridViewLense.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridViewLense.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dataGridViewLense.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewLense.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewLense.ColumnHeadersHeight = 40;
+            this.dataGridViewLense.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridViewLense.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewLense.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewLense.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewLense.EnableHeadersVisualStyles = false;
+            this.dataGridViewLense.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.dataGridViewLense.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewLense.Name = "dataGridViewLense";
+            this.dataGridViewLense.RowHeadersVisible = false;
+            this.dataGridViewLense.RowHeadersWidth = 51;
+            this.dataGridViewLense.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dataGridViewLense.RowTemplate.Height = 35;
+            this.dataGridViewLense.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewLense.Size = new System.Drawing.Size(517, 77);
+            this.dataGridViewLense.TabIndex = 18;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewTextBoxColumn3.HeaderText = "Lens:";
+            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 92;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn4.HeaderText = "    ";
+            this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // panelDueNote
+            // 
+            this.panelDueNote.Controls.Add(this.label22);
+            this.panelDueNote.Controls.Add(this.lblDueDateText);
+            this.panelDueNote.Controls.Add(this.lblNote);
+            this.panelDueNote.Controls.Add(this.lblDueDate);
+            this.panelDueNote.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelDueNote.Location = new System.Drawing.Point(0, 162);
+            this.panelDueNote.Name = "panelDueNote";
+            this.panelDueNote.Size = new System.Drawing.Size(517, 85);
+            this.panelDueNote.TabIndex = 1;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label22.Location = new System.Drawing.Point(3, 12);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(62, 26);
+            this.label22.TabIndex = 13;
+            this.label22.Text = "Note:";
+            // 
+            // lblDueDateText
+            // 
+            this.lblDueDateText.AutoSize = true;
+            this.lblDueDateText.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblDueDateText.Location = new System.Drawing.Point(3, 50);
+            this.lblDueDateText.Name = "lblDueDateText";
+            this.lblDueDateText.Size = new System.Drawing.Size(124, 26);
+            this.lblDueDateText.TabIndex = 14;
+            this.lblDueDateText.Text = "DUE DATE:";
+            // 
+            // lblNote
+            // 
+            this.lblNote.AutoSize = true;
+            this.lblNote.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblNote.Location = new System.Drawing.Point(135, 9);
+            this.lblNote.Name = "lblNote";
+            this.lblNote.Size = new System.Drawing.Size(54, 26);
+            this.lblNote.TabIndex = 23;
+            this.lblNote.Text = "       ";
+            // 
+            // lblDueDate
+            // 
+            this.lblDueDate.AutoSize = true;
+            this.lblDueDate.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblDueDate.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.lblDueDate.Location = new System.Drawing.Point(175, 43);
+            this.lblDueDate.Name = "lblDueDate";
+            this.lblDueDate.Size = new System.Drawing.Size(64, 33);
+            this.lblDueDate.TabIndex = 24;
+            this.lblDueDate.Text = "       ";
+            // 
+            // panelFrame
+            // 
+            this.panelFrame.Controls.Add(this.dataGridViewItems);
+            this.panelFrame.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelFrame.Location = new System.Drawing.Point(0, 0);
+            this.panelFrame.Name = "panelFrame";
+            this.panelFrame.Size = new System.Drawing.Size(517, 85);
+            this.panelFrame.TabIndex = 0;
+            // 
+            // dataGridViewItems
+            // 
+            this.dataGridViewItems.AllowUserToAddRows = false;
+            this.dataGridViewItems.AllowUserToResizeColumns = false;
+            this.dataGridViewItems.AllowUserToResizeRows = false;
+            this.dataGridViewItems.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridViewItems.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridViewItems.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dataGridViewItems.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridViewItems.ColumnHeadersHeight = 40;
+            this.dataGridViewItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridViewItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2});
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewItems.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridViewItems.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewItems.EnableHeadersVisualStyles = false;
+            this.dataGridViewItems.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.dataGridViewItems.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewItems.Name = "dataGridViewItems";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewItems.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.dataGridViewItems.RowHeadersVisible = false;
+            this.dataGridViewItems.RowHeadersWidth = 51;
+            this.dataGridViewItems.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dataGridViewItems.RowTemplate.Height = 35;
+            this.dataGridViewItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewItems.Size = new System.Drawing.Size(517, 85);
+            this.dataGridViewItems.TabIndex = 12;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewTextBoxColumn1.HeaderText = "Frame:";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 109;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn2.HeaderText = "    ";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
             // 
             // pictureBox4
             // 
@@ -240,32 +466,11 @@
             this.lblName.AutoSize = true;
             this.lblName.Font = new System.Drawing.Font("Times New Roman", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblName.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.lblName.Location = new System.Drawing.Point(300, 235);
+            this.lblName.Location = new System.Drawing.Point(441, 238);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(81, 42);
             this.lblName.TabIndex = 25;
             this.lblName.Text = "       ";
-            // 
-            // lblDueDate
-            // 
-            this.lblDueDate.AutoSize = true;
-            this.lblDueDate.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblDueDate.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.lblDueDate.Location = new System.Drawing.Point(281, 725);
-            this.lblDueDate.Name = "lblDueDate";
-            this.lblDueDate.Size = new System.Drawing.Size(54, 26);
-            this.lblDueDate.TabIndex = 24;
-            this.lblDueDate.Text = "       ";
-            // 
-            // lblNote
-            // 
-            this.lblNote.AutoSize = true;
-            this.lblNote.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblNote.Location = new System.Drawing.Point(150, 684);
-            this.lblNote.Name = "lblNote";
-            this.lblNote.Size = new System.Drawing.Size(54, 26);
-            this.lblNote.TabIndex = 23;
-            this.lblNote.Text = "       ";
             // 
             // lblPhone
             // 
@@ -307,64 +512,6 @@
             this.lblAge.TabIndex = 19;
             this.lblAge.Text = "       ";
             // 
-            // dataGridViewLense
-            // 
-            this.dataGridViewLense.AllowUserToAddRows = false;
-            this.dataGridViewLense.AllowUserToResizeColumns = false;
-            this.dataGridViewLense.AllowUserToResizeRows = false;
-            this.dataGridViewLense.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridViewLense.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridViewLense.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewLense.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewLense.ColumnHeadersHeight = 40;
-            this.dataGridViewLense.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dataGridViewLense.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Azure;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewLense.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridViewLense.EnableHeadersVisualStyles = false;
-            this.dataGridViewLense.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.dataGridViewLense.Location = new System.Drawing.Point(18, 609);
-            this.dataGridViewLense.Name = "dataGridViewLense";
-            this.dataGridViewLense.RowHeadersVisible = false;
-            this.dataGridViewLense.RowHeadersWidth = 51;
-            this.dataGridViewLense.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dataGridViewLense.RowTemplate.Height = 35;
-            this.dataGridViewLense.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewLense.Size = new System.Drawing.Size(517, 72);
-            this.dataGridViewLense.TabIndex = 18;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataGridViewTextBoxColumn3.HeaderText = "Lens:";
-            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Width = 92;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn4.HeaderText = "    ";
-            this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
             // label24
             // 
             this.label24.AutoSize = true;
@@ -395,84 +542,6 @@
             this.textBox1.Text = "IN SETTLEMENT OF THE FOLLOWING";
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label21.Location = new System.Drawing.Point(18, 725);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(124, 26);
-            this.label21.TabIndex = 14;
-            this.label21.Text = "DUE DATE:";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label22.Location = new System.Drawing.Point(18, 687);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(62, 26);
-            this.label22.TabIndex = 13;
-            this.label22.Text = "Note:";
-            // 
-            // dataGridViewItems
-            // 
-            this.dataGridViewItems.AllowUserToAddRows = false;
-            this.dataGridViewItems.AllowUserToResizeColumns = false;
-            this.dataGridViewItems.AllowUserToResizeRows = false;
-            this.dataGridViewItems.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridViewItems.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridViewItems.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridViewItems.ColumnHeadersHeight = 40;
-            this.dataGridViewItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dataGridViewItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Azure;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewItems.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridViewItems.EnableHeadersVisualStyles = false;
-            this.dataGridViewItems.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.dataGridViewItems.Location = new System.Drawing.Point(18, 546);
-            this.dataGridViewItems.Name = "dataGridViewItems";
-            this.dataGridViewItems.RowHeadersVisible = false;
-            this.dataGridViewItems.RowHeadersWidth = 51;
-            this.dataGridViewItems.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dataGridViewItems.RowTemplate.Height = 35;
-            this.dataGridViewItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewItems.Size = new System.Drawing.Size(517, 72);
-            this.dataGridViewItems.TabIndex = 12;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataGridViewTextBoxColumn1.HeaderText = "Frame:";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 109;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn2.HeaderText = "    ";
-            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
@@ -485,9 +554,9 @@
             this.tableLayoutPanel1.Controls.Add(this.lblFrame, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label9, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label10, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label13, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.lblTotalText, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.label14, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.label15, 0, 6);
+            this.tableLayoutPanel1.Controls.Add(this.lblDepositText, 0, 6);
             this.tableLayoutPanel1.Controls.Add(this.label16, 0, 7);
             this.tableLayoutPanel1.Controls.Add(this.lblTotalCost, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.lblNetTotal, 1, 5);
@@ -568,15 +637,15 @@
             this.label10.TabIndex = 1;
             this.label10.Text = "Lens:";
             // 
-            // label13
+            // lblTotalText
             // 
-            this.label13.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(48, 133);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(119, 31);
-            this.label13.TabIndex = 4;
-            this.label13.Text = "Total Cost:";
+            this.lblTotalText.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lblTotalText.AutoSize = true;
+            this.lblTotalText.Location = new System.Drawing.Point(48, 133);
+            this.lblTotalText.Name = "lblTotalText";
+            this.lblTotalText.Size = new System.Drawing.Size(119, 31);
+            this.lblTotalText.TabIndex = 4;
+            this.lblTotalText.Text = "Total Cost:";
             // 
             // label14
             // 
@@ -588,15 +657,15 @@
             this.label14.TabIndex = 5;
             this.label14.Text = " ";
             // 
-            // label15
+            // lblDepositText
             // 
-            this.label15.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(58, 256);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(98, 31);
-            this.label15.TabIndex = 6;
-            this.label15.Text = "Deposit:";
+            this.lblDepositText.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lblDepositText.AutoSize = true;
+            this.lblDepositText.Location = new System.Drawing.Point(58, 256);
+            this.lblDepositText.Name = "lblDepositText";
+            this.lblDepositText.Size = new System.Drawing.Size(98, 31);
+            this.lblDepositText.TabIndex = 6;
+            this.lblDepositText.Text = "Deposit:";
             // 
             // label16
             // 
@@ -658,14 +727,14 @@
             this.dataGridViewPresc.AllowUserToResizeRows = false;
             this.dataGridViewPresc.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewPresc.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewPresc.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.InactiveBorder;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewPresc.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridViewPresc.ColumnHeadersHeight = 40;
             this.dataGridViewPresc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridViewPresc.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -675,14 +744,14 @@
             this.Price,
             this.Type,
             this.PD});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Azure;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewPresc.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewPresc.DefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridViewPresc.EnableHeadersVisualStyles = false;
             this.dataGridViewPresc.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.dataGridViewPresc.Location = new System.Drawing.Point(18, 399);
@@ -692,7 +761,7 @@
             this.dataGridViewPresc.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridViewPresc.RowTemplate.Height = 35;
             this.dataGridViewPresc.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewPresc.Size = new System.Drawing.Size(517, 141);
+            this.dataGridViewPresc.Size = new System.Drawing.Size(517, 113);
             this.dataGridViewPresc.TabIndex = 10;
             // 
             // NumService
@@ -827,12 +896,12 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(0, 182);
+            this.label1.Location = new System.Drawing.Point(12, 175);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(984, 31);
+            this.label1.Size = new System.Drawing.Size(1014, 31);
             this.label1.TabIndex = 1;
             this.label1.Text = "_________________________________________________________________________________" +
-    "________________";
+    "___________________";
             // 
             // pictureBox1
             // 
@@ -861,7 +930,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1159, 845);
+            this.ClientSize = new System.Drawing.Size(1018, 845);
             this.Controls.Add(this.panelReceipt);
             this.Controls.Add(this.panelTOP);
             this.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -873,10 +942,15 @@
             this.panelTOP.PerformLayout();
             this.panelReceipt.ResumeLayout(false);
             this.panelReceipt.PerformLayout();
+            this.panelWhole.ResumeLayout(false);
+            this.panelLens.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLense)).EndInit();
+            this.panelDueNote.ResumeLayout(false);
+            this.panelDueNote.PerformLayout();
+            this.panelFrame.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLense)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewItems)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPresc)).EndInit();
@@ -914,16 +988,16 @@
         private Label lblFrame;
         private Label label9;
         private Label label10;
-        private Label label13;
+        private Label lblTotalText;
         private Label label14;
-        private Label label15;
+        private Label lblDepositText;
         private Label label16;
         private Label lblTotalCost;
         private Label lblNetTotal;
         private Label lblDeposit;
         private Label lblBalance;
         private TextBox textBox1;
-        private Label label21;
+        private Label lblDueDateText;
         private Label label22;
         public DataGridView dataGridViewItems;
         public DataGridView dataGridViewLense;
@@ -949,5 +1023,10 @@
         private Label lblDiscount;
         private Label label11;
         public Label lblTransType;
+        private Panel panelWhole;
+        public Panel panelLens;
+        public Panel panelDueNote;
+        public Panel panelFrame;
+        public Label lblOldTransNo;
     }
 }

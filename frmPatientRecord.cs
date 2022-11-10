@@ -49,6 +49,9 @@ namespace Capstone
             classGenerateID.GeneratePatientID(frm.txtAddPatientID);
             classGenerateID.GeneratePrescriptionID(frm.txtAddPrescNum);
             frm.comBoxAddGender.SelectedIndex = 0;
+            frm.btnSavePatientRecord.Enabled = true;
+            frm.btnUpdatePatientRecord.Enabled = false;
+            frm.labelTitle.Text = "Create New Record";
             frm.ShowDialog();
         }
         public void LoadPrescription(string PID, out string ODSPH, out string ODCYL, out string ODAXIS, out string ODADD, out string ODPD, out string OSSPH, out string OSCYL, out string OSAXIS, out string OSADD, out string OSPD)
@@ -79,7 +82,12 @@ namespace Capstone
             string colName = dataGridViewPatientRecord.Columns[e.ColumnIndex].Name;
             string PatID = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[1].Value?.ToString();
             string ODSPH, ODCYL, ODAXIS, ODADD, ODPD, OSSPH, OSCYL, OSAXIS, OSADD, OSPD;
-            int genderIndex = 0;
+            int genderIndex = 0; DateTime newDateTime;
+            string checkUpDate = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[7].Value?.ToString();
+            string birthDate = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[11].Value?.ToString();
+            string gender = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[6].Value?.ToString();
+            lblPrescript.Text = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[8].Value?.ToString();
+            lblPatientID.Text = PatID;
             LoadPrescription(PatID, out ODSPH, out ODCYL, out ODAXIS, out ODADD, out ODPD, out OSSPH, out OSCYL, out OSAXIS, out OSADD, out OSPD);
             displayPrescription(ODSPH, ODCYL, ODAXIS, ODADD, ODPD, OSSPH, OSCYL, OSAXIS, OSADD, OSPD);
             if (colName == "EditPRecord")
@@ -89,15 +97,28 @@ namespace Capstone
                 if (frmP.lblGrant.Text == "1")
                 {
                     frmAddPatientRecord frm = new frmAddPatientRecord(this);
-                    frm.txtAddFName.Text = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[1].Value.ToString();
-                    frm.txtAddLName.Text = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[2].Value.ToString();
-                    frm.txtAddAddress.Text = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[5].Value.ToString();
-                    frm.txtAddContact.Text = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[6].Value.ToString();
-                    checkGender(out genderIndex);
-                    frm.comBoxAddGender.SelectedIndex = genderIndex;
-                    frm.txtAddAge.Text = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[7].Value.ToString();
-                    frm.txtAddPatientID.Text = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[3].Value.ToString();
-
+                    frm.txtAddFName.Text = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[9].Value?.ToString();
+                    frm.txtAddLName.Text = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[10].Value?.ToString();
+                    frm.txtAddAddress.Text = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[3].Value?.ToString();
+                    frm.txtAddContact.Text = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[4].Value?.ToString();
+                    //checkGender(out genderIndex);
+                    //frm.comBoxAddGender.SelectedIndex = genderIndex;
+                    frm.comBoxAddGender.SelectedItem = gender;
+                    frm.txtAddAge.Text = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[5].Value?.ToString();
+                    frm.txtAddPatientID.Text = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[1].Value?.ToString();
+                    frm.txtAddPrescNum.Text = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[8].Value?.ToString();
+                    frm.labelTitle.Text = "Edit Record";
+                    if (DateTime.TryParse(checkUpDate, out newDateTime))
+                    {
+                        frm.dateTimePickerCheckUpDate.Value = newDateTime;
+                        
+                    } else { }
+                    if (DateTime.TryParse(birthDate, out newDateTime))
+                    {
+                        frm.dateTimePickerBirthDate.Value = newDateTime;
+                        
+                    }
+                    else { }
                     frm.txtAddODSPH.Text = txtODSPH.Text;
                     frm.txtADDODCYL.Text = txtODCYL.Text;
                     frm.txtAddODAXIS.Text = txtODAXIS.Text;
@@ -109,7 +130,9 @@ namespace Capstone
                     frm.txtAddOSAXIS.Text = txtOSAXIS.Text;
                     frm.txtAddOSADD.Text = txtOSADD.Text;
                     frm.txtAddOSPD.Text = txtOSPD.Text;
-
+                    frm.btnSavePatientRecord.Enabled = false;
+                    frm.btnUpdatePatientRecord.Enabled = true;
+                    classPatient.LoadPatientTransactionList(frm.dataGridViewTrans, PatID); 
                     frm.ShowDialog();
                 }
             }
@@ -159,19 +182,31 @@ namespace Capstone
 
         private void dataGridViewTrans_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            string pID = "", prescID = "", transNo = "", transType = "";
+            string pID = "", prescID = "", transNo = "", transType = "", oldTrans = "";
             transNo = dataGridViewTrans.Rows[e.RowIndex].Cells[2].Value?.ToString();
+            oldTrans = dataGridViewTrans.Rows[e.RowIndex].Cells[6].Value?.ToString();
             transType = dataGridViewTrans.Rows[e.RowIndex].Cells[5].Value?.ToString();
-            pID = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[1].Value?.ToString();
-            prescID = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[7].Value?.ToString();
+            pID = lblPatientID.Text;
+            prescID = lblPrescript.Text;
             //previewFinalReceipt();
 
             frmFinalReceipt frm = new frmFinalReceipt();            
             frm.lblPatientID.Text = pID;
             frm.lblTransNo.Text = transNo;
+            frm.lblOldTransNo.Text = oldTrans;
             frm.lblPrescriptNo.Text = prescID;
             frm.lblTransType.Text = transType;
-            frm.displayValue(pID, prescID, transNo);
+            frm.displayValue(pID, prescID, transNo, oldTrans, transType);
+            if (transType == "Regular")
+            {
+                frm.displayValue(pID, prescID, transNo, oldTrans, transType);
+            }
+            else if (transType == "Settlement")
+            {
+                frm.displayValue(pID, prescID, oldTrans, transNo, transType);
+
+            }
+
             frm.ShowDialog();
         }
         public void previewFinalReceipt()

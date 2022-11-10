@@ -154,21 +154,24 @@ namespace Capstone
             mouseDown = false;
         }
         public void switchToEdit()
-        {
+        {//806, 496
             tabControlStock.TabPages.Clear();
             TabPage tab = new TabPage("Edit Stock");
             tabControlStock.TabPages.Add(tab);
             tab.Controls.Add(panelEditStock);
+            this.Size = new Size(806, 496);
         }
         public void switchToAdd()
-        {
+        {//527, 279
             tabControlStock.TabPages.Clear();
             TabPage tab = new TabPage("Add Unit Measure");
             tabControlStock.TabPages.Add(tab);
             tab.Controls.Add(panelAddUnit);
+            this.Size = new Size(527, 279);
+
         }
 
-        
+
 
         private void button1_Click(object sender, EventArgs e) //add button
         {

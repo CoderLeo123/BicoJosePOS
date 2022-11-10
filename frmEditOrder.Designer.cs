@@ -32,7 +32,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnCloseAccessories = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelTitle = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.tabControlEditOrder = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -84,7 +84,7 @@
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.panel3.Controls.Add(this.panel4);
-            this.panel3.Controls.Add(this.label1);
+            this.panel3.Controls.Add(this.labelTitle);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
@@ -117,17 +117,17 @@
             this.btnCloseAccessories.TabStop = false;
             this.btnCloseAccessories.Click += new System.EventHandler(this.btnCloseAccessories_Click);
             // 
-            // label1
+            // labelTitle
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 41);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Order";
+            this.labelTitle.AutoSize = true;
+            this.labelTitle.BackColor = System.Drawing.Color.Transparent;
+            this.labelTitle.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelTitle.ForeColor = System.Drawing.Color.White;
+            this.labelTitle.Location = new System.Drawing.Point(12, 9);
+            this.labelTitle.Name = "labelTitle";
+            this.labelTitle.Size = new System.Drawing.Size(100, 41);
+            this.labelTitle.TabIndex = 4;
+            this.labelTitle.Text = "Order";
             // 
             // panel2
             // 
@@ -407,7 +407,6 @@
         private Panel panel3;
         private Panel panel4;
         private PictureBox btnCloseAccessories;
-        private Label label1;
         private Panel panel2;
         public TextBox txtReleaseBy;
         private DateTimePicker dateTimePickerClaimDate;
@@ -432,5 +431,6 @@
         public PrintPreviewControl printPreviewControlArvl;
         private Panel panelTop;
         private System.Drawing.Printing.PrintDocument printDocumentAr;
+        public Label labelTitle;
     }
 }
