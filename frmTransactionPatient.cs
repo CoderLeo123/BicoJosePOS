@@ -22,6 +22,8 @@ namespace Capstone
         List<ItemList> List = new List<ItemList>();
         List<ServiceList> SList = new List<ServiceList>();
         frmAddPatientRecord frmL;
+        private bool mouseDown;
+        private Point lastLocation;
         public frmTransactionPatient(frmAddPatientRecord frmL)
         {
             InitializeComponent();
@@ -347,6 +349,29 @@ namespace Capstone
             public string UnitM { get; set; }
             public double Total { get; set; }
         }
+
+        private void panel3_MouseUp(object sender, MouseEventArgs e)
+        {
+            mouseDown = false;
+        }
+
+        private void panel3_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseDown = true;
+            lastLocation = e.Location;
+        }
+
+        private void panel3_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseDown)
+            {
+                this.Location = new Point(
+                    (this.Location.X - lastLocation.X) + e.X, (this.Location.Y - lastLocation.Y) + e.Y);
+
+                this.Update();
+            }
+        }
+
         public void paperSizeUpdate(out int paperL)
         {
             int dgvCount = 0; transNo = lblCurrentTransN.Text;

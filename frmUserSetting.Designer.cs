@@ -220,6 +220,7 @@
             this.lblPermitted.Size = new System.Drawing.Size(33, 38);
             this.lblPermitted.TabIndex = 7;
             this.lblPermitted.Text = "  ";
+            this.lblPermitted.Visible = false;
             // 
             // lblUserNotices
             // 
@@ -249,6 +250,7 @@
             this.txtViewPass.Name = "txtViewPass";
             this.txtViewPass.Size = new System.Drawing.Size(300, 43);
             this.txtViewPass.TabIndex = 4;
+            this.txtViewPass.Visible = false;
             // 
             // linkLabelResetPass
             // 
@@ -259,6 +261,7 @@
             this.linkLabelResetPass.TabIndex = 3;
             this.linkLabelResetPass.TabStop = true;
             this.linkLabelResetPass.Text = "Reset Password";
+            this.linkLabelResetPass.Visible = false;
             this.linkLabelResetPass.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelResetPass_LinkClicked);
             // 
             // linkLabelViewPass
@@ -270,12 +273,13 @@
             this.linkLabelViewPass.TabIndex = 2;
             this.linkLabelViewPass.TabStop = true;
             this.linkLabelViewPass.Text = "View Password";
+            this.linkLabelViewPass.Visible = false;
             this.linkLabelViewPass.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelViewPass_LinkClicked);
             // 
             // linkLabelCreateNew
             // 
             this.linkLabelCreateNew.AutoSize = true;
-            this.linkLabelCreateNew.Location = new System.Drawing.Point(159, 589);
+            this.linkLabelCreateNew.Location = new System.Drawing.Point(480, 552);
             this.linkLabelCreateNew.Name = "linkLabelCreateNew";
             this.linkLabelCreateNew.Size = new System.Drawing.Size(270, 38);
             this.linkLabelCreateNew.TabIndex = 1;
@@ -674,7 +678,7 @@
             this.txtSearchSession.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtSearchSession.Location = new System.Drawing.Point(684, 9);
             this.txtSearchSession.Name = "txtSearchSession";
-            this.txtSearchSession.PlaceholderText = "Search Here";
+            this.txtSearchSession.PlaceholderText = "Search Name Here";
             this.txtSearchSession.Size = new System.Drawing.Size(592, 38);
             this.txtSearchSession.TabIndex = 0;
             // 
@@ -687,6 +691,7 @@
             this.dateTimePickerStartSesion.Name = "dateTimePickerStartSesion";
             this.dateTimePickerStartSesion.Size = new System.Drawing.Size(158, 34);
             this.dateTimePickerStartSesion.TabIndex = 33;
+            this.dateTimePickerStartSesion.Visible = false;
             // 
             // label6
             // 
@@ -699,6 +704,7 @@
             this.label6.Size = new System.Drawing.Size(277, 31);
             this.label6.TabIndex = 32;
             this.label6.Text = "Filter By Date (From - To)";
+            this.label6.Visible = false;
             // 
             // dateTimePickerEndSession
             // 
@@ -709,6 +715,7 @@
             this.dateTimePickerEndSession.Name = "dateTimePickerEndSession";
             this.dateTimePickerEndSession.Size = new System.Drawing.Size(158, 34);
             this.dateTimePickerEndSession.TabIndex = 34;
+            this.dateTimePickerEndSession.Visible = false;
             // 
             // label2
             // 

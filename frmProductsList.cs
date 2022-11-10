@@ -73,6 +73,7 @@ namespace Capstone
                 TabPage tab = new TabPage("Type");
                 frm.tabControlCreateNew.TabPages.Add(tab);
                 tab.Controls.Add(frm.panelType);
+                frm.labelTitle.Text = "Edit Type";
 
                 classLoadData.LoadProduct(frm.comBoxProductType);
                 indextProduct = frm.comBoxProductType.Items.IndexOf(product);
@@ -113,6 +114,7 @@ namespace Capstone
                 TabPage tab = new TabPage("Product");
                 frm.tabControlCreateNew.TabPages.Add(tab);
                 tab.Controls.Add(frm.panelProduct);
+                frm.labelTitle.Text = "Edit Product";
 
                 frm.txtProdID.Text = dataGridViewProduct[1, e.RowIndex].Value.ToString();
                 frm.txtProdName.Text = dataGridViewProduct[2, e.RowIndex].Value.ToString();       
@@ -166,6 +168,7 @@ namespace Capstone
             TabPage tab = new TabPage("Product");
             frm.tabControlCreateNew.TabPages.Add(tab);
             tab.Controls.Add(frm.panelProduct);
+            frm.labelTitle.Text = "Create New";
             classGenerateID.GenerateProductID(frm.txtProdID);
             
             //frm.GenerateProductID();
@@ -183,6 +186,7 @@ namespace Capstone
             TabPage tab = new TabPage("Type");
             frm.tabControlCreateNew.TabPages.Add(tab);
             tab.Controls.Add(frm.panelType);
+            frm.labelTitle.Text = "Create New";
             classLoadData.LoadProduct(frm.comBoxProductType);
             frm.comBoxProductType.SelectedIndex = 0;
             //frm.LoadProduct();
@@ -232,6 +236,7 @@ namespace Capstone
                 TabPage tab = new TabPage("Item");
                 frm.tabControlCreateNew.TabPages.Add(tab);
                 tab.Controls.Add(frm.panelItem);
+                frm.labelTitle.Text = "Edit Item";
                 //for load comboBox
                 classLoadData.LoadType(frm.comBoxType);
                 indexType = frm.comBoxType.Items.IndexOf(type);
@@ -275,7 +280,7 @@ namespace Capstone
             TabPage tab = new TabPage("Item");
             frm.tabControlCreateNew.TabPages.Add(tab);
             tab.Controls.Add(frm.panelItem);
-            
+            frm.labelTitle.Text = "Create New";
             frm.comBoxClassification.SelectedIndex = 0;
             classLoadData.LoadType(frm.comBoxType);
             frm.comBoxType.SelectedIndex = 0;
@@ -331,6 +336,7 @@ namespace Capstone
                 TabPage tab = new TabPage("Service");
                 frm.tabControlCreateNew.TabPages.Add(tab);
                 tab.Controls.Add(frm.panelService);
+                frm.labelTitle.Text = "Edit Service";
 
                 frm.txtServiceID.Text = dataGridViewService[1, e.RowIndex].Value.ToString();
                 frm.txtServiceName.Text = dataGridViewService[2, e.RowIndex].Value.ToString();

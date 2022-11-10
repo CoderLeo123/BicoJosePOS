@@ -31,7 +31,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnCloseAccessories = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelTitle = new System.Windows.Forms.Label();
             this.tabControlCreateNew = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panelProduct = new System.Windows.Forms.Panel();
@@ -106,7 +106,7 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.labelTitle);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -139,17 +139,17 @@
             this.btnCloseAccessories.TabStop = false;
             this.btnCloseAccessories.Click += new System.EventHandler(this.btnCloseAccessories_Click);
             // 
-            // label1
+            // labelTitle
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(181, 41);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Create New";
+            this.labelTitle.AutoSize = true;
+            this.labelTitle.BackColor = System.Drawing.Color.Transparent;
+            this.labelTitle.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelTitle.ForeColor = System.Drawing.Color.White;
+            this.labelTitle.Location = new System.Drawing.Point(12, 9);
+            this.labelTitle.Name = "labelTitle";
+            this.labelTitle.Size = new System.Drawing.Size(181, 41);
+            this.labelTitle.TabIndex = 4;
+            this.labelTitle.Text = "Create New";
             // 
             // tabControlCreateNew
             // 
@@ -865,7 +865,6 @@
 
         #endregion
         private Panel panel1;
-        private Label label1;
         private PictureBox btnCloseAccessories;
         private Panel panel2;
         public TabControl tabControlCreateNew;
@@ -924,5 +923,6 @@
         private Label label16;
         public Panel panelService;
         public Label lblLenseCheck;
+        public Label labelTitle;
     }
 }

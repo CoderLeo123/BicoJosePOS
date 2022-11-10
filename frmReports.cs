@@ -76,7 +76,7 @@ namespace Capstone
             while (dr.Read())
             {
                 i += 1;
-                dgv.Rows.Add(i, dr[0].ToString());
+                dgv.Rows.Add(i, DateTime.Parse(dr[0].ToString()).ToShortDateString());
                 
             }
             dr.Close();
@@ -159,10 +159,8 @@ namespace Capstone
             cn.Close();
         }
         public void insertData()
-        {
-            
-            string pass = "";            
-            
+        {            
+            string pass = "";                        
             if (dataGridViewInitial.Rows.Count > 0)
             {
 
@@ -649,10 +647,10 @@ namespace Capstone
         {
             
             balance = true; sales = false; transaction = false; settled = false; sold = false;
-            printPreviewControl.Document = printDocumentBal;
+            printPreviewControlBal.Document = printDocumentBal;
             printDocumentBal.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("SHORT", sWidth, sLength);
-            printPreviewControl.Zoom = .75;
-            printPreviewControl.StartPage = 0;
+            printPreviewControlBal.Zoom = .75;
+            printPreviewControlBal.StartPage = 0;
         }
         public void previewTransHistReceipt()
         {

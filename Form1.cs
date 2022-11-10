@@ -83,30 +83,38 @@ namespace Capstone
             //blinkLabel(lblPendingPay, lblPendingBlink);
             //blinkLabel(lblInLab, lblInLabBlink);
 
-            blinkLabel2(txtAvailStock, Color.Green);
+            //blinkLabel2(txtAvailStock, Color.LightGreen);
             blinkLabel2(txtCrit, Color.Yellow);
             blinkLabel2(txtOutOStk, Color.Red);
-            blinkLabel2(txtReOrd, Color.Blue);
-            
+            blinkLabel2(txtReOrd, Color.Orange);
+            blinkLabel2(txtExp, Color.MediumVioletRed);
+
+            blinkLabel2(txtInLab, Color.Orange);
+            //blinkLabel2(txtClaimed, Color.LightGreen);
+            blinkLabel2(txtArrv, Color.Red);
+
+            blinkLabel2(txtPendi, Color.Red);
+            //blinkLabel2(txtSett, Color.LightGreen);
+
         }
-        public async void blinkLabel(Label labelStock, Label labelBlink, Color color)
-        {
-            bool blink = false;
-            int stockC = int.Parse(labelStock.Text);
-            if (stockC > 0)
-            {
-                blink = true;
-                while (blink)
-                {
-                    await Task.Delay(500);
-                    labelBlink.BackColor = labelBlink.BackColor == color ? Color.Black : Color.Red;
-                }
-            }
-            else
-            {
-                blink = false;
-            }
-        }
+        //public async void blinkLabel(Label labelStock, Label labelBlink, Color color)
+        //{
+        //    bool blink = false;
+        //    int stockC = int.Parse(labelStock.Text);
+        //    if (stockC > 0)
+        //    {
+        //        blink = true;
+        //        while (blink)
+        //        {
+        //            await Task.Delay(500);
+        //            labelBlink.BackColor = labelBlink.BackColor == color ? Color.White : Color.Red;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        blink = false;
+        //    }
+        //}
         public async void blinkLabel2(TextBox labelBlink, Color color)
         {
             bool blink = false;
@@ -117,7 +125,7 @@ namespace Capstone
                 while (blink)
                 {
                     await Task.Delay(500);
-                    labelBlink.BackColor = labelBlink.BackColor == color ? Color.Cyan : color;
+                    labelBlink.BackColor = labelBlink.BackColor == color ? Color.White : color;
                 }
             }
             else
@@ -145,8 +153,8 @@ namespace Capstone
                 {
                     settledCount++;
                 }                
-                lblPendingPay.Text = pendingCount.ToString();
-                lblSettledPay.Text = settledCount.ToString();                
+                txtPendi.Text = pendingCount.ToString();
+                txtSett.Text = settledCount.ToString();                
             }
             dr.Close();
             cn.Close();
@@ -155,8 +163,9 @@ namespace Capstone
         {
             cn = new SqlConnection(dbcon.MyConnection());
             string status = "";
-            int inLabCount = 0;
             int claimedCount = 0;
+            int inLabCount = 0;
+            int arrivedCount = 0;
             cn.Open();
             SqlCommand cm = new SqlCommand("SELECT Status FROM tblOrderStatus Order by Num", cn);
             dr = cm.ExecuteReader();
@@ -171,8 +180,13 @@ namespace Capstone
                 {
                     claimedCount++;
                 }
-                lblInLab.Text = inLabCount.ToString();
-                lblClaimedOrd.Text = claimedCount.ToString();
+                else if (status.Equals("Arrived"))
+                {
+                    arrivedCount++;
+                }
+                txtInLab.Text = inLabCount.ToString();
+                txtClaimed.Text = claimedCount.ToString();
+                txtArrv.Text = arrivedCount.ToString();
             }
             dr.Close();
             cn.Close();
@@ -308,9 +322,9 @@ namespace Capstone
             frm.pesoPaint = true;
             //frmR.lblCheckCell.Text = frmR.dataGridViewInitial.Rows[0].Cells[1].Value?.ToString();
             //frm.tabControlReports.TabPages.Clear();
-            //TabPage tab = new TabPage("Check");
-            //frm.tabControlReports.TabPages.Add(tab);
-            //tab.Controls.Add(frm.dataGridViewInitial);
+            TabPage tab4 = new TabPage("Check");
+            frm.tabControlReports.TabPages.Add(tab4);
+            tab4.Controls.Add(frm.dataGridViewInitial);
 
             frm.Show();
 

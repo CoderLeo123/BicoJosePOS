@@ -22,6 +22,8 @@ namespace Capstone
         ClassPatientTransaction classPatient = new ClassPatientTransaction();
         string title = "BICO-JOSE System";
         frmPatientRecord frmL;
+        private bool mouseDown;
+        private Point lastLocation;
         public frmAddPatientRecord(frmPatientRecord frmA)
         {
             InitializeComponent();
@@ -394,5 +396,27 @@ namespace Capstone
             }
         }
 
+        private void panel1_MouseUp(object sender, MouseEventArgs e)
+        {
+            mouseDown = false;
+        }
+
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseDown = true;
+            lastLocation = e.Location;
+
+        }
+
+        private void panel1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseDown)
+            {
+                this.Location = new Point(
+                    (this.Location.X - lastLocation.X) + e.X, (this.Location.Y - lastLocation.Y) + e.Y);
+
+                this.Update();
+            }
+        }
     }
 }

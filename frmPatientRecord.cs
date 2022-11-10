@@ -51,6 +51,7 @@ namespace Capstone
             frm.comBoxAddGender.SelectedIndex = 0;
             frm.btnSavePatientRecord.Enabled = true;
             frm.btnUpdatePatientRecord.Enabled = false;
+            frm.labelTitle.Text = "Create New Record";
             frm.ShowDialog();
         }
         public void LoadPrescription(string PID, out string ODSPH, out string ODCYL, out string ODAXIS, out string ODADD, out string ODPD, out string OSSPH, out string OSCYL, out string OSAXIS, out string OSADD, out string OSPD)
@@ -106,7 +107,7 @@ namespace Capstone
                     frm.txtAddAge.Text = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[5].Value?.ToString();
                     frm.txtAddPatientID.Text = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[1].Value?.ToString();
                     frm.txtAddPrescNum.Text = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[8].Value?.ToString();
-
+                    frm.labelTitle.Text = "Edit Record";
                     if (DateTime.TryParse(checkUpDate, out newDateTime))
                     {
                         frm.dateTimePickerCheckUpDate.Value = newDateTime;

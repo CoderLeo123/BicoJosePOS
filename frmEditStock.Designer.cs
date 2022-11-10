@@ -344,7 +344,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(798, 406);
+            this.tabPage2.Size = new System.Drawing.Size(519, 189);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Add";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -358,7 +358,7 @@
             this.panelAddUnit.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelAddUnit.Location = new System.Drawing.Point(3, 3);
             this.panelAddUnit.Name = "panelAddUnit";
-            this.panelAddUnit.Size = new System.Drawing.Size(792, 400);
+            this.panelAddUnit.Size = new System.Drawing.Size(513, 183);
             this.panelAddUnit.TabIndex = 56;
             this.panelAddUnit.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
@@ -366,7 +366,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(89, 110);
+            this.label3.Location = new System.Drawing.Point(26, 28);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(195, 41);
             this.label3.TabIndex = 51;
@@ -380,7 +380,7 @@
             this.btnSaveUnit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSaveUnit.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnSaveUnit.ForeColor = System.Drawing.Color.White;
-            this.btnSaveUnit.Location = new System.Drawing.Point(226, 173);
+            this.btnSaveUnit.Location = new System.Drawing.Point(163, 91);
             this.btnSaveUnit.Name = "btnSaveUnit";
             this.btnSaveUnit.Size = new System.Drawing.Size(153, 49);
             this.btnSaveUnit.TabIndex = 55;
@@ -390,7 +390,7 @@
             // 
             // txtUnit
             // 
-            this.txtUnit.Location = new System.Drawing.Point(314, 110);
+            this.txtUnit.Location = new System.Drawing.Point(251, 28);
             this.txtUnit.Name = "txtUnit";
             this.txtUnit.Size = new System.Drawing.Size(224, 43);
             this.txtUnit.TabIndex = 52;
@@ -403,7 +403,7 @@
             this.btnCancelUnit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelUnit.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnCancelUnit.ForeColor = System.Drawing.Color.White;
-            this.btnCancelUnit.Location = new System.Drawing.Point(385, 173);
+            this.btnCancelUnit.Location = new System.Drawing.Point(322, 91);
             this.btnCancelUnit.Name = "btnCancelUnit";
             this.btnCancelUnit.Size = new System.Drawing.Size(153, 49);
             this.btnCancelUnit.TabIndex = 54;
@@ -414,9 +414,9 @@
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.panelStockDetail);
-            this.tabPage3.Location = new System.Drawing.Point(4, 46);
+            this.tabPage3.Location = new System.Drawing.Point(4, 29);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(798, 389);
+            this.tabPage3.Size = new System.Drawing.Size(519, 189);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Stock Details";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -428,7 +428,7 @@
             this.panelStockDetail.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelStockDetail.Location = new System.Drawing.Point(0, 0);
             this.panelStockDetail.Name = "panelStockDetail";
-            this.panelStockDetail.Size = new System.Drawing.Size(798, 389);
+            this.panelStockDetail.Size = new System.Drawing.Size(519, 189);
             this.panelStockDetail.TabIndex = 0;
             // 
             // panel5
@@ -437,7 +437,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(0, 64);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(798, 325);
+            this.panel5.Size = new System.Drawing.Size(519, 125);
             this.panel5.TabIndex = 8;
             // 
             // dataGridViewDetails
@@ -483,7 +483,7 @@
             this.dataGridViewDetails.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridViewDetails.RowTemplate.Height = 35;
             this.dataGridViewDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewDetails.Size = new System.Drawing.Size(798, 325);
+            this.dataGridViewDetails.Size = new System.Drawing.Size(519, 125);
             this.dataGridViewDetails.TabIndex = 6;
             this.dataGridViewDetails.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDetails_CellClick);
             // 
@@ -551,7 +551,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(798, 64);
+            this.panel4.Size = new System.Drawing.Size(519, 64);
             this.panel4.TabIndex = 7;
             // 
             // labelItemID

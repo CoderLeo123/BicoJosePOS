@@ -85,7 +85,7 @@
             this.txtSearchItem.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtSearchItem.Location = new System.Drawing.Point(12, 10);
             this.txtSearchItem.Name = "txtSearchItem";
-            this.txtSearchItem.PlaceholderText = "Search Here";
+            this.txtSearchItem.PlaceholderText = "Search Description Here";
             this.txtSearchItem.Size = new System.Drawing.Size(559, 38);
             this.txtSearchItem.TabIndex = 0;
             this.txtSearchItem.TextChanged += new System.EventHandler(this.txtSearchItem_TextChanged);
@@ -266,7 +266,7 @@
             this.AddSearchItem});
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.Azure;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
@@ -280,7 +280,7 @@
             this.dataGridViewSearchItem.RowHeadersVisible = false;
             this.dataGridViewSearchItem.RowHeadersWidth = 51;
             this.dataGridViewSearchItem.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dataGridViewSearchItem.RowTemplate.Height = 29;
+            this.dataGridViewSearchItem.RowTemplate.Height = 35;
             this.dataGridViewSearchItem.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewSearchItem.Size = new System.Drawing.Size(1315, 820);
             this.dataGridViewSearchItem.TabIndex = 5;
@@ -301,6 +301,7 @@
             this.ITEM_ID.HeaderText = "ITEM ID";
             this.ITEM_ID.MinimumWidth = 6;
             this.ITEM_ID.Name = "ITEM_ID";
+            this.ITEM_ID.Visible = false;
             this.ITEM_ID.Width = 114;
             // 
             // dataGridViewTextBoxColumn1

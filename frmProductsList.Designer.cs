@@ -89,7 +89,6 @@
             this.panel10 = new System.Windows.Forms.Panel();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panelServiceList = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridViewService = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -227,7 +226,7 @@
             this.txtSearchProduct.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtSearchProduct.Location = new System.Drawing.Point(12, 10);
             this.txtSearchProduct.Name = "txtSearchProduct";
-            this.txtSearchProduct.PlaceholderText = "Search Here";
+            this.txtSearchProduct.PlaceholderText = "Search Product Here";
             this.txtSearchProduct.Size = new System.Drawing.Size(329, 38);
             this.txtSearchProduct.TabIndex = 7;
             this.txtSearchProduct.TextChanged += new System.EventHandler(this.txtSearchProduct_TextChanged);
@@ -237,7 +236,7 @@
             this.txtSearchTypeProducts.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtSearchTypeProducts.Location = new System.Drawing.Point(796, 10);
             this.txtSearchTypeProducts.Name = "txtSearchTypeProducts";
-            this.txtSearchTypeProducts.PlaceholderText = "Search Here";
+            this.txtSearchTypeProducts.PlaceholderText = "Search Type Here";
             this.txtSearchTypeProducts.Size = new System.Drawing.Size(509, 38);
             this.txtSearchTypeProducts.TabIndex = 0;
             this.txtSearchTypeProducts.TextChanged += new System.EventHandler(this.txtSearchTypeProducts_TextChanged);
@@ -659,7 +658,7 @@
             this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtSearch.Location = new System.Drawing.Point(12, 14);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.PlaceholderText = "Search Here";
+            this.txtSearch.PlaceholderText = "Search Description Here";
             this.txtSearch.Size = new System.Drawing.Size(534, 38);
             this.txtSearch.TabIndex = 0;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
@@ -769,7 +768,6 @@
             // 
             // panelServiceList
             // 
-            this.panelServiceList.Controls.Add(this.panel4);
             this.panelServiceList.Controls.Add(this.panel3);
             this.panelServiceList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelServiceList.Location = new System.Drawing.Point(3, 3);
@@ -777,22 +775,14 @@
             this.panelServiceList.Size = new System.Drawing.Size(1301, 874);
             this.panelServiceList.TabIndex = 0;
             // 
-            // panel4
-            // 
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(0, 525);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1301, 349);
-            this.panel4.TabIndex = 1;
-            // 
             // panel3
             // 
             this.panel3.Controls.Add(this.dataGridViewService);
             this.panel3.Controls.Add(this.panel5);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1301, 525);
+            this.panel3.Size = new System.Drawing.Size(1301, 874);
             this.panel3.TabIndex = 0;
             this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint_1);
             // 
@@ -839,7 +829,7 @@
             this.dataGridViewService.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridViewService.RowTemplate.Height = 35;
             this.dataGridViewService.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewService.Size = new System.Drawing.Size(1301, 410);
+            this.dataGridViewService.Size = new System.Drawing.Size(1301, 759);
             this.dataGridViewService.TabIndex = 9;
             this.dataGridViewService.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewService_CellContentClick_1);
             // 
@@ -938,7 +928,7 @@
             this.btnServiceAdd.Name = "btnServiceAdd";
             this.btnServiceAdd.Size = new System.Drawing.Size(153, 49);
             this.btnServiceAdd.TabIndex = 22;
-            this.btnServiceAdd.Text = "Add Item";
+            this.btnServiceAdd.Text = "Add Service";
             this.btnServiceAdd.UseVisualStyleBackColor = false;
             this.btnServiceAdd.Click += new System.EventHandler(this.btnServiceAdd_Click);
             // 
@@ -957,7 +947,7 @@
             this.txtSearchService.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtSearchService.Location = new System.Drawing.Point(692, 9);
             this.txtSearchService.Name = "txtSearchService";
-            this.txtSearchService.PlaceholderText = "Search Here";
+            this.txtSearchService.PlaceholderText = "Search Service Here";
             this.txtSearchService.Size = new System.Drawing.Size(599, 38);
             this.txtSearchService.TabIndex = 0;
             this.txtSearchService.TextChanged += new System.EventHandler(this.txtSearchService_TextChanged);
@@ -1056,7 +1046,6 @@
         private Panel panel2;
         private Panel panelServiceList;
         private Panel panel3;
-        private Panel panel4;
         private Panel panel5;
         private Panel panel15;
         private Panel panel6;

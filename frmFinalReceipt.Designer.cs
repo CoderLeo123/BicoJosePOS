@@ -360,7 +360,7 @@
             this.lblDueDate.AutoSize = true;
             this.lblDueDate.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblDueDate.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.lblDueDate.Location = new System.Drawing.Point(168, 43);
+            this.lblDueDate.Location = new System.Drawing.Point(175, 43);
             this.lblDueDate.Name = "lblDueDate";
             this.lblDueDate.Size = new System.Drawing.Size(64, 33);
             this.lblDueDate.TabIndex = 24;
