@@ -922,16 +922,15 @@
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.dataGridViewInitial);
-            this.tabPage3.Location = new System.Drawing.Point(4, 29);
+            this.tabPage3.Location = new System.Drawing.Point(4, 46);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1307, 840);
+            this.tabPage3.Size = new System.Drawing.Size(1307, 823);
             this.tabPage3.TabIndex = 3;
             this.tabPage3.Text = "tabPage3";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // dataGridViewInitial
             // 
-            this.dataGridViewInitial.AllowUserToAddRows = false;
             this.dataGridViewInitial.AllowUserToResizeColumns = false;
             this.dataGridViewInitial.AllowUserToResizeRows = false;
             this.dataGridViewInitial.BackgroundColor = System.Drawing.Color.White;
@@ -968,7 +967,7 @@
             this.dataGridViewInitial.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridViewInitial.RowTemplate.Height = 35;
             this.dataGridViewInitial.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewInitial.Size = new System.Drawing.Size(1307, 840);
+            this.dataGridViewInitial.Size = new System.Drawing.Size(1307, 823);
             this.dataGridViewInitial.TabIndex = 7;
             // 
             // dataGridViewTextBoxColumn7
@@ -1274,9 +1273,9 @@
             // tabPage5
             // 
             this.tabPage5.Controls.Add(this.panelSettled);
-            this.tabPage5.Location = new System.Drawing.Point(4, 46);
+            this.tabPage5.Location = new System.Drawing.Point(4, 29);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(1307, 823);
+            this.tabPage5.Size = new System.Drawing.Size(1307, 840);
             this.tabPage5.TabIndex = 5;
             this.tabPage5.Text = "Settled";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -1288,7 +1287,7 @@
             this.panelSettled.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelSettled.Location = new System.Drawing.Point(0, 0);
             this.panelSettled.Name = "panelSettled";
-            this.panelSettled.Size = new System.Drawing.Size(1307, 823);
+            this.panelSettled.Size = new System.Drawing.Size(1307, 840);
             this.panelSettled.TabIndex = 7;
             // 
             // panel16
@@ -1298,7 +1297,7 @@
             this.panel16.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel16.Location = new System.Drawing.Point(0, 120);
             this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(1307, 703);
+            this.panel16.Size = new System.Drawing.Size(1307, 720);
             this.panel16.TabIndex = 1;
             // 
             // printPreviewControlSettledP
@@ -1306,7 +1305,7 @@
             this.printPreviewControlSettledP.Dock = System.Windows.Forms.DockStyle.Fill;
             this.printPreviewControlSettledP.Location = new System.Drawing.Point(763, 0);
             this.printPreviewControlSettledP.Name = "printPreviewControlSettledP";
-            this.printPreviewControlSettledP.Size = new System.Drawing.Size(544, 703);
+            this.printPreviewControlSettledP.Size = new System.Drawing.Size(544, 720);
             this.printPreviewControlSettledP.TabIndex = 9;
             // 
             // dataGridViewSettle
@@ -1351,7 +1350,7 @@
             this.dataGridViewSettle.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridViewSettle.RowTemplate.Height = 35;
             this.dataGridViewSettle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewSettle.Size = new System.Drawing.Size(763, 703);
+            this.dataGridViewSettle.Size = new System.Drawing.Size(763, 720);
             this.dataGridViewSettle.TabIndex = 8;
             this.dataGridViewSettle.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSettle_CellContentClick);
             // 

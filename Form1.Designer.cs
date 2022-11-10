@@ -46,7 +46,7 @@
             this.dropBtnPayment = new System.Windows.Forms.Button();
             this.btnPatientR = new System.Windows.Forms.Button();
             this.btnDashboard = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelTitle = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.timerDrpBtnProducts = new System.Windows.Forms.Timer(this.components);
@@ -106,7 +106,7 @@
             this.panel2.BackColor = System.Drawing.Color.DarkGoldenrod;
             this.panel2.Controls.Add(this.lblUserNum);
             this.panel2.Controls.Add(this.panel4);
-            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.labelTitle);
             this.panel2.Controls.Add(this.lblName);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
@@ -386,16 +386,16 @@
             this.btnDashboard.UseVisualStyleBackColor = false;
             this.btnDashboard.Click += new System.EventHandler(this.btnDashboard_Click);
             // 
-            // label1
+            // labelTitle
             // 
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(-8, 178);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(291, 51);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Administrator";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelTitle.ForeColor = System.Drawing.Color.White;
+            this.labelTitle.Location = new System.Drawing.Point(-8, 178);
+            this.labelTitle.Name = "labelTitle";
+            this.labelTitle.Size = new System.Drawing.Size(291, 51);
+            this.labelTitle.TabIndex = 2;
+            this.labelTitle.Text = "Administrator";
+            this.labelTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblName
             // 
@@ -929,7 +929,6 @@
         #endregion
         private Panel panel2;
         private PictureBox pictureBox1;
-        private Label label1;
         private System.Windows.Forms.Timer timerDrpBtnProducts;
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.Timer timerDrpBtnPayment;
@@ -989,5 +988,6 @@
         public TextBox txtInLab;
         public TextBox txtSett;
         public TextBox txtPendi;
+        public Label labelTitle;
     }
 }

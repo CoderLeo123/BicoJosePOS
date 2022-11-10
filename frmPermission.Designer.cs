@@ -133,6 +133,7 @@
             this.lblWhatForm.Size = new System.Drawing.Size(113, 41);
             this.lblWhatForm.TabIndex = 90;
             this.lblWhatForm.Text = "Denied";
+            this.lblWhatForm.Visible = false;
             // 
             // lblGrant
             // 

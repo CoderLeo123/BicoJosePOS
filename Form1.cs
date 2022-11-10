@@ -15,6 +15,7 @@ namespace Capstone
         ClassPaymentOrderMonitoring classLoad = new ClassPaymentOrderMonitoring();
         Boolean isCollapsed1, isCollapsed2, isCollapsed3 = true;
         frmReports frmR = new frmReports();
+        int row = 0;
         public frmAdmin()
         {
             InitializeComponent();
@@ -314,7 +315,9 @@ namespace Capstone
             classReport.loadSalesPerDay(frm.dataGridViewSalesR, "Total_Sale");
             classReport.loadSalesPerDay(frm.dataGridViewBalR, "Total_Bal");
             frmR.dateSelect(frm.dataGridViewInitial);
-            frmR.changeDatePriorCurrent(frmR.dateTimePickerStartSold);
+            //frmR.dateSelect(frmR.dataGridViewInitial, out row);
+            //frmR.filterDate(row);
+            frmR.changeDatePriorCurrent(frmR.dateTimePickerStartSold);            
             frmR.changeDatePriorCurrent(frmR.dateTimePickerStartTrans);
             classLoadData.LoadRecordsTransacHist(frmR.dataGridViewTransHist, frmR.txtSearchTransHist, frmR.dateTimePickerStartTrans, frmR.dateTimePickerEndTrans);
             classLoadData.LoadRecordsSoldItems(frmR.dataGridViewSoldItems, frmR.txtSearchSold, frmR.dateTimePickerStartSold, frmR.dateTimePickerEndSold);
