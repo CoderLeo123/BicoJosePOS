@@ -34,9 +34,11 @@
             this.tabControlRegister = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panelSignUp = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblPermi = new System.Windows.Forms.Label();
             this.lblUserID = new System.Windows.Forms.Label();
             this.comBoxUserType = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.labelTitle = new System.Windows.Forms.Label();
             this.lblPasswordNotice = new System.Windows.Forms.Label();
             this.lblUserNamNotice = new System.Windows.Forms.Label();
             this.lblNameNotice = new System.Windows.Forms.Label();
@@ -58,8 +60,7 @@
             this.txtConfirmNewPass = new System.Windows.Forms.TextBox();
             this.txtNewPassword = new System.Windows.Forms.TextBox();
             this.btnResetPass = new System.Windows.Forms.Button();
-            this.lblPermi = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.btnEditUser = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
@@ -130,11 +131,12 @@
             // 
             // panelSignUp
             // 
+            this.panelSignUp.Controls.Add(this.btnEditUser);
             this.panelSignUp.Controls.Add(this.label1);
             this.panelSignUp.Controls.Add(this.lblPermi);
             this.panelSignUp.Controls.Add(this.lblUserID);
             this.panelSignUp.Controls.Add(this.comBoxUserType);
-            this.panelSignUp.Controls.Add(this.label4);
+            this.panelSignUp.Controls.Add(this.labelTitle);
             this.panelSignUp.Controls.Add(this.lblPasswordNotice);
             this.panelSignUp.Controls.Add(this.lblUserNamNotice);
             this.panelSignUp.Controls.Add(this.lblNameNotice);
@@ -151,6 +153,27 @@
             this.panelSignUp.Size = new System.Drawing.Size(633, 519);
             this.panelSignUp.TabIndex = 0;
             this.panelSignUp.Paint += new System.Windows.Forms.PaintEventHandler(this.panelSignUp_Paint);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.Red;
+            this.label1.Location = new System.Drawing.Point(459, 398);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 38);
+            this.label1.TabIndex = 84;
+            this.label1.Visible = false;
+            // 
+            // lblPermi
+            // 
+            this.lblPermi.AutoSize = true;
+            this.lblPermi.ForeColor = System.Drawing.Color.Red;
+            this.lblPermi.Location = new System.Drawing.Point(459, 354);
+            this.lblPermi.Name = "lblPermi";
+            this.lblPermi.Size = new System.Drawing.Size(151, 38);
+            this.lblPermi.TabIndex = 83;
+            this.lblPermi.Text = "Permission";
+            this.lblPermi.Visible = false;
             // 
             // lblUserID
             // 
@@ -177,15 +200,15 @@
             this.comBoxUserType.Size = new System.Drawing.Size(191, 45);
             this.comBoxUserType.TabIndex = 81;
             // 
-            // label4
+            // labelTitle
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(138, 19);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(352, 50);
-            this.label4.TabIndex = 80;
-            this.label4.Text = "Create your account";
+            this.labelTitle.AutoSize = true;
+            this.labelTitle.Font = new System.Drawing.Font("Segoe UI", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelTitle.Location = new System.Drawing.Point(138, 19);
+            this.labelTitle.Name = "labelTitle";
+            this.labelTitle.Size = new System.Drawing.Size(352, 50);
+            this.labelTitle.TabIndex = 80;
+            this.labelTitle.Text = "Create your account";
             // 
             // lblPasswordNotice
             // 
@@ -440,26 +463,22 @@
             this.btnResetPass.UseVisualStyleBackColor = false;
             this.btnResetPass.Click += new System.EventHandler(this.btnResetPass_Click);
             // 
-            // lblPermi
+            // btnEditUser
             // 
-            this.lblPermi.AutoSize = true;
-            this.lblPermi.ForeColor = System.Drawing.Color.Red;
-            this.lblPermi.Location = new System.Drawing.Point(459, 354);
-            this.lblPermi.Name = "lblPermi";
-            this.lblPermi.Size = new System.Drawing.Size(151, 38);
-            this.lblPermi.TabIndex = 83;
-            this.lblPermi.Text = "Permission";
-            this.lblPermi.Visible = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(459, 398);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 38);
-            this.label1.TabIndex = 84;
-            this.label1.Visible = false;
+            this.btnEditUser.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnEditUser.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEditUser.FlatAppearance.BorderSize = 0;
+            this.btnEditUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditUser.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnEditUser.ForeColor = System.Drawing.Color.White;
+            this.btnEditUser.Location = new System.Drawing.Point(209, 456);
+            this.btnEditUser.Name = "btnEditUser";
+            this.btnEditUser.Size = new System.Drawing.Size(192, 58);
+            this.btnEditUser.TabIndex = 85;
+            this.btnEditUser.Text = "UPDATE";
+            this.btnEditUser.UseVisualStyleBackColor = false;
+            this.btnEditUser.Visible = false;
+            this.btnEditUser.Click += new System.EventHandler(this.btnEditUser_Click);
             // 
             // frmSignUpForgotPass
             // 
@@ -505,7 +524,6 @@
         public TextBox txtUserNameCreate;
         public TextBox txtFirstN;
         public ComboBox comBoxUserType;
-        private Label label4;
         public CheckBox checkBoxShowPass;
         public Label lblNameNotice;
         public Label lblPasswordNotice;
@@ -522,5 +540,7 @@
         public Label lblUserIDForgot;
         public Label lblPermi;
         public Label label1;
+        public Button btnEditUser;
+        public Label labelTitle;
     }
 }

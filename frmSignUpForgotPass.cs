@@ -295,5 +295,35 @@ namespace Capstone
         {
 
         }
+
+        private void btnEditUser_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string fullname = txtFirstN.Text + " " + txtLastN.Text;
+
+                if (MessageBox.Show("Are you sure you want to update this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    cn.Open();
+                    cm = new SqlCommand("UPDATE tblUser SET Username = @Username, Name = @Name, Password = @Password, FName = @FName, LName = @LName, User_Type = @User_Type WHERE User_ID LIKE '" + lblUserID.Text + "'", cn);
+                    cm.Parameters.AddWithValue("@Username", txtUserNameCreate.Text);
+                    cm.Parameters.AddWithValue("@Name", fullname);
+                    cm.Parameters.AddWithValue("@Password", txtPasswordCreate.Text);
+                    cm.Parameters.AddWithValue("@FName", txtFirstN.Text);
+                    cm.Parameters.AddWithValue("@LName", txtLastN.Text);
+                    cm.Parameters.AddWithValue("@User_Type", comBoxUserType.Text);
+                    
+                    cm.ExecuteNonQuery();
+                    cn.Close();
+                    MessageBox.Show("Record has been successfully updated.");
+                   
+                    this.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

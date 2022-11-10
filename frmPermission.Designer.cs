@@ -37,6 +37,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.lblWhatForm = new System.Windows.Forms.Label();
             this.lblGrant = new System.Windows.Forms.Label();
+            this.checkBoxShowPassL = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
@@ -83,7 +84,7 @@
             this.lblAdminPassNotice.AutoSize = true;
             this.lblAdminPassNotice.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblAdminPassNotice.ForeColor = System.Drawing.Color.Red;
-            this.lblAdminPassNotice.Location = new System.Drawing.Point(29, 188);
+            this.lblAdminPassNotice.Location = new System.Drawing.Point(29, 213);
             this.lblAdminPassNotice.Name = "lblAdminPassNotice";
             this.lblAdminPassNotice.Size = new System.Drawing.Size(183, 31);
             this.lblAdminPassNotice.TabIndex = 88;
@@ -140,18 +141,31 @@
             this.lblGrant.AutoSize = true;
             this.lblGrant.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblGrant.ForeColor = System.Drawing.Color.Red;
-            this.lblGrant.Location = new System.Drawing.Point(141, 219);
+            this.lblGrant.Location = new System.Drawing.Point(486, 197);
             this.lblGrant.Name = "lblGrant";
             this.lblGrant.Size = new System.Drawing.Size(26, 31);
             this.lblGrant.TabIndex = 92;
             this.lblGrant.Text = "0";
             this.lblGrant.Visible = false;
             // 
+            // checkBoxShowPassL
+            // 
+            this.checkBoxShowPassL.AutoSize = true;
+            this.checkBoxShowPassL.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.checkBoxShowPassL.Location = new System.Drawing.Point(44, 178);
+            this.checkBoxShowPassL.Name = "checkBoxShowPassL";
+            this.checkBoxShowPassL.Size = new System.Drawing.Size(168, 32);
+            this.checkBoxShowPassL.TabIndex = 93;
+            this.checkBoxShowPassL.Text = "Show Password";
+            this.checkBoxShowPassL.UseVisualStyleBackColor = true;
+            this.checkBoxShowPassL.CheckedChanged += new System.EventHandler(this.checkBoxShowPassL_CheckedChanged);
+            // 
             // frmPermission
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(17F, 41F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(620, 253);
+            this.Controls.Add(this.checkBoxShowPassL);
             this.Controls.Add(this.lblGrant);
             this.Controls.Add(this.lblWhatForm);
             this.Controls.Add(this.label2);
@@ -184,5 +198,6 @@
         private Label label2;
         public Label lblWhatForm;
         public Label lblGrant;
+        private CheckBox checkBoxShowPassL;
     }
 }

@@ -629,7 +629,7 @@ namespace Capstone
             preview.Document = printDocumentBal; // 800, 800 = 8" x 8"
             printDocumentBal.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("SHORT", sWidth, sLength);
             preview.PrintPreviewControl.StartPage = 0;
-            preview.PrintPreviewControl.Zoom = 0.75;
+            preview.PrintPreviewControl.Zoom = 1;
             preview.Size = new System.Drawing.Size(800, 800);
             preview.ShowDialog();
         }
@@ -640,7 +640,7 @@ namespace Capstone
             preview.Document = printDocumentBal;
             printDocumentBal.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("SHORT", sWidth, sLength);
             preview.PrintPreviewControl.StartPage = 0;
-            preview.PrintPreviewControl.Zoom = 0.75;
+            preview.PrintPreviewControl.Zoom = 1;
             preview.Size = new System.Drawing.Size(800, 800);
             preview.ShowDialog();
         }
@@ -651,7 +651,7 @@ namespace Capstone
             preview.Document = printDocumentBal; // 800, 800 = 8" x 8"
             printDocumentBal.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("SHORT", sWidth, sLength);
             preview.PrintPreviewControl.StartPage = 0;
-            preview.PrintPreviewControl.Zoom = 0.75;
+            preview.PrintPreviewControl.Zoom = 1;
             preview.Size = new System.Drawing.Size(800, 800);
             preview.ShowDialog();
         }
@@ -662,7 +662,7 @@ namespace Capstone
             sales = true; balance = false; transaction = false; settled = false; sold = false;
             printPreviewControl.Document = printDocumentBal;    // 800, 800 = 8" x 8"
             printDocumentBal.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("SHORT", sWidth, sLength);
-            printPreviewControl.Zoom = .75;
+            printPreviewControl.Zoom = 1;
             printPreviewControl.StartPage = 0;
         }
         public void previewBalance()
@@ -671,7 +671,7 @@ namespace Capstone
             balance = true; sales = false; transaction = false; settled = false; sold = false;
             printPreviewControlBal.Document = printDocumentBal;
             printDocumentBal.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("SHORT", sWidth, sLength);
-            printPreviewControlBal.Zoom = .75;
+            printPreviewControlBal.Zoom = 1;
             printPreviewControlBal.StartPage = 0;
         }
         public void previewTransHistReceipt()
@@ -680,7 +680,7 @@ namespace Capstone
             paperSizeUpdate(out pLength);
             printPreviewControlTransH.Document = printDocumentSales; 
             printDocumentSales.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("RECEIPT", 610, pLength);
-            printPreviewControlTransH.Zoom = .75;
+            printPreviewControlTransH.Zoom = 1;
             printPreviewControlTransH.StartPage = 0;
         }
         public void previewSettledReceipt()
@@ -689,7 +689,7 @@ namespace Capstone
             //paperSizeUpdate(out pLength);
             printPreviewControlSettledP.Document = printDocumentSettledReceipt; //
             printDocumentSettledReceipt.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("RECEIPT", 610, pLength);
-            printPreviewControlSettledP.Zoom = .75;
+            printPreviewControlSettledP.Zoom = 1;
             printPreviewControlSettledP.StartPage = 0;
         }
         public void changeDatePriorCurrent(DateTimePicker date)

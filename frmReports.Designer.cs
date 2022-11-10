@@ -442,7 +442,7 @@
             this.dataGridViewSalesR.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridViewSalesR.RowTemplate.Height = 35;
             this.dataGridViewSalesR.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewSalesR.Size = new System.Drawing.Size(645, 733);
+            this.dataGridViewSalesR.Size = new System.Drawing.Size(540, 733);
             this.dataGridViewSalesR.TabIndex = 6;
             this.dataGridViewSalesR.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridViewSalesR_CellFormatting);
             // 
@@ -484,9 +484,9 @@
             // printPreviewControl
             // 
             this.printPreviewControl.Dock = System.Windows.Forms.DockStyle.Right;
-            this.printPreviewControl.Location = new System.Drawing.Point(645, 0);
+            this.printPreviewControl.Location = new System.Drawing.Point(540, 0);
             this.printPreviewControl.Name = "printPreviewControl";
-            this.printPreviewControl.Size = new System.Drawing.Size(656, 733);
+            this.printPreviewControl.Size = new System.Drawing.Size(761, 733);
             this.printPreviewControl.TabIndex = 0;
             // 
             // panel7
@@ -519,10 +519,10 @@
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.panelBalRep);
-            this.tabPage2.Location = new System.Drawing.Point(4, 29);
+            this.tabPage2.Location = new System.Drawing.Point(4, 46);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1307, 840);
+            this.tabPage2.Size = new System.Drawing.Size(1307, 823);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Balance Report";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -534,7 +534,7 @@
             this.panelBalRep.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelBalRep.Location = new System.Drawing.Point(3, 3);
             this.panelBalRep.Name = "panelBalRep";
-            this.panelBalRep.Size = new System.Drawing.Size(1301, 834);
+            this.panelBalRep.Size = new System.Drawing.Size(1301, 817);
             this.panelBalRep.TabIndex = 3;
             // 
             // panel9
@@ -544,7 +544,7 @@
             this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel9.Location = new System.Drawing.Point(0, 72);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(1301, 762);
+            this.panel9.Size = new System.Drawing.Size(1301, 745);
             this.panel9.TabIndex = 1;
             // 
             // printPreviewControlBal
@@ -552,7 +552,7 @@
             this.printPreviewControlBal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.printPreviewControlBal.Location = new System.Drawing.Point(607, 0);
             this.printPreviewControlBal.Name = "printPreviewControlBal";
-            this.printPreviewControlBal.Size = new System.Drawing.Size(694, 762);
+            this.printPreviewControlBal.Size = new System.Drawing.Size(694, 745);
             this.printPreviewControlBal.TabIndex = 6;
             // 
             // dataGridViewBalR
@@ -595,7 +595,7 @@
             this.dataGridViewBalR.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridViewBalR.RowTemplate.Height = 35;
             this.dataGridViewBalR.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewBalR.Size = new System.Drawing.Size(607, 762);
+            this.dataGridViewBalR.Size = new System.Drawing.Size(607, 745);
             this.dataGridViewBalR.TabIndex = 5;
             this.dataGridViewBalR.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewBalR_CellContentClick);
             this.dataGridViewBalR.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewBalR_CellMouseUp);
@@ -922,9 +922,9 @@
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.dataGridViewInitial);
-            this.tabPage3.Location = new System.Drawing.Point(4, 46);
+            this.tabPage3.Location = new System.Drawing.Point(4, 29);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1307, 823);
+            this.tabPage3.Size = new System.Drawing.Size(1307, 840);
             this.tabPage3.TabIndex = 3;
             this.tabPage3.Text = "tabPage3";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -967,7 +967,7 @@
             this.dataGridViewInitial.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridViewInitial.RowTemplate.Height = 35;
             this.dataGridViewInitial.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewInitial.Size = new System.Drawing.Size(1307, 823);
+            this.dataGridViewInitial.Size = new System.Drawing.Size(1307, 840);
             this.dataGridViewInitial.TabIndex = 7;
             // 
             // dataGridViewTextBoxColumn7

@@ -620,6 +620,23 @@ namespace Capstone
 
         }
 
+        private void btnMaxi_Click(object sender, EventArgs e)
+        {
+            //btnMaxi.BackColor = Color.Lime;
+            if (btnMaxi.BackColor == Color.Lime)
+            {
+                this.WindowState = FormWindowState.Normal;
+                panelDas.Dock = DockStyle.Fill;
+                btnMaxi.BackColor = Color.Red;
+            }
+            else if (btnMaxi.BackColor == Color.Red)
+            {
+                this.WindowState = FormWindowState.Maximized;
+                btnMaxi.BackColor = Color.Lime;
+                panelDas.Dock = DockStyle.Right;
+            }
+        }
+
         private void btnLogout_Click(object sender, EventArgs e)//btnCashier
         {
              this.Dispose(); this.Close();

@@ -320,7 +320,7 @@
             // 
             // PRODUCT
             // 
-            this.PRODUCT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.PRODUCT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.PRODUCT.HeaderText = "PRODUCT";
             this.PRODUCT.MinimumWidth = 6;
             this.PRODUCT.Name = "PRODUCT";
