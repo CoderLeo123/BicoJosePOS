@@ -72,7 +72,8 @@ namespace Capstone
             try
             {
                 string colName = dataGridViewSearchItem.Columns[e.ColumnIndex].Name;
-                string classifi = dataGridViewSearchItem.Rows[e.RowIndex].Cells[6].Value?.ToString();                
+                string classifi = dataGridViewSearchItem.Rows[e.RowIndex].Cells[6].Value?.ToString();
+                int stockNum = 0;
                 if (colName == "AddSearchItem")
                 {
                     //num = AutoGenerateID(num);
@@ -92,15 +93,15 @@ namespace Capstone
                     }
                     if (MessageBox.Show("Add this Item?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        if(classifi == "Consumable")
-                        {
-                            cn.Open();
-                            cm = new SqlCommand("INSERT INTO tblStockInventory (Stock_ID, Item_ID) VALUES(@Stock_ID, @Item_ID)", cn);
-                            cm.Parameters.AddWithValue("@Stock_ID", frmList.txtStockID.Text);
-                            cm.Parameters.AddWithValue("@Item_ID", dataGridViewSearchItem[1, e.RowIndex].Value.ToString());
-                            cm.ExecuteNonQuery();
-                            cn.Close();
-                        }                        
+                        //if(classifi == "Consumable")
+                        //{
+                        //    cn.Open();
+                        //    cm = new SqlCommand("INSERT INTO tblStockInventory (Stock_ID, Item_ID) VALUES(@Stock_ID, @Item_ID)", cn);
+                        //    cm.Parameters.AddWithValue("@Stock_ID", frmList.txtStockID.Text);
+                        //    cm.Parameters.AddWithValue("@Item_ID", dataGridViewSearchItem[1, e.RowIndex].Value.ToString());
+                        //    cm.ExecuteNonQuery();
+                        //    cn.Close();
+                        //}                        
                         cn.Open();
                         cm = new SqlCommand("INSERT INTO tblStock (Stock_ID, Item_ID, Stock_In_Date, Stock_In_By, Status, Type) VALUES(@StockID, @ItemID, @StockDate, @StockInBy, 'Pending', @Type)", cn);
                         cm.Parameters.AddWithValue("@StockID", frmList.txtStockID.Text);
@@ -115,6 +116,24 @@ namespace Capstone
                         MessageBox.Show("Successfully Added!", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
                         classLoadData.LoadStock(frmList.dataGridViewStockItems, frmList.txtStockID, frmList.label3);
                         //frmList.LoadStock();
+
+                        //cn.Open();
+                        //cm = new SqlCommand("SELECT TOP 1 Num FROM tblStock", cn);
+                        //dr = cm.ExecuteReader();
+                        //dr.Read();
+                        //if (dr.HasRows)
+                        //{
+                        //    stockNum = int.Parse(dr[0].ToString());
+                        //    cn.Open();
+                        //    cm = new SqlCommand("INSERT INTO tblStockInventory (Stock_Num) VALUES(@Stock_Num)", cn);
+                        //    cm.Parameters.AddWithValue("@Stock_Num", stockNum);
+                        //    cm.ExecuteNonQuery();
+                        //    cn.Close();
+                        //    dr.Close();
+                        //}                        
+                        //dr.Close();
+                        //cn.Close();
+
                         this.Close();
                     }
                 }
@@ -122,7 +141,7 @@ namespace Capstone
             catch (Exception ex)
             {
                 cn.Close();
-                MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
