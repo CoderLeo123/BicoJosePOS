@@ -68,7 +68,8 @@ namespace Capstone
                     this.Close();
                 }
                 classLoad.LoadRecordsOrder(frmL.dataGridViewOrderStatus, frmL.txtSearchOrderStatus);
-                classLoad.LoadRecordsOrderClaimed(frmL.dataGridViewArrival, frmL.txtSearchArrival);
+                classLoad.LoadRecordsOrderArrived(frmL.dataGridViewArrival, frmL.txtSearchArrival);
+                classLoad.LoadRecordsOrderClaimed(frmL.dataGridViewClaimed, frmL.txtSearchClaimed);
             }
             catch (Exception ex)
             {

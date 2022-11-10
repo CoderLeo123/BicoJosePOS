@@ -16,6 +16,7 @@ namespace Capstone
         SqlCommand cm = new SqlCommand();
         DBConnection dbcon = new DBConnection();
         SqlDataReader dr;
+        string title = "BICO-JOSE System";
         public frmUserSetting()
         {
             InitializeComponent();
@@ -158,7 +159,7 @@ namespace Capstone
             int i = 0;
             dataGridViewSession.Rows.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT * FROM ViewLoginSession Order by Num DESC", cn);
+            SqlCommand cm = new SqlCommand("SELECT * FROM ViewLoginSession WHERE (Name LIKE '%" + txtSearchSession.Text + "%' OR User_Type LIKE '%" + txtSearchSession.Text + "%') Order by Num DESC", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
@@ -215,6 +216,27 @@ namespace Capstone
             tab.Controls.Add(panelSession);
             LoadSession();
             checkWhatIsPress(false, true);
+        }
+
+        private void txtSearchSession_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtSearchSession.Text == String.Empty)
+                {
+                    LoadSession();
+                    return;
+                }
+                else
+                {
+                    LoadSession();
+                }
+            }
+            catch (Exception ex)
+            {
+                cn.Close();
+                MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }

@@ -466,11 +466,7 @@ namespace Capstone
 
         private void btnInventory_Click(object sender, EventArgs e)
         {
-
-
             frmInventory frm = new frmInventory();
-
-
             frm.TopLevel = false;
             panelLoad.Controls.Clear();
             panelLoad.Controls.Add(frm);
@@ -478,18 +474,17 @@ namespace Capstone
             frm.Show();
 
             frm.tabControlInventory.TabPages.Clear();
-            TabPage tab = new TabPage("RE-ORDER");
+            TabPage tab = new TabPage("SAFETY LEVEL");
             frm.tabControlInventory.TabPages.Add(tab);
-            tab.Controls.Add(frm.panelReOrder);
-            classInvent.LoadReOrder(frm.dataGridViewReOrder, frm.txtSearchReOrder);
-            frm.checkWhatIsPress(true, false, false, false);
+            tab.Controls.Add(frm.panelSafety);
+            classInvent.LoadSafety(frm.dataGridViewSafety, frm.txtSearchSafety);
+            frm.checkWhatIsPress(false, false, false, false, true);
             //btnCollapsed();
             //timerStart();
         }
 
         private void btnInventoryReport_Click(object sender, EventArgs e)
-        {
-            
+        {            
         }
 
         private void btnBackupArch_Click(object sender, EventArgs e)

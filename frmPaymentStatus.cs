@@ -253,5 +253,109 @@ namespace Capstone
             }
 
         }
+
+        private void txtSearchPending_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtSearchPending.Text == String.Empty)
+                {
+                    classLoad.LoadRecordsUnsettled(dataGridViewPaymentStat, txtSearchPending);
+                    return;
+                }
+                else
+                {
+                    classLoad.LoadRecordsUnsettled(dataGridViewPaymentStat, txtSearchPending);
+                }
+            }
+            catch (Exception ex)
+            {
+                cn.Close();
+                MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void txtSearchSettled_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtSearchSettled.Text == String.Empty)
+                {
+                    classLoad.LoadRecordsSettled(dataGridViewSettled, txtSearchSettled);
+                    return;
+                }
+                else
+                {
+                    classLoad.LoadRecordsSettled(dataGridViewSettled, txtSearchSettled);
+                }
+            }
+            catch (Exception ex)
+            {
+                cn.Close();
+                MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void txtSearchOrderStatus_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtSearchOrderStatus.Text == String.Empty)
+                {
+                    classLoad.LoadRecordsOrder(dataGridViewOrderStatus, txtSearchOrderStatus); return;
+                }
+                else
+                {
+                    classLoad.LoadRecordsOrder(dataGridViewOrderStatus, txtSearchOrderStatus);
+                }
+            }
+            catch (Exception ex)
+            {
+                cn.Close();
+                MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void txtSearchArrival_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtSearchArrival.Text == String.Empty)
+                {
+                    classLoad.LoadRecordsOrderArrived(dataGridViewArrival, txtSearchArrival);
+                    return;
+                }
+                else
+                {
+                    classLoad.LoadRecordsOrderArrived(dataGridViewArrival, txtSearchArrival);
+                }
+            }
+            catch (Exception ex)
+            {
+                cn.Close();
+                MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void txtSearchClaimed_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtSearchClaimed.Text == String.Empty)
+                {
+                    classLoad.LoadRecordsOrderClaimed(dataGridViewClaimed, txtSearchClaimed);
+                    return;
+                }
+                else
+                {
+                    classLoad.LoadRecordsOrderClaimed(dataGridViewClaimed, txtSearchClaimed);
+                }
+            }
+            catch (Exception ex)
+            {
+                cn.Close();
+                MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
     }
 }

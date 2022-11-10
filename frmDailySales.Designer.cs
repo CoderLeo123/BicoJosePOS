@@ -202,6 +202,7 @@
             this.txtSearchTransac.PlaceholderText = "Search Here";
             this.txtSearchTransac.Size = new System.Drawing.Size(570, 38);
             this.txtSearchTransac.TabIndex = 0;
+            this.txtSearchTransac.TextChanged += new System.EventHandler(this.txtSearchTransac_TextChanged);
             // 
             // dateTimePickerStartTrans
             // 
@@ -622,6 +623,7 @@
             this.txtSearchSold.PlaceholderText = "Search Here";
             this.txtSearchSold.Size = new System.Drawing.Size(570, 38);
             this.txtSearchSold.TabIndex = 0;
+            this.txtSearchSold.TextChanged += new System.EventHandler(this.txtSearchSold_TextChanged);
             // 
             // dateTimePickerStartSold
             // 
@@ -872,6 +874,7 @@
             this.txtSearchSettleds.PlaceholderText = "Search Here";
             this.txtSearchSettleds.Size = new System.Drawing.Size(570, 38);
             this.txtSearchSettleds.TabIndex = 0;
+            this.txtSearchSettleds.TextChanged += new System.EventHandler(this.txtSearchSettleds_TextChanged);
             // 
             // dateTimePickerSettStart
             // 

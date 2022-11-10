@@ -327,6 +327,71 @@ namespace Capstone
             this.Close();
         }
 
+        private void txtSearchTransac_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtSearchTransac.Text == String.Empty)
+                {
+                    classLoadData.LoadRecordsTransacHist(dataGridViewTransacHist, txtSearchTransac, dateTimePickerStartTrans, dateTimePickerEndTrans);
+                    return;
+                }
+                else
+                {
+                    classLoadData.LoadRecordsTransacHist(dataGridViewTransacHist, txtSearchTransac, dateTimePickerStartTrans, dateTimePickerEndTrans);
+                }
+            }
+            catch (Exception ex)
+            {
+                cn.Close();
+                MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void txtSearchSold_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtSearchSold.Text == String.Empty)
+                {
+                    classLoadData.LoadRecordsSoldItems(dataGridViewSoldItems, txtSearchSold, dateTimePickerStartSold, dateTimePickerEndSold);
+                    return;
+                }
+                else
+                {
+                    classLoadData.LoadRecordsSoldItems(dataGridViewSoldItems, txtSearchSold, dateTimePickerStartSold, dateTimePickerEndSold);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                cn.Close();
+                MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void txtSearchSettleds_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtSearchSettleds.Text == String.Empty)
+                {
+                    classLoadData.LoadRecordsTransacSettled(dataGridViewSettle, txtSearchSettleds, dateTimePickerSettStart, dateTimePickerSettEnd);
+                    return;
+                }
+                else
+                {
+                    classLoadData.LoadRecordsTransacSettled(dataGridViewSettle, txtSearchSettleds, dateTimePickerSettStart, dateTimePickerSettEnd);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                cn.Close();
+                MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
         public void paperSizeUpdate(out int paperL)
         {
             int dgvCount = 0; transNo = lblCurrentTransN.Text;

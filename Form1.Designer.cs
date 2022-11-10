@@ -583,6 +583,7 @@
             this.txtExp.TabIndex = 73;
             this.txtExp.Text = "0";
             this.txtExp.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtExp.Visible = false;
             // 
             // txtOutOStk
             // 
@@ -649,6 +650,7 @@
             this.label5.Size = new System.Drawing.Size(114, 38);
             this.label5.TabIndex = 67;
             this.label5.Text = "Expired:";
+            this.label5.Visible = false;
             // 
             // lblMasterCount
             // 

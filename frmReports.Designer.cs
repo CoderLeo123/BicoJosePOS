@@ -107,6 +107,15 @@
             this.panelSoldItems = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.dataGridViewSoldItems = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ExpDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel10 = new System.Windows.Forms.Panel();
             this.panel13 = new System.Windows.Forms.Panel();
             this.panel14 = new System.Windows.Forms.Panel();
@@ -145,15 +154,6 @@
             this.printPreviewDialogTransH = new System.Windows.Forms.PrintPreviewDialog();
             this.printPreviewDialogSettled = new System.Windows.Forms.PrintPreviewDialog();
             this.printPreviewDialogSold = new System.Windows.Forms.PrintPreviewDialog();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ExpDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel21.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnCloseInventory)).BeginInit();
@@ -519,10 +519,10 @@
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.panelBalRep);
-            this.tabPage2.Location = new System.Drawing.Point(4, 46);
+            this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1307, 823);
+            this.tabPage2.Size = new System.Drawing.Size(1307, 840);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Balance Report";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -534,7 +534,7 @@
             this.panelBalRep.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelBalRep.Location = new System.Drawing.Point(3, 3);
             this.panelBalRep.Name = "panelBalRep";
-            this.panelBalRep.Size = new System.Drawing.Size(1301, 817);
+            this.panelBalRep.Size = new System.Drawing.Size(1301, 834);
             this.panelBalRep.TabIndex = 3;
             // 
             // panel9
@@ -544,7 +544,7 @@
             this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel9.Location = new System.Drawing.Point(0, 72);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(1301, 745);
+            this.panel9.Size = new System.Drawing.Size(1301, 762);
             this.panel9.TabIndex = 1;
             // 
             // printPreviewControlBal
@@ -552,7 +552,7 @@
             this.printPreviewControlBal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.printPreviewControlBal.Location = new System.Drawing.Point(607, 0);
             this.printPreviewControlBal.Name = "printPreviewControlBal";
-            this.printPreviewControlBal.Size = new System.Drawing.Size(694, 745);
+            this.printPreviewControlBal.Size = new System.Drawing.Size(694, 762);
             this.printPreviewControlBal.TabIndex = 6;
             // 
             // dataGridViewBalR
@@ -595,7 +595,7 @@
             this.dataGridViewBalR.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridViewBalR.RowTemplate.Height = 35;
             this.dataGridViewBalR.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewBalR.Size = new System.Drawing.Size(607, 745);
+            this.dataGridViewBalR.Size = new System.Drawing.Size(607, 762);
             this.dataGridViewBalR.TabIndex = 5;
             this.dataGridViewBalR.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewBalR_CellContentClick);
             this.dataGridViewBalR.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewBalR_CellMouseUp);
@@ -669,9 +669,9 @@
             // History
             // 
             this.History.Controls.Add(this.panelSalesHistory);
-            this.History.Location = new System.Drawing.Point(4, 46);
+            this.History.Location = new System.Drawing.Point(4, 29);
             this.History.Name = "History";
-            this.History.Size = new System.Drawing.Size(1307, 823);
+            this.History.Size = new System.Drawing.Size(1307, 840);
             this.History.TabIndex = 2;
             this.History.Text = "Sale\'s History";
             this.History.UseVisualStyleBackColor = true;
@@ -683,7 +683,7 @@
             this.panelSalesHistory.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelSalesHistory.Location = new System.Drawing.Point(0, 0);
             this.panelSalesHistory.Name = "panelSalesHistory";
-            this.panelSalesHistory.Size = new System.Drawing.Size(1307, 823);
+            this.panelSalesHistory.Size = new System.Drawing.Size(1307, 840);
             this.panelSalesHistory.TabIndex = 0;
             // 
             // panel3
@@ -693,7 +693,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 122);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1307, 701);
+            this.panel3.Size = new System.Drawing.Size(1307, 718);
             this.panel3.TabIndex = 1;
             // 
             // printPreviewControlTransH
@@ -701,7 +701,7 @@
             this.printPreviewControlTransH.Dock = System.Windows.Forms.DockStyle.Fill;
             this.printPreviewControlTransH.Location = new System.Drawing.Point(757, 0);
             this.printPreviewControlTransH.Name = "printPreviewControlTransH";
-            this.printPreviewControlTransH.Size = new System.Drawing.Size(550, 701);
+            this.printPreviewControlTransH.Size = new System.Drawing.Size(550, 718);
             this.printPreviewControlTransH.TabIndex = 8;
             // 
             // dataGridViewTransHist
@@ -746,7 +746,7 @@
             this.dataGridViewTransHist.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridViewTransHist.RowTemplate.Height = 35;
             this.dataGridViewTransHist.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTransHist.Size = new System.Drawing.Size(757, 701);
+            this.dataGridViewTransHist.Size = new System.Drawing.Size(757, 718);
             this.dataGridViewTransHist.TabIndex = 7;
             this.dataGridViewTransHist.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewTransHist_CellContentClick);
             // 
@@ -867,9 +867,10 @@
             this.txtSearchTransHist.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtSearchTransHist.Location = new System.Drawing.Point(661, 9);
             this.txtSearchTransHist.Name = "txtSearchTransHist";
-            this.txtSearchTransHist.PlaceholderText = "Search Customer Here";
+            this.txtSearchTransHist.PlaceholderText = "Search Customer or Cashier Here";
             this.txtSearchTransHist.Size = new System.Drawing.Size(534, 38);
             this.txtSearchTransHist.TabIndex = 0;
+            this.txtSearchTransHist.TextChanged += new System.EventHandler(this.txtSearchTransHist_TextChanged);
             // 
             // dateTimePickerStartTrans
             // 
@@ -998,9 +999,9 @@
             // tabPage4
             // 
             this.tabPage4.Controls.Add(this.panelSoldItems);
-            this.tabPage4.Location = new System.Drawing.Point(4, 46);
+            this.tabPage4.Location = new System.Drawing.Point(4, 29);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(1307, 823);
+            this.tabPage4.Size = new System.Drawing.Size(1307, 840);
             this.tabPage4.TabIndex = 4;
             this.tabPage4.Text = "Sold";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -1012,7 +1013,7 @@
             this.panelSoldItems.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelSoldItems.Location = new System.Drawing.Point(0, 0);
             this.panelSoldItems.Name = "panelSoldItems";
-            this.panelSoldItems.Size = new System.Drawing.Size(1307, 823);
+            this.panelSoldItems.Size = new System.Drawing.Size(1307, 840);
             this.panelSoldItems.TabIndex = 1;
             // 
             // panel8
@@ -1021,7 +1022,7 @@
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel8.Location = new System.Drawing.Point(0, 119);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(1307, 704);
+            this.panel8.Size = new System.Drawing.Size(1307, 721);
             this.panel8.TabIndex = 1;
             // 
             // dataGridViewSoldItems
@@ -1069,8 +1070,90 @@
             this.dataGridViewSoldItems.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridViewSoldItems.RowTemplate.Height = 35;
             this.dataGridViewSoldItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewSoldItems.Size = new System.Drawing.Size(1307, 704);
+            this.dataGridViewSoldItems.Size = new System.Drawing.Size(1307, 721);
             this.dataGridViewSoldItems.TabIndex = 9;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewTextBoxColumn9.HeaderText = "#";
+            this.dataGridViewTextBoxColumn9.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.ReadOnly = true;
+            this.dataGridViewTextBoxColumn9.Width = 61;
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.dataGridViewTextBoxColumn10.HeaderText = "CardID";
+            this.dataGridViewTextBoxColumn10.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.Visible = false;
+            this.dataGridViewTextBoxColumn10.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            this.dataGridViewTextBoxColumn11.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.dataGridViewTextBoxColumn11.HeaderText = "INVOICE NO.";
+            this.dataGridViewTextBoxColumn11.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            this.dataGridViewTextBoxColumn11.ReadOnly = true;
+            this.dataGridViewTextBoxColumn11.Visible = false;
+            this.dataGridViewTextBoxColumn11.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn12
+            // 
+            this.dataGridViewTextBoxColumn12.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn12.HeaderText = "DESCRIPTION";
+            this.dataGridViewTextBoxColumn12.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            this.dataGridViewTextBoxColumn12.ReadOnly = true;
+            // 
+            // ExpDate
+            // 
+            this.ExpDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.ExpDate.HeaderText = "EXPIRATION";
+            this.ExpDate.MinimumWidth = 6;
+            this.ExpDate.Name = "ExpDate";
+            this.ExpDate.ReadOnly = true;
+            this.ExpDate.Width = 195;
+            // 
+            // Price
+            // 
+            this.Price.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Price.HeaderText = "PRICE";
+            this.Price.MinimumWidth = 6;
+            this.Price.Name = "Price";
+            this.Price.ReadOnly = true;
+            this.Price.Width = 115;
+            // 
+            // Qty
+            // 
+            this.Qty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Qty.HeaderText = "QTY";
+            this.Qty.MinimumWidth = 6;
+            this.Qty.Name = "Qty";
+            this.Qty.ReadOnly = true;
+            this.Qty.Width = 95;
+            // 
+            // Total
+            // 
+            this.Total.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Total.HeaderText = "TOTAL";
+            this.Total.MinimumWidth = 6;
+            this.Total.Name = "Total";
+            this.Total.ReadOnly = true;
+            this.Total.Width = 122;
+            // 
+            // dataGridViewTextBoxColumn13
+            // 
+            this.dataGridViewTextBoxColumn13.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.dataGridViewTextBoxColumn13.HeaderText = "DATE";
+            this.dataGridViewTextBoxColumn13.MaxInputLength = 13;
+            this.dataGridViewTextBoxColumn13.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
+            this.dataGridViewTextBoxColumn13.ReadOnly = true;
+            this.dataGridViewTextBoxColumn13.Width = 108;
             // 
             // panel10
             // 
@@ -1139,6 +1222,7 @@
             this.txtSearchSold.PlaceholderText = "Search Description Here";
             this.txtSearchSold.Size = new System.Drawing.Size(570, 38);
             this.txtSearchSold.TabIndex = 0;
+            this.txtSearchSold.TextChanged += new System.EventHandler(this.txtSearchSold_TextChanged);
             // 
             // dateTimePickerStartSold
             // 
@@ -1405,6 +1489,7 @@
             this.txtSearchSettleds.PlaceholderText = "Search Customer Here";
             this.txtSearchSettleds.Size = new System.Drawing.Size(570, 38);
             this.txtSearchSettleds.TabIndex = 0;
+            this.txtSearchSettleds.TextChanged += new System.EventHandler(this.txtSearchSettleds_TextChanged);
             // 
             // dateTimePickerSettStart
             // 
@@ -1495,88 +1580,6 @@
             this.printPreviewDialogSold.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialogSold.Icon")));
             this.printPreviewDialogSold.Name = "printPreviewDialogSold";
             this.printPreviewDialogSold.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataGridViewTextBoxColumn9.HeaderText = "#";
-            this.dataGridViewTextBoxColumn9.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            this.dataGridViewTextBoxColumn9.ReadOnly = true;
-            this.dataGridViewTextBoxColumn9.Width = 61;
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            this.dataGridViewTextBoxColumn10.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dataGridViewTextBoxColumn10.HeaderText = "CardID";
-            this.dataGridViewTextBoxColumn10.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            this.dataGridViewTextBoxColumn10.Visible = false;
-            this.dataGridViewTextBoxColumn10.Width = 128;
-            // 
-            // dataGridViewTextBoxColumn11
-            // 
-            this.dataGridViewTextBoxColumn11.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dataGridViewTextBoxColumn11.HeaderText = "INVOICE NO.";
-            this.dataGridViewTextBoxColumn11.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            this.dataGridViewTextBoxColumn11.ReadOnly = true;
-            this.dataGridViewTextBoxColumn11.Visible = false;
-            this.dataGridViewTextBoxColumn11.Width = 203;
-            // 
-            // dataGridViewTextBoxColumn12
-            // 
-            this.dataGridViewTextBoxColumn12.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn12.HeaderText = "DESCRIPTION";
-            this.dataGridViewTextBoxColumn12.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
-            this.dataGridViewTextBoxColumn12.ReadOnly = true;
-            // 
-            // ExpDate
-            // 
-            this.ExpDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.ExpDate.HeaderText = "EXPIRATION";
-            this.ExpDate.MinimumWidth = 6;
-            this.ExpDate.Name = "ExpDate";
-            this.ExpDate.ReadOnly = true;
-            this.ExpDate.Width = 195;
-            // 
-            // Price
-            // 
-            this.Price.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Price.HeaderText = "PRICE";
-            this.Price.MinimumWidth = 6;
-            this.Price.Name = "Price";
-            this.Price.ReadOnly = true;
-            this.Price.Width = 115;
-            // 
-            // Qty
-            // 
-            this.Qty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Qty.HeaderText = "QTY";
-            this.Qty.MinimumWidth = 6;
-            this.Qty.Name = "Qty";
-            this.Qty.ReadOnly = true;
-            this.Qty.Width = 95;
-            // 
-            // Total
-            // 
-            this.Total.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Total.HeaderText = "TOTAL";
-            this.Total.MinimumWidth = 6;
-            this.Total.Name = "Total";
-            this.Total.ReadOnly = true;
-            this.Total.Width = 122;
-            // 
-            // dataGridViewTextBoxColumn13
-            // 
-            this.dataGridViewTextBoxColumn13.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dataGridViewTextBoxColumn13.HeaderText = "DATE";
-            this.dataGridViewTextBoxColumn13.MaxInputLength = 13;
-            this.dataGridViewTextBoxColumn13.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
-            this.dataGridViewTextBoxColumn13.ReadOnly = true;
-            this.dataGridViewTextBoxColumn13.Width = 108;
             // 
             // frmReports
             // 

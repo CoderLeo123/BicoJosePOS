@@ -1047,6 +1047,72 @@ namespace Capstone
             previewSoldList();
         }
 
+        private void txtSearchTransHist_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtSearchTransHist.Text == String.Empty)
+                {
+                    classLoadData.LoadRecordsTransacHist(dataGridViewTransHist, txtSearchTransHist, dateTimePickerStartTrans, dateTimePickerEndTrans);
+
+                    return;
+                }
+                else
+                {
+                    classLoadData.LoadRecordsTransacHist(dataGridViewTransHist, txtSearchTransHist, dateTimePickerStartTrans, dateTimePickerEndTrans);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                cn.Close();
+                MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void txtSearchSold_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtSearchSold.Text == String.Empty)
+                {
+                    classLoadData.LoadRecordsSoldItems(dataGridViewSoldItems, txtSearchSold, dateTimePickerStartSold, dateTimePickerEndSold);
+                    return;
+                }
+                else
+                {
+                    classLoadData.LoadRecordsSoldItems(dataGridViewSoldItems, txtSearchSold, dateTimePickerStartSold, dateTimePickerEndSold);
+                }
+            }
+            catch (Exception ex)
+            {
+                cn.Close();
+                MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void txtSearchSettleds_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtSearchSettleds.Text == String.Empty)
+                {
+                    classLoadData.LoadRecordsTransacSettled(dataGridViewSettle, txtSearchSettleds, dateTimePickerSettStart, dateTimePickerSettEnd);
+                    return;
+                }
+                else
+                {
+                    classLoadData.LoadRecordsTransacSettled(dataGridViewSettle, txtSearchSettleds, dateTimePickerSettStart, dateTimePickerSettEnd);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                cn.Close();
+                MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
         private void btnPreviewSettl_Click(object sender, EventArgs e)
         {
             previewSettledList();

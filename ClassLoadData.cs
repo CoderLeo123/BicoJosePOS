@@ -363,16 +363,9 @@ namespace Capstone
                 {
                     string Quantity = dr[5].ToString();//Quantity
                     string LenseCheck = dr[8].ToString();//Lense_Check
-                    if (LenseCheck.Equals("0"))
-                    {
-                        Quantity = "N/A";
-                    }
-                    else
-                    {
-                        Quantity = dr[5].ToString();
-                    }
-
-
+                    
+                    Quantity = "N/A";
+                    
                     //                             2-DESCRIPTION / 1-Description       4-PRODUCT / 3-Product               6-STOCK / 5-Quantity                                                                                                                                      
                     i += 1;  // 0-Num   1-Item ID / 0-Item_ID                3-TYPE / 2-Type               5-PRICE / 4-Price                 7-CLASSIFICATION / 6-Classification                           
                     dgv.Rows.Add(i, dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), Quantity, dr[6].ToString(), LenseCheck);
