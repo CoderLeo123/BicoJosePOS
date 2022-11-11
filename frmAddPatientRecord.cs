@@ -34,7 +34,7 @@ namespace Capstone
         public void MethodCheckForBlank()
         {
             classLoginMethod.checkForBlank(txtAddFName, lblFNotice, "First Name");
-            classLoginMethod.checkForBlank(txtAddLName, lblLNotice, "Cabug Name");
+            classLoginMethod.checkForBlank(txtAddLName, lblLNotice, "Last Name");
             classLoginMethod.checkForBlank(txtAddAddress, lblAddNotice, "Address");
             classLoginMethod.checkForBlank(txtAddContact, lblConNotice, "Contact");
 

@@ -73,7 +73,7 @@ namespace Capstone
                     }
                     else
                     {
-                        if (ExpirationDate.Substring(0, 9) != "")//0, 10
+                        if (ExpirationDate.Substring(0, 8) != "")//0, 10
                         {
                             ExpirationDate = dr[2].ToString();// ().Substring(0, 9);
                         }

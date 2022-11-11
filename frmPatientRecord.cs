@@ -52,6 +52,7 @@ namespace Capstone
             frm.btnSavePatientRecord.Enabled = true;
             frm.btnUpdatePatientRecord.Enabled = false;
             frm.labelTitle.Text = "Create New Record";
+            //frm.MethodCheckForBlank();
             frm.ShowDialog();
         }
         public void LoadPrescription(string PID, out string ODSPH, out string ODCYL, out string ODAXIS, out string ODADD, out string ODPD, out string OSSPH, out string OSCYL, out string OSAXIS, out string OSADD, out string OSPD)
@@ -96,7 +97,9 @@ namespace Capstone
                 frmP.ShowDialog();
                 if (frmP.lblGrant.Text == "1")
                 {
+
                     frmAddPatientRecord frm = new frmAddPatientRecord(this);
+                    
                     frm.txtAddFName.Text = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[9].Value?.ToString();
                     frm.txtAddLName.Text = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[10].Value?.ToString();
                     frm.txtAddAddress.Text = dataGridViewPatientRecord.Rows[e.RowIndex].Cells[3].Value?.ToString();
@@ -132,7 +135,8 @@ namespace Capstone
                     frm.txtAddOSPD.Text = txtOSPD.Text;
                     frm.btnSavePatientRecord.Enabled = false;
                     frm.btnUpdatePatientRecord.Enabled = true;
-                    classPatient.LoadPatientTransactionList(frm.dataGridViewTrans, PatID); 
+                    classPatient.LoadPatientTransactionList(frm.dataGridViewTrans, PatID);
+                    frm.MethodCheckForBlank();
                     frm.ShowDialog();
                 }
             }

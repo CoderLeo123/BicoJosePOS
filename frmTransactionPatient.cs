@@ -372,6 +372,46 @@ namespace Capstone
             }
         }
 
+        private void txtSearchSTrans_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtSearchSTrans.Text == String.Empty)
+                {
+                    classPatient.LoadRecordsTransacSettled(dataGridViewSTrans, txtSearchSTrans);
+                }
+                else
+                {
+                    classPatient.LoadRecordsTransacSettled(dataGridViewSTrans, txtSearchSTrans);
+                }
+            }
+            catch (Exception ex)
+            {
+                cn.Close();
+                MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void txtSearchRTrans_TextChanged(object sender, EventArgs e)
+        {           
+            try
+            {
+                if (txtSearchRTrans.Text == String.Empty)
+                {
+                    classPatient.LoadRecordsTransacHist(dataGridViewRTrans, txtSearchRTrans);
+                }
+                else
+                {
+                    classPatient.LoadRecordsTransacHist(dataGridViewRTrans, txtSearchRTrans);
+                }
+            }
+            catch (Exception ex)
+            {
+                cn.Close();
+                MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
         public void paperSizeUpdate(out int paperL)
         {
             int dgvCount = 0; transNo = lblCurrentTransN.Text;

@@ -336,7 +336,7 @@
             // 
             // Classification
             // 
-            this.Classification.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Classification.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.Classification.HeaderText = "CLASSIFICATION";
             this.Classification.MinimumWidth = 6;
             this.Classification.Name = "Classification";

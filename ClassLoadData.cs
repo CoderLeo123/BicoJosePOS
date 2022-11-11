@@ -228,9 +228,9 @@ namespace Capstone
                     }
                     else
                     {
-                        if (ExpirationDate.Substring(0, 10) != "")
+                        if (ExpirationDate.Substring(0, 8) != "")
                         {
-                            ExpirationDate = dr[2].ToString().Substring(0, 9);
+                            ExpirationDate = dr[2].ToString();
                         }
                         else
                         {
@@ -412,7 +412,7 @@ namespace Capstone
                     }
                     else
                     {
-                        if (ExpirationDate.Substring(0, 9) != "")
+                        if (ExpirationDate.Substring(0, 8) != "")
                         {
                             ExpirationDate = dr[2].ToString();//.Substring(0, 9);
                         }
@@ -531,9 +531,9 @@ namespace Capstone
                 }
                 else
                 {
-                    if (ExpirationDate.Substring(0, 9) != "")
+                    if (ExpirationDate.Substring(0, 8) != "")
                     {
-                        ExpirationDate = dr[2].ToString().Substring(0, 9);
+                        ExpirationDate = dr[2].ToString();
                     }
                     else
                     {

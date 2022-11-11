@@ -24,6 +24,8 @@ namespace Capstone
         frmPaymentStatus frmL;
         private bool mouseDown;
         private Point lastLocation;
+        frmCashier frml;
+
         public frmEditOrder(frmPaymentStatus frmL)
         {
             InitializeComponent();
@@ -44,7 +46,11 @@ namespace Capstone
 
         private void btnCloseAccessories_Click(object sender, EventArgs e)
         {
+            classLoad.LoadRecordsOrder(frmL.dataGridViewOrderStatus, frmL.txtSearchOrderStatus);
+            classLoad.LoadRecordsOrderArrived(frmL.dataGridViewArrival, frmL.txtSearchArrival);
+            classLoad.LoadRecordsOrderClaimed(frmL.dataGridViewClaimed, frmL.txtSearchClaimed);
             this.Close();
+
         }
 
         private void btnSaveOrder_Click(object sender, EventArgs e)
@@ -205,6 +211,38 @@ namespace Capstone
 
                 this.Update();
             }
+        }
+
+        private void btnSettle_Click(object sender, EventArgs e)
+        {
+            frmSettlePayment frm = new frmSettlePayment(frml);
+            frm.comBoxPaymentTerms.SelectedIndex = 0;
+            frm.comBoxMethodPayment.SelectedIndex = 0;
+            classGenerateID.GenerateTransactionNo(frm.lblNewTransactionSet);
+            frm.comBoxPaymentTerms.Visible = false;
+            frm.labelPT.Text = "Transaction No"; //Payment Terms
+            frm.lblNewTransactionSet.Visible = true;
+
+            frm.labelBal.Text = "Customer ";
+            frm.labelBal.Visible = true;
+            frm.txtRemBalances.Visible = false;
+            frm.lblChangeDueDate.Visible = false;
+            frm.labelTot.Text = "Balance Due";
+            frm.panelDepositDueDate.Visible = true;
+            frm.labelDueDate.Text = "Settled Date";
+            frm.dateTimePickerDueDate.Value = DateTime.Now;
+            frm.lblCheckSettleBalance.Text = "1";
+            frm.lblTransacNo.Text = lblSettleTrans.Text;
+            frm.lblCustomer.Visible = true;
+            frm.lblCustomer.Text = lblName.Text;
+            frm.lblCashier.Text = lblCashier.Text;
+            frm.txtTotal.Text = lblBalance.Text;
+
+            frm.panelDepositDueDate.Size = new Size(0, 0);//539, 62
+            frm.panelDepositDueDate.Visible = false;
+            frm.panel1.Size = new Size(539, 339); // 539, 306
+            frm.Size = new Size(539, 714); // 539, 680
+            frm.ShowDialog();
         }
 
         public class ItemList

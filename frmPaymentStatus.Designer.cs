@@ -143,6 +143,7 @@
             this.printPreviewDialog = new System.Windows.Forms.PrintPreviewDialog();
             this.printDocumenItems = new System.Drawing.Printing.PrintDocument();
             this.panel23 = new System.Windows.Forms.Panel();
+            this.lblCashier = new System.Windows.Forms.Label();
             this.panel24 = new System.Windows.Forms.Panel();
             this.btnPayment = new System.Windows.Forms.Button();
             this.btnOrder = new System.Windows.Forms.Button();
@@ -232,7 +233,7 @@
             this.dataGridViewSettled.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridViewSettled.RowTemplate.Height = 35;
             this.dataGridViewSettled.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewSettled.Size = new System.Drawing.Size(1301, 138);
+            this.dataGridViewSettled.Size = new System.Drawing.Size(1301, 225);
             this.dataGridViewSettled.TabIndex = 5;
             // 
             // NumSettled
@@ -639,7 +640,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 46);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1307, 721);
+            this.tabPage1.Size = new System.Drawing.Size(1307, 808);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Payment";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -651,7 +652,7 @@
             this.panelPayment.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelPayment.Location = new System.Drawing.Point(3, 3);
             this.panelPayment.Name = "panelPayment";
-            this.panelPayment.Size = new System.Drawing.Size(1301, 715);
+            this.panelPayment.Size = new System.Drawing.Size(1301, 802);
             this.panelPayment.TabIndex = 0;
             // 
             // panel4
@@ -661,7 +662,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 463);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1301, 252);
+            this.panel4.Size = new System.Drawing.Size(1301, 339);
             this.panel4.TabIndex = 1;
             // 
             // panel6
@@ -670,7 +671,7 @@
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(0, 114);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(1301, 138);
+            this.panel6.Size = new System.Drawing.Size(1301, 225);
             this.panel6.TabIndex = 9;
             // 
             // panel2
@@ -698,7 +699,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 46);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1307, 721);
+            this.tabPage2.Size = new System.Drawing.Size(1307, 808);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Order";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -710,7 +711,7 @@
             this.panelOrder.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelOrder.Location = new System.Drawing.Point(3, 3);
             this.panelOrder.Name = "panelOrder";
-            this.panelOrder.Size = new System.Drawing.Size(1301, 715);
+            this.panelOrder.Size = new System.Drawing.Size(1301, 802);
             this.panelOrder.TabIndex = 0;
             // 
             // panel11
@@ -720,7 +721,7 @@
             this.panel11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel11.Location = new System.Drawing.Point(0, 111);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(1301, 604);
+            this.panel11.Size = new System.Drawing.Size(1301, 691);
             this.panel11.TabIndex = 1;
             // 
             // panel15
@@ -728,7 +729,7 @@
             this.panel15.Controls.Add(this.panel16);
             this.panel15.Controls.Add(this.panel17);
             this.panel15.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel15.Location = new System.Drawing.Point(0, 193);
+            this.panel15.Location = new System.Drawing.Point(0, 280);
             this.panel15.Name = "panel15";
             this.panel15.Size = new System.Drawing.Size(1301, 411);
             this.panel15.TabIndex = 7;
@@ -937,9 +938,9 @@
             this.label8.ForeColor = System.Drawing.Color.White;
             this.label8.Location = new System.Drawing.Point(12, 9);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(226, 41);
+            this.label8.Size = new System.Drawing.Size(198, 41);
             this.label8.TabIndex = 4;
-            this.label8.Text = "Arrived Orders";
+            this.label8.Text = "For Claiming";
             // 
             // dataGridViewOrderStatus
             // 
@@ -985,7 +986,7 @@
             this.dataGridViewOrderStatus.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridViewOrderStatus.RowTemplate.Height = 35;
             this.dataGridViewOrderStatus.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewOrderStatus.Size = new System.Drawing.Size(1301, 346);
+            this.dataGridViewOrderStatus.Size = new System.Drawing.Size(1301, 274);
             this.dataGridViewOrderStatus.TabIndex = 6;
             this.dataGridViewOrderStatus.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewOrderStatus_CellContentClick);
             // 
@@ -1168,9 +1169,9 @@
             this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(12, 9);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(263, 41);
+            this.label4.Size = new System.Drawing.Size(171, 41);
             this.label4.TabIndex = 4;
-            this.label4.Text = "In the Laboratory";
+            this.label4.Text = "On Process";
             // 
             // tabPage3
             // 
@@ -1407,6 +1408,7 @@
             // panel23
             // 
             this.panel23.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.panel23.Controls.Add(this.lblCashier);
             this.panel23.Controls.Add(this.panel24);
             this.panel23.Controls.Add(this.label11);
             this.panel23.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1414,6 +1416,16 @@
             this.panel23.Name = "panel23";
             this.panel23.Size = new System.Drawing.Size(1315, 72);
             this.panel23.TabIndex = 10;
+            // 
+            // lblCashier
+            // 
+            this.lblCashier.AutoSize = true;
+            this.lblCashier.Location = new System.Drawing.Point(629, 26);
+            this.lblCashier.Name = "lblCashier";
+            this.lblCashier.Size = new System.Drawing.Size(57, 20);
+            this.lblCashier.TabIndex = 44;
+            this.lblCashier.Text = "Cashier";
+            this.lblCashier.Visible = false;
             // 
             // panel24
             // 
@@ -1676,5 +1688,6 @@
         private DataGridViewImageColumn Ed;
         private Panel panel9;
         private Panel panel25;
+        public Label lblCashier;
     }
 }

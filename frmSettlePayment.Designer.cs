@@ -45,6 +45,7 @@
             this.comBoxPaymentTerms = new System.Windows.Forms.ComboBox();
             this.labelPT = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblLeastDeposit = new System.Windows.Forms.Label();
             this.lblNewTransactionSet = new System.Windows.Forms.Label();
             this.lblCheckSettleBalance = new System.Windows.Forms.Label();
             this.lblServRowCount = new System.Windows.Forms.Label();
@@ -287,6 +288,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.lblLeastDeposit);
             this.panel1.Controls.Add(this.lblNewTransactionSet);
             this.panel1.Controls.Add(this.lblCheckSettleBalance);
             this.panel1.Controls.Add(this.lblServRowCount);
@@ -316,6 +318,17 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(539, 488);
             this.panel1.TabIndex = 31;
+            // 
+            // lblLeastDeposit
+            // 
+            this.lblLeastDeposit.AutoSize = true;
+            this.lblLeastDeposit.ForeColor = System.Drawing.Color.Red;
+            this.lblLeastDeposit.Location = new System.Drawing.Point(501, 296);
+            this.lblLeastDeposit.Name = "lblLeastDeposit";
+            this.lblLeastDeposit.Size = new System.Drawing.Size(26, 31);
+            this.lblLeastDeposit.TabIndex = 28;
+            this.lblLeastDeposit.Text = "0";
+            this.lblLeastDeposit.Visible = false;
             // 
             // lblNewTransactionSet
             // 
@@ -397,7 +410,7 @@
             // 
             this.txtRemBalances.Enabled = false;
             this.txtRemBalances.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtRemBalances.Location = new System.Drawing.Point(277, 282);
+            this.txtRemBalances.Location = new System.Drawing.Point(278, 284);
             this.txtRemBalances.Name = "txtRemBalances";
             this.txtRemBalances.PlaceholderText = "0.00";
             this.txtRemBalances.Size = new System.Drawing.Size(220, 43);
@@ -498,8 +511,8 @@
             // lblCustomer
             // 
             this.lblCustomer.AutoSize = true;
-            this.lblCustomer.ForeColor = System.Drawing.Color.Red;
-            this.lblCustomer.Location = new System.Drawing.Point(147, 137);
+            this.lblCustomer.ForeColor = System.Drawing.Color.Black;
+            this.lblCustomer.Location = new System.Drawing.Point(263, 289);
             this.lblCustomer.Name = "lblCustomer";
             this.lblCustomer.Size = new System.Drawing.Size(75, 31);
             this.lblCustomer.TabIndex = 11;
@@ -920,5 +933,6 @@
         private System.Drawing.Printing.PrintDocument printDocumentBalance;
         public Panel panel1;
         public Label lblNewTransactionSet;
+        public Label lblLeastDeposit;
     }
 }

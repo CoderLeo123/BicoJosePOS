@@ -274,7 +274,7 @@ namespace Capstone
             {
                 //                              3-STOCK / 3-Quantity              
                 i += 1;  //0-#  1-EXPIRATION / 1-Expiration_Date    3-UNIT / 3-Quantity     
-                dgv.Rows.Add(i, dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), dr[0].ToString());
+                dgv.Rows.Add(i, dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), dr[7].ToString(), dr[0].ToString());
             }
             dr.Close();
             cn.Close();

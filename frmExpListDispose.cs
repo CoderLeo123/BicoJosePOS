@@ -48,7 +48,7 @@ namespace Capstone
                     if (frmP.lblGrant.Text == "1")
                     {
                         cn.Open();
-                        cm = new SqlCommand("Update tblStockInventory SET Status = 'Dispose' WHERE id LIKE '" + dataGridViewExpLis.Rows[e.RowIndex].Cells[1].Value.ToString() + "'", cn);
+                        cm = new SqlCommand("Update tblStockInventory SET Status = 'Dispose', Disposal_Date = '"+lblDisposalDate.Text+"' WHERE id LIKE '" + dataGridViewExpLis.Rows[e.RowIndex].Cells[1].Value.ToString() + "'", cn);
                         cm.ExecuteNonQuery();
                         cn.Close();
 
@@ -59,8 +59,9 @@ namespace Capstone
 
                         MessageBox.Show("Item has been successfully dispose.", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
                         classInvent.LoadNearExpiration(dataGridViewExpLis, txtSearchExpL, ITMID);
-                        classInvent.LoadItemWithExpiration(frmL.dataGridViewDispose, frmL.txtSearchDispose);
+                        classInvent.LoadItemWithExpiration(frmL.dataGridViewExpir, frmL.txtSearchExpirat);
                         classInvent.LoadDispose(frmL.dataGridViewDispose, frmL.txtSearchDispose);
+                        this.Close();
                     }
                     
 

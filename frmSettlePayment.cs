@@ -19,6 +19,8 @@ namespace Capstone
         ClassLoadData classLoadData = new ClassLoadData();
         ClassGenerateID classGenerateID = new ClassGenerateID();
         ClassInventory classInventory = new ClassInventory();
+        ClassPaymentOrderMonitoring classLoad = new ClassPaymentOrderMonitoring();
+
         ClassPaymentOrderMonitoring classPayment = new ClassPaymentOrderMonitoring();
         string title = "BICO-JOSE System";
         double num = 0, curr = 0;
@@ -75,6 +77,7 @@ namespace Capstone
             double TotalVar = double.Parse(total.Text);
             double initialDepRequired = TotalVar * 0.5;
             double remBal = TotalVar - paymentInput;
+            lblLeastDeposit.Text = initialDepRequired.ToString("00.00");
             if (paymentInput < initialDepRequired)
             {
                 Payment.Text = initialDepRequired.ToString("00.00");                
@@ -228,7 +231,7 @@ namespace Capstone
                         }
                             else if (lblCheckSettleBalance.Text == "1")
                             {
-                                
+                            frmPaymentStatus frmPS = new frmPaymentStatus();
                                 frmEditPaymentOrder frmEP = new frmEditPaymentOrder();
                                 PrintPreviewDialog preview = new PrintPreviewDialog();
                                 preview.Document = printDocumentBalance;
@@ -240,29 +243,50 @@ namespace Capstone
                                 preview.ShowDialog();
                                 MessageBox.Show("Payment succesfully", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 settleBalance();
+                                classLoad.LoadRecordsOrderArrived(frmPS.dataGridViewArrival, frmPS.txtSearchArrival);
                                 
                                 classPayment.LoadRecordsUnsettled(frmEP.dataGridViewPaymentStat, frmEP.txtSearchPending);                                
                                 this.Dispose();
+                                
 
-                            }
-                            
                         }
+
+                    }
                     }
                 }
                 else if(pTerms == "Deposit")
                 {
-                    pTerms = comBoxPaymentTerms.Text;
-                    PrintPreviewDialog preview = new PrintPreviewDialog();
-                    preview.Document = printDocument;
-                    pLength = 920;
-                    paperSizeUpdate(out pLength);
-                    printDocument.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("RECEIPT", 610, pLength);
-                    preview.PrintPreviewControl.Zoom = 0.75;
-                    preview.Size = new System.Drawing.Size(400, 650);
-                    preview.ShowDialog();
-                    settlement();
-                    clearCashier();
-                this.Dispose();
+                requiredDepositPercent(txtTotal, txtPayment);
+                if (txtPayment.Text == String.Empty)
+                {
+                    MessageBox.Show("Insufficient amount. Please enter the correct amount!", title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                else
+                {
+                    if (double.Parse(txtPayment.Text) < double.Parse(lblLeastDeposit.Text))
+                    {
+                        //MessageBox.Show("Payment must be higher than Total amount", title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        lblPaymentNotice.Text = "Ateast 50 percent: " + lblLeastDeposit.Text;                        
+                        lblPaymentNotice.Visible = true;
+                    }
+                    else
+                    {
+                        requiredDepositPercent(txtTotal, txtPayment);
+                        pTerms = comBoxPaymentTerms.Text;
+                        PrintPreviewDialog preview = new PrintPreviewDialog();
+                        preview.Document = printDocument;
+                        pLength = 920;
+                        paperSizeUpdate(out pLength);
+                        printDocument.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("RECEIPT", 610, pLength);
+                        preview.PrintPreviewControl.Zoom = 0.75;
+                        preview.Size = new System.Drawing.Size(400, 650);
+                        preview.ShowDialog();
+                        settlement();
+                        clearCashier();
+                        this.Dispose();
+                    }
+                }
             }
             //}
             //catch (Exception ex)
@@ -366,7 +390,7 @@ namespace Capstone
                 //preview.ShowDialog();
 
                 cn.Open();
-                cm = new SqlCommand("INSERT INTO tblPaymentStatus (Transaction_No, Customer, Total_Payment, Initial_Deposit, Due_Date, Rem_Balance, Status, Discount_Per_Trans, Settled_Date) VALUES(@Transaction_No, @Customer, @Total_Payment, @Initial_Deposit, @Due_Date, @Rem_Balance, @Status, @Discount_Per_Trans, @Settled_Date)", cn);
+                cm = new SqlCommand("INSERT INTO tblPaymentStatus (Transaction_No, Customer, Total_Payment, Initial_Deposit, Due_Date, Rem_Balance, Status, Discount_Per_Trans, Settled_Date, Completed_By) VALUES(@Transaction_No, @Customer, @Total_Payment, @Initial_Deposit, @Due_Date, @Rem_Balance, @Status, @Discount_Per_Trans, @Settled_Date, @Completed_By)", cn);
                 cm.Parameters.AddWithValue("@Transaction_No", transacNum);
                 cm.Parameters.AddWithValue("@Customer", customer);
                 cm.Parameters.AddWithValue("@Total_Payment", total.ToString("#,##0.00"));
@@ -377,7 +401,7 @@ namespace Capstone
                 cm.Parameters.AddWithValue("@Discount_Per_Trans", finalDiscount);
                 cm.Parameters.AddWithValue("@Settled_Date", settlementDate);
                 cm.Parameters.AddWithValue("@Completed_By", completedBy);
-            cm.ExecuteNonQuery();
+                cm.ExecuteNonQuery();
                 cn.Close();
 
                 checkOrderIfDeposit(out status, pTerms, out claimDate, out paymentStatus);
@@ -503,7 +527,7 @@ namespace Capstone
                 settledDate = "";
                 completedBy = "";
                 remBalance = total - payment;
-
+                cashier = lblCashier.Text;
                 if (paymentTerms == "Full")
                 {
                     statusValue = "Settled";
@@ -516,7 +540,7 @@ namespace Capstone
                     statusValue = "Pending";
                     remBalance = total - payment;
                     settledDate = dateTimePickerDueDate.Value.ToString();
-                    completedBy = "Undefined";
+                    completedBy = cashier;
                 }
             }
             catch (Exception ex)
@@ -655,6 +679,9 @@ namespace Capstone
                 panelDepositDueDate.Visible = true;
                 lblChangeDueDate.Visible = true;
                 txtChange.Text = "0";
+                requiredDepositPercent(txtTotal, txtPayment);
+                requiredDepositPercent(txtTotal, txtPayment);
+
             }
         }
 

@@ -325,9 +325,9 @@ namespace Capstone
             frm.pesoPaint = true;
             //frmR.lblCheckCell.Text = frmR.dataGridViewInitial.Rows[0].Cells[1].Value?.ToString();
             //frm.tabControlReports.TabPages.Clear();
-            TabPage tab4 = new TabPage("Check");
-            frm.tabControlReports.TabPages.Add(tab4);
-            tab4.Controls.Add(frm.dataGridViewInitial);
+            //TabPage tab4 = new TabPage("Check");
+            //frm.tabControlReports.TabPages.Add(tab4);
+            //tab4.Controls.Add(frm.dataGridViewInitial);
 
             frm.Show();
 
@@ -354,6 +354,7 @@ namespace Capstone
             TabPage tab = new TabPage("Payment Status");
             frm.tabControlPayOrdStatus.TabPages.Add(tab);
             tab.Controls.Add(frm.panelPayment);
+            frm.lblCashier.Text = lblName.Text;
             classLoad.LoadRecordsSettled(frm.dataGridViewSettled, frm.txtSearchSettled);
             classLoad.LoadRecordsUnsettled(frm.dataGridViewPaymentStat, frm.txtSearchPending);
         }

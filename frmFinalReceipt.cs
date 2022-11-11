@@ -101,7 +101,7 @@ namespace Capstone
         public void determinPanelFormHeight(int RowCount, out int Frameheight, out int WholeHeight, out int frm, int currFrame, int currWhole, int currFrm)
         {//Frame = 517, 85; NoteDue = 517, 85; Lens = 517, 77; whole = 517, 247; frm = 1177, 892;
             //Frameheight = 85; WholeHeight = 247; frm = 892;
-            int temp = 32;
+            int temp = 35;
             Frameheight = currFrame- temp; WholeHeight = currWhole - temp; frm = currFrm - temp;
             int offset = 0;
             for (int i = 1; i < 10; i++)

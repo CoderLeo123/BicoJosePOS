@@ -416,9 +416,9 @@
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.panelStockDetail);
-            this.tabPage3.Location = new System.Drawing.Point(4, 29);
+            this.tabPage3.Location = new System.Drawing.Point(4, 46);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(798, 406);
+            this.tabPage3.Size = new System.Drawing.Size(798, 389);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Stock Details";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -430,7 +430,7 @@
             this.panelStockDetail.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelStockDetail.Location = new System.Drawing.Point(0, 0);
             this.panelStockDetail.Name = "panelStockDetail";
-            this.panelStockDetail.Size = new System.Drawing.Size(798, 406);
+            this.panelStockDetail.Size = new System.Drawing.Size(798, 389);
             this.panelStockDetail.TabIndex = 0;
             // 
             // panel5
@@ -439,7 +439,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(0, 64);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(798, 342);
+            this.panel5.Size = new System.Drawing.Size(798, 325);
             this.panel5.TabIndex = 8;
             // 
             // dataGridViewDetails
@@ -485,7 +485,7 @@
             this.dataGridViewDetails.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridViewDetails.RowTemplate.Height = 35;
             this.dataGridViewDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewDetails.Size = new System.Drawing.Size(798, 342);
+            this.dataGridViewDetails.Size = new System.Drawing.Size(798, 325);
             this.dataGridViewDetails.TabIndex = 6;
             this.dataGridViewDetails.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDetails_CellClick);
             // 
@@ -504,6 +504,7 @@
             this.DeliveryDate.HeaderText = "DELIVERY";
             this.DeliveryDate.MinimumWidth = 6;
             this.DeliveryDate.Name = "DeliveryDate";
+            this.DeliveryDate.ReadOnly = true;
             this.DeliveryDate.Width = 160;
             // 
             // Qty
@@ -512,6 +513,7 @@
             this.Qty.HeaderText = "QTY";
             this.Qty.MinimumWidth = 6;
             this.Qty.Name = "Qty";
+            this.Qty.ReadOnly = true;
             this.Qty.Width = 95;
             // 
             // Unit
@@ -520,6 +522,7 @@
             this.Unit.HeaderText = "UNIT";
             this.Unit.MinimumWidth = 6;
             this.Unit.Name = "Unit";
+            this.Unit.ReadOnly = true;
             this.Unit.Width = 106;
             // 
             // Expiration
@@ -528,6 +531,7 @@
             this.Expiration.HeaderText = "EXPIRATION";
             this.Expiration.MinimumWidth = 6;
             this.Expiration.Name = "Expiration";
+            this.Expiration.ReadOnly = true;
             this.Expiration.Width = 195;
             // 
             // StockBy
@@ -536,6 +540,7 @@
             this.StockBy.HeaderText = "STOCK IN BY";
             this.StockBy.MinimumWidth = 6;
             this.StockBy.Name = "StockBy";
+            this.StockBy.ReadOnly = true;
             // 
             // StockID
             // 

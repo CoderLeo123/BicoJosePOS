@@ -70,7 +70,7 @@ namespace Capstone
 
             if (frmP.lblGrant.Text == "1")
             {
-                frmSignUpForgotPass frm = new frmSignUpForgotPass();
+                frmSignUpForgotPass frm = new frmSignUpForgotPass(this);
                 frm.tabControlRegister.TabPages.Clear();
                 TabPage tab = new TabPage("Sign Up");
                 frm.tabControlRegister.TabPages.Add(tab);
@@ -99,7 +99,7 @@ namespace Capstone
 
             if (frmP.lblGrant.Text == "1")
             {
-                frmSignUpForgotPass frm = new frmSignUpForgotPass();
+                frmSignUpForgotPass frm = new frmSignUpForgotPass(this);
                 frm.tabControlRegister.TabPages.Clear();
                 TabPage tab = new TabPage("Reset");
                 frm.tabControlRegister.TabPages.Add(tab);
@@ -216,7 +216,7 @@ namespace Capstone
                 if (frmP.lblGrant.Text == "1")
                 {
 
-                    frmSignUpForgotPass frm = new frmSignUpForgotPass();
+                    frmSignUpForgotPass frm = new frmSignUpForgotPass(this);
                     frm.tabControlRegister.TabPages.Clear();
                     TabPage tab = new TabPage("Edit User");
                     frm.tabControlRegister.TabPages.Add(tab);
@@ -257,6 +257,7 @@ namespace Capstone
 
                     }
                 }
+                LoadUsers();
             }
         }
 

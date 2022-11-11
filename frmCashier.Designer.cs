@@ -163,7 +163,7 @@
             this.ServNum});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.Azure;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
@@ -177,7 +177,7 @@
             this.dataGridViewService.RowHeadersVisible = false;
             this.dataGridViewService.RowHeadersWidth = 51;
             this.dataGridViewService.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dataGridViewService.RowTemplate.Height = 29;
+            this.dataGridViewService.RowTemplate.Height = 35;
             this.dataGridViewService.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewService.Size = new System.Drawing.Size(1173, 266);
             this.dataGridViewService.TabIndex = 4;
@@ -290,7 +290,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label12.ForeColor = System.Drawing.Color.Red;
+            this.label12.ForeColor = System.Drawing.Color.Lime;
             this.label12.Location = new System.Drawing.Point(217, 140);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(37, 41);
@@ -306,6 +306,7 @@
             this.label9.Size = new System.Drawing.Size(37, 41);
             this.label9.TabIndex = 25;
             this.label9.Text = "₱";
+            this.label9.Visible = false;
             // 
             // label8
             // 
@@ -352,7 +353,7 @@
             // 
             this.lblNetTotal.AutoSize = true;
             this.lblNetTotal.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblNetTotal.ForeColor = System.Drawing.Color.Red;
+            this.lblNetTotal.ForeColor = System.Drawing.Color.Lime;
             this.lblNetTotal.Location = new System.Drawing.Point(274, 140);
             this.lblNetTotal.Name = "lblNetTotal";
             this.lblNetTotal.Size = new System.Drawing.Size(94, 41);
@@ -447,6 +448,7 @@
             this.lblTotal.Size = new System.Drawing.Size(126, 62);
             this.lblTotal.TabIndex = 2;
             this.lblTotal.Text = "Total";
+            this.lblTotal.Visible = false;
             // 
             // lblCashierName
             // 
@@ -474,9 +476,9 @@
             // 
             this.panel4.Controls.Add(this.panel6);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(1173, 78);
+            this.panel4.Location = new System.Drawing.Point(1260, 78);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(427, 635);
+            this.panel4.Size = new System.Drawing.Size(340, 635);
             this.panel4.TabIndex = 3;
             // 
             // panel6
@@ -494,7 +496,7 @@
             this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel6.Location = new System.Drawing.Point(0, 0);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(427, 645);
+            this.panel6.Size = new System.Drawing.Size(340, 645);
             this.panel6.TabIndex = 1;
             // 
             // btnSettleBalance
@@ -526,7 +528,7 @@
             this.btnBrowseService.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnBrowseService.Location = new System.Drawing.Point(0, 136);
             this.btnBrowseService.Name = "btnBrowseService";
-            this.btnBrowseService.Size = new System.Drawing.Size(427, 67);
+            this.btnBrowseService.Size = new System.Drawing.Size(340, 67);
             this.btnBrowseService.TabIndex = 8;
             this.btnBrowseService.Text = "    [ F3 ] BROWSE SERVICE";
             this.btnBrowseService.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -638,7 +640,7 @@
             this.btnBrowseItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnBrowseItem.Location = new System.Drawing.Point(0, 68);
             this.btnBrowseItem.Name = "btnBrowseItem";
-            this.btnBrowseItem.Size = new System.Drawing.Size(427, 68);
+            this.btnBrowseItem.Size = new System.Drawing.Size(340, 68);
             this.btnBrowseItem.TabIndex = 1;
             this.btnBrowseItem.Text = "    [ F2 ] BROWSE ITEMS";
             this.btnBrowseItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -657,7 +659,7 @@
             this.btnNewTransaction.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnNewTransaction.Location = new System.Drawing.Point(0, 0);
             this.btnNewTransaction.Name = "btnNewTransaction";
-            this.btnNewTransaction.Size = new System.Drawing.Size(427, 68);
+            this.btnNewTransaction.Size = new System.Drawing.Size(340, 68);
             this.btnNewTransaction.TabIndex = 0;
             this.btnNewTransaction.Text = "    [ F1 ] NEW TRANSACTION";
             this.btnNewTransaction.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -681,7 +683,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 78);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1173, 180);
+            this.panel1.Size = new System.Drawing.Size(1260, 180);
             this.panel1.TabIndex = 4;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -817,7 +819,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(0, 258);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1173, 455);
+            this.panel5.Size = new System.Drawing.Size(1260, 455);
             this.panel5.TabIndex = 5;
             // 
             // dataGridViewCart
@@ -856,7 +858,7 @@
             this.LenseChe});
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.Azure;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
@@ -870,9 +872,9 @@
             this.dataGridViewCart.RowHeadersVisible = false;
             this.dataGridViewCart.RowHeadersWidth = 51;
             this.dataGridViewCart.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dataGridViewCart.RowTemplate.Height = 29;
+            this.dataGridViewCart.RowTemplate.Height = 35;
             this.dataGridViewCart.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewCart.Size = new System.Drawing.Size(1173, 455);
+            this.dataGridViewCart.Size = new System.Drawing.Size(1260, 455);
             this.dataGridViewCart.TabIndex = 3;
             this.dataGridViewCart.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewCart_CellContentClick);
             // 
@@ -1108,6 +1110,10 @@
         public Label label9;
         public Label label8;
         public Label lblUserNum;
+        private Label label13;
+        public ComboBox comBoxDiscountType;
+        public Label lblNetNoComa;
+        public Label lblGrossNoComma;
         private DataGridViewTextBoxColumn NumCart;
         private DataGridViewTextBoxColumn DescriptionCart;
         private DataGridViewTextBoxColumn Expiration;
@@ -1124,9 +1130,5 @@
         private DataGridViewTextBoxColumn unitMe;
         private DataGridViewTextBoxColumn Classif;
         private DataGridViewTextBoxColumn LenseChe;
-        private Label label13;
-        public ComboBox comBoxDiscountType;
-        public Label lblNetNoComa;
-        public Label lblGrossNoComma;
     }
 }
