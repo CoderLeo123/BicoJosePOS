@@ -36,6 +36,7 @@ namespace Capstone
 
         private void dataGridViewPaymentStat_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            classPayment.LoadRecordsUnsettled(dataGridViewPaymentStat, txtSearchPending);
             lblCurrentTransN.Text = dataGridViewPaymentStat.Rows[e.RowIndex].Cells[1].Value.ToString();
             string CName = dataGridViewPaymentStat.Rows[e.RowIndex].Cells[2].Value.ToString();
             //string Cashier = dataGridViewPaymentStat.Rows[e.RowIndex].Cells[7].Value.ToString();

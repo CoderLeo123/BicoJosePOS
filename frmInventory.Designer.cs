@@ -57,7 +57,7 @@
             this.NumInventory = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DescriptionInventory = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TypeInventory = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StockOnHandInventory = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SafeStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Class = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IDI = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -70,7 +70,7 @@
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CritStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -83,7 +83,7 @@
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OutStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -108,8 +108,9 @@
             this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DisStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ex = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DisposeDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel17 = new System.Windows.Forms.Panel();
             this.panel18 = new System.Windows.Forms.Panel();
@@ -121,7 +122,7 @@
             this.dataGridViewTextBoxColumn20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ReOStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel20 = new System.Windows.Forms.Panel();
@@ -365,7 +366,7 @@
             this.NumInventory,
             this.DescriptionInventory,
             this.TypeInventory,
-            this.StockOnHandInventory,
+            this.SafeStock,
             this.Class,
             this.IDI});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -414,14 +415,14 @@
             this.TypeInventory.Name = "TypeInventory";
             this.TypeInventory.ReadOnly = true;
             // 
-            // StockOnHandInventory
+            // SafeStock
             // 
-            this.StockOnHandInventory.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.StockOnHandInventory.HeaderText = "STOCK";
-            this.StockOnHandInventory.MinimumWidth = 6;
-            this.StockOnHandInventory.Name = "StockOnHandInventory";
-            this.StockOnHandInventory.ReadOnly = true;
-            this.StockOnHandInventory.Width = 127;
+            this.SafeStock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.SafeStock.HeaderText = "STOCK";
+            this.SafeStock.MinimumWidth = 6;
+            this.SafeStock.Name = "SafeStock";
+            this.SafeStock.ReadOnly = true;
+            this.SafeStock.Width = 127;
             // 
             // Class
             // 
@@ -520,7 +521,7 @@
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
+            this.CritStock,
             this.dataGridViewTextBoxColumn5,
             this.dataGridViewTextBoxColumn15});
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -569,14 +570,14 @@
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn4
+            // CritStock
             // 
-            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dataGridViewTextBoxColumn4.HeaderText = "STOCK";
-            this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Width = 127;
+            this.CritStock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.CritStock.HeaderText = "STOCK";
+            this.CritStock.MinimumWidth = 6;
+            this.CritStock.Name = "CritStock";
+            this.CritStock.ReadOnly = true;
+            this.CritStock.Width = 127;
             // 
             // dataGridViewTextBoxColumn5
             // 
@@ -673,7 +674,7 @@
             this.dataGridViewTextBoxColumn6,
             this.dataGridViewTextBoxColumn7,
             this.dataGridViewTextBoxColumn8,
-            this.dataGridViewTextBoxColumn9,
+            this.OutStock,
             this.dataGridViewTextBoxColumn10,
             this.ID});
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -722,14 +723,14 @@
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             this.dataGridViewTextBoxColumn8.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn9
+            // OutStock
             // 
-            this.dataGridViewTextBoxColumn9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dataGridViewTextBoxColumn9.HeaderText = "STOCK";
-            this.dataGridViewTextBoxColumn9.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            this.dataGridViewTextBoxColumn9.ReadOnly = true;
-            this.dataGridViewTextBoxColumn9.Width = 127;
+            this.OutStock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.OutStock.HeaderText = "STOCK";
+            this.OutStock.MinimumWidth = 6;
+            this.OutStock.Name = "OutStock";
+            this.OutStock.ReadOnly = true;
+            this.OutStock.Width = 127;
             // 
             // dataGridViewTextBoxColumn10
             // 
@@ -780,9 +781,9 @@
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.panelExpiration);
-            this.tabPage3.Location = new System.Drawing.Point(4, 46);
+            this.tabPage3.Location = new System.Drawing.Point(4, 29);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1307, 823);
+            this.tabPage3.Size = new System.Drawing.Size(1307, 840);
             this.tabPage3.TabIndex = 4;
             this.tabPage3.Text = "Expiration";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -794,7 +795,7 @@
             this.panelExpiration.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelExpiration.Location = new System.Drawing.Point(0, 0);
             this.panelExpiration.Name = "panelExpiration";
-            this.panelExpiration.Size = new System.Drawing.Size(1307, 823);
+            this.panelExpiration.Size = new System.Drawing.Size(1307, 840);
             this.panelExpiration.TabIndex = 40;
             // 
             // panel15
@@ -803,7 +804,7 @@
             this.panel15.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel15.Location = new System.Drawing.Point(0, 70);
             this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(1307, 753);
+            this.panel15.Size = new System.Drawing.Size(1307, 770);
             this.panel15.TabIndex = 1;
             // 
             // dataGridViewExpir
@@ -847,7 +848,7 @@
             this.dataGridViewExpir.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridViewExpir.RowTemplate.Height = 35;
             this.dataGridViewExpir.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewExpir.Size = new System.Drawing.Size(1307, 753);
+            this.dataGridViewExpir.Size = new System.Drawing.Size(1307, 770);
             this.dataGridViewExpir.TabIndex = 7;
             this.dataGridViewExpir.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewExpir_CellContentClick);
             // 
@@ -974,8 +975,9 @@
             this.dataGridViewTextBoxColumn16,
             this.dataGridViewTextBoxColumn17,
             this.dataGridViewTextBoxColumn18,
-            this.dataGridViewTextBoxColumn19,
+            this.DisStock,
             this.Ex,
+            this.DisposeDate,
             this.dataGridViewTextBoxColumn21});
             dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle10.BackColor = System.Drawing.Color.Azure;
@@ -1023,14 +1025,14 @@
             this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
             this.dataGridViewTextBoxColumn18.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn19
+            // DisStock
             // 
-            this.dataGridViewTextBoxColumn19.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dataGridViewTextBoxColumn19.HeaderText = "STOCK";
-            this.dataGridViewTextBoxColumn19.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
-            this.dataGridViewTextBoxColumn19.ReadOnly = true;
-            this.dataGridViewTextBoxColumn19.Width = 127;
+            this.DisStock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.DisStock.HeaderText = "STOCK";
+            this.DisStock.MinimumWidth = 6;
+            this.DisStock.Name = "DisStock";
+            this.DisStock.ReadOnly = true;
+            this.DisStock.Width = 127;
             // 
             // Ex
             // 
@@ -1040,6 +1042,15 @@
             this.Ex.Name = "Ex";
             this.Ex.ReadOnly = true;
             this.Ex.Width = 195;
+            // 
+            // DisposeDate
+            // 
+            this.DisposeDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.DisposeDate.HeaderText = "DISPOSAL DATE";
+            this.DisposeDate.MinimumWidth = 6;
+            this.DisposeDate.Name = "DisposeDate";
+            this.DisposeDate.ReadOnly = true;
+            this.DisposeDate.Width = 241;
             // 
             // dataGridViewTextBoxColumn21
             // 
@@ -1127,7 +1138,7 @@
             this.dataGridViewTextBoxColumn20,
             this.dataGridViewTextBoxColumn22,
             this.dataGridViewTextBoxColumn23,
-            this.dataGridViewTextBoxColumn24,
+            this.ReOStock,
             this.dataGridViewTextBoxColumn25,
             this.dataGridViewTextBoxColumn26});
             dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -1176,14 +1187,14 @@
             this.dataGridViewTextBoxColumn23.Name = "dataGridViewTextBoxColumn23";
             this.dataGridViewTextBoxColumn23.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn24
+            // ReOStock
             // 
-            this.dataGridViewTextBoxColumn24.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dataGridViewTextBoxColumn24.HeaderText = "STOCK";
-            this.dataGridViewTextBoxColumn24.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn24.Name = "dataGridViewTextBoxColumn24";
-            this.dataGridViewTextBoxColumn24.ReadOnly = true;
-            this.dataGridViewTextBoxColumn24.Width = 127;
+            this.ReOStock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.ReOStock.HeaderText = "STOCK";
+            this.ReOStock.MinimumWidth = 6;
+            this.ReOStock.Name = "ReOStock";
+            this.ReOStock.ReadOnly = true;
+            this.ReOStock.Width = 127;
             // 
             // dataGridViewTextBoxColumn25
             // 
@@ -1339,24 +1350,6 @@
         private Panel panel11;
         public DataGridView dataGridViewReOrder;
         public Panel panelReOrder;
-        private DataGridViewTextBoxColumn NumInventory;
-        private DataGridViewTextBoxColumn DescriptionInventory;
-        private DataGridViewTextBoxColumn TypeInventory;
-        private DataGridViewTextBoxColumn StockOnHandInventory;
-        private DataGridViewTextBoxColumn Class;
-        private DataGridViewTextBoxColumn IDI;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
-        private DataGridViewTextBoxColumn ID;
         private TabPage tabPage5;
         public Panel panelDispose;
         private Panel panel16;
@@ -1364,25 +1357,44 @@
         private Panel panel17;
         private Panel panel18;
         public TextBox txtSearchDispose;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;
-        private DataGridViewTextBoxColumn Ex;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn21;
         public Button btnSafety;
         private TabPage tabPage6;
         public Panel panelSafety;
         private Panel panel19;
         public DataGridView dataGridViewSafety;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn20;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn22;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn23;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn24;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn25;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn26;
         private Panel panel20;
         private Panel panel21;
         public TextBox txtSearchSafety;
+        private DataGridViewTextBoxColumn NumInventory;
+        private DataGridViewTextBoxColumn DescriptionInventory;
+        private DataGridViewTextBoxColumn TypeInventory;
+        private DataGridViewTextBoxColumn SafeStock;
+        private DataGridViewTextBoxColumn Class;
+        private DataGridViewTextBoxColumn IDI;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private DataGridViewTextBoxColumn CritStock;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private DataGridViewTextBoxColumn OutStock;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private DataGridViewTextBoxColumn ID;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
+        private DataGridViewTextBoxColumn DisStock;
+        private DataGridViewTextBoxColumn Ex;
+        private DataGridViewTextBoxColumn DisposeDate;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn21;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn20;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn22;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn23;
+        private DataGridViewTextBoxColumn ReOStock;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn25;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn26;
     }
 }

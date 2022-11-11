@@ -30,6 +30,10 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.lblCashier = new System.Windows.Forms.Label();
+            this.lblBalance = new System.Windows.Forms.Label();
+            this.lblSettleTrans = new System.Windows.Forms.Label();
+            this.lblName = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnCloseAccessories = new System.Windows.Forms.PictureBox();
             this.labelTitle = new System.Windows.Forms.Label();
@@ -48,6 +52,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panelClaimed = new System.Windows.Forms.Panel();
+            this.btnSettle = new System.Windows.Forms.Button();
             this.txtPaymentStatus = new System.Windows.Forms.TextBox();
             this.dateTimePickerClaimDate = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
@@ -83,6 +88,10 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.panel3.Controls.Add(this.lblCashier);
+            this.panel3.Controls.Add(this.lblBalance);
+            this.panel3.Controls.Add(this.lblSettleTrans);
+            this.panel3.Controls.Add(this.lblName);
             this.panel3.Controls.Add(this.panel4);
             this.panel3.Controls.Add(this.labelTitle);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -93,6 +102,46 @@
             this.panel3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseDown);
             this.panel3.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseMove);
             this.panel3.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseUp);
+            // 
+            // lblCashier
+            // 
+            this.lblCashier.AutoSize = true;
+            this.lblCashier.Location = new System.Drawing.Point(503, 9);
+            this.lblCashier.Name = "lblCashier";
+            this.lblCashier.Size = new System.Drawing.Size(108, 38);
+            this.lblCashier.TabIndex = 43;
+            this.lblCashier.Text = "Cashier";
+            this.lblCashier.Visible = false;
+            // 
+            // lblBalance
+            // 
+            this.lblBalance.AutoSize = true;
+            this.lblBalance.Location = new System.Drawing.Point(260, 12);
+            this.lblBalance.Name = "lblBalance";
+            this.lblBalance.Size = new System.Drawing.Size(112, 38);
+            this.lblBalance.TabIndex = 42;
+            this.lblBalance.Text = "Balance";
+            this.lblBalance.Visible = false;
+            // 
+            // lblSettleTrans
+            // 
+            this.lblSettleTrans.AutoSize = true;
+            this.lblSettleTrans.Location = new System.Drawing.Point(378, 12);
+            this.lblSettleTrans.Name = "lblSettleTrans";
+            this.lblSettleTrans.Size = new System.Drawing.Size(119, 38);
+            this.lblSettleTrans.TabIndex = 41;
+            this.lblSettleTrans.Text = "TransNo";
+            this.lblSettleTrans.Visible = false;
+            // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.Location = new System.Drawing.Point(163, 0);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(91, 38);
+            this.lblName.TabIndex = 40;
+            this.lblName.Text = "Name";
+            this.lblName.Visible = false;
             // 
             // panel4
             // 
@@ -263,16 +312,17 @@
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.panelClaimed);
-            this.tabPage2.Location = new System.Drawing.Point(4, 29);
+            this.tabPage2.Location = new System.Drawing.Point(4, 46);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(755, 584);
+            this.tabPage2.Size = new System.Drawing.Size(755, 567);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Claim";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // panelClaimed
             // 
+            this.panelClaimed.Controls.Add(this.btnSettle);
             this.panelClaimed.Controls.Add(this.txtPaymentStatus);
             this.panelClaimed.Controls.Add(this.dateTimePickerClaimDate);
             this.panelClaimed.Controls.Add(this.label4);
@@ -284,8 +334,25 @@
             this.panelClaimed.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelClaimed.Location = new System.Drawing.Point(3, 3);
             this.panelClaimed.Name = "panelClaimed";
-            this.panelClaimed.Size = new System.Drawing.Size(749, 578);
+            this.panelClaimed.Size = new System.Drawing.Size(749, 561);
             this.panelClaimed.TabIndex = 0;
+            // 
+            // btnSettle
+            // 
+            this.btnSettle.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnSettle.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSettle.Enabled = false;
+            this.btnSettle.FlatAppearance.BorderSize = 0;
+            this.btnSettle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSettle.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnSettle.ForeColor = System.Drawing.Color.White;
+            this.btnSettle.Location = new System.Drawing.Point(461, 253);
+            this.btnSettle.Name = "btnSettle";
+            this.btnSettle.Size = new System.Drawing.Size(153, 49);
+            this.btnSettle.TabIndex = 53;
+            this.btnSettle.Text = "Settle";
+            this.btnSettle.UseVisualStyleBackColor = false;
+            this.btnSettle.Click += new System.EventHandler(this.btnSettle_Click);
             // 
             // txtPaymentStatus
             // 
@@ -432,5 +499,10 @@
         private Panel panelTop;
         private System.Drawing.Printing.PrintDocument printDocumentAr;
         public Label labelTitle;
+        public Button btnSettle;
+        public Label lblCashier;
+        public Label lblBalance;
+        public Label lblSettleTrans;
+        public Label lblName;
     }
 }

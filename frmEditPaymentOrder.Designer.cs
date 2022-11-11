@@ -138,6 +138,7 @@
             // 
             // dataGridViewPaymentStat
             // 
+            this.dataGridViewPaymentStat.AllowUserToAddRows = false;
             this.dataGridViewPaymentStat.AllowUserToResizeColumns = false;
             this.dataGridViewPaymentStat.AllowUserToResizeRows = false;
             this.dataGridViewPaymentStat.BackgroundColor = System.Drawing.Color.White;

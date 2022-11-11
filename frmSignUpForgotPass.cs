@@ -16,23 +16,23 @@ namespace Capstone
         SqlCommand cm = new SqlCommand();
         DBConnection dbcon = new DBConnection();
         SqlDataReader dr;
-        
+        frmUserSetting frmU;
         ClassLoadData classLoadData = new ClassLoadData();
         ClassGenerateID classGenerateID = new ClassGenerateID();
         ClassLoginAndSignUp classLoginMethod = new ClassLoginAndSignUp();
         string title = "BICO-JOSE System";
         private bool mouseDown;
         private Point lastLocation;
-        public frmSignUpForgotPass()
+        public frmSignUpForgotPass(frmUserSetting frmU)
         {
             InitializeComponent();
             cn = new SqlConnection(dbcon.MyConnection());
             classGenerateID.GenerateUserID(lblUserID);
             txtPasswordCreate.PasswordChar = '●';
             txtConfirmPass.PasswordChar = '●';
-            txtConfirmNewPass.PasswordChar = '●'; 
-            txtNewPassword.PasswordChar = '●'; 
-            
+            txtConfirmNewPass.PasswordChar = '●';
+            txtNewPassword.PasswordChar = '●';
+            this.frmU = frmU;
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
@@ -145,17 +145,21 @@ namespace Capstone
                         if (frmP.lblGrant.Text == "1")
                         {
                             cn.Open();
-                            cm = new SqlCommand("INSERT INTO tblUser (User_ID, Username, Password, Name, User_Type) VALUES(@User_ID, @Username, @Password, @Name, @User_Type)", cn);
+                            cm = new SqlCommand("INSERT INTO tblUser (User_ID, Username, Password, Name, User_Type, FName, LName) VALUES(@User_ID, @Username, @Password, @Name, @User_Type, @FName, @LName)", cn);
                             cm.Parameters.AddWithValue("@User_ID", lblUserID.Text);
                             cm.Parameters.AddWithValue("@Username", Uname);
                             cm.Parameters.AddWithValue("@Password", correctP);
                             cm.Parameters.AddWithValue("@Name", fullname);
                             cm.Parameters.AddWithValue("@User_Type", type);
+                            cm.Parameters.AddWithValue("@FName", firtN);
+                            cm.Parameters.AddWithValue("@LName", lastN);
                             cm.ExecuteNonQuery();
                             cn.Close();
                             MessageBox.Show("New account has saved", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            frmU.LoadUsers();
 
                             this.Dispose(); this.Close();
+
                         }
                         else
                         {
@@ -165,15 +169,18 @@ namespace Capstone
                     else
                     {
                         cn.Open();
-                        cm = new SqlCommand("INSERT INTO tblUser (User_ID, Username, Password, Name, User_Type) VALUES(@User_ID, @Username, @Password, @Name, @User_Type)", cn);
+                        cm = new SqlCommand("INSERT INTO tblUser (User_ID, Username, Password, Name, User_Type, FName, LName) VALUES(@User_ID, @Username, @Password, @Name, @User_Type, @FName, @LName)", cn);
                         cm.Parameters.AddWithValue("@User_ID", lblUserID.Text);
                         cm.Parameters.AddWithValue("@Username", Uname);
                         cm.Parameters.AddWithValue("@Password", correctP);
                         cm.Parameters.AddWithValue("@Name", fullname);
                         cm.Parameters.AddWithValue("@User_Type", type);
+                        cm.Parameters.AddWithValue("@FName", firtN);
+                        cm.Parameters.AddWithValue("@LName", lastN);
                         cm.ExecuteNonQuery();
                         cn.Close();
                         MessageBox.Show("New account has saved", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        frmU.LoadUsers();
 
                         this.Dispose(); this.Close();
                     }
@@ -188,8 +195,7 @@ namespace Capstone
                 ResetTabCheckForBlank();
             }
 
-            
-            
+            frmU.LoadUsers();
         }
 
         private void panel1_MouseDown(object sender, MouseEventArgs e)

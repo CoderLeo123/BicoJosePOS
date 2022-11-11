@@ -22,8 +22,18 @@ namespace Capstone
         public frmInventory()
         {
             InitializeComponent();
+            textRightAlign();
         }
+        public void textRightAlign()
+        {
 
+            this.dataGridViewReOrder.Columns["SafeStock"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            this.dataGridViewCritical.Columns["CritStock"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            this.dataGridViewOutStock.Columns["OutStock"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            this.dataGridViewDispose.Columns["DisStock"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            this.dataGridViewSafety.Columns["ReOStock"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+           
+        }
         private void btnCloseInventory_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -102,6 +112,7 @@ namespace Capstone
         private void dataGridViewExpir_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             string ITMID = dataGridViewExpir.Rows[e.RowIndex].Cells[4].Value?.ToString();
+            string DateTo = DateTime.Now.ToString();
 
             frmExpListDispose frm = new frmExpListDispose(this);
             frm.tabControlExpLi.TabPages.Clear();
@@ -110,6 +121,7 @@ namespace Capstone
             tab.Controls.Add(frm.panelExpiLists);
             classInvent.LoadNearExpiration(frm.dataGridViewExpLis, frm.txtSearchExpL, ITMID);
             frm.lblITEMID.Text = ITMID;
+            frm.lblDisposalDate.Text = DateTo;
             frm.ShowDialog();
         }
 
