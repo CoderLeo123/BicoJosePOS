@@ -151,7 +151,7 @@ namespace Capstone
                 //}
                 string colName = dataGridViewBrowse.Columns[e.ColumnIndex].Name;
                 lblItemIDCheck.Text = dataGridViewBrowse[1, e.RowIndex].Value.ToString();
-                lblItemIDCheck.Visible = true;
+                //lblItemIDCheck.Visible = true;
                 string id = lblItemIDCheck.Text; // Item_ID
                 string classification = dataGridViewBrowse[7, e.RowIndex].Value.ToString();
                 string Stock2 = dataGridViewBrowse[6, e.RowIndex].Value.ToString(); //STOCK quantity

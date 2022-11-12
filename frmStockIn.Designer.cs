@@ -81,6 +81,7 @@
             this.TypeStockIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.individualID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Classific = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
@@ -250,7 +251,8 @@
             this.ITEM_ID,
             this.TypeStockIn,
             this.Column1,
-            this.individualID});
+            this.individualID,
+            this.Classific});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.Azure;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -359,6 +361,7 @@
             this.txtStockID.PlaceholderText = "S000000";
             this.txtStockID.Size = new System.Drawing.Size(279, 43);
             this.txtStockID.TabIndex = 3;
+            this.txtStockID.Text = "0";
             // 
             // label4
             // 
@@ -677,6 +680,14 @@
             this.individualID.Visible = false;
             this.individualID.Width = 125;
             // 
+            // Classific
+            // 
+            this.Classific.HeaderText = "Classific";
+            this.Classific.MinimumWidth = 6;
+            this.Classific.Name = "Classific";
+            this.Classific.Visible = false;
+            this.Classific.Width = 125;
+            // 
             // frmStockIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -759,5 +770,6 @@
         private DataGridViewTextBoxColumn TypeStockIn;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn individualID;
+        private DataGridViewTextBoxColumn Classific;
     }
 }

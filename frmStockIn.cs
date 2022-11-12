@@ -57,6 +57,7 @@ namespace Capstone
 
         private void dataGridViewStockItems_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            string classifi = dataGridViewStockItems.Rows[e.RowIndex].Cells[13].Value?.ToString();
             string colName = dataGridViewStockItems.Columns[e.ColumnIndex].Name;
             if (colName == "DeleteStockIn")
             {
@@ -83,6 +84,16 @@ namespace Capstone
                     TabPage tab = new TabPage("Edit Stock");
                     frm.tabControlStock.TabPages.Add(tab);
                     tab.Controls.Add(frm.panelEditStock);
+                    if(classifi == "Consumable")
+                    {
+                        frm.btnNonPerishable.Enabled = false;
+                        frm.btnPerishable.Enabled = true;
+                    }
+                    else if (classifi == "Non-Consumable")
+                    {
+                        frm.btnNonPerishable.Enabled = true;
+                        frm.btnPerishable.Enabled = false;
+                    }
                     frm.lblID.Text = dataGridViewStockItems.Rows[e.RowIndex].Cells[11].Value.ToString();
                     frm.txtQuantity.Text = dataGridViewStockItems[5, e.RowIndex].Value.ToString();
                     classLoadData.LoadUnitMeasure(frm.comBoxUnit);
@@ -280,19 +291,14 @@ namespace Capstone
                         {
                             cn.Close();
                             MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        
+                        }                        
                     }
                     classLoadData.LoadStock(dataGridViewStockItems, txtStockID, label3);
                     classLoadData.LoadStockOnHand(dataGridViewOnHand, txtSearch);
-                    
-                    
+                classGenerateID.GenerateStockID(txtStockID);
                     //LoadStock();
                     Clear();
-                }
-                
-                
-
+                }                
             }
             //txtStockInBy.Text = frm.lblName.Text;
         }

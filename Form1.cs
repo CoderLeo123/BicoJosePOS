@@ -12,6 +12,7 @@ namespace Capstone
         ClassInventory classInvent = new ClassInventory();
         ClassReports classReport = new ClassReports();
         ClassLoginAndSignUp classLoginMethod = new ClassLoginAndSignUp();
+        ClassGenerateID classGenerateID = new ClassGenerateID();
         ClassPaymentOrderMonitoring classLoad = new ClassPaymentOrderMonitoring();
         Boolean isCollapsed1, isCollapsed2, isCollapsed3 = true;
         frmReports frmR = new frmReports();
@@ -27,10 +28,42 @@ namespace Capstone
             frmLogin frmL = new frmLogin();
             frmL.Hide();
             stockBlinkNotify();
-
-            //frmR.dateSelect(frmR.dataGridViewInitial);
             //classReport.loadSalesPerDay(frmR.dataGridViewSalesR, "Total_Sale");
             //classReport.loadSalesPerDay(frmR.dataGridViewBalR, "Total_Bal");
+        }
+        public void Expiration()
+        {
+            cn = new SqlConnection(dbcon.MyConnection());
+            string expDate = "";
+            int pendingCount = 0;
+            int settledCount = 0;
+            cn.Open();
+            SqlCommand cm = new SqlCommand("SELECT * FROM ViewStockItemInventory WHERE Status LIKE 'Available'", cn);
+            dr = cm.ExecuteReader();
+            while (dr.Read())
+            {
+                expDate = dr[4].ToString();
+
+                //int years = DateTime.Now.Day - dateTimePickerBirthDate.Value.Year;
+                //if (dateTimePickerBirthDate.Value.AddYears(years) < DateTime.Now)
+                //{
+                //    years--;
+                //    txtAddAge.Text = years.ToString();
+                //}
+
+                if (expDate.Equals("Pending"))
+                {
+                    pendingCount++;
+                }
+                else if (expDate.Equals("Settled"))
+                {
+                    settledCount++;
+                }
+                txtPendi.Text = pendingCount.ToString();
+                txtSett.Text = settledCount.ToString();
+            }
+            dr.Close();
+            cn.Close();
         }
         public void Stock()
         {
@@ -40,7 +73,7 @@ namespace Capstone
             int outOfStockCount = 0;
             int safetyStockCount = 0;
             int reOrderStockCount = 0;
-            int ExpStockCount = 0;
+            //int ExpStockCount = 0;
             cn.Open();
                 SqlCommand cm = new SqlCommand("SELECT Stock_Level FROM tblItem WHERE Lense_Check = 1 Order by Item_ID", cn);
                 dr = cm.ExecuteReader();
@@ -66,10 +99,7 @@ namespace Capstone
                 }
                 dr.Close();
                 cn.Close();
-            //lblAvailableStock.Text = safetyStockCount.ToString();
-            //lblCriticalStock.Text = CriticalCount.ToString();
-            //lblOutOfStock.Text = outOfStockCount.ToString();
-            //lblReOrder.Text = reOrderStockCount.ToString();
+       
 
             txtAvailStock.Text = safetyStockCount.ToString();
             txtCrit.Text = CriticalCount.ToString();
@@ -77,13 +107,7 @@ namespace Capstone
             txtReOrd.Text = reOrderStockCount.ToString();
         }
         public void stockBlinkNotify()
-        {
-            //blinkLabel(lblCriticalStock, lblCritBlink);
-            //blinkLabel(lblReOrder, lblReOrBlink);
-            //blinkLabel(lblOutOfStock, lblOofStkBlink);
-            //blinkLabel(lblPendingPay, lblPendingBlink);
-            //blinkLabel(lblInLab, lblInLabBlink);
-
+        {           
             //blinkLabel2(txtAvailStock, Color.LightGreen);
             blinkLabel2(txtCrit, Color.Yellow);
             blinkLabel2(txtOutOStk, Color.Red);
@@ -98,24 +122,7 @@ namespace Capstone
             //blinkLabel2(txtSett, Color.LightGreen);
 
         }
-        //public async void blinkLabel(Label labelStock, Label labelBlink, Color color)
-        //{
-        //    bool blink = false;
-        //    int stockC = int.Parse(labelStock.Text);
-        //    if (stockC > 0)
-        //    {
-        //        blink = true;
-        //        while (blink)
-        //        {
-        //            await Task.Delay(500);
-        //            labelBlink.BackColor = labelBlink.BackColor == color ? Color.White : Color.Red;
-        //        }
-        //    }
-        //    else
-        //    {
-        //        blink = false;
-        //    }
-        //}
+      
         public async void blinkLabel2(TextBox labelBlink, Color color)
         {
             bool blink = false;
@@ -462,6 +469,10 @@ namespace Capstone
             panelLoad.Controls.Clear();
             panelLoad.Controls.Add(frm);
             frm.txtStockInBy.Text = lblName.Text;
+            if(frm.txtStockID.Text == "0")
+            {
+                classGenerateID.GenerateStockID(frm.txtStockID);
+            }
             frm.BringToFront();
             frm.Show();
             //btnCollapsed();
@@ -651,26 +662,26 @@ namespace Capstone
 
         private void timerDrpBtnProducts_Tick(object sender, EventArgs e)
         {
-            if (isCollapsed1)
-            {
-                dropBtnProducts.Image = Properties.Resources.Down_Arrow;
-                dropPanelProducts.Height += 10;
-                if (dropPanelProducts.Size == dropPanelProducts.MaximumSize)
-                {
-                    timerDrpBtnProducts.Stop();
-                    isCollapsed1 = false;
-                }
-            }
-            else
-            {
-                dropBtnProducts.Image = Properties.Resources.ProdItemServ;
-                dropPanelProducts.Height -= 10;
-                if (dropPanelProducts.Size == dropPanelProducts.MinimumSize)
-                {
-                    timerDrpBtnProducts.Stop();
-                    isCollapsed1 = true;
-                }
-            }
+            //if (isCollapsed1)
+            //{
+            //    dropBtnProducts.Image = Properties.Resources.Down_Arrow;
+            //    dropPanelProducts.Height += 10;
+            //    if (dropPanelProducts.Size == dropPanelProducts.MaximumSize)
+            //    {
+            //        timerDrpBtnProducts.Stop();
+            //        isCollapsed1 = false;
+            //    }
+            //}
+            //else
+            //{
+            //    dropBtnProducts.Image = Properties.Resources.ProdItemServ;
+            //    dropPanelProducts.Height -= 10;
+            //    if (dropPanelProducts.Size == dropPanelProducts.MinimumSize)
+            //    {
+            //        timerDrpBtnProducts.Stop();
+            //        isCollapsed1 = true;
+            //    }
+            //}
 
         }
 

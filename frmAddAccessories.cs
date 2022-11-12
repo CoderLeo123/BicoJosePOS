@@ -18,7 +18,7 @@ namespace Capstone
         ClassGenerateID classGenerateID = new ClassGenerateID();
         ClassLoadData classLoadData = new ClassLoadData();
         SqlDataReader dr;
-        string title = "BICO-JOSE System";
+        string title = "BICO-JOSE System"; bool duplicate = false;
         //string I_ID, T_ID, P_ID, S_ID; int count;
         frmProductsList frmList;
         private bool mouseDown;
@@ -132,24 +132,34 @@ namespace Capstone
 
         private void btnSaveService_Click(object sender, EventArgs e)
         {
+            
             try
             {
-                if (MessageBox.Show("Are you sure you want to save this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                scanForDuplicateName("Name", "tblServices", txtServiceName, out duplicate);
+                if (duplicate == false)
                 {
-                    cn.Open();
-                    cm = new SqlCommand("INSERT INTO tblServices (Service_ID, Name, Description, Price) VALUES(@ID, @Name, @Description, @Price)", cn);
-                    cm.Parameters.AddWithValue("@ID", txtServiceID.Text);
-                    cm.Parameters.AddWithValue("@Name", txtServiceName.Text);
-                    cm.Parameters.AddWithValue("@Description", txtServiceDesc.Text);
-                    cm.Parameters.AddWithValue("@Price", txtServicePrice.Text);
-                    cm.ExecuteNonQuery();
-                    cn.Close();
-                    MessageBox.Show("Record has been successfully saved.", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    ClearService();
-                    btnUpdateService.Enabled = false;
-                    classLoadData.LoadRecordsService(frmList.dataGridViewService, frmList.txtSearchService);
-                    //frmList.LoadRecordsService();
-                    this.Close();
+                    if (MessageBox.Show("Are you sure you want to save this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        cn.Open();
+                        cm = new SqlCommand("INSERT INTO tblServices (Service_ID, Name, Description, Price) VALUES(@ID, @Name, @Description, @Price)", cn);
+                        cm.Parameters.AddWithValue("@ID", txtServiceID.Text);
+                        cm.Parameters.AddWithValue("@Name", txtServiceName.Text);
+                        cm.Parameters.AddWithValue("@Description", txtServiceDesc.Text);
+                        cm.Parameters.AddWithValue("@Price", txtServicePrice.Text);
+                        cm.ExecuteNonQuery();
+                        cn.Close();
+                        MessageBox.Show("Record has been successfully saved.", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        ClearService();
+                        btnUpdateService.Enabled = false;
+                        classLoadData.LoadRecordsService(frmList.dataGridViewService, frmList.txtSearchService);
+                        //frmList.LoadRecordsService();
+                        this.Close();
+                    }
+                }
+                else if (duplicate == true)
+                {
+                    MessageBox.Show("That service name is already on the record", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
                 }
             }
             catch (Exception ex)
@@ -163,22 +173,31 @@ namespace Capstone
         {
             try
             {
-                if (MessageBox.Show("Are you sure you want to update this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                scanForDuplicateName("Name", "tblServices", txtServiceName, out duplicate);
+                if (duplicate == false)
                 {
-                    cn.Open();
-                    cm = new SqlCommand("UPDATE tblServices SET Service_ID = @ID, Name = @Name, Description = @Description, Price = @Price WHERE Service_ID LIKE '" + txtServiceID.Text + "'", cn);
-                    cm.Parameters.AddWithValue("@ID", txtServiceID.Text);
-                    cm.Parameters.AddWithValue("@Name", txtServiceName.Text);
-                    cm.Parameters.AddWithValue("@Description", txtServiceDesc.Text);
-                    cm.Parameters.AddWithValue("@Price", txtServicePrice.Text);
-                    cm.ExecuteNonQuery();
-                    cn.Close();
-                    MessageBox.Show("Record has been successfully updated.");
-                    ClearService();
-                    btnSaveService.Enabled = false;
-                    classLoadData.LoadRecordsService(frmList.dataGridViewService, frmList.txtSearchService);
-                    //frmList.LoadRecordsService();
-                    this.Close();
+                    if (MessageBox.Show("Are you sure you want to update this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        cn.Open();
+                        cm = new SqlCommand("UPDATE tblServices SET Service_ID = @ID, Name = @Name, Description = @Description, Price = @Price WHERE Service_ID LIKE '" + txtServiceID.Text + "'", cn);
+                        cm.Parameters.AddWithValue("@ID", txtServiceID.Text);
+                        cm.Parameters.AddWithValue("@Name", txtServiceName.Text);
+                        cm.Parameters.AddWithValue("@Description", txtServiceDesc.Text);
+                        cm.Parameters.AddWithValue("@Price", txtServicePrice.Text);
+                        cm.ExecuteNonQuery();
+                        cn.Close();
+                        MessageBox.Show("Record has been successfully updated.");
+                        ClearService();
+                        btnSaveService.Enabled = false;
+                        classLoadData.LoadRecordsService(frmList.dataGridViewService, frmList.txtSearchService);
+                        //frmList.LoadRecordsService();
+                        this.Close();
+                    }
+                }
+                else if (duplicate == true)
+                {
+                    MessageBox.Show("That service name is already on the record", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
                 }
             }
             catch (Exception ex)
@@ -213,23 +232,32 @@ namespace Capstone
         {
             try
             {
-                if (MessageBox.Show("Are you sure you want to save this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                scanForDuplicateName("Type", "tblType", txtType, out duplicate);
+                if (duplicate == false)
                 {
-                    cn.Open();
-                    cm = new SqlCommand("INSERT INTO tblType (Type_ID, Type, Product_ID, Product) VALUES(@ID, @Type, @ProductID, @Product)", cn);
-                    cm.Parameters.AddWithValue("@ID", txtTypID.Text);
-                    cm.Parameters.AddWithValue("@ProductID", txtProductIDType.Text);
-                    cm.Parameters.AddWithValue("@Product", comBoxProductType.Text);
-                    cm.Parameters.AddWithValue("@Type", txtType.Text);
-                    cm.ExecuteNonQuery();
-                    cn.Close();
-                    MessageBox.Show("Record has been successfully saved.");
-                    
-                    ClearType();
-                    classLoadData.LoadRecordsType(frmList.dataGridViewType, frmList.txtSearchTypeProducts);
-                    classLoadData.LoadRecordsItem(frmList.dataGridViewItems, frmList.txtSearch);
-                    //frmList.LoadRecordsType();
-                    this.Close();
+                    if (MessageBox.Show("Are you sure you want to save this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        cn.Open();
+                        cm = new SqlCommand("INSERT INTO tblType (Type_ID, Type, Product_ID, Product) VALUES(@ID, @Type, @ProductID, @Product)", cn);
+                        cm.Parameters.AddWithValue("@ID", txtTypID.Text);
+                        cm.Parameters.AddWithValue("@ProductID", txtProductIDType.Text);
+                        cm.Parameters.AddWithValue("@Product", comBoxProductType.Text);
+                        cm.Parameters.AddWithValue("@Type", txtType.Text);
+                        cm.ExecuteNonQuery();
+                        cn.Close();
+                        MessageBox.Show("Record has been successfully saved.");
+
+                        ClearType();
+                        classLoadData.LoadRecordsType(frmList.dataGridViewType, frmList.txtSearchTypeProducts);
+                        classLoadData.LoadRecordsItem(frmList.dataGridViewItems, frmList.txtSearch);
+                        //frmList.LoadRecordsType();
+                        this.Close();
+                    }
+                }
+                else if (duplicate == true)
+                {
+                    MessageBox.Show("That Type name is already on the record", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
                 }
             }
             catch (Exception ex)
@@ -243,20 +271,29 @@ namespace Capstone
         {
             try
             {
-                if (MessageBox.Show("Are you sure you want to save this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                scanForDuplicateName("Product", "tblProduct", txtProdName, out duplicate);
+                if (duplicate == false)
                 {
-                    cn.Open();
-                    cm = new SqlCommand("INSERT INTO tblProduct (Product_ID, Product) VALUES(@ID, @Product)", cn);
-                    cm.Parameters.AddWithValue("@ID", txtProdID.Text);
-                    cm.Parameters.AddWithValue("@Product", txtProdName.Text);
+                    if (MessageBox.Show("Are you sure you want to save this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        cn.Open();
+                        cm = new SqlCommand("INSERT INTO tblProduct (Product_ID, Product) VALUES(@ID, @Product)", cn);
+                        cm.Parameters.AddWithValue("@ID", txtProdID.Text);
+                        cm.Parameters.AddWithValue("@Product", txtProdName.Text);
 
-                    cm.ExecuteNonQuery();
-                    cn.Close();
-                    MessageBox.Show("Record has been successfully saved.");
-                    ClearProduct();
-                    classLoadData.LoadRecordsProduct(frmList.dataGridViewProduct, frmList.txtSearchProduct);
-                    //frmList.LoadRecordsProduct();
-                    this.Close();
+                        cm.ExecuteNonQuery();
+                        cn.Close();
+                        MessageBox.Show("Record has been successfully saved.");
+                        ClearProduct();
+                        classLoadData.LoadRecordsProduct(frmList.dataGridViewProduct, frmList.txtSearchProduct);
+                        //frmList.LoadRecordsProduct();
+                        this.Close();
+                    }
+                }
+                else if (duplicate == true)
+                {
+                    MessageBox.Show("That Product name is already on the record", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
                 }
             }
             catch (Exception ex)
@@ -269,21 +306,30 @@ namespace Capstone
         {
             try
             {
-                if (MessageBox.Show("Are you sure you want to update this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                scanForDuplicateName("Product", "tblProduct", txtProdName, out duplicate);
+                if (duplicate == false)
                 {
-                    cn.Open();
-                    cm = new SqlCommand("UPDATE tblProduct SET Product_ID = @ID, Product = @Product WHERE Product_ID LIKE '" + txtProdID.Text + "'", cn);
-                    cm.Parameters.AddWithValue("@ID", txtProdID.Text);
-                    cm.Parameters.AddWithValue("@Product", txtProdName.Text);
-                    cm.ExecuteNonQuery();
-                    cn.Close();
-                    MessageBox.Show("Record has been successfully updated.");
-                    ClearProduct();
-                    btnSaveProduct.Enabled = false;
-                    btnUpdateProduct.Enabled = true;
-                    classLoadData.LoadRecordsProduct(frmList.dataGridViewProduct, frmList.txtSearchProduct);
-                    //frmList.LoadRecordsProduct();
-                    this.Close();
+                    if (MessageBox.Show("Are you sure you want to update this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        cn.Open();
+                        cm = new SqlCommand("UPDATE tblProduct SET Product_ID = @ID, Product = @Product WHERE Product_ID LIKE '" + txtProdID.Text + "'", cn);
+                        cm.Parameters.AddWithValue("@ID", txtProdID.Text);
+                        cm.Parameters.AddWithValue("@Product", txtProdName.Text);
+                        cm.ExecuteNonQuery();
+                        cn.Close();
+                        MessageBox.Show("Record has been successfully updated.");
+                        ClearProduct();
+                        btnSaveProduct.Enabled = false;
+                        btnUpdateProduct.Enabled = true;
+                        classLoadData.LoadRecordsProduct(frmList.dataGridViewProduct, frmList.txtSearchProduct);
+                        //frmList.LoadRecordsProduct();
+                        this.Close();
+                    }
+                }
+                else if (duplicate == true)
+                {
+                    MessageBox.Show("That Product name is already on the record", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
                 }
             }
             catch (Exception ex)
@@ -296,24 +342,33 @@ namespace Capstone
         {
             try
             {
-                if (MessageBox.Show("Are you sure you want to update this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                scanForDuplicateName("Type", "tblType", txtType, out duplicate);
+                if (duplicate == false)
                 {
-                    cn.Open();
-                    cm = new SqlCommand("UPDATE tblType SET Type_ID = @ID, Type = @Type, Product_ID = @ProductID, Product = @Product WHERE Type_ID LIKE '" + txtTypID.Text + "'", cn);
-                    cm.Parameters.AddWithValue("@ID", txtTypID.Text);
-                    cm.Parameters.AddWithValue("@ProductID", txtProductIDType.Text);
-                    cm.Parameters.AddWithValue("@Product", comBoxProductType.Text);
-                    cm.Parameters.AddWithValue("@Type", txtType.Text);
-                    cm.ExecuteNonQuery();
-                    cn.Close();
-                    MessageBox.Show("Record has been successfully updated.");
-                    ClearType();
-                    btnSaveType.Enabled = false;
-                    btnUpdateType.Enabled = true;
-                    classLoadData.LoadRecordsType(frmList.dataGridViewType, frmList.txtSearchTypeProducts);
-                    classLoadData.LoadRecordsItem(frmList.dataGridViewItems, frmList.txtSearch);
-                    //frmList.LoadRecordsType();
-                    this.Close();
+                    if (MessageBox.Show("Are you sure you want to update this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        cn.Open();
+                        cm = new SqlCommand("UPDATE tblType SET Type_ID = @ID, Type = @Type, Product_ID = @ProductID, Product = @Product WHERE Type_ID LIKE '" + txtTypID.Text + "'", cn);
+                        cm.Parameters.AddWithValue("@ID", txtTypID.Text);
+                        cm.Parameters.AddWithValue("@ProductID", txtProductIDType.Text);
+                        cm.Parameters.AddWithValue("@Product", comBoxProductType.Text);
+                        cm.Parameters.AddWithValue("@Type", txtType.Text);
+                        cm.ExecuteNonQuery();
+                        cn.Close();
+                        MessageBox.Show("Record has been successfully updated.");
+                        ClearType();
+                        btnSaveType.Enabled = false;
+                        btnUpdateType.Enabled = true;
+                        classLoadData.LoadRecordsType(frmList.dataGridViewType, frmList.txtSearchTypeProducts);
+                        classLoadData.LoadRecordsItem(frmList.dataGridViewItems, frmList.txtSearch);
+                        //frmList.LoadRecordsType();
+                        this.Close();
+                    }
+                }
+                else if (duplicate == true)
+                {
+                    MessageBox.Show("That Type name is already on the record", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
                 }
             }
             catch (Exception ex)
@@ -337,25 +392,34 @@ namespace Capstone
         {
             try
             {
-                if (MessageBox.Show("Are you sure you want to save this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                scanForDuplicateName("Description", "tblItem", txtDescription, out duplicate);
+                if (duplicate == false)
                 {
-                    cn.Open();
-                    cm = new SqlCommand("INSERT INTO tblItem (Item_ID, Type_ID, Description, Price, Classification, Type, Stock_Level) VALUES(@ID, @TypeID, @Description, @Price, @Classification, @Type, @Stock_Level)", cn);
-                    cm.Parameters.AddWithValue("@ID", txtID.Text);
-                    cm.Parameters.AddWithValue("@Description", txtDescription.Text);
-                    cm.Parameters.AddWithValue("@TypeID", txtTypeID.Text);
-                    cm.Parameters.AddWithValue("@Price", txtPrice.Text);
-                    cm.Parameters.AddWithValue("@Classification", comBoxClassification.Text);
-                    cm.Parameters.AddWithValue("@Type", comBoxType.Text);
-                    cm.Parameters.AddWithValue("@Stock_Level", 3);
-                    cm.ExecuteNonQuery();
-                    cn.Close();
-                    MessageBox.Show("Record has been successfully saved.");
-                    ClearItem();
-                    btnUpdateItem.Enabled = false;
-                    classLoadData.LoadRecordsItem(frmList.dataGridViewItems, frmList.txtSearch);
-                    //frmList.LoadRecordsItem();
-                    this.Close();
+                    if (MessageBox.Show("Are you sure you want to save this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        cn.Open();
+                        cm = new SqlCommand("INSERT INTO tblItem (Item_ID, Type_ID, Description, Price, Classification, Type, Stock_Level) VALUES(@ID, @TypeID, @Description, @Price, @Classification, @Type, @Stock_Level)", cn);
+                        cm.Parameters.AddWithValue("@ID", txtID.Text);
+                        cm.Parameters.AddWithValue("@Description", txtDescription.Text);
+                        cm.Parameters.AddWithValue("@TypeID", txtTypeID.Text);
+                        cm.Parameters.AddWithValue("@Price", txtPrice.Text);
+                        cm.Parameters.AddWithValue("@Classification", comBoxClassification.Text);
+                        cm.Parameters.AddWithValue("@Type", comBoxType.Text);
+                        cm.Parameters.AddWithValue("@Stock_Level", 3);
+                        cm.ExecuteNonQuery();
+                        cn.Close();
+                        MessageBox.Show("Record has been successfully saved.");
+                        ClearItem();
+                        btnUpdateItem.Enabled = false;
+                        classLoadData.LoadRecordsItem(frmList.dataGridViewItems, frmList.txtSearch);
+                        //frmList.LoadRecordsItem();
+                        this.Close();
+                    }
+                }
+                else if (duplicate == true)
+                {
+                    MessageBox.Show("That Description is already on the record", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
                 }
             }
             catch (Exception ex)
@@ -368,23 +432,32 @@ namespace Capstone
         {
             try
             {
-                if (MessageBox.Show("Are you sure you want to update this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                scanForDuplicateName("Description", "tblItem", txtDescription, out duplicate);
+                if (duplicate == false)
                 {
-                    cn.Open();
-                    cm = new SqlCommand("UPDATE tblItem SET Item_ID = @ItemID, Type_ID = @TypeID, Description = @Description, Price = @Price, Classification = @Classification WHERE Item_ID LIKE '" + txtID.Text + "'", cn);
-                    cm.Parameters.AddWithValue("@ItemID", txtID.Text);
-                    cm.Parameters.AddWithValue("@Description", txtDescription.Text);
-                    cm.Parameters.AddWithValue("@Price", txtPrice.Text);
-                    cm.Parameters.AddWithValue("@TypeID", txtTypeID.Text);
-                    cm.Parameters.AddWithValue("@Classification", comBoxClassification.Text);
-                    cm.ExecuteNonQuery();
-                    cn.Close();
-                    MessageBox.Show("Record has been successfully updated.");
-                    ClearItem();
-                    btnSaveItem.Enabled = false;
-                    classLoadData.LoadRecordsItem(frmList.dataGridViewItems, frmList.txtSearch);
-                    //frmList.LoadRecordsItem();
-                    this.Close();
+                    if (MessageBox.Show("Are you sure you want to update this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        cn.Open();
+                        cm = new SqlCommand("UPDATE tblItem SET Item_ID = @ItemID, Type_ID = @TypeID, Description = @Description, Price = @Price, Classification = @Classification WHERE Item_ID LIKE '" + txtID.Text + "'", cn);
+                        cm.Parameters.AddWithValue("@ItemID", txtID.Text);
+                        cm.Parameters.AddWithValue("@Description", txtDescription.Text);
+                        cm.Parameters.AddWithValue("@Price", txtPrice.Text);
+                        cm.Parameters.AddWithValue("@TypeID", txtTypeID.Text);
+                        cm.Parameters.AddWithValue("@Classification", comBoxClassification.Text);
+                        cm.ExecuteNonQuery();
+                        cn.Close();
+                        MessageBox.Show("Record has been successfully updated.");
+                        ClearItem();
+                        btnSaveItem.Enabled = false;
+                        classLoadData.LoadRecordsItem(frmList.dataGridViewItems, frmList.txtSearch);
+                        //frmList.LoadRecordsItem();
+                        this.Close();
+                    }
+                }
+                else if (duplicate == true)
+                {
+                    MessageBox.Show("That Description is already on the record", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
                 }
             }
             catch (Exception ex)
@@ -425,5 +498,27 @@ namespace Capstone
         {
 
         }
+
+        public void scanForDuplicateName(string col, string tbl, TextBox Name, out bool found)
+        {            
+            cn = new SqlConnection(dbcon.MyConnection());            
+            cn.Open();
+            SqlCommand cm = new SqlCommand("SELECT "+ col + " FROM " + tbl + "  WHERE " + col + " LIKE @Name", cn);
+            cm.Parameters.AddWithValue("@Name", Name);            
+            dr = cm.ExecuteReader();
+            dr.Read();
+            if (dr.HasRows)
+            {
+                //UserName = dr[2].ToString();               
+                found = true;
+            }
+            else
+            {
+                found = false;                
+            }
+            dr.Close();
+            cn.Close();
+        }
+
     }
 }

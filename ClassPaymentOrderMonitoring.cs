@@ -21,7 +21,7 @@ namespace Capstone
             int i = 0;
             dgv.Rows.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT * FROM ViewPaymentCart WHERE Status = 'Pending' AND Customer LIKE '%" + txtSearch.Text + "%' Order by Transaction_No", cn);
+            SqlCommand cm = new SqlCommand("SELECT * FROM ViewPaymentCart WHERE Status = 'Pending' AND Transaction_No LIKE '%" + txtSearch.Text + "%' Order by Transaction_No", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
