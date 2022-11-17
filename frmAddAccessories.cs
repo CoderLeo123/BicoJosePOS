@@ -136,16 +136,20 @@ namespace Capstone
             try
             {
                 scanForDuplicateName("Name", "tblServices", txtServiceName, out duplicate);
+                double Price = double.Parse(txtServicePrice.Text);
+                string displayPrice = Price.ToString("#,##0.00");//₱
                 if (duplicate == false)
                 {
                     if (MessageBox.Show("Are you sure you want to save this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         cn.Open();
-                        cm = new SqlCommand("INSERT INTO tblServices (Service_ID, Name, Description, Price) VALUES(@ID, @Name, @Description, @Price)", cn);
+                        cm = new SqlCommand("INSERT INTO tblServices (Service_ID, Name, Description, Price, Display_Price) VALUES(@ID, @Name, @Description, @Price, @Display_Price)", cn);
                         cm.Parameters.AddWithValue("@ID", txtServiceID.Text);
                         cm.Parameters.AddWithValue("@Name", txtServiceName.Text);
                         cm.Parameters.AddWithValue("@Description", txtServiceDesc.Text);
-                        cm.Parameters.AddWithValue("@Price", txtServicePrice.Text);
+                        cm.Parameters.AddWithValue("@Price", displayPrice);
+                        cm.Parameters.AddWithValue("@Display_Price", displayPrice);
+
                         cm.ExecuteNonQuery();
                         cn.Close();
                         MessageBox.Show("Record has been successfully saved.", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -174,16 +178,19 @@ namespace Capstone
             try
             {
                 scanForDuplicateName("Name", "tblServices", txtServiceName, out duplicate);
+                double Price = double.Parse(txtServicePrice.Text);
+                string displayPrice = Price.ToString("#,##0.00");//₱
                 if (duplicate == false)
                 {
                     if (MessageBox.Show("Are you sure you want to update this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         cn.Open();
-                        cm = new SqlCommand("UPDATE tblServices SET Service_ID = @ID, Name = @Name, Description = @Description, Price = @Price WHERE Service_ID LIKE '" + txtServiceID.Text + "'", cn);
+                        cm = new SqlCommand("UPDATE tblServices SET Service_ID = @ID, Name = @Name, Description = @Description, Price = @Price, Display_Price = @Display_Price WHERE Service_ID LIKE '" + txtServiceID.Text + "'", cn);
                         cm.Parameters.AddWithValue("@ID", txtServiceID.Text);
                         cm.Parameters.AddWithValue("@Name", txtServiceName.Text);
                         cm.Parameters.AddWithValue("@Description", txtServiceDesc.Text);
-                        cm.Parameters.AddWithValue("@Price", txtServicePrice.Text);
+                        cm.Parameters.AddWithValue("@Display_Price", displayPrice);
+                        cm.Parameters.AddWithValue("@Price", displayPrice);
                         cm.ExecuteNonQuery();
                         cn.Close();
                         MessageBox.Show("Record has been successfully updated.");
@@ -272,6 +279,7 @@ namespace Capstone
             try
             {
                 scanForDuplicateName("Product", "tblProduct", txtProdName, out duplicate);
+
                 if (duplicate == false)
                 {
                     if (MessageBox.Show("Are you sure you want to save this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -387,25 +395,42 @@ namespace Capstone
         {
             this.Close();
         }
-
+        public void addPesoSign(string price, out string result)
+        {
+            int length = price.Length;
+            result = price;
+            if (length <= 4)
+            {
+                result = "\t\t" + price;
+            }
+            else if (length <= 8 && length > 4)
+            {
+                result = "\t" + price;
+            }
+        }
         private void btnSaveItem_Click(object sender, EventArgs e)
         {
             try
             {
                 scanForDuplicateName("Description", "tblItem", txtDescription, out duplicate);
+                double Price = double.Parse(txtPrice.Text);
+                string displayPrice = Price.ToString("#,##0.00");//₱
+                //addPesoSign(displayPrice, out displayPrice);
                 if (duplicate == false)
                 {
                     if (MessageBox.Show("Are you sure you want to save this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         cn.Open();
-                        cm = new SqlCommand("INSERT INTO tblItem (Item_ID, Type_ID, Description, Price, Classification, Type, Stock_Level) VALUES(@ID, @TypeID, @Description, @Price, @Classification, @Type, @Stock_Level)", cn);
+                        cm = new SqlCommand("INSERT INTO tblItem (Item_ID, Type_ID, Description, Price, Classification, Type, Stock_Level, Unit_Measure, Display_Price) VALUES(@ID, @TypeID, @Description, @Price, @Classification, @Type, @Stock_Level, @Unit_Measure, @Display_Price)", cn);
                         cm.Parameters.AddWithValue("@ID", txtID.Text);
                         cm.Parameters.AddWithValue("@Description", txtDescription.Text);
                         cm.Parameters.AddWithValue("@TypeID", txtTypeID.Text);
-                        cm.Parameters.AddWithValue("@Price", txtPrice.Text);
+                        cm.Parameters.AddWithValue("@Price", displayPrice);
                         cm.Parameters.AddWithValue("@Classification", comBoxClassification.Text);
                         cm.Parameters.AddWithValue("@Type", comBoxType.Text);
                         cm.Parameters.AddWithValue("@Stock_Level", 3);
+                        cm.Parameters.AddWithValue("@Unit_Measure", txtUnitMeasr.Text);
+                        cm.Parameters.AddWithValue("@Display_Price", displayPrice);
                         cm.ExecuteNonQuery();
                         cn.Close();
                         MessageBox.Show("Record has been successfully saved.");
@@ -433,16 +458,19 @@ namespace Capstone
             try
             {
                 scanForDuplicateName("Description", "tblItem", txtDescription, out duplicate);
+                double Price = double.Parse(txtPrice.Text);
+                string displayPrice = Price.ToString("#,##0.00");//₱
                 if (duplicate == false)
                 {
                     if (MessageBox.Show("Are you sure you want to update this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         cn.Open();
-                        cm = new SqlCommand("UPDATE tblItem SET Item_ID = @ItemID, Type_ID = @TypeID, Description = @Description, Price = @Price, Classification = @Classification WHERE Item_ID LIKE '" + txtID.Text + "'", cn);
+                        cm = new SqlCommand("UPDATE tblItem SET Item_ID = @ItemID, Type_ID = @TypeID, Description = @Description, Price = @Price, Classification = @Classification, Display_Price = @Display_Price WHERE Item_ID LIKE '" + txtID.Text + "'", cn);
                         cm.Parameters.AddWithValue("@ItemID", txtID.Text);
                         cm.Parameters.AddWithValue("@Description", txtDescription.Text);
-                        cm.Parameters.AddWithValue("@Price", txtPrice.Text);
+                        cm.Parameters.AddWithValue("@Price", displayPrice);
                         cm.Parameters.AddWithValue("@TypeID", txtTypeID.Text);
+                        cm.Parameters.AddWithValue("@Display_Price", displayPrice);
                         cm.Parameters.AddWithValue("@Classification", comBoxClassification.Text);
                         cm.ExecuteNonQuery();
                         cn.Close();
@@ -504,7 +532,7 @@ namespace Capstone
             cn = new SqlConnection(dbcon.MyConnection());            
             cn.Open();
             SqlCommand cm = new SqlCommand("SELECT "+ col + " FROM " + tbl + "  WHERE " + col + " LIKE @Name", cn);
-            cm.Parameters.AddWithValue("@Name", Name);            
+            cm.Parameters.AddWithValue("@Name", Name.Text);            
             dr = cm.ExecuteReader();
             dr.Read();
             if (dr.HasRows)
@@ -520,5 +548,26 @@ namespace Capstone
             cn.Close();
         }
 
+        private void tabControlCreateNew_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void txtPrice_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 46)
+            {
+                //accept . character
+            }
+            else if (e.KeyChar == 8)
+            {
+                //accept backspace
+            }
+            else if ((e.KeyChar < 48) || (e.KeyChar > 57))
+            {
+                //ascii code 48 - 57 = characters between 0 - 9
+                e.Handled = true;
+            }
+        }
     }
 }

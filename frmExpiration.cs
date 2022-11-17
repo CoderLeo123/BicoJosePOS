@@ -200,13 +200,15 @@ namespace Capstone
                 string ITID = frmB.lblItemIDCheck.Text;
                 int CartStockTotal = 0; int CartStock = 0;
                 int StockNum = 0;
+                
                 if (MessageBox.Show("Are you sure you want to save this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     for (int i = 0; i < dataGridViewSelected.Rows.Count; i++)
                     {
-                        
+                        double Total = double.Parse(dataGridViewSelected.Rows[i].Cells[3].Value.ToString());
+                        string displayTotal = Total.ToString("#,##0.00");
                         cn.Open();
-                        cm = new SqlCommand("INSERT INTO tblCart (Stock_Num, Item_ID, Transaction_No, Quantity, Price, Total, Date, Status, Lense_Check) VALUES (@Stock_Num, @Item_ID, @TransactionNo, @Quantity, @Price, @Total, @Date, 'Cart', @Lense_Check)", cn);
+                        cm = new SqlCommand("INSERT INTO tblCart (Stock_Num, Item_ID, Transaction_No, Quantity, Price, Total, Date, Status, Lense_Check, Display_Total) VALUES (@Stock_Num, @Item_ID, @TransactionNo, @Quantity, @Price, @Total, @Date, 'Cart', @Lense_Check, @Display_Total)", cn);
                         cm.Parameters.AddWithValue("@Stock_Num", dataGridViewSelected.Rows[i].Cells[6].Value.ToString());
                         cm.Parameters.AddWithValue("@Item_ID", frmB.dataGridViewBrowse.Rows[0].Cells[1].Value.ToString());
                         cm.Parameters.AddWithValue("@TransactionNo", frmB.lblTrans.Text);
@@ -215,6 +217,7 @@ namespace Capstone
                         cm.Parameters.AddWithValue("@Lense_Check", lblLenseCheck.Text);
                         cm.Parameters.AddWithValue("@Date", DateTime.Now);
                         cm.Parameters.AddWithValue("@Total", dataGridViewSelected.Rows[i].Cells[3].Value.ToString());
+                        cm.Parameters.AddWithValue("@Display_Total", displayTotal);
                         cm.ExecuteNonQuery();
                         cn.Close();
                         StockNum = int.Parse(dataGridViewSelected.Rows[i].Cells[6].Value.ToString());
@@ -326,10 +329,12 @@ namespace Capstone
                 }
                 string ITID = lblItemIDPass.Text;
                 int CartStock = int.Parse(txtQuantity.Text);
-                    if ((e.KeyChar == 13))//enter
+                double Total = double.Parse(lblTotal.Text);
+                string displayTotal = Total.ToString("#,##0.00");
+                if ((e.KeyChar == 13))//enter
                     {
                         cn.Open();
-                        cm = new SqlCommand("INSERT INTO tblCart (Stock_Num, Item_ID, Transaction_No, Quantity, Price, Total, Date, Status, Lense_Check) VALUES (@Stock_Num, @Item_ID, @TransactionNo, @Quantity, @Price, @Total, @Date, 'Cart', @Lense_Check)", cn);
+                        cm = new SqlCommand("INSERT INTO tblCart (Stock_Num, Item_ID, Transaction_No, Quantity, Price, Total, Date, Status, Lense_Check, Display_Total) VALUES (@Stock_Num, @Item_ID, @TransactionNo, @Quantity, @Price, @Total, @Date, 'Cart', @Lense_Check, @Display_Total)", cn);
                         //cm.Parameters.AddWithValue("@Stock_ID", frmB.dataGridViewBrowse[1, i].Value.ToString());
                         cm.Parameters.AddWithValue("@Stock_Num", dataGridViewNC[1, 0].Value.ToString());
                         cm.Parameters.AddWithValue("@Item_ID", lblItemIDPass.Text);
@@ -338,7 +343,7 @@ namespace Capstone
                         cm.Parameters.AddWithValue("@Price", lblPrice2.Text);
                         cm.Parameters.AddWithValue("@Date", DateTime.Now);
                         cm.Parameters.AddWithValue("@Total", lblTotal.Text);
-                        cm.Parameters.AddWithValue("@UnitM", lblTotal.Text);
+                        cm.Parameters.AddWithValue("@Display_Total", displayTotal);
                     cm.Parameters.AddWithValue("@Lense_Check", lblLenseCheck.Text);
                     cm.ExecuteNonQuery();
                         cn.Close();

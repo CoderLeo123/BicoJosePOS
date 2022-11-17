@@ -43,19 +43,9 @@
             this.btnNonPerishable = new System.Windows.Forms.Button();
             this.lblCheck = new System.Windows.Forms.Label();
             this.lblID = new System.Windows.Forms.Label();
-            this.comBoxUnit = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.tabControlStock = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panelEditStock = new System.Windows.Forms.Panel();
-            this.btnDeleteUnit = new System.Windows.Forms.Button();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.panelAddUnit = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.btnSaveUnit = new System.Windows.Forms.Button();
-            this.txtUnit = new System.Windows.Forms.TextBox();
-            this.btnCancelUnit = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.panelStockDetail = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -76,8 +66,6 @@
             this.tabControlStock.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panelEditStock.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            this.panelAddUnit.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.panelStockDetail.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -124,7 +112,7 @@
             // txtQuantity
             // 
             this.txtQuantity.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtQuantity.Location = new System.Drawing.Point(249, 174);
+            this.txtQuantity.Location = new System.Drawing.Point(250, 213);
             this.txtQuantity.Name = "txtQuantity";
             this.txtQuantity.PlaceholderText = "0";
             this.txtQuantity.Size = new System.Drawing.Size(199, 38);
@@ -136,7 +124,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(32, 169);
+            this.label4.Location = new System.Drawing.Point(33, 208);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(132, 41);
             this.label4.TabIndex = 41;
@@ -150,7 +138,7 @@
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(407, 295);
+            this.btnCancel.Location = new System.Drawing.Point(409, 270);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(153, 49);
             this.btnCancel.TabIndex = 38;
@@ -166,7 +154,7 @@
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdate.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnUpdate.Location = new System.Drawing.Point(248, 295);
+            this.btnUpdate.Location = new System.Drawing.Point(250, 270);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(153, 49);
             this.btnUpdate.TabIndex = 37;
@@ -176,7 +164,7 @@
             // 
             // dateExpiration
             // 
-            this.dateExpiration.Location = new System.Drawing.Point(249, 45);
+            this.dateExpiration.Location = new System.Drawing.Point(250, 84);
             this.dateExpiration.Name = "dateExpiration";
             this.dateExpiration.Size = new System.Drawing.Size(423, 43);
             this.dateExpiration.TabIndex = 44;
@@ -184,7 +172,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(32, 47);
+            this.label6.Location = new System.Drawing.Point(33, 86);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(205, 38);
             this.label6.TabIndex = 43;
@@ -198,7 +186,7 @@
             this.btnPerishable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPerishable.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnPerishable.ForeColor = System.Drawing.Color.White;
-            this.btnPerishable.Location = new System.Drawing.Point(249, 105);
+            this.btnPerishable.Location = new System.Drawing.Point(250, 144);
             this.btnPerishable.Name = "btnPerishable";
             this.btnPerishable.Size = new System.Drawing.Size(173, 49);
             this.btnPerishable.TabIndex = 45;
@@ -214,7 +202,7 @@
             this.btnNonPerishable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNonPerishable.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnNonPerishable.ForeColor = System.Drawing.Color.White;
-            this.btnNonPerishable.Location = new System.Drawing.Point(450, 105);
+            this.btnNonPerishable.Location = new System.Drawing.Point(451, 144);
             this.btnNonPerishable.Name = "btnNonPerishable";
             this.btnNonPerishable.Size = new System.Drawing.Size(222, 49);
             this.btnNonPerishable.TabIndex = 46;
@@ -225,7 +213,7 @@
             // lblCheck
             // 
             this.lblCheck.AutoSize = true;
-            this.lblCheck.Location = new System.Drawing.Point(32, 109);
+            this.lblCheck.Location = new System.Drawing.Point(33, 148);
             this.lblCheck.Name = "lblCheck";
             this.lblCheck.Size = new System.Drawing.Size(81, 38);
             this.lblCheck.TabIndex = 47;
@@ -235,54 +223,16 @@
             // lblID
             // 
             this.lblID.AutoSize = true;
-            this.lblID.Location = new System.Drawing.Point(32, 231);
+            this.lblID.Location = new System.Drawing.Point(33, 270);
             this.lblID.Name = "lblID";
             this.lblID.Size = new System.Drawing.Size(81, 38);
             this.lblID.TabIndex = 48;
             this.lblID.Text = "        ";
             this.lblID.Visible = false;
             // 
-            // comBoxUnit
-            // 
-            this.comBoxUnit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comBoxUnit.FormattingEnabled = true;
-            this.comBoxUnit.Items.AddRange(new object[] {
-            "pcs"});
-            this.comBoxUnit.Location = new System.Drawing.Point(249, 228);
-            this.comBoxUnit.Name = "comBoxUnit";
-            this.comBoxUnit.Size = new System.Drawing.Size(199, 45);
-            this.comBoxUnit.TabIndex = 49;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(32, 232);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(195, 41);
-            this.label2.TabIndex = 50;
-            this.label2.Text = "Unit Measure";
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.LimeGreen;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(469, 227);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(153, 49);
-            this.button1.TabIndex = 51;
-            this.button1.Text = "Add";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // tabControlStock
             // 
             this.tabControlStock.Controls.Add(this.tabPage1);
-            this.tabControlStock.Controls.Add(this.tabPage2);
             this.tabControlStock.Controls.Add(this.tabPage3);
             this.tabControlStock.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlStock.Location = new System.Drawing.Point(0, 57);
@@ -304,13 +254,9 @@
             // 
             // panelEditStock
             // 
-            this.panelEditStock.Controls.Add(this.btnDeleteUnit);
             this.panelEditStock.Controls.Add(this.dateExpiration);
-            this.panelEditStock.Controls.Add(this.button1);
             this.panelEditStock.Controls.Add(this.btnUpdate);
-            this.panelEditStock.Controls.Add(this.label2);
             this.panelEditStock.Controls.Add(this.btnCancel);
-            this.panelEditStock.Controls.Add(this.comBoxUnit);
             this.panelEditStock.Controls.Add(this.label4);
             this.panelEditStock.Controls.Add(this.lblID);
             this.panelEditStock.Controls.Add(this.txtQuantity);
@@ -324,101 +270,12 @@
             this.panelEditStock.Size = new System.Drawing.Size(792, 383);
             this.panelEditStock.TabIndex = 0;
             // 
-            // btnDeleteUnit
-            // 
-            this.btnDeleteUnit.BackColor = System.Drawing.Color.Red;
-            this.btnDeleteUnit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDeleteUnit.FlatAppearance.BorderSize = 0;
-            this.btnDeleteUnit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDeleteUnit.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnDeleteUnit.ForeColor = System.Drawing.Color.White;
-            this.btnDeleteUnit.Location = new System.Drawing.Point(628, 227);
-            this.btnDeleteUnit.Name = "btnDeleteUnit";
-            this.btnDeleteUnit.Size = new System.Drawing.Size(64, 49);
-            this.btnDeleteUnit.TabIndex = 54;
-            this.btnDeleteUnit.Text = "Del";
-            this.btnDeleteUnit.UseVisualStyleBackColor = false;
-            this.btnDeleteUnit.Click += new System.EventHandler(this.btnDeleteUnit_Click_1);
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.panelAddUnit);
-            this.tabPage2.Location = new System.Drawing.Point(4, 29);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(798, 406);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Add";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // panelAddUnit
-            // 
-            this.panelAddUnit.Controls.Add(this.label3);
-            this.panelAddUnit.Controls.Add(this.btnSaveUnit);
-            this.panelAddUnit.Controls.Add(this.txtUnit);
-            this.panelAddUnit.Controls.Add(this.btnCancelUnit);
-            this.panelAddUnit.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelAddUnit.Location = new System.Drawing.Point(3, 3);
-            this.panelAddUnit.Name = "panelAddUnit";
-            this.panelAddUnit.Size = new System.Drawing.Size(792, 400);
-            this.panelAddUnit.TabIndex = 56;
-            this.panelAddUnit.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(26, 28);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(195, 41);
-            this.label3.TabIndex = 51;
-            this.label3.Text = "Unit Measure";
-            // 
-            // btnSaveUnit
-            // 
-            this.btnSaveUnit.BackColor = System.Drawing.Color.LimeGreen;
-            this.btnSaveUnit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSaveUnit.FlatAppearance.BorderSize = 0;
-            this.btnSaveUnit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSaveUnit.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnSaveUnit.ForeColor = System.Drawing.Color.White;
-            this.btnSaveUnit.Location = new System.Drawing.Point(163, 91);
-            this.btnSaveUnit.Name = "btnSaveUnit";
-            this.btnSaveUnit.Size = new System.Drawing.Size(153, 49);
-            this.btnSaveUnit.TabIndex = 55;
-            this.btnSaveUnit.Text = "Save";
-            this.btnSaveUnit.UseVisualStyleBackColor = false;
-            this.btnSaveUnit.Click += new System.EventHandler(this.btnSaveUnit_Click);
-            // 
-            // txtUnit
-            // 
-            this.txtUnit.Location = new System.Drawing.Point(251, 28);
-            this.txtUnit.Name = "txtUnit";
-            this.txtUnit.Size = new System.Drawing.Size(224, 43);
-            this.txtUnit.TabIndex = 52;
-            // 
-            // btnCancelUnit
-            // 
-            this.btnCancelUnit.BackColor = System.Drawing.Color.Red;
-            this.btnCancelUnit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCancelUnit.FlatAppearance.BorderSize = 0;
-            this.btnCancelUnit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelUnit.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnCancelUnit.ForeColor = System.Drawing.Color.White;
-            this.btnCancelUnit.Location = new System.Drawing.Point(322, 91);
-            this.btnCancelUnit.Name = "btnCancelUnit";
-            this.btnCancelUnit.Size = new System.Drawing.Size(153, 49);
-            this.btnCancelUnit.TabIndex = 54;
-            this.btnCancelUnit.Text = "Cancel";
-            this.btnCancelUnit.UseVisualStyleBackColor = false;
-            this.btnCancelUnit.Click += new System.EventHandler(this.btnCancelUnit_Click);
-            // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.panelStockDetail);
-            this.tabPage3.Location = new System.Drawing.Point(4, 46);
+            this.tabPage3.Location = new System.Drawing.Point(4, 29);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(798, 389);
+            this.tabPage3.Size = new System.Drawing.Size(798, 406);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Stock Details";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -430,7 +287,7 @@
             this.panelStockDetail.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelStockDetail.Location = new System.Drawing.Point(0, 0);
             this.panelStockDetail.Name = "panelStockDetail";
-            this.panelStockDetail.Size = new System.Drawing.Size(798, 389);
+            this.panelStockDetail.Size = new System.Drawing.Size(798, 406);
             this.panelStockDetail.TabIndex = 0;
             // 
             // panel5
@@ -439,7 +296,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(0, 64);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(798, 325);
+            this.panel5.Size = new System.Drawing.Size(798, 342);
             this.panel5.TabIndex = 8;
             // 
             // dataGridViewDetails
@@ -485,7 +342,7 @@
             this.dataGridViewDetails.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridViewDetails.RowTemplate.Height = 35;
             this.dataGridViewDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewDetails.Size = new System.Drawing.Size(798, 325);
+            this.dataGridViewDetails.Size = new System.Drawing.Size(798, 342);
             this.dataGridViewDetails.TabIndex = 6;
             this.dataGridViewDetails.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDetails_CellClick);
             // 
@@ -601,9 +458,6 @@
             this.tabPage1.ResumeLayout(false);
             this.panelEditStock.ResumeLayout(false);
             this.panelEditStock.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
-            this.panelAddUnit.ResumeLayout(false);
-            this.panelAddUnit.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.panelStockDetail.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
@@ -628,18 +482,9 @@
         public Button btnNonPerishable;
         private Label lblCheck;
         public Label lblID;
-        private Label label2;
-        public Button button1;
         private TabPage tabPage1;
-        private TabPage tabPage2;
-        public Button btnSaveUnit;
-        public Panel panelAddUnit;
-        public Button btnCancelUnit;
-        public TextBox txtUnit;
-        public Label label3;
         public TabControl tabControlStock;
         public Panel panelEditStock;
-        public Button btnDeleteUnit;
         private TabPage tabPage3;
         private Panel panel5;
         private Panel panel4;
@@ -648,7 +493,6 @@
         public Label labelItemID;
         public Label labelItemName;
         public Panel panelStockDetail;
-        public ComboBox comBoxUnit;
         private DataGridViewTextBoxColumn NumService;
         private DataGridViewTextBoxColumn DeliveryDate;
         private DataGridViewTextBoxColumn Qty;

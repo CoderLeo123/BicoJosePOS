@@ -96,12 +96,12 @@ namespace Capstone
                     }
                     frm.lblID.Text = dataGridViewStockItems.Rows[e.RowIndex].Cells[11].Value.ToString();
                     frm.txtQuantity.Text = dataGridViewStockItems[5, e.RowIndex].Value.ToString();
-                    classLoadData.LoadUnitMeasure(frm.comBoxUnit);
-                    if (string.IsNullOrEmpty(frm.comBoxUnit.Text))
-                    {
-                        frm.comBoxUnit.Items.Add("pcs");
-                    }
-                    frm.comBoxUnit.SelectedIndex = 0;
+                    //classLoadData.LoadUnitMeasure(frm.comBoxUnit);
+                    //if (string.IsNullOrEmpty(frm.comBoxUnit.Text))
+                    //{
+                    //    frm.comBoxUnit.Items.Add("pcs");
+                    //}
+                    //frm.comBoxUnit.SelectedIndex = 0;
                     //frm.LoadUnitMeasure();
                     frm.ShowDialog(this);
                 }

@@ -57,6 +57,8 @@
             this.label12 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.panelItem = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtUnitMeasr = new System.Windows.Forms.TextBox();
             this.lblLenseCheck = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -88,8 +90,6 @@
             this.btnSaveService = new System.Windows.Forms.Button();
             this.txtServiceName = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtUnitMeasr = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnCloseAccessories)).BeginInit();
@@ -166,6 +166,7 @@
             this.tabControlCreateNew.SelectedIndex = 0;
             this.tabControlCreateNew.Size = new System.Drawing.Size(899, 590);
             this.tabControlCreateNew.TabIndex = 39;
+            this.tabControlCreateNew.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tabControlCreateNew_KeyPress);
             // 
             // tabPage1
             // 
@@ -478,6 +479,25 @@
             this.panelItem.Size = new System.Drawing.Size(891, 540);
             this.panelItem.TabIndex = 0;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(90, 261);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(183, 38);
+            this.label1.TabIndex = 57;
+            this.label1.Text = "Unit Measure";
+            // 
+            // txtUnitMeasr
+            // 
+            this.txtUnitMeasr.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtUnitMeasr.Location = new System.Drawing.Point(296, 263);
+            this.txtUnitMeasr.Name = "txtUnitMeasr";
+            this.txtUnitMeasr.PlaceholderText = "Ex. bottle";
+            this.txtUnitMeasr.Size = new System.Drawing.Size(256, 38);
+            this.txtUnitMeasr.TabIndex = 58;
+            // 
             // lblLenseCheck
             // 
             this.lblLenseCheck.AutoSize = true;
@@ -539,6 +559,7 @@
             this.txtPrice.PlaceholderText = "0.00";
             this.txtPrice.Size = new System.Drawing.Size(256, 38);
             this.txtPrice.TabIndex = 40;
+            this.txtPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrice_KeyPress_1);
             // 
             // txtProduct
             // 
@@ -832,25 +853,6 @@
             this.label16.Size = new System.Drawing.Size(198, 41);
             this.label16.TabIndex = 20;
             this.label16.Text = "Service Name";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(90, 261);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(183, 38);
-            this.label1.TabIndex = 57;
-            this.label1.Text = "Unit Measure";
-            // 
-            // txtUnitMeasr
-            // 
-            this.txtUnitMeasr.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUnitMeasr.Location = new System.Drawing.Point(296, 263);
-            this.txtUnitMeasr.Name = "txtUnitMeasr";
-            this.txtUnitMeasr.PlaceholderText = "Ex. bottle";
-            this.txtUnitMeasr.Size = new System.Drawing.Size(256, 38);
-            this.txtUnitMeasr.TabIndex = 58;
             // 
             // frmAddAccessories
             // 

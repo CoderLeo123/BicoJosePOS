@@ -16,6 +16,7 @@ namespace Capstone
         ClassPaymentOrderMonitoring classLoad = new ClassPaymentOrderMonitoring();
         Boolean isCollapsed1, isCollapsed2, isCollapsed3 = true;
         frmReports frmR = new frmReports();
+        frmDashboardDetails frmDetails = new frmDashboardDetails();
         int row = 0;
         public frmAdmin()
         {
@@ -25,6 +26,7 @@ namespace Capstone
             Users();
             Payment();
             Order();
+            Expiration();
             frmLogin frmL = new frmLogin();
             frmL.Hide();
             stockBlinkNotify();
@@ -35,36 +37,30 @@ namespace Capstone
         {
             cn = new SqlConnection(dbcon.MyConnection());
             string expDate = "";
-            int pendingCount = 0;
-            int settledCount = 0;
+            int expiringCount = 0;
+            int i = 0;
+            int dateDifference = 0;
+            DateTime expDateItem;
+            DateTime now = DateTime.Now;
             cn.Open();
             SqlCommand cm = new SqlCommand("SELECT * FROM ViewStockItemInventory WHERE Status LIKE 'Available'", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
                 expDate = dr[4].ToString();
-
-                //int years = DateTime.Now.Day - dateTimePickerBirthDate.Value.Year;
-                //if (dateTimePickerBirthDate.Value.AddYears(years) < DateTime.Now)
-                //{
-                //    years--;
-                //    txtAddAge.Text = years.ToString();
-                //}
-
-                if (expDate.Equals("Pending"))
+                expDateItem = DateTime.Parse(expDate);
+                dateDifference = (expDateItem.Date - now.Date).Days;
+                if(dateDifference <= 7)
                 {
-                    pendingCount++;
-                }
-                else if (expDate.Equals("Settled"))
-                {
-                    settledCount++;
-                }
-                txtPendi.Text = pendingCount.ToString();
-                txtSett.Text = settledCount.ToString();
+                    expiringCount++; i++;
+                    frmDetails.dataGridViewExpira.Rows.Add(i, dr[1].ToString(), dr[4].ToString(), dr[3].ToString());
+                }                                          
             }
             dr.Close();
             cn.Close();
+            txtExp.Text = expiringCount.ToString();
         }
+
         public void Stock()
         {
             cn = new SqlConnection(dbcon.MyConnection());            
@@ -98,9 +94,7 @@ namespace Capstone
                     }
                 }
                 dr.Close();
-                cn.Close();
-       
-
+                cn.Close();       
             txtAvailStock.Text = safetyStockCount.ToString();
             txtCrit.Text = CriticalCount.ToString();
             txtOutOStk.Text = outOfStockCount.ToString();
@@ -647,6 +641,31 @@ namespace Capstone
                 btnMaxi.BackColor = Color.Lime;
                 panelDas.Dock = DockStyle.Right;
             }
+        }
+
+        private void txtExp_TextChanged(object sender, EventArgs e)
+        {
+            int expCount = int.Parse(txtExp.Text);
+            if(expCount == 0 )
+            {
+                btnExpList.Enabled = false;
+            }
+            else if (expCount > 0)
+            {
+                btnExpList.Enabled = true;
+            }
+        }
+
+        private void btnExpList_Click(object sender, EventArgs e)
+        {
+            frmDashboardDetails frm = new frmDashboardDetails();
+            Expiration();
+            //frm.tabControlDashboardDetails.TabPages.Clear();
+            //TabPage tab = new TabPage("USER INFO");
+            //frm.tabControlDashboardDetails.TabPages.Add(tab);
+            //tab.Controls.Add(frm.panelUsers);
+            //frm.LoadUsers();
+            frm.ShowDialog();
         }
 
         private void btnLogout_Click(object sender, EventArgs e)//btnCashier

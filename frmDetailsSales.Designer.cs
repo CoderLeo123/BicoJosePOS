@@ -52,6 +52,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panelTransDetails = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.panelBrowseService = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -62,6 +63,7 @@
             this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.add = new System.Windows.Forms.DataGridViewImageColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.realPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.lblItemIDCheck = new System.Windows.Forms.Label();
@@ -76,7 +78,6 @@
             this.btnClose = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.panel8 = new System.Windows.Forms.Panel();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.printDocumentTransacDe = new System.Drawing.Printing.PrintDocument();
             this.tabControl1.SuspendLayout();
@@ -299,10 +300,10 @@
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.panelTransDetails);
-            this.tabPage2.Location = new System.Drawing.Point(4, 46);
+            this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(677, 365);
+            this.tabPage2.Size = new System.Drawing.Size(677, 382);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Transac Details";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -313,8 +314,15 @@
             this.panelTransDetails.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelTransDetails.Location = new System.Drawing.Point(3, 3);
             this.panelTransDetails.Name = "panelTransDetails";
-            this.panelTransDetails.Size = new System.Drawing.Size(671, 359);
+            this.panelTransDetails.Size = new System.Drawing.Size(671, 376);
             this.panelTransDetails.TabIndex = 0;
+            // 
+            // panel8
+            // 
+            this.panel8.Location = new System.Drawing.Point(5, 3);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(661, 356);
+            this.panel8.TabIndex = 24;
             // 
             // tabPage3
             // 
@@ -368,7 +376,8 @@
             this.Desc,
             this.Price,
             this.add,
-            this.ID});
+            this.ID,
+            this.realPrice});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.Azure;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -442,6 +451,14 @@
             this.ID.Name = "ID";
             this.ID.Visible = false;
             this.ID.Width = 125;
+            // 
+            // realPrice
+            // 
+            this.realPrice.HeaderText = "realPrice";
+            this.realPrice.MinimumWidth = 6;
+            this.realPrice.Name = "realPrice";
+            this.realPrice.Visible = false;
+            this.realPrice.Width = 125;
             // 
             // panel4
             // 
@@ -587,13 +604,6 @@
             this.panel3.Size = new System.Drawing.Size(685, 415);
             this.panel3.TabIndex = 36;
             // 
-            // panel8
-            // 
-            this.panel8.Location = new System.Drawing.Point(5, 3);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(661, 356);
-            this.panel8.TabIndex = 24;
-            // 
             // printPreviewDialog1
             // 
             this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
@@ -686,14 +696,15 @@
         public Label lblTrans;
         private Label lblTransNo;
         public TextBox txtSearchService;
+        private Panel panel8;
+        private PrintPreviewDialog printPreviewDialog1;
+        private System.Drawing.Printing.PrintDocument printDocumentTransacDe;
         private DataGridViewTextBoxColumn NumService;
         private DataGridViewTextBoxColumn NameServ;
         private DataGridViewTextBoxColumn Desc;
         private DataGridViewTextBoxColumn Price;
         private DataGridViewImageColumn add;
         private DataGridViewTextBoxColumn ID;
-        private Panel panel8;
-        private PrintPreviewDialog printPreviewDialog1;
-        private System.Drawing.Printing.PrintDocument printDocumentTransacDe;
+        private DataGridViewTextBoxColumn realPrice;
     }
 }

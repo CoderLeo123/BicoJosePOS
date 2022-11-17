@@ -55,6 +55,8 @@
             this.PRODUCT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PriceSearchItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Classification = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UNIT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.displayPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AddSearchItem = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -263,6 +265,8 @@
             this.PRODUCT,
             this.PriceSearchItem,
             this.Classification,
+            this.UNIT,
+            this.displayPrice,
             this.AddSearchItem});
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.Azure;
@@ -343,6 +347,22 @@
             this.Classification.ReadOnly = true;
             this.Classification.Width = 193;
             // 
+            // UNIT
+            // 
+            this.UNIT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.UNIT.HeaderText = "UNIT";
+            this.UNIT.MinimumWidth = 6;
+            this.UNIT.Name = "UNIT";
+            this.UNIT.Width = 87;
+            // 
+            // displayPrice
+            // 
+            this.displayPrice.HeaderText = "displayPrice";
+            this.displayPrice.MinimumWidth = 6;
+            this.displayPrice.Name = "displayPrice";
+            this.displayPrice.Visible = false;
+            this.displayPrice.Width = 125;
+            // 
             // AddSearchItem
             // 
             this.AddSearchItem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -400,6 +420,8 @@
         private DataGridViewTextBoxColumn PRODUCT;
         private DataGridViewTextBoxColumn PriceSearchItem;
         private DataGridViewTextBoxColumn Classification;
+        private DataGridViewTextBoxColumn UNIT;
+        private DataGridViewTextBoxColumn displayPrice;
         private DataGridViewImageColumn AddSearchItem;
     }
 }

@@ -56,6 +56,7 @@
             this.panelLoad = new System.Windows.Forms.Panel();
             this.panelDashboard = new System.Windows.Forms.Panel();
             this.panelDas = new System.Windows.Forms.Panel();
+            this.btnExpList = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -466,6 +467,7 @@
             // 
             // panelDas
             // 
+            this.panelDas.Controls.Add(this.btnExpList);
             this.panelDas.Controls.Add(this.label1);
             this.panelDas.Controls.Add(this.textBox1);
             this.panelDas.Controls.Add(this.textBox2);
@@ -508,6 +510,23 @@
             this.panelDas.Name = "panelDas";
             this.panelDas.Size = new System.Drawing.Size(1253, 948);
             this.panelDas.TabIndex = 81;
+            // 
+            // btnExpList
+            // 
+            this.btnExpList.BackColor = System.Drawing.Color.Lime;
+            this.btnExpList.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExpList.Enabled = false;
+            this.btnExpList.FlatAppearance.BorderSize = 0;
+            this.btnExpList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExpList.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnExpList.ForeColor = System.Drawing.Color.White;
+            this.btnExpList.Location = new System.Drawing.Point(429, 509);
+            this.btnExpList.Name = "btnExpList";
+            this.btnExpList.Size = new System.Drawing.Size(140, 49);
+            this.btnExpList.TabIndex = 81;
+            this.btnExpList.Text = "List";
+            this.btnExpList.UseVisualStyleBackColor = false;
+            this.btnExpList.Click += new System.EventHandler(this.btnExpList_Click);
             // 
             // label1
             // 
@@ -803,13 +822,14 @@
             this.txtExp.Enabled = false;
             this.txtExp.Font = new System.Drawing.Font("Segoe UI", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.txtExp.ForeColor = System.Drawing.Color.Black;
-            this.txtExp.Location = new System.Drawing.Point(266, 492);
+            this.txtExp.Location = new System.Drawing.Point(266, 508);
             this.txtExp.Name = "txtExp";
             this.txtExp.Size = new System.Drawing.Size(147, 50);
             this.txtExp.TabIndex = 73;
             this.txtExp.Text = "0";
             this.txtExp.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtExp.Visible = false;
+            this.txtExp.TextChanged += new System.EventHandler(this.txtExp_TextChanged);
             // 
             // lblSettledPay
             // 
@@ -1047,5 +1067,6 @@
         private PictureBox btnMaxi;
         public Panel panelDas;
         public Label label1;
+        public Button btnExpList;
     }
 }
