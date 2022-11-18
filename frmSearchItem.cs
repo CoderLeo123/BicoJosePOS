@@ -39,6 +39,28 @@ namespace Capstone
             
 
         }
+        public void addPesoSign(string price, out string result)
+        {
+            int length = price.Length;
+            result = price;
+
+            if (length <= 4)
+            {
+                result = "₱" + "    " + price;
+            }
+            else if (length == 5)
+            {
+                result = "₱" + "   " + price;
+            }
+            else if (length == 6)
+            {
+                result = "₱" + " " + price;
+            }
+            else if (length >= 7)
+            {
+                result = "₱" + price;
+            }
+        }
         public void LoadRecordsSearch(int lenseCheckValue)
         {
             int i = 0;
@@ -47,9 +69,12 @@ namespace Capstone
             cm = new SqlCommand("SELECT * FROM ViewItemProductType WHERE Stock_Check > "+lenseCheckValue +" ORDER BY Item_ID", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
-            {                                //                  2-DESCRIPTION / 1-Description          4-PRODUCT / 3-Product              6-CLASSIFICATION / 7-Classification
+            {
+                string displayPrice = dr[11].ToString();
+                addPesoSign(displayPrice, out displayPrice);
+                //                                        2-DESCRIPTION / 1-Description          4-PRODUCT / 3-Product              6-CLASSIFICATION / 7-Classification
                 i += 1;                      //  1-ITEM ID / 0-Item_ID                 3-TYPE / 2-Type                    5-PRICE / 4-Price
-                dataGridViewSearchItem.Rows.Add(i, dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[11].ToString(), dr[6].ToString(), dr[10].ToString(), dr[4].ToString());
+                dataGridViewSearchItem.Rows.Add(i, dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), displayPrice, dr[6].ToString(), dr[10].ToString(), dr[4].ToString());
             }
             dr.Close();
             cn.Close();
@@ -73,6 +98,7 @@ namespace Capstone
             {
                 string colName = dataGridViewSearchItem.Columns[e.ColumnIndex].Name;
                 string classifi = dataGridViewSearchItem.Rows[e.RowIndex].Cells[6].Value?.ToString();
+                string dateNow = DateTime.Now.ToString();
                 int stockNum = 0;
                 if (colName == "AddSearchItem")
                 {
@@ -107,7 +133,7 @@ namespace Capstone
                         cm.Parameters.AddWithValue("@StockID", frmList.txtStockID.Text);
                         cm.Parameters.AddWithValue("@ItemID", dataGridViewSearchItem[1, e.RowIndex].Value.ToString());
                         cm.Parameters.AddWithValue("@StockInBy", frmList.txtStockInBy.Text);
-                        cm.Parameters.AddWithValue("@StockDate", frmList.dateStockIn.Value);
+                        cm.Parameters.AddWithValue("@StockDate", dateNow);
                         cm.Parameters.AddWithValue("@Type", dataGridViewSearchItem[3, e.RowIndex].Value.ToString());
                         //cm.Parameters.AddWithValue("@Num", num.ToString());
                         //cm.Parameters.AddWithValue("@Expiration", DateTime.Now);

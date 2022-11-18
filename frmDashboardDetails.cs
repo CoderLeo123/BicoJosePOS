@@ -64,23 +64,23 @@ namespace Capstone
         //    cn.Close();
         //}
 
-        //public void LoadUsers()
-        //{
-        //    cn = new SqlConnection(dbcon.MyConnection());
-        //    int i = 0;
-        //    dataGridViewUsers.Rows.Clear();
-        //    cn.Open();
-        //    SqlCommand cm = new SqlCommand("SELECT * FROM tblUser Order by Num", cn);
-        //    dr = cm.ExecuteReader();
-        //    while (dr.Read())
-        //    {
-        //        //                                          2-ROLE / 2-User_Type       
-        //        i += 1; //          0-#  1-NAME / 1-Name           
-        //        dataGridViewUsers.Rows.Add(i, dr[4].ToString(), dr[5].ToString());
-        //    }
-        //    dr.Close();
-        //    cn.Close();
-        //}
+        public void LoadExpList()
+        {
+            cn = new SqlConnection(dbcon.MyConnection());
+            int i = 0;
+            dataGridViewExpira.Rows.Clear();
+            cn.Open();
+            SqlCommand cm = new SqlCommand("SELECT * FROM tblExpList ORDER BY Expiration_Date ASC", cn);
+            dr = cm.ExecuteReader();
+            while (dr.Read())
+            {
+                //                                          2-ROLE / 2-User_Type       
+                i += 1; //          0-#  1-NAME / 1-Name           
+                dataGridViewExpira.Rows.Add(i, dr[2].ToString(), dr[3].ToString(), dr[4].ToString());
+            }
+            dr.Close();
+            cn.Close();
+        }
 
         private void btnClose_Click(object sender, EventArgs e)
         {

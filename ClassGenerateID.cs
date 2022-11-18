@@ -320,6 +320,7 @@ namespace Capstone
                 }
                 else
                 {
+                    dr.Close();
                     cn.Close();
                     insertIntialID("tblStock", "Stock_ID", "STK1000");
                     selectAndIncrement("tblStock", "Stock_ID", stockID, 3, 4, 0);
@@ -337,6 +338,7 @@ namespace Capstone
             }
             catch (Exception ex)
             {
+                dr.Close();
                 cn.Close();
                 MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }

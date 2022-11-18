@@ -78,6 +78,7 @@
             this.StockID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblName2 = new System.Windows.Forms.Label();
             this.panelNC = new System.Windows.Forms.Panel();
+            this.lblClasific = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.lblPrice2 = new System.Windows.Forms.Label();
@@ -85,7 +86,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txtQuantity = new System.Windows.Forms.TextBox();
-            this.lblClasific = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -664,6 +664,16 @@
             this.panelNC.Size = new System.Drawing.Size(538, 357);
             this.panelNC.TabIndex = 0;
             // 
+            // lblClasific
+            // 
+            this.lblClasific.AutoSize = true;
+            this.lblClasific.Location = new System.Drawing.Point(0, 9);
+            this.lblClasific.Name = "lblClasific";
+            this.lblClasific.Size = new System.Drawing.Size(234, 38);
+            this.lblClasific.TabIndex = 46;
+            this.lblClasific.Text = "Non-Consumable";
+            this.lblClasific.Visible = false;
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -737,16 +747,6 @@
             this.txtQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtQuantity.TextChanged += new System.EventHandler(this.txtQuantity_TextChanged);
             this.txtQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuantity_KeyPress);
-            // 
-            // lblClasific
-            // 
-            this.lblClasific.AutoSize = true;
-            this.lblClasific.Location = new System.Drawing.Point(0, 9);
-            this.lblClasific.Name = "lblClasific";
-            this.lblClasific.Size = new System.Drawing.Size(234, 38);
-            this.lblClasific.TabIndex = 46;
-            this.lblClasific.Text = "Non-Consumable";
-            this.lblClasific.Visible = false;
             // 
             // frmExpiration
             // 

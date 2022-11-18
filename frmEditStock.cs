@@ -27,7 +27,7 @@ namespace Capstone
             InitializeComponent();
             cn = new SqlConnection(dbcon.MyConnection());
             frmList = frmAdd;
-            lblCheck.Text = "Yes";
+            //lblCheck.Text = "Yes";
         }
 
         private void btnClose_Click(object sender, EventArgs e)

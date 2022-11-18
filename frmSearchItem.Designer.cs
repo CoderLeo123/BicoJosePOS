@@ -332,7 +332,7 @@
             // 
             // PriceSearchItem
             // 
-            this.PriceSearchItem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.PriceSearchItem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.PriceSearchItem.HeaderText = "PRICE";
             this.PriceSearchItem.MinimumWidth = 6;
             this.PriceSearchItem.Name = "PriceSearchItem";

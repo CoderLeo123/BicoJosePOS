@@ -15,6 +15,7 @@ namespace Capstone
         ClassGenerateID classGenerateID = new ClassGenerateID();
         ClassPaymentOrderMonitoring classLoad = new ClassPaymentOrderMonitoring();
         Boolean isCollapsed1, isCollapsed2, isCollapsed3 = true;
+        List<ExpList> SList = new List<ExpList>();
         frmReports frmR = new frmReports();
         frmDashboardDetails frmDetails = new frmDashboardDetails();
         int row = 0;
@@ -33,6 +34,26 @@ namespace Capstone
             //classReport.loadSalesPerDay(frmR.dataGridViewSalesR, "Total_Sale");
             //classReport.loadSalesPerDay(frmR.dataGridViewBalR, "Total_Bal");
         }
+        public void addToExpList(string stockNum, string Description, string Expiration_Date, string Quantity, string Unit_Measure)
+        {
+            
+            cn.Open();
+            cm = new SqlCommand("INSERT INTO tblExpList (Stock_Num, Description, Expiration_Date, Quantity, Unit_Measure) VALUES(@Stock_Num, @Description, @Expiration_Date, @Quantity, @Unit_Measure)", cn);
+            cm.Parameters.AddWithValue("@Stock_Num", stockNum);
+            cm.Parameters.AddWithValue("@Description", Description);
+            cm.Parameters.AddWithValue("@Expiration_Date", Expiration_Date);
+            cm.Parameters.AddWithValue("@Quantity", Quantity);
+            cm.Parameters.AddWithValue("@Unit_Measure", Unit_Measure);            
+            cm.ExecuteNonQuery();            
+            cn.Close();
+        }
+        public void clearExpList()
+        {
+            cn.Open();
+            cm = new SqlCommand("DELETE FROM tblExpList", cn);            
+            cm.ExecuteNonQuery();
+            cn.Close();
+        }
         public void Expiration()
         {
             cn = new SqlConnection(dbcon.MyConnection());
@@ -40,28 +61,63 @@ namespace Capstone
             int expiringCount = 0;
             int i = 0;
             int dateDifference = 0;
+            string sNum = "", Description = "", Expiration_Date = "", Quantity = "", Unit_Measure = "";
             DateTime expDateItem;
             DateTime now = DateTime.Now;
+            clearExpList();
+            SList.Clear();
+            
             cn.Open();
             SqlCommand cm = new SqlCommand("SELECT * FROM ViewStockItemInventory WHERE Status LIKE 'Available'", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
+                
                 expDate = dr[4].ToString();
-                expDateItem = DateTime.Parse(expDate);
-                dateDifference = (now - expDateItem).Days;
+                sNum = dr[8].ToString(); Description = dr[1].ToString(); Expiration_Date = dr[4].ToString();
+                Quantity = dr[3].ToString(); Unit_Measure = dr[5].ToString();
 
-                if(dateDifference <= 7)
+                expDateItem = DateTime.Parse(expDate);
+                dateDifference = (expDateItem.Date - now.Date).Days;
+
+                label1.Text = dateDifference.ToString();
+                if (dateDifference <= 7)
                 {
-                    expiringCount++; i++;
-                    frmDetails.dataGridViewExpira.Rows.Add(i, dr[1].ToString(), dr[4].ToString(), dr[3].ToString());
-                }                                          
+                    ExpList List = new ExpList();
+                    // addToExpList(sNum, Description, Expiration_Date, Quantity, Unit_Measure); dr.GetString(0)
+                    expiringCount++; row++;
+                    List.sNum = sNum;
+                    List.Description = Description;
+                    List.Expiration_Date = Expiration_Date;
+                    List.Quantity = Quantity;
+                    List.Unit_Measure = Unit_Measure;
+                    SList.Add(List);
+                    //frmDetails.dataGridViewExpira.Rows.Add(i, dr[1].ToString(), dr[4].ToString(), dr[3].ToString());
+                }
+                
             }
             dr.Close();
             cn.Close();
             txtExp.Text = expiringCount.ToString();
+            if (expiringCount > 0)
+            {
+                for (int x = 0; x < expiringCount; x++)
+                {
+                    ExpList Itms = SList[x];
+                    addToExpList(Itms.sNum, Itms.Description, Itms.Expiration_Date, Itms.Quantity, Itms.Unit_Measure);
+                }
+            }
+            
         }
-
+        
+        public class ExpList
+        {
+            public string sNum { get; set; }
+            public string Description { get; set; }
+            public string Expiration_Date { get; set; }
+            public string Quantity { get; set; }
+            public string Unit_Measure { get; set; }            
+        }
         public void Stock()
         {
             cn = new SqlConnection(dbcon.MyConnection());            
@@ -661,6 +717,7 @@ namespace Capstone
         {
             frmDashboardDetails frm = new frmDashboardDetails();
             Expiration();
+            frm.LoadExpList();
             //frm.tabControlDashboardDetails.TabPages.Clear();
             //TabPage tab = new TabPage("USER INFO");
             //frm.tabControlDashboardDetails.TabPages.Add(tab);

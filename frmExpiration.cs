@@ -390,9 +390,9 @@ namespace Capstone
 
         private void txtQuantity_KeyPress(object sender, KeyPressEventArgs e)
         {
-            try
-            {
-                string classfici = "";
+            //try
+            //{
+                string classfici = lblClasific.Text;
                 if (e.KeyChar == 8)
                 {
                     //accept backspace
@@ -439,12 +439,12 @@ namespace Capstone
                     }
                 }                               
                 frmB.LoadCart();
-            }
-            catch (Exception ex)
-            {
-                cn.Close();
-                MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    cn.Close();
+            //    MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
         public void reducedQuantity(string itemID, int CartQty)
         {

@@ -38,7 +38,7 @@ namespace Capstone
         
         public void Clear()
         {
-            txtStockID.Clear();
+            //txtStockID.Clear();
             //txtStockInBy.Clear();
             dateStockIn.Value = DateTime.Now;
             dataGridViewStockItems.Rows.Clear();
@@ -88,12 +88,16 @@ namespace Capstone
                     {
                         frm.btnNonPerishable.Enabled = false;
                         frm.btnPerishable.Enabled = true;
+                        frm.lblCheck.Text = "Yes";
+
                     }
                     else if (classifi == "Non-Consumable")
                     {
                         frm.btnNonPerishable.Enabled = true;
                         frm.btnPerishable.Enabled = false;
                         frm.dateExpiration.Enabled = false;
+                        frm.lblCheck.Text = "No";
+
                     }
                     frm.lblID.Text = dataGridViewStockItems.Rows[e.RowIndex].Cells[11].Value.ToString();
                     frm.txtQuantity.Text = dataGridViewStockItems[5, e.RowIndex].Value.ToString();
@@ -251,6 +255,7 @@ namespace Capstone
                             // DateTime.Parse(dataGridViewStockItems.Rows[i].Cells[9].Value?.ToString()).ToShortDateString();
                             // lblCheck.Text = check;
                             check = dr[0].ToString();
+                            dr.Close();
                             cn.Close();
                             if (string.IsNullOrEmpty(check))
                             {
@@ -290,6 +295,7 @@ namespace Capstone
                         }
                         catch (Exception ex)
                         {
+                            dr.Close();
                             cn.Close();
                             MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }                        
