@@ -99,10 +99,7 @@ namespace Capstone
             string num = "";
             string type = "";
             string loginTime = DateTime.Now.ToString();
-            classLoginMethod.selectDataTblUser(out num, out ID, out UName, out CompleteName, out type, txtUsername, txtPassword, out found);// for checking
-            
-
-
+            classLoginMethod.selectDataTblUser(out num, out ID, out UName, out CompleteName, out type, txtUsername, txtPassword, out found);// for checking           
             if (found == false)
             {
                 MessageBox.Show("Invalid credentials. Try again", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -144,10 +141,8 @@ namespace Capstone
                     frm.lblUserNum.Text = num;
                     frm.panelDas.Dock = DockStyle.Fill;
                     frm.labelTitle.Text = "Master Administrator";
-                    frm.ShowDialog();
-                    
+                    frm.ShowDialog();                    
                     this.Hide();  this.Close(); 
-
                 }
                 else
                 {

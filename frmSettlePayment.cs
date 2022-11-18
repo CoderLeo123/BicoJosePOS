@@ -800,8 +800,8 @@ namespace Capstone
                     e.Graphics.DrawString(resultText, printFont, Brushes.Black, (x += 38), y);
 
                     getValueIfAnyElseBlank(dgvCount, frmC.dataGridViewCart, out resultText, i, 6);//Total
-                    e.Graphics.DrawString("₱ " + resultText, printFont, Brushes.Black, (x += 40), y);//330
-                    num += 1;
+                    e.Graphics.DrawString(resultText, printFont, Brushes.Black, (x += 40), y);//330
+                    num += 1;//"₱ " + 
                 }
             }
             
@@ -817,8 +817,8 @@ namespace Capstone
                     getValueIfAnyElseBlank(dgvCountService, frmC.dataGridViewService, out resultText, i, 1);//frmC.dataGridViewService.Rows[0].Cells[1].Value.ToString()
                     e.Graphics.DrawString(resultText, printFont, Brushes.Black, 60, y);//470      Name
                     getValueIfAnyElseBlank(dgvCountService, frmC.dataGridViewService, out resultText, i, 3);//frmC.dataGridViewService.Rows[0].Cells[3].Value.ToString()
-                    e.Graphics.DrawString("₱ " + resultText, printFont, Brushes.Black, x, y);//320   Price
-                    num += 1;
+                    e.Graphics.DrawString(resultText, printFont, Brushes.Black, x, y);//320   Price
+                    num += 1;//"₱ " + 
                 }
             }
             x = 440;

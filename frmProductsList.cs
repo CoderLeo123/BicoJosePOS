@@ -248,7 +248,8 @@ namespace Capstone
                 frm.txtDescription.Text = dataGridViewItems[1, e.RowIndex].Value.ToString();
                 //frm.comBoxType.SelectedItem = dataGridViewItems[2, e.RowIndex].Value.ToString();
                 frm.txtProduct.Text = dataGridViewItems[3, e.RowIndex].Value.ToString();
-                frm.txtPrice.Text = dataGridViewItems[4, e.RowIndex].Value.ToString();
+                frm.txtPrice.Text = dataGridViewItems[8, e.RowIndex].Value.ToString();
+                frm.txtUnitMeasr.Text = dataGridViewItems[7, e.RowIndex].Value.ToString();
                 //frm.comBoxClassification.Text = dataGridViewItems[6, e.RowIndex].Value.ToString();
                 frm.btnSaveItem.Enabled = false;
                 frm.btnUpdateItem.Enabled = true;
@@ -341,7 +342,7 @@ namespace Capstone
                 frm.txtServiceID.Text = dataGridViewService[1, e.RowIndex].Value.ToString();
                 frm.txtServiceName.Text = dataGridViewService[2, e.RowIndex].Value.ToString();
                 frm.txtServiceDesc.Text = dataGridViewService[3, e.RowIndex].Value.ToString();
-                frm.txtServicePrice.Text = dataGridViewService[4, e.RowIndex].Value.ToString();
+                frm.txtServicePrice.Text = dataGridViewService[5, e.RowIndex].Value.ToString();
                 frm.btnSaveService.Enabled = false;
                 frm.btnUpdateService.Enabled = true;
                 frm.Size = new Size(850, 428);

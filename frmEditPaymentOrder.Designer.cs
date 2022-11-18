@@ -38,6 +38,10 @@
             this.panelEditPayment = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridViewPaymentStat = new System.Windows.Forms.DataGridView();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.lblCurrentTransN = new System.Windows.Forms.Label();
+            this.txtSearchPending = new System.Windows.Forms.TextBox();
             this.NumPendingSet = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TransRefNoPendingSet = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CustomerNamePendingSet = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,10 +51,7 @@
             this.DueDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cashier = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.S = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.lblCurrentTransN = new System.Windows.Forms.Label();
-            this.txtSearchPending = new System.Windows.Forms.TextBox();
+            this.balanceReal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
@@ -72,6 +73,9 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1201, 57);
             this.panel1.TabIndex = 34;
+            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
+            this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
+            this.panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseUp);
             // 
             // panel6
             // 
@@ -162,7 +166,8 @@
             this.RemBalance,
             this.DueDate,
             this.Cashier,
-            this.S});
+            this.S,
+            this.balanceReal});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.Azure;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -185,6 +190,46 @@
             this.dataGridViewPaymentStat.TabIndex = 5;
             this.dataGridViewPaymentStat.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPaymentStat_CellContentClick);
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.panel7);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1187, 70);
+            this.panel2.TabIndex = 0;
+            // 
+            // panel7
+            // 
+            this.panel7.BackColor = System.Drawing.Color.DimGray;
+            this.panel7.Controls.Add(this.lblCurrentTransN);
+            this.panel7.Controls.Add(this.txtSearchPending);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel7.Location = new System.Drawing.Point(0, 0);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(1187, 70);
+            this.panel7.TabIndex = 37;
+            // 
+            // lblCurrentTransN
+            // 
+            this.lblCurrentTransN.AutoSize = true;
+            this.lblCurrentTransN.ForeColor = System.Drawing.Color.Red;
+            this.lblCurrentTransN.Location = new System.Drawing.Point(640, 14);
+            this.lblCurrentTransN.Name = "lblCurrentTransN";
+            this.lblCurrentTransN.Size = new System.Drawing.Size(57, 38);
+            this.lblCurrentTransN.TabIndex = 39;
+            this.lblCurrentTransN.Text = "     ";
+            this.lblCurrentTransN.Visible = false;
+            // 
+            // txtSearchPending
+            // 
+            this.txtSearchPending.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtSearchPending.Location = new System.Drawing.Point(35, 16);
+            this.txtSearchPending.Name = "txtSearchPending";
+            this.txtSearchPending.PlaceholderText = "Search Here";
+            this.txtSearchPending.Size = new System.Drawing.Size(573, 38);
+            this.txtSearchPending.TabIndex = 0;
+            // 
             // NumPendingSet
             // 
             this.NumPendingSet.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -197,12 +242,11 @@
             // TransRefNoPendingSet
             // 
             this.TransRefNoPendingSet.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.TransRefNoPendingSet.HeaderText = "TRANS NO";
+            this.TransRefNoPendingSet.HeaderText = "INVOICE NO";
             this.TransRefNoPendingSet.MinimumWidth = 6;
             this.TransRefNoPendingSet.Name = "TransRefNoPendingSet";
             this.TransRefNoPendingSet.ReadOnly = true;
-            this.TransRefNoPendingSet.Visible = false;
-            this.TransRefNoPendingSet.Width = 125;
+            this.TransRefNoPendingSet.Width = 197;
             // 
             // CustomerNamePendingSet
             // 
@@ -266,45 +310,13 @@
             this.S.Visible = false;
             this.S.Width = 125;
             // 
-            // panel2
+            // balanceReal
             // 
-            this.panel2.Controls.Add(this.panel7);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1187, 70);
-            this.panel2.TabIndex = 0;
-            // 
-            // panel7
-            // 
-            this.panel7.BackColor = System.Drawing.Color.DimGray;
-            this.panel7.Controls.Add(this.lblCurrentTransN);
-            this.panel7.Controls.Add(this.txtSearchPending);
-            this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel7.Location = new System.Drawing.Point(0, 0);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(1187, 70);
-            this.panel7.TabIndex = 37;
-            // 
-            // lblCurrentTransN
-            // 
-            this.lblCurrentTransN.AutoSize = true;
-            this.lblCurrentTransN.ForeColor = System.Drawing.Color.Red;
-            this.lblCurrentTransN.Location = new System.Drawing.Point(640, 14);
-            this.lblCurrentTransN.Name = "lblCurrentTransN";
-            this.lblCurrentTransN.Size = new System.Drawing.Size(57, 38);
-            this.lblCurrentTransN.TabIndex = 39;
-            this.lblCurrentTransN.Text = "     ";
-            this.lblCurrentTransN.Visible = false;
-            // 
-            // txtSearchPending
-            // 
-            this.txtSearchPending.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtSearchPending.Location = new System.Drawing.Point(35, 16);
-            this.txtSearchPending.Name = "txtSearchPending";
-            this.txtSearchPending.PlaceholderText = "Search Here";
-            this.txtSearchPending.Size = new System.Drawing.Size(573, 38);
-            this.txtSearchPending.TabIndex = 0;
+            this.balanceReal.HeaderText = "balanceReal";
+            this.balanceReal.MinimumWidth = 6;
+            this.balanceReal.Name = "balanceReal";
+            this.balanceReal.Visible = false;
+            this.balanceReal.Width = 125;
             // 
             // frmEditPaymentOrder
             // 
@@ -345,6 +357,9 @@
         private Panel panel3;
         private Panel panel2;
         private Panel panel7;
+        public TextBox txtSearchPending;
+        public DataGridView dataGridViewPaymentStat;
+        public Label lblCurrentTransN;
         private DataGridViewTextBoxColumn NumPendingSet;
         private DataGridViewTextBoxColumn TransRefNoPendingSet;
         private DataGridViewTextBoxColumn CustomerNamePendingSet;
@@ -354,8 +369,6 @@
         private DataGridViewTextBoxColumn DueDate;
         private DataGridViewTextBoxColumn Cashier;
         private DataGridViewTextBoxColumn S;
-        public TextBox txtSearchPending;
-        public DataGridView dataGridViewPaymentStat;
-        public Label lblCurrentTransN;
+        private DataGridViewTextBoxColumn balanceReal;
     }
 }

@@ -140,11 +140,13 @@ namespace Capstone
             
 
             cn.Open();
-            SqlCommand cm = new SqlCommand("INSERT INTO tblUser (User_ID, Username, Password, Name, User_Type) VALUES(@User_ID, @Username, @Password, @Name, @User_Type)", cn);
+            SqlCommand cm = new SqlCommand("INSERT INTO tblUser (User_ID, Username, Password, Name, User_Type, FName, LName) VALUES(@User_ID, @Username, @Password, @Name, @User_Type, @FName, @LName)", cn);
             cm.Parameters.AddWithValue("@User_ID", user_ID);
             cm.Parameters.AddWithValue("@Username", UserName);
             cm.Parameters.AddWithValue("@Password", password);
             cm.Parameters.AddWithValue("@Name", Name);
+            cm.Parameters.AddWithValue("@FName", FName);
+            cm.Parameters.AddWithValue("@LName", LName);
             cm.Parameters.AddWithValue("@User_Type", userType);
             cm.ExecuteNonQuery();
             cn.Close();
@@ -166,8 +168,7 @@ namespace Capstone
                 user_ID = dr[1].ToString();
                 user_num = dr[0].ToString();
                 userType = dr[5].ToString();
-                found = true;
-                
+                found = true;                
             }
             else
             {

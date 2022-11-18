@@ -57,6 +57,8 @@
             this.label12 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.panelItem = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtUnitMeasr = new System.Windows.Forms.TextBox();
             this.lblLenseCheck = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -162,8 +164,9 @@
             this.tabControlCreateNew.Location = new System.Drawing.Point(0, 57);
             this.tabControlCreateNew.Name = "tabControlCreateNew";
             this.tabControlCreateNew.SelectedIndex = 0;
-            this.tabControlCreateNew.Size = new System.Drawing.Size(899, 547);
+            this.tabControlCreateNew.Size = new System.Drawing.Size(899, 590);
             this.tabControlCreateNew.TabIndex = 39;
+            this.tabControlCreateNew.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tabControlCreateNew_KeyPress);
             // 
             // tabPage1
             // 
@@ -171,7 +174,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 46);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(891, 497);
+            this.tabPage1.Size = new System.Drawing.Size(891, 540);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Product";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -188,7 +191,7 @@
             this.panelProduct.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelProduct.Location = new System.Drawing.Point(3, 3);
             this.panelProduct.Name = "panelProduct";
-            this.panelProduct.Size = new System.Drawing.Size(885, 491);
+            this.panelProduct.Size = new System.Drawing.Size(885, 534);
             this.panelProduct.TabIndex = 0;
             this.panelProduct.Paint += new System.Windows.Forms.PaintEventHandler(this.panelProduct_Paint);
             // 
@@ -286,7 +289,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 46);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(891, 497);
+            this.tabPage2.Size = new System.Drawing.Size(891, 540);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Type";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -307,7 +310,7 @@
             this.panelType.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelType.Location = new System.Drawing.Point(3, 3);
             this.panelType.Name = "panelType";
-            this.panelType.Size = new System.Drawing.Size(885, 491);
+            this.panelType.Size = new System.Drawing.Size(885, 534);
             this.panelType.TabIndex = 0;
             // 
             // txtProductIDType
@@ -443,13 +446,15 @@
             this.tabPage3.Controls.Add(this.panelItem);
             this.tabPage3.Location = new System.Drawing.Point(4, 46);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(891, 497);
+            this.tabPage3.Size = new System.Drawing.Size(891, 540);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Item";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // panelItem
             // 
+            this.panelItem.Controls.Add(this.label1);
+            this.panelItem.Controls.Add(this.txtUnitMeasr);
             this.panelItem.Controls.Add(this.lblLenseCheck);
             this.panelItem.Controls.Add(this.label5);
             this.panelItem.Controls.Add(this.label8);
@@ -471,8 +476,27 @@
             this.panelItem.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelItem.Location = new System.Drawing.Point(0, 0);
             this.panelItem.Name = "panelItem";
-            this.panelItem.Size = new System.Drawing.Size(891, 497);
+            this.panelItem.Size = new System.Drawing.Size(891, 540);
             this.panelItem.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(90, 261);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(183, 38);
+            this.label1.TabIndex = 57;
+            this.label1.Text = "Unit Measure";
+            // 
+            // txtUnitMeasr
+            // 
+            this.txtUnitMeasr.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtUnitMeasr.Location = new System.Drawing.Point(296, 263);
+            this.txtUnitMeasr.Name = "txtUnitMeasr";
+            this.txtUnitMeasr.PlaceholderText = "Ex. bottle";
+            this.txtUnitMeasr.Size = new System.Drawing.Size(256, 38);
+            this.txtUnitMeasr.TabIndex = 58;
             // 
             // lblLenseCheck
             // 
@@ -535,12 +559,13 @@
             this.txtPrice.PlaceholderText = "0.00";
             this.txtPrice.Size = new System.Drawing.Size(256, 38);
             this.txtPrice.TabIndex = 40;
+            this.txtPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrice_KeyPress_1);
             // 
             // txtProduct
             // 
             this.txtProduct.Enabled = false;
             this.txtProduct.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtProduct.Location = new System.Drawing.Point(296, 326);
+            this.txtProduct.Location = new System.Drawing.Point(296, 368);
             this.txtProduct.Name = "txtProduct";
             this.txtProduct.Size = new System.Drawing.Size(256, 38);
             this.txtProduct.TabIndex = 53;
@@ -553,7 +578,7 @@
             this.btnSaveItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSaveItem.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnSaveItem.ForeColor = System.Drawing.Color.White;
-            this.btnSaveItem.Location = new System.Drawing.Point(95, 433);
+            this.btnSaveItem.Location = new System.Drawing.Point(95, 475);
             this.btnSaveItem.Name = "btnSaveItem";
             this.btnSaveItem.Size = new System.Drawing.Size(153, 49);
             this.btnSaveItem.TabIndex = 41;
@@ -565,7 +590,7 @@
             // 
             this.txtTypeID.Enabled = false;
             this.txtTypeID.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtTypeID.Location = new System.Drawing.Point(296, 380);
+            this.txtTypeID.Location = new System.Drawing.Point(296, 422);
             this.txtTypeID.Name = "txtTypeID";
             this.txtTypeID.PlaceholderText = "T1001";
             this.txtTypeID.Size = new System.Drawing.Size(256, 38);
@@ -580,7 +605,7 @@
             this.btnUpdateItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdateItem.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnUpdateItem.ForeColor = System.Drawing.Color.White;
-            this.btnUpdateItem.Location = new System.Drawing.Point(254, 433);
+            this.btnUpdateItem.Location = new System.Drawing.Point(254, 475);
             this.btnUpdateItem.Name = "btnUpdateItem";
             this.btnUpdateItem.Size = new System.Drawing.Size(153, 49);
             this.btnUpdateItem.TabIndex = 42;
@@ -592,7 +617,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(90, 378);
+            this.label7.Location = new System.Drawing.Point(90, 420);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(110, 38);
             this.label7.TabIndex = 51;
@@ -606,7 +631,7 @@
             this.btnCancelItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelItem.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnCancelItem.ForeColor = System.Drawing.Color.White;
-            this.btnCancelItem.Location = new System.Drawing.Point(413, 433);
+            this.btnCancelItem.Location = new System.Drawing.Point(413, 475);
             this.btnCancelItem.Name = "btnCancelItem";
             this.btnCancelItem.Size = new System.Drawing.Size(153, 49);
             this.btnCancelItem.TabIndex = 43;
@@ -618,7 +643,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(90, 324);
+            this.label6.Location = new System.Drawing.Point(90, 366);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(113, 38);
             this.label6.TabIndex = 50;
@@ -657,7 +682,7 @@
             // 
             this.comBoxType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comBoxType.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.comBoxType.Location = new System.Drawing.Point(296, 274);
+            this.comBoxType.Location = new System.Drawing.Point(296, 316);
             this.comBoxType.Name = "comBoxType";
             this.comBoxType.Size = new System.Drawing.Size(256, 39);
             this.comBoxType.TabIndex = 46;
@@ -667,7 +692,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(90, 270);
+            this.label4.Location = new System.Drawing.Point(90, 312);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(75, 38);
             this.label4.TabIndex = 47;
@@ -678,7 +703,7 @@
             this.tabPage4.Controls.Add(this.panelService);
             this.tabPage4.Location = new System.Drawing.Point(4, 46);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(891, 497);
+            this.tabPage4.Size = new System.Drawing.Size(891, 540);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Service";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -699,7 +724,7 @@
             this.panelService.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelService.Location = new System.Drawing.Point(0, 0);
             this.panelService.Name = "panelService";
-            this.panelService.Size = new System.Drawing.Size(891, 497);
+            this.panelService.Size = new System.Drawing.Size(891, 540);
             this.panelService.TabIndex = 0;
             // 
             // txtServiceID
@@ -833,7 +858,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(899, 604);
+            this.ClientSize = new System.Drawing.Size(899, 647);
             this.Controls.Add(this.tabControlCreateNew);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -924,5 +949,7 @@
         public Panel panelService;
         public Label lblLenseCheck;
         public Label labelTitle;
+        private Label label1;
+        public TextBox txtUnitMeasr;
     }
 }

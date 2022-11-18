@@ -27,7 +27,7 @@ namespace Capstone
             InitializeComponent();
             cn = new SqlConnection(dbcon.MyConnection());
             frmList = frmAdd;
-            lblCheck.Text = "Yes";
+            //lblCheck.Text = "Yes";
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -39,11 +39,11 @@ namespace Capstone
         {
             try
             {        //Perishable
-                string unitMe = "";
-                cn.Open();
-                cm = new SqlCommand("UPDATE tblStockInventory SET Unit_Measure = '" + comBoxUnit.Text + "' WHERE Stock_Num LIKE '" + lblID.Text + "' ", cn);
-                cm.ExecuteNonQuery();
-                cn.Close();
+                //string unitMe = "";
+                //cn.Open();
+                //cm = new SqlCommand("UPDATE tblStockInventory SET Unit_Measure = '" + comBoxUnit.Text + "' WHERE Stock_Num LIKE '" + lblID.Text + "' ", cn);
+                //cm.ExecuteNonQuery();
+                //cn.Close();
 
                 if (lblCheck.Text == "Yes")
                 {
@@ -52,7 +52,7 @@ namespace Capstone
                         int i = frmList.dataGridViewStockItems.CurrentRow.Index;
 
                         cn.Open();
-                        cm = new SqlCommand("UPDATE tblStock SET Expiration_Date = '" + DateTime.Parse(dateExpiration.Value.ToString()).ToShortDateString() + "', Quantity = Quantity + " + int.Parse(txtQuantity.Text) + ", Unit_Measure = '" + comBoxUnit.Text + "' WHERE num LIKE '" + lblID.Text + "' ", cn);
+                        cm = new SqlCommand("UPDATE tblStock SET Expiration_Date = '" + DateTime.Parse(dateExpiration.Value.ToString()).ToShortDateString() + "', Quantity = Quantity + " + int.Parse(txtQuantity.Text) + " WHERE num LIKE '" + lblID.Text + "' ", cn);
                         cm.ExecuteNonQuery();
                         cn.Close();
 
@@ -70,7 +70,7 @@ namespace Capstone
                         int i = frmList.dataGridViewStockItems.CurrentRow.Index;
 
                         cn.Open();
-                        cm = new SqlCommand("UPDATE tblStock SET Expiration_Date = null, Quantity = Quantity + " + int.Parse(txtQuantity.Text) + ", Unit_Measure = '" + comBoxUnit.Text + "' WHERE num LIKE '" + lblID.Text + "' ", cn);
+                        cm = new SqlCommand("UPDATE tblStock SET Expiration_Date = null, Quantity = Quantity + " + int.Parse(txtQuantity.Text) + " WHERE num LIKE '" + lblID.Text + "' ", cn);
                         cm.ExecuteNonQuery();
                         cn.Close();
                         frmList.dataGridViewStockItems[6, i].Value = "Non-Consumable";
@@ -155,19 +155,19 @@ namespace Capstone
         }
         public void switchToEdit()
         {//806, 496
-            tabControlStock.TabPages.Clear();
-            TabPage tab = new TabPage("Edit Stock");
-            tabControlStock.TabPages.Add(tab);
-            tab.Controls.Add(panelEditStock);
-            this.Size = new Size(806, 496);
+            //tabControlStock.TabPages.Clear();
+            //TabPage tab = new TabPage("Edit Stock");
+            //tabControlStock.TabPages.Add(tab);
+            //tab.Controls.Add(panelEditStock);
+            //this.Size = new Size(806, 496);
         }
         public void switchToAdd()
         {//527, 279
-            tabControlStock.TabPages.Clear();
-            TabPage tab = new TabPage("Add Unit Measure");
-            tabControlStock.TabPages.Add(tab);
-            tab.Controls.Add(panelAddUnit);
-            this.Size = new Size(527, 279);
+            //tabControlStock.TabPages.Clear();
+            //TabPage tab = new TabPage("Add Unit Measure");
+            //tabControlStock.TabPages.Add(tab);
+            //tab.Controls.Add(panelAddUnit);
+            //this.Size = new Size(527, 279);
 
         }
 
@@ -175,13 +175,13 @@ namespace Capstone
 
         private void button1_Click(object sender, EventArgs e) //add button
         {
-            switchToAdd();
+            //switchToAdd();
  
         }
 
         private void btnCancelUnit_Click(object sender, EventArgs e)
         {
-            switchToEdit();
+            //switchToEdit();
             
         }
         //public void LoadUnitMeasure()
@@ -201,20 +201,20 @@ namespace Capstone
         private void btnSaveUnit_Click(object sender, EventArgs e)
         {
             
-            if (comBoxUnit.Items.Contains(txtUnit.Text))
-            {
-                MessageBox.Show("Unit is already in the list", title, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                cn.Open();
-                cm = new SqlCommand("INSERT INTO tblUnitMeasure (UnitMeasure) VALUES(@Unit)", cn);
-                cm.Parameters.AddWithValue("@Unit", txtUnit.Text);
-                cm.ExecuteNonQuery();
-                cn.Close();
-                switchToEdit();
-                classLoadData.LoadUnitMeasure(comBoxUnit);
-            }
+            //if (comBoxUnit.Items.Contains(txtUnit.Text))
+            //{
+            //    MessageBox.Show("Unit is already in the list", title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
+            //else
+            //{
+            //    cn.Open();
+            //    cm = new SqlCommand("INSERT INTO tblUnitMeasure (UnitMeasure) VALUES(@Unit)", cn);
+            //    cm.Parameters.AddWithValue("@Unit", txtUnit.Text);
+            //    cm.ExecuteNonQuery();
+            //    cn.Close();
+            //    switchToEdit();
+            //    classLoadData.LoadUnitMeasure(comBoxUnit);
+            //}
         }
 
         private void btnDeleteUnit_Click(object sender, EventArgs e)
@@ -229,12 +229,12 @@ namespace Capstone
 
         private void btnDeleteUnit_Click_1(object sender, EventArgs e)
         {
-            string unit = comBoxUnit.SelectedItem.ToString();
-            cn.Open();
-            cm = new SqlCommand("DELETE FROM tblUnitMeasure WHERE UnitMeasure LIKE '" + unit + "'", cn);
-            cm.ExecuteNonQuery();
-            cn.Close();
-            classLoadData.LoadUnitMeasure(comBoxUnit);
+            //string unit = comBoxUnit.SelectedItem.ToString();
+            //cn.Open();
+            //cm = new SqlCommand("DELETE FROM tblUnitMeasure WHERE UnitMeasure LIKE '" + unit + "'", cn);
+            //cm.ExecuteNonQuery();
+            //cn.Close();
+            //classLoadData.LoadUnitMeasure(comBoxUnit);
             //LoadUnitMeasure();
         }
 

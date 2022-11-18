@@ -129,7 +129,7 @@ namespace Capstone
         {//dataGridViewProduct, txtSearchProduct
             try
             {
-                string UM = "N/A";
+                //string UM = "N/A";
                 cn = new SqlConnection(dbcon.MyConnection());
                 int i = 0;
                 dgv.Rows.Clear();
@@ -157,7 +157,7 @@ namespace Capstone
         {//dataGridViewProduct, txtSearchProduct
             try
             {
-                string UM = "N/A";
+                //string UM = "N/A";
                 cn = new SqlConnection(dbcon.MyConnection());
                 int i = 0;
                 dgv.Rows.Clear();
@@ -185,7 +185,7 @@ namespace Capstone
         public void LoadCritical(DataGridView dgv, TextBox txtSearch)
         {//dataGridViewProduct, txtSearchProduct
             cn = new SqlConnection(dbcon.MyConnection());
-            int i = 0; string UM = "N/A";
+            int i = 0; //string UM = "N/A";
             dgv.Rows.Clear();
             cn.Open();
             SqlCommand cm = new SqlCommand("SELECT * FROM tblItem WHERE Stock_Check = 1 AND Stock_Level = 2 AND (Description LIKE '%" + txtSearch.Text + "%' OR Type LIKE '%" + txtSearch.Text + "%' OR Classification LIKE '%" + txtSearch.Text + "%') ORDER BY Item_ID", cn);
@@ -250,7 +250,7 @@ namespace Capstone
             int i = 0;
             dgv.Rows.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT * FROM tblStockInventory WHERE Item_ID LIKE '"+ ITMID + "' AND Status LIKE 'Available' ORDER BY Expiration_Date DESC", cn);
+            SqlCommand cm = new SqlCommand("SELECT * FROM tblStockInventory WHERE Item_ID LIKE '"+ ITMID + "' AND Status LIKE 'Available' ORDER BY Expiration_Date ASC", cn);
             dr = cm.ExecuteReader();//Description, Expiration_Date
             while (dr.Read())
             {

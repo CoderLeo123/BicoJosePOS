@@ -130,7 +130,28 @@ namespace Capstone
             //    string msg = "The update query must not run";
             //}           
         }
-
+        public void addPesoSign(string price, out string result)
+        {
+            int length = price.Length;
+            result = price;
+           
+            if (length <= 4)
+            {
+                result = "₱" + "    " + price;
+            }
+            else if (length == 5)
+            {
+                result = "₱" + "   " + price;
+            }
+            else if (length == 6)
+            {
+                result = "₱" + " " + price;
+            }
+            else if (length >= 7)
+            {
+                result = "₱" + price;
+            }
+        }
         public void LoadRecordsItem(DataGridView dgv, TextBox txtSearch)
         {//dataGridViewItems, txtSearch
             
@@ -146,6 +167,9 @@ namespace Capstone
 
                 string Quantity = dr[5].ToString();//Quantity
                 string LenseCheck = dr[8].ToString();//Lense_Check
+                string displayPrice = dr[11].ToString();
+                addPesoSign(displayPrice, out displayPrice);
+
                 if (LenseCheck.Equals("0"))
                 {
                     Quantity = "N/A";
@@ -157,7 +181,7 @@ namespace Capstone
 
                          //     2-DESCRIPTION / 1-Description       4-PRODUCT / 3-Product                  5-QUANTITY / 5-Quantity                          7-TYPE ID / 5-Type_ID
                 i += 1;   // 0-#                  3-TYPE / 2-Type                     5-PRICE / 4-Price                   7-CLASSIFICATION / 6-Classification
-                dgv.Rows.Add(i, dr[1].ToString(), dr[2].ToString(), dr[3].ToString(),dr[4].ToString(), Quantity, dr[6].ToString(), dr[0].ToString(), Properties.Resources.Edit, Properties.Resources._Delete);
+                dgv.Rows.Add(i, dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), displayPrice, Quantity, dr[6].ToString(), dr[10].ToString(), dr[4].ToString(), dr[0].ToString(), Properties.Resources.Edit, Properties.Resources._Delete);
             }
             dr.Close();
             cn.Close();
@@ -172,9 +196,12 @@ namespace Capstone
             SqlCommand cm = new SqlCommand("SELECT * FROM tblServices WHERE Name LIKE '%" + txtSearch.Text + "%' OR Description LIKE '%" + txtSearch.Text + "%' Order by Service_ID", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
-            {                            //                       2-NAME / 2-Name                   4-PRICE / 4-Price
+            {
+                string displayPrice = dr[5].ToString();
+                addPesoSign(displayPrice, out displayPrice);
+                //                                  2-NAME / 2-Name                   4-PRICE / 4-Price
                 i += 1;                //0-#  1-SERVICE ID / 1-Service_ID       3-DESCRIPTION / 3-Description
-                dgv.Rows.Add(i, dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString());
+                dgv.Rows.Add(i, dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), displayPrice, dr[4].ToString());
             }
             dr.Close();
             cn.Close();
@@ -196,7 +223,7 @@ namespace Capstone
                     
                     //               1-ITEM ID / 0-Item_ID                  2-QTY / 5-Quantity        5-CLASSIFICATION / 6-Classification                        
                     i += 1;   // 0-Num            2-DESCRIPTION / 1-Description        3-TYPE / 2-Type                            
-                    dgv.Rows.Add(i, dr[0].ToString(), dr[1].ToString(), dr[5].ToString(), dr[2].ToString(), dr[6].ToString());
+                    dgv.Rows.Add(i, dr[0].ToString(), dr[1].ToString(), dr[5].ToString(), dr[2].ToString(), dr[6].ToString(), dr[10].ToString());
                 }
                 dr.Close();
                 cn.Close();
@@ -224,7 +251,7 @@ namespace Capstone
                     string ExpirationDate = dr[2].ToString();
                     if (string.IsNullOrEmpty(ExpirationDate))
                     {
-                        ExpirationDate = "Non-Consumable"; //13
+                        ExpirationDate = dr[8].ToString(); //13
                     }
                     else
                     {
@@ -238,9 +265,9 @@ namespace Capstone
                         }
                     }
                     i += 1;
-                    //                                                                      4-DESCRIPTION / 1-Description       6-EXPIRATION / 2-Expiration_Date                                      8-STOCK IN BY / 4-Stock_In_By            10-TYPE / 6-Type
-                    //0-# / i         1/Edit                    2/Delete           3-STOCK ID / 0-Stock_ID            5-QTY / 10-Quantity                              7-STOCK IN DATE / 3-Stock_In_Date                            9-ITEM ID / 5-Item_ID                12-num / 11-num 
-                    dgv.Rows.Add(i, Properties.Resources.Edit, Properties.Resources._Delete, dr[0].ToString(), dr[1].ToString(), quantity.ToString(), ExpirationDate, DateTime.Parse(dr[3].ToString()).ToShortDateString(), dr[4].ToString(), dr[5].ToString(), dr[6].ToString(), dr[9].ToString(), dr[11].ToString());
+                    //                                                                                  4-DESCRIPTION / 1-Description       6-EXPIRATION / 2-Expiration_Date                                      8-STOCK IN BY / 4-Stock_In_By            10-TYPE / 6-Type
+                    //0-# / i         1/Edit                    2/Delete           3-STOCK ID / 0-Stock_ID            5-QTY / 10-Quantity                              7-STOCK IN DATE / 3-Stock_In_Date                            9-ITEM ID / 5-Item_ID                     12-num / 11-num 
+                    dgv.Rows.Add(i, Properties.Resources.Edit, Properties.Resources._Delete, dr[0].ToString(), dr[1].ToString(), quantity.ToString(), ExpirationDate, DateTime.Parse(dr[3].ToString()).ToShortDateString(), dr[4].ToString(), dr[5].ToString(), dr[6].ToString(), dr[9].ToString(), dr[11].ToString(), dr[8].ToString());
 
                 }
                 dr.Close();
@@ -285,7 +312,7 @@ namespace Capstone
                 int i = 0;
                 dgv.Rows.Clear();
                 cn.Open();
-                SqlCommand cm = new SqlCommand("SELECT Stock_In_Date, Quantity, Expiration_Date, Stock_In_By, Unit_Measure FROM tblStock WHERE Item_ID LIKE '%" + labelID.Text + "%' ORDER BY Expiration_Date DESC", cn);
+                SqlCommand cm = new SqlCommand("SELECT Stock_In_Date, Quantity, Expiration_Date, Stock_In_By, Unit_Measure FROM tblStock WHERE Item_ID LIKE '%" + labelID.Text + "%' ORDER BY Stock_In_Date ASC", cn);
                 dr = cm.ExecuteReader();
                 while (dr.Read())
                 {
@@ -338,6 +365,8 @@ namespace Capstone
                     string Quantity = dr[5].ToString();//Quantity
                     string LenseCheck = dr[8].ToString();//Lense_Check
                     string checkLense;
+                    string displayPrice = dr[4].ToString();
+                    addPesoSign(displayPrice, out displayPrice);
                     if (LenseCheck.Equals("0"))
                     {
                         Quantity = "N/A";
@@ -351,7 +380,7 @@ namespace Capstone
 
                     //                             2-DESCRIPTION / 1-Description       4-PRODUCT / 3-Product               6-STOCK / 5-Quantity                                                                                                                                      
                     i += 1;  // 0-Num   1-Item ID / 0-Item_ID                3-TYPE / 2-Type               5-PRICE / 4-Price                 7-CLASSIFICATION / 6-Classification                           
-                    dgv.Rows.Add(i, dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), Quantity, dr[6].ToString(), dr[8].ToString());
+                    dgv.Rows.Add(i, dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), displayPrice, Quantity, dr[6].ToString(), dr[10].ToString(), dr[8].ToString(), dr[4].ToString());
                 }
                 dr.Close();
                 cn.Close();
@@ -363,12 +392,13 @@ namespace Capstone
                 {
                     string Quantity = dr[5].ToString();//Quantity
                     string LenseCheck = dr[8].ToString();//Lense_Check
-                    
+                    string displayPrice = dr[4].ToString();
+                    addPesoSign(displayPrice, out displayPrice);
                     Quantity = "N/A";
                     
                     //                             2-DESCRIPTION / 1-Description       4-PRODUCT / 3-Product               6-STOCK / 5-Quantity                                                                                                                                      
                     i += 1;  // 0-Num   1-Item ID / 0-Item_ID                3-TYPE / 2-Type               5-PRICE / 4-Price                 7-CLASSIFICATION / 6-Classification                           
-                    dgv.Rows.Add(i, dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), Quantity, dr[6].ToString(), LenseCheck);
+                    dgv.Rows.Add(i, dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), displayPrice, Quantity, dr[6].ToString(), dr[10].ToString(), LenseCheck, dr[4].ToString());
                 }
                 dr.Close();
                 cn.Close();
@@ -387,8 +417,8 @@ namespace Capstone
         }
         public void LoadCart(DataGridView dgv, Label labelDiscount, Label labelSalesTotal, Label labelPayment, Label labelNetTotal, Button buttonSettle, Button buttonDiscount, Button buttonClear, TextBox textSearch, DataGridView dgv2, Label lblNetNoComa, Label lblGrossNoComma)
         {                           //dataGridViewCart, lblDiscount, lblSalesTotal, lblPayment, lblNetTotal, btnSettlePayment, btnAddDiscount, btnClearCart, txtSearch, dataGridViewService
-            try
-            {
+            //try
+            //{
                 string servTotal = ""; Boolean hasRecord = false;
                 LoadRecordServiceAvail(dgv2, out servTotal, out hasRecord);
                 classCompute.ComputeUnitTotal(dgv);
@@ -426,7 +456,7 @@ namespace Capstone
 
                                // 0-Num                2-EXPIRATION / 2-Expiration_Date                                  4-QUANTITY / 3-Quantity                        6-TOTAL / 5-TOTAL                                                                                                                       11-CartID / 12-Num
                     i += 1;    // 1-DESCRIPTION / 1-Description           3-PRICE / 4-Price                                             5-DISCOUNT / 11-Discount                                                    7-Plus                         8-Minus                 9-Delete              10-StockID / 0-Stock_Num           12-ItemID / 9-Item_ID
-                    dgv.Rows.Add(i, dr[1].ToString(), ExpirationDate, double.Parse(dr[4].ToString()).ToString("00.00"), dr[3].ToString(), dr[11].ToString(),  double.Parse(dr[5].ToString()).ToString("00.00"), Properties.Resources._Add, Properties.Resources.Minus, Properties.Resources._Delete, dr[0].ToString(), dr[12].ToString(), dr[9].ToString(), dr[17].ToString(), dr[18].ToString());
+                    dgv.Rows.Add(i, dr[1].ToString(), ExpirationDate, "₱" + double.Parse(dr[4].ToString()).ToString("00.00"), dr[3].ToString(), dr[11].ToString(), "₱" + double.Parse(dr[5].ToString()).ToString("00.00"), Properties.Resources._Add, Properties.Resources.Minus, Properties.Resources._Delete, dr[0].ToString(), dr[12].ToString(), dr[9].ToString(), dr[17].ToString(), dr[19].ToString(), dr[20].ToString(), dr[18].ToString());
                     hasRecord = true;
                 }
                 dr.Close();
@@ -446,12 +476,12 @@ namespace Capstone
                 }
                 else
                 { buttonSettle.Enabled = false; buttonDiscount.Enabled = false; buttonClear.Enabled = false; }
-            }
-            catch (Exception ex)
-            {
-                cn.Close();
-                MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    cn.Close();
+            //    MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //}
         }
         
         public void LoadRecordsTransacHist(DataGridView dgv, TextBox txtSearch, DateTimePicker dateStart, DateTimePicker dateEnd)
@@ -552,7 +582,7 @@ namespace Capstone
 
                                     //                          2-DESCRIPTION / 1-Description                  4-PRICE / 4-Price                  4-TOTAL / 5-Total
                 i += 1; //0-#                    1-TRANSACTION NO / 7-Transaction_NO      3-EXPIRATION / 2-Expiration_Date           4-QTY / 3-Quantity            4-DATE / 6-Date
-                dgv.Rows.Add(i, dr[0].ToString(), dr[7].ToString(), dr[1].ToString(), ExpirationDate, dr[4].ToString(), dr[3].ToString(), dr[5].ToString(), TransDate);
+                dgv.Rows.Add(i, dr[0].ToString(), dr[7].ToString(), dr[1].ToString(), ExpirationDate, "₱" + dr[4].ToString(), dr[3].ToString(), "₱" + dr[5].ToString(), TransDate);
             }
             dr.Close();
             cn.Close();
@@ -572,7 +602,7 @@ namespace Capstone
                 {
                     //                          2-DESCRIPTION / 3-Description                                       3-ServiceID / 2-Service_ID 
                     i += 1; //0-#  1-NAME / 7-Name                          3-PRICE / 4-Price          
-                    dgv.Rows.Add(i, dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), Properties.Resources.addToCart, dr[1].ToString());
+                    dgv.Rows.Add(i, dr[2].ToString(), dr[3].ToString(), "₱" + dr[4].ToString(), Properties.Resources.addToCart, dr[1].ToString(), dr[4].ToString());
                 }
                 dr.Close();
                 cn.Close();
@@ -600,7 +630,7 @@ namespace Capstone
                 totalVar += Double.Parse(dr[3].ToString());
                 //                          2-DESCRIPTION / 1-Description                                       5-SID / 2-Service_ID   
                 i += 1; //0-#  1-NAME / 7-Name                      3-PRICE / 2-Price          
-                dgv.Rows.Add(i, dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), Properties.Resources._Delete, dr[0].ToString(), dr[9].ToString());
+                dgv.Rows.Add(i, dr[1].ToString(), dr[2].ToString(), "₱" + dr[10].ToString(), Properties.Resources._Delete, dr[0].ToString(), dr[9].ToString(), dr[3].ToString());
                 hasRecord = true;
             }
             dr.Close();

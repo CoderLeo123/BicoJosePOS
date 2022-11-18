@@ -260,6 +260,7 @@
             // 
             // dateTimePickerArrival
             // 
+            this.dateTimePickerArrival.Enabled = false;
             this.dateTimePickerArrival.Location = new System.Drawing.Point(278, 103);
             this.dateTimePickerArrival.Name = "dateTimePickerArrival";
             this.dateTimePickerArrival.Size = new System.Drawing.Size(423, 43);
@@ -364,6 +365,7 @@
             // 
             // dateTimePickerClaimDate
             // 
+            this.dateTimePickerClaimDate.Enabled = false;
             this.dateTimePickerClaimDate.Location = new System.Drawing.Point(302, 179);
             this.dateTimePickerClaimDate.Name = "dateTimePickerClaimDate";
             this.dateTimePickerClaimDate.Size = new System.Drawing.Size(423, 43);

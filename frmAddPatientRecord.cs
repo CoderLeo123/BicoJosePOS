@@ -199,7 +199,7 @@ namespace Capstone
             int years = DateTime.Now.Year - dateTimePickerBirthDate.Value.Year;
             if(dateTimePickerBirthDate.Value.AddYears(years) < DateTime.Now)
             {
-                years--;
+                //years--;
                 txtAddAge.Text = years.ToString();
             }
         }

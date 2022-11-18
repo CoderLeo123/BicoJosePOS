@@ -34,6 +34,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.label14 = new System.Windows.Forms.Label();
+            this.lblITEMID = new System.Windows.Forms.Label();
+            this.lblCheck = new System.Windows.Forms.Label();
+            this.lblTrans = new System.Windows.Forms.Label();
+            this.lblTransNo = new System.Windows.Forms.Label();
             this.dataGridViewService = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,6 +48,7 @@
             this.del = new System.Windows.Forms.DataGridViewImageColumn();
             this.ServID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ServNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel7 = new System.Windows.Forms.Panel();
             this.lblGrossNoComma = new System.Windows.Forms.Label();
             this.lblNetNoComa = new System.Windows.Forms.Label();
@@ -53,7 +60,6 @@
             this.lblSalesTotal = new System.Windows.Forms.Label();
             this.lblNetTotal = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.lblChange = new System.Windows.Forms.Label();
             this.lblDiscount = new System.Windows.Forms.Label();
             this.lblPayment = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -87,7 +93,14 @@
             this.lblTransactionNo = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
             this.dataGridViewCart = new System.Windows.Forms.DataGridView();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.NumCart = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DescriptionCart = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Expiration = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -102,11 +115,13 @@
             this.sd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unitMe = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Classif = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LenseChe = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.priceReal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Classif = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalReal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2.SuspendLayout();
             this.panel8.SuspendLayout();
+            this.panel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewService)).BeginInit();
             this.panel7.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -114,6 +129,7 @@
             this.panel6.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.panel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCart)).BeginInit();
             this.SuspendLayout();
             // 
@@ -122,19 +138,82 @@
             this.panel2.Controls.Add(this.panel8);
             this.panel2.Controls.Add(this.panel7);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 713);
+            this.panel2.Location = new System.Drawing.Point(0, 641);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1600, 266);
+            this.panel2.Size = new System.Drawing.Size(1600, 338);
             this.panel2.TabIndex = 1;
             // 
             // panel8
             // 
+            this.panel8.Controls.Add(this.panel9);
             this.panel8.Controls.Add(this.dataGridViewService);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel8.Location = new System.Drawing.Point(0, 0);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(1173, 266);
+            this.panel8.Size = new System.Drawing.Size(1173, 338);
             this.panel8.TabIndex = 1;
+            // 
+            // panel9
+            // 
+            this.panel9.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.panel9.Controls.Add(this.label14);
+            this.panel9.Controls.Add(this.lblITEMID);
+            this.panel9.Controls.Add(this.lblCheck);
+            this.panel9.Controls.Add(this.lblTrans);
+            this.panel9.Controls.Add(this.lblTransNo);
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel9.Location = new System.Drawing.Point(0, 0);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(1173, 47);
+            this.panel9.TabIndex = 39;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label14.ForeColor = System.Drawing.Color.White;
+            this.label14.Location = new System.Drawing.Point(451, 3);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(282, 41);
+            this.label14.TabIndex = 1;
+            this.label14.Text = "AVAILED SERVICES";
+            // 
+            // lblITEMID
+            // 
+            this.lblITEMID.AutoSize = true;
+            this.lblITEMID.Location = new System.Drawing.Point(679, 15);
+            this.lblITEMID.Name = "lblITEMID";
+            this.lblITEMID.Size = new System.Drawing.Size(42, 28);
+            this.lblITEMID.TabIndex = 9;
+            this.lblITEMID.Text = "      ";
+            this.lblITEMID.Visible = false;
+            // 
+            // lblCheck
+            // 
+            this.lblCheck.AutoSize = true;
+            this.lblCheck.Location = new System.Drawing.Point(991, 15);
+            this.lblCheck.Name = "lblCheck";
+            this.lblCheck.Size = new System.Drawing.Size(57, 28);
+            this.lblCheck.TabIndex = 4;
+            this.lblCheck.Text = "         ";
+            // 
+            // lblTrans
+            // 
+            this.lblTrans.AutoSize = true;
+            this.lblTrans.Location = new System.Drawing.Point(1188, 20);
+            this.lblTrans.Name = "lblTrans";
+            this.lblTrans.Size = new System.Drawing.Size(42, 28);
+            this.lblTrans.TabIndex = 2;
+            this.lblTrans.Text = "      ";
+            this.lblTrans.Visible = false;
+            // 
+            // lblTransNo
+            // 
+            this.lblTransNo.AutoSize = true;
+            this.lblTransNo.Location = new System.Drawing.Point(1162, 15);
+            this.lblTransNo.Name = "lblTransNo";
+            this.lblTransNo.Size = new System.Drawing.Size(0, 28);
+            this.lblTransNo.TabIndex = 1;
             // 
             // dataGridViewService
             // 
@@ -160,7 +239,8 @@
             this.priServ,
             this.del,
             this.ServID,
-            this.ServNum});
+            this.ServNum,
+            this.dataGridViewTextBoxColumn4});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.Azure;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -169,17 +249,16 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewService.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridViewService.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewService.EnableHeadersVisualStyles = false;
             this.dataGridViewService.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.dataGridViewService.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewService.Location = new System.Drawing.Point(0, 46);
             this.dataGridViewService.Name = "dataGridViewService";
             this.dataGridViewService.RowHeadersVisible = false;
             this.dataGridViewService.RowHeadersWidth = 51;
             this.dataGridViewService.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridViewService.RowTemplate.Height = 35;
             this.dataGridViewService.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewService.Size = new System.Drawing.Size(1173, 266);
+            this.dataGridViewService.Size = new System.Drawing.Size(1170, 289);
             this.dataGridViewService.TabIndex = 4;
             this.dataGridViewService.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewService_CellContentClick);
             // 
@@ -242,6 +321,14 @@
             this.ServNum.Visible = false;
             this.ServNum.Width = 125;
             // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "priceReal";
+            this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.Visible = false;
+            this.dataGridViewTextBoxColumn4.Width = 125;
+            // 
             // panel7
             // 
             this.panel7.Controls.Add(this.lblGrossNoComma);
@@ -254,14 +341,13 @@
             this.panel7.Controls.Add(this.lblSalesTotal);
             this.panel7.Controls.Add(this.lblNetTotal);
             this.panel7.Controls.Add(this.label10);
-            this.panel7.Controls.Add(this.lblChange);
             this.panel7.Controls.Add(this.lblDiscount);
             this.panel7.Controls.Add(this.lblPayment);
             this.panel7.Controls.Add(this.label5);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel7.Location = new System.Drawing.Point(1173, 0);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(427, 266);
+            this.panel7.Size = new System.Drawing.Size(427, 338);
             this.panel7.TabIndex = 0;
             // 
             // lblGrossNoComma
@@ -370,18 +456,6 @@
             this.label10.TabIndex = 4;
             this.label10.Text = "Net Total";
             // 
-            // lblChange
-            // 
-            this.lblChange.AutoSize = true;
-            this.lblChange.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblChange.ForeColor = System.Drawing.Color.Red;
-            this.lblChange.Location = new System.Drawing.Point(280, 252);
-            this.lblChange.Name = "lblChange";
-            this.lblChange.Size = new System.Drawing.Size(94, 41);
-            this.lblChange.TabIndex = 9;
-            this.lblChange.Text = "00.00";
-            this.lblChange.Visible = false;
-            // 
             // lblDiscount
             // 
             this.lblDiscount.AutoSize = true;
@@ -396,7 +470,7 @@
             // 
             this.lblPayment.AutoSize = true;
             this.lblPayment.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblPayment.Location = new System.Drawing.Point(333, 252);
+            this.lblPayment.Location = new System.Drawing.Point(27, 209);
             this.lblPayment.Name = "lblPayment";
             this.lblPayment.Size = new System.Drawing.Size(94, 41);
             this.lblPayment.TabIndex = 7;
@@ -478,7 +552,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel4.Location = new System.Drawing.Point(1260, 78);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(340, 635);
+            this.panel4.Size = new System.Drawing.Size(340, 563);
             this.panel4.TabIndex = 3;
             // 
             // panel6
@@ -507,7 +581,7 @@
             this.btnSettleBalance.ForeColor = System.Drawing.Color.Black;
             this.btnSettleBalance.Image = global::Capstone.Properties.Resources.payStat;
             this.btnSettleBalance.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSettleBalance.Location = new System.Drawing.Point(0, 487);
+            this.btnSettleBalance.Location = new System.Drawing.Point(0, 415);
             this.btnSettleBalance.Name = "btnSettleBalance";
             this.btnSettleBalance.Size = new System.Drawing.Size(389, 68);
             this.btnSettleBalance.TabIndex = 9;
@@ -544,7 +618,7 @@
             this.btnLogout.ForeColor = System.Drawing.Color.Black;
             this.btnLogout.Image = global::Capstone.Properties.Resources.Log_out;
             this.btnLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLogout.Location = new System.Drawing.Point(0, 561);
+            this.btnLogout.Location = new System.Drawing.Point(0, 489);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(389, 68);
             this.btnLogout.TabIndex = 7;
@@ -562,7 +636,7 @@
             this.btnDailySales.ForeColor = System.Drawing.Color.Black;
             this.btnDailySales.Image = global::Capstone.Properties.Resources.DailySales;
             this.btnDailySales.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDailySales.Location = new System.Drawing.Point(0, 417);
+            this.btnDailySales.Location = new System.Drawing.Point(0, 345);
             this.btnDailySales.Name = "btnDailySales";
             this.btnDailySales.Size = new System.Drawing.Size(389, 68);
             this.btnDailySales.TabIndex = 5;
@@ -581,7 +655,7 @@
             this.btnClearCart.ForeColor = System.Drawing.Color.Black;
             this.btnClearCart.Image = global::Capstone.Properties.Resources.ClearCart;
             this.btnClearCart.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClearCart.Location = new System.Drawing.Point(0, 343);
+            this.btnClearCart.Location = new System.Drawing.Point(0, 271);
             this.btnClearCart.Name = "btnClearCart";
             this.btnClearCart.Size = new System.Drawing.Size(389, 68);
             this.btnClearCart.TabIndex = 4;
@@ -600,7 +674,7 @@
             this.btnSettlePayment.ForeColor = System.Drawing.Color.Black;
             this.btnSettlePayment.Image = global::Capstone.Properties.Resources.SettlePayment;
             this.btnSettlePayment.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSettlePayment.Location = new System.Drawing.Point(0, 269);
+            this.btnSettlePayment.Location = new System.Drawing.Point(0, 197);
             this.btnSettlePayment.Name = "btnSettlePayment";
             this.btnSettlePayment.Size = new System.Drawing.Size(389, 68);
             this.btnSettlePayment.TabIndex = 3;
@@ -619,7 +693,7 @@
             this.btnAddDiscount.ForeColor = System.Drawing.Color.Black;
             this.btnAddDiscount.Image = global::Capstone.Properties.Resources.Discount;
             this.btnAddDiscount.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAddDiscount.Location = new System.Drawing.Point(0, 209);
+            this.btnAddDiscount.Location = new System.Drawing.Point(0, 561);
             this.btnAddDiscount.Name = "btnAddDiscount";
             this.btnAddDiscount.Size = new System.Drawing.Size(389, 68);
             this.btnAddDiscount.TabIndex = 2;
@@ -627,6 +701,7 @@
             this.btnAddDiscount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAddDiscount.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAddDiscount.UseVisualStyleBackColor = true;
+            this.btnAddDiscount.Visible = false;
             this.btnAddDiscount.Click += new System.EventHandler(this.btnAddDiscount_Click);
             // 
             // btnBrowseItem
@@ -691,11 +766,11 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label13.Location = new System.Drawing.Point(560, 68);
+            this.label13.Location = new System.Drawing.Point(529, 68);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(261, 45);
+            this.label13.Size = new System.Drawing.Size(148, 45);
             this.label13.TabIndex = 11;
-            this.label13.Text = "Transaction Date";
+            this.label13.Text = "Discount";
             // 
             // comBoxDiscountType
             // 
@@ -706,7 +781,7 @@
             this.comBoxDiscountType.Items.AddRange(new object[] {
             "Regular",
             "Senior/PWD"});
-            this.comBoxDiscountType.Location = new System.Drawing.Point(862, 73);
+            this.comBoxDiscountType.Location = new System.Drawing.Point(715, 71);
             this.comBoxDiscountType.Name = "comBoxDiscountType";
             this.comBoxDiscountType.Size = new System.Drawing.Size(183, 39);
             this.comBoxDiscountType.TabIndex = 10;
@@ -765,7 +840,7 @@
             // txtSearch
             // 
             this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtSearch.Location = new System.Drawing.Point(552, 22);
+            this.txtSearch.Location = new System.Drawing.Point(529, 22);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.PlaceholderText = "Search Description Item Here";
             this.txtSearch.Size = new System.Drawing.Size(615, 43);
@@ -815,12 +890,75 @@
             // 
             // panel5
             // 
+            this.panel5.Controls.Add(this.panel10);
             this.panel5.Controls.Add(this.dataGridViewCart);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(0, 258);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1260, 455);
+            this.panel5.Size = new System.Drawing.Size(1260, 383);
             this.panel5.TabIndex = 5;
+            // 
+            // panel10
+            // 
+            this.panel10.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.panel10.Controls.Add(this.label15);
+            this.panel10.Controls.Add(this.label16);
+            this.panel10.Controls.Add(this.label17);
+            this.panel10.Controls.Add(this.label18);
+            this.panel10.Controls.Add(this.label19);
+            this.panel10.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel10.Location = new System.Drawing.Point(0, 0);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(1260, 47);
+            this.panel10.TabIndex = 40;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label15.ForeColor = System.Drawing.Color.White;
+            this.label15.Location = new System.Drawing.Point(461, 2);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(272, 41);
+            this.label15.TabIndex = 1;
+            this.label15.Text = "PURCHASE ITEMS";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(679, 15);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(42, 28);
+            this.label16.TabIndex = 9;
+            this.label16.Text = "      ";
+            this.label16.Visible = false;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(991, 15);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(57, 28);
+            this.label17.TabIndex = 4;
+            this.label17.Text = "         ";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(1188, 20);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(42, 28);
+            this.label18.TabIndex = 2;
+            this.label18.Text = "      ";
+            this.label18.Visible = false;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(1162, 15);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(0, 28);
+            this.label19.TabIndex = 1;
             // 
             // dataGridViewCart
             // 
@@ -854,29 +992,34 @@
             this.sd,
             this.ItemID,
             this.unitMe,
+            this.LenseChe,
+            this.priceReal,
             this.Classif,
-            this.LenseChe});
+            this.totalReal});
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.Azure;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewCart.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridViewCart.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewCart.EnableHeadersVisualStyles = false;
             this.dataGridViewCart.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.dataGridViewCart.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewCart.Location = new System.Drawing.Point(0, 47);
             this.dataGridViewCart.Name = "dataGridViewCart";
             this.dataGridViewCart.RowHeadersVisible = false;
             this.dataGridViewCart.RowHeadersWidth = 51;
             this.dataGridViewCart.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridViewCart.RowTemplate.Height = 35;
             this.dataGridViewCart.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewCart.Size = new System.Drawing.Size(1260, 455);
+            this.dataGridViewCart.Size = new System.Drawing.Size(1260, 336);
             this.dataGridViewCart.TabIndex = 3;
             this.dataGridViewCart.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewCart_CellContentClick);
+            // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
             // NumCart
             // 
@@ -930,7 +1073,7 @@
             this.DiscountCart.Name = "DiscountCart";
             this.DiscountCart.ReadOnly = true;
             this.DiscountCart.Visible = false;
-            this.DiscountCart.Width = 125;
+            this.DiscountCart.Width = 134;
             // 
             // TotalCart
             // 
@@ -1002,14 +1145,6 @@
             this.unitMe.Visible = false;
             this.unitMe.Width = 125;
             // 
-            // Classif
-            // 
-            this.Classif.HeaderText = "CLassificate";
-            this.Classif.MinimumWidth = 6;
-            this.Classif.Name = "Classif";
-            this.Classif.Visible = false;
-            this.Classif.Width = 125;
-            // 
             // LenseChe
             // 
             this.LenseChe.HeaderText = "LenseCheck";
@@ -1018,9 +1153,29 @@
             this.LenseChe.Visible = false;
             this.LenseChe.Width = 125;
             // 
-            // printDocument1
+            // priceReal
             // 
-            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+            this.priceReal.HeaderText = "priceReal";
+            this.priceReal.MinimumWidth = 6;
+            this.priceReal.Name = "priceReal";
+            this.priceReal.Visible = false;
+            this.priceReal.Width = 125;
+            // 
+            // Classif
+            // 
+            this.Classif.HeaderText = "CLassificate";
+            this.Classif.MinimumWidth = 6;
+            this.Classif.Name = "Classif";
+            this.Classif.Visible = false;
+            this.Classif.Width = 125;
+            // 
+            // totalReal
+            // 
+            this.totalReal.HeaderText = "totalReal";
+            this.totalReal.MinimumWidth = 6;
+            this.totalReal.Name = "totalReal";
+            this.totalReal.Visible = false;
+            this.totalReal.Width = 125;
             // 
             // frmCashier
             // 
@@ -1040,6 +1195,8 @@
             this.Text = "frmCashier";
             this.panel2.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
+            this.panel9.ResumeLayout(false);
+            this.panel9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewService)).EndInit();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
@@ -1050,6 +1207,8 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel5.ResumeLayout(false);
+            this.panel10.ResumeLayout(false);
+            this.panel10.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCart)).EndInit();
             this.ResumeLayout(false);
 
@@ -1085,7 +1244,6 @@
         public Label lblNetTotal;
         private Label label10;
         private Panel panel8;
-        public Label lblChange;
         private Label label7;
         public TextBox txtFirstName;
         public TextBox txtLastName;
@@ -1099,13 +1257,6 @@
         public Label lblDiscPercen;
         public Label lblTotal;
         public Button btnSettleBalance;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private DataGridViewTextBoxColumn priServ;
-        private DataGridViewImageColumn del;
-        private DataGridViewTextBoxColumn ServID;
-        private DataGridViewTextBoxColumn ServNum;
         public Label label12;
         public Label label9;
         public Label label8;
@@ -1114,6 +1265,26 @@
         public ComboBox comBoxDiscountType;
         public Label lblNetNoComa;
         public Label lblGrossNoComma;
+        private Panel panel9;
+        private Label label14;
+        public Label lblITEMID;
+        public Label lblCheck;
+        public Label lblTrans;
+        private Label lblTransNo;
+        private Panel panel10;
+        private Label label15;
+        public Label label16;
+        public Label label17;
+        public Label label18;
+        private Label label19;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private DataGridViewTextBoxColumn priServ;
+        private DataGridViewImageColumn del;
+        private DataGridViewTextBoxColumn ServID;
+        private DataGridViewTextBoxColumn ServNum;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private DataGridViewTextBoxColumn NumCart;
         private DataGridViewTextBoxColumn DescriptionCart;
         private DataGridViewTextBoxColumn Expiration;
@@ -1128,7 +1299,9 @@
         private DataGridViewTextBoxColumn sd;
         private DataGridViewTextBoxColumn ItemID;
         private DataGridViewTextBoxColumn unitMe;
-        private DataGridViewTextBoxColumn Classif;
         private DataGridViewTextBoxColumn LenseChe;
+        private DataGridViewTextBoxColumn priceReal;
+        private DataGridViewTextBoxColumn Classif;
+        private DataGridViewTextBoxColumn totalReal;
     }
 }

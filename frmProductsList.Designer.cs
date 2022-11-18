@@ -70,6 +70,8 @@
             this.PriceItems = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Classification = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UNIT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceReal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EditItems = new System.Windows.Forms.DataGridViewImageColumn();
             this.DeleteItems = new System.Windows.Forms.DataGridViewImageColumn();
@@ -91,19 +93,20 @@
             this.panelServiceList = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridViewService = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ServiceID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DescriptionService = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PriceService = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EditService = new System.Windows.Forms.DataGridViewImageColumn();
-            this.DeleteService = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel15 = new System.Windows.Forms.Panel();
             this.btnServiceAdd = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
             this.txtSearchService = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ServiceID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DescriptionService = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PriceService = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DisplayPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EditService = new System.Windows.Forms.DataGridViewImageColumn();
+            this.DeleteService = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel1.SuspendLayout();
             this.panel14.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
@@ -493,6 +496,8 @@
             this.PriceItems,
             this.Quantity,
             this.Classification,
+            this.UNIT,
+            this.priceReal,
             this.ID,
             this.EditItems,
             this.DeleteItems,
@@ -557,7 +562,7 @@
             // 
             // PriceItems
             // 
-            this.PriceItems.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.PriceItems.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.PriceItems.HeaderText = "PRICE";
             this.PriceItems.MinimumWidth = 6;
             this.PriceItems.Name = "PriceItems";
@@ -580,6 +585,23 @@
             this.Classification.Name = "Classification";
             this.Classification.ReadOnly = true;
             this.Classification.Width = 208;
+            // 
+            // UNIT
+            // 
+            this.UNIT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.UNIT.HeaderText = "UNIT";
+            this.UNIT.MinimumWidth = 6;
+            this.UNIT.Name = "UNIT";
+            this.UNIT.ReadOnly = true;
+            this.UNIT.Width = 92;
+            // 
+            // priceReal
+            // 
+            this.priceReal.HeaderText = "priceReal";
+            this.priceReal.MinimumWidth = 6;
+            this.priceReal.Name = "priceReal";
+            this.priceReal.Visible = false;
+            this.priceReal.Width = 125;
             // 
             // ID
             // 
@@ -809,6 +831,7 @@
             this.NAME,
             this.DescriptionService,
             this.PriceService,
+            this.DisplayPrice,
             this.EditService,
             this.DeleteService});
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -832,68 +855,6 @@
             this.dataGridViewService.Size = new System.Drawing.Size(1301, 759);
             this.dataGridViewService.TabIndex = 9;
             this.dataGridViewService.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewService_CellContentClick_1);
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataGridViewTextBoxColumn2.HeaderText = "#";
-            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Width = 61;
-            // 
-            // ServiceID
-            // 
-            this.ServiceID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.ServiceID.HeaderText = "SERVICE ID";
-            this.ServiceID.MinimumWidth = 6;
-            this.ServiceID.Name = "ServiceID";
-            this.ServiceID.ReadOnly = true;
-            this.ServiceID.Visible = false;
-            this.ServiceID.Width = 125;
-            // 
-            // NAME
-            // 
-            this.NAME.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.NAME.HeaderText = "NAME";
-            this.NAME.MinimumWidth = 6;
-            this.NAME.Name = "NAME";
-            this.NAME.ReadOnly = true;
-            // 
-            // DescriptionService
-            // 
-            this.DescriptionService.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.DescriptionService.HeaderText = "DESCRIPTION";
-            this.DescriptionService.MinimumWidth = 6;
-            this.DescriptionService.Name = "DescriptionService";
-            this.DescriptionService.ReadOnly = true;
-            // 
-            // PriceService
-            // 
-            this.PriceService.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.PriceService.HeaderText = "PRICE";
-            this.PriceService.MinimumWidth = 6;
-            this.PriceService.Name = "PriceService";
-            this.PriceService.ReadOnly = true;
-            this.PriceService.Width = 115;
-            // 
-            // EditService
-            // 
-            this.EditService.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.EditService.HeaderText = "";
-            this.EditService.Image = global::Capstone.Properties.Resources.Edit;
-            this.EditService.MinimumWidth = 6;
-            this.EditService.Name = "EditService";
-            this.EditService.Width = 6;
-            // 
-            // DeleteService
-            // 
-            this.DeleteService.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.DeleteService.HeaderText = "";
-            this.DeleteService.Image = global::Capstone.Properties.Resources._Delete;
-            this.DeleteService.MinimumWidth = 6;
-            this.DeleteService.Name = "DeleteService";
-            this.DeleteService.Width = 6;
             // 
             // panel5
             // 
@@ -963,6 +924,76 @@
             this.label2.Size = new System.Drawing.Size(189, 41);
             this.label2.TabIndex = 4;
             this.label2.Text = "Services List";
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewTextBoxColumn2.HeaderText = "#";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 61;
+            // 
+            // ServiceID
+            // 
+            this.ServiceID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.ServiceID.HeaderText = "SERVICE ID";
+            this.ServiceID.MinimumWidth = 6;
+            this.ServiceID.Name = "ServiceID";
+            this.ServiceID.ReadOnly = true;
+            this.ServiceID.Visible = false;
+            this.ServiceID.Width = 180;
+            // 
+            // NAME
+            // 
+            this.NAME.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.NAME.HeaderText = "NAME";
+            this.NAME.MinimumWidth = 6;
+            this.NAME.Name = "NAME";
+            this.NAME.ReadOnly = true;
+            // 
+            // DescriptionService
+            // 
+            this.DescriptionService.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.DescriptionService.HeaderText = "DESCRIPTION";
+            this.DescriptionService.MinimumWidth = 6;
+            this.DescriptionService.Name = "DescriptionService";
+            this.DescriptionService.ReadOnly = true;
+            // 
+            // PriceService
+            // 
+            this.PriceService.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.PriceService.HeaderText = "PRICE";
+            this.PriceService.MinimumWidth = 6;
+            this.PriceService.Name = "PriceService";
+            this.PriceService.ReadOnly = true;
+            this.PriceService.Width = 115;
+            // 
+            // DisplayPrice
+            // 
+            this.DisplayPrice.HeaderText = "DisplayPrice";
+            this.DisplayPrice.MinimumWidth = 6;
+            this.DisplayPrice.Name = "DisplayPrice";
+            this.DisplayPrice.Visible = false;
+            this.DisplayPrice.Width = 125;
+            // 
+            // EditService
+            // 
+            this.EditService.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.EditService.HeaderText = "";
+            this.EditService.Image = global::Capstone.Properties.Resources.Edit;
+            this.EditService.MinimumWidth = 6;
+            this.EditService.Name = "EditService";
+            this.EditService.Width = 6;
+            // 
+            // DeleteService
+            // 
+            this.DeleteService.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.DeleteService.HeaderText = "";
+            this.DeleteService.Image = global::Capstone.Properties.Resources._Delete;
+            this.DeleteService.MinimumWidth = 6;
+            this.DeleteService.Name = "DeleteService";
+            this.DeleteService.Width = 6;
             // 
             // frmProductsList
             // 
@@ -1051,13 +1082,6 @@
         private Panel panel6;
         public TextBox txtSearchService;
         private Label label2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private DataGridViewTextBoxColumn ServiceID;
-        private DataGridViewTextBoxColumn NAME;
-        private DataGridViewTextBoxColumn DescriptionService;
-        private DataGridViewTextBoxColumn PriceService;
-        private DataGridViewImageColumn EditService;
-        private DataGridViewImageColumn DeleteService;
         public DataGridView dataGridViewProduct;
         public DataGridView dataGridViewType;
         public DataGridView dataGridViewItems;
@@ -1072,9 +1096,19 @@
         private DataGridViewTextBoxColumn PriceItems;
         private DataGridViewTextBoxColumn Quantity;
         private DataGridViewTextBoxColumn Classification;
+        private DataGridViewTextBoxColumn UNIT;
+        private DataGridViewTextBoxColumn priceReal;
         private DataGridViewTextBoxColumn ID;
         private DataGridViewImageColumn EditItems;
         private DataGridViewImageColumn DeleteItems;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn ServiceID;
+        private DataGridViewTextBoxColumn NAME;
+        private DataGridViewTextBoxColumn DescriptionService;
+        private DataGridViewTextBoxColumn PriceService;
+        private DataGridViewTextBoxColumn DisplayPrice;
+        private DataGridViewImageColumn EditService;
+        private DataGridViewImageColumn DeleteService;
     }
 }

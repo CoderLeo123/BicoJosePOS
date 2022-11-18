@@ -78,13 +78,14 @@
             this.StockID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblName2 = new System.Windows.Forms.Label();
             this.panelNC = new System.Windows.Forms.Panel();
+            this.lblClasific = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.lblPrice2 = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txtQuantity = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -184,7 +185,7 @@
             // 
             this.panel2.Controls.Add(this.dataGridViewExpDate);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 274);
+            this.panel2.Location = new System.Drawing.Point(0, 222);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(789, 165);
             this.panel2.TabIndex = 8;
@@ -433,7 +434,7 @@
             // 
             this.panel3.Controls.Add(this.btnSave);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 633);
+            this.panel3.Location = new System.Drawing.Point(0, 581);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(789, 68);
             this.panel3.TabIndex = 9;
@@ -480,9 +481,9 @@
             this.panelC.Controls.Add(this.panel3);
             this.panelC.Controls.Add(this.lblPrice);
             this.panelC.Controls.Add(this.lblName);
-            this.panelC.Location = new System.Drawing.Point(4, -14);
+            this.panelC.Location = new System.Drawing.Point(4, 6);
             this.panelC.Name = "panelC";
-            this.panelC.Size = new System.Drawing.Size(789, 701);
+            this.panelC.Size = new System.Drawing.Size(789, 649);
             this.panelC.TabIndex = 12;
             // 
             // lblInitialStock
@@ -499,7 +500,7 @@
             this.panel6.Controls.Add(this.dataGridViewSelected);
             this.panel6.Controls.Add(this.panel4);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel6.Location = new System.Drawing.Point(0, 439);
+            this.panel6.Location = new System.Drawing.Point(0, 387);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(789, 194);
             this.panel6.TabIndex = 0;
@@ -650,6 +651,7 @@
             // panelNC
             // 
             this.panelNC.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panelNC.Controls.Add(this.lblClasific);
             this.panelNC.Controls.Add(this.label8);
             this.panelNC.Controls.Add(this.label4);
             this.panelNC.Controls.Add(this.lblPrice2);
@@ -661,6 +663,37 @@
             this.panelNC.Name = "panelNC";
             this.panelNC.Size = new System.Drawing.Size(538, 357);
             this.panelNC.TabIndex = 0;
+            // 
+            // lblClasific
+            // 
+            this.lblClasific.AutoSize = true;
+            this.lblClasific.Location = new System.Drawing.Point(0, 9);
+            this.lblClasific.Name = "lblClasific";
+            this.lblClasific.Size = new System.Drawing.Size(234, 38);
+            this.lblClasific.TabIndex = 46;
+            this.lblClasific.Text = "Non-Consumable";
+            this.lblClasific.Visible = false;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label8.Location = new System.Drawing.Point(247, 262);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(70, 81);
+            this.label8.TabIndex = 45;
+            this.label8.Text = "₱";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 28.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label4.ForeColor = System.Drawing.Color.Red;
+            this.label4.Location = new System.Drawing.Point(247, 200);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(55, 62);
+            this.label4.TabIndex = 44;
+            this.label4.Text = "₱";
             // 
             // lblPrice2
             // 
@@ -714,27 +747,6 @@
             this.txtQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtQuantity.TextChanged += new System.EventHandler(this.txtQuantity_TextChanged);
             this.txtQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuantity_KeyPress);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 28.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.ForeColor = System.Drawing.Color.Red;
-            this.label4.Location = new System.Drawing.Point(247, 200);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(55, 62);
-            this.label4.TabIndex = 44;
-            this.label4.Text = "₱";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(247, 262);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(70, 81);
-            this.label8.TabIndex = 45;
-            this.label8.Text = "₱";
             // 
             // frmExpiration
             // 
@@ -825,5 +837,6 @@
         public Label lblLenseCheck;
         public Label label4;
         public Label label8;
+        public Label lblClasific;
     }
 }

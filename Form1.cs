@@ -12,9 +12,12 @@ namespace Capstone
         ClassInventory classInvent = new ClassInventory();
         ClassReports classReport = new ClassReports();
         ClassLoginAndSignUp classLoginMethod = new ClassLoginAndSignUp();
+        ClassGenerateID classGenerateID = new ClassGenerateID();
         ClassPaymentOrderMonitoring classLoad = new ClassPaymentOrderMonitoring();
         Boolean isCollapsed1, isCollapsed2, isCollapsed3 = true;
+        List<ExpList> SList = new List<ExpList>();
         frmReports frmR = new frmReports();
+        frmDashboardDetails frmDetails = new frmDashboardDetails();
         int row = 0;
         public frmAdmin()
         {
@@ -24,13 +27,96 @@ namespace Capstone
             Users();
             Payment();
             Order();
+            Expiration();
             frmLogin frmL = new frmLogin();
             frmL.Hide();
             stockBlinkNotify();
-
-            //frmR.dateSelect(frmR.dataGridViewInitial);
             //classReport.loadSalesPerDay(frmR.dataGridViewSalesR, "Total_Sale");
             //classReport.loadSalesPerDay(frmR.dataGridViewBalR, "Total_Bal");
+        }
+        public void addToExpList(string stockNum, string Description, string Expiration_Date, string Quantity, string Unit_Measure)
+        {
+            
+            cn.Open();
+            cm = new SqlCommand("INSERT INTO tblExpList (Stock_Num, Description, Expiration_Date, Quantity, Unit_Measure) VALUES(@Stock_Num, @Description, @Expiration_Date, @Quantity, @Unit_Measure)", cn);
+            cm.Parameters.AddWithValue("@Stock_Num", stockNum);
+            cm.Parameters.AddWithValue("@Description", Description);
+            cm.Parameters.AddWithValue("@Expiration_Date", Expiration_Date);
+            cm.Parameters.AddWithValue("@Quantity", Quantity);
+            cm.Parameters.AddWithValue("@Unit_Measure", Unit_Measure);            
+            cm.ExecuteNonQuery();            
+            cn.Close();
+        }
+        public void clearExpList()
+        {
+            cn.Open();
+            cm = new SqlCommand("DELETE FROM tblExpList", cn);            
+            cm.ExecuteNonQuery();
+            cn.Close();
+        }
+        public void Expiration()
+        {
+            cn = new SqlConnection(dbcon.MyConnection());
+            string expDate = "";
+            int expiringCount = 0;
+            int i = 0;
+            int dateDifference = 0;
+            string sNum = "", Description = "", Expiration_Date = "", Quantity = "", Unit_Measure = "";
+            DateTime expDateItem;
+            DateTime now = DateTime.Now;
+            clearExpList();
+            SList.Clear();
+            
+            cn.Open();
+            SqlCommand cm = new SqlCommand("SELECT * FROM ViewStockItemInventory WHERE Status LIKE 'Available'", cn);
+            dr = cm.ExecuteReader();
+            while (dr.Read())
+            {
+                
+                expDate = dr[4].ToString();
+                sNum = dr[8].ToString(); Description = dr[1].ToString(); Expiration_Date = dr[4].ToString();
+                Quantity = dr[3].ToString(); Unit_Measure = dr[5].ToString();
+
+                expDateItem = DateTime.Parse(expDate);
+                dateDifference = (expDateItem.Date - now.Date).Days;
+
+                label1.Text = dateDifference.ToString();
+                if (dateDifference <= 7)
+                {
+                    ExpList List = new ExpList();
+                    // addToExpList(sNum, Description, Expiration_Date, Quantity, Unit_Measure); dr.GetString(0)
+                    expiringCount++; row++;
+                    List.sNum = sNum;
+                    List.Description = Description;
+                    List.Expiration_Date = Expiration_Date;
+                    List.Quantity = Quantity;
+                    List.Unit_Measure = Unit_Measure;
+                    SList.Add(List);
+                    //frmDetails.dataGridViewExpira.Rows.Add(i, dr[1].ToString(), dr[4].ToString(), dr[3].ToString());
+                }
+                
+            }
+            dr.Close();
+            cn.Close();
+            txtExp.Text = expiringCount.ToString();
+            if (expiringCount > 0)
+            {
+                for (int x = 0; x < expiringCount; x++)
+                {
+                    ExpList Itms = SList[x];
+                    addToExpList(Itms.sNum, Itms.Description, Itms.Expiration_Date, Itms.Quantity, Itms.Unit_Measure);
+                }
+            }
+            
+        }
+        
+        public class ExpList
+        {
+            public string sNum { get; set; }
+            public string Description { get; set; }
+            public string Expiration_Date { get; set; }
+            public string Quantity { get; set; }
+            public string Unit_Measure { get; set; }            
         }
         public void Stock()
         {
@@ -40,7 +126,7 @@ namespace Capstone
             int outOfStockCount = 0;
             int safetyStockCount = 0;
             int reOrderStockCount = 0;
-            int ExpStockCount = 0;
+            //int ExpStockCount = 0;
             cn.Open();
                 SqlCommand cm = new SqlCommand("SELECT Stock_Level FROM tblItem WHERE Lense_Check = 1 Order by Item_ID", cn);
                 dr = cm.ExecuteReader();
@@ -65,25 +151,14 @@ namespace Capstone
                     }
                 }
                 dr.Close();
-                cn.Close();
-            //lblAvailableStock.Text = safetyStockCount.ToString();
-            //lblCriticalStock.Text = CriticalCount.ToString();
-            //lblOutOfStock.Text = outOfStockCount.ToString();
-            //lblReOrder.Text = reOrderStockCount.ToString();
-
+                cn.Close();       
             txtAvailStock.Text = safetyStockCount.ToString();
             txtCrit.Text = CriticalCount.ToString();
             txtOutOStk.Text = outOfStockCount.ToString();
             txtReOrd.Text = reOrderStockCount.ToString();
         }
         public void stockBlinkNotify()
-        {
-            //blinkLabel(lblCriticalStock, lblCritBlink);
-            //blinkLabel(lblReOrder, lblReOrBlink);
-            //blinkLabel(lblOutOfStock, lblOofStkBlink);
-            //blinkLabel(lblPendingPay, lblPendingBlink);
-            //blinkLabel(lblInLab, lblInLabBlink);
-
+        {           
             //blinkLabel2(txtAvailStock, Color.LightGreen);
             blinkLabel2(txtCrit, Color.Yellow);
             blinkLabel2(txtOutOStk, Color.Red);
@@ -98,24 +173,7 @@ namespace Capstone
             //blinkLabel2(txtSett, Color.LightGreen);
 
         }
-        //public async void blinkLabel(Label labelStock, Label labelBlink, Color color)
-        //{
-        //    bool blink = false;
-        //    int stockC = int.Parse(labelStock.Text);
-        //    if (stockC > 0)
-        //    {
-        //        blink = true;
-        //        while (blink)
-        //        {
-        //            await Task.Delay(500);
-        //            labelBlink.BackColor = labelBlink.BackColor == color ? Color.White : Color.Red;
-        //        }
-        //    }
-        //    else
-        //    {
-        //        blink = false;
-        //    }
-        //}
+      
         public async void blinkLabel2(TextBox labelBlink, Color color)
         {
             bool blink = false;
@@ -462,6 +520,10 @@ namespace Capstone
             panelLoad.Controls.Clear();
             panelLoad.Controls.Add(frm);
             frm.txtStockInBy.Text = lblName.Text;
+            if(frm.txtStockID.Text == "0")
+            {
+                classGenerateID.GenerateStockID(frm.txtStockID);
+            }
             frm.BringToFront();
             frm.Show();
             //btnCollapsed();
@@ -638,6 +700,32 @@ namespace Capstone
             }
         }
 
+        private void txtExp_TextChanged(object sender, EventArgs e)
+        {
+            int expCount = int.Parse(txtExp.Text);
+            if(expCount == 0 )
+            {
+                btnExpList.Enabled = false;
+            }
+            else if (expCount > 0)
+            {
+                btnExpList.Enabled = true;
+            }
+        }
+
+        private void btnExpList_Click(object sender, EventArgs e)
+        {
+            frmDashboardDetails frm = new frmDashboardDetails();
+            Expiration();
+            frm.LoadExpList();
+            //frm.tabControlDashboardDetails.TabPages.Clear();
+            //TabPage tab = new TabPage("USER INFO");
+            //frm.tabControlDashboardDetails.TabPages.Add(tab);
+            //tab.Controls.Add(frm.panelUsers);
+            //frm.LoadUsers();
+            frm.ShowDialog();
+        }
+
         private void btnLogout_Click(object sender, EventArgs e)//btnCashier
         {
              this.Dispose(); this.Close();
@@ -651,26 +739,26 @@ namespace Capstone
 
         private void timerDrpBtnProducts_Tick(object sender, EventArgs e)
         {
-            if (isCollapsed1)
-            {
-                dropBtnProducts.Image = Properties.Resources.Down_Arrow;
-                dropPanelProducts.Height += 10;
-                if (dropPanelProducts.Size == dropPanelProducts.MaximumSize)
-                {
-                    timerDrpBtnProducts.Stop();
-                    isCollapsed1 = false;
-                }
-            }
-            else
-            {
-                dropBtnProducts.Image = Properties.Resources.ProdItemServ;
-                dropPanelProducts.Height -= 10;
-                if (dropPanelProducts.Size == dropPanelProducts.MinimumSize)
-                {
-                    timerDrpBtnProducts.Stop();
-                    isCollapsed1 = true;
-                }
-            }
+            //if (isCollapsed1)
+            //{
+            //    dropBtnProducts.Image = Properties.Resources.Down_Arrow;
+            //    dropPanelProducts.Height += 10;
+            //    if (dropPanelProducts.Size == dropPanelProducts.MaximumSize)
+            //    {
+            //        timerDrpBtnProducts.Stop();
+            //        isCollapsed1 = false;
+            //    }
+            //}
+            //else
+            //{
+            //    dropBtnProducts.Image = Properties.Resources.ProdItemServ;
+            //    dropPanelProducts.Height -= 10;
+            //    if (dropPanelProducts.Size == dropPanelProducts.MinimumSize)
+            //    {
+            //        timerDrpBtnProducts.Stop();
+            //        isCollapsed1 = true;
+            //    }
+            //}
 
         }
 
