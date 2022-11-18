@@ -51,7 +51,7 @@ namespace Capstone
             }
 
         }
-
+        
         private void dataGridViewExpDate_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             string colName = dataGridViewExpDate.Columns[e.ColumnIndex].Name;
@@ -98,6 +98,82 @@ namespace Capstone
 
             }
 
+        }
+        public void addExpItemToCart(int unitStockNum, string ItmID, string TransNo, int unitQuant, double unitPrice, string lenseCheck, double unitTotal)
+        {
+            string displayPrice = unitPrice.ToString("#,##0.00");
+            string displayTotal = unitTotal.ToString("#,##0.00");
+            cn.Open();
+            cm = new SqlCommand("INSERT INTO tblCart (Stock_Num, Item_ID, Transaction_No, Quantity, Price, Total, Date, Status, Lense_Check, Display_Total) VALUES (@Stock_Num, @Item_ID, @TransactionNo, @Quantity, @Price, @Total, @Date, 'Cart', @Lense_Check, @Display_Total)", cn);
+            cm.Parameters.AddWithValue("@Stock_Num", unitStockNum);//unitStockNum
+            cm.Parameters.AddWithValue("@Item_ID", ItmID);//ItmID = lblItemIDPass.Text
+            cm.Parameters.AddWithValue("@TransactionNo", TransNo);// frmB.lblTrans.Text
+            cm.Parameters.AddWithValue("@Quantity", unitQuant);//quantItem
+            cm.Parameters.AddWithValue("@Price", displayPrice);//unitPrice =lblPrice.Text
+            cm.Parameters.AddWithValue("@Lense_Check", lenseCheck);
+            cm.Parameters.AddWithValue("@Date", DateTime.Now);
+            cm.Parameters.AddWithValue("@Total", displayTotal); //unitTotal
+            cm.Parameters.AddWithValue("@Display_Total", displayTotal);
+            cm.ExecuteNonQuery();
+            cn.Close();
+
+           
+
+        }
+        public void autoSelectExp()
+        {
+            if(dataGridViewExpDate.Rows.Count > 0)
+            {
+                if(txtQuantity.Text != "" && txtQuantity.Text != "0")
+                {
+                    double unitPrice = double.Parse(lblPrice2.Text);
+                    int quantInput = int.Parse(txtQuantity.Text);
+                    int unitStockNum = int.Parse(dataGridViewExpDate[4, 0].Value?.ToString());
+                    int unitQuantItem = int.Parse(dataGridViewExpDate[2, 0].Value?.ToString());
+                    string ItmID = lblItemIDPass.Text;
+                    string TransNo = frmB.lblTrans.Text;
+                    string lenseCheck = lblLenseCheck.Text;
+                    double unitTotal = quantInput * unitPrice;                    
+                    if (quantInput > unitQuantItem)
+                    {                       
+                        int lacking = quantInput - unitQuantItem;
+                        //double unitTotal = quantInput * unitPrice;
+                        addExpItemToCart(unitStockNum, ItmID, TransNo, unitQuantItem, unitPrice, lenseCheck, unitTotal);
+                        reducedQuantityTblStock(unitStockNum, unitQuantItem);
+                        while (lacking > 0)
+                        {
+                            int row = 1;
+                            unitStockNum = int.Parse(dataGridViewExpDate[4, row].Value?.ToString());
+                            unitQuantItem = int.Parse(dataGridViewExpDate[2, row].Value?.ToString());
+                            if (lacking <= unitQuantItem)
+                            {
+                                lacking = unitQuantItem - lacking;
+                                addExpItemToCart(unitStockNum, ItmID, TransNo, lacking, unitPrice, lenseCheck, unitTotal);
+                                reducedQuantityTblStock(unitStockNum, lacking);
+                                break;
+                            }
+                            else if (lacking >= unitQuantItem)
+                            {
+                                lacking = lacking - unitQuantItem;
+                                addExpItemToCart(unitStockNum, ItmID, TransNo, unitQuantItem, unitPrice, lenseCheck, unitTotal);
+                                reducedQuantityTblStock(unitStockNum, unitQuantItem);
+                            }
+                            row++;
+                        }                        
+                    }
+                    else if (quantInput <= unitQuantItem)
+                    {
+                        //int remaining = unitQuantItem - quantInput;
+                        //unitTotal = quantInput * unitPrice;
+                        addExpItemToCart(unitStockNum, ItmID, TransNo, quantInput, unitPrice, lenseCheck, unitTotal);
+                        reducedQuantityTblStock(unitStockNum, quantInput);
+                    }// quantInput
+                    reducedQuantity(ItmID, quantInput);
+                    classInventory.determineStockLevel(ItmID);
+                    frmB.LoadCart();    
+
+                }
+            }
         }
 
         private void dataGridViewSelected_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -316,6 +392,7 @@ namespace Capstone
         {
             try
             {
+                string classfici = "";
                 if (e.KeyChar == 8)
                 {
                     //accept backspace
@@ -332,6 +409,8 @@ namespace Capstone
                 double Total = double.Parse(lblTotal.Text);
                 string displayTotal = Total.ToString("#,##0.00");
                 if ((e.KeyChar == 13))//enter
+                {
+                    if (classfici == "Non-Consumable")
                     {
                         cn.Open();
                         cm = new SqlCommand("INSERT INTO tblCart (Stock_Num, Item_ID, Transaction_No, Quantity, Price, Total, Date, Status, Lense_Check, Display_Total) VALUES (@Stock_Num, @Item_ID, @TransactionNo, @Quantity, @Price, @Total, @Date, 'Cart', @Lense_Check, @Display_Total)", cn);
@@ -344,18 +423,21 @@ namespace Capstone
                         cm.Parameters.AddWithValue("@Date", DateTime.Now);
                         cm.Parameters.AddWithValue("@Total", lblTotal.Text);
                         cm.Parameters.AddWithValue("@Display_Total", displayTotal);
-                    cm.Parameters.AddWithValue("@Lense_Check", lblLenseCheck.Text);
-                    cm.ExecuteNonQuery();
+                        cm.Parameters.AddWithValue("@Lense_Check", lblLenseCheck.Text);
+                        cm.ExecuteNonQuery();
                         cn.Close();
                         MessageBox.Show("Successfully Added!", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
                         frmB.LoadCart();
                         this.Close();
                         frmB.Close();
                         reducedQuantity(ITID, CartStock);
-                    classInventory.determineStockLevel(ITID);
-                }
-                
-                
+                        classInventory.determineStockLevel(ITID);
+                    }
+                    else if(classfici == "Consumable")
+                    {
+                        autoSelectExp();
+                    }
+                }                               
                 frmB.LoadCart();
             }
             catch (Exception ex)
@@ -385,6 +467,7 @@ namespace Capstone
             cn.Close();
 
         }
+        
         private void panel1_MouseDown(object sender, MouseEventArgs e)
         {
             mouseDown = true;

@@ -50,6 +50,9 @@
             this.panelStockDetail = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.dataGridViewDetails = new System.Windows.Forms.DataGridView();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.labelItemID = new System.Windows.Forms.Label();
+            this.labelItemName = new System.Windows.Forms.Label();
             this.NumService = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DeliveryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,9 +60,6 @@
             this.Expiration = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StockBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StockID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.labelItemID = new System.Windows.Forms.Label();
-            this.labelItemName = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
@@ -80,7 +80,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(806, 57);
+            this.panel1.Size = new System.Drawing.Size(699, 57);
             this.panel1.TabIndex = 33;
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
@@ -90,7 +90,7 @@
             // 
             this.panel6.Controls.Add(this.btnClose);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel6.Location = new System.Drawing.Point(745, 0);
+            this.panel6.Location = new System.Drawing.Point(638, 0);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(61, 57);
             this.panel6.TabIndex = 1;
@@ -112,7 +112,7 @@
             // txtQuantity
             // 
             this.txtQuantity.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtQuantity.Location = new System.Drawing.Point(250, 213);
+            this.txtQuantity.Location = new System.Drawing.Point(234, 149);
             this.txtQuantity.Name = "txtQuantity";
             this.txtQuantity.PlaceholderText = "0";
             this.txtQuantity.Size = new System.Drawing.Size(199, 38);
@@ -124,7 +124,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(33, 208);
+            this.label4.Location = new System.Drawing.Point(17, 144);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(132, 41);
             this.label4.TabIndex = 41;
@@ -138,7 +138,7 @@
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(409, 270);
+            this.btnCancel.Location = new System.Drawing.Point(393, 206);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(153, 49);
             this.btnCancel.TabIndex = 38;
@@ -154,7 +154,7 @@
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdate.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnUpdate.Location = new System.Drawing.Point(250, 270);
+            this.btnUpdate.Location = new System.Drawing.Point(234, 206);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(153, 49);
             this.btnUpdate.TabIndex = 37;
@@ -164,7 +164,7 @@
             // 
             // dateExpiration
             // 
-            this.dateExpiration.Location = new System.Drawing.Point(250, 84);
+            this.dateExpiration.Location = new System.Drawing.Point(234, 20);
             this.dateExpiration.Name = "dateExpiration";
             this.dateExpiration.Size = new System.Drawing.Size(423, 43);
             this.dateExpiration.TabIndex = 44;
@@ -172,7 +172,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(33, 86);
+            this.label6.Location = new System.Drawing.Point(17, 22);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(205, 38);
             this.label6.TabIndex = 43;
@@ -186,7 +186,7 @@
             this.btnPerishable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPerishable.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnPerishable.ForeColor = System.Drawing.Color.White;
-            this.btnPerishable.Location = new System.Drawing.Point(250, 144);
+            this.btnPerishable.Location = new System.Drawing.Point(234, 80);
             this.btnPerishable.Name = "btnPerishable";
             this.btnPerishable.Size = new System.Drawing.Size(173, 49);
             this.btnPerishable.TabIndex = 45;
@@ -202,7 +202,7 @@
             this.btnNonPerishable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNonPerishable.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnNonPerishable.ForeColor = System.Drawing.Color.White;
-            this.btnNonPerishable.Location = new System.Drawing.Point(451, 144);
+            this.btnNonPerishable.Location = new System.Drawing.Point(435, 80);
             this.btnNonPerishable.Name = "btnNonPerishable";
             this.btnNonPerishable.Size = new System.Drawing.Size(222, 49);
             this.btnNonPerishable.TabIndex = 46;
@@ -213,7 +213,7 @@
             // lblCheck
             // 
             this.lblCheck.AutoSize = true;
-            this.lblCheck.Location = new System.Drawing.Point(33, 148);
+            this.lblCheck.Location = new System.Drawing.Point(17, 84);
             this.lblCheck.Name = "lblCheck";
             this.lblCheck.Size = new System.Drawing.Size(81, 38);
             this.lblCheck.TabIndex = 47;
@@ -223,7 +223,7 @@
             // lblID
             // 
             this.lblID.AutoSize = true;
-            this.lblID.Location = new System.Drawing.Point(33, 270);
+            this.lblID.Location = new System.Drawing.Point(17, 206);
             this.lblID.Name = "lblID";
             this.lblID.Size = new System.Drawing.Size(81, 38);
             this.lblID.TabIndex = 48;
@@ -238,7 +238,7 @@
             this.tabControlStock.Location = new System.Drawing.Point(0, 57);
             this.tabControlStock.Name = "tabControlStock";
             this.tabControlStock.SelectedIndex = 0;
-            this.tabControlStock.Size = new System.Drawing.Size(806, 439);
+            this.tabControlStock.Size = new System.Drawing.Size(699, 339);
             this.tabControlStock.TabIndex = 52;
             // 
             // tabPage1
@@ -247,7 +247,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 46);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(798, 389);
+            this.tabPage1.Size = new System.Drawing.Size(691, 289);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Edit Stocks";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -267,15 +267,15 @@
             this.panelEditStock.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEditStock.Location = new System.Drawing.Point(3, 3);
             this.panelEditStock.Name = "panelEditStock";
-            this.panelEditStock.Size = new System.Drawing.Size(792, 383);
+            this.panelEditStock.Size = new System.Drawing.Size(685, 283);
             this.panelEditStock.TabIndex = 0;
             // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.panelStockDetail);
-            this.tabPage3.Location = new System.Drawing.Point(4, 29);
+            this.tabPage3.Location = new System.Drawing.Point(4, 46);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(798, 406);
+            this.tabPage3.Size = new System.Drawing.Size(691, 289);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Stock Details";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -287,7 +287,7 @@
             this.panelStockDetail.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelStockDetail.Location = new System.Drawing.Point(0, 0);
             this.panelStockDetail.Name = "panelStockDetail";
-            this.panelStockDetail.Size = new System.Drawing.Size(798, 406);
+            this.panelStockDetail.Size = new System.Drawing.Size(691, 289);
             this.panelStockDetail.TabIndex = 0;
             // 
             // panel5
@@ -296,7 +296,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(0, 64);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(798, 342);
+            this.panel5.Size = new System.Drawing.Size(691, 225);
             this.panel5.TabIndex = 8;
             // 
             // dataGridViewDetails
@@ -342,9 +342,39 @@
             this.dataGridViewDetails.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridViewDetails.RowTemplate.Height = 35;
             this.dataGridViewDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewDetails.Size = new System.Drawing.Size(798, 342);
+            this.dataGridViewDetails.Size = new System.Drawing.Size(691, 225);
             this.dataGridViewDetails.TabIndex = 6;
             this.dataGridViewDetails.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDetails_CellClick);
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.labelItemID);
+            this.panel4.Controls.Add(this.labelItemName);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(691, 64);
+            this.panel4.TabIndex = 7;
+            // 
+            // labelItemID
+            // 
+            this.labelItemID.AutoSize = true;
+            this.labelItemID.Location = new System.Drawing.Point(618, 13);
+            this.labelItemID.Name = "labelItemID";
+            this.labelItemID.Size = new System.Drawing.Size(57, 38);
+            this.labelItemID.TabIndex = 26;
+            this.labelItemID.Text = "     ";
+            this.labelItemID.Visible = false;
+            // 
+            // labelItemName
+            // 
+            this.labelItemName.AutoSize = true;
+            this.labelItemName.ForeColor = System.Drawing.Color.Red;
+            this.labelItemName.Location = new System.Drawing.Point(105, 13);
+            this.labelItemName.Name = "labelItemName";
+            this.labelItemName.Size = new System.Drawing.Size(154, 38);
+            this.labelItemName.TabIndex = 25;
+            this.labelItemName.Text = "Item Name";
             // 
             // NumService
             // 
@@ -380,6 +410,7 @@
             this.Unit.MinimumWidth = 6;
             this.Unit.Name = "Unit";
             this.Unit.ReadOnly = true;
+            this.Unit.Visible = false;
             this.Unit.Width = 106;
             // 
             // Expiration
@@ -408,41 +439,11 @@
             this.StockID.ReadOnly = true;
             this.StockID.Visible = false;
             // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.labelItemID);
-            this.panel4.Controls.Add(this.labelItemName);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(0, 0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(798, 64);
-            this.panel4.TabIndex = 7;
-            // 
-            // labelItemID
-            // 
-            this.labelItemID.AutoSize = true;
-            this.labelItemID.Location = new System.Drawing.Point(618, 13);
-            this.labelItemID.Name = "labelItemID";
-            this.labelItemID.Size = new System.Drawing.Size(57, 38);
-            this.labelItemID.TabIndex = 26;
-            this.labelItemID.Text = "     ";
-            this.labelItemID.Visible = false;
-            // 
-            // labelItemName
-            // 
-            this.labelItemName.AutoSize = true;
-            this.labelItemName.ForeColor = System.Drawing.Color.Red;
-            this.labelItemName.Location = new System.Drawing.Point(105, 13);
-            this.labelItemName.Name = "labelItemName";
-            this.labelItemName.Size = new System.Drawing.Size(154, 38);
-            this.labelItemName.TabIndex = 25;
-            this.labelItemName.Text = "Item Name";
-            // 
             // frmEditStock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 37F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(806, 496);
+            this.ClientSize = new System.Drawing.Size(699, 396);
             this.Controls.Add(this.tabControlStock);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);

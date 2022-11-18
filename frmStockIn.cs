@@ -93,6 +93,7 @@ namespace Capstone
                     {
                         frm.btnNonPerishable.Enabled = true;
                         frm.btnPerishable.Enabled = false;
+                        frm.dateExpiration.Enabled = false;
                     }
                     frm.lblID.Text = dataGridViewStockItems.Rows[e.RowIndex].Cells[11].Value.ToString();
                     frm.txtQuantity.Text = dataGridViewStockItems[5, e.RowIndex].Value.ToString();
@@ -202,7 +203,7 @@ namespace Capstone
         
         private void GenerateStockID_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            classGenerateID.GenerateStockID(txtStockID);
+            //classGenerateID.GenerateStockID(txtStockID);
         }
 
         private void btnSaveStockIn_Click(object sender, EventArgs e)
@@ -293,9 +294,9 @@ namespace Capstone
                             MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }                        
                     }
+                    classGenerateID.GenerateStockID(txtStockID);
                     classLoadData.LoadStock(dataGridViewStockItems, txtStockID, label3);
                     classLoadData.LoadStockOnHand(dataGridViewOnHand, txtSearch);
-                classGenerateID.GenerateStockID(txtStockID);
                     //LoadStock();
                     Clear();
                 }                

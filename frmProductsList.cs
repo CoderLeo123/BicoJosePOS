@@ -249,6 +249,7 @@ namespace Capstone
                 //frm.comBoxType.SelectedItem = dataGridViewItems[2, e.RowIndex].Value.ToString();
                 frm.txtProduct.Text = dataGridViewItems[3, e.RowIndex].Value.ToString();
                 frm.txtPrice.Text = dataGridViewItems[8, e.RowIndex].Value.ToString();
+                frm.txtUnitMeasr.Text = dataGridViewItems[7, e.RowIndex].Value.ToString();
                 //frm.comBoxClassification.Text = dataGridViewItems[6, e.RowIndex].Value.ToString();
                 frm.btnSaveItem.Enabled = false;
                 frm.btnUpdateItem.Enabled = true;

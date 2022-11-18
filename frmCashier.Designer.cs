@@ -41,6 +41,14 @@
             this.lblTrans = new System.Windows.Forms.Label();
             this.lblTransNo = new System.Windows.Forms.Label();
             this.dataGridViewService = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priServ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.del = new System.Windows.Forms.DataGridViewImageColumn();
+            this.ServID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ServNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel7 = new System.Windows.Forms.Panel();
             this.lblGrossNoComma = new System.Windows.Forms.Label();
             this.lblNetNoComa = new System.Windows.Forms.Label();
@@ -52,7 +60,6 @@
             this.lblSalesTotal = new System.Windows.Forms.Label();
             this.lblNetTotal = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.lblChange = new System.Windows.Forms.Label();
             this.lblDiscount = new System.Windows.Forms.Label();
             this.lblPayment = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -94,14 +101,6 @@
             this.label19 = new System.Windows.Forms.Label();
             this.dataGridViewCart = new System.Windows.Forms.DataGridView();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.priServ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.del = new System.Windows.Forms.DataGridViewImageColumn();
-            this.ServID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ServNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NumCart = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DescriptionCart = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Expiration = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -118,8 +117,8 @@
             this.unitMe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LenseChe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.priceReal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.totalReal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Classif = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalReal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel9.SuspendLayout();
@@ -263,6 +262,73 @@
             this.dataGridViewService.TabIndex = 4;
             this.dataGridViewService.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewService_CellContentClick);
             // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewTextBoxColumn1.HeaderText = "#";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 51;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn2.HeaderText = "NAME";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn3.HeaderText = "DESCRIPTION";
+            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // priServ
+            // 
+            this.priServ.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.priServ.HeaderText = "PRICE";
+            this.priServ.MinimumWidth = 6;
+            this.priServ.Name = "priServ";
+            this.priServ.ReadOnly = true;
+            this.priServ.Width = 89;
+            // 
+            // del
+            // 
+            this.del.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.del.HeaderText = "";
+            this.del.Image = global::Capstone.Properties.Resources._Delete;
+            this.del.MinimumWidth = 6;
+            this.del.Name = "del";
+            this.del.Width = 6;
+            // 
+            // ServID
+            // 
+            this.ServID.HeaderText = "SID";
+            this.ServID.MinimumWidth = 6;
+            this.ServID.Name = "ServID";
+            this.ServID.Visible = false;
+            this.ServID.Width = 125;
+            // 
+            // ServNum
+            // 
+            this.ServNum.HeaderText = "Num";
+            this.ServNum.MinimumWidth = 6;
+            this.ServNum.Name = "ServNum";
+            this.ServNum.Visible = false;
+            this.ServNum.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "priceReal";
+            this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.Visible = false;
+            this.dataGridViewTextBoxColumn4.Width = 125;
+            // 
             // panel7
             // 
             this.panel7.Controls.Add(this.lblGrossNoComma);
@@ -275,7 +341,6 @@
             this.panel7.Controls.Add(this.lblSalesTotal);
             this.panel7.Controls.Add(this.lblNetTotal);
             this.panel7.Controls.Add(this.label10);
-            this.panel7.Controls.Add(this.lblChange);
             this.panel7.Controls.Add(this.lblDiscount);
             this.panel7.Controls.Add(this.lblPayment);
             this.panel7.Controls.Add(this.label5);
@@ -391,18 +456,6 @@
             this.label10.TabIndex = 4;
             this.label10.Text = "Net Total";
             // 
-            // lblChange
-            // 
-            this.lblChange.AutoSize = true;
-            this.lblChange.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblChange.ForeColor = System.Drawing.Color.Red;
-            this.lblChange.Location = new System.Drawing.Point(280, 252);
-            this.lblChange.Name = "lblChange";
-            this.lblChange.Size = new System.Drawing.Size(94, 41);
-            this.lblChange.TabIndex = 9;
-            this.lblChange.Text = "00.00";
-            this.lblChange.Visible = false;
-            // 
             // lblDiscount
             // 
             this.lblDiscount.AutoSize = true;
@@ -417,7 +470,7 @@
             // 
             this.lblPayment.AutoSize = true;
             this.lblPayment.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblPayment.Location = new System.Drawing.Point(333, 252);
+            this.lblPayment.Location = new System.Drawing.Point(27, 209);
             this.lblPayment.Name = "lblPayment";
             this.lblPayment.Size = new System.Drawing.Size(94, 41);
             this.lblPayment.TabIndex = 7;
@@ -941,8 +994,8 @@
             this.unitMe,
             this.LenseChe,
             this.priceReal,
-            this.totalReal,
-            this.Classif});
+            this.Classif,
+            this.totalReal});
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.Azure;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -967,73 +1020,6 @@
             // printDocument1
             // 
             this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataGridViewTextBoxColumn1.HeaderText = "#";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 51;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn2.HeaderText = "NAME";
-            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn3.HeaderText = "DESCRIPTION";
-            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // priServ
-            // 
-            this.priServ.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.priServ.HeaderText = "PRICE";
-            this.priServ.MinimumWidth = 6;
-            this.priServ.Name = "priServ";
-            this.priServ.ReadOnly = true;
-            this.priServ.Width = 89;
-            // 
-            // del
-            // 
-            this.del.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.del.HeaderText = "";
-            this.del.Image = global::Capstone.Properties.Resources._Delete;
-            this.del.MinimumWidth = 6;
-            this.del.Name = "del";
-            this.del.Width = 6;
-            // 
-            // ServID
-            // 
-            this.ServID.HeaderText = "SID";
-            this.ServID.MinimumWidth = 6;
-            this.ServID.Name = "ServID";
-            this.ServID.Visible = false;
-            this.ServID.Width = 125;
-            // 
-            // ServNum
-            // 
-            this.ServNum.HeaderText = "Num";
-            this.ServNum.MinimumWidth = 6;
-            this.ServNum.Name = "ServNum";
-            this.ServNum.Visible = false;
-            this.ServNum.Width = 125;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.HeaderText = "priceReal";
-            this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.Visible = false;
-            this.dataGridViewTextBoxColumn4.Width = 125;
             // 
             // NumCart
             // 
@@ -1175,14 +1161,6 @@
             this.priceReal.Visible = false;
             this.priceReal.Width = 125;
             // 
-            // totalReal
-            // 
-            this.totalReal.HeaderText = "totalReal";
-            this.totalReal.MinimumWidth = 6;
-            this.totalReal.Name = "totalReal";
-            this.totalReal.Visible = false;
-            this.totalReal.Width = 125;
-            // 
             // Classif
             // 
             this.Classif.HeaderText = "CLassificate";
@@ -1190,6 +1168,14 @@
             this.Classif.Name = "Classif";
             this.Classif.Visible = false;
             this.Classif.Width = 125;
+            // 
+            // totalReal
+            // 
+            this.totalReal.HeaderText = "totalReal";
+            this.totalReal.MinimumWidth = 6;
+            this.totalReal.Name = "totalReal";
+            this.totalReal.Visible = false;
+            this.totalReal.Width = 125;
             // 
             // frmCashier
             // 
@@ -1258,7 +1244,6 @@
         public Label lblNetTotal;
         private Label label10;
         private Panel panel8;
-        public Label lblChange;
         private Label label7;
         public TextBox txtFirstName;
         public TextBox txtLastName;
@@ -1316,7 +1301,7 @@
         private DataGridViewTextBoxColumn unitMe;
         private DataGridViewTextBoxColumn LenseChe;
         private DataGridViewTextBoxColumn priceReal;
-        private DataGridViewTextBoxColumn totalReal;
         private DataGridViewTextBoxColumn Classif;
+        private DataGridViewTextBoxColumn totalReal;
     }
 }

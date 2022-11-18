@@ -45,29 +45,6 @@
             this.btnSaveStockIn = new System.Windows.Forms.Button();
             this.btnClearStock = new System.Windows.Forms.Button();
             this.dataGridViewStockItems = new System.Windows.Forms.DataGridView();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.lblCheck = new System.Windows.Forms.Label();
-            this.ClickSearchItem = new System.Windows.Forms.LinkLabel();
-            this.GenerateStockID = new System.Windows.Forms.LinkLabel();
-            this.dateStockIn = new System.Windows.Forms.DateTimePicker();
-            this.txtStockInBy = new System.Windows.Forms.TextBox();
-            this.txtStockID = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.panelStockOnHand = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.dataGridViewOnHand = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Classification = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.txtSearch = new System.Windows.Forms.TextBox();
             this.NumStockIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EDIT = new System.Windows.Forms.DataGridViewImageColumn();
             this.DeleteStockIn = new System.Windows.Forms.DataGridViewImageColumn();
@@ -82,6 +59,30 @@
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.individualID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Classific = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.lblCheck = new System.Windows.Forms.Label();
+            this.ClickSearchItem = new System.Windows.Forms.LinkLabel();
+            this.GenerateStockID = new System.Windows.Forms.LinkLabel();
+            this.dateStockIn = new System.Windows.Forms.DateTimePicker();
+            this.txtStockInBy = new System.Windows.Forms.TextBox();
+            this.txtStockID = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.panelStockOnHand = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.dataGridViewOnHand = new System.Windows.Forms.DataGridView();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Classification = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UNIT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
@@ -285,6 +286,133 @@
             this.dataGridViewStockItems.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridViewStockItems_RowsAdded);
             this.dataGridViewStockItems.SelectionChanged += new System.EventHandler(this.dataGridViewStockItems_SelectionChanged);
             // 
+            // NumStockIn
+            // 
+            this.NumStockIn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.NumStockIn.Frozen = true;
+            this.NumStockIn.HeaderText = "#";
+            this.NumStockIn.MinimumWidth = 6;
+            this.NumStockIn.Name = "NumStockIn";
+            this.NumStockIn.ReadOnly = true;
+            this.NumStockIn.Width = 55;
+            // 
+            // EDIT
+            // 
+            this.EDIT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.EDIT.Frozen = true;
+            this.EDIT.HeaderText = "";
+            this.EDIT.Image = global::Capstone.Properties.Resources.Edit;
+            this.EDIT.MinimumWidth = 6;
+            this.EDIT.Name = "EDIT";
+            this.EDIT.Width = 6;
+            // 
+            // DeleteStockIn
+            // 
+            this.DeleteStockIn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.DeleteStockIn.Frozen = true;
+            this.DeleteStockIn.HeaderText = "";
+            this.DeleteStockIn.MinimumWidth = 6;
+            this.DeleteStockIn.Name = "DeleteStockIn";
+            this.DeleteStockIn.Width = 6;
+            // 
+            // STOCK_ID
+            // 
+            this.STOCK_ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.STOCK_ID.HeaderText = "STOCK ID";
+            this.STOCK_ID.MinimumWidth = 6;
+            this.STOCK_ID.Name = "STOCK_ID";
+            this.STOCK_ID.ReadOnly = true;
+            this.STOCK_ID.Visible = false;
+            this.STOCK_ID.Width = 125;
+            // 
+            // DescStockIn
+            // 
+            this.DescStockIn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.DescStockIn.HeaderText = "DESCRIPTION";
+            this.DescStockIn.MinimumWidth = 6;
+            this.DescStockIn.Name = "DescStockIn";
+            this.DescStockIn.ReadOnly = true;
+            // 
+            // QuantityStockIn
+            // 
+            this.QuantityStockIn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.QuantityStockIn.HeaderText = "QTY";
+            this.QuantityStockIn.MinimumWidth = 6;
+            this.QuantityStockIn.Name = "QuantityStockIn";
+            this.QuantityStockIn.ReadOnly = true;
+            this.QuantityStockIn.Width = 82;
+            // 
+            // EXPIRATION
+            // 
+            this.EXPIRATION.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.EXPIRATION.HeaderText = "EXPIRATION";
+            this.EXPIRATION.MaxInputLength = 7;
+            this.EXPIRATION.MinimumWidth = 6;
+            this.EXPIRATION.Name = "EXPIRATION";
+            this.EXPIRATION.ReadOnly = true;
+            this.EXPIRATION.Width = 165;
+            // 
+            // StockInDate
+            // 
+            this.StockInDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.StockInDate.HeaderText = "STOCK IN DATE";
+            this.StockInDate.MinimumWidth = 6;
+            this.StockInDate.Name = "StockInDate";
+            this.StockInDate.ReadOnly = true;
+            this.StockInDate.Width = 195;
+            // 
+            // StockInBy
+            // 
+            this.StockInBy.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.StockInBy.HeaderText = "STOCK IN BY";
+            this.StockInBy.MinimumWidth = 6;
+            this.StockInBy.Name = "StockInBy";
+            this.StockInBy.ReadOnly = true;
+            this.StockInBy.Width = 168;
+            // 
+            // ITEM_ID
+            // 
+            this.ITEM_ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.ITEM_ID.HeaderText = "ITEM ID";
+            this.ITEM_ID.MinimumWidth = 6;
+            this.ITEM_ID.Name = "ITEM_ID";
+            this.ITEM_ID.ReadOnly = true;
+            this.ITEM_ID.Visible = false;
+            this.ITEM_ID.Width = 125;
+            // 
+            // TypeStockIn
+            // 
+            this.TypeStockIn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.TypeStockIn.HeaderText = "TYPE";
+            this.TypeStockIn.MinimumWidth = 6;
+            this.TypeStockIn.Name = "TypeStockIn";
+            this.TypeStockIn.ReadOnly = true;
+            // 
+            // Column1
+            // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column1.HeaderText = "UnitMe";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            this.Column1.Visible = false;
+            // 
+            // individualID
+            // 
+            this.individualID.HeaderText = "num";
+            this.individualID.MinimumWidth = 6;
+            this.individualID.Name = "individualID";
+            this.individualID.ReadOnly = true;
+            this.individualID.Visible = false;
+            this.individualID.Width = 125;
+            // 
+            // Classific
+            // 
+            this.Classific.HeaderText = "Classific";
+            this.Classific.MinimumWidth = 6;
+            this.Classific.Name = "Classific";
+            this.Classific.Visible = false;
+            this.Classific.Width = 125;
+            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
@@ -334,6 +462,7 @@
             this.GenerateStockID.TabIndex = 8;
             this.GenerateStockID.TabStop = true;
             this.GenerateStockID.Text = "[Generate]";
+            this.GenerateStockID.Visible = false;
             this.GenerateStockID.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.GenerateStockID_LinkClicked);
             // 
             // dateStockIn
@@ -443,7 +572,8 @@
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn5,
             this.dataGridViewTextBoxColumn10,
-            this.Classification});
+            this.Classification,
+            this.UNIT});
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.Azure;
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -476,6 +606,35 @@
             this.dataGridViewOnHand.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewOnHand_CellContentClick);
             this.dataGridViewOnHand.SelectionChanged += new System.EventHandler(this.dataGridViewOnHand_SelectionChanged);
             // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.panel4);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel6.Location = new System.Drawing.Point(0, 0);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(1301, 79);
+            this.panel6.TabIndex = 0;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.DimGray;
+            this.panel4.Controls.Add(this.txtSearch);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1301, 79);
+            this.panel4.TabIndex = 1;
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtSearch.Location = new System.Drawing.Point(16, 22);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.PlaceholderText = "Search Description or Type Here";
+            this.txtSearch.Size = new System.Drawing.Size(717, 43);
+            this.txtSearch.TabIndex = 23;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            // 
             // dataGridViewTextBoxColumn2
             // 
             this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -494,7 +653,7 @@
             this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
             this.dataGridViewTextBoxColumn9.ReadOnly = true;
             this.dataGridViewTextBoxColumn9.Visible = false;
-            this.dataGridViewTextBoxColumn9.Width = 125;
+            this.dataGridViewTextBoxColumn9.Width = 140;
             // 
             // dataGridViewTextBoxColumn4
             // 
@@ -532,161 +691,14 @@
             this.Classification.ReadOnly = true;
             this.Classification.Width = 248;
             // 
-            // panel6
+            // UNIT
             // 
-            this.panel6.Controls.Add(this.panel4);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel6.Location = new System.Drawing.Point(0, 0);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(1301, 79);
-            this.panel6.TabIndex = 0;
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.DimGray;
-            this.panel4.Controls.Add(this.txtSearch);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(0, 0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1301, 79);
-            this.panel4.TabIndex = 1;
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtSearch.Location = new System.Drawing.Point(16, 22);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.PlaceholderText = "Search Description or Type Here";
-            this.txtSearch.Size = new System.Drawing.Size(717, 43);
-            this.txtSearch.TabIndex = 23;
-            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
-            // 
-            // NumStockIn
-            // 
-            this.NumStockIn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.NumStockIn.Frozen = true;
-            this.NumStockIn.HeaderText = "#";
-            this.NumStockIn.MinimumWidth = 6;
-            this.NumStockIn.Name = "NumStockIn";
-            this.NumStockIn.ReadOnly = true;
-            this.NumStockIn.Width = 55;
-            // 
-            // EDIT
-            // 
-            this.EDIT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.EDIT.Frozen = true;
-            this.EDIT.HeaderText = "";
-            this.EDIT.Image = global::Capstone.Properties.Resources.Edit;
-            this.EDIT.MinimumWidth = 6;
-            this.EDIT.Name = "EDIT";
-            this.EDIT.Width = 6;
-            // 
-            // DeleteStockIn
-            // 
-            this.DeleteStockIn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.DeleteStockIn.Frozen = true;
-            this.DeleteStockIn.HeaderText = "";
-            this.DeleteStockIn.MinimumWidth = 6;
-            this.DeleteStockIn.Name = "DeleteStockIn";
-            this.DeleteStockIn.Width = 6;
-            // 
-            // STOCK_ID
-            // 
-            this.STOCK_ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.STOCK_ID.HeaderText = "STOCK ID";
-            this.STOCK_ID.MinimumWidth = 6;
-            this.STOCK_ID.Name = "STOCK_ID";
-            this.STOCK_ID.ReadOnly = true;
-            this.STOCK_ID.Visible = false;
-            this.STOCK_ID.Width = 136;
-            // 
-            // DescStockIn
-            // 
-            this.DescStockIn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.DescStockIn.HeaderText = "DESCRIPTION";
-            this.DescStockIn.MinimumWidth = 6;
-            this.DescStockIn.Name = "DescStockIn";
-            this.DescStockIn.ReadOnly = true;
-            // 
-            // QuantityStockIn
-            // 
-            this.QuantityStockIn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.QuantityStockIn.HeaderText = "QTY";
-            this.QuantityStockIn.MinimumWidth = 6;
-            this.QuantityStockIn.Name = "QuantityStockIn";
-            this.QuantityStockIn.ReadOnly = true;
-            this.QuantityStockIn.Width = 82;
-            // 
-            // EXPIRATION
-            // 
-            this.EXPIRATION.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.EXPIRATION.HeaderText = "EXPIRATION";
-            this.EXPIRATION.MaxInputLength = 7;
-            this.EXPIRATION.MinimumWidth = 6;
-            this.EXPIRATION.Name = "EXPIRATION";
-            this.EXPIRATION.ReadOnly = true;
-            this.EXPIRATION.Width = 165;
-            // 
-            // StockInDate
-            // 
-            this.StockInDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.StockInDate.HeaderText = "STOCK IN DATE";
-            this.StockInDate.MinimumWidth = 6;
-            this.StockInDate.Name = "StockInDate";
-            this.StockInDate.ReadOnly = true;
-            this.StockInDate.Width = 195;
-            // 
-            // StockInBy
-            // 
-            this.StockInBy.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.StockInBy.HeaderText = "STOCK IN BY";
-            this.StockInBy.MinimumWidth = 6;
-            this.StockInBy.Name = "StockInBy";
-            this.StockInBy.ReadOnly = true;
-            this.StockInBy.Width = 168;
-            // 
-            // ITEM_ID
-            // 
-            this.ITEM_ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.ITEM_ID.HeaderText = "ITEM ID";
-            this.ITEM_ID.MinimumWidth = 6;
-            this.ITEM_ID.Name = "ITEM_ID";
-            this.ITEM_ID.ReadOnly = true;
-            this.ITEM_ID.Visible = false;
-            this.ITEM_ID.Width = 120;
-            // 
-            // TypeStockIn
-            // 
-            this.TypeStockIn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.TypeStockIn.HeaderText = "TYPE";
-            this.TypeStockIn.MinimumWidth = 6;
-            this.TypeStockIn.Name = "TypeStockIn";
-            this.TypeStockIn.ReadOnly = true;
-            // 
-            // Column1
-            // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column1.HeaderText = "UnitMe";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.Visible = false;
-            // 
-            // individualID
-            // 
-            this.individualID.HeaderText = "num";
-            this.individualID.MinimumWidth = 6;
-            this.individualID.Name = "individualID";
-            this.individualID.ReadOnly = true;
-            this.individualID.Visible = false;
-            this.individualID.Width = 125;
-            // 
-            // Classific
-            // 
-            this.Classific.HeaderText = "Classific";
-            this.Classific.MinimumWidth = 6;
-            this.Classific.Name = "Classific";
-            this.Classific.Visible = false;
-            this.Classific.Width = 125;
+            this.UNIT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.UNIT.HeaderText = "UNIT";
+            this.UNIT.MinimumWidth = 6;
+            this.UNIT.Name = "UNIT";
+            this.UNIT.ReadOnly = true;
+            this.UNIT.Width = 106;
             // 
             // frmStockIn
             // 
@@ -751,12 +763,6 @@
         private Panel panel7;
         private Panel panel8;
         public Button btnClearStock;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
-        private DataGridViewTextBoxColumn Classification;
         private DataGridViewTextBoxColumn NumStockIn;
         private DataGridViewImageColumn EDIT;
         private DataGridViewImageColumn DeleteStockIn;
@@ -771,5 +777,12 @@
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn individualID;
         private DataGridViewTextBoxColumn Classific;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private DataGridViewTextBoxColumn Classification;
+        private DataGridViewTextBoxColumn UNIT;
     }
 }

@@ -147,7 +147,7 @@ namespace Capstone
                         cm.Parameters.AddWithValue("@ID", txtServiceID.Text);
                         cm.Parameters.AddWithValue("@Name", txtServiceName.Text);
                         cm.Parameters.AddWithValue("@Description", txtServiceDesc.Text);
-                        cm.Parameters.AddWithValue("@Price", displayPrice);
+                        cm.Parameters.AddWithValue("@Price", Price);
                         cm.Parameters.AddWithValue("@Display_Price", displayPrice);
 
                         cm.ExecuteNonQuery();
@@ -177,12 +177,10 @@ namespace Capstone
         {
             try
             {
-                scanForDuplicateName("Name", "tblServices", txtServiceName, out duplicate);
+                //scanForDuplicateName("Name", "tblServices", txtServiceName, out duplicate);
                 double Price = double.Parse(txtServicePrice.Text);
                 string displayPrice = Price.ToString("#,##0.00");//₱
-                if (duplicate == false)
-                {
-                    if (MessageBox.Show("Are you sure you want to update this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                  if (MessageBox.Show("Are you sure you want to update this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         cn.Open();
                         cm = new SqlCommand("UPDATE tblServices SET Service_ID = @ID, Name = @Name, Description = @Description, Price = @Price, Display_Price = @Display_Price WHERE Service_ID LIKE '" + txtServiceID.Text + "'", cn);
@@ -190,7 +188,7 @@ namespace Capstone
                         cm.Parameters.AddWithValue("@Name", txtServiceName.Text);
                         cm.Parameters.AddWithValue("@Description", txtServiceDesc.Text);
                         cm.Parameters.AddWithValue("@Display_Price", displayPrice);
-                        cm.Parameters.AddWithValue("@Price", displayPrice);
+                        cm.Parameters.AddWithValue("@Price", Price);
                         cm.ExecuteNonQuery();
                         cn.Close();
                         MessageBox.Show("Record has been successfully updated.");
@@ -200,12 +198,8 @@ namespace Capstone
                         //frmList.LoadRecordsService();
                         this.Close();
                     }
-                }
-                else if (duplicate == true)
-                {
-                    MessageBox.Show("That service name is already on the record", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
+                
+                
             }
             catch (Exception ex)
             {
@@ -314,9 +308,8 @@ namespace Capstone
         {
             try
             {
-                scanForDuplicateName("Product", "tblProduct", txtProdName, out duplicate);
-                if (duplicate == false)
-                {
+                //scanForDuplicateName("Product", "tblProduct", txtProdName, out duplicate);
+                
                     if (MessageBox.Show("Are you sure you want to update this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         cn.Open();
@@ -333,12 +326,7 @@ namespace Capstone
                         //frmList.LoadRecordsProduct();
                         this.Close();
                     }
-                }
-                else if (duplicate == true)
-                {
-                    MessageBox.Show("That Product name is already on the record", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
+               
             }
             catch (Exception ex)
             {
@@ -350,9 +338,8 @@ namespace Capstone
         {
             try
             {
-                scanForDuplicateName("Type", "tblType", txtType, out duplicate);
-                if (duplicate == false)
-                {
+                //scanForDuplicateName("Type", "tblType", txtType, out duplicate);
+               
                     if (MessageBox.Show("Are you sure you want to update this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         cn.Open();
@@ -372,12 +359,7 @@ namespace Capstone
                         //frmList.LoadRecordsType();
                         this.Close();
                     }
-                }
-                else if (duplicate == true)
-                {
-                    MessageBox.Show("That Type name is already on the record", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
+               
             }
             catch (Exception ex)
             {
@@ -425,7 +407,7 @@ namespace Capstone
                         cm.Parameters.AddWithValue("@ID", txtID.Text);
                         cm.Parameters.AddWithValue("@Description", txtDescription.Text);
                         cm.Parameters.AddWithValue("@TypeID", txtTypeID.Text);
-                        cm.Parameters.AddWithValue("@Price", displayPrice);
+                        cm.Parameters.AddWithValue("@Price", Price);
                         cm.Parameters.AddWithValue("@Classification", comBoxClassification.Text);
                         cm.Parameters.AddWithValue("@Type", comBoxType.Text);
                         cm.Parameters.AddWithValue("@Stock_Level", 3);
@@ -457,18 +439,17 @@ namespace Capstone
         {
             try
             {
-                scanForDuplicateName("Description", "tblItem", txtDescription, out duplicate);
+                //scanForDuplicateName("Description", "tblItem", txtDescription, out duplicate);
                 double Price = double.Parse(txtPrice.Text);
                 string displayPrice = Price.ToString("#,##0.00");//₱
-                if (duplicate == false)
-                {
+               
                     if (MessageBox.Show("Are you sure you want to update this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         cn.Open();
                         cm = new SqlCommand("UPDATE tblItem SET Item_ID = @ItemID, Type_ID = @TypeID, Description = @Description, Price = @Price, Classification = @Classification, Display_Price = @Display_Price WHERE Item_ID LIKE '" + txtID.Text + "'", cn);
                         cm.Parameters.AddWithValue("@ItemID", txtID.Text);
                         cm.Parameters.AddWithValue("@Description", txtDescription.Text);
-                        cm.Parameters.AddWithValue("@Price", displayPrice);
+                        cm.Parameters.AddWithValue("@Price", Price);
                         cm.Parameters.AddWithValue("@TypeID", txtTypeID.Text);
                         cm.Parameters.AddWithValue("@Display_Price", displayPrice);
                         cm.Parameters.AddWithValue("@Classification", comBoxClassification.Text);
@@ -481,12 +462,7 @@ namespace Capstone
                         //frmList.LoadRecordsItem();
                         this.Close();
                     }
-                }
-                else if (duplicate == true)
-                {
-                    MessageBox.Show("That Description is already on the record", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
+               
             }
             catch (Exception ex)
             {

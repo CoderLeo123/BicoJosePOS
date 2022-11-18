@@ -828,7 +828,6 @@
             this.txtExp.TabIndex = 73;
             this.txtExp.Text = "0";
             this.txtExp.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtExp.Visible = false;
             this.txtExp.TextChanged += new System.EventHandler(this.txtExp_TextChanged);
             // 
             // lblSettledPay
@@ -905,7 +904,6 @@
             this.label5.Size = new System.Drawing.Size(213, 76);
             this.label5.TabIndex = 67;
             this.label5.Text = "Near Expiration:\r\n1 Week";
-            this.label5.Visible = false;
             // 
             // txtReOrd
             // 

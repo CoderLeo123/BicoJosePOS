@@ -49,7 +49,8 @@ namespace Capstone
             {
                 expDate = dr[4].ToString();
                 expDateItem = DateTime.Parse(expDate);
-                dateDifference = (expDateItem.Date - now.Date).Days;
+                dateDifference = (now - expDateItem).Days;
+
                 if(dateDifference <= 7)
                 {
                     expiringCount++; i++;

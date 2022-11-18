@@ -781,9 +781,9 @@
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.panelExpiration);
-            this.tabPage3.Location = new System.Drawing.Point(4, 29);
+            this.tabPage3.Location = new System.Drawing.Point(4, 46);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1307, 840);
+            this.tabPage3.Size = new System.Drawing.Size(1307, 823);
             this.tabPage3.TabIndex = 4;
             this.tabPage3.Text = "Expiration";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -795,7 +795,7 @@
             this.panelExpiration.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelExpiration.Location = new System.Drawing.Point(0, 0);
             this.panelExpiration.Name = "panelExpiration";
-            this.panelExpiration.Size = new System.Drawing.Size(1307, 840);
+            this.panelExpiration.Size = new System.Drawing.Size(1307, 823);
             this.panelExpiration.TabIndex = 40;
             // 
             // panel15
@@ -804,7 +804,7 @@
             this.panel15.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel15.Location = new System.Drawing.Point(0, 70);
             this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(1307, 770);
+            this.panel15.Size = new System.Drawing.Size(1307, 753);
             this.panel15.TabIndex = 1;
             // 
             // dataGridViewExpir
@@ -848,7 +848,7 @@
             this.dataGridViewExpir.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridViewExpir.RowTemplate.Height = 35;
             this.dataGridViewExpir.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewExpir.Size = new System.Drawing.Size(1307, 770);
+            this.dataGridViewExpir.Size = new System.Drawing.Size(1307, 753);
             this.dataGridViewExpir.TabIndex = 7;
             this.dataGridViewExpir.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewExpir_CellContentClick);
             // 
@@ -929,9 +929,9 @@
             // tabPage5
             // 
             this.tabPage5.Controls.Add(this.panelDispose);
-            this.tabPage5.Location = new System.Drawing.Point(4, 46);
+            this.tabPage5.Location = new System.Drawing.Point(4, 29);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(1307, 823);
+            this.tabPage5.Size = new System.Drawing.Size(1307, 840);
             this.tabPage5.TabIndex = 5;
             this.tabPage5.Text = "Dispose";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -943,7 +943,7 @@
             this.panelDispose.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelDispose.Location = new System.Drawing.Point(0, 0);
             this.panelDispose.Name = "panelDispose";
-            this.panelDispose.Size = new System.Drawing.Size(1307, 823);
+            this.panelDispose.Size = new System.Drawing.Size(1307, 840);
             this.panelDispose.TabIndex = 3;
             // 
             // panel16
@@ -952,7 +952,7 @@
             this.panel16.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel16.Location = new System.Drawing.Point(0, 72);
             this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(1307, 751);
+            this.panel16.Size = new System.Drawing.Size(1307, 768);
             this.panel16.TabIndex = 1;
             // 
             // dataGridViewDispose
@@ -997,7 +997,7 @@
             this.dataGridViewDispose.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridViewDispose.RowTemplate.Height = 35;
             this.dataGridViewDispose.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewDispose.Size = new System.Drawing.Size(1307, 751);
+            this.dataGridViewDispose.Size = new System.Drawing.Size(1307, 768);
             this.dataGridViewDispose.TabIndex = 5;
             // 
             // dataGridViewTextBoxColumn16
