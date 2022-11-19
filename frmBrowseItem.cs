@@ -231,9 +231,10 @@ namespace Capstone
                     if (Stock2.Equals("N/A"))
                     {
                         float price = float.Parse(dataGridViewBrowse[10, e.RowIndex].Value.ToString());
-                        
+                        string displayPrice = price.ToString("#,##0.00");
+
                         cn.Open();
-                        cm = new SqlCommand("INSERT INTO tblCart (Stock_Num, Item_ID, Transaction_No, Quantity, Price, Total, Date, Lense_Check, Status) VALUES (@Stock_Num, @Item_ID, @TransactionNo, @Quantity, @Price, @Total, @Date, @Lense_Check, 'Cart')", cn);
+                        cm = new SqlCommand("INSERT INTO tblCart (Stock_Num, Item_ID, Transaction_No, Quantity, Price, Total, Date, Lense_Check, Status, Display_Total, Display_Price) VALUES (@Stock_Num, @Item_ID, @TransactionNo, @Quantity, @Price, @Total, @Date, @Lense_Check, 'Cart', @Display_Total, @Display_Price)", cn);
                         //cm.Parameters.AddWithValue("@Stock_ID", frmB.dataGridViewBrowse[1, i].Value.ToString());
                         cm.Parameters.AddWithValue("@Stock_Num", int.Parse(Stock_Num));
                         cm.Parameters.AddWithValue("@Item_ID", dataGridViewBrowse[1, e.RowIndex].Value.ToString());
@@ -243,6 +244,8 @@ namespace Capstone
                         cm.Parameters.AddWithValue("@Date", DateTime.Now);
                         cm.Parameters.AddWithValue("@Total", price.ToString("00.00")); //lense_check
                         cm.Parameters.AddWithValue("@Lense_Check", lense_check);
+                        cm.Parameters.AddWithValue("@Display_Total", displayPrice);
+                        cm.Parameters.AddWithValue("@Display_Price", displayPrice);
                         cm.ExecuteNonQuery();
                         cn.Close();
                         LoadCart();

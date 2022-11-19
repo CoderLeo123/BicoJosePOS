@@ -50,6 +50,9 @@
             this.panelStockDetail = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.dataGridViewDetails = new System.Windows.Forms.DataGridView();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.labelItemID = new System.Windows.Forms.Label();
+            this.labelItemName = new System.Windows.Forms.Label();
             this.NumService = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DeliveryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,9 +61,6 @@
             this.StockBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StockID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.labelItemID = new System.Windows.Forms.Label();
-            this.labelItemName = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
@@ -348,6 +348,36 @@
             this.dataGridViewDetails.TabIndex = 6;
             this.dataGridViewDetails.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDetails_CellClick);
             // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.labelItemID);
+            this.panel4.Controls.Add(this.labelItemName);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(691, 64);
+            this.panel4.TabIndex = 7;
+            // 
+            // labelItemID
+            // 
+            this.labelItemID.AutoSize = true;
+            this.labelItemID.Location = new System.Drawing.Point(618, 13);
+            this.labelItemID.Name = "labelItemID";
+            this.labelItemID.Size = new System.Drawing.Size(57, 38);
+            this.labelItemID.TabIndex = 26;
+            this.labelItemID.Text = "     ";
+            this.labelItemID.Visible = false;
+            // 
+            // labelItemName
+            // 
+            this.labelItemName.AutoSize = true;
+            this.labelItemName.ForeColor = System.Drawing.Color.Red;
+            this.labelItemName.Location = new System.Drawing.Point(105, 13);
+            this.labelItemName.Name = "labelItemName";
+            this.labelItemName.Size = new System.Drawing.Size(154, 38);
+            this.labelItemName.TabIndex = 25;
+            this.labelItemName.Text = "Item Name";
+            // 
             // NumService
             // 
             this.NumService.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -383,7 +413,7 @@
             this.Unit.Name = "Unit";
             this.Unit.ReadOnly = true;
             this.Unit.Visible = false;
-            this.Unit.Width = 125;
+            this.Unit.Width = 106;
             // 
             // Expiration
             // 
@@ -396,12 +426,11 @@
             // 
             // StockBy
             // 
-            this.StockBy.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.StockBy.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.StockBy.HeaderText = "STOCK IN BY";
             this.StockBy.MinimumWidth = 6;
             this.StockBy.Name = "StockBy";
             this.StockBy.ReadOnly = true;
-            this.StockBy.Width = 201;
             // 
             // Status
             // 
@@ -419,36 +448,6 @@
             this.StockID.Name = "StockID";
             this.StockID.ReadOnly = true;
             this.StockID.Visible = false;
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.labelItemID);
-            this.panel4.Controls.Add(this.labelItemName);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(0, 0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(691, 64);
-            this.panel4.TabIndex = 7;
-            // 
-            // labelItemID
-            // 
-            this.labelItemID.AutoSize = true;
-            this.labelItemID.Location = new System.Drawing.Point(618, 13);
-            this.labelItemID.Name = "labelItemID";
-            this.labelItemID.Size = new System.Drawing.Size(57, 38);
-            this.labelItemID.TabIndex = 26;
-            this.labelItemID.Text = "     ";
-            this.labelItemID.Visible = false;
-            // 
-            // labelItemName
-            // 
-            this.labelItemName.AutoSize = true;
-            this.labelItemName.ForeColor = System.Drawing.Color.Red;
-            this.labelItemName.Location = new System.Drawing.Point(105, 13);
-            this.labelItemName.Name = "labelItemName";
-            this.labelItemName.Size = new System.Drawing.Size(154, 38);
-            this.labelItemName.TabIndex = 25;
-            this.labelItemName.Text = "Item Name";
             // 
             // frmEditStock
             // 
