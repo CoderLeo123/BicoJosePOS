@@ -70,7 +70,7 @@ namespace Capstone
             int i = 0;
             dataGridViewExpira.Rows.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT * FROM tblExpList ORDER BY Expiration_Date ASC", cn);
+            SqlCommand cm = new SqlCommand("SELECT * FROM tblExpList WHERE Quantity > 0 ORDER BY Expiration_Date ASC", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {

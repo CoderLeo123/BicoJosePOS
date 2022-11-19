@@ -56,6 +56,7 @@
             this.Unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Expiration = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StockBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StockID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel4 = new System.Windows.Forms.Panel();
             this.labelItemID = new System.Windows.Forms.Label();
@@ -273,9 +274,9 @@
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.panelStockDetail);
-            this.tabPage3.Location = new System.Drawing.Point(4, 29);
+            this.tabPage3.Location = new System.Drawing.Point(4, 46);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(691, 306);
+            this.tabPage3.Size = new System.Drawing.Size(691, 289);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Stock Details";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -287,7 +288,7 @@
             this.panelStockDetail.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelStockDetail.Location = new System.Drawing.Point(0, 0);
             this.panelStockDetail.Name = "panelStockDetail";
-            this.panelStockDetail.Size = new System.Drawing.Size(691, 306);
+            this.panelStockDetail.Size = new System.Drawing.Size(691, 289);
             this.panelStockDetail.TabIndex = 0;
             // 
             // panel5
@@ -296,7 +297,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(0, 64);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(691, 242);
+            this.panel5.Size = new System.Drawing.Size(691, 225);
             this.panel5.TabIndex = 8;
             // 
             // dataGridViewDetails
@@ -323,6 +324,7 @@
             this.Unit,
             this.Expiration,
             this.StockBy,
+            this.Status,
             this.StockID});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.Azure;
@@ -342,7 +344,7 @@
             this.dataGridViewDetails.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridViewDetails.RowTemplate.Height = 35;
             this.dataGridViewDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewDetails.Size = new System.Drawing.Size(691, 242);
+            this.dataGridViewDetails.Size = new System.Drawing.Size(691, 225);
             this.dataGridViewDetails.TabIndex = 6;
             this.dataGridViewDetails.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDetails_CellClick);
             // 
@@ -394,11 +396,20 @@
             // 
             // StockBy
             // 
-            this.StockBy.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.StockBy.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.StockBy.HeaderText = "STOCK IN BY";
             this.StockBy.MinimumWidth = 6;
             this.StockBy.Name = "StockBy";
             this.StockBy.ReadOnly = true;
+            this.StockBy.Width = 201;
+            // 
+            // Status
+            // 
+            this.Status.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Status.HeaderText = "STATUS";
+            this.Status.MinimumWidth = 6;
+            this.Status.Name = "Status";
+            this.Status.ReadOnly = true;
             // 
             // StockID
             // 
@@ -493,13 +504,14 @@
         public Label labelItemID;
         public Label labelItemName;
         public Panel panelStockDetail;
+        public Label lblCheck;
         private DataGridViewTextBoxColumn NumService;
         private DataGridViewTextBoxColumn DeliveryDate;
         private DataGridViewTextBoxColumn Qty;
         private DataGridViewTextBoxColumn Unit;
         private DataGridViewTextBoxColumn Expiration;
         private DataGridViewTextBoxColumn StockBy;
+        private DataGridViewTextBoxColumn Status;
         private DataGridViewTextBoxColumn StockID;
-        public Label lblCheck;
     }
 }

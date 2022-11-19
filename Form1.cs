@@ -80,7 +80,7 @@ namespace Capstone
                 expDateItem = DateTime.Parse(expDate);
                 dateDifference = (expDateItem.Date - now.Date).Days;
 
-                label1.Text = dateDifference.ToString();
+                
                 if (dateDifference <= 7)
                 {
                     ExpList List = new ExpList();
@@ -439,6 +439,10 @@ namespace Capstone
             //timerStart();
             Stock();
             Users();
+            Payment();
+            Order();
+            Expiration();
+            stockBlinkNotify();
             panelLoad.Controls.Clear();
             panelLoad.Controls.Add(panelDashboard);
         }

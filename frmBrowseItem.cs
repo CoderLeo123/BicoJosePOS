@@ -54,7 +54,7 @@ namespace Capstone
             //{
                 string servTotal = ""; Boolean hasRecord = false;
                 classLoadData.LoadRecordServiceAvail(frmC.dataGridViewService, out servTotal, out hasRecord);
-
+                
                 int i = 0;
                 double total = 0;
                 double discount = 0;
@@ -87,7 +87,7 @@ namespace Capstone
 
                     // 0-Num                                  2-EXPIRATION / 2-Expiration_Date     4-QUANTITY / 3-Quantity              6-TOTAL / 5-TOTAL                                                                                                       10-CartID / 12-Num
                     i += 1;                 // 1-DESCRIPTION / 1-Description           3-PRICE / 4-Price                 5-DISCOUNT / 11-Discount                      7-Plus                         8-Minus                 9-Delete              10-StockID / 0-Stock_Num           10-ItemID / 9-Item_ID
-                    frmC.dataGridViewCart.Rows.Add(i, dr[1].ToString(), ExpirationDate, "₱" + dr[4].ToString(), dr[3].ToString(), dr[11].ToString(), "₱" + dr[5].ToString(), Properties.Resources._Add, Properties.Resources.Minus, Properties.Resources._Delete, dr[0].ToString(), dr[12].ToString(), dr[9].ToString(), dr[17].ToString(), dr[19].ToString(), dr[20].ToString(), dr[18].ToString());
+                    frmC.dataGridViewCart.Rows.Add(i, dr[1].ToString(), ExpirationDate, "₱" + dr[20].ToString(), dr[3].ToString(), dr[11].ToString(), "₱" + dr[21].ToString(), Properties.Resources._Add, Properties.Resources.Minus, Properties.Resources._Delete, dr[0].ToString(), dr[12].ToString(), dr[9].ToString(), dr[17].ToString(), dr[19].ToString(), dr[4].ToString(), dr[18].ToString(), dr[5].ToString());
                     hasRecord = true;
                 }
                 dr.Close();
@@ -150,12 +150,13 @@ namespace Capstone
                 //    }
                 //}
                 string colName = dataGridViewBrowse.Columns[e.ColumnIndex].Name;
+                string uMeasu = dataGridViewBrowse[8, e.RowIndex].Value.ToString();
                 lblItemIDCheck.Text = dataGridViewBrowse[1, e.RowIndex].Value.ToString();
                 //lblItemIDCheck.Visible = true;
                 string id = lblItemIDCheck.Text; // Item_ID
                 string classification = dataGridViewBrowse[7, e.RowIndex].Value.ToString();
                 string Stock2 = dataGridViewBrowse[6, e.RowIndex].Value.ToString(); //STOCK quantity
-                string lense_check = dataGridViewBrowse[8, e.RowIndex].Value?.ToString();                
+                string lense_check = dataGridViewBrowse[9, e.RowIndex].Value?.ToString();                
                 //ifBlankThenZero(out lense_check);
                 lblLensecheck.Text = lense_check;
                 //string Stock = lblStock.Text;
@@ -165,7 +166,7 @@ namespace Capstone
                 if ((classification == "Consumable") && (colName == "AddToCart"))
                 {
                     cn.Open();
-                    cm = new SqlCommand("SELECT Expiration_Date, Stock_Num, Quantity FROM tblStockInventory WHERE Item_ID LIKE '" + id.ToString() + "' AND Status = 'Available' ORDER BY Expiration_Date ASC", cn);
+                    cm = new SqlCommand("SELECT Expiration_Date, Stock_Num, Quantity FROM tblStockInventory WHERE Item_ID LIKE '" + id.ToString() + "' AND Status = 'Available' AND Quantity > 0 ORDER BY Expiration_Date ASC", cn);
                     dr = cm.ExecuteReader();
                     while (dr.Read())
                     {
@@ -190,6 +191,7 @@ namespace Capstone
                     frmE.lblItemIDPass.Text = dataGridViewBrowse[1, e.RowIndex].Value.ToString();
                     frmE.lblTotal.Text = "0";
                     frmE.lblLenseCheck.Text = lense_check;
+                    frmE.lblUnitMea.Text = uMeasu;
                     frmE.txtQuantity.Text = "0";
                     frmE.txtQuantity.Focus();
                     frmE.txtQuantity.SelectAll();
@@ -268,6 +270,7 @@ namespace Capstone
                             frmE.lblPrice2.Text = dataGridViewBrowse[10, e.RowIndex].Value.ToString();
                             frmE.lblItemIDPass.Text = dataGridViewBrowse[1, e.RowIndex].Value.ToString();
                             frmE.lblTotal.Text = "0"; 
+                            frmE.lblUnitMea.Text = uMeasu;
                             frmE.lblLenseCheck.Text = lense_check;
                             frmE.txtQuantity.Text = "0";
                             frmE.txtQuantity.Focus();

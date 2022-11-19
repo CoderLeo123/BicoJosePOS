@@ -49,7 +49,7 @@ namespace Capstone
                 for (int i = 0; i < dgv.Rows.Count; i++)
                 {
                     //int i = dataGridViewCart.SelectedRows[0].Index;
-                    float price = float.Parse(dgv.Rows[i].Cells[3].Value.ToString());
+                    float price = float.Parse(dgv.Rows[i].Cells[20].Value.ToString());
                     int qty = int.Parse(dgv.Rows[i].Cells[4].Value.ToString());
                     float total;
                     try

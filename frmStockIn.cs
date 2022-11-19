@@ -157,22 +157,28 @@ namespace Capstone
             if (e.RowIndex >= 0)
             {
                 frmEditStock frm = new frmEditStock(this);
+                string clasifi = dataGridViewOnHand[5, e.RowIndex].Value.ToString();
+                if(clasifi == "Non-Consumable")
+                {
+                    frm.dataGridViewDetails.Columns["Status"].Visible = false;
+                }
+                else if (clasifi == "Consumable")
+                {
+                    frm.dataGridViewDetails.Columns["Status"].Visible = true;
+                }
+
+
                 frm.tabControlStock.TabPages.Clear();
                 TabPage tab = new TabPage("Stock History");
                 frm.tabControlStock.TabPages.Add(tab);
                 tab.Controls.Add(frm.panelStockDetail);
-                frm.Size = new Size(920, 496);
-                
-
+                frm.Size = new Size(1020, 496);                
                 frm.labelItemID.Text = dataGridViewOnHand[1, e.RowIndex].Value.ToString();
                 frm.labelItemName.Text = dataGridViewOnHand[2, e.RowIndex].Value.ToString();
                 classLoadData.LoadRecordsStockDetail(frm.dataGridViewDetails, frm.labelItemID);
-                //frm.LoadRecordsStockDetail();
-                
+                //frm.LoadRecordsStockDetail();                
                 frm.ShowDialog(this);
-            }
-
-            
+            }            
         }
 
         private void dataGridViewOnHand_SelectionChanged(object sender, EventArgs e)
@@ -213,6 +219,8 @@ namespace Capstone
         private void btnSaveStockIn_Click(object sender, EventArgs e)
         {
             frmAdmin frm = new frmAdmin();
+            string dateNow = DateTime.Now.ToString();
+           
             if (dataGridViewStockItems.Rows.Count > 0)
             {
                     if (MessageBox.Show("Are you sure you want to save this records?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -260,7 +268,8 @@ namespace Capstone
                             if (string.IsNullOrEmpty(check))
                             {
                                 cn.Open();
-                                cm = new SqlCommand("UPDATE tblStock SET Expiration_Date = null, Quantity = " + int.Parse(dataGridViewStockItems.Rows[i].Cells[5].Value?.ToString()) + ", Status = 'Done' WHERE num LIKE '" + dataGridViewStockItems.Rows[i].Cells[11].Value?.ToString() + "' ", cn);
+                                cm = new SqlCommand("UPDATE tblStock SET Expiration_Date = null, Stock_In_Date = @Date, Item_Status = 'Available', Quantity = " + int.Parse(dataGridViewStockItems.Rows[i].Cells[5].Value?.ToString()) + ", Status = 'Done' WHERE num LIKE '" + dataGridViewStockItems.Rows[i].Cells[11].Value?.ToString() + "' ", cn);
+                                cm.Parameters.AddWithValue("@Date", dateNow);
                                 cm.ExecuteNonQuery();
                                 cn.Close();
 
@@ -268,7 +277,8 @@ namespace Capstone
                             else
                             {
                                 cn.Open();
-                                cm = new SqlCommand("UPDATE tblStock SET Expiration_Date = '" + DateTime.Parse(dataGridViewStockItems.Rows[i].Cells[6].Value?.ToString()).ToShortDateString() + "', Quantity = " + int.Parse(dataGridViewStockItems.Rows[i].Cells[5].Value?.ToString()) + ", Status = 'Done' WHERE num LIKE '" + dataGridViewStockItems.Rows[i].Cells[11].Value?.ToString() + "' ", cn);
+                                cm = new SqlCommand("UPDATE tblStock SET Item_Status = 'Available', Stock_In_Date = @Date, Expiration_Date = '" + DateTime.Parse(dataGridViewStockItems.Rows[i].Cells[6].Value?.ToString()).ToShortDateString() + "', Quantity = " + int.Parse(dataGridViewStockItems.Rows[i].Cells[5].Value?.ToString()) + ", Status = 'Done' WHERE num LIKE '" + dataGridViewStockItems.Rows[i].Cells[11].Value?.ToString() + "' ", cn);
+                                cm.Parameters.AddWithValue("@Date", dateNow);
                                 cm.ExecuteNonQuery();
                                 cn.Close();
 
