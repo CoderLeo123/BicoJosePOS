@@ -143,23 +143,6 @@ namespace Capstone
                         classLoadData.LoadStock(frmList.dataGridViewStockItems, frmList.txtStockID, frmList.label3);
                         //frmList.LoadStock();
 
-                        //cn.Open();
-                        //cm = new SqlCommand("SELECT TOP 1 Num FROM tblStock", cn);
-                        //dr = cm.ExecuteReader();
-                        //dr.Read();
-                        //if (dr.HasRows)
-                        //{
-                        //    stockNum = int.Parse(dr[0].ToString());
-                        //    cn.Open();
-                        //    cm = new SqlCommand("INSERT INTO tblStockInventory (Stock_Num) VALUES(@Stock_Num)", cn);
-                        //    cm.Parameters.AddWithValue("@Stock_Num", stockNum);
-                        //    cm.ExecuteNonQuery();
-                        //    cn.Close();
-                        //    dr.Close();
-                        //}                        
-                        //dr.Close();
-                        //cn.Close();
-
                         this.Close();
                     }
                 }
@@ -170,7 +153,7 @@ namespace Capstone
                 //MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+       
         private void dataGridViewSearchItem_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
 

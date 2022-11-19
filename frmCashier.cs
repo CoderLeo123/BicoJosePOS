@@ -194,22 +194,29 @@ namespace Capstone
             cn.Close();
 
         }
-        public void returnQuantityTblStock(string SNum, int CartQty)
+        public void returnQuantityTblStock(int SNum, int CartQty)
         {
             //string StkID = dataGridViewStockItems.Rows[i].Cells[3].Value?.ToString();
             cn = new SqlConnection(dbcon.MyConnection());
             cn.Open();//Set Quantity
-            SqlCommand cm = new SqlCommand("UPDATE tblStockInventory SET Quantity = Quantity + @Cart WHERE Stock_Num LIKE " + SNum + " ", cn);
+            SqlCommand cm = new SqlCommand("UPDATE tblStockInventory SET Quantity = Quantity + @Cart WHERE Stock_Num = " + SNum + " ", cn);
             cm.Parameters.AddWithValue("@Cart", CartQty);
             cm.ExecuteNonQuery();
             cn.Close();
-
+        }
+        public void updateTblStock(int SNum)
+        {
+            cn = new SqlConnection(dbcon.MyConnection());
+            cn.Open();//Set Quantity
+            SqlCommand cm = new SqlCommand("Update tblStock SET Item_Status = 'Available' WHERE Num = " + SNum + "", cn);
+            cm.ExecuteNonQuery();
+            cn.Close();
         }
         private void dataGridViewCart_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             string ItemID = dataGridViewCart.Rows[e.RowIndex].Cells[12].Value.ToString();
             string Classfic = dataGridViewCart.Rows[e.RowIndex].Cells[16].Value.ToString();
-            string sNum = dataGridViewCart.Rows[e.RowIndex].Cells[10].Value.ToString();
+            int sNum = int.Parse(dataGridViewCart.Rows[e.RowIndex].Cells[10].Value.ToString());
             int cartQty = int.Parse(dataGridViewCart.Rows[e.RowIndex].Cells[4].Value.ToString());
             int qtyCart = 1, tblQty = 0;
             string colName = dataGridViewCart.Columns[e.ColumnIndex].Name;
@@ -229,6 +236,7 @@ namespace Capstone
                     if(Classfic == "Consumable")
                     {
                         returnQuantityTblStock(sNum, cartQty);
+                        updateTblStock(sNum);
                     }
 
                 }
@@ -274,7 +282,7 @@ namespace Capstone
                 //classLoadData.LoadCart(dataGridViewCart, lblDiscount, lblSalesTotal, lblPayment, lblNetTotal, btnSettlePayment, btnAddDiscount, btnClearCart, txtSearch, dataGridViewService);
                 if (Classfic == "Consumable")
                 {
-                    returnQuantityTblStock(sNum, qtyCart);
+                    returnQuantityTblStock(sNum, qtyCart); 
                 }
                 classCompute.ComputeUnitTotal(dataGridViewCart);
                 
@@ -318,7 +326,7 @@ namespace Capstone
                     for (int i = 0; i < dataGridViewCart.Rows.Count; i++)
                     {
                         cn.Open();
-                        cm = new SqlCommand("DELETE FROM tblCart WHERE num Status 'Cart'", cn);
+                        cm = new SqlCommand("DELETE FROM tblCart WHERE num Status LIKE 'Cart'", cn);
                         cm.ExecuteNonQuery();
                         cn.Close();
                     }

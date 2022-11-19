@@ -57,6 +57,11 @@ namespace Capstone
                         cm.ExecuteNonQuery();
                         cn.Close();
 
+                        cn.Open();
+                        cm = new SqlCommand("Update tblStock SET Item_Status = 'Dispose' WHERE Num LIKE '" + dataGridViewExpLis.Rows[e.RowIndex].Cells[5].Value.ToString() + "'", cn);
+                        cm.ExecuteNonQuery();
+                        cn.Close();
+
                         MessageBox.Show("Item has been successfully dispose.", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
                         classInvent.LoadNearExpiration(dataGridViewExpLis, txtSearchExpL, ITMID);
                         classInvent.LoadItemWithExpiration(frmL.dataGridViewExpir, frmL.txtSearchExpirat);

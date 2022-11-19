@@ -312,7 +312,7 @@ namespace Capstone
                 int i = 0;
                 dgv.Rows.Clear();
                 cn.Open();
-                SqlCommand cm = new SqlCommand("SELECT Stock_In_Date, Quantity, Expiration_Date, Stock_In_By, Unit_Measure FROM tblStock WHERE Item_ID LIKE '%" + labelID.Text + "%' ORDER BY Stock_In_Date ASC", cn);
+                SqlCommand cm = new SqlCommand("SELECT Stock_In_Date, Quantity, Expiration_Date, Stock_In_By, Unit_Measure, Item_Status FROM tblStock WHERE Item_ID LIKE '%" + labelID.Text + "%' ORDER BY Stock_In_Date DESC", cn);
                 dr = cm.ExecuteReader();
                 while (dr.Read())
                 {
@@ -338,7 +338,7 @@ namespace Capstone
 
                                                                     //                     2-QTY / 1-Quantity                                   5-STOKED BY / 3-Stock_In_By        
                     i += 1;  //0-#  1-DELIVERY DATE / 1-Stock_In_Date                              3-UNIT / 4-UNit_Measure    4-EXPIRATION / 3-Expiration_Date  
-                    dgv.Rows.Add(i, DateTime.Parse(dr[0].ToString()).ToShortDateString(), dr[1].ToString(), dr[4].ToString(), ExpirationDate, dr[3].ToString());
+                    dgv.Rows.Add(i, dr[0].ToString(), dr[1].ToString(), dr[4].ToString(), ExpirationDate, dr[3].ToString(), dr[5].ToString());
                 }
                 dr.Close();
                 cn.Close();
@@ -421,7 +421,7 @@ namespace Capstone
             //{
                 string servTotal = ""; Boolean hasRecord = false;
                 LoadRecordServiceAvail(dgv2, out servTotal, out hasRecord);
-                classCompute.ComputeUnitTotal(dgv);
+                //classCompute.ComputeUnitTotal(dgv);
                 cn = new SqlConnection(dbcon.MyConnection());
                 
                 int i = 0;
@@ -456,7 +456,7 @@ namespace Capstone
 
                                // 0-Num                2-EXPIRATION / 2-Expiration_Date                                  4-QUANTITY / 3-Quantity                        6-TOTAL / 5-TOTAL                                                                                                                       11-CartID / 12-Num
                     i += 1;    // 1-DESCRIPTION / 1-Description           3-PRICE / 4-Price                                             5-DISCOUNT / 11-Discount                                                    7-Plus                         8-Minus                 9-Delete              10-StockID / 0-Stock_Num           12-ItemID / 9-Item_ID
-                    dgv.Rows.Add(i, dr[1].ToString(), ExpirationDate, "₱" + double.Parse(dr[4].ToString()).ToString("00.00"), dr[3].ToString(), dr[11].ToString(), "₱" + double.Parse(dr[5].ToString()).ToString("00.00"), Properties.Resources._Add, Properties.Resources.Minus, Properties.Resources._Delete, dr[0].ToString(), dr[12].ToString(), dr[9].ToString(), dr[17].ToString(), dr[19].ToString(), dr[20].ToString(), dr[18].ToString());
+                    dgv.Rows.Add(i, dr[1].ToString(), ExpirationDate, "₱" + dr[20].ToString(), dr[3].ToString(), dr[11].ToString(), "₱" + dr[21].ToString(), Properties.Resources._Add, Properties.Resources.Minus, Properties.Resources._Delete, dr[0].ToString(), dr[12].ToString(), dr[9].ToString(), dr[17].ToString(), dr[19].ToString(), dr[4].ToString(), dr[18].ToString(), dr[5].ToString());
                     hasRecord = true;
                 }
                 dr.Close();
@@ -465,7 +465,7 @@ namespace Capstone
                 total += double.Parse(servTotal);
                 ComputeDiscount(discount, total, out discountResult);
                 labelDiscount.Text = discountResult.ToString("0.00");
-                labelSalesTotal.Text = total.ToString("#,##0.00");
+                labelSalesTotal.Text = total.ToString("#,#0.00");
                 lblGrossNoComma.Text = total.ToString("0.00");
                 GetCartTotal(labelDiscount, labelSalesTotal, labelPayment, labelNetTotal, lblNetNoComa);
                 //LoadRecordServiceAvail(dgv2, out servTotal, out hasRecord);

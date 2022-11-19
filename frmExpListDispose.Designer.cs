@@ -41,12 +41,6 @@
             this.panelExpiLists = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.dataGridViewExpLis = new System.Windows.Forms.DataGridView();
-            this.NumService = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Num = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Desc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UnMe = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dek = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
             this.lblItemIDCheck = new System.Windows.Forms.Label();
@@ -56,6 +50,13 @@
             this.lblTrans = new System.Windows.Forms.Label();
             this.lblTransNo = new System.Windows.Forms.Label();
             this.txtSearchExpL = new System.Windows.Forms.TextBox();
+            this.NumService = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Num = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Desc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnMe = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dek = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -198,6 +199,7 @@
             this.Desc,
             this.Price,
             this.UnMe,
+            this.SNum,
             this.dek});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.Azure;
@@ -220,60 +222,6 @@
             this.dataGridViewExpLis.Size = new System.Drawing.Size(736, 410);
             this.dataGridViewExpLis.TabIndex = 8;
             this.dataGridViewExpLis.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewExpLis_CellContentClick);
-            // 
-            // NumService
-            // 
-            this.NumService.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.NumService.HeaderText = "#";
-            this.NumService.MinimumWidth = 6;
-            this.NumService.Name = "NumService";
-            this.NumService.ReadOnly = true;
-            this.NumService.Width = 61;
-            // 
-            // Num
-            // 
-            this.Num.HeaderText = "NUM";
-            this.Num.MinimumWidth = 6;
-            this.Num.Name = "Num";
-            this.Num.ReadOnly = true;
-            this.Num.Visible = false;
-            this.Num.Width = 125;
-            // 
-            // Desc
-            // 
-            this.Desc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Desc.HeaderText = "EXPIRATION";
-            this.Desc.MinimumWidth = 6;
-            this.Desc.Name = "Desc";
-            this.Desc.ReadOnly = true;
-            // 
-            // Price
-            // 
-            this.Price.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Price.HeaderText = "STOCK";
-            this.Price.MinimumWidth = 6;
-            this.Price.Name = "Price";
-            this.Price.ReadOnly = true;
-            // 
-            // UnMe
-            // 
-            this.UnMe.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.UnMe.HeaderText = "UNIT";
-            this.UnMe.MinimumWidth = 6;
-            this.UnMe.Name = "UnMe";
-            this.UnMe.ReadOnly = true;
-            this.UnMe.Visible = false;
-            this.UnMe.Width = 125;
-            // 
-            // dek
-            // 
-            this.dek.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dek.HeaderText = "";
-            this.dek.Image = global::Capstone.Properties.Resources._Delete;
-            this.dek.MinimumWidth = 6;
-            this.dek.Name = "dek";
-            this.dek.ReadOnly = true;
-            this.dek.Width = 6;
             // 
             // panel5
             // 
@@ -366,6 +314,68 @@
             this.txtSearchExpL.TabIndex = 0;
             this.txtSearchExpL.Visible = false;
             // 
+            // NumService
+            // 
+            this.NumService.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.NumService.HeaderText = "#";
+            this.NumService.MinimumWidth = 6;
+            this.NumService.Name = "NumService";
+            this.NumService.ReadOnly = true;
+            this.NumService.Width = 61;
+            // 
+            // Num
+            // 
+            this.Num.HeaderText = "NUM";
+            this.Num.MinimumWidth = 6;
+            this.Num.Name = "Num";
+            this.Num.ReadOnly = true;
+            this.Num.Visible = false;
+            this.Num.Width = 125;
+            // 
+            // Desc
+            // 
+            this.Desc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Desc.HeaderText = "EXPIRATION";
+            this.Desc.MinimumWidth = 6;
+            this.Desc.Name = "Desc";
+            this.Desc.ReadOnly = true;
+            // 
+            // Price
+            // 
+            this.Price.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Price.HeaderText = "STOCK";
+            this.Price.MinimumWidth = 6;
+            this.Price.Name = "Price";
+            this.Price.ReadOnly = true;
+            // 
+            // UnMe
+            // 
+            this.UnMe.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.UnMe.HeaderText = "UNIT";
+            this.UnMe.MinimumWidth = 6;
+            this.UnMe.Name = "UnMe";
+            this.UnMe.ReadOnly = true;
+            this.UnMe.Visible = false;
+            this.UnMe.Width = 106;
+            // 
+            // SNum
+            // 
+            this.SNum.HeaderText = "SNum";
+            this.SNum.MinimumWidth = 6;
+            this.SNum.Name = "SNum";
+            this.SNum.Visible = false;
+            this.SNum.Width = 125;
+            // 
+            // dek
+            // 
+            this.dek.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dek.HeaderText = "";
+            this.dek.Image = global::Capstone.Properties.Resources._Delete;
+            this.dek.MinimumWidth = 6;
+            this.dek.Name = "dek";
+            this.dek.ReadOnly = true;
+            this.dek.Width = 6;
+            // 
             // frmExpListDispose
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 37F);
@@ -418,12 +428,13 @@
         public Label lblTrans;
         private Label lblTransNo;
         public TextBox txtSearchExpL;
+        public Label lblDisposalDate;
         private DataGridViewTextBoxColumn NumService;
         private DataGridViewTextBoxColumn Num;
         private DataGridViewTextBoxColumn Desc;
         private DataGridViewTextBoxColumn Price;
         private DataGridViewTextBoxColumn UnMe;
+        private DataGridViewTextBoxColumn SNum;
         private DataGridViewImageColumn dek;
-        public Label lblDisposalDate;
     }
 }

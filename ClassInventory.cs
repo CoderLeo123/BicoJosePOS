@@ -250,13 +250,13 @@ namespace Capstone
             int i = 0;
             dgv.Rows.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT * FROM tblStockInventory WHERE Item_ID LIKE '"+ ITMID + "' AND Status LIKE 'Available' ORDER BY Expiration_Date ASC", cn);
+            SqlCommand cm = new SqlCommand("SELECT * FROM tblStockInventory WHERE Item_ID LIKE '"+ ITMID + "' AND Status LIKE 'Available' AND Quantity > 0 ORDER BY Expiration_Date ASC", cn);
             dr = cm.ExecuteReader();//Description, Expiration_Date
             while (dr.Read())
             {
                 //                              3-STOCK / 3-Quantity              
                 i += 1;  //0-#  1-EXPIRATION / 1-Expiration_Date    3-UNIT / 3-Quantity     
-                dgv.Rows.Add(i, dr[0].ToString(), dr[5].ToString(), dr[2].ToString(), dr[6].ToString());
+                dgv.Rows.Add(i, dr[0].ToString(), dr[5].ToString(), dr[2].ToString(), dr[6].ToString(), dr[1].ToString());
             }
             dr.Close();
             cn.Close();
