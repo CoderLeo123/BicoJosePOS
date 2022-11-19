@@ -58,6 +58,10 @@
             this.panelSaleRep = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.dataGridViewSalesR = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.saleReal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.printPreviewControl = new System.Windows.Forms.PrintPreviewControl();
             this.panel7 = new System.Windows.Forms.Panel();
             this.btnSaveProduct = new System.Windows.Forms.Button();
@@ -66,6 +70,10 @@
             this.panel9 = new System.Windows.Forms.Panel();
             this.printPreviewControlBal = new System.Windows.Forms.PrintPreviewControl();
             this.dataGridViewBalR = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ba = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.balanceReal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel11 = new System.Windows.Forms.Panel();
             this.panel12 = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -146,14 +154,6 @@
             this.printPreviewDialogTransH = new System.Windows.Forms.PrintPreviewDialog();
             this.printPreviewDialogSettled = new System.Windows.Forms.PrintPreviewDialog();
             this.printPreviewDialogSold = new System.Windows.Forms.PrintPreviewDialog();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Sa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.saleReal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ba = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.balanceReal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel21.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnCloseInventory)).BeginInit();
@@ -446,6 +446,39 @@
             this.dataGridViewSalesR.TabIndex = 6;
             this.dataGridViewSalesR.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridViewSalesR_CellFormatting);
             // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewTextBoxColumn4.HeaderText = "#";
+            this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Width = 61;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn5.HeaderText = "DATE";
+            this.dataGridViewTextBoxColumn5.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // Sa
+            // 
+            this.Sa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Sa.HeaderText = "SALES";
+            this.Sa.MinimumWidth = 6;
+            this.Sa.Name = "Sa";
+            this.Sa.ReadOnly = true;
+            // 
+            // saleReal
+            // 
+            this.saleReal.HeaderText = "saleReal";
+            this.saleReal.MinimumWidth = 6;
+            this.saleReal.Name = "saleReal";
+            this.saleReal.Visible = false;
+            this.saleReal.Width = 125;
+            // 
             // printPreviewControl
             // 
             this.printPreviewControl.Dock = System.Windows.Forms.DockStyle.Right;
@@ -568,6 +601,39 @@
             this.dataGridViewBalR.ColumnHeaderCellChanged += new System.Windows.Forms.DataGridViewColumnEventHandler(this.dataGridViewBalR_ColumnHeaderCellChanged);
             this.dataGridViewBalR.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridViewBalR_RowsAdded);
             // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewTextBoxColumn1.HeaderText = "#";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 61;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn2.HeaderText = "DATE";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // ba
+            // 
+            this.ba.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ba.HeaderText = "BALANCE";
+            this.ba.MinimumWidth = 6;
+            this.ba.Name = "ba";
+            this.ba.ReadOnly = true;
+            // 
+            // balanceReal
+            // 
+            this.balanceReal.HeaderText = "balanceReal";
+            this.balanceReal.MinimumWidth = 6;
+            this.balanceReal.Name = "balanceReal";
+            this.balanceReal.Visible = false;
+            this.balanceReal.Width = 125;
+            // 
             // panel11
             // 
             this.panel11.Controls.Add(this.panel12);
@@ -600,9 +666,9 @@
             // History
             // 
             this.History.Controls.Add(this.panelSalesHistory);
-            this.History.Location = new System.Drawing.Point(4, 29);
+            this.History.Location = new System.Drawing.Point(4, 46);
             this.History.Name = "History";
-            this.History.Size = new System.Drawing.Size(1307, 840);
+            this.History.Size = new System.Drawing.Size(1307, 823);
             this.History.TabIndex = 2;
             this.History.Text = "Sale\'s History";
             this.History.UseVisualStyleBackColor = true;
@@ -614,7 +680,7 @@
             this.panelSalesHistory.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelSalesHistory.Location = new System.Drawing.Point(0, 0);
             this.panelSalesHistory.Name = "panelSalesHistory";
-            this.panelSalesHistory.Size = new System.Drawing.Size(1307, 840);
+            this.panelSalesHistory.Size = new System.Drawing.Size(1307, 823);
             this.panelSalesHistory.TabIndex = 0;
             // 
             // panel3
@@ -624,7 +690,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 122);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1307, 718);
+            this.panel3.Size = new System.Drawing.Size(1307, 701);
             this.panel3.TabIndex = 1;
             // 
             // printPreviewControlTransH
@@ -632,7 +698,7 @@
             this.printPreviewControlTransH.Dock = System.Windows.Forms.DockStyle.Fill;
             this.printPreviewControlTransH.Location = new System.Drawing.Point(757, 0);
             this.printPreviewControlTransH.Name = "printPreviewControlTransH";
-            this.printPreviewControlTransH.Size = new System.Drawing.Size(550, 718);
+            this.printPreviewControlTransH.Size = new System.Drawing.Size(550, 701);
             this.printPreviewControlTransH.TabIndex = 8;
             // 
             // dataGridViewTransHist
@@ -677,7 +743,7 @@
             this.dataGridViewTransHist.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridViewTransHist.RowTemplate.Height = 35;
             this.dataGridViewTransHist.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTransHist.Size = new System.Drawing.Size(757, 718);
+            this.dataGridViewTransHist.Size = new System.Drawing.Size(757, 701);
             this.dataGridViewTransHist.TabIndex = 7;
             this.dataGridViewTransHist.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewTransHist_CellContentClick);
             // 
@@ -812,7 +878,7 @@
             this.dateTimePickerStartTrans.Name = "dateTimePickerStartTrans";
             this.dateTimePickerStartTrans.Size = new System.Drawing.Size(158, 34);
             this.dateTimePickerStartTrans.TabIndex = 33;
-            this.dateTimePickerStartTrans.Visible = false;
+            this.dateTimePickerStartTrans.ValueChanged += new System.EventHandler(this.dateTimePickerStartTrans_ValueChanged);
             // 
             // label3
             // 
@@ -825,7 +891,6 @@
             this.label3.Size = new System.Drawing.Size(277, 31);
             this.label3.TabIndex = 32;
             this.label3.Text = "Filter By Date (From - To)";
-            this.label3.Visible = false;
             // 
             // dateTimePickerEndTrans
             // 
@@ -836,7 +901,7 @@
             this.dateTimePickerEndTrans.Name = "dateTimePickerEndTrans";
             this.dateTimePickerEndTrans.Size = new System.Drawing.Size(158, 34);
             this.dateTimePickerEndTrans.TabIndex = 34;
-            this.dateTimePickerEndTrans.Visible = false;
+            this.dateTimePickerEndTrans.ValueChanged += new System.EventHandler(this.dateTimePickerEndTrans_ValueChanged);
             // 
             // label2
             // 
@@ -929,9 +994,9 @@
             // tabPage4
             // 
             this.tabPage4.Controls.Add(this.panelSoldItems);
-            this.tabPage4.Location = new System.Drawing.Point(4, 29);
+            this.tabPage4.Location = new System.Drawing.Point(4, 46);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(1307, 840);
+            this.tabPage4.Size = new System.Drawing.Size(1307, 823);
             this.tabPage4.TabIndex = 4;
             this.tabPage4.Text = "Sold";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -943,7 +1008,7 @@
             this.panelSoldItems.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelSoldItems.Location = new System.Drawing.Point(0, 0);
             this.panelSoldItems.Name = "panelSoldItems";
-            this.panelSoldItems.Size = new System.Drawing.Size(1307, 840);
+            this.panelSoldItems.Size = new System.Drawing.Size(1307, 823);
             this.panelSoldItems.TabIndex = 1;
             // 
             // panel8
@@ -952,7 +1017,7 @@
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel8.Location = new System.Drawing.Point(0, 119);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(1307, 721);
+            this.panel8.Size = new System.Drawing.Size(1307, 704);
             this.panel8.TabIndex = 1;
             // 
             // dataGridViewSoldItems
@@ -1000,7 +1065,7 @@
             this.dataGridViewSoldItems.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridViewSoldItems.RowTemplate.Height = 35;
             this.dataGridViewSoldItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewSoldItems.Size = new System.Drawing.Size(1307, 721);
+            this.dataGridViewSoldItems.Size = new System.Drawing.Size(1307, 704);
             this.dataGridViewSoldItems.TabIndex = 9;
             // 
             // dataGridViewTextBoxColumn9
@@ -1163,7 +1228,7 @@
             this.dateTimePickerStartSold.Name = "dateTimePickerStartSold";
             this.dateTimePickerStartSold.Size = new System.Drawing.Size(158, 34);
             this.dateTimePickerStartSold.TabIndex = 33;
-            this.dateTimePickerStartSold.Visible = false;
+            this.dateTimePickerStartSold.ValueChanged += new System.EventHandler(this.dateTimePickerStartSold_ValueChanged);
             // 
             // label4
             // 
@@ -1176,7 +1241,6 @@
             this.label4.Size = new System.Drawing.Size(277, 31);
             this.label4.TabIndex = 32;
             this.label4.Text = "Filter By Date (From - To)";
-            this.label4.Visible = false;
             // 
             // dateTimePickerEndSold
             // 
@@ -1187,7 +1251,7 @@
             this.dateTimePickerEndSold.Name = "dateTimePickerEndSold";
             this.dateTimePickerEndSold.Size = new System.Drawing.Size(158, 34);
             this.dateTimePickerEndSold.TabIndex = 34;
-            this.dateTimePickerEndSold.Visible = false;
+            this.dateTimePickerEndSold.ValueChanged += new System.EventHandler(this.dateTimePickerEndSold_ValueChanged);
             // 
             // label5
             // 
@@ -1204,9 +1268,9 @@
             // tabPage5
             // 
             this.tabPage5.Controls.Add(this.panelSettled);
-            this.tabPage5.Location = new System.Drawing.Point(4, 29);
+            this.tabPage5.Location = new System.Drawing.Point(4, 46);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(1307, 840);
+            this.tabPage5.Size = new System.Drawing.Size(1307, 823);
             this.tabPage5.TabIndex = 5;
             this.tabPage5.Text = "Settled";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -1218,7 +1282,7 @@
             this.panelSettled.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelSettled.Location = new System.Drawing.Point(0, 0);
             this.panelSettled.Name = "panelSettled";
-            this.panelSettled.Size = new System.Drawing.Size(1307, 840);
+            this.panelSettled.Size = new System.Drawing.Size(1307, 823);
             this.panelSettled.TabIndex = 7;
             // 
             // panel16
@@ -1228,7 +1292,7 @@
             this.panel16.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel16.Location = new System.Drawing.Point(0, 120);
             this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(1307, 720);
+            this.panel16.Size = new System.Drawing.Size(1307, 703);
             this.panel16.TabIndex = 1;
             // 
             // printPreviewControlSettledP
@@ -1236,7 +1300,7 @@
             this.printPreviewControlSettledP.Dock = System.Windows.Forms.DockStyle.Fill;
             this.printPreviewControlSettledP.Location = new System.Drawing.Point(763, 0);
             this.printPreviewControlSettledP.Name = "printPreviewControlSettledP";
-            this.printPreviewControlSettledP.Size = new System.Drawing.Size(544, 720);
+            this.printPreviewControlSettledP.Size = new System.Drawing.Size(544, 703);
             this.printPreviewControlSettledP.TabIndex = 9;
             // 
             // dataGridViewSettle
@@ -1281,7 +1345,7 @@
             this.dataGridViewSettle.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridViewSettle.RowTemplate.Height = 35;
             this.dataGridViewSettle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewSettle.Size = new System.Drawing.Size(763, 720);
+            this.dataGridViewSettle.Size = new System.Drawing.Size(763, 703);
             this.dataGridViewSettle.TabIndex = 8;
             this.dataGridViewSettle.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSettle_CellContentClick);
             // 
@@ -1430,7 +1494,7 @@
             this.dateTimePickerSettStart.Name = "dateTimePickerSettStart";
             this.dateTimePickerSettStart.Size = new System.Drawing.Size(158, 34);
             this.dateTimePickerSettStart.TabIndex = 33;
-            this.dateTimePickerSettStart.Visible = false;
+            this.dateTimePickerSettStart.ValueChanged += new System.EventHandler(this.dateTimePickerSettStart_ValueChanged);
             // 
             // label7
             // 
@@ -1443,7 +1507,6 @@
             this.label7.Size = new System.Drawing.Size(277, 31);
             this.label7.TabIndex = 32;
             this.label7.Text = "Filter By Date (From - To)";
-            this.label7.Visible = false;
             // 
             // dateTimePickerSettEnd
             // 
@@ -1454,7 +1517,7 @@
             this.dateTimePickerSettEnd.Name = "dateTimePickerSettEnd";
             this.dateTimePickerSettEnd.Size = new System.Drawing.Size(158, 34);
             this.dateTimePickerSettEnd.TabIndex = 34;
-            this.dateTimePickerSettEnd.Visible = false;
+            this.dateTimePickerSettEnd.ValueChanged += new System.EventHandler(this.dateTimePickerSettEnd_ValueChanged);
             // 
             // label8
             // 
@@ -1510,72 +1573,6 @@
             this.printPreviewDialogSold.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialogSold.Icon")));
             this.printPreviewDialogSold.Name = "printPreviewDialogSold";
             this.printPreviewDialogSold.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataGridViewTextBoxColumn4.HeaderText = "#";
-            this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Width = 61;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn5.HeaderText = "DATE";
-            this.dataGridViewTextBoxColumn5.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            // 
-            // Sa
-            // 
-            this.Sa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Sa.HeaderText = "SALES";
-            this.Sa.MinimumWidth = 6;
-            this.Sa.Name = "Sa";
-            this.Sa.ReadOnly = true;
-            // 
-            // saleReal
-            // 
-            this.saleReal.HeaderText = "saleReal";
-            this.saleReal.MinimumWidth = 6;
-            this.saleReal.Name = "saleReal";
-            this.saleReal.Visible = false;
-            this.saleReal.Width = 125;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataGridViewTextBoxColumn1.HeaderText = "#";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 61;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn2.HeaderText = "DATE";
-            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // ba
-            // 
-            this.ba.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ba.HeaderText = "BALANCE";
-            this.ba.MinimumWidth = 6;
-            this.ba.Name = "ba";
-            this.ba.ReadOnly = true;
-            // 
-            // balanceReal
-            // 
-            this.balanceReal.HeaderText = "balanceReal";
-            this.balanceReal.MinimumWidth = 6;
-            this.balanceReal.Name = "balanceReal";
-            this.balanceReal.Visible = false;
-            this.balanceReal.Width = 125;
             // 
             // frmReports
             // 

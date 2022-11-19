@@ -27,7 +27,7 @@ namespace Capstone
         {
             InitializeComponent();
             cn = new SqlConnection(dbcon.MyConnection());
-            classPayment.LoadRecordsUnsettled(dataGridViewPaymentStat, txtSearchPending);
+            //classPayment.LoadRecordsUnsettled(dataGridViewPaymentStat, txtSearchPending);
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -58,13 +58,26 @@ namespace Capstone
 
         }
 
+        private void txtSearchPending_TextChanged(object sender, EventArgs e)
+        {
+            if (txtSearchPending.Text == String.Empty)
+            {
+                //classLoadData.LoadRecordsTransacSettled(dataGridViewSettle, txtSearchSettleds, dateTimePickerSettStart, dateTimePickerSettEnd);
+                return;
+            }
+            else
+            {
+                classPayment.LoadRecordsUnsettled(dataGridViewPaymentStat, txtSearchPending);
+            }
+        }
+
         private void dataGridViewPaymentStat_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            classPayment.LoadRecordsUnsettled(dataGridViewPaymentStat, txtSearchPending);
+            //classPayment.LoadRecordsUnsettled(dataGridViewPaymentStat, txtSearchPending);
             lblCurrentTransN.Text = dataGridViewPaymentStat.Rows[e.RowIndex].Cells[1].Value.ToString();
             string CName = dataGridViewPaymentStat.Rows[e.RowIndex].Cells[2].Value.ToString();
             //string Cashier = dataGridViewPaymentStat.Rows[e.RowIndex].Cells[7].Value.ToString();
-            string Balance = dataGridViewPaymentStat.Rows[e.RowIndex].Cells[5].Value.ToString();
+            string Balance = dataGridViewPaymentStat.Rows[e.RowIndex].Cells[9].Value.ToString();
             
             frmCashier frmC = new frmCashier();
             frmSettlePayment frm = new frmSettlePayment(frml);
@@ -76,6 +89,7 @@ namespace Capstone
             frm.lblNewTransactionSet.Visible = true;
 
             frm.labelBal.Visible = false;
+            frm.lblCustomer.Visible = true;
             frm.txtRemBalances.Visible = false;
             frm.lblChangeDueDate.Visible = false;
             frm.labelTot.Text = "Balance Due";

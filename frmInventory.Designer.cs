@@ -105,13 +105,6 @@
             this.panelDispose = new System.Windows.Forms.Panel();
             this.panel16 = new System.Windows.Forms.Panel();
             this.dataGridViewDispose = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DisStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ex = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DisposeDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel17 = new System.Windows.Forms.Panel();
             this.panel18 = new System.Windows.Forms.Panel();
             this.txtSearchDispose = new System.Windows.Forms.TextBox();
@@ -128,6 +121,13 @@
             this.panel20 = new System.Windows.Forms.Panel();
             this.panel21 = new System.Windows.Forms.Panel();
             this.txtSearchSafety = new System.Windows.Forms.TextBox();
+            this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DisStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ex = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DisposeDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel13.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnCloseInventory)).BeginInit();
@@ -781,9 +781,9 @@
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.panelExpiration);
-            this.tabPage3.Location = new System.Drawing.Point(4, 46);
+            this.tabPage3.Location = new System.Drawing.Point(4, 29);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1307, 823);
+            this.tabPage3.Size = new System.Drawing.Size(1307, 840);
             this.tabPage3.TabIndex = 4;
             this.tabPage3.Text = "Expiration";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -795,7 +795,7 @@
             this.panelExpiration.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelExpiration.Location = new System.Drawing.Point(0, 0);
             this.panelExpiration.Name = "panelExpiration";
-            this.panelExpiration.Size = new System.Drawing.Size(1307, 823);
+            this.panelExpiration.Size = new System.Drawing.Size(1307, 840);
             this.panelExpiration.TabIndex = 40;
             // 
             // panel15
@@ -804,7 +804,7 @@
             this.panel15.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel15.Location = new System.Drawing.Point(0, 70);
             this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(1307, 753);
+            this.panel15.Size = new System.Drawing.Size(1307, 770);
             this.panel15.TabIndex = 1;
             // 
             // dataGridViewExpir
@@ -848,7 +848,7 @@
             this.dataGridViewExpir.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridViewExpir.RowTemplate.Height = 35;
             this.dataGridViewExpir.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewExpir.Size = new System.Drawing.Size(1307, 753);
+            this.dataGridViewExpir.Size = new System.Drawing.Size(1307, 770);
             this.dataGridViewExpir.TabIndex = 7;
             this.dataGridViewExpir.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewExpir_CellContentClick);
             // 
@@ -929,9 +929,9 @@
             // tabPage5
             // 
             this.tabPage5.Controls.Add(this.panelDispose);
-            this.tabPage5.Location = new System.Drawing.Point(4, 29);
+            this.tabPage5.Location = new System.Drawing.Point(4, 46);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(1307, 840);
+            this.tabPage5.Size = new System.Drawing.Size(1307, 823);
             this.tabPage5.TabIndex = 5;
             this.tabPage5.Text = "Dispose";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -943,7 +943,7 @@
             this.panelDispose.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelDispose.Location = new System.Drawing.Point(0, 0);
             this.panelDispose.Name = "panelDispose";
-            this.panelDispose.Size = new System.Drawing.Size(1307, 840);
+            this.panelDispose.Size = new System.Drawing.Size(1307, 823);
             this.panelDispose.TabIndex = 3;
             // 
             // panel16
@@ -952,7 +952,7 @@
             this.panel16.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel16.Location = new System.Drawing.Point(0, 72);
             this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(1307, 768);
+            this.panel16.Size = new System.Drawing.Size(1307, 751);
             this.panel16.TabIndex = 1;
             // 
             // dataGridViewDispose
@@ -997,68 +997,8 @@
             this.dataGridViewDispose.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridViewDispose.RowTemplate.Height = 35;
             this.dataGridViewDispose.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewDispose.Size = new System.Drawing.Size(1307, 768);
+            this.dataGridViewDispose.Size = new System.Drawing.Size(1307, 751);
             this.dataGridViewDispose.TabIndex = 5;
-            // 
-            // dataGridViewTextBoxColumn16
-            // 
-            this.dataGridViewTextBoxColumn16.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataGridViewTextBoxColumn16.HeaderText = "#";
-            this.dataGridViewTextBoxColumn16.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
-            this.dataGridViewTextBoxColumn16.ReadOnly = true;
-            this.dataGridViewTextBoxColumn16.Width = 61;
-            // 
-            // dataGridViewTextBoxColumn17
-            // 
-            this.dataGridViewTextBoxColumn17.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn17.HeaderText = "DESCRIPTION";
-            this.dataGridViewTextBoxColumn17.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
-            this.dataGridViewTextBoxColumn17.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn18
-            // 
-            this.dataGridViewTextBoxColumn18.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn18.HeaderText = "TYPE";
-            this.dataGridViewTextBoxColumn18.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
-            this.dataGridViewTextBoxColumn18.ReadOnly = true;
-            // 
-            // DisStock
-            // 
-            this.DisStock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.DisStock.HeaderText = "STOCK";
-            this.DisStock.MinimumWidth = 6;
-            this.DisStock.Name = "DisStock";
-            this.DisStock.ReadOnly = true;
-            this.DisStock.Width = 127;
-            // 
-            // Ex
-            // 
-            this.Ex.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Ex.HeaderText = "EXPIRATION";
-            this.Ex.MinimumWidth = 6;
-            this.Ex.Name = "Ex";
-            this.Ex.ReadOnly = true;
-            this.Ex.Width = 195;
-            // 
-            // DisposeDate
-            // 
-            this.DisposeDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.DisposeDate.HeaderText = "DISPOSAL DATE";
-            this.DisposeDate.MinimumWidth = 6;
-            this.DisposeDate.Name = "DisposeDate";
-            this.DisposeDate.ReadOnly = true;
-            this.DisposeDate.Width = 241;
-            // 
-            // dataGridViewTextBoxColumn21
-            // 
-            this.dataGridViewTextBoxColumn21.HeaderText = "ITMID";
-            this.dataGridViewTextBoxColumn21.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn21.Name = "dataGridViewTextBoxColumn21";
-            this.dataGridViewTextBoxColumn21.Visible = false;
-            this.dataGridViewTextBoxColumn21.Width = 125;
             // 
             // panel17
             // 
@@ -1242,6 +1182,66 @@
             this.txtSearchSafety.TabIndex = 0;
             this.txtSearchSafety.TextChanged += new System.EventHandler(this.txtSearchSafety_TextChanged);
             // 
+            // dataGridViewTextBoxColumn16
+            // 
+            this.dataGridViewTextBoxColumn16.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewTextBoxColumn16.HeaderText = "#";
+            this.dataGridViewTextBoxColumn16.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
+            this.dataGridViewTextBoxColumn16.ReadOnly = true;
+            this.dataGridViewTextBoxColumn16.Width = 61;
+            // 
+            // dataGridViewTextBoxColumn17
+            // 
+            this.dataGridViewTextBoxColumn17.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn17.HeaderText = "DESCRIPTION";
+            this.dataGridViewTextBoxColumn17.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
+            this.dataGridViewTextBoxColumn17.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn18
+            // 
+            this.dataGridViewTextBoxColumn18.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.dataGridViewTextBoxColumn18.HeaderText = "TYPE";
+            this.dataGridViewTextBoxColumn18.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
+            this.dataGridViewTextBoxColumn18.ReadOnly = true;
+            this.dataGridViewTextBoxColumn18.Width = 105;
+            // 
+            // DisStock
+            // 
+            this.DisStock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.DisStock.HeaderText = "STOCK";
+            this.DisStock.MinimumWidth = 6;
+            this.DisStock.Name = "DisStock";
+            this.DisStock.ReadOnly = true;
+            this.DisStock.Width = 127;
+            // 
+            // Ex
+            // 
+            this.Ex.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Ex.HeaderText = "EXPIRATION";
+            this.Ex.MinimumWidth = 6;
+            this.Ex.Name = "Ex";
+            this.Ex.ReadOnly = true;
+            this.Ex.Width = 195;
+            // 
+            // DisposeDate
+            // 
+            this.DisposeDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.DisposeDate.HeaderText = "DISPOSAL DATE";
+            this.DisposeDate.MinimumWidth = 6;
+            this.DisposeDate.Name = "DisposeDate";
+            this.DisposeDate.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn21
+            // 
+            this.dataGridViewTextBoxColumn21.HeaderText = "ITMID";
+            this.dataGridViewTextBoxColumn21.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn21.Name = "dataGridViewTextBoxColumn21";
+            this.dataGridViewTextBoxColumn21.Visible = false;
+            this.dataGridViewTextBoxColumn21.Width = 125;
+            // 
             // frmInventory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 37F);
@@ -1383,6 +1383,12 @@
         private DataGridViewTextBoxColumn OutStock;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private DataGridViewTextBoxColumn ID;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn20;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn22;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn23;
+        private DataGridViewTextBoxColumn ReOStock;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn25;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn26;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
@@ -1390,11 +1396,5 @@
         private DataGridViewTextBoxColumn Ex;
         private DataGridViewTextBoxColumn DisposeDate;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn21;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn20;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn22;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn23;
-        private DataGridViewTextBoxColumn ReOStock;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn25;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn26;
     }
 }

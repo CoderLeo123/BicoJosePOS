@@ -539,7 +539,7 @@ namespace Capstone
                 {
                     statusValue = "Pending";
                     remBalance = total - payment;
-                    settledDate = dateTimePickerDueDate.Value.ToString();
+                    settledDate = dateTimePickerDueDate.Value.ToShortDateString();
                     completedBy = cashier;
                 }
             }
@@ -665,8 +665,8 @@ namespace Capstone
         {
             if (comBoxPaymentTerms.SelectedIndex == 0)//Full
             {
-                panel1.Size = new Size(539, 339);
-                this.Size = new Size(539, 714);
+                panel1.Size = new Size(539, 338);//539, 390
+                this.Size = new Size(539, 703);
                 panelDepositDueDate.Visible = false;
                 lblChangeDueDate.Visible = false;
                 lblPaymentNotice.Visible = false;
@@ -674,8 +674,8 @@ namespace Capstone
             }
             else//Deposit
             {
-                panel1.Size = new Size(539, 487);
-                this.Size = new Size(539, 864);
+                panel1.Size = new Size(539, 545);
+                this.Size = new Size(539, 911);
                 panelDepositDueDate.Visible = true;
                 lblChangeDueDate.Visible = true;
                 txtChange.Text = "0";
@@ -693,6 +693,7 @@ namespace Capstone
         private void txtPayment_Leave(object sender, EventArgs e)
         {
             string pTerms = comBoxPaymentTerms.Text;
+            double money = double.Parse(txtMoney.Text);
             if (pTerms == "Full")
             {
                 if (double.Parse(txtPayment.Text) < double.Parse(txtTotal.Text))
@@ -712,7 +713,18 @@ namespace Capstone
             }
             else if (pTerms == "Deposit")
             {
-                requiredDepositPercent(txtTotal, txtPayment);
+                if(double.Parse(txtPayment.Text) > money)
+                {
+                    lblPaymentNotice.Text = "Payment value should be less than the money value";
+                    lblPaymentNotice.Visible = true;
+                }
+                else
+                {
+                    lblPaymentNotice.Visible = false;                    
+                    requiredDepositPercent(txtTotal, txtPayment);
+                    computeChange(txtMoney, txtPayment, txtChange);
+                }
+                
             }
             
         }
@@ -790,7 +802,7 @@ namespace Capstone
                     e.Graphics.DrawString(resultText, printFont, Brushes.Black, 60, y);
 
                     getValueIfAnyElseBlank(dgvCount, frmC.dataGridViewCart, out resultText, i, 3);//Price
-                    e.Graphics.DrawString("₱ " + resultText, printFont, Brushes.Black, x, y);
+                    e.Graphics.DrawString(resultText, printFont, Brushes.Black, x, y);
 
                     getValueIfAnyElseBlank(dgvCount, frmC.dataGridViewCart, out resultText, i, 4);//Qty
                     e.Graphics.DrawString(resultText, printFont, Brushes.Black, (x += 80), y);
@@ -914,7 +926,7 @@ namespace Capstone
             e.Graphics.DrawString("Customer Name:  " + lblCustomer.Text, printFont, Brushes.Black, 20, y);//230
             e.Graphics.DrawString("--------------------------------------------------------------------------------------------------------------------------", printFont, Brushes.Black, 10, (y += 30));//260 or 290
             e.Graphics.DrawString("Invoice No: " + lblNewTransactionSet.Text, printFont, Brushes.Black, 20, (y += 50));//310 or 340
-            e.Graphics.DrawString("Balance Settlement for Transaction No:" + lblTransacNo.Text, printFont, Brushes.Black, 20, (y += 50));//360 or 390
+            e.Graphics.DrawString("Balance Settlement for Transaction No:   " + lblTransacNo.Text, printFont, Brushes.Black, 20, (y += 50));//360 or 390
 
 
             x = 440;
@@ -959,6 +971,52 @@ namespace Capstone
                 paperL = 1000;
             }
 
+        }
+
+        private void txtMoney_TextChanged(object sender, EventArgs e)
+        {
+            string pTerms = comBoxPaymentTerms.Text;
+            if (txtMoney.Text == string.Empty)
+            {
+                txtMoney.Focus();
+                txtMoney.Text = "0";
+                txtMoney.SelectAll();
+            }
+            else
+            {
+                if (pTerms == "Full")
+                {
+                    txtMoney.Visible = false;
+                    lblMoneyTitle.Visible = false;
+                    //computeChange(txtTotal, txtPayment, txtChange);
+                } 
+                else if (pTerms == "Deposit")
+                {
+                    txtMoney.Visible = true;
+                    lblMoneyTitle.Visible = true;
+                    
+                    //computeChange(txtTotal, txtPayment, txtChange);
+                }
+
+            }
+        }
+
+        private void txtMoney_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 8)
+            {
+                //accept backspace
+            }
+            else if ((e.KeyChar < 48) || (e.KeyChar > 57))
+            {
+                //ascii code 48 - 57 = characters between 0 - 9
+                e.Handled = true;
+            }
+        }
+
+        private void txtMoney_Leave(object sender, EventArgs e)
+        {
+            txtPayment.Text = txtMoney.Text;
         }
 
         public void calculateFrameLenseTotal(DataGridView dgv, string transNo, out double frameTotal, out double lenseTotal)

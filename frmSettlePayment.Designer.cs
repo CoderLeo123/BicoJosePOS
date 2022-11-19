@@ -45,8 +45,10 @@
             this.comBoxPaymentTerms = new System.Windows.Forms.ComboBox();
             this.labelPT = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblMoneyTitle = new System.Windows.Forms.Label();
             this.lblLeastDeposit = new System.Windows.Forms.Label();
             this.lblNewTransactionSet = new System.Windows.Forms.Label();
+            this.txtMoney = new System.Windows.Forms.TextBox();
             this.lblCheckSettleBalance = new System.Windows.Forms.Label();
             this.lblServRowCount = new System.Windows.Forms.Label();
             this.lblDPercent = new System.Windows.Forms.Label();
@@ -209,7 +211,7 @@
             // txtPayment
             // 
             this.txtPayment.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtPayment.Location = new System.Drawing.Point(277, 156);
+            this.txtPayment.Location = new System.Drawing.Point(277, 207);
             this.txtPayment.Name = "txtPayment";
             this.txtPayment.PlaceholderText = "0.00";
             this.txtPayment.Size = new System.Drawing.Size(220, 43);
@@ -224,7 +226,7 @@
             // 
             this.txtChange.Enabled = false;
             this.txtChange.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtChange.Location = new System.Drawing.Point(277, 233);
+            this.txtChange.Location = new System.Drawing.Point(278, 285);
             this.txtChange.Name = "txtChange";
             this.txtChange.PlaceholderText = "0.00";
             this.txtChange.Size = new System.Drawing.Size(220, 43);
@@ -246,7 +248,7 @@
             // 
             this.labelPay.AutoSize = true;
             this.labelPay.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelPay.Location = new System.Drawing.Point(12, 159);
+            this.labelPay.Location = new System.Drawing.Point(12, 210);
             this.labelPay.Name = "labelPay";
             this.labelPay.Size = new System.Drawing.Size(124, 38);
             this.labelPay.TabIndex = 4;
@@ -256,7 +258,7 @@
             // 
             this.labelCH.AutoSize = true;
             this.labelCH.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelCH.Location = new System.Drawing.Point(12, 233);
+            this.labelCH.Location = new System.Drawing.Point(13, 285);
             this.labelCH.Name = "labelCH";
             this.labelCH.Size = new System.Drawing.Size(111, 38);
             this.labelCH.TabIndex = 5;
@@ -288,8 +290,10 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.lblMoneyTitle);
             this.panel1.Controls.Add(this.lblLeastDeposit);
             this.panel1.Controls.Add(this.lblNewTransactionSet);
+            this.panel1.Controls.Add(this.txtMoney);
             this.panel1.Controls.Add(this.lblCheckSettleBalance);
             this.panel1.Controls.Add(this.lblServRowCount);
             this.panel1.Controls.Add(this.lblDPercent);
@@ -316,14 +320,24 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 66);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(539, 488);
+            this.panel1.Size = new System.Drawing.Size(539, 545);
             this.panel1.TabIndex = 31;
+            // 
+            // lblMoneyTitle
+            // 
+            this.lblMoneyTitle.AutoSize = true;
+            this.lblMoneyTitle.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblMoneyTitle.Location = new System.Drawing.Point(12, 161);
+            this.lblMoneyTitle.Name = "lblMoneyTitle";
+            this.lblMoneyTitle.Size = new System.Drawing.Size(103, 38);
+            this.lblMoneyTitle.TabIndex = 30;
+            this.lblMoneyTitle.Text = "Money";
             // 
             // lblLeastDeposit
             // 
             this.lblLeastDeposit.AutoSize = true;
             this.lblLeastDeposit.ForeColor = System.Drawing.Color.Red;
-            this.lblLeastDeposit.Location = new System.Drawing.Point(501, 296);
+            this.lblLeastDeposit.Location = new System.Drawing.Point(502, 348);
             this.lblLeastDeposit.Name = "lblLeastDeposit";
             this.lblLeastDeposit.Size = new System.Drawing.Size(26, 31);
             this.lblLeastDeposit.TabIndex = 28;
@@ -341,11 +355,25 @@
             this.lblNewTransactionSet.Text = "0";
             this.lblNewTransactionSet.Visible = false;
             // 
+            // txtMoney
+            // 
+            this.txtMoney.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtMoney.Location = new System.Drawing.Point(277, 156);
+            this.txtMoney.Name = "txtMoney";
+            this.txtMoney.PlaceholderText = "0.00";
+            this.txtMoney.Size = new System.Drawing.Size(220, 43);
+            this.txtMoney.TabIndex = 29;
+            this.txtMoney.Text = "0";
+            this.txtMoney.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtMoney.TextChanged += new System.EventHandler(this.txtMoney_TextChanged);
+            this.txtMoney.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMoney_KeyPress);
+            this.txtMoney.Leave += new System.EventHandler(this.txtMoney_Leave);
+            // 
             // lblCheckSettleBalance
             // 
             this.lblCheckSettleBalance.AutoSize = true;
             this.lblCheckSettleBalance.ForeColor = System.Drawing.Color.Red;
-            this.lblCheckSettleBalance.Location = new System.Drawing.Point(503, 168);
+            this.lblCheckSettleBalance.Location = new System.Drawing.Point(503, 219);
             this.lblCheckSettleBalance.Name = "lblCheckSettleBalance";
             this.lblCheckSettleBalance.Size = new System.Drawing.Size(26, 31);
             this.lblCheckSettleBalance.TabIndex = 26;
@@ -367,7 +395,7 @@
             // 
             this.lblDPercent.AutoSize = true;
             this.lblDPercent.ForeColor = System.Drawing.Color.Red;
-            this.lblDPercent.Location = new System.Drawing.Point(153, 299);
+            this.lblDPercent.Location = new System.Drawing.Point(154, 351);
             this.lblDPercent.Name = "lblDPercent";
             this.lblDPercent.Size = new System.Drawing.Size(32, 31);
             this.lblDPercent.TabIndex = 24;
@@ -378,7 +406,7 @@
             // 
             this.lblDiscount.AutoSize = true;
             this.lblDiscount.ForeColor = System.Drawing.Color.Red;
-            this.lblDiscount.Location = new System.Drawing.Point(153, 264);
+            this.lblDiscount.Location = new System.Drawing.Point(154, 316);
             this.lblDiscount.Name = "lblDiscount";
             this.lblDiscount.Size = new System.Drawing.Size(104, 31);
             this.lblDiscount.TabIndex = 23;
@@ -389,7 +417,7 @@
             // 
             this.lblGrossTotal.AutoSize = true;
             this.lblGrossTotal.ForeColor = System.Drawing.Color.Red;
-            this.lblGrossTotal.Location = new System.Drawing.Point(153, 233);
+            this.lblGrossTotal.Location = new System.Drawing.Point(154, 285);
             this.lblGrossTotal.Name = "lblGrossTotal";
             this.lblGrossTotal.Size = new System.Drawing.Size(71, 31);
             this.lblGrossTotal.TabIndex = 22;
@@ -400,7 +428,7 @@
             // 
             this.labelBal.AutoSize = true;
             this.labelBal.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelBal.Location = new System.Drawing.Point(12, 282);
+            this.labelBal.Location = new System.Drawing.Point(13, 334);
             this.labelBal.Name = "labelBal";
             this.labelBal.Size = new System.Drawing.Size(112, 38);
             this.labelBal.TabIndex = 21;
@@ -410,7 +438,7 @@
             // 
             this.txtRemBalances.Enabled = false;
             this.txtRemBalances.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtRemBalances.Location = new System.Drawing.Point(278, 284);
+            this.txtRemBalances.Location = new System.Drawing.Point(279, 336);
             this.txtRemBalances.Name = "txtRemBalances";
             this.txtRemBalances.PlaceholderText = "0.00";
             this.txtRemBalances.Size = new System.Drawing.Size(220, 43);
@@ -434,7 +462,7 @@
             this.lblPaymentNotice.AutoSize = true;
             this.lblPaymentNotice.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblPaymentNotice.ForeColor = System.Drawing.Color.Red;
-            this.lblPaymentNotice.Location = new System.Drawing.Point(18, 205);
+            this.lblPaymentNotice.Location = new System.Drawing.Point(18, 256);
             this.lblPaymentNotice.Name = "lblPaymentNotice";
             this.lblPaymentNotice.Size = new System.Drawing.Size(150, 28);
             this.lblPaymentNotice.TabIndex = 18;
@@ -458,7 +486,7 @@
             this.panelDepositDueDate.Controls.Add(this.lblChangeDueDate);
             this.panelDepositDueDate.Controls.Add(this.labelDueDate);
             this.panelDepositDueDate.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelDepositDueDate.Location = new System.Drawing.Point(0, 333);
+            this.panelDepositDueDate.Location = new System.Drawing.Point(0, 390);
             this.panelDepositDueDate.Name = "panelDepositDueDate";
             this.panelDepositDueDate.Size = new System.Drawing.Size(539, 155);
             this.panelDepositDueDate.TabIndex = 16;
@@ -501,7 +529,7 @@
             // 
             this.lblCashier.AutoSize = true;
             this.lblCashier.ForeColor = System.Drawing.Color.Red;
-            this.lblCashier.Location = new System.Drawing.Point(147, 168);
+            this.lblCashier.Location = new System.Drawing.Point(147, 219);
             this.lblCashier.Name = "lblCashier";
             this.lblCashier.Size = new System.Drawing.Size(89, 31);
             this.lblCashier.TabIndex = 12;
@@ -512,7 +540,7 @@
             // 
             this.lblCustomer.AutoSize = true;
             this.lblCustomer.ForeColor = System.Drawing.Color.Black;
-            this.lblCustomer.Location = new System.Drawing.Point(263, 289);
+            this.lblCustomer.Location = new System.Drawing.Point(264, 341);
             this.lblCustomer.Name = "lblCustomer";
             this.lblCustomer.Size = new System.Drawing.Size(75, 31);
             this.lblCustomer.TabIndex = 11;
@@ -566,9 +594,9 @@
             this.panel4.Controls.Add(this.btnNine);
             this.panel4.Controls.Add(this.btnSeven);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(0, 554);
+            this.panel4.Location = new System.Drawing.Point(0, 611);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(539, 297);
+            this.panel4.Size = new System.Drawing.Size(539, 300);
             this.panel4.TabIndex = 32;
             // 
             // btnReceiptPreview
@@ -852,7 +880,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(539, 851);
+            this.ClientSize = new System.Drawing.Size(539, 911);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
@@ -934,5 +962,7 @@
         public Panel panel1;
         public Label lblNewTransactionSet;
         public Label lblLeastDeposit;
+        public Label lblMoneyTitle;
+        public TextBox txtMoney;
     }
 }

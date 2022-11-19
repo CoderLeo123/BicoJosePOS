@@ -107,20 +107,21 @@ namespace Capstone
         public void computeSalePerDay(string transDate)
         {//string transDate = dgv.Rows[e.RowIndex].Cells[0].Value.ToString();
             cn = new SqlConnection(dbcon.MyConnection());
-            double payment = 0, balance = 0; int rowCount = 0; string TDate = "N/A";
+            double payment = 0, balance = 0, change = 0; int rowCount = 0; string TDate = "N/A";
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT Payment, Balance FROM tblReceipt WHERE Transaction_Date LIKE '%" + transDate + "%' ", cn);
+            SqlCommand cm = new SqlCommand("SELECT Payment, Balance, Change FROM tblReceipt WHERE Transaction_Date LIKE '%" + transDate + "%' ", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
                 payment += Math.Round(double.Parse(dr[0].ToString()), 2);
                 balance += Math.Round(double.Parse(dr[1].ToString()), 2);
+                change += Math.Round(double.Parse(dr[2].ToString()), 2);
                 rowCount++;
                 
             }
             dr.Close();
             cn.Close();
-            
+            payment -= change;
             //new SalesReport { Date = transDate, Balance = balance, Payment = payment };
             SalesReport List = new SalesReport();
             List.Date = transDate;
@@ -1133,6 +1134,40 @@ namespace Capstone
                 cn.Close();
                 MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void dateTimePickerEndSold_ValueChanged(object sender, EventArgs e)
+        {
+            classLoadData.LoadRecordsSoldItems(dataGridViewSoldItems, txtSearchSold, dateTimePickerStartSold, dateTimePickerEndSold);
+        }
+
+        private void dateTimePickerStartSold_ValueChanged(object sender, EventArgs e)
+        {
+            classLoadData.LoadRecordsSoldItems(dataGridViewSoldItems, txtSearchSold, dateTimePickerStartSold, dateTimePickerEndSold);
+        }
+
+        private void dateTimePickerEndTrans_ValueChanged(object sender, EventArgs e)
+        {
+            classLoadData.LoadRecordsTransacHist(dataGridViewTransHist, txtSearchTransHist, dateTimePickerStartTrans, dateTimePickerEndTrans);
+
+        }
+
+        private void dateTimePickerStartTrans_ValueChanged(object sender, EventArgs e)
+        {
+            classLoadData.LoadRecordsTransacHist(dataGridViewTransHist, txtSearchTransHist, dateTimePickerStartTrans, dateTimePickerEndTrans);
+
+        }
+
+        private void dateTimePickerSettEnd_ValueChanged(object sender, EventArgs e)
+        {
+            classLoadData.LoadRecordsTransacSettled(dataGridViewSettle, txtSearchSettleds, dateTimePickerSettStart, dateTimePickerSettEnd);
+
+        }
+
+        private void dateTimePickerSettStart_ValueChanged(object sender, EventArgs e)
+        {
+            classLoadData.LoadRecordsTransacSettled(dataGridViewSettle, txtSearchSettleds, dateTimePickerSettStart, dateTimePickerSettEnd);
+
         }
 
         private void btnPreviewSettl_Click(object sender, EventArgs e)

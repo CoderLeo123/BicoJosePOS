@@ -135,15 +135,17 @@ namespace Capstone
                     string lenseCheck = lblLenseCheck.Text;
                     double unitTotal = 0;// quantInput * unitPrice;
                     string toStringUnitTotal = "";
+                    int lacking = quantInput - unitQuantItem;
                     if (quantInput > unitQuantItem)
                     {                       
-                        int lacking = quantInput - unitQuantItem;
+                        
                         unitTotal = unitQuantItem * unitPrice;
                         toStringUnitTotal = unitTotal.ToString("00.00"); unitTotal = double.Parse(toStringUnitTotal);
                         //double unitTotal = quantInput * unitPrice;
                         addExpItemToCart(unitStockNum, ItmID, TransNo, unitQuantItem, unitPrice, lenseCheck, unitTotal, Umeas);//checked
                         reducedQuantityTblStock(unitStockNum, unitQuantItem);//checked
                         updateTblStock(unitStockNum);//checked
+                        updateTblStockInvent(unitStockNum);
                         int row = 1;
                         while (lacking > 0)
                         {                           
@@ -157,6 +159,10 @@ namespace Capstone
                                 addExpItemToCart(unitStockNum, ItmID, TransNo, lacking, unitPrice, lenseCheck, unitTotal, Umeas);
                                 reducedQuantityTblStock(unitStockNum, lacking);
                                 updateTblStock(unitStockNum);
+                                if (lacking == 0)
+                                {
+                                    updateTblStockInvent(unitStockNum);
+                                }
                                 break;
                             }
                             else if (lacking >= unitQuantItem)
@@ -166,19 +172,26 @@ namespace Capstone
                                 toStringUnitTotal = unitTotal.ToString("00.00"); unitTotal = double.Parse(toStringUnitTotal);
                                 addExpItemToCart(unitStockNum, ItmID, TransNo, unitQuantItem, unitPrice, lenseCheck, unitTotal, Umeas);
                                 reducedQuantityTblStock(unitStockNum, unitQuantItem);
+                                updateTblStockInvent(unitStockNum);
                                 updateTblStock(unitStockNum);
                             }
                             row++;
-                        }                        
+                        }
+                        
                     }
                     else if (quantInput < unitQuantItem)
                     {
+                        lacking = unitQuantItem - quantInput;
                         unitTotal = unitQuantItem * unitPrice;
                         toStringUnitTotal = unitTotal.ToString("00.00"); unitTotal = double.Parse(toStringUnitTotal);
                         //int remaining = unitQuantItem - quantInput;
                         //unitTotal = quantInput * unitPrice;
                         addExpItemToCart(unitStockNum, ItmID, TransNo, quantInput, unitPrice, lenseCheck, unitTotal, Umeas);
                         reducedQuantityTblStock(unitStockNum, quantInput);
+                        if (lacking == 0)
+                        {
+                            updateTblStockInvent(unitStockNum);
+                        }
                     }// quantInput
                     reducedQuantity(ItmID, quantInput);//checked
                     classInventory.determineStockLevel(ItmID);//checked
@@ -496,7 +509,15 @@ namespace Capstone
             cn.Close();
 
         }
-        
+        public void updateTblStockInvent(int SNum)
+        {
+            //string StkID = dataGridViewStockItems.Rows[i].Cells[3].Value?.ToString();
+            cn = new SqlConnection(dbcon.MyConnection());
+            cn.Open();//Set Quantity
+            SqlCommand cm = new SqlCommand("UPDATE tblStockInventory SET Status = 'Purchased' WHERE Stock_Num = " + SNum + " ", cn);  
+            cm.ExecuteNonQuery();
+            cn.Close();
+        }
         private void panel1_MouseDown(object sender, MouseEventArgs e)
         {
             mouseDown = true;
