@@ -115,6 +115,8 @@ namespace Capstone
                 frm.lblCheckSettleBalance.Text = "0";
                 frm.labelTot.Text = "Total";
                 frm.txtTotal.Text = lblNetNoComa.Text;
+                frm.lblMoneyTitle.Visible = false;
+                frm.txtMoney.Visible = false;
                 frm.comBoxPaymentTerms.SelectedIndex = 0;
                 frm.comBoxMethodPayment.SelectedIndex = 0;
                 frm.lblCustomer.Text = txtFirstName.Text + " " + txtLastName.Text;
@@ -199,7 +201,7 @@ namespace Capstone
             //string StkID = dataGridViewStockItems.Rows[i].Cells[3].Value?.ToString();
             cn = new SqlConnection(dbcon.MyConnection());
             cn.Open();//Set Quantity
-            SqlCommand cm = new SqlCommand("UPDATE tblStockInventory SET Quantity = Quantity + @Cart WHERE Stock_Num = " + SNum + " ", cn);
+            SqlCommand cm = new SqlCommand("UPDATE tblStockInventory SET Quantity = Quantity + @Cart, Status = 'Available' WHERE Stock_Num = " + SNum + " ", cn);
             cm.Parameters.AddWithValue("@Cart", CartQty);
             cm.ExecuteNonQuery();
             cn.Close();

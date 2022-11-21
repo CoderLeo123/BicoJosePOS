@@ -498,16 +498,16 @@ namespace Capstone
 
                 if (TransDate.Substring(0, 9) != "")
                 {
-                    TransDate = dr[4].ToString().Substring(0, 10);
+                    TransDate = dr[4].ToString().Substring(0, 11);
                 }
                 else
                 {
-                    TransDate = dr[4].ToString().Substring(0, 10);
+                    TransDate = dr[4].ToString().Substring(0, 11);
                 }
                 
                         //                                          2-CUSTOMER / 15-Customer                   4-DATE(TRANSACTION) / 6-Date
                 i += 1; //0-#                    1-TRANSACTION NO / 2-Transaction_NO       3-CASHIER / 14-Cashier
-                dgv.Rows.Add(i, dr[0].ToString(), dr[2].ToString(), dr[1].ToString(), dr[3].ToString(), TransDate);
+                dgv.Rows.Add(i, dr[0].ToString(), dr[2].ToString(), dr[1].ToString(), dr[3].ToString(), dr[4].ToString());
             }
             dr.Close();
             cn.Close();
@@ -536,7 +536,7 @@ namespace Capstone
 
                 //                                          2-CUSTOMER / 15-Customer                   4-DATE(TRANSACTION) / 6-Date
                 i += 1; //0-#                    1-TRANSACTION NO / 2-Transaction_NO       3-CASHIER / 14-Cashier
-                dgv.Rows.Add(i, dr[0].ToString(), dr[2].ToString(), dr[1].ToString(), dr[3].ToString(), TransDate);
+                dgv.Rows.Add(i, dr[0].ToString(), dr[2].ToString(), dr[1].ToString(), dr[3].ToString(), dr[4].ToString());
             }
             dr.Close();
             cn.Close();
@@ -548,7 +548,7 @@ namespace Capstone
             int i = 0;
             dgv.Rows.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT * FROM ViewCartStockItem WHERE Description LIKE '%" + txtSearch.Text + "%' AND Status = 'Sold' AND Date BETWEEN '" + dateStart.Value.ToShortDateString() + "' AND '" + dateEnd.Value.ToShortDateString() + "' ORDER BY Transaction_No DESC", cn);
+            SqlCommand cm = new SqlCommand("SELECT * FROM ViewCartStockItem WHERE Description LIKE '%" + txtSearch.Text + "%' AND Status = 'Sold' OR Date BETWEEN '" + dateStart.Value.ToShortDateString() + "' AND '" + dateEnd.Value.ToShortDateString() + "' ORDER BY Transaction_No DESC", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {

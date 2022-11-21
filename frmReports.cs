@@ -317,7 +317,7 @@ namespace Capstone
                 e.Graphics.DrawString("₱ " + Balance, printFont, Brushes.Black, x, y);
 
                 e.Graphics.DrawString("Change: ", printFont, Brushes.Black, 20, (y += 30));
-                e.Graphics.DrawString("₱ -", printFont, Brushes.Black, x, y);//710
+                e.Graphics.DrawString("₱ " + Change, printFont, Brushes.Black, x, y);//710
 
             }
             else
@@ -329,9 +329,6 @@ namespace Capstone
                 e.Graphics.DrawString("₱ " + Change, printFont, Brushes.Black, x, y);//710
 
             }
-
-
-
             e.Graphics.DrawString("THIS INVOICE/RECEIPT SHALL BE VALID FOR", printFontItallic, Brushes.Black, 130, (y += 60));//770
             e.Graphics.DrawString("ONE (1)) WEEK FROM THE DATE OF THE PERMIT TO USE", printFontItallic, Brushes.Black, 70, (y += 30));//800
             e.Graphics.DrawString("THANKYOU", printFontBold, Brushes.Black, (x -= 240), (y += 30));//830
@@ -758,8 +755,6 @@ namespace Capstone
                 itm.UnitM = dr.GetString(4);//"Unit_Measure"
                  IList.Add(itm);
                 rowCount++;
-
-
             }
             dr.Close();
             cn.Close();

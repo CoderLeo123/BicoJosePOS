@@ -172,7 +172,7 @@ namespace Capstone
                 TabPage tab = new TabPage("Stock History");
                 frm.tabControlStock.TabPages.Add(tab);
                 tab.Controls.Add(frm.panelStockDetail);
-                frm.Size = new Size(1020, 496);                
+                frm.Size = new Size(1220, 496);                
                 frm.labelItemID.Text = dataGridViewOnHand[1, e.RowIndex].Value.ToString();
                 frm.labelItemName.Text = dataGridViewOnHand[2, e.RowIndex].Value.ToString();
                 classLoadData.LoadRecordsStockDetail(frm.dataGridViewDetails, frm.labelItemID);
