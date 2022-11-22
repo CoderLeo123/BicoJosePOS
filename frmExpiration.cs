@@ -54,49 +54,49 @@ namespace Capstone
         
         private void dataGridViewExpDate_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            string colName = dataGridViewExpDate.Columns[e.ColumnIndex].Name;
-            string id = dataGridViewExpDate[4, e.RowIndex].Value.ToString(); //num = Stock
+            //string colName = dataGridViewExpDate.Columns[e.ColumnIndex].Name;
+            //string id = dataGridViewExpDate[4, e.RowIndex].Value.ToString(); //num = Stock
 
-            int i = 0;
-            string num = dataGridViewExpDate[0, e.RowIndex].Value.ToString();
-            if (colName == "Select")
-            {
-                try
-                {
+            //int i = 0;
+            //string num = dataGridViewExpDate[0, e.RowIndex].Value.ToString();
+            //if (colName == "Select")
+            //{
+            //    try
+            //    {
 
-                    cn.Open();
-                    cm = new SqlCommand("INSERT INTO tblBrowseExp (num, Expiration_Date, Quantity, Price) VALUES(@num, @Expiration_Date, @Quantity, @Price)", cn);
-                    cm.Parameters.AddWithValue("@num", int.Parse(id.ToString()));
-                    cm.Parameters.AddWithValue("@Expiration_Date", DateTime.Parse(dataGridViewExpDate[1, e.RowIndex].Value.ToString()).ToShortDateString());
-                    cm.Parameters.AddWithValue("@Quantity", int.Parse(dataGridViewExpDate[2, e.RowIndex].Value.ToString()));
-                    cm.Parameters.AddWithValue("@Price", double.Parse(lblPrice.Text));
-                    cm.ExecuteNonQuery();
-                    dataGridViewExpDate.Rows.RemoveAt(dataGridViewExpDate.CurrentRow.Index);
+            //        cn.Open();
+            //        cm = new SqlCommand("INSERT INTO tblBrowseExp (num, Expiration_Date, Quantity, Price) VALUES(@num, @Expiration_Date, @Quantity, @Price)", cn);
+            //        cm.Parameters.AddWithValue("@num", int.Parse(id.ToString()));
+            //        cm.Parameters.AddWithValue("@Expiration_Date", DateTime.Parse(dataGridViewExpDate[1, e.RowIndex].Value.ToString()).ToShortDateString());
+            //        cm.Parameters.AddWithValue("@Quantity", int.Parse(dataGridViewExpDate[2, e.RowIndex].Value.ToString()));
+            //        cm.Parameters.AddWithValue("@Price", double.Parse(lblPrice.Text));
+            //        cm.ExecuteNonQuery();
+            //        dataGridViewExpDate.Rows.RemoveAt(dataGridViewExpDate.CurrentRow.Index);
 
-                    cn.Close();
-
-
-
-                    cn.Open();
-                    cm = new SqlCommand("SELECT * FROM tblBrowseExp WHERE num LIKE '" + id.ToString() + "' ", cn);
-                    dr = cm.ExecuteReader();
-                    while (dr.Read())
-                    {
-                        i += 1;
-                        dataGridViewSelected.Rows.Add(i, DateTime.Parse(dr[1].ToString()).ToShortDateString(), dr[2].ToString(), '0', Properties.Resources._Add, Properties.Resources._Delete, dr[0].ToString());
-
-                    }
-                    dr.Close();
-                    cn.Close();
-                }
-                catch (Exception ex)
-                {
-                    cn.Close();
-                    MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+            //        cn.Close();
 
 
-            }
+
+            //        cn.Open();
+            //        cm = new SqlCommand("SELECT * FROM tblBrowseExp WHERE num LIKE '" + id.ToString() + "' ", cn);
+            //        dr = cm.ExecuteReader();
+            //        while (dr.Read())
+            //        {
+            //            i += 1;
+            //            dataGridViewSelected.Rows.Add(i, DateTime.Parse(dr[1].ToString()).ToShortDateString(), dr[2].ToString(), '0', Properties.Resources._Add, Properties.Resources._Delete, dr[0].ToString());
+
+            //        }
+            //        dr.Close();
+            //        cn.Close();
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        cn.Close();
+            //        MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    }
+
+
+            //}
 
         }
         public void addExpItemToCart(int unitStockNum, string ItmID, string TransNo, int unitQuant, double unitPrice, string lenseCheck, double unitTotal, string Unit_Measure)
@@ -111,7 +111,7 @@ namespace Capstone
             cm.Parameters.AddWithValue("@Quantity", unitQuant);//quantItem
             cm.Parameters.AddWithValue("@Price", unitPrice);//unitPrice =lblPrice.Text
             cm.Parameters.AddWithValue("@Lense_Check", lenseCheck);
-            cm.Parameters.AddWithValue("@Date", DateTime.Now);
+            cm.Parameters.AddWithValue("@Date", DateTime.Now.ToString());
             cm.Parameters.AddWithValue("@Total", unitTotal); //unitTotal
             cm.Parameters.AddWithValue("@Unit_Measure", Unit_Measure); //unitTotal
             cm.Parameters.AddWithValue("@Display_Total", displayTotal);
@@ -135,16 +135,17 @@ namespace Capstone
                     string lenseCheck = lblLenseCheck.Text;
                     double unitTotal = 0;// quantInput * unitPrice;
                     string toStringUnitTotal = "";
+                    bool hasRemaining = false;
                     int lacking = quantInput - unitQuantItem;
                     if (quantInput > unitQuantItem)
-                    {                       
-                        
+                    {
+                        hasRemaining = false;
                         unitTotal = unitQuantItem * unitPrice;
                         toStringUnitTotal = unitTotal.ToString("00.00"); unitTotal = double.Parse(toStringUnitTotal);
                         //double unitTotal = quantInput * unitPrice;
                         addExpItemToCart(unitStockNum, ItmID, TransNo, unitQuantItem, unitPrice, lenseCheck, unitTotal, Umeas);//checked
                         reducedQuantityTblStock(unitStockNum, unitQuantItem);//checked
-                        updateTblStock(unitStockNum);//checked
+                        updateTblStock(unitStockNum, lacking, hasRemaining);  //checked
                         updateTblStockInvent(unitStockNum);
                         int row = 1;
                         while (lacking > 0)
@@ -153,13 +154,25 @@ namespace Capstone
                             unitQuantItem = int.Parse(dataGridViewExpDate[2, row].Value?.ToString());
                             if (lacking < unitQuantItem)
                             {
-                                lacking = unitQuantItem - lacking;
+                                
                                 unitTotal = lacking * unitPrice;
                                 toStringUnitTotal = unitTotal.ToString("00.00"); unitTotal = double.Parse(toStringUnitTotal);
                                 addExpItemToCart(unitStockNum, ItmID, TransNo, lacking, unitPrice, lenseCheck, unitTotal, Umeas);
                                 reducedQuantityTblStock(unitStockNum, lacking);
-                                updateTblStock(unitStockNum);
-                                if (lacking == 0)
+                                lacking = unitQuantItem - lacking;
+                                if (lacking <= 0)
+                                {
+                                    hasRemaining = false;
+                                    updateTblStock(unitStockNum, lacking, hasRemaining);
+                                }
+                                else if (lacking > 0)
+                                {
+                                    hasRemaining = true;
+                                    updateTblStock(unitStockNum, lacking, hasRemaining);
+                                }
+                                lacking = lacking - unitQuantItem;
+
+                                if (lacking <= 0)
                                 {
                                     updateTblStockInvent(unitStockNum);
                                 }
@@ -172,23 +185,23 @@ namespace Capstone
                                 toStringUnitTotal = unitTotal.ToString("00.00"); unitTotal = double.Parse(toStringUnitTotal);
                                 addExpItemToCart(unitStockNum, ItmID, TransNo, unitQuantItem, unitPrice, lenseCheck, unitTotal, Umeas);
                                 reducedQuantityTblStock(unitStockNum, unitQuantItem);
-                                updateTblStockInvent(unitStockNum);
-                                updateTblStock(unitStockNum);
+                                updateTblStockInvent(unitStockNum); hasRemaining = false;
+                                updateTblStock(unitStockNum, lacking, hasRemaining);                                                                
                             }
                             row++;
-                        }
-                        
+                        }                        
                     }
                     else if (quantInput < unitQuantItem)
                     {
-                        lacking = unitQuantItem - quantInput;
+                        //lacking = unitQuantItem - quantInput;
+                        lacking = quantInput - unitQuantItem;
                         unitTotal = unitQuantItem * unitPrice;
                         toStringUnitTotal = unitTotal.ToString("00.00"); unitTotal = double.Parse(toStringUnitTotal);
                         //int remaining = unitQuantItem - quantInput;
                         //unitTotal = quantInput * unitPrice;
                         addExpItemToCart(unitStockNum, ItmID, TransNo, quantInput, unitPrice, lenseCheck, unitTotal, Umeas);
                         reducedQuantityTblStock(unitStockNum, quantInput);
-                        if (lacking == 0)
+                        if (lacking <= 0)
                         {
                             updateTblStockInvent(unitStockNum);
                         }
@@ -449,7 +462,7 @@ namespace Capstone
                         cm.Parameters.AddWithValue("@TransactionNo", frmB.lblTrans.Text);
                         cm.Parameters.AddWithValue("@Quantity", txtQuantity.Text);
                         cm.Parameters.AddWithValue("@Price", lblPrice2.Text);
-                        cm.Parameters.AddWithValue("@Date", DateTime.Now);
+                        cm.Parameters.AddWithValue("@Date", DateTime.Now.ToString());
                         cm.Parameters.AddWithValue("@Total", lblTotal.Text);
                         cm.Parameters.AddWithValue("@Unit_Measure", Umeas);
                         cm.Parameters.AddWithValue("@Display_Total", displayTotal);
@@ -480,8 +493,17 @@ namespace Capstone
             //    MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
             //}
         }
-        public void updateTblStock(int SNum)
+        public void updateTblStock(int SNum, int remaining, bool hasRemaining)
         {
+            string status = "";
+            if (hasRemaining == true)
+            {
+                status = "Available: Only " + remaining.ToString() + " left";
+            }
+            else if (hasRemaining == false)
+            {
+                status = "Purchased";
+            }
             cn = new SqlConnection(dbcon.MyConnection());
             cn.Open();//Set Quantity
             SqlCommand cm = new SqlCommand("Update tblStock SET Item_Status = 'Purchased' WHERE Num = " + SNum + "", cn);            

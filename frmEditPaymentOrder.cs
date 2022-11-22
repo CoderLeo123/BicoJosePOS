@@ -88,6 +88,8 @@ namespace Capstone
             frm.labelPT.Text = "Transaction No"; //Payment Terms
             frm.lblNewTransactionSet.Visible = true;
 
+            frm.lblMoneyTitle.Visible = false;
+            frm.txtMoney.Visible = false;
             frm.labelBal.Visible = false;
             frm.lblCustomer.Visible = true;
             frm.txtRemBalances.Visible = false;

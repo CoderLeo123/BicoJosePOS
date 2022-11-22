@@ -47,7 +47,7 @@ namespace Capstone
             this.Close();
         }
 
-        public void computeChange(TextBox total, TextBox Payment, TextBox changeText)
+        public void computeChange(TextBox total, TextBox Payment, TextBox changeText, string pTerms)
         {//txtTotal, txtPayment, txtChange
             try
             {
@@ -60,7 +60,15 @@ namespace Capstone
                     Payment.SelectAll();
                 }else
                 {
-                    change = payment - sales;
+                    if (pTerms == "Full")
+                    {
+                        change = payment - sales;
+                    }
+                    else if (pTerms == "Deposit")
+                    {
+                        change = sales - payment;
+                    }
+
                     changeText.Text = change.ToString("00.00");
                     lblPaymentNotice.Visible = false;
                 }
@@ -71,15 +79,20 @@ namespace Capstone
             }
         }
 
-        public void requiredDepositPercent(TextBox total, TextBox Payment)
+        public void requiredDepositPercent(TextBox total, TextBox Payment, TextBox money)
         {
             double paymentInput = double.Parse(Payment.Text);
+            double moneyInput = double.Parse(money.Text);
             double TotalVar = double.Parse(total.Text);
             double initialDepRequired = TotalVar * 0.5;
             double remBal = TotalVar - paymentInput;
             lblLeastDeposit.Text = initialDepRequired.ToString("00.00");
             if (paymentInput < initialDepRequired)
             {
+                if(moneyInput < initialDepRequired)
+                {
+                    money.Text = initialDepRequired.ToString("00.00");
+                }                
                 Payment.Text = initialDepRequired.ToString("00.00");                
                 Payment.SelectAll();
                 Payment.Focus();
@@ -111,7 +124,7 @@ namespace Capstone
                     if (pTerms == "Full")
                     {
                         lblPaymentNotice.Visible = false;
-                        computeChange(txtTotal, txtPayment, txtChange);
+                        computeChange(txtTotal, txtPayment, txtChange, pTerms);
                     }
                     
                 }
@@ -256,7 +269,7 @@ namespace Capstone
                 }
                 else if(pTerms == "Deposit")
                 {
-                requiredDepositPercent(txtTotal, txtPayment);
+                requiredDepositPercent(txtTotal, txtPayment, txtMoney);
                 if (txtPayment.Text == String.Empty)
                 {
                     MessageBox.Show("Insufficient amount. Please enter the correct amount!", title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -272,7 +285,7 @@ namespace Capstone
                     }
                     else
                     {
-                        requiredDepositPercent(txtTotal, txtPayment);
+                        requiredDepositPercent(txtTotal, txtPayment, txtMoney);
                         pTerms = comBoxPaymentTerms.Text;
                         PrintPreviewDialog preview = new PrintPreviewDialog();
                         preview.Document = printDocument;
@@ -378,8 +391,12 @@ namespace Capstone
                 checkPaymentTerms(out status, pTerms, total, payment, out remainBalance, out settlementDate, out completedBy, cashier);
 
                 lblPaymentNotice.Visible = false;
-                computeChange(txtTotal, txtPayment, txtChange);
-
+                if(pTerms == "Full") { 
+                computeChange(txtTotal, txtPayment, txtChange, pTerms);
+                } 
+                else if(pTerms == "Deposit") { 
+                computeChange(txtMoney, txtPayment, txtChange, pTerms);
+                }
                 //PrintPreviewDialog preview = new PrintPreviewDialog();
                 //preview.Document = printDocument;
                 //int pLength = 920;
@@ -679,8 +696,8 @@ namespace Capstone
                 panelDepositDueDate.Visible = true;
                 lblChangeDueDate.Visible = true;
                 txtChange.Text = "0";
-                requiredDepositPercent(txtTotal, txtPayment);
-                requiredDepositPercent(txtTotal, txtPayment);
+                requiredDepositPercent(txtTotal, txtPayment, txtMoney);
+                requiredDepositPercent(txtTotal, txtPayment, txtMoney);
 
             }
         }
@@ -706,7 +723,7 @@ namespace Capstone
                 else
                 {
                     lblPaymentNotice.Visible = false;
-                    computeChange(txtTotal, txtPayment, txtChange);
+                    computeChange(txtTotal, txtPayment, txtChange, pTerms);
                     //txtChange.Text = "0";
                 }
                 
@@ -721,8 +738,8 @@ namespace Capstone
                 else
                 {
                     lblPaymentNotice.Visible = false;                    
-                    requiredDepositPercent(txtTotal, txtPayment);
-                    computeChange(txtMoney, txtPayment, txtChange);
+                    requiredDepositPercent(txtTotal, txtPayment, txtMoney);
+                    computeChange(txtMoney, txtPayment, txtChange, pTerms);
                 }
                 
             }
@@ -856,7 +873,7 @@ namespace Capstone
                 e.Graphics.DrawString("₱ " + txtRemBalances.Text, printFont, Brushes.Black, x, y);
 
                 e.Graphics.DrawString("Change: ", printFont, Brushes.Black, 20, (y += 30));
-                e.Graphics.DrawString("₱ -", printFont, Brushes.Black, x, y);//710
+                e.Graphics.DrawString("₱ " + txtChange.Text, printFont, Brushes.Black, x, y);//710
 
             }
             else
@@ -868,9 +885,7 @@ namespace Capstone
                 e.Graphics.DrawString("₱ " + txtChange.Text, printFont, Brushes.Black, x, y);//710
 
             }
-
-            
-
+           
             e.Graphics.DrawString("THIS INVOICE/RECEIPT SHALL BE VALID FOR", printFontItallic, Brushes.Black, 130, (y += 60));//770
             e.Graphics.DrawString("ONE (1)) WEEK FROM THE DATE OF THE PERMIT TO USE", printFontItallic, Brushes.Black, 70, (y += 30));//800
             e.Graphics.DrawString("THANKYOU", printFontBold, Brushes.Black, (x -= 280), (y += 30));//830
