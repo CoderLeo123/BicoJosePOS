@@ -27,6 +27,9 @@ namespace Capstone
         List<ItemList> IList = new List<ItemList>();
         List<ServiceList> SerList = new List<ServiceList>();
         List<duplicateTransDate> dup = new List<duplicateTransDate>();
+        List<dupliDescription> dupDesc = new List<dupliDescription>();
+        List<dupliAllInfo> dupAll = new List<dupliAllInfo>();
+        List<compareAllInfo> compAll = new List<compareAllInfo>();
         string balSale = "", result = ""; bool balance = false;
         bool transaction = false; bool sales = false;
         bool settled = false; bool sold = false; public bool pesoPaint = true;
@@ -212,8 +215,10 @@ namespace Capstone
         }
         private void printDocumentSales_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-            //lblCurrentTransN.Text = dataGridViewTransHist.Rows[0].Cells[1].Value?.ToString();
-            transNo = lblCurrentTransN.Text; int ITMrowCount = 0; int SrowCount = 0;
+            try
+            {
+                //lblCurrentTransN.Text = dataGridViewTransHist.Rows[0].Cells[1].Value?.ToString();
+                transNo = lblCurrentTransN.Text; int ITMrowCount = 0; int SrowCount = 0; int rowCountDesc = 0;
             string TransDate = "", PMode = "", PTerms = "", Customer = "", GrossT = "", Discoun = "", NetT = "", Payment = "", Balance = "", Change = "", DisPerc = "", SettledDate = "", Cashier = "";
             classReport.tblReceiptValue(transNo, out TransDate, out PMode, out PTerms, out Customer, out GrossT, out Discoun, out NetT, out Payment, out Balance, out Change, out DisPerc, out SettledDate, out Cashier, out ITMrowCount);
 
@@ -249,12 +254,12 @@ namespace Capstone
             e.Graphics.DrawString("Unit", printFont, Brushes.Black, (x += 50), y);
             e.Graphics.DrawString("Total", printFont, Brushes.Black, (x += 50), y);//330
 
-            tblAvailedList(transNo, out ITMrowCount);
+            tblAvailedList(transNo, out ITMrowCount, out rowCountDesc);
+            calcu(rowCountDesc, ITMrowCount);
 
-
-            if (ITMrowCount > 0)
+            if (rowCountDesc > 0)
             {
-                for (int i = 0; i < ITMrowCount; i++)
+                for (int i = 0; i < rowCountDesc; i++)
                 {
                     ItemList Itms = IList[i];
                     x = 370;
@@ -333,7 +338,12 @@ namespace Capstone
             e.Graphics.DrawString("ONE (1)) WEEK FROM THE DATE OF THE PERMIT TO USE", printFontItallic, Brushes.Black, 70, (y += 30));//800
             e.Graphics.DrawString("THANKYOU", printFontBold, Brushes.Black, (x -= 240), (y += 30));//830
 
-
+            }
+            catch (Exception ex)
+            {
+                cn.Close();
+                MessageBox.Show(ex.Message, "printDocumentSales_PrintPage", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
         public void getRowCount(DataGridView dgv, out int RowCount)
         {
@@ -736,31 +746,185 @@ namespace Capstone
             //printPreviewControlTransH.StartPage = 0;
         }
 
-        public void tblAvailedList(string transacNo, out int rowCount)
+        public void tblAvailedList(string transacNo, out int rowCount, out int rowCountDesc)
         {
-            cn = new SqlConnection(dbcon.MyConnection());
+            rowCount = 0; rowCountDesc = 0;
+            try
+            { 
+                cn = new SqlConnection(dbcon.MyConnection());
             //Desc = ""; Price = ""; Quant = ""; Total = ""; UnitM = "";
-            rowCount = 0; IList.Clear();
+            int count, rowCountAll = 0, quanti = 0; string des = "", UnitMe = "";
+            double price = 0, total = 0;
+            dupAll.Clear(); compAll.Clear();
+            dupliAllInfo itmAll = new dupliAllInfo();
+            compareAllInfo comp = new compareAllInfo();
+
+            itmAll.Desc = " "; itmAll.UnitM = "";
+            dupAll.Add(itmAll);
+
+            comp.Desc = ""; comp.UnitM = "";
+            compAll.Add(comp);
+
+           //IList.Clear();
             cn.Open();
+            //SqlCommand cm = new SqlCommand("SELECT Description, Price, Quantity, Total, Unit_Measure, COUNT(Description) FROM ViewCartStockItem WHERE Transaction_No LIKE '" + transacNo + "' GROUP BY Description, Price, Quantity, Total, Unit_Measure HAVING COUNT(Description) < 1", cn);
             SqlCommand cm = new SqlCommand("SELECT Description, Price, Quantity, Total, Unit_Measure FROM ViewCartStockItem WHERE Transaction_No LIKE '" + transacNo + "'", cn);
             dr = cm.ExecuteReader();
-
             while (dr.Read())
             {
-                ItemList itm = new ItemList();
-                itm.Desc = dr.GetString(0);//"Description"
-                itm.Price = dr.GetDouble(1);//"Price"
-                itm.Qty = dr.GetInt32(2);//"Quantity"
-                itm.Total = dr.GetDouble(3);//"Total"
-                itm.UnitM = dr.GetString(4);//"Unit_Measure"
-                 IList.Add(itm);
+                des = dr[0].ToString(); UnitMe = dr[4].ToString(); price = double.Parse(dr[1].ToString()); 
+                total = double.Parse(dr[3].ToString()); quanti = int.Parse(dr[2].ToString());
+
+                //comp.Desc = dr.GetString(0);//"Description"
+                //comp.Price = dr.GetDouble(1);//"Price"
+                //comp.Qty = dr.GetInt32(2);//"Quantity"
+                //comp.Total = dr.GetDouble(3);//"Total"
+                //comp.UnitM = dr.GetString(4);//"Unit_Measure"
+
+                comp.Desc = des;//"Description"
+                comp.Price = price;//"Price"
+                comp.Qty = quanti;//"Quantity"
+                comp.Total = total;//"Total"
+                comp.UnitM = UnitMe;//"Unit_Measure"
+
+                compAll.Add(comp);
                 rowCount++;
+                //rowCountAll++;
+
+                if (!(itmAll.Desc.Contains(des)))
+                {
+                    //itmAll.Desc = dr.GetString(0);//"Description"
+                    //itmAll.Price = dr.GetDouble(1);//"Price"
+                    //itmAll.Qty = dr.GetInt32(2);//"Quantity"
+                    //itmAll.UnitM = dr.GetString(4);//"Unit_Measure"
+                    //itmAll.Total = dr.GetDouble(3);//"Total"
+
+                    itmAll.Desc = des;//"Description"
+                    itmAll.Price = price;//"Price"
+                    itmAll.Qty = quanti;//"Quantity"
+                    itmAll.UnitM = UnitMe;//"Unit_Measure"
+                    itmAll.Total = total;//"Total"
+
+                    dupAll.Add(itmAll);
+                    rowCountDesc++;
+                }
+
             }
             dr.Close();
             cn.Close();
-            //rowCount = List.Count;
+                //duplicateFilter(transacNo, out rowCountDesc, out rowCountAll);
+                //rowCountDesc = 2; rowCount = 4;
+                // calcu(rowCountDesc, rowCount);
+            }
+            catch (Exception ex)
+            {
+                cn.Close();
+                MessageBox.Show(ex.Message, "tblAvailedList", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
+
         public class ItemList
+        {
+            public string Desc { get; set; }
+            public double Price { get; set; }
+            public int Qty { get; set; }
+            public string UnitM { get; set; }
+            public double Total { get; set; }
+        }
+        public void duplicateFilter(string transacNo, out int rowCountDesc, out int rowCountAll)
+        {
+            cn = new SqlConnection(dbcon.MyConnection());
+            //Desc = ""; Price = ""; Quant = ""; Total = ""; UnitM = "";
+            int count;
+            //int rowCountDesc = 0, rowCountAll = 0;
+            rowCountDesc = 0; rowCountAll = 0;
+            cn.Open();
+            SqlCommand cm = new SqlCommand("SELECT Description, COUNT(Description) FROM ViewCartStockItem WHERE Transaction_No LIKE '" + transacNo + "' GROUP BY Description HAVING COUNT(Description) > 1", cn);
+            //SqlCommand cm = new SqlCommand("SELECT Description, Price, Quantity, Total, Unit_Measure FROM ViewCartStockItem WHERE Transaction_No LIKE '" + transacNo + "'", cn);
+            dr = cm.ExecuteReader();
+            while (dr.Read())
+            {
+                dupliDescription itmDesc = new dupliDescription();
+                itmDesc.Desc = dr.GetString(0);//"Description"    
+                dupDesc.Add(itmDesc);
+                rowCountDesc++;
+            }
+            dr.Close();
+            cn.Close();
+
+            cn.Open();// a.Description, a.Price, a.Quantity, a.Total, a.Unit_Measure
+             cm = new SqlCommand("SELECT Description, Price, Quantity, Total, Unit_Measure FROM ViewCartStockItem a WHERE (Description) IN (SELECT Description FROM ViewCartStockItem GROUP BY Description HAVING COUNT(*) > 1)", cn);
+            //cm = new SqlCommand("SELECT a.Description, a.Price, a.Quantity, a.Total, a.Unit_Measure FROM ViewCartStockItem a JOIN (SELECT Description, Price, Quantity, Total, Unit_Measure, COUNT(Description) FROM ViewCartStockItem WHERE Transaction_No LIKE '" + transacNo + "' GROUP BY Description, Price, Quantity, Total, Unit_Measure HAVING COUNT(Description) > 1) b ON a.Description = b.Description WHERE Transaction_No LIKE '" + transacNo + "' ORDER BY a.Description", cn);
+            dr = cm.ExecuteReader();
+            while (dr.Read())
+            {
+                dupliAllInfo itmAll = new dupliAllInfo();
+                itmAll.Desc = dr.GetString(0);//"Description"
+                itmAll.Price = dr.GetDouble(1);//"Price"
+                itmAll.Qty = dr.GetInt32(2);//"Quantity"
+                itmAll.UnitM = dr.GetString(4);//"Unit_Measure"
+                itmAll.Total = dr.GetDouble(3);//"Total"                
+                dupAll.Add(itmAll);
+                rowCountAll++;
+            }
+            dr.Close();
+            cn.Close();
+
+        }
+        public void calcu(int rowCountDesc, int rowCountAll)
+        {
+            try
+            {
+                IList.Clear();
+            string desc = "", all = "", unitM = "";
+            int totalQuantity = 0, Quantity = 0; double totalPrice = 0, totalTotal = 0, Total = 0;
+            for (int i = 0; i < rowCountDesc; i++)
+            {
+                ItemList itm = new ItemList();
+                dupliAllInfo DescDup = dupAll[i];
+                desc = DescDup.Desc;
+                totalPrice = DescDup.Price;
+                for (int j = 0; j < rowCountAll ; j++)
+                {
+                    compareAllInfo AllDup = compAll[j];
+                    all = AllDup.Desc;
+                    unitM = AllDup.UnitM;
+                    Quantity = AllDup.Qty;
+                    Total = AllDup.Total;
+                    if (all == desc)
+                    {
+                        //totalPrice += AllDup.Price;
+                        totalQuantity += Quantity;
+                        totalTotal += Total;
+                    }                                        
+                }
+                itm.Desc = desc;//"Description"
+                itm.Price = totalPrice;//"Price"
+                itm.Qty = totalQuantity;//"Quantity"
+                itm.Total = totalTotal;//"Total"
+                itm.UnitM = unitM;//"Unit_Measure"
+                IList.Add(itm);
+            }
+            }
+            catch (Exception ex)
+            {
+                cn.Close();
+                MessageBox.Show(ex.Message, "calcu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+        public class dupliDescription
+        {
+            public string Desc { get; set; }       
+        }
+        public class dupliAllInfo
+        {     
+            public string Desc { get; set; }
+            public double Price { get; set; }
+            public int Qty { get; set; }        
+            public string UnitM { get; set; }
+            public double Total { get; set; }
+        }
+        public class compareAllInfo
         {
             public string Desc { get; set; }
             public double Price { get; set; }
@@ -823,8 +987,8 @@ namespace Capstone
         
         public void paperSizeUpdate(out int paperL)
         {
-            int dgvCount = 0; transNo = lblCurrentTransN.Text;
-            tblAvailedList(transNo, out dgvCount);
+            int dgvCount = 0, rowCountDesc = 0; transNo = lblCurrentTransN.Text;
+            tblAvailedList(transNo, out dgvCount, out rowCountDesc);
 
             paperL = 0;
             if (dgvCount > 0 && dgvCount <= 4)
