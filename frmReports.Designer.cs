@@ -1208,6 +1208,7 @@
             this.panel15.Name = "panel15";
             this.panel15.Size = new System.Drawing.Size(1307, 54);
             this.panel15.TabIndex = 36;
+            this.panel15.Paint += new System.Windows.Forms.PaintEventHandler(this.panel15_Paint);
             // 
             // txtSearchSold
             // 

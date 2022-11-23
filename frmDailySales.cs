@@ -21,6 +21,8 @@ namespace Capstone
         string title = "BICO-JOSE System", transNo = "";
         List<ItemList> List = new List<ItemList>();
         List<ServiceList> SList = new List<ServiceList>();
+        List<dupliAllInfo> dupAll = new List<dupliAllInfo>();
+        List<compareAllInfo> compAll = new List<compareAllInfo>();
         public frmDailySales()
         {
             InitializeComponent();
@@ -101,27 +103,62 @@ namespace Capstone
           
         }
 
-        public void tblAvailedList(string transacNo, out int rowCount)
+        public void tblAvailedList(string transacNo, out int rowCount, out int rowCountDesc)
         {
             cn = new SqlConnection(dbcon.MyConnection());
             //Desc = ""; Price = ""; Quant = ""; Total = ""; UnitM = "";
-            rowCount = 0; List.Clear();
+            int count, rowCountAll = 0, quanti = 0; string des = "", UnitMe = "";
+            double price = 0, total = 0;
+            dupAll.Clear(); compAll.Clear(); List.Clear();
+            //dupliAllInfo itmAll = new dupliAllInfo();
+            //compareAllInfo comp = new compareAllInfo();
+            //ItemList comp = new ItemList();
+
+            //itmAll.Desc = " "; itmAll.UnitM = "";
+            //dupAll.Add(itmAll);
+
+            //comp.Desc = ""; comp.UnitM = "";
+            //compAll.Add(comp);
+
+            rowCount = 0; rowCountDesc = 0; 
             cn.Open();
             SqlCommand cm = new SqlCommand("SELECT Description, Price, Quantity, Total, Unit_Measure FROM ViewCartStockItem WHERE Transaction_No LIKE '" + transacNo + "'", cn);
             dr = cm.ExecuteReader();
             
             while (dr.Read())
             {
+                des = dr[0].ToString(); UnitMe = dr[4].ToString(); price = double.Parse(dr[1].ToString());
+                total = double.Parse(dr[3].ToString()); quanti = int.Parse(dr[2].ToString());
+
                 ItemList IList = new ItemList();
                 IList.Desc = dr.GetString(0);//"Description"
                 IList.Price = dr.GetDouble(1);//"Price"
                 IList.Qty = dr.GetInt32(2);//"Quantity"
                 IList.Total = dr.GetDouble(3);//"Total"
                 IList.UnitM = dr.GetString(4);//"Unit_Measure"
-                
-                List.Add(IList);
-                rowCount++;
 
+                //comp.Desc = des;//"Description"
+                //comp.Price = price;//"Price"
+                //comp.Qty = quanti;//"Quantity"
+                //comp.Total = total;//"Total"
+                //comp.UnitM = UnitMe;//"Unit_Measure"
+                ////compAll.Add(comp);
+                rowCount++;
+                //List.Add(comp);
+                List.Add(IList);
+                
+
+                //if (!(itmAll.Desc.Contains(des)))
+                //{                   
+                //    itmAll.Desc = des;//"Description"
+                //    itmAll.Price = price;//"Price"
+                //    itmAll.Qty = quanti;//"Quantity"
+                //    itmAll.UnitM = UnitMe;//"Unit_Measure"
+                //    itmAll.Total = total;//"Total"
+
+                //    dupAll.Add(itmAll);
+                //    rowCountDesc++;
+                //}
 
             }
             dr.Close();
@@ -136,10 +173,68 @@ namespace Capstone
             public string UnitM { get; set; }
             public double Total { get; set; }
         }
+        public void calcu(int rowCountDesc, int rowCountAll)
+        {
+            try
+            {
+                List.Clear();
+                string desc = "", all = "", unitM = "";
+                int totalQuantity = 0, Quantity = 0; double totalPrice = 0, totalTotal = 0, Total = 0;
+                for (int i = 0; i < rowCountDesc; i++)
+                {
+                    ItemList itm = new ItemList();
+                    dupliAllInfo DescDup = dupAll[i];
+                    desc = DescDup.Desc;
+                    totalPrice = DescDup.Price;
+                    for (int j = 0; j < rowCountAll; j++)
+                    {
+                        compareAllInfo AllDup = compAll[j];
+                        all = AllDup.Desc;
+                        unitM = AllDup.UnitM;
+                        Quantity = AllDup.Qty;
+                        Total = AllDup.Total;
+                        if (all == desc)
+                        {
+                            //totalPrice += AllDup.Price;
+                            totalQuantity += Quantity;
+                            totalTotal += Total;
+                        }
+                    }
+                    itm.Desc = desc;//"Description"
+                    itm.Price = totalPrice;//"Price"
+                    itm.Qty = totalQuantity;//"Quantity"
+                    itm.Total = totalTotal;//"Total"
+                    itm.UnitM = unitM;//"Unit_Measure"
+                    List.Add(itm);
+                }
+            }
+            catch (Exception ex)
+            {
+                cn.Close();
+                MessageBox.Show(ex.Message, "calcu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        public class dupliAllInfo
+        {
+            public string Desc { get; set; }
+            public double Price { get; set; }
+            public int Qty { get; set; }
+            public string UnitM { get; set; }
+            public double Total { get; set; }
+        }
+        public class compareAllInfo
+        {
+            public string Desc { get; set; }
+            public double Price { get; set; }
+            public int Qty { get; set; }
+            public string UnitM { get; set; }
+            public double Total { get; set; }
+        }
 
         private void printDocument_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-            transNo = lblCurrentTransN.Text; int ITMrowCount = 0; int SrowCount = 0;
+            transNo = lblCurrentTransN.Text; int ITMrowCount = 0; int SrowCount = 0, rowCountDesc = 0;
             string TransDate = "", PMode = "", PTerms = "", Customer = "", GrossT = "", Discoun = "", NetT = "", Payment = "", Balance = "", Change = "", DisPerc = "", SettledDate = "", Cashier = "";
             classReport.tblReceiptValue(transNo, out TransDate, out PMode, out PTerms, out Customer, out GrossT, out Discoun, out NetT, out Payment, out Balance, out Change, out DisPerc, out SettledDate, out Cashier, out ITMrowCount);
            
@@ -175,9 +270,9 @@ namespace Capstone
             e.Graphics.DrawString("Unit", printFont, Brushes.Black, (x += 50), y);
             e.Graphics.DrawString("Total", printFont, Brushes.Black, (x += 50), y);//330
 
-            tblAvailedList(transNo, out ITMrowCount);
-            
-            
+            tblAvailedList(transNo, out ITMrowCount, out rowCountDesc);
+            //calcu(rowCountDesc, ITMrowCount);
+
             if (ITMrowCount > 0)
             {
                 for (int i = 0; i < ITMrowCount; i++)
@@ -243,10 +338,10 @@ namespace Capstone
                 e.Graphics.DrawString("₱ " + Balance, printFont, Brushes.Black, x, y);
 
                 e.Graphics.DrawString("Change: ", printFont, Brushes.Black, 20, (y += 30));
-                e.Graphics.DrawString("₱ -", printFont, Brushes.Black, x, y);//710
+                e.Graphics.DrawString("₱ " + Change, printFont, Brushes.Black, x, y);//710
 
             }
-            else
+            else if (PTerms.Equals("Full"))
             {
                 e.Graphics.DrawString("Remaining Balance: ", printFont, Brushes.Black, 20, (y += 30));
                 e.Graphics.DrawString("₱ -", printFont, Brushes.Black, x, y);
@@ -392,10 +487,15 @@ namespace Capstone
             }
         }
 
+        private void dateTimePickerStartSold_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
         public void paperSizeUpdate(out int paperL)
         {
-            int dgvCount = 0; transNo = lblCurrentTransN.Text;
-            tblAvailedList(transNo, out dgvCount);
+            int dgvCount = 0, rowCountDesc = 0; transNo = lblCurrentTransN.Text;
+            tblAvailedList(transNo, out dgvCount, out rowCountDesc);
            
             paperL = 0;
             if (dgvCount > 0 && dgvCount <= 4)

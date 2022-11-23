@@ -21,7 +21,7 @@ namespace Capstone
             int i = 0;
             dgv.Rows.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT * FROM ViewPaymentCart WHERE Status = 'Pending' AND Transaction_No LIKE '%" + txtSearch.Text + "%' Order by Transaction_No", cn);
+            SqlCommand cm = new SqlCommand("SELECT * FROM ViewPaymentCart WHERE Status = 'Pending' AND Transaction_No LIKE '%" + txtSearch.Text + "%' Order by Transaction_No DESC", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
@@ -49,7 +49,7 @@ namespace Capstone
             int i = 0; string ReleaseBY = "";
             dgv.Rows.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT * FROM ViewPaymentCart WHERE Status = 'Settled' AND Customer LIKE '%" + txtSearch.Text + "%' Order by Transaction_No", cn);
+            SqlCommand cm = new SqlCommand("SELECT * FROM ViewPaymentCart WHERE Status = 'Settled' AND Customer LIKE '%" + txtSearch.Text + "%' Order by Transaction_No DESC", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
@@ -70,7 +70,7 @@ namespace Capstone
             int i = 0;
             dgv.Rows.Clear();
             cn.Open();//Status = 'In The Lab'
-            SqlCommand cm = new SqlCommand("SELECT * FROM tblOrderStatus WHERE Status = 'In The Lab' AND Customer LIKE '%" + txtSearch.Text + "%' Order by Transaction_No ASC", cn);
+            SqlCommand cm = new SqlCommand("SELECT * FROM tblOrderStatus WHERE Status = 'In The Lab' AND Customer LIKE '%" + txtSearch.Text + "%' Order by Transaction_No DESC", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
@@ -87,7 +87,7 @@ namespace Capstone
             int i = 0;
             dgv.Rows.Clear();
             cn.Open();//Status = 'In The Lab'
-            SqlCommand cm = new SqlCommand("SELECT * FROM tblOrderStatus WHERE Status = 'Arrived' AND Customer LIKE '%" + txtSearch.Text + "%' Order by Transaction_No ASC", cn);
+            SqlCommand cm = new SqlCommand("SELECT * FROM tblOrderStatus WHERE Status = 'Arrived' AND Customer LIKE '%" + txtSearch.Text + "%' Order by Transaction_No DESC", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
@@ -104,7 +104,7 @@ namespace Capstone
             int i = 0;
             dgv.Rows.Clear();
             cn.Open();//Status = 'In The Lab'
-            SqlCommand cm = new SqlCommand("SELECT * FROM tblOrderStatus WHERE Status = 'Claimed' AND Customer LIKE '%" + txtSearch.Text + "%' Order by Transaction_No", cn);
+            SqlCommand cm = new SqlCommand("SELECT * FROM tblOrderStatus WHERE Status = 'Claimed' AND Customer LIKE '%" + txtSearch.Text + "%' Order by Transaction_No DESC", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {

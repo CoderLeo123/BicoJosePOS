@@ -205,7 +205,7 @@ namespace Capstone
             int i = 0;string bal; double balan;
             dgv.Rows.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT Date, "+ Col + " FROM tblSalesReport", cn);
+            SqlCommand cm = new SqlCommand("SELECT Date, "+ Col + " FROM tblSalesReport ORDER BY Date DESC", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {

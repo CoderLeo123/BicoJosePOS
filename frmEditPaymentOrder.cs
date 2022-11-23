@@ -60,6 +60,19 @@ namespace Capstone
 
         private void txtSearchPending_TextChanged(object sender, EventArgs e)
         {
+            //if (txtSearchPending.Text == String.Empty)
+            //{
+            //    //classLoadData.LoadRecordsTransacSettled(dataGridViewSettle, txtSearchSettleds, dateTimePickerSettStart, dateTimePickerSettEnd);
+            //    return;
+            //}
+            //else
+            //{
+            //    classPayment.LoadRecordsUnsettled(dataGridViewPaymentStat, txtSearchPending);
+            //}
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
             if (txtSearchPending.Text == String.Empty)
             {
                 //classLoadData.LoadRecordsTransacSettled(dataGridViewSettle, txtSearchSettleds, dateTimePickerSettStart, dateTimePickerSettEnd);

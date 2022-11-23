@@ -111,7 +111,7 @@ namespace Capstone
             cm.Parameters.AddWithValue("@Quantity", unitQuant);//quantItem
             cm.Parameters.AddWithValue("@Price", unitPrice);//unitPrice =lblPrice.Text
             cm.Parameters.AddWithValue("@Lense_Check", lenseCheck);
-            cm.Parameters.AddWithValue("@Date", DateTime.Now.ToString());
+            cm.Parameters.AddWithValue("@Date", DateTime.Now.ToShortDateString());
             cm.Parameters.AddWithValue("@Total", unitTotal); //unitTotal
             cm.Parameters.AddWithValue("@Unit_Measure", Unit_Measure); //unitTotal
             cm.Parameters.AddWithValue("@Display_Total", displayTotal);
@@ -462,7 +462,7 @@ namespace Capstone
                         cm.Parameters.AddWithValue("@TransactionNo", frmB.lblTrans.Text);
                         cm.Parameters.AddWithValue("@Quantity", txtQuantity.Text);
                         cm.Parameters.AddWithValue("@Price", lblPrice2.Text);
-                        cm.Parameters.AddWithValue("@Date", DateTime.Now.ToString());
+                        cm.Parameters.AddWithValue("@Date", DateTime.Now.ToShortDateString());
                         cm.Parameters.AddWithValue("@Total", lblTotal.Text);
                         cm.Parameters.AddWithValue("@Unit_Measure", Umeas);
                         cm.Parameters.AddWithValue("@Display_Total", displayTotal);
