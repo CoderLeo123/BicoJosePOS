@@ -20,9 +20,11 @@ namespace Capstone
         ClassGenerateID classGenerateID = new ClassGenerateID();
         ClassInventory classInventory = new ClassInventory();
         ClassPaymentOrderMonitoring classLoad = new ClassPaymentOrderMonitoring();
-
+        List<dupliAllInfo> dupAll = new List<dupliAllInfo>();
+        List<compareAllInfo> compAll = new List<compareAllInfo>();
+        List<ItemList> IList = new List<ItemList>();
         ClassPaymentOrderMonitoring classPayment = new ClassPaymentOrderMonitoring();
-        string title = "BICO-JOSE System";
+        string title = "BICO-JOSE System", transNo = "";
         double num = 0, curr = 0;
         private bool mouseDown;
         private Point lastLocation;
@@ -230,6 +232,7 @@ namespace Capstone
                             if (lblCheckSettleBalance.Text == "0")
                             {
                                 pTerms = comBoxPaymentTerms.Text;
+                                
                                 PrintPreviewDialog preview = new PrintPreviewDialog();
                                 preview.Document = printDocument;
                                 pLength = 920;
@@ -239,8 +242,12 @@ namespace Capstone
                                 preview.Size = new System.Drawing.Size(400, 650);
                                 preview.ShowDialog();
                                 settlement();
+                                classGenerateID.GenerateTransactionNo(frmC.lblTransactionNo);
+                                //frmC.GenerateTransactionNo();
+                                 classLoadData.LoadCart(frmC.dataGridViewCart, frmC.lblDiscount, frmC.lblSalesTotal, frmC.lblPayment, frmC.lblNetTotal, frmC.btnSettlePayment, frmC.btnAddDiscount, frmC.btnClearCart, frmC.txtSearch, frmC.dataGridViewService, frmC.lblNetNoComa, frmC.lblGrossNoComma);
+
                                 clearCashier();
-                            this.Dispose();
+                                this.Dispose();
                         }
                             else if (lblCheckSettleBalance.Text == "1")
                             {
@@ -269,7 +276,7 @@ namespace Capstone
                 }
                 else if(pTerms == "Deposit")
                 {
-                requiredDepositPercent(txtTotal, txtPayment, txtMoney);
+                //requiredDepositPercent(txtTotal, txtPayment, txtMoney);
                 if (txtPayment.Text == String.Empty)
                 {
                     MessageBox.Show("Insufficient amount. Please enter the correct amount!", title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -285,8 +292,9 @@ namespace Capstone
                     }
                     else
                     {
-                        requiredDepositPercent(txtTotal, txtPayment, txtMoney);
+                        //requiredDepositPercent(txtTotal, txtPayment, txtMoney);
                         pTerms = comBoxPaymentTerms.Text;
+                        
                         PrintPreviewDialog preview = new PrintPreviewDialog();
                         preview.Document = printDocument;
                         pLength = 920;
@@ -296,6 +304,10 @@ namespace Capstone
                         preview.Size = new System.Drawing.Size(400, 650);
                         preview.ShowDialog();
                         settlement();
+                        classGenerateID.GenerateTransactionNo(frmC.lblTransactionNo);
+                        //frmC.GenerateTransactionNo();
+                        classLoadData.LoadCart(frmC.dataGridViewCart, frmC.lblDiscount, frmC.lblSalesTotal, frmC.lblPayment, frmC.lblNetTotal, frmC.btnSettlePayment, frmC.btnAddDiscount, frmC.btnClearCart, frmC.txtSearch, frmC.dataGridViewService, frmC.lblNetNoComa, frmC.lblGrossNoComma);
+
                         clearCashier();
                         this.Dispose();
                     }
@@ -467,7 +479,7 @@ namespace Capstone
                     classInventory.determineStockLevel(ITMID);
 
                     cn.Open();
-                    cm = new SqlCommand("UPDATE tblCart SET Payment = " + payment + ", Change = " + change + ", PMode = '" + pMethod + "', PTerms = '" + pTerms + "', Cashier = '" + cashier + "', Customer = '" + customer + "', Status = 'Sold', Discount_Per_Trans = '" + finalDiscount + "' WHERE num LIKE '" + frmC.dataGridViewCart.Rows[i].Cells[11].Value.ToString() + "'", cn);
+                    cm = new SqlCommand("UPDATE tblCart SET Date = '" + transDate + "', Payment = " + payment + ", Change = " + change + ", PMode = '" + pMethod + "', PTerms = '" + pTerms + "', Cashier = '" + cashier + "', Customer = '" + customer + "', Status = 'Sold', Discount_Per_Trans = '" + finalDiscount + "' WHERE num LIKE '" + frmC.dataGridViewCart.Rows[i].Cells[11].Value.ToString() + "'", cn);
                     cm.ExecuteNonQuery();
                     cn.Close();
                 }
@@ -488,9 +500,6 @@ namespace Capstone
 
 
                 MessageBox.Show("Payment succesfully", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                classGenerateID.GenerateTransactionNo(frmC.lblTransactionNo);
-                //frmC.GenerateTransactionNo();
-                classLoadData.LoadCart(frmC.dataGridViewCart, frmC.lblDiscount, frmC.lblSalesTotal, frmC.lblPayment, frmC.lblNetTotal, frmC.btnSettlePayment, frmC.btnAddDiscount, frmC.btnClearCart, frmC.txtSearch, frmC.dataGridViewService, frmC.lblNetNoComa, frmC.lblGrossNoComma);
                 
                 //frmC.LoadCart();
 
@@ -732,20 +741,164 @@ namespace Capstone
             {
                 if(double.Parse(txtPayment.Text) > money)
                 {
+                    requiredDepositPercent(txtTotal, txtPayment, txtMoney);
                     lblPaymentNotice.Text = "Payment value should be less than the money value";
                     lblPaymentNotice.Visible = true;
                 }
-                else
+                else if (double.Parse(txtPayment.Text) <= money)
                 {
                     lblPaymentNotice.Visible = false;                    
-                    requiredDepositPercent(txtTotal, txtPayment, txtMoney);
+                    //requiredDepositPercent(txtTotal, txtPayment, txtMoney);
                     computeChange(txtMoney, txtPayment, txtChange, pTerms);
                 }
                 
             }
             
         }
+        public void tblAvailedList(string transacNo, out int rowCount, out int rowCountDesc)
+        {
+            rowCount = 0; rowCountDesc = 0;
+            try
+            {
+                cn = new SqlConnection(dbcon.MyConnection());
+                //Desc = ""; Price = ""; Quant = ""; Total = ""; UnitM = "";
+                int count, rowCountAll = 0, quanti = 0; string des = "", UnitMe = "";
+                double price = 0, total = 0;
+                dupAll.Clear(); compAll.Clear();
+                dupliAllInfo itmAll = new dupliAllInfo();
+                compareAllInfo comp = new compareAllInfo();
 
+                itmAll.Desc = " "; itmAll.UnitM = "";
+                dupAll.Add(itmAll);
+
+                comp.Desc = ""; comp.UnitM = "";
+                compAll.Add(comp);
+
+                //IList.Clear();
+                cn.Open();
+                //SqlCommand cm = new SqlCommand("SELECT Description, Price, Quantity, Total, Unit_Measure, COUNT(Description) FROM ViewCartStockItem WHERE Transaction_No LIKE '" + transacNo + "' GROUP BY Description, Price, Quantity, Total, Unit_Measure HAVING COUNT(Description) < 1", cn);
+                SqlCommand cm = new SqlCommand("SELECT Description, Price, Quantity, Total, Unit_Measure FROM ViewCartStockItem WHERE Transaction_No LIKE '" + transacNo + "'", cn);
+                dr = cm.ExecuteReader();
+                while (dr.Read())
+                {
+                    des = dr[0].ToString(); UnitMe = dr[4].ToString(); price = double.Parse(dr[1].ToString());
+                    total = double.Parse(dr[3].ToString()); quanti = int.Parse(dr[2].ToString());
+
+                    //comp.Desc = dr.GetString(0);//"Description"
+                    //comp.Price = dr.GetDouble(1);//"Price"
+                    //comp.Qty = dr.GetInt32(2);//"Quantity"
+                    //comp.Total = dr.GetDouble(3);//"Total"
+                    //comp.UnitM = dr.GetString(4);//"Unit_Measure"
+
+                    comp.Desc = des;//"Description"
+                    comp.Price = price;//"Price"
+                    comp.Qty = quanti;//"Quantity"
+                    comp.Total = total;//"Total"
+                    comp.UnitM = UnitMe;//"Unit_Measure"
+
+                    compAll.Add(comp);
+                    rowCount++;
+                    //rowCountAll++;
+
+                    if (!(itmAll.Desc.Contains(des)))
+                    {
+                        //itmAll.Desc = dr.GetString(0);//"Description"
+                        //itmAll.Price = dr.GetDouble(1);//"Price"
+                        //itmAll.Qty = dr.GetInt32(2);//"Quantity"
+                        //itmAll.UnitM = dr.GetString(4);//"Unit_Measure"
+                        //itmAll.Total = dr.GetDouble(3);//"Total"
+
+                        itmAll.Desc = des;//"Description"
+                        itmAll.Price = price;//"Price"
+                        itmAll.Qty = quanti;//"Quantity"
+                        itmAll.UnitM = UnitMe;//"Unit_Measure"
+                        itmAll.Total = total;//"Total"
+
+                        dupAll.Add(itmAll);
+                        rowCountDesc++;
+                    }
+
+                }
+                dr.Close();
+                cn.Close();
+                //duplicateFilter(transacNo, out rowCountDesc, out rowCountAll);
+                //rowCountDesc = 2; rowCount = 4;
+                // calcu(rowCountDesc, rowCount);
+            }
+            catch (Exception ex)
+            {
+                cn.Close();
+                MessageBox.Show(ex.Message, "tblAvailedList", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        public class ItemList
+        {
+            public string Desc { get; set; }
+            public double Price { get; set; }
+            public int Qty { get; set; }
+            public string UnitM { get; set; }
+            public double Total { get; set; }
+        }
+
+        public void calcu(int rowCountDesc, int rowCountAll)
+        {
+            try
+            {
+                IList.Clear();
+                string desc = "", all = "", unitM = "";
+                int totalQuantity = 0, Quantity = 0; double totalPrice = 0, totalTotal = 0, Total = 0;
+                for (int i = 0; i < rowCountDesc; i++)
+                {
+                    ItemList itm = new ItemList();
+                    dupliAllInfo DescDup = dupAll[i];
+                    desc = DescDup.Desc;
+                    totalPrice = DescDup.Price;
+                    for (int j = 0; j < rowCountAll; j++)
+                    {
+                        compareAllInfo AllDup = compAll[j];
+                        all = AllDup.Desc;
+                        unitM = AllDup.UnitM;
+                        Quantity = AllDup.Qty;
+                        Total = AllDup.Total;
+                        if (all == desc)
+                        {
+                            //totalPrice += AllDup.Price;
+                            totalQuantity += Quantity;
+                            totalTotal += Total;
+                        }
+                    }
+                    itm.Desc = desc;//"Description"
+                    itm.Price = totalPrice;//"Price"
+                    itm.Qty = totalQuantity;//"Quantity"
+                    itm.Total = totalTotal;//"Total"
+                    itm.UnitM = unitM;//"Unit_Measure"
+                    IList.Add(itm);
+                }
+            }
+            catch (Exception ex)
+            {
+                cn.Close();
+                MessageBox.Show(ex.Message, "calcu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        public class dupliAllInfo
+        {
+            public string Desc { get; set; }
+            public double Price { get; set; }
+            public int Qty { get; set; }
+            public string UnitM { get; set; }
+            public double Total { get; set; }
+        }
+        public class compareAllInfo
+        {
+            public string Desc { get; set; }
+            public double Price { get; set; }
+            public int Qty { get; set; }
+            public string UnitM { get; set; }
+            public double Total { get; set; }
+        }
         private void dateTimePickerDueDate_Leave(object sender, EventArgs e)
         {
             dateTimePickerDueDate.Enabled = false;
@@ -779,6 +932,7 @@ namespace Capstone
             //printDocument.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("pprnm", 200, 500);
             //printDocument.Print();
             //string full = "Settlement Date for Remaining Balance:";
+            transNo = lblTransacNo.Text; int ITMrowCount = 0; int rowCountDesc = 0;
             string deposit = "Settlement Date for Remaining Balance:";
             int x = 0, y = 0, num = 1; string resultText = ""; int dgvCount = int.Parse(lblRowCount.Text), dgvCountService = int.Parse(lblServRowCount.Text);
             System.Drawing.Font printFont = new System.Drawing.Font("Arial", 10, System.Drawing.FontStyle.Regular);
@@ -808,8 +962,9 @@ namespace Capstone
             e.Graphics.DrawString("Qty", printFont, Brushes.Black, (x += 60), y);
             e.Graphics.DrawString("Unit", printFont, Brushes.Black, (x += 50), y);
             e.Graphics.DrawString("Total", printFont, Brushes.Black, (x += 50), y);//330
-
-            if(dgvCount > 0)
+            //tblAvailedList(transNo, out ITMrowCount, out rowCountDesc);
+            //calcu(rowCountDesc, ITMrowCount);
+            if (dgvCount > 0)
             {
                 for(int i = 0; i < dgvCount; i++)
                 {
@@ -824,13 +979,33 @@ namespace Capstone
                     getValueIfAnyElseBlank(dgvCount, frmC.dataGridViewCart, out resultText, i, 4);//Qty
                     e.Graphics.DrawString(resultText, printFont, Brushes.Black, (x += 80), y);
 
-                    
+
                     getValueIfAnyElseBlank(dgvCount, frmC.dataGridViewCart, out resultText, i, 13);//Unit
                     e.Graphics.DrawString(resultText, printFont, Brushes.Black, (x += 38), y);
 
                     getValueIfAnyElseBlank(dgvCount, frmC.dataGridViewCart, out resultText, i, 6);//Total
                     e.Graphics.DrawString(resultText, printFont, Brushes.Black, (x += 40), y);//330
                     num += 1;//"₱ " + 
+
+                    //ItemList Itms = IList[i];
+                    //x = 370;
+                    //e.Graphics.DrawString(num.ToString(), printFont, Brushes.Black, 20, (y += 30));//330
+
+                    ////Description
+                    //e.Graphics.DrawString(Itms.Desc, printFont, Brushes.Black, 60, y);
+
+                    ////Price
+                    //e.Graphics.DrawString("₱ " + Itms.Price.ToString("00.00"), printFont, Brushes.Black, x, y); ;
+
+                    ////Qty
+                    //e.Graphics.DrawString(Itms.Qty.ToString(), printFont, Brushes.Black, (x += 80), y);
+
+                    ////Unit
+                    //e.Graphics.DrawString(Itms.UnitM, printFont, Brushes.Black, (x += 38), y);
+
+                    ////Total
+                    //e.Graphics.DrawString("₱ " + Itms.Total.ToString("00.00"), printFont, Brushes.Black, (x += 40), y);//330
+                    //num += 1;
                 }
             }
             
@@ -864,28 +1039,31 @@ namespace Capstone
             e.Graphics.DrawString("Total Due: ", printFont, Brushes.Black, 20, (y += 30));
             e.Graphics.DrawString("₱ " + txtTotal.Text, printFont, Brushes.Black, (x += 80), y);//510
 
-            e.Graphics.DrawString("Amount Tendered: ", printFont, Brushes.Black, 20, (y += 30));
+            e.Graphics.DrawString("Amount Tendered: ", printFont, Brushes.Black, 20, (y += 60));
             e.Graphics.DrawString("₱ " + txtPayment.Text, printFont, Brushes.Black, x, y);
             
             if (comBoxPaymentTerms.Text.Equals("Deposit"))
             {
+                e.Graphics.DrawString("Money: ", printFont, Brushes.Black, 20, (y -= 30));
+                e.Graphics.DrawString("₱ " + txtMoney.Text, printFont, Brushes.Black, x, y);
+
+                e.Graphics.DrawString("Change: ", printFont, Brushes.Black, 20, (y += 60));
+                e.Graphics.DrawString("₱ " + txtChange.Text, printFont, Brushes.Black, x, y);//710
+
                 e.Graphics.DrawString("Remaining Balance: ", printFont, Brushes.Black, 20, (y += 30));
                 e.Graphics.DrawString("₱ " + txtRemBalances.Text, printFont, Brushes.Black, x, y);
-
+            }
+            else if (comBoxPaymentTerms.Text.Equals("Full"))
+            {
+                
                 e.Graphics.DrawString("Change: ", printFont, Brushes.Black, 20, (y += 30));
                 e.Graphics.DrawString("₱ " + txtChange.Text, printFont, Brushes.Black, x, y);//710
 
-            }
-            else
-            {
                 e.Graphics.DrawString("Remaining Balance: ", printFont, Brushes.Black, 20, (y += 30));
                 e.Graphics.DrawString("₱ -", printFont, Brushes.Black, x, y);
 
-                e.Graphics.DrawString("Change: ", printFont, Brushes.Black, 20, (y += 30));
-                e.Graphics.DrawString("₱ " + txtChange.Text, printFont, Brushes.Black, x, y);//710
-
             }
-           
+
             e.Graphics.DrawString("THIS INVOICE/RECEIPT SHALL BE VALID FOR", printFontItallic, Brushes.Black, 130, (y += 60));//770
             e.Graphics.DrawString("ONE (1)) WEEK FROM THE DATE OF THE PERMIT TO USE", printFontItallic, Brushes.Black, 70, (y += 30));//800
             e.Graphics.DrawString("THANKYOU", printFontBold, Brushes.Black, (x -= 280), (y += 30));//830
@@ -1031,7 +1209,13 @@ namespace Capstone
 
         private void txtMoney_Leave(object sender, EventArgs e)
         {
-            txtPayment.Text = txtMoney.Text;
+            double paym = double.Parse(txtPayment.Text);
+            double mone = double.Parse(txtMoney.Text);
+            if(paym > mone)
+            {
+                txtPayment.Text = txtMoney.Text;
+            }
+            
         }
 
         public void calculateFrameLenseTotal(DataGridView dgv, string transNo, out double frameTotal, out double lenseTotal)

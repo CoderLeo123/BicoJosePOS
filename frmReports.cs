@@ -255,11 +255,11 @@ namespace Capstone
             e.Graphics.DrawString("Total", printFont, Brushes.Black, (x += 50), y);//330
 
             tblAvailedList(transNo, out ITMrowCount, out rowCountDesc);
-            calcu(rowCountDesc, ITMrowCount);
+            //calcu(rowCountDesc, ITMrowCount);
 
-            if (rowCountDesc > 0)
+            if (ITMrowCount > 0)
             {
-                for (int i = 0; i < rowCountDesc; i++)
+                for (int i = 0; i < ITMrowCount; i++)
                 {
                     ItemList Itms = IList[i];
                     x = 370;
@@ -325,7 +325,7 @@ namespace Capstone
                 e.Graphics.DrawString("₱ " + Change, printFont, Brushes.Black, x, y);//710
 
             }
-            else
+            else if (PTerms.Equals("Full"))
             {
                 e.Graphics.DrawString("Remaining Balance: ", printFont, Brushes.Black, 20, (y += 30));
                 e.Graphics.DrawString("₱ -", printFont, Brushes.Black, x, y);
@@ -542,7 +542,7 @@ namespace Capstone
                             //e.Graphics.DrawString(resultText, printFont, Brushes.Black, (offSetX += 150), yPos);//EXPIRATION
 
                             getValueIfAnyElseBlank(SoldRow, dataGridViewSoldItems, out resultText, i, 5);
-                            e.Graphics.DrawString("₱ " + resultText, printFont, Brushes.Black, (offSetX += 260), yPos);//PRICE
+                            e.Graphics.DrawString( resultText, printFont, Brushes.Black, (offSetX += 260), yPos);//PRICE
 
                             getValueIfAnyElseBlank(SoldRow, dataGridViewSoldItems, out resultText, i, 6);
                             e.Graphics.DrawString(resultText, printFont, Brushes.Black, (offSetX += 90), yPos);//QTY    
@@ -551,7 +551,7 @@ namespace Capstone
                             //e.Graphics.DrawString(resultText, printFont, Brushes.Black, (offSetX += 100), yPos);//UNIT
 
                             getValueIfAnyElseBlank(SoldRow, dataGridViewSoldItems, out resultText, i, 7);
-                            e.Graphics.DrawString("₱ " + resultText, printFont, Brushes.Black, (offSetX += 40), yPos);//TOTAL
+                            e.Graphics.DrawString(resultText, printFont, Brushes.Black, (offSetX += 40), yPos);//TOTAL
 
                             getValueIfAnyElseBlank(SoldRow, dataGridViewSoldItems, out resultText, i, 8);
                             e.Graphics.DrawString(resultText, printFont, Brushes.Black, (offSetX += 100), yPos);//DATE    
@@ -755,17 +755,17 @@ namespace Capstone
             //Desc = ""; Price = ""; Quant = ""; Total = ""; UnitM = "";
             int count, rowCountAll = 0, quanti = 0; string des = "", UnitMe = "";
             double price = 0, total = 0;
-            dupAll.Clear(); compAll.Clear();
-            dupliAllInfo itmAll = new dupliAllInfo();
-            compareAllInfo comp = new compareAllInfo();
+            //dupAll.Clear(); compAll.Clear();
+            //dupliAllInfo itmAll = new dupliAllInfo();
+                //compareAllInfo comp = new compareAllInfo();
+                ItemList comp = new ItemList();
+            //itmAll.Desc = " "; itmAll.UnitM = "";
+            //dupAll.Add(itmAll);
 
-            itmAll.Desc = " "; itmAll.UnitM = "";
-            dupAll.Add(itmAll);
+            //comp.Desc = ""; comp.UnitM = "";
+            //compAll.Add(comp);
 
-            comp.Desc = ""; comp.UnitM = "";
-            compAll.Add(comp);
-
-           //IList.Clear();
+            IList.Clear();
             cn.Open();
             //SqlCommand cm = new SqlCommand("SELECT Description, Price, Quantity, Total, Unit_Measure, COUNT(Description) FROM ViewCartStockItem WHERE Transaction_No LIKE '" + transacNo + "' GROUP BY Description, Price, Quantity, Total, Unit_Measure HAVING COUNT(Description) < 1", cn);
             SqlCommand cm = new SqlCommand("SELECT Description, Price, Quantity, Total, Unit_Measure FROM ViewCartStockItem WHERE Transaction_No LIKE '" + transacNo + "'", cn);
@@ -775,39 +775,41 @@ namespace Capstone
                 des = dr[0].ToString(); UnitMe = dr[4].ToString(); price = double.Parse(dr[1].ToString()); 
                 total = double.Parse(dr[3].ToString()); quanti = int.Parse(dr[2].ToString());
 
-                //comp.Desc = dr.GetString(0);//"Description"
-                //comp.Price = dr.GetDouble(1);//"Price"
-                //comp.Qty = dr.GetInt32(2);//"Quantity"
-                //comp.Total = dr.GetDouble(3);//"Total"
-                //comp.UnitM = dr.GetString(4);//"Unit_Measure"
+                    //comp.Desc = dr.GetString(0);//"Description"
+                    //comp.Price = dr.GetDouble(1);//"Price"
+                    //comp.Qty = dr.GetInt32(2);//"Quantity"
+                    //comp.Total = dr.GetDouble(3);//"Total"
+                    //comp.UnitM = dr.GetString(4);//"Unit_Measure"
 
-                comp.Desc = des;//"Description"
-                comp.Price = price;//"Price"
-                comp.Qty = quanti;//"Quantity"
-                comp.Total = total;//"Total"
-                comp.UnitM = UnitMe;//"Unit_Measure"
+                    ItemList List = new ItemList();
+                    List.Desc = dr.GetString(0);//"Description"
+                    List.Price = dr.GetDouble(1);//"Price"
+                    List.Qty = dr.GetInt32(2);//"Quantity"
+                    List.Total = dr.GetDouble(3);//"Total"
+                    List.UnitM = dr.GetString(4);//"Unit_Measure"
 
-                compAll.Add(comp);
+                    IList.Add(List);
+                    //compAll.Add(comp);
                 rowCount++;
                 //rowCountAll++;
 
-                if (!(itmAll.Desc.Contains(des)))
-                {
-                    //itmAll.Desc = dr.GetString(0);//"Description"
-                    //itmAll.Price = dr.GetDouble(1);//"Price"
-                    //itmAll.Qty = dr.GetInt32(2);//"Quantity"
-                    //itmAll.UnitM = dr.GetString(4);//"Unit_Measure"
-                    //itmAll.Total = dr.GetDouble(3);//"Total"
+                //if (!(itmAll.Desc.Contains(des)))
+                //{
+                //    //itmAll.Desc = dr.GetString(0);//"Description"
+                //    //itmAll.Price = dr.GetDouble(1);//"Price"
+                //    //itmAll.Qty = dr.GetInt32(2);//"Quantity"
+                //    //itmAll.UnitM = dr.GetString(4);//"Unit_Measure"
+                //    //itmAll.Total = dr.GetDouble(3);//"Total"
 
-                    itmAll.Desc = des;//"Description"
-                    itmAll.Price = price;//"Price"
-                    itmAll.Qty = quanti;//"Quantity"
-                    itmAll.UnitM = UnitMe;//"Unit_Measure"
-                    itmAll.Total = total;//"Total"
+                //    itmAll.Desc = des;//"Description"
+                //    itmAll.Price = price;//"Price"
+                //    itmAll.Qty = quanti;//"Quantity"
+                //    itmAll.UnitM = UnitMe;//"Unit_Measure"
+                //    itmAll.Total = total;//"Total"
 
-                    dupAll.Add(itmAll);
-                    rowCountDesc++;
-                }
+                //    dupAll.Add(itmAll);
+                //    rowCountDesc++;
+                //}
 
             }
             dr.Close();
@@ -831,46 +833,7 @@ namespace Capstone
             public string UnitM { get; set; }
             public double Total { get; set; }
         }
-        public void duplicateFilter(string transacNo, out int rowCountDesc, out int rowCountAll)
-        {
-            cn = new SqlConnection(dbcon.MyConnection());
-            //Desc = ""; Price = ""; Quant = ""; Total = ""; UnitM = "";
-            int count;
-            //int rowCountDesc = 0, rowCountAll = 0;
-            rowCountDesc = 0; rowCountAll = 0;
-            cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT Description, COUNT(Description) FROM ViewCartStockItem WHERE Transaction_No LIKE '" + transacNo + "' GROUP BY Description HAVING COUNT(Description) > 1", cn);
-            //SqlCommand cm = new SqlCommand("SELECT Description, Price, Quantity, Total, Unit_Measure FROM ViewCartStockItem WHERE Transaction_No LIKE '" + transacNo + "'", cn);
-            dr = cm.ExecuteReader();
-            while (dr.Read())
-            {
-                dupliDescription itmDesc = new dupliDescription();
-                itmDesc.Desc = dr.GetString(0);//"Description"    
-                dupDesc.Add(itmDesc);
-                rowCountDesc++;
-            }
-            dr.Close();
-            cn.Close();
-
-            cn.Open();// a.Description, a.Price, a.Quantity, a.Total, a.Unit_Measure
-             cm = new SqlCommand("SELECT Description, Price, Quantity, Total, Unit_Measure FROM ViewCartStockItem a WHERE (Description) IN (SELECT Description FROM ViewCartStockItem GROUP BY Description HAVING COUNT(*) > 1)", cn);
-            //cm = new SqlCommand("SELECT a.Description, a.Price, a.Quantity, a.Total, a.Unit_Measure FROM ViewCartStockItem a JOIN (SELECT Description, Price, Quantity, Total, Unit_Measure, COUNT(Description) FROM ViewCartStockItem WHERE Transaction_No LIKE '" + transacNo + "' GROUP BY Description, Price, Quantity, Total, Unit_Measure HAVING COUNT(Description) > 1) b ON a.Description = b.Description WHERE Transaction_No LIKE '" + transacNo + "' ORDER BY a.Description", cn);
-            dr = cm.ExecuteReader();
-            while (dr.Read())
-            {
-                dupliAllInfo itmAll = new dupliAllInfo();
-                itmAll.Desc = dr.GetString(0);//"Description"
-                itmAll.Price = dr.GetDouble(1);//"Price"
-                itmAll.Qty = dr.GetInt32(2);//"Quantity"
-                itmAll.UnitM = dr.GetString(4);//"Unit_Measure"
-                itmAll.Total = dr.GetDouble(3);//"Total"                
-                dupAll.Add(itmAll);
-                rowCountAll++;
-            }
-            dr.Close();
-            cn.Close();
-
-        }
+       
         public void calcu(int rowCountDesc, int rowCountAll)
         {
             try
@@ -891,6 +854,8 @@ namespace Capstone
                     unitM = AllDup.UnitM;
                     Quantity = AllDup.Qty;
                     Total = AllDup.Total;
+                    totalPrice = AllDup.Price;
+
                     if (all == desc)
                     {
                         //totalPrice += AllDup.Price;
@@ -904,6 +869,7 @@ namespace Capstone
                 itm.Total = totalTotal;//"Total"
                 itm.UnitM = unitM;//"Unit_Measure"
                 IList.Add(itm);
+                totalQuantity = 0; totalTotal = 0;
             }
             }
             catch (Exception ex)
@@ -912,10 +878,7 @@ namespace Capstone
                 MessageBox.Show(ex.Message, "calcu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-        public class dupliDescription
-        {
-            public string Desc { get; set; }       
-        }
+        
         public class dupliAllInfo
         {     
             public string Desc { get; set; }
@@ -931,6 +894,10 @@ namespace Capstone
             public int Qty { get; set; }
             public string UnitM { get; set; }
             public double Total { get; set; }
+        }
+        public class dupliDescription
+        {
+            public string Desc { get; set; }
         }
         private void printDocumentSettledReceipt_PrintPage(object sender, PrintPageEventArgs e)
         {
@@ -1130,27 +1097,27 @@ namespace Capstone
 
         private void dataGridViewBalR_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
-            void createGraphicsColumn()
-            {
-                var image = Properties.Resources.icons8_peso_symbol_24;
+            //void createGraphicsColumn()
+            //{
+            //    var image = Properties.Resources.icons8_peso_symbol_24;
                 
-                    if (e.RowIndex != -1 && e.ColumnIndex == 3)
-                    {
-                        if ((e.PaintParts & DataGridViewPaintParts.Background) != DataGridViewPaintParts.None)
-                        {
-                            e.Graphics.DrawImage(image, e.CellBounds.Left, e.CellBounds.Top - 1, 27, 27);
-                            //pesoPaint = true;
-                        }
-                        if (!e.Handled)
-                        {
-                            e.Handled = true;
-                            e.PaintContent(e.CellBounds);
-                        }
+            //        if (e.RowIndex != -1 && e.ColumnIndex == 3)
+            //        {
+            //            if ((e.PaintParts & DataGridViewPaintParts.Background) != DataGridViewPaintParts.None)
+            //            {
+            //                e.Graphics.DrawImage(image, e.CellBounds.Left, e.CellBounds.Top - 1, 27, 27);
+            //                //pesoPaint = true;
+            //            }
+            //            if (!e.Handled)
+            //            {
+            //                e.Handled = true;
+            //                e.PaintContent(e.CellBounds);
+            //            }
 
-                        //pesoPaint = true;
-                    }
+            //            //pesoPaint = true;
+            //        }
 
-                }
+            //    }
 
             //int u = 1; e.RowIndex != -1 && 
             //once++;
@@ -1169,12 +1136,12 @@ namespace Capstone
             //    lblCellPaint.Text = "";
             //    pesoPaint = false;
             //}
-            if (pesoPaint == true)
-            {
-                createGraphicsColumn();
+            //if (pesoPaint == true)
+            //{
+            //    createGraphicsColumn();
 
-                pesoPaint = false;
-            }
+            //    pesoPaint = false;
+            //}
             
             
             //else if (pesoPaint == false)
@@ -1326,6 +1293,11 @@ namespace Capstone
         private void dateTimePickerSettStart_ValueChanged(object sender, EventArgs e)
         {
             classLoadData.LoadRecordsTransacSettled(dataGridViewSettle, txtSearchSettleds, dateTimePickerSettStart, dateTimePickerSettEnd);
+
+        }
+
+        private void panel15_Paint(object sender, PaintEventArgs e)
+        {
 
         }
 

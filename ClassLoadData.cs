@@ -498,7 +498,7 @@ namespace Capstone
 
                 if (TransDate.Substring(0, 9) != "")
                 {
-                    TransDate = dr[4].ToString().Substring(0, 11);
+                    TransDate = dr[4].ToString();
                 }
                 else
                 {
@@ -572,7 +572,7 @@ namespace Capstone
                 }
                 if (TransDate.Substring(0, 10) != "")
                 {
-                    TransDate = dr[6].ToString().Substring(0, 9);
+                    TransDate = dr[6].ToString();//.Substring(0, 9);
                 }
                 else
                 {
