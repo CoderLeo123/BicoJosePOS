@@ -398,6 +398,7 @@ namespace Capstone
                 string settlementDate = "Pending";
                 string ITMID = "";
                 string paymentStatus = "";
+                string money = "";
                 double frameTotal = 0;
                 double lenseTotal = 0;
                 checkPaymentTerms(out status, pTerms, total, payment, out remainBalance, out settlementDate, out completedBy, cashier);
@@ -405,9 +406,11 @@ namespace Capstone
                 lblPaymentNotice.Visible = false;
                 if(pTerms == "Full") { 
                 computeChange(txtTotal, txtPayment, txtChange, pTerms);
+                money = payment.ToString("#,##0.00");
                 } 
                 else if(pTerms == "Deposit") { 
                 computeChange(txtMoney, txtPayment, txtChange, pTerms);
+                money = txtMoney.Text;
                 }
                 //PrintPreviewDialog preview = new PrintPreviewDialog();
                 //preview.Document = printDocument;
@@ -464,6 +467,7 @@ namespace Capstone
                 cm.Parameters.AddWithValue("@Discount_Percent", discountPer);
                 cm.Parameters.AddWithValue("@Settled_Date", settlementDate);
                 cm.Parameters.AddWithValue("@Cashier", cashier);
+                //cm.Parameters.AddWithValue("@Money", money);
                 cm.Parameters.AddWithValue("@Frame_Total", frameTotal.ToString("#,##0.00"));
                 cm.Parameters.AddWithValue("@Lense_Total", lenseTotal.ToString("#,##0.00"));
                 cm.ExecuteNonQuery();

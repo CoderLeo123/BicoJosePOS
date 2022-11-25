@@ -27,8 +27,7 @@ namespace Capstone
             InitializeComponent();
             cn = new SqlConnection(dbcon.MyConnection());
             frmC = frmL;
-            //frmC = new frmCashier();
-            //frmList = frmAdd;
+      
         }
 
         private void dataGridViewService_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -58,9 +57,8 @@ namespace Capstone
                         cm.ExecuteNonQuery();
                         cn.Close();
                         MessageBox.Show("Successfully Added!", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        //classLoadData.LoadRecordServiceAvail(frmList.dataGridViewService, frmList.lblSalesTotal);
-                        classLoadData.LoadCart(frmC.dataGridViewCart, frmC.lblDiscount, frmC.lblSalesTotal, frmC.lblPayment, frmC.lblNetTotal, frmC.btnSettlePayment, frmC.btnAddDiscount, frmC.btnClearCart, frmC.txtSearch, frmC.dataGridViewService, frmC.lblNetNoComa, frmC.lblGrossNoComma);
-                        //frmList.LoadStock();
+                       classLoadData.LoadCart(frmC.dataGridViewCart, frmC.lblDiscount, frmC.lblSalesTotal, frmC.lblPayment, frmC.lblNetTotal, frmC.btnSettlePayment, frmC.btnAddDiscount, frmC.btnClearCart, frmC.txtSearch, frmC.dataGridViewService, frmC.lblNetNoComa, frmC.lblGrossNoComma);
+                       
                         this.Close();
                     }
                 }

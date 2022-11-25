@@ -30,7 +30,7 @@ namespace Capstone
             cn = new SqlConnection(dbcon.MyConnection());
             lblDate.Text = DateTime.Parse(DateTime.Now.ToString()).ToShortDateString();
             classLoadData.LoadCart(dataGridViewCart, lblDiscount, lblSalesTotal, lblPayment, lblNetTotal, btnSettlePayment, btnAddDiscount, btnClearCart, txtSearch, dataGridViewService, lblNetNoComa, lblGrossNoComma);
-            //classLoadData.LoadRecordServiceAvail(dataGridViewService, lblSalesTotal);
+            
             textRightAlign();
         }
         public void textRightAlign()
@@ -84,9 +84,7 @@ namespace Capstone
             }
             else
             {
-                //int i = dataGridViewCart.SelectedRows[0].Index;
-                //frm.txtPriceDiscount.Text = dataGridViewCart[6, i].Value.ToString();                
-                //frm.lblID.Text = dataGridViewCart[11, i].Value.ToString();
+               
                 frmDiscount frm = new frmDiscount(this);
                 frm.tabControlDiscPromo.TabPages.Clear();
                 TabPage tab = new TabPage("Discount");
@@ -258,8 +256,7 @@ namespace Capstone
                 cm = new SqlCommand("UPDATE tblCart SET Quantity = Quantity + '"+ qtyCart + "' WHERE Num LIKE '" + dataGridViewCart.Rows[e.RowIndex].Cells[11].Value.ToString() + "'", cn);
                 cm.ExecuteNonQuery();
                 cn.Close();
-                //classLoadData.LoadCart(dataGridViewCart, lblDiscount, lblSalesTotal, lblPayment, lblNetTotal, btnSettlePayment, btnAddDiscount, btnClearCart, txtSearch, dataGridViewService);
-                
+               
                 classCompute.ComputeUnitTotal(dataGridViewCart);
                 reducedQuantity(ItemID, qtyCart);
                 classInventory.determineStockLevel(ItemID);
@@ -281,7 +278,6 @@ namespace Capstone
                 cm = new SqlCommand("UPDATE tblCart SET Quantity = Quantity - '" + qtyCart + "' WHERE Num LIKE '" + dataGridViewCart.Rows[e.RowIndex].Cells[11].Value.ToString() + "'", cn);
                 cm.ExecuteNonQuery();
                 cn.Close();
-                //classLoadData.LoadCart(dataGridViewCart, lblDiscount, lblSalesTotal, lblPayment, lblNetTotal, btnSettlePayment, btnAddDiscount, btnClearCart, txtSearch, dataGridViewService);
                 if (Classfic == "Consumable")
                 {
                     returnQuantityTblStock(sNum, qtyCart); 
@@ -320,7 +316,7 @@ namespace Capstone
 
         private void btnClearCart_Click(object sender, EventArgs e)
         {
-            //dataGridViewCart.Rows.Clear();
+           
             if (dataGridViewCart.Rows.Count > 0)
             {
                 if (MessageBox.Show("Remove these Items?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -374,8 +370,7 @@ namespace Capstone
                     cn.Close();
                     MessageBox.Show("Record has been successfully deleted.", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     classLoadData.LoadCart(dataGridViewCart, lblDiscount, lblSalesTotal, lblPayment, lblNetTotal, btnSettlePayment, btnAddDiscount, btnClearCart, txtSearch, dataGridViewService, lblNetNoComa, lblGrossNoComma);
-                    //classLoadData.LoadRecordServiceAvail(dataGridViewService, lblSalesTotal);
-                    //LoadCart();
+               
 
                 }
             }
@@ -399,23 +394,7 @@ namespace Capstone
 
         private void btnAddPromo_Click(object sender, EventArgs e)
         {
-            //int i = dataGridViewCart.SelectedRows[0].Index;
-            //string Classifi = dataGridViewCart.Rows[i].Cells[14].Value.ToString();
-            //if (Classifi == "Consumable")
-            //{
-            //    frmDiscount frm = new frmDiscount(this);
-            //    frm.tabControlDiscPromo.TabPages.Clear();
-            //    TabPage tab = new TabPage("Discount");
-            //    frm.tabControlDiscPromo.TabPages.Add(tab);
-            //    tab.Controls.Add(frm.panelPromo);
-            //    frm.ShowDialog();
-            //}
-            //else
-            //{
-            //    //MessageBox.Show("Only items with expiration can have promo", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //}                        
-            //frm.txtPriceDiscount.Text = dataGridViewCart[6, i].Value.ToString();                
-            //frm.lblID.Text = dataGridViewCart[11, i].Value.ToString();
+           
         }
 
         private void comBoxDiscountType_SelectedIndexChanged(object sender, EventArgs e)

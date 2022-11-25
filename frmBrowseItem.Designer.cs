@@ -382,11 +382,12 @@
             // 
             // DescBrowseItem
             // 
-            this.DescBrowseItem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.DescBrowseItem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.DescBrowseItem.HeaderText = "DESCRIPTION";
             this.DescBrowseItem.MinimumWidth = 6;
             this.DescBrowseItem.Name = "DescBrowseItem";
             this.DescBrowseItem.ReadOnly = true;
+            this.DescBrowseItem.Width = 159;
             // 
             // TypeBrowseItem
             // 

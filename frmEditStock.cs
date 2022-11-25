@@ -171,8 +171,6 @@ namespace Capstone
 
         }
 
-
-
         private void button1_Click(object sender, EventArgs e) //add button
         {
             //switchToAdd();

@@ -18,8 +18,7 @@ namespace Capstone
         ClassGenerateID classGenerateID = new ClassGenerateID();
         ClassLoadData classLoadData = new ClassLoadData();
         SqlDataReader dr;
-        string title = "BICO-JOSE System"; bool duplicate = false;
-        //string I_ID, T_ID, P_ID, S_ID; int count;
+        string title = "BICO-JOSE System"; bool duplicate = false;        
         frmProductsList frmList;
         private bool mouseDown;
         private Point lastLocation;
@@ -137,7 +136,7 @@ namespace Capstone
             {
                 scanForDuplicateName("Name", "tblServices", txtServiceName, out duplicate);
                 double Price = double.Parse(txtServicePrice.Text);
-                string displayPrice = Price.ToString("#,##0.00");//₱
+                string displayPrice = Price.ToString("#,##0.00");
                 if (duplicate == false)
                 {
                     if (MessageBox.Show("Are you sure you want to save this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -155,8 +154,7 @@ namespace Capstone
                         MessageBox.Show("Record has been successfully saved.", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
                         ClearService();
                         btnUpdateService.Enabled = false;
-                        classLoadData.LoadRecordsService(frmList.dataGridViewService, frmList.txtSearchService);
-                        //frmList.LoadRecordsService();
+                        classLoadData.LoadRecordsService(frmList.dataGridViewService, frmList.txtSearchService);                       
                         this.Close();
                     }
                 }
@@ -176,8 +174,7 @@ namespace Capstone
         private void btnUpdateService_Click(object sender, EventArgs e)
         {
             try
-            {
-                //scanForDuplicateName("Name", "tblServices", txtServiceName, out duplicate);
+            {             
                 double Price = double.Parse(txtServicePrice.Text);
                 string displayPrice = Price.ToString("#,##0.00");//₱
                   if (MessageBox.Show("Are you sure you want to update this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -197,9 +194,7 @@ namespace Capstone
                         classLoadData.LoadRecordsService(frmList.dataGridViewService, frmList.txtSearchService);
                         //frmList.LoadRecordsService();
                         this.Close();
-                    }
-                
-                
+                    }                                
             }
             catch (Exception ex)
             {
@@ -250,8 +245,7 @@ namespace Capstone
 
                         ClearType();
                         classLoadData.LoadRecordsType(frmList.dataGridViewType, frmList.txtSearchTypeProducts);
-                        classLoadData.LoadRecordsItem(frmList.dataGridViewItems, frmList.txtSearch);
-                        //frmList.LoadRecordsType();
+                        classLoadData.LoadRecordsItem(frmList.dataGridViewItems, frmList.txtSearch);                 
                         this.Close();
                     }
                 }
@@ -287,8 +281,7 @@ namespace Capstone
                         cn.Close();
                         MessageBox.Show("Record has been successfully saved.");
                         ClearProduct();
-                        classLoadData.LoadRecordsProduct(frmList.dataGridViewProduct, frmList.txtSearchProduct);
-                        //frmList.LoadRecordsProduct();
+                        classLoadData.LoadRecordsProduct(frmList.dataGridViewProduct, frmList.txtSearchProduct);                      
                         this.Close();
                     }
                 }
@@ -307,9 +300,7 @@ namespace Capstone
         private void btnUpdateProduct_Click(object sender, EventArgs e)
         {
             try
-            {
-                //scanForDuplicateName("Product", "tblProduct", txtProdName, out duplicate);
-                
+            {                
                     if (MessageBox.Show("Are you sure you want to update this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         cn.Open();
@@ -323,7 +314,7 @@ namespace Capstone
                         btnSaveProduct.Enabled = false;
                         btnUpdateProduct.Enabled = true;
                         classLoadData.LoadRecordsProduct(frmList.dataGridViewProduct, frmList.txtSearchProduct);
-                        //frmList.LoadRecordsProduct();
+                     
                         this.Close();
                     }
                
@@ -337,9 +328,7 @@ namespace Capstone
         private void btnUpdateType_Click(object sender, EventArgs e)
         {
             try
-            {
-                //scanForDuplicateName("Type", "tblType", txtType, out duplicate);
-               
+            {              
                     if (MessageBox.Show("Are you sure you want to update this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         cn.Open();
@@ -355,8 +344,7 @@ namespace Capstone
                         btnSaveType.Enabled = false;
                         btnUpdateType.Enabled = true;
                         classLoadData.LoadRecordsType(frmList.dataGridViewType, frmList.txtSearchTypeProducts);
-                        classLoadData.LoadRecordsItem(frmList.dataGridViewItems, frmList.txtSearch);
-                        //frmList.LoadRecordsType();
+                        classLoadData.LoadRecordsItem(frmList.dataGridViewItems, frmList.txtSearch);                        
                         this.Close();
                     }
                
@@ -396,8 +384,7 @@ namespace Capstone
             {
                 scanForDuplicateName("Description", "tblItem", txtDescription, out duplicate);
                 double Price = double.Parse(txtPrice.Text);
-                string displayPrice = Price.ToString("#,##0.00");//₱
-                //addPesoSign(displayPrice, out displayPrice);
+                string displayPrice = Price.ToString("#,##0.00");             
                 if (duplicate == false)
                 {
                     if (MessageBox.Show("Are you sure you want to save this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -418,8 +405,7 @@ namespace Capstone
                         MessageBox.Show("Record has been successfully saved.");
                         ClearItem();
                         btnUpdateItem.Enabled = false;
-                        classLoadData.LoadRecordsItem(frmList.dataGridViewItems, frmList.txtSearch);
-                        //frmList.LoadRecordsItem();
+                        classLoadData.LoadRecordsItem(frmList.dataGridViewItems, frmList.txtSearch);                     
                         this.Close();
                     }
                 }
@@ -438,8 +424,7 @@ namespace Capstone
         private void btnUpdateItem_Click(object sender, EventArgs e)
         {
             try
-            {
-                //scanForDuplicateName("Description", "tblItem", txtDescription, out duplicate);
+            {                
                 double Price = double.Parse(txtPrice.Text);
                 string displayPrice = Price.ToString("#,##0.00");//₱
                
@@ -458,8 +443,7 @@ namespace Capstone
                         MessageBox.Show("Record has been successfully updated.");
                         ClearItem();
                         btnSaveItem.Enabled = false;
-                        classLoadData.LoadRecordsItem(frmList.dataGridViewItems, frmList.txtSearch);
-                        //frmList.LoadRecordsItem();
+                        classLoadData.LoadRecordsItem(frmList.dataGridViewItems, frmList.txtSearch);                  
                         this.Close();
                     }
                
@@ -512,8 +496,7 @@ namespace Capstone
             dr = cm.ExecuteReader();
             dr.Read();
             if (dr.HasRows)
-            {
-                //UserName = dr[2].ToString();               
+            {                          
                 found = true;
             }
             else

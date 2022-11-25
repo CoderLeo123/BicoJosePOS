@@ -546,7 +546,7 @@ namespace Capstone
         {//dataGridViewSoldItems, txtSearchSold
             cn = new SqlConnection(dbcon.MyConnection());
             int i = 0;
-            dgv.Rows.Clear();
+            dgv.Rows.Clear();//         
             cn.Open();
             SqlCommand cm = new SqlCommand("SELECT * FROM ViewCartStockItem WHERE Description LIKE '%" + txtSearch.Text + "%' AND Status = 'Sold' OR Date BETWEEN '" + dateStart.Value.ToShortDateString() + "' AND '" + dateEnd.Value.ToShortDateString() + "' ORDER BY Transaction_No DESC", cn);
             dr = cm.ExecuteReader();
