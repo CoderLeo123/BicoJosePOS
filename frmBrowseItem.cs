@@ -50,8 +50,7 @@ namespace Capstone
 
         public void LoadCart()
         {
-            //try
-            //{
+            
                 string servTotal = ""; Boolean hasRecord = false;
                 classLoadData.LoadRecordServiceAvail(frmC.dataGridViewService, out servTotal, out hasRecord);
                 
@@ -105,12 +104,7 @@ namespace Capstone
                 }
                 else
                 { frmC.btnSettlePayment.Enabled = false; frmC.btnAddDiscount.Enabled = false; frmC.btnClearCart.Enabled = false; }
-            //}
-            //catch (Exception ex)
-            //{
-            //    cn.Close();
-            //    MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //}
+         
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
@@ -197,7 +191,7 @@ namespace Capstone
                     frmE.txtQuantity.SelectAll();
                     //frmE.tabControl1.SelectedIndex = 1;
                     frmE.tabControl1.TabPages.Clear();
-                    TabPage tab = new TabPage("Non Consumable");
+                    TabPage tab = new TabPage("Item");
                     frmE.tabControl1.TabPages.Add(tab);
                     tab.Controls.Add(frmE.panelNC);
                     tab.Controls.Add(frmE.lblName2);

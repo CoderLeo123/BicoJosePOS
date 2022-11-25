@@ -40,13 +40,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPaymentStatus));
             this.dataGridViewSettled = new System.Windows.Forms.DataGridView();
-            this.NumSettled = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TransRefNoSettled = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CustNameSettled = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TotalPaymentSettled = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SettledDatePaymentStat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CompletedBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Monitorings = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
@@ -56,15 +49,6 @@
             this.dateTimePicker8 = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridViewPaymentStat = new System.Windows.Forms.DataGridView();
-            this.NumPendingSet = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TransRefNoPendingSet = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CustomerNamePendingSet = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TotalPayment = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.InitialDeposit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RemBalance = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DueDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cashier = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.S = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel14 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
@@ -151,6 +135,22 @@
             this.label11 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
             this.panel25 = new System.Windows.Forms.Panel();
+            this.NumPendingSet = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TransRefNoPendingSet = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CustomerNamePendingSet = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalPayment = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.InitialDeposit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RemBalance = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DueDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cashier = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.S = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NumSettled = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TransRefNoSettled = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CustNameSettled = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalPaymentSettled = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SettledDatePaymentStat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CompletedBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Monitorings = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSettled)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -235,68 +235,6 @@
             this.dataGridViewSettled.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewSettled.Size = new System.Drawing.Size(1301, 225);
             this.dataGridViewSettled.TabIndex = 5;
-            // 
-            // NumSettled
-            // 
-            this.NumSettled.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.NumSettled.HeaderText = "#";
-            this.NumSettled.MinimumWidth = 6;
-            this.NumSettled.Name = "NumSettled";
-            this.NumSettled.ReadOnly = true;
-            this.NumSettled.Width = 61;
-            // 
-            // TransRefNoSettled
-            // 
-            this.TransRefNoSettled.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.TransRefNoSettled.HeaderText = "TRANS NO";
-            this.TransRefNoSettled.MinimumWidth = 6;
-            this.TransRefNoSettled.Name = "TransRefNoSettled";
-            this.TransRefNoSettled.ReadOnly = true;
-            this.TransRefNoSettled.Visible = false;
-            this.TransRefNoSettled.Width = 125;
-            // 
-            // CustNameSettled
-            // 
-            this.CustNameSettled.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CustNameSettled.HeaderText = "NAME";
-            this.CustNameSettled.MinimumWidth = 6;
-            this.CustNameSettled.Name = "CustNameSettled";
-            this.CustNameSettled.ReadOnly = true;
-            // 
-            // TotalPaymentSettled
-            // 
-            this.TotalPaymentSettled.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.TotalPaymentSettled.HeaderText = "BALANCE";
-            this.TotalPaymentSettled.MinimumWidth = 6;
-            this.TotalPaymentSettled.Name = "TotalPaymentSettled";
-            this.TotalPaymentSettled.Visible = false;
-            this.TotalPaymentSettled.Width = 125;
-            // 
-            // SettledDatePaymentStat
-            // 
-            this.SettledDatePaymentStat.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.SettledDatePaymentStat.HeaderText = "SETTLED DATE";
-            this.SettledDatePaymentStat.MinimumWidth = 6;
-            this.SettledDatePaymentStat.Name = "SettledDatePaymentStat";
-            this.SettledDatePaymentStat.ReadOnly = true;
-            this.SettledDatePaymentStat.Width = 223;
-            // 
-            // CompletedBy
-            // 
-            this.CompletedBy.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.CompletedBy.HeaderText = "COMPLETED BY";
-            this.CompletedBy.MinimumWidth = 6;
-            this.CompletedBy.Name = "CompletedBy";
-            this.CompletedBy.ReadOnly = true;
-            this.CompletedBy.Width = 236;
-            // 
-            // Monitorings
-            // 
-            this.Monitorings.HeaderText = "STATUS";
-            this.Monitorings.MinimumWidth = 6;
-            this.Monitorings.Name = "Monitorings";
-            this.Monitorings.ReadOnly = true;
-            this.Monitorings.Width = 125;
             // 
             // label2
             // 
@@ -438,86 +376,6 @@
             this.dataGridViewPaymentStat.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewPaymentStat.Size = new System.Drawing.Size(1301, 360);
             this.dataGridViewPaymentStat.TabIndex = 4;
-            // 
-            // NumPendingSet
-            // 
-            this.NumPendingSet.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.NumPendingSet.HeaderText = "#";
-            this.NumPendingSet.MinimumWidth = 6;
-            this.NumPendingSet.Name = "NumPendingSet";
-            this.NumPendingSet.ReadOnly = true;
-            this.NumPendingSet.Width = 61;
-            // 
-            // TransRefNoPendingSet
-            // 
-            this.TransRefNoPendingSet.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.TransRefNoPendingSet.HeaderText = "TRANS NO";
-            this.TransRefNoPendingSet.MinimumWidth = 6;
-            this.TransRefNoPendingSet.Name = "TransRefNoPendingSet";
-            this.TransRefNoPendingSet.ReadOnly = true;
-            this.TransRefNoPendingSet.Visible = false;
-            this.TransRefNoPendingSet.Width = 125;
-            // 
-            // CustomerNamePendingSet
-            // 
-            this.CustomerNamePendingSet.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CustomerNamePendingSet.HeaderText = "NAME";
-            this.CustomerNamePendingSet.MinimumWidth = 6;
-            this.CustomerNamePendingSet.Name = "CustomerNamePendingSet";
-            this.CustomerNamePendingSet.ReadOnly = true;
-            // 
-            // TotalPayment
-            // 
-            this.TotalPayment.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.TotalPayment.HeaderText = "TOTAL";
-            this.TotalPayment.MinimumWidth = 6;
-            this.TotalPayment.Name = "TotalPayment";
-            this.TotalPayment.ReadOnly = true;
-            this.TotalPayment.Width = 122;
-            // 
-            // InitialDeposit
-            // 
-            this.InitialDeposit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.InitialDeposit.HeaderText = "DEPOSIT";
-            this.InitialDeposit.MinimumWidth = 6;
-            this.InitialDeposit.Name = "InitialDeposit";
-            this.InitialDeposit.ReadOnly = true;
-            this.InitialDeposit.Width = 152;
-            // 
-            // RemBalance
-            // 
-            this.RemBalance.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.RemBalance.HeaderText = "BALANCE";
-            this.RemBalance.MinimumWidth = 6;
-            this.RemBalance.Name = "RemBalance";
-            this.RemBalance.ReadOnly = true;
-            this.RemBalance.Width = 162;
-            // 
-            // DueDate
-            // 
-            this.DueDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.DueDate.HeaderText = "DUE DATE";
-            this.DueDate.MinimumWidth = 6;
-            this.DueDate.Name = "DueDate";
-            this.DueDate.ReadOnly = true;
-            this.DueDate.Width = 169;
-            // 
-            // Cashier
-            // 
-            this.Cashier.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Cashier.HeaderText = "CASHIER";
-            this.Cashier.MinimumWidth = 6;
-            this.Cashier.Name = "Cashier";
-            this.Cashier.ReadOnly = true;
-            this.Cashier.Width = 152;
-            // 
-            // S
-            // 
-            this.S.HeaderText = "STATUS";
-            this.S.MinimumWidth = 6;
-            this.S.Name = "S";
-            this.S.ReadOnly = true;
-            this.S.Width = 125;
             // 
             // panel1
             // 
@@ -1513,6 +1371,147 @@
             this.panel25.Size = new System.Drawing.Size(1315, 858);
             this.panel25.TabIndex = 12;
             // 
+            // NumPendingSet
+            // 
+            this.NumPendingSet.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.NumPendingSet.HeaderText = "#";
+            this.NumPendingSet.MinimumWidth = 6;
+            this.NumPendingSet.Name = "NumPendingSet";
+            this.NumPendingSet.ReadOnly = true;
+            this.NumPendingSet.Width = 61;
+            // 
+            // TransRefNoPendingSet
+            // 
+            this.TransRefNoPendingSet.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.TransRefNoPendingSet.HeaderText = "INVOICE NO";
+            this.TransRefNoPendingSet.MinimumWidth = 6;
+            this.TransRefNoPendingSet.Name = "TransRefNoPendingSet";
+            this.TransRefNoPendingSet.ReadOnly = true;
+            this.TransRefNoPendingSet.Width = 197;
+            // 
+            // CustomerNamePendingSet
+            // 
+            this.CustomerNamePendingSet.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CustomerNamePendingSet.HeaderText = "NAME";
+            this.CustomerNamePendingSet.MinimumWidth = 6;
+            this.CustomerNamePendingSet.Name = "CustomerNamePendingSet";
+            this.CustomerNamePendingSet.ReadOnly = true;
+            // 
+            // TotalPayment
+            // 
+            this.TotalPayment.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.TotalPayment.HeaderText = "TOTAL";
+            this.TotalPayment.MinimumWidth = 6;
+            this.TotalPayment.Name = "TotalPayment";
+            this.TotalPayment.ReadOnly = true;
+            this.TotalPayment.Width = 122;
+            // 
+            // InitialDeposit
+            // 
+            this.InitialDeposit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.InitialDeposit.HeaderText = "DEPOSIT";
+            this.InitialDeposit.MinimumWidth = 6;
+            this.InitialDeposit.Name = "InitialDeposit";
+            this.InitialDeposit.ReadOnly = true;
+            this.InitialDeposit.Width = 152;
+            // 
+            // RemBalance
+            // 
+            this.RemBalance.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.RemBalance.HeaderText = "BALANCE";
+            this.RemBalance.MinimumWidth = 6;
+            this.RemBalance.Name = "RemBalance";
+            this.RemBalance.ReadOnly = true;
+            this.RemBalance.Width = 162;
+            // 
+            // DueDate
+            // 
+            this.DueDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.DueDate.HeaderText = "DUE DATE";
+            this.DueDate.MinimumWidth = 6;
+            this.DueDate.Name = "DueDate";
+            this.DueDate.ReadOnly = true;
+            this.DueDate.Width = 169;
+            // 
+            // Cashier
+            // 
+            this.Cashier.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Cashier.HeaderText = "CASHIER";
+            this.Cashier.MinimumWidth = 6;
+            this.Cashier.Name = "Cashier";
+            this.Cashier.ReadOnly = true;
+            this.Cashier.Width = 152;
+            // 
+            // S
+            // 
+            this.S.HeaderText = "STATUS";
+            this.S.MinimumWidth = 6;
+            this.S.Name = "S";
+            this.S.ReadOnly = true;
+            this.S.Visible = false;
+            this.S.Width = 125;
+            // 
+            // NumSettled
+            // 
+            this.NumSettled.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.NumSettled.HeaderText = "#";
+            this.NumSettled.MinimumWidth = 6;
+            this.NumSettled.Name = "NumSettled";
+            this.NumSettled.ReadOnly = true;
+            this.NumSettled.Width = 61;
+            // 
+            // TransRefNoSettled
+            // 
+            this.TransRefNoSettled.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.TransRefNoSettled.HeaderText = "INVOICE NO";
+            this.TransRefNoSettled.MinimumWidth = 6;
+            this.TransRefNoSettled.Name = "TransRefNoSettled";
+            this.TransRefNoSettled.ReadOnly = true;
+            this.TransRefNoSettled.Width = 197;
+            // 
+            // CustNameSettled
+            // 
+            this.CustNameSettled.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CustNameSettled.HeaderText = "NAME";
+            this.CustNameSettled.MinimumWidth = 6;
+            this.CustNameSettled.Name = "CustNameSettled";
+            this.CustNameSettled.ReadOnly = true;
+            // 
+            // TotalPaymentSettled
+            // 
+            this.TotalPaymentSettled.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.TotalPaymentSettled.HeaderText = "BALANCE";
+            this.TotalPaymentSettled.MinimumWidth = 6;
+            this.TotalPaymentSettled.Name = "TotalPaymentSettled";
+            this.TotalPaymentSettled.Visible = false;
+            this.TotalPaymentSettled.Width = 162;
+            // 
+            // SettledDatePaymentStat
+            // 
+            this.SettledDatePaymentStat.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.SettledDatePaymentStat.HeaderText = "SETTLED DATE";
+            this.SettledDatePaymentStat.MinimumWidth = 6;
+            this.SettledDatePaymentStat.Name = "SettledDatePaymentStat";
+            this.SettledDatePaymentStat.ReadOnly = true;
+            this.SettledDatePaymentStat.Width = 223;
+            // 
+            // CompletedBy
+            // 
+            this.CompletedBy.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.CompletedBy.HeaderText = "COMPLETED BY";
+            this.CompletedBy.MinimumWidth = 6;
+            this.CompletedBy.Name = "CompletedBy";
+            this.CompletedBy.ReadOnly = true;
+            this.CompletedBy.Width = 236;
+            // 
+            // Monitorings
+            // 
+            this.Monitorings.HeaderText = "STATUS";
+            this.Monitorings.MinimumWidth = 6;
+            this.Monitorings.Name = "Monitorings";
+            this.Monitorings.ReadOnly = true;
+            this.Monitorings.Width = 125;
+            // 
             // frmPaymentStatus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -1607,15 +1606,6 @@
         private Label label3;
         private DateTimePicker dateTimePicker4;
         private Label label4;
-        private DataGridViewTextBoxColumn NumPendingSet;
-        private DataGridViewTextBoxColumn TransRefNoPendingSet;
-        private DataGridViewTextBoxColumn CustomerNamePendingSet;
-        private DataGridViewTextBoxColumn TotalPayment;
-        private DataGridViewTextBoxColumn InitialDeposit;
-        private DataGridViewTextBoxColumn RemBalance;
-        private DataGridViewTextBoxColumn DueDate;
-        private DataGridViewTextBoxColumn Cashier;
-        private DataGridViewTextBoxColumn S;
         private Panel panel14;
         public Label lblUser;
         private Panel panel15;
@@ -1671,13 +1661,6 @@
         public TextBox txtSearchPending;
         public TabControl tabControlPayOrdStatus;
         public Panel panelPayment;
-        private DataGridViewTextBoxColumn NumSettled;
-        private DataGridViewTextBoxColumn TransRefNoSettled;
-        private DataGridViewTextBoxColumn CustNameSettled;
-        private DataGridViewTextBoxColumn TotalPaymentSettled;
-        private DataGridViewTextBoxColumn SettledDatePaymentStat;
-        private DataGridViewTextBoxColumn CompletedBy;
-        private DataGridViewTextBoxColumn Monitorings;
         private DataGridViewTextBoxColumn NumOrderStatus;
         private DataGridViewTextBoxColumn TNO;
         private DataGridViewTextBoxColumn CustomerNameOrdStat;
@@ -1689,5 +1672,21 @@
         private Panel panel9;
         private Panel panel25;
         public Label lblCashier;
+        private DataGridViewTextBoxColumn NumSettled;
+        private DataGridViewTextBoxColumn TransRefNoSettled;
+        private DataGridViewTextBoxColumn CustNameSettled;
+        private DataGridViewTextBoxColumn TotalPaymentSettled;
+        private DataGridViewTextBoxColumn SettledDatePaymentStat;
+        private DataGridViewTextBoxColumn CompletedBy;
+        private DataGridViewTextBoxColumn Monitorings;
+        private DataGridViewTextBoxColumn NumPendingSet;
+        private DataGridViewTextBoxColumn TransRefNoPendingSet;
+        private DataGridViewTextBoxColumn CustomerNamePendingSet;
+        private DataGridViewTextBoxColumn TotalPayment;
+        private DataGridViewTextBoxColumn InitialDeposit;
+        private DataGridViewTextBoxColumn RemBalance;
+        private DataGridViewTextBoxColumn DueDate;
+        private DataGridViewTextBoxColumn Cashier;
+        private DataGridViewTextBoxColumn S;
     }
 }

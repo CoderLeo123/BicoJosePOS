@@ -28,8 +28,7 @@ namespace Capstone
         {
             InitializeComponent();
             cn = new SqlConnection(dbcon.MyConnection());
-            frmL = frmA;
-            //classPatient.LoadPatientTransactionList(frmL.dataGridViewTrans, pID);
+            frmL = frmA;     
         }
         public void MethodCheckForBlank()
         {
@@ -46,8 +45,7 @@ namespace Capstone
             classLoginMethod.checkForBlank(txtAddOSSPH, lblSpOSNotice, "Left SPH");
             classLoginMethod.checkForBlank(txtADDOSCYL, lblCyOSNotice, "Left CYL");
             classLoginMethod.checkForBlank(txtAddOSAXIS, lblAxOSNotice, "Left AXIS");
-            classLoginMethod.checkForBlank(txtAddODPD, lblPDOSNotice, "Left PD");
-            //classLoginMethod.textMinimumCharacter(txtPasswordCreate, lblPasswordNotice);
+            classLoginMethod.checkForBlank(txtAddODPD, lblPDOSNotice, "Left PD");           
         }
 
         private void btnClosePatientRecord_Click(object sender, EventArgs e)
@@ -87,16 +85,8 @@ namespace Capstone
             txtAddLName.Clear();
             txtAddAddress.Clear();
             txtAddContact.Clear();
-            txtAddAge.Clear();
-            //txtAddTransRefNo.Clear();
-            txtAddNote.Clear();
-            //txtAddFeature.Clear();
-            //txtAddLensePrice.Clear();
-            //txtAddFramePrice.Clear();
-           // txtAddOthersPrice.Clear();
-            //txtAddTotal.Clear();
-            //txtAddDeposit.Clear();
-            //txtAddBalance.Clear();            
+            txtAddAge.Clear();          
+            txtAddNote.Clear();           
         }
         public void getValueGeneralInfo(out string firstName, out string lastName, out string address, out string contact, out string gender, out string age, out string checkUp, out string birth)
         {
@@ -109,9 +99,7 @@ namespace Capstone
              gender = comBoxAddGender.Text;
              age = txtAddAge.Text;
             checkUp = dateTimePickerCheckUpDate.Value.ToString();
-             birth = dateTimePickerBirthDate.Value.ToString();
-            //dateTimePicker1.Format = DateTimePickerFormat.Custom;
-            //dateTimePicker1.CustomFormat = "MM/dd/yyyy hh:mm:ss";
+             birth = dateTimePickerBirthDate.Value.ToString();           
 
         }
         public void getValueOD(out string ODSPH, out string ODCYL, out string ODAXIS, out string ODPD)
@@ -137,7 +125,7 @@ namespace Capstone
             getValueOD(out ODSPH, out ODCYL, out ODAXIS, out ODPD);
             string OSSPH = "", OSCYL = "", OSAXIS = "", OSPD = "";
             getValueOS(out OSSPH, out OSCYL, out OSAXIS, out OSPD);
-            //int ageCalculated = int.Parse(txtAddAge.Text); 
+         
             string CName = firstName + " " + lastName;
 
             if (firstName != "" && lastName != "" && address != "" && contact != "" && gender != "" && age != "" && ODSPH != "" &&
@@ -290,14 +278,7 @@ namespace Capstone
 
         private void dateTimePickerCheckUpDate_ValueChanged(object sender, EventArgs e)
         {
-            //int years = DateTime.Now.Year - dateTimePickerBirthDate.Value.Year;
-            //if (dateTimePickerBirthDate.Value.AddYears(years) < DateTime.Now)
-            //{ 
-            //    years--;
-            //    txtAddAge.Text = years.ToString();
-            //}
-            //dateTimePicker1.Format = DateTimePickerFormat.Custom;
-            //dateTimePicker1.CustomFormat = "MM/dd/yyyy hh:mm:ss";
+         
         }
 
         private void btnUpdatePatientRecord_Click(object sender, EventArgs e)

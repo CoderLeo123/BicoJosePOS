@@ -313,25 +313,30 @@ namespace Capstone
             e.Graphics.DrawString("Total Due: ", printFont, Brushes.Black, 20, (y += 30));
             e.Graphics.DrawString("₱ " + NetT, printFont, Brushes.Black, (x += 80), y);
 
-            e.Graphics.DrawString("Amount Tendered: ", printFont, Brushes.Black, 20, (y += 30));
+            e.Graphics.DrawString("Amount Tendered: ", printFont, Brushes.Black, 20, (y += 30));//+60
             e.Graphics.DrawString("₱ " + Payment, printFont, Brushes.Black, x, y);
 
             if (PTerms.Equals("Deposit"))
             {
+                //e.Graphics.DrawString("Money: ", printFont, Brushes.Black, 20, (y -= 30));
+                //e.Graphics.DrawString("₱ " + txtMoney.Text, printFont, Brushes.Black, x, y);
+                
+                e.Graphics.DrawString("Change: ", printFont, Brushes.Black, 20, (y += 30));//+60
+                e.Graphics.DrawString("₱ " + Change, printFont, Brushes.Black, x, y);//710
+
                 e.Graphics.DrawString("Remaining Balance: ", printFont, Brushes.Black, 20, (y += 30));
                 e.Graphics.DrawString("₱ " + Balance, printFont, Brushes.Black, x, y);
 
-                e.Graphics.DrawString("Change: ", printFont, Brushes.Black, 20, (y += 30));
-                e.Graphics.DrawString("₱ " + Change, printFont, Brushes.Black, x, y);//710
 
             }
             else if (PTerms.Equals("Full"))
             {
+                e.Graphics.DrawString("Change: ", printFont, Brushes.Black, 20, (y += 30));
+                e.Graphics.DrawString("₱ " + Change, printFont, Brushes.Black, x, y);//710
+
                 e.Graphics.DrawString("Remaining Balance: ", printFont, Brushes.Black, 20, (y += 30));
                 e.Graphics.DrawString("₱ -", printFont, Brushes.Black, x, y);
 
-                e.Graphics.DrawString("Change: ", printFont, Brushes.Black, 20, (y += 30));
-                e.Graphics.DrawString("₱ " + Change, printFont, Brushes.Black, x, y);//710
 
             }
             e.Graphics.DrawString("THIS INVOICE/RECEIPT SHALL BE VALID FOR", printFontItallic, Brushes.Black, 130, (y += 60));//770

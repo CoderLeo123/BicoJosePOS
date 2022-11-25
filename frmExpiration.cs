@@ -201,7 +201,7 @@ namespace Capstone
                         //unitTotal = quantInput * unitPrice;
                         addExpItemToCart(unitStockNum, ItmID, TransNo, quantInput, unitPrice, lenseCheck, unitTotal, Umeas);
                         reducedQuantityTblStock(unitStockNum, quantInput);
-                        if (lacking <= 0)
+                        if (lacking == 0)
                         {
                             updateTblStockInvent(unitStockNum);
                         }

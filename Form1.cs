@@ -31,8 +31,7 @@ namespace Capstone
             frmLogin frmL = new frmLogin();
             frmL.Hide();
             stockBlinkNotify();
-            //classReport.loadSalesPerDay(frmR.dataGridViewSalesR, "Total_Sale");
-            //classReport.loadSalesPerDay(frmR.dataGridViewBalR, "Total_Bal");
+          
         }
         public void addToExpList(string stockNum, string Description, string Expiration_Date, string Quantity, string Unit_Measure)
         {
@@ -84,7 +83,7 @@ namespace Capstone
                 if (dateDifference <= 7)
                 {
                     ExpList List = new ExpList();
-                    // addToExpList(sNum, Description, Expiration_Date, Quantity, Unit_Measure); dr.GetString(0)
+                    
                     expiringCount++; row++;
                     List.sNum = sNum;
                     List.Description = Description;
@@ -92,7 +91,7 @@ namespace Capstone
                     List.Quantity = Quantity;
                     List.Unit_Measure = Unit_Measure;
                     SList.Add(List);
-                    //frmDetails.dataGridViewExpira.Rows.Add(i, dr[1].ToString(), dr[4].ToString(), dr[3].ToString());
+                
                 }
                 
             }
@@ -159,18 +158,15 @@ namespace Capstone
         }
         public void stockBlinkNotify()
         {           
-            //blinkLabel2(txtAvailStock, Color.LightGreen);
+            
             blinkLabel2(txtCrit, Color.Yellow);
             blinkLabel2(txtOutOStk, Color.Red);
             blinkLabel2(txtReOrd, Color.Orange);
             blinkLabel2(txtExp, Color.MediumVioletRed);
 
-            blinkLabel2(txtInLab, Color.Orange);
-            //blinkLabel2(txtClaimed, Color.LightGreen);
+            blinkLabel2(txtInLab, Color.Orange);            
             blinkLabel2(txtArrv, Color.Red);
-
-            blinkLabel2(txtPendi, Color.Red);
-            //blinkLabel2(txtSett, Color.LightGreen);
+            blinkLabel2(txtPendi, Color.Red);            
 
         }
       
@@ -183,7 +179,7 @@ namespace Capstone
                 blink = true;
                 while (blink)
                 {
-                    await Task.Delay(500);
+                    await Task.Delay(1000);
                     labelBlink.BackColor = labelBlink.BackColor == color ? Color.White : color;
                 }
             }
@@ -252,41 +248,19 @@ namespace Capstone
         }
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-
         }
 
         private void dropBtnProducts_Click(object sender, EventArgs e)
-        {
-            
+        {            
         }
 
         private void timerDrpBtnPayment_Tick(object sender, EventArgs e)
         {
-            //if (isCollapsed2)
-            //{
-            //    dropBtnPayment.Image = Properties.Resources.Down_Arrow;
-            //    dropPanelPayment.Height += 10;
-            //    if (dropPanelPayment.Size == dropPanelPayment.MaximumSize)
-            //    {
-            //        timerDrpBtnPayment.Stop();
-            //        isCollapsed2 = false;
-            //    }
-            //}
-            //else
-            //{
-            //    dropBtnPayment.Image = Properties.Resources.payment;
-            //    dropPanelPayment.Height -= 10;
-            //    if (dropPanelPayment.Size == dropPanelPayment.MinimumSize)
-            //    {
-            //        timerDrpBtnPayment.Stop();
-            //        isCollapsed2 = true;
-            //    }
-            //}
+         
         }
 
         private void dropBtnPayment_Click(object sender, EventArgs e)
@@ -296,38 +270,14 @@ namespace Capstone
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //dropPanelPayment.Size = dropPanelPayment.MinimumSize;
-            //dropPanelProducts.Size = dropPanelProducts.MinimumSize;
-            //dropPanelSales.Size = dropPanelSales.MinimumSize;
             
         }
 
         private void timerDrpBtnSales_Tick(object sender, EventArgs e)
         {
-            //if (isCollapsed3)
-            //{
-            //    dropBtnReports.Image = Properties.Resources.Down_Arrow;
-            //    dropPanelSales.Height += 10;
-            //    if (dropPanelSales.Size == dropPanelSales.MaximumSize)
-            //    {
-            //        timerDrpBtnSales.Stop();
-            //        isCollapsed3 = false;
-            //    }
-            //}
-            //else
-            //{
-            //    dropBtnReports.Image = Properties.Resources.Sales_Report;
-            //    dropPanelSales.Height -= 10;
-            //    if (dropPanelSales.Size == dropPanelSales.MinimumSize)
-            //    {
-            //        timerDrpBtnSales.Stop();
-            //        isCollapsed3 = true;
-            //    }
-            //}
+          
         }
-
         
-
         private void button9_Click(object sender, EventArgs e)
         {
 
@@ -339,25 +289,19 @@ namespace Capstone
         }
 
         private void button32_Click(object sender, EventArgs e)
-        {//btnSalesReport
+        {
             
         }
         public void btnCollapsed()
         {
-            //isCollapsed2 = false;
-            //isCollapsed3 = false;
-            //isCollapsed1 = false;
-            
+                       
         }
         public void timerStart()
-        {
-            //timerDrpBtnPayment.Start(); 
-            //timerDrpBtnSales.Start();
-            //timerDrpBtnProducts.Start();
+        {          
         }
        
         private void dropBtnSales_Click_1(object sender, EventArgs e)
-        {//isCollapsed3
+        {
             frmReports frm = new frmReports();
             frm.TopLevel = false;
             panelLoad.Controls.Clear();
@@ -373,34 +317,18 @@ namespace Capstone
             classReport.loadSalesPerDay(frm.dataGridViewSalesR, "Total_Sale");
             classReport.loadSalesPerDay(frm.dataGridViewBalR, "Total_Bal");
             frmR.dateSelect(frm.dataGridViewInitial);
-            //frmR.dateSelect(frmR.dataGridViewInitial, out row);
-            //frmR.filterDate(row);
+      
             frmR.changeDatePriorCurrent(frmR.dateTimePickerStartSold);            
             frmR.changeDatePriorCurrent(frmR.dateTimePickerStartTrans);
             classLoadData.LoadRecordsTransacHist(frmR.dataGridViewTransHist, frmR.txtSearchTransHist, frmR.dateTimePickerStartTrans, frmR.dateTimePickerEndTrans);
             classLoadData.LoadRecordsSoldItems(frmR.dataGridViewSoldItems, frmR.txtSearchSold, frmR.dateTimePickerStartSold, frmR.dateTimePickerEndSold);
             classLoadData.LoadRecordsTransacSettled(frmR.dataGridViewSettle, frmR.txtSearchSettleds, frmR.dateTimePickerSettStart, frmR.dateTimePickerSettEnd);
-            frm.pesoPaint = true;
-            //frmR.lblCheckCell.Text = frmR.dataGridViewInitial.Rows[0].Cells[1].Value?.ToString();
-            //frm.tabControlReports.TabPages.Clear();
-            //TabPage tab4 = new TabPage("Check");
-            //frm.tabControlReports.TabPages.Add(tab4);
-            //tab4.Controls.Add(frm.dataGridViewInitial);
-
+            frm.pesoPaint = true;         
             frm.Show();
 
-            //isCollapsed3 = true;
-            //isCollapsed2 = false;
-            //isCollapsed1 = false;
-            //timerStart();
         }
         private void dropBtnPayment_Click_1(object sender, EventArgs e)
-        {//isCollapsed2
-            //isCollapsed2 = true;
-            //isCollapsed3 = false;
-            //isCollapsed1 = false;
-            //timerStart();
-
+        {                  
             frmPaymentStatus frm = new frmPaymentStatus();
             frm.TopLevel = false;
             panelLoad.Controls.Clear();
@@ -418,13 +346,10 @@ namespace Capstone
         }
 
         private void dropBtnProducts_Click_1(object sender, EventArgs e)
-        {//isCollapsed1
+        {
             isCollapsed1 = true;
             isCollapsed2 = false;
-            isCollapsed3 = false;
-            
-            //timerStart();
-
+            isCollapsed3 = false;       
             frmProductsList frm = new frmProductsList();
             frm.TopLevel = false;
             panelLoad.Controls.Clear();
@@ -434,9 +359,7 @@ namespace Capstone
         }
 
         private void btnDashboard_Click(object sender, EventArgs e)
-        {
-            //btnCollapsed();
-            //timerStart();
+        {      
             Stock();
             Users();
             Payment();
@@ -454,67 +377,37 @@ namespace Capstone
             panelLoad.Controls.Clear();
             panelLoad.Controls.Add(frm);
             frm.BringToFront();
-            frm.Show();
-            //btnCollapsed();
-            //timerStart();
+            frm.Show();      
         }
 
         private void button25_Click(object sender, EventArgs e)
-        {//btnPayStatus
-            //frmPaymentStatus frm = new frmPaymentStatus();
-            //frm.TopLevel = false;
-            //panelLoad.Controls.Clear();
-            //panelLoad.Controls.Add(frm);
-            //frm.BringToFront();
-            //frm.Show();
+        {
+            
         }
 
         private void btnOrderStatus_Click(object sender, EventArgs e)
         {
-            //frmOrderStatus frm = new frmOrderStatus();
-            //frm.TopLevel = false;
-            //panelLoad.Controls.Clear();
-            //panelLoad.Controls.Add(frm);
-            //frm.BringToFront();
-            //frm.Show();
+    
         }
 
         private void btnTranscHist_Click(object sender, EventArgs e)
         {
-            //frmTransactionHistory frm = new frmTransactionHistory();
-            //frm.TopLevel = false;
-            //panelLoad.Controls.Clear();
-            //panelLoad.Controls.Add(frm);
-            //frm.BringToFront();
-            //frm.Show();
-            //btnCollapsed();
-            //timerStart();
+        
         }
 
         private void btnProd_Click(object sender, EventArgs e)
         {
-            //frmProductsList frm = new frmProductsList();
-            //frm.TopLevel = false;
-            //panelLoad.Controls.Clear();
-            //panelLoad.Controls.Add(frm);
-            //frm.BringToFront();
-            //frm.Show();
+    
         }
 
         private void btnItems_Click(object sender, EventArgs e)
         {
-            //frmItemsList frm = new frmItemsList();
-            //frm.TopLevel = false;
-            //panelLoad.Controls.Clear();
-            //panelLoad.Controls.Add(frm);
-            //frm.BringToFront();
-            //frm.Show();
+          
         }
 
         private void btnServices_Click(object sender, EventArgs e)
         {
-            //frmCashier frm = new frmCashier();
-            //frm.ShowDialog();
+         
         }
 
         private void btnStockDel_Click(object sender, EventArgs e)
@@ -530,8 +423,7 @@ namespace Capstone
             }
             frm.BringToFront();
             frm.Show();
-            //btnCollapsed();
-            //timerStart();
+        
         }
 
         private void btnInventory_Click(object sender, EventArgs e)
@@ -549,8 +441,7 @@ namespace Capstone
             tab.Controls.Add(frm.panelSafety);
             classInvent.LoadSafety(frm.dataGridViewSafety, frm.txtSearchSafety);
             frm.checkWhatIsPress(false, false, false, false, true);
-            //btnCollapsed();
-            //timerStart();
+         
         }
 
         private void btnInventoryReport_Click(object sender, EventArgs e)
@@ -559,8 +450,7 @@ namespace Capstone
 
         private void btnBackupArch_Click(object sender, EventArgs e)
         {
-            //btnCollapsed();
-            //timerStart();
+ 
         }
 
         private void btnUserSettings_Click(object sender, EventArgs e)
@@ -592,28 +482,12 @@ namespace Capstone
 
         private void btnStockDetails_Click(object sender, EventArgs e)
         {
-            //frmDashboardDetails frm = new frmDashboardDetails();
-            
-            //frm.tabControlDashboardDetails.TabPages.Clear();
-            //TabPage tab = new TabPage("Critical");
-            //frm.tabControlDashboardDetails.TabPages.Add(tab);
-            //tab.Controls.Add(frm.panelCritical);
-            //TabPage tab2 = new TabPage("Out of Stock");
-            //frm.tabControlDashboardDetails.TabPages.Add(tab2);
-            
-            //tab2.Controls.Add(frm.panelOutOfStock);
-            //frm.LoadUsers();
-            
-            //frm.LoadCriticalStock();
-            //frm.LoadOutOfStock();
-            //frm.ShowDialog();
+     
         }
         public void Users()
-        {
-            
+        {            
             cn = new SqlConnection(dbcon.MyConnection());
-            int i = 0;
-            //dataGridViewUsers.Rows.Clear();
+            int i = 0;           
             string role = "";
             int adminCount = 0;
             int cashierCount = 0;
@@ -623,10 +497,8 @@ namespace Capstone
             SqlCommand cm = new SqlCommand("SELECT User_Type FROM tblUser Order by Num", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
-            {
-                //                                          2-ROLE / 2-User_Type       
-                i += 1; //          0-#  1-NAME / 1-Name           
-                //dataGridViewUsers.Rows.Add(i, dr[4].ToString(), dr[5].ToString());
+            {                     
+                i += 1;                       
                 role = dr[0].ToString();
                 totalUsers++;
                 if (role.Equals("Admin"))
@@ -651,14 +523,7 @@ namespace Capstone
             cn.Close();
         }
         private void btnUsersDetails_Click(object sender, EventArgs e)
-        {
-            //frmDashboardDetails frm = new frmDashboardDetails();
-            //frm.tabControlDashboardDetails.TabPages.Clear();
-            //TabPage tab = new TabPage("USER INFO");
-            //frm.tabControlDashboardDetails.TabPages.Add(tab);
-            //tab.Controls.Add(frm.panelUsers);
-            //frm.LoadUsers();
-            //frm.ShowDialog();
+        {      
         }
 
         private void btnCategoryDetails_Click(object sender, EventArgs e)
@@ -689,7 +554,7 @@ namespace Capstone
 
         private void btnMaxi_Click(object sender, EventArgs e)
         {
-            //btnMaxi.BackColor = Color.Lime;
+        
             if (btnMaxi.BackColor == Color.Lime)
             {
                 this.WindowState = FormWindowState.Normal;
@@ -721,12 +586,7 @@ namespace Capstone
         {
             frmDashboardDetails frm = new frmDashboardDetails();
             Expiration();
-            frm.LoadExpList();
-            //frm.tabControlDashboardDetails.TabPages.Clear();
-            //TabPage tab = new TabPage("USER INFO");
-            //frm.tabControlDashboardDetails.TabPages.Add(tab);
-            //tab.Controls.Add(frm.panelUsers);
-            //frm.LoadUsers();
+            frm.LoadExpList();       
             frm.ShowDialog();
         }
 
@@ -742,27 +602,7 @@ namespace Capstone
         
 
         private void timerDrpBtnProducts_Tick(object sender, EventArgs e)
-        {
-            //if (isCollapsed1)
-            //{
-            //    dropBtnProducts.Image = Properties.Resources.Down_Arrow;
-            //    dropPanelProducts.Height += 10;
-            //    if (dropPanelProducts.Size == dropPanelProducts.MaximumSize)
-            //    {
-            //        timerDrpBtnProducts.Stop();
-            //        isCollapsed1 = false;
-            //    }
-            //}
-            //else
-            //{
-            //    dropBtnProducts.Image = Properties.Resources.ProdItemServ;
-            //    dropPanelProducts.Height -= 10;
-            //    if (dropPanelProducts.Size == dropPanelProducts.MinimumSize)
-            //    {
-            //        timerDrpBtnProducts.Stop();
-            //        isCollapsed1 = true;
-            //    }
-            //}
+        {           
 
         }
 
