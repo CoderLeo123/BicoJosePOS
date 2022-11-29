@@ -8,21 +8,22 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Data.SQLite;
 namespace Capstone
 {
     public partial class frmPaymentStatus : Form
     {
-        SqlConnection cn = new SqlConnection();
+        SQLiteConnection cn = new SQLiteConnection();
         //SqlCommand cm = new SqlCommand();
         DBConnection dbcon = new DBConnection();
-        SqlDataReader dr;
+        SQLiteDataReader dr;
         ClassPaymentOrderMonitoring classLoad = new ClassPaymentOrderMonitoring();
         ClassReports classReport = new ClassReports();
         List<ItemList> List = new List<ItemList>();
         string title = "BICO-JOSE System"; string transNo = "";
         public frmPaymentStatus()
         {
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             InitializeComponent();
             classLoad.LoadRecordsSettled(dataGridViewSettled, txtSearchSettled);
             classLoad.LoadRecordsUnsettled(dataGridViewPaymentStat, txtSearchPending);
@@ -95,11 +96,11 @@ namespace Capstone
         }
         public void tblAvailedList(string transacNo, out int rowCount)
         {
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             //Desc = ""; Price = ""; Quant = ""; Total = ""; UnitM = "";
             rowCount = 0; List.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT Description, Price, Quantity, Total, Unit_Measure FROM ViewCartStockItem WHERE Transaction_No LIKE '" + transacNo + "'", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT Description, Price, Quantity, Total, Unit_Measure FROM ViewCartStockItem WHERE Transaction_No LIKE '" + transacNo + "'", cn);
             dr = cm.ExecuteReader();
 
             while (dr.Read())
@@ -223,11 +224,11 @@ namespace Capstone
         }
         public void LoadRecordsUnsettled(string transno, out string Balance)
         {//dataGridViewProduct, txtSearchProduct
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             //int i = 0;
             Balance = "";
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT * FROM ViewPaymentCart WHERE Transaction_No LIKE '"+ transno + "'", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT * FROM ViewPaymentCart WHERE Transaction_No LIKE '" + transno + "'", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {

@@ -8,19 +8,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Data.SQLite;
 namespace Capstone
 {
     public partial class frmUserSetting : Form
     {
-        SqlConnection cn = new SqlConnection();
-        SqlCommand cm = new SqlCommand();
+        SQLiteConnection cn = new SQLiteConnection();
+        SQLiteCommand cm = new SQLiteCommand();
         DBConnection dbcon = new DBConnection();
-        SqlDataReader dr;
+        SQLiteDataReader dr;
         string title = "BICO-JOSE System";
         public frmUserSetting()
         {
             InitializeComponent();
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             LoadUsers(); LoadSession();
             if (dataGridViewUsers.Rows.Count > 0)
             {
@@ -121,11 +122,11 @@ namespace Capstone
         }
         public void LoadUserPassword()
         {
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
 
 
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT Password FROM tblUser WHERE User_ID LIKE '" + lblUsID.Text + "'", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT Password FROM tblUser WHERE User_ID LIKE '" + lblUsID.Text + "'", cn);
             dr = cm.ExecuteReader();
             if (dr.Read())
             {
@@ -141,11 +142,11 @@ namespace Capstone
 
         public void LoadUsers()
         {
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             int i = 0;
             dataGridViewUsers.Rows.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT * FROM tblUser Order by Num", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT * FROM tblUser Order by Num", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
@@ -158,11 +159,11 @@ namespace Capstone
         }
         public void LoadSession()
         {
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             int i = 0;
             dataGridViewSession.Rows.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT * FROM ViewLoginSession WHERE (Name LIKE '%" + txtSearchSession.Text + "%' OR User_Type LIKE '%" + txtSearchSession.Text + "%') Order by Num DESC", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT * FROM ViewLoginSession WHERE (Name LIKE '%" + txtSearchSession.Text + "%' OR User_Type LIKE '%" + txtSearchSession.Text + "%') Order by Num DESC", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
@@ -251,7 +252,7 @@ namespace Capstone
                     if (MessageBox.Show("Remove this user?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         cn.Open();
-                        cm = new SqlCommand("DELETE FROM tblUser WHERE User_ID LIKE '" + userID + "'", cn);
+                        cm = new SQLiteCommand("DELETE FROM tblUser WHERE User_ID LIKE '" + userID + "'", cn);
                         cm.ExecuteNonQuery();
                         cn.Close();
                         MessageBox.Show("User has been successfully deleted.", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -328,7 +329,7 @@ namespace Capstone
         public void deleteTable(string tableName)
         {
             cn.Open();
-            cm = new SqlCommand("DELETE FROM "+ tableName + "", cn);
+            cm = new SQLiteCommand("DELETE FROM " + tableName + "", cn);
             cm.ExecuteNonQuery();
             cn.Close();
 

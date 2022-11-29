@@ -8,14 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+
+using System.Data.SQLite;
 namespace Capstone
 {
     public partial class frmLogin : Form
     {
-        SqlConnection cn = new SqlConnection();
-        SqlCommand cm = new SqlCommand();
+        SQLiteConnection cn = new SQLiteConnection();
+        SQLiteCommand cm = new SQLiteCommand();
         DBConnection dbcon = new DBConnection();
-        SqlDataReader dr;
+        SQLiteDataReader dr;
         ClassLoginAndSignUp classLoginMethod = new ClassLoginAndSignUp();
         ClassLoadData classLoadData = new ClassLoadData();
         string title = "BICO-JOSE System";
@@ -24,7 +26,7 @@ namespace Capstone
         public frmLogin()
         {
             InitializeComponent();
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             txtPassword.PasswordChar = '●'; txtPassword.MaxLength = 14;
         }
 

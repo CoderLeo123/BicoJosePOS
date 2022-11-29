@@ -4,24 +4,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Data.SQLite;
 namespace Capstone
 {
     internal class ClassInventory
     {
-        SqlConnection cn = new SqlConnection();
-        SqlCommand cm = new SqlCommand();
+        SQLiteConnection cn = new SQLiteConnection();
+        SQLiteCommand cm = new SQLiteCommand();
         DBConnection dbcon = new DBConnection();
-        SqlDataReader dr;
+        SQLiteDataReader dr;
         string title = "BICO-JOSE System";
         //select qty, qty + new stock, if result >= safetylevel, then baseStock column = result, else return the former value of baseStock
         
         public void determineBaseStock(int newStock, out int baseStock, string itemID)
         {//
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             baseStock = 5;
             
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT Quantity, Base_Stock FROM tblItem WHERE Item_ID LIKE '"+ itemID + "'", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT Quantity, Base_Stock FROM tblItem WHERE Item_ID LIKE '" + itemID + "'", cn);
             dr = cm.ExecuteReader();
             if (dr.Read())
             {                                         
@@ -45,9 +46,9 @@ namespace Capstone
         
         public void determineStockLevel(string itemID)
         {
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT Quantity, Base_Stock FROM tblItem WHERE Item_ID LIKE '" + itemID + "'", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT Quantity, Base_Stock FROM tblItem WHERE Item_ID LIKE '" + itemID + "'", cn);
             dr = cm.ExecuteReader();
             if (dr.Read())
             {
@@ -64,9 +65,11 @@ namespace Capstone
 
         public void assignStockLevel(string itemID, int stockLeve)
         {
-            cn = new SqlConnection(dbcon.MyConnection());
+            dr.Close();
+            cn.Close();
+            cn = new SQLiteConnection(dbcon.MyConnection);
             cn.Open();//Set Quantity
-            SqlCommand cm = new SqlCommand("UPDATE tblItem SET Stock_Level = @Stock_Level WHERE Stock_Check = 1 AND Item_ID LIKE '" + itemID + "'", cn);
+            SQLiteCommand cm = new SQLiteCommand("UPDATE tblItem SET Stock_Level = @Stock_Level WHERE Stock_Check = 1 AND Item_ID LIKE '" + itemID + "'", cn);
             cm.Parameters.AddWithValue("@Stock_Level", stockLeve);
             cm.ExecuteNonQuery();
             cn.Close();
@@ -105,10 +108,10 @@ namespace Capstone
             //string UM = "N/A";
             try
             {
-                cn = new SqlConnection(dbcon.MyConnection());
+                cn = new SQLiteConnection(dbcon.MyConnection);
                 
                 cn.Open();
-                SqlCommand cm = new SqlCommand("SELECT Unit_Measure FROM tblStock WHERE Item_ID LIKE '"+ ITMID + "' ORDER BY Num", cn);
+                SQLiteCommand cm = new SQLiteCommand("SELECT Unit_Measure FROM tblStock WHERE Item_ID LIKE '" + ITMID + "' ORDER BY Num", cn);
                 dr = cm.ExecuteReader();
                 if (dr.Read())
                 {
@@ -130,11 +133,11 @@ namespace Capstone
             try
             {
                 //string UM = "N/A";
-                cn = new SqlConnection(dbcon.MyConnection());
+                cn = new SQLiteConnection(dbcon.MyConnection);
                 int i = 0;
                 dgv.Rows.Clear();
                 cn.Open();
-                SqlCommand cm = new SqlCommand("SELECT * FROM tblItem WHERE Stock_Check = 1 AND Stock_Level = 1 AND (Description LIKE '%" + txtSearch.Text + "%' OR Type LIKE '%" + txtSearch.Text + "%' OR Classification LIKE '%" + txtSearch.Text + "%') ORDER BY Item_ID", cn);
+                SQLiteCommand cm = new SQLiteCommand("SELECT * FROM tblItem WHERE Stock_Check = 1 AND Stock_Level = 1 AND (Description LIKE '%" + txtSearch.Text + "%' OR Type LIKE '%" + txtSearch.Text + "%' OR Classification LIKE '%" + txtSearch.Text + "%') ORDER BY Item_ID", cn);
                 dr = cm.ExecuteReader();//Description,, Quantity, Type, Classification
                 
                 while (dr.Read())
@@ -158,11 +161,11 @@ namespace Capstone
             try
             {
                 //string UM = "N/A";
-                cn = new SqlConnection(dbcon.MyConnection());
+                cn = new SQLiteConnection(dbcon.MyConnection);
                 int i = 0;
                 dgv.Rows.Clear();
                 cn.Open();
-                SqlCommand cm = new SqlCommand("SELECT * FROM tblItem WHERE Stock_Check = 1 AND Stock_Level = 0 AND (Description LIKE '%" + txtSearch.Text + "%' OR Type LIKE '%" + txtSearch.Text + "%' OR Classification LIKE '%" + txtSearch.Text + "%') ORDER BY Item_ID", cn);
+                SQLiteCommand cm = new SQLiteCommand("SELECT * FROM tblItem WHERE Stock_Check = 1 AND Stock_Level = 0 AND (Description LIKE '%" + txtSearch.Text + "%' OR Type LIKE '%" + txtSearch.Text + "%' OR Classification LIKE '%" + txtSearch.Text + "%') ORDER BY Item_ID", cn);
                 dr = cm.ExecuteReader();//Description,, Quantity, Type, Classification
 
                 while (dr.Read())
@@ -184,11 +187,11 @@ namespace Capstone
 
         public void LoadCritical(DataGridView dgv, TextBox txtSearch)
         {//dataGridViewProduct, txtSearchProduct
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             int i = 0; //string UM = "N/A";
             dgv.Rows.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT * FROM tblItem WHERE Stock_Check = 1 AND Stock_Level = 2 AND (Description LIKE '%" + txtSearch.Text + "%' OR Type LIKE '%" + txtSearch.Text + "%' OR Classification LIKE '%" + txtSearch.Text + "%') ORDER BY Item_ID", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT * FROM tblItem WHERE Stock_Check = 1 AND Stock_Level = 2 AND (Description LIKE '%" + txtSearch.Text + "%' OR Type LIKE '%" + txtSearch.Text + "%' OR Classification LIKE '%" + txtSearch.Text + "%') ORDER BY Item_ID", cn);
             dr = cm.ExecuteReader();//Description,, Quantity, Type, Classification
             while (dr.Read())
             {
@@ -203,14 +206,14 @@ namespace Capstone
         }
         public void LoadOutOfStock(DataGridView dgv, TextBox txtSearch)
         {//dataGridViewProduct, txtSearchProduct
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             string UM = "";
             
 
             int i = 0; string ITID=""; 
             dgv.Rows.Clear();
             cn.Open();
-             cm = new SqlCommand("SELECT * FROM tblItem WHERE Stock_Check = 1 AND Stock_Level = 3 AND (Description LIKE '%" + txtSearch.Text + "%' OR Type LIKE '%" + txtSearch.Text + "%' OR Classification LIKE '%" + txtSearch.Text + "%') ORDER BY Item_ID", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT * FROM tblItem WHERE Stock_Check = 1 AND Stock_Level = 3 AND (Description LIKE '%" + txtSearch.Text + "%' OR Type LIKE '%" + txtSearch.Text + "%' OR Classification LIKE '%" + txtSearch.Text + "%') ORDER BY Item_ID", cn);
             dr = cm.ExecuteReader();//Description,, Quantity, Type, Classification
 
             while (dr.Read())
@@ -229,11 +232,11 @@ namespace Capstone
 
         public void LoadItemWithExpiration(DataGridView dgv, TextBox txtSearch)
         {//dataGridViewProduct, txtSearchProduct
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             int i = 0;
             dgv.Rows.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT * FROM tblItem WHERE Classification LIKE 'Consumable' AND Quantity > 0 AND (Description LIKE '%" + txtSearch.Text + "%' OR Type LIKE '%" + txtSearch.Text + "%') ORDER BY Item_ID", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT * FROM tblItem WHERE Classification LIKE 'Consumable' AND Quantity > 0 AND (Description LIKE '%" + txtSearch.Text + "%' OR Type LIKE '%" + txtSearch.Text + "%') ORDER BY Item_ID", cn);
             dr = cm.ExecuteReader();//Description, Type, Quantity, Item_ID
             while (dr.Read())
             {                             //                     3-PRODUCT / 3-Product              
@@ -246,11 +249,11 @@ namespace Capstone
 
         public void LoadNearExpiration(DataGridView dgv, TextBox txtSearch, string ITMID)
         {//dataGridViewProduct, txtSearchProduct
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             int i = 0;
             dgv.Rows.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT * FROM tblStockInventory WHERE Item_ID LIKE '"+ ITMID + "' AND Status LIKE 'Available' AND Quantity > 0 ORDER BY Expiration_Date ASC", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT * FROM tblStockInventory WHERE Item_ID LIKE '" + ITMID + "' AND Status LIKE 'Available' AND Quantity > 0 ORDER BY Expiration_Date ASC", cn);
             dr = cm.ExecuteReader();//Description, Expiration_Date
             while (dr.Read())
             {
@@ -264,11 +267,11 @@ namespace Capstone
 
         public void LoadDispose(DataGridView dgv, TextBox txtSearch)
         {//dataGridViewProduct, txtSearchProduct
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             int i = 0;
             dgv.Rows.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT * FROM ViewStockItemInventory WHERE Status LIKE 'Dispose'", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT * FROM ViewStockItemInventory WHERE Status LIKE 'Dispose'", cn);
             dr = cm.ExecuteReader();//Description, Expiration_Date
             while (dr.Read())
             {

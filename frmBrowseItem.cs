@@ -8,16 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-
+using System.Data.SQLite;
 namespace Capstone
 {
 
     public partial class frmBrowseItem : Form
     {
-        SqlConnection cn = new SqlConnection();
-        SqlCommand cm = new SqlCommand();
+        SQLiteConnection cn = new SQLiteConnection();
+        SQLiteCommand cm = new SQLiteCommand();
         DBConnection dbcon = new DBConnection();
-        SqlDataReader dr;
+        SQLiteDataReader dr;
         ClassLoadData classLoadData = new ClassLoadData();
         ClassComputations classCompute = new ClassComputations();
         string title = "BICO-JOSE System";
@@ -28,7 +28,7 @@ namespace Capstone
         public frmBrowseItem(frmCashier frmC)
         {
             InitializeComponent();
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             classLoadData.LoadRecordsBrowse(dataGridViewBrowse, txtSearch);
             //LoadRecordsBrowse();
             this.frmC = frmC;
@@ -50,8 +50,9 @@ namespace Capstone
 
         public void LoadCart()
         {
-            
-                string servTotal = ""; Boolean hasRecord = false;
+                double servTotal = 0;
+                //string servTotal = "0";
+                bool hasRecord = false;
                 classLoadData.LoadRecordServiceAvail(frmC.dataGridViewService, out servTotal, out hasRecord);
                 
                 int i = 0;
@@ -61,7 +62,7 @@ namespace Capstone
                 double addToCurrentTotal = double.Parse(frmC.lblSalesTotal.Text);
                 frmC.dataGridViewCart.Rows.Clear();
                 cn.Open();
-                cm = new SqlCommand("SELECT * from ViewCartStockItem WHERE Description Like '%" + frmC.txtSearch.Text + "%' AND Status LIKE 'Cart'", cn);
+                cm = new SQLiteCommand("SELECT * from ViewCartStockItem WHERE Description Like '%" + frmC.txtSearch.Text + "%' AND Status LIKE 'Cart'", cn);
                 dr = cm.ExecuteReader();
                 while (dr.Read())
                 {
@@ -91,7 +92,14 @@ namespace Capstone
                 }
                 dr.Close();
                 cn.Close();
-                total += double.Parse(servTotal);
+                //double passi = 0;
+                //if (double.TryParse(servTotal, out passi))
+                //    {
+                //        passi = double.Parse(servTotal);
+                        
+                //    } else { }
+                //total += passi;
+                total += servTotal;
                 classLoadData.ComputeDiscount(discount, total, out discountResult);
                 frmC.lblDiscount.Text = discountResult.ToString("0.00");
                 frmC.lblSalesTotal.Text = total.ToString("#,##0.00");
@@ -160,7 +168,7 @@ namespace Capstone
                 if ((classification == "Consumable") && (colName == "AddToCart"))
                 {
                     cn.Open();
-                    cm = new SqlCommand("SELECT Expiration_Date, Stock_Num, Quantity FROM tblStockInventory WHERE Item_ID LIKE '" + id.ToString() + "' AND Status = 'Available' AND Quantity > 0 ORDER BY Expiration_Date ASC", cn);
+                    cm = new SQLiteCommand("SELECT Expiration_Date, Stock_Num, Quantity FROM tblStockInventory WHERE Item_ID LIKE '" + id.ToString() + "' AND Status = 'Available' AND Quantity > 0 ORDER BY Expiration_Date ASC", cn);
                     dr = cm.ExecuteReader();
                     while (dr.Read())
                     {
@@ -204,22 +212,24 @@ namespace Capstone
                 {
                     
                     cn.Open();
-                    cm = new SqlCommand("SELECT Status FROM tblCart WHERE Item_ID LIKE '" + id.ToString() + "' ", cn);
+                    cm = new SQLiteCommand("SELECT Status FROM tblCart WHERE Item_ID LIKE '" + id.ToString() + "' ", cn);
                     dr = cm.ExecuteReader();
                     if (dr.Read())
                     {
                         check = dr[0].ToString();
-                    }     
+                    }
+                    dr.Close();
                     cn.Close();
                     lblCheck.Text = check;
 
                     cn.Open();
-                    cm = new SqlCommand("SELECT Num FROM tblStock WHERE Item_ID LIKE '" + id.ToString() + "' ", cn);
+                    cm = new SQLiteCommand("SELECT Num FROM tblStock WHERE Item_ID LIKE '" + id.ToString() + "' ", cn);
                     dr = cm.ExecuteReader();
                     if (dr.Read())
                     {
                         Stock_Num = dr[0].ToString();
-                    }                                        
+                    }
+                    dr.Close();
                     cn.Close();
 
                     if (Stock2.Equals("N/A"))
@@ -228,7 +238,7 @@ namespace Capstone
                         string displayPrice = price.ToString("#,##0.00");
 
                         cn.Open();
-                        cm = new SqlCommand("INSERT INTO tblCart (Stock_Num, Item_ID, Transaction_No, Quantity, Price, Total, Date, Lense_Check, Status, Display_Total, Display_Price) VALUES (@Stock_Num, @Item_ID, @TransactionNo, @Quantity, @Price, @Total, @Date, @Lense_Check, 'Cart', @Display_Total, @Display_Price)", cn);
+                        cm = new SQLiteCommand("INSERT INTO tblCart (Stock_Num, Item_ID, Transaction_No, Quantity, Price, Total, Date, Lense_Check, Status, Display_Total, Display_Price) VALUES (@Stock_Num, @Item_ID, @TransactionNo, @Quantity, @Price, @Total, @Date, @Lense_Check, 'Cart', @Display_Total, @Display_Price)", cn);
                         //cm.Parameters.AddWithValue("@Stock_ID", frmB.dataGridViewBrowse[1, i].Value.ToString());
                         cm.Parameters.AddWithValue("@Stock_Num", int.Parse(Stock_Num));
                         cm.Parameters.AddWithValue("@Item_ID", dataGridViewBrowse[1, e.RowIndex].Value.ToString());
@@ -251,7 +261,7 @@ namespace Capstone
                         {
 
                             cn.Open();
-                            cm = new SqlCommand("SELECT Num, Quantity, Item_ID, Stock_ID FROM ViewStockItemType WHERE Item_ID LIKE '" + id.ToString() + "' ", cn);
+                            cm = new SQLiteCommand("SELECT Num, Quantity, Item_ID, Stock_ID FROM ViewStockItemType WHERE Item_ID LIKE '" + id.ToString() + "' ", cn);
                             dr = cm.ExecuteReader();
                             while (dr.Read())
                             {
@@ -296,7 +306,7 @@ namespace Capstone
             catch (Exception ex)
             {
                 cn.Close();
-                MessageBox.Show(ex.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Gridview Clicked", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }

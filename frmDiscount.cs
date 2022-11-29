@@ -8,15 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Data.SQLite;
 namespace Capstone
 {
     
     public partial class frmDiscount : Form
     {
-        SqlConnection cn = new SqlConnection();
-        SqlCommand cm = new SqlCommand();
+        SQLiteConnection cn = new SQLiteConnection();
+        SQLiteCommand cm = new SQLiteCommand();
         DBConnection dbcon = new DBConnection();
-        SqlDataReader dr;
+        SQLiteDataReader dr;
         ClassLoadData classLoadData = new ClassLoadData();
         string title = "BICO-JOSE System";
         frmCashier frmC;
@@ -26,7 +27,7 @@ namespace Capstone
         public frmDiscount(frmCashier frmC)
         {
             InitializeComponent();
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             this.frmC = frmC;
         }
 
@@ -93,7 +94,7 @@ namespace Capstone
                         frmC.lblDiscount.Text = txtDiscountedAmount.Text;
                         frmC.lblDiscPercen.Text = txtDiscount.Text;
                         cn.Open();
-                        cm = new SqlCommand("UPDATE tblCart SET Discount = '" + txtDiscount.Text + "' WHERE Transaction_No LIKE '%" + lblID.Text + "'", cn);
+                        cm = new SQLiteCommand("UPDATE tblCart SET Discount = '" + txtDiscount.Text + "' WHERE Transaction_No LIKE '%" + lblID.Text + "'", cn);
                         cm.ExecuteNonQuery();
                         cn.Close();
                         classLoadData.LoadCart(frmC.dataGridViewCart, frmC.lblDiscount, frmC.lblSalesTotal, frmC.lblPayment, frmC.lblNetTotal, frmC.btnSettlePayment, frmC.btnAddDiscount, frmC.btnClearCart, frmC.txtSearch, frmC.dataGridViewService, frmC.lblNetNoComa, frmC.lblGrossNoComma);

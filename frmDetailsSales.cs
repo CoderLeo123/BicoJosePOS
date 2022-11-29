@@ -8,14 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Data.SQLite;
 namespace Capstone
 {
     public partial class frmDetailsSales : Form
     {
-        SqlConnection cn = new SqlConnection();
-        SqlCommand cm = new SqlCommand();
+        SQLiteConnection cn = new SQLiteConnection();
+        SQLiteCommand cm = new SQLiteCommand();
         DBConnection dbcon = new DBConnection();
-        SqlDataReader dr;
+        SQLiteDataReader dr;
         ClassLoadData classLoadData = new ClassLoadData();
         string title = "BICO-JOSE System";
         frmCashier frmC;
@@ -25,7 +26,7 @@ namespace Capstone
         public frmDetailsSales(frmCashier frmL)
         {
             InitializeComponent();
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             frmC = frmL;
       
         }
@@ -37,7 +38,7 @@ namespace Capstone
             string check = "";
             string SID = dataGridViewService.Rows[e.RowIndex].Cells[5].Value?.ToString();
             cn.Open();
-            cm = new SqlCommand("SELECT Service_ID FROM tblServiceAvailed WHERE Status = 'Pending' AND Service_ID LIKE '" + SID + "' ", cn);
+            cm = new SQLiteCommand("SELECT Service_ID FROM tblServiceAvailed WHERE Status = 'Pending' AND Service_ID LIKE '" + SID + "' ", cn);
             dr = cm.ExecuteReader();
             if (dr.Read())
             {
@@ -51,7 +52,7 @@ namespace Capstone
                     if (MessageBox.Show("Add this Item?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         cn.Open();
-                        cm = new SqlCommand("INSERT INTO tblServiceAvailed (Service_ID, Status) VALUES(@Service_ID, 'Pending')", cn);
+                        cm = new SQLiteCommand("INSERT INTO tblServiceAvailed (Service_ID, Status) VALUES(@Service_ID, 'Pending')", cn);
                         cm.Parameters.AddWithValue("@Service_ID", dataGridViewService.Rows[e.RowIndex].Cells[5].Value?.ToString());
 
                         cm.ExecuteNonQuery();

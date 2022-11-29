@@ -8,14 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+
+using System.Data.SQLite;
 namespace Capstone
 {
     public partial class frmSettlePayment : Form
     {
-        SqlConnection cn = new SqlConnection();
-        SqlCommand cm = new SqlCommand();
+        SQLiteConnection cn = new SQLiteConnection();
+        SQLiteCommand cm = new SQLiteCommand();
         DBConnection dbcon = new DBConnection();
-        SqlDataReader dr;
+        SQLiteDataReader dr;
         ClassLoadData classLoadData = new ClassLoadData();
         ClassGenerateID classGenerateID = new ClassGenerateID();
         ClassInventory classInventory = new ClassInventory();
@@ -34,7 +36,7 @@ namespace Capstone
         public frmSettlePayment(frmCashier frm)
         {
             InitializeComponent();
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             frmC = frm;
             dateTimePickerDueDate.Value = DateTime.Today.AddDays(3);
         }
@@ -342,7 +344,7 @@ namespace Capstone
                 //string PaymentStatus = "Settled";
                 string NEWtransacNum = lblNewTransactionSet.Text;
                 cn.Open();
-                cm = new SqlCommand("UPDATE tblPaymentStatus SET Settled_Date = @Settled_Date, Completed_By = @Completed_By, Status = 'Settled' WHERE Transaction_No LIKE '" + transacNum + "' ", cn);
+                cm = new SQLiteCommand("UPDATE tblPaymentStatus SET Settled_Date = @Settled_Date, Completed_By = @Completed_By, Status = 'Settled' WHERE Transaction_No LIKE '" + transacNum + "' ", cn);
                 //cm.Parameters.AddWithValue("@Transaction_No", transacNum);
                 cm.Parameters.AddWithValue("@Settled_Date", Settled_Date);
                 cm.Parameters.AddWithValue("@Completed_By", Completed_By);
@@ -350,13 +352,13 @@ namespace Capstone
                 cn.Close();
 
                 cn.Open();
-                cm = new SqlCommand("UPDATE tblOrderStatus SET Payment_Status = 'Settled' WHERE Transaction_No LIKE '" + transacNum + "' ", cn);                
+                cm = new SQLiteCommand("UPDATE tblOrderStatus SET Payment_Status = 'Settled' WHERE Transaction_No LIKE '" + transacNum + "' ", cn);                
                 //cm.Parameters.AddWithValue("@Payment_Status", PaymentStatus);                
                 cm.ExecuteNonQuery();
                 cn.Close();
 
                 cn.Open();
-                cm = new SqlCommand("INSERT INTO tblReceiptSettle (Transaction_No, Transaction_Date, Payment_Mode, Customer, Net_Total, Payment, Change, Cashier, New_TransacNo) VALUES(@Transaction_No, @Transaction_Date, @Payment_Mode, @Customer, @Net_Total, @Payment, @Change, @Cashier, @New_TransacNo)", cn);
+                cm = new SQLiteCommand("INSERT INTO tblReceiptSettle (Transaction_No, Transaction_Date, Payment_Mode, Customer, Net_Total, Payment, Change, Cashier, New_TransacNo) VALUES(@Transaction_No, @Transaction_Date, @Payment_Mode, @Customer, @Net_Total, @Payment, @Change, @Cashier, @New_TransacNo)", cn);
                 cm.Parameters.AddWithValue("@Transaction_No", transacNum);
                 cm.Parameters.AddWithValue("@New_TransacNo", NEWtransacNum);
                 cm.Parameters.AddWithValue("@Transaction_Date", Settled_Date);
@@ -422,7 +424,7 @@ namespace Capstone
                 //preview.ShowDialog();
 
                 cn.Open();
-                cm = new SqlCommand("INSERT INTO tblPaymentStatus (Transaction_No, Customer, Total_Payment, Initial_Deposit, Due_Date, Rem_Balance, Status, Discount_Per_Trans, Settled_Date, Completed_By) VALUES(@Transaction_No, @Customer, @Total_Payment, @Initial_Deposit, @Due_Date, @Rem_Balance, @Status, @Discount_Per_Trans, @Settled_Date, @Completed_By)", cn);
+                cm = new SQLiteCommand("INSERT INTO tblPaymentStatus (Transaction_No, Customer, Total_Payment, Initial_Deposit, Due_Date, Rem_Balance, Status, Discount_Per_Trans, Settled_Date, Completed_By) VALUES(@Transaction_No, @Customer, @Total_Payment, @Initial_Deposit, @Due_Date, @Rem_Balance, @Status, @Discount_Per_Trans, @Settled_Date, @Completed_By)", cn);
                 cm.Parameters.AddWithValue("@Transaction_No", transacNum);
                 cm.Parameters.AddWithValue("@Customer", customer);
                 cm.Parameters.AddWithValue("@Total_Payment", total.ToString("#,##0.00"));
@@ -438,7 +440,7 @@ namespace Capstone
 
                 checkOrderIfDeposit(out status, pTerms, out claimDate, out paymentStatus);
                 cn.Open();
-                cm = new SqlCommand("INSERT INTO tblOrderStatus (Transaction_No, Customer, Expected_Arrival, Status, Date_Claimed, Release_By, Payment_Status) VALUES(@Transaction_No, @Customer, @Expected_Arrival, @Status, @Date_Claimed, @Release_By, @Payment_Status)", cn);
+                cm = new SQLiteCommand("INSERT INTO tblOrderStatus (Transaction_No, Customer, Expected_Arrival, Status, Date_Claimed, Release_By, Payment_Status) VALUES(@Transaction_No, @Customer, @Expected_Arrival, @Status, @Date_Claimed, @Release_By, @Payment_Status)", cn);
                 cm.Parameters.AddWithValue("@Transaction_No", lblTransacNo.Text);
                 cm.Parameters.AddWithValue("@Customer", customer);
                 cm.Parameters.AddWithValue("@Expected_Arrival", dueDate);
@@ -452,7 +454,7 @@ namespace Capstone
 
                 calculateFrameLenseTotal(frmC.dataGridViewCart, transacNum, out frameTotal, out lenseTotal);
                 cn.Open();
-                cm = new SqlCommand("INSERT INTO tblReceipt (Transaction_No, Transaction_Date, Payment_Mode, Payment_Terms, Customer, Gross_Total, Discount, Net_Total, Payment, Balance, Change, Discount_Percent, Settled_Date, Cashier, Frame_Total, Lense_Total) VALUES(@Transaction_No, @Transaction_Date, @Payment_Mode, @Payment_Terms, @Customer, @Gross_Total, @Discount, @Net_Total, @Payment, @Balance, @Change, @Discount_Percent, @Settled_Date, @Cashier, @Frame_Total, @Lense_Total)", cn);
+                cm = new SQLiteCommand("INSERT INTO tblReceipt (Transaction_No, Transaction_Date, Payment_Mode, Payment_Terms, Customer, Gross_Total, Discount, Net_Total, Payment, Balance, Change, Discount_Percent, Settled_Date, Cashier, Frame_Total, Lense_Total) VALUES(@Transaction_No, @Transaction_Date, @Payment_Mode, @Payment_Terms, @Customer, @Gross_Total, @Discount, @Net_Total, @Payment, @Balance, @Change, @Discount_Percent, @Settled_Date, @Cashier, @Frame_Total, @Lense_Total)", cn);
                 cm.Parameters.AddWithValue("@Transaction_No", lblTransacNo.Text);//, Frame_Total, Lense_Total
                 cm.Parameters.AddWithValue("@Transaction_Date", transDate);//, @Frame_Total, @Lense_Total
                 cm.Parameters.AddWithValue("@Payment_Mode", pMethod);
@@ -483,7 +485,7 @@ namespace Capstone
                     classInventory.determineStockLevel(ITMID);
 
                     cn.Open();
-                    cm = new SqlCommand("UPDATE tblCart SET Date = '" + transDate + "', Payment = " + payment + ", Change = " + change + ", PMode = '" + pMethod + "', PTerms = '" + pTerms + "', Cashier = '" + cashier + "', Customer = '" + customer + "', Status = 'Sold', Discount_Per_Trans = '" + finalDiscount + "' WHERE num LIKE '" + frmC.dataGridViewCart.Rows[i].Cells[11].Value.ToString() + "'", cn);
+                    cm = new SQLiteCommand("UPDATE tblCart SET Date = '" + transDate + "', Payment = " + payment + ", Change = " + change + ", PMode = '" + pMethod + "', PTerms = '" + pTerms + "', Cashier = '" + cashier + "', Customer = '" + customer + "', Status = 'Sold', Discount_Per_Trans = '" + finalDiscount + "' WHERE num LIKE '" + frmC.dataGridViewCart.Rows[i].Cells[11].Value.ToString() + "'", cn);
                     cm.ExecuteNonQuery();
                     cn.Close();
                 }
@@ -493,7 +495,7 @@ namespace Capstone
                     cn.Open();
                     //cm = new SqlCommand("INSERT INTO tblServiceAvailed (Service_ID, Transaction_No, Customer, Status) VALUES(@Service_ID, @Transaction_No, @Customer, @Status)", cn);
 
-                    cm = new SqlCommand("UPDATE tblServiceAvailed SET Transaction_No = @Transaction_No, Customer = @Customer, Status = @Status WHERE Num LIKE @Service_num ", cn);
+                    cm = new SQLiteCommand("UPDATE tblServiceAvailed SET Transaction_No = @Transaction_No, Customer = @Customer, Status = @Status WHERE Num LIKE @Service_num ", cn);
                     cm.Parameters.AddWithValue("@Service_num", frmC.dataGridViewService.Rows[i].Cells[6].Value.ToString());
                     cm.Parameters.AddWithValue("@Transaction_No", lblTransacNo.Text);
                     cm.Parameters.AddWithValue("@Customer", customer);
@@ -764,7 +766,7 @@ namespace Capstone
             rowCount = 0; rowCountDesc = 0;
             try
             {
-                cn = new SqlConnection(dbcon.MyConnection());
+                cn = new SQLiteConnection(dbcon.MyConnection);
                 //Desc = ""; Price = ""; Quant = ""; Total = ""; UnitM = "";
                 int count, rowCountAll = 0, quanti = 0; string des = "", UnitMe = "";
                 double price = 0, total = 0;
@@ -781,7 +783,7 @@ namespace Capstone
                 //IList.Clear();
                 cn.Open();
                 //SqlCommand cm = new SqlCommand("SELECT Description, Price, Quantity, Total, Unit_Measure, COUNT(Description) FROM ViewCartStockItem WHERE Transaction_No LIKE '" + transacNo + "' GROUP BY Description, Price, Quantity, Total, Unit_Measure HAVING COUNT(Description) < 1", cn);
-                SqlCommand cm = new SqlCommand("SELECT Description, Price, Quantity, Total, Unit_Measure FROM ViewCartStockItem WHERE Transaction_No LIKE '" + transacNo + "'", cn);
+                SQLiteCommand cm = new SQLiteCommand("SELECT Description, Price, Quantity, Total, Unit_Measure FROM ViewCartStockItem WHERE Transaction_No LIKE '" + transacNo + "'", cn);
                 dr = cm.ExecuteReader();
                 while (dr.Read())
                 {
@@ -1241,9 +1243,9 @@ namespace Capstone
 
             }
 
-            cn = new SqlConnection(dbcon.MyConnection());            
+            cn = new SQLiteConnection(dbcon.MyConnection);            
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT Total from tblCart WHERE Transaction_No LIKE '%" + transNo + "%' AND Lense_Check > 0 ", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT Total from tblCart WHERE Transaction_No LIKE '%" + transNo + "%' AND Lense_Check > 0 ", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
@@ -1254,9 +1256,9 @@ namespace Capstone
             dr.Close();
             cn.Close();
 
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             cn.Open();
-            cm = new SqlCommand("SELECT Total from tblCart WHERE Transaction_No LIKE '%" + transNo + "%' AND Lense_Check = 0 ", cn);
+            cm = new SQLiteCommand("SELECT Total from tblCart WHERE Transaction_No LIKE '%" + transNo + "%' AND Lense_Check = 0 ", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {

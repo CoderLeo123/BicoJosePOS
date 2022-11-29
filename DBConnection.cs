@@ -11,13 +11,24 @@ namespace Capstone
 {
     internal class DBConnection
     {
-        public SQLiteConnection MyConnections;
+        public SQLiteConnection MyConnection;
+ //       <connectionStrings>
+	//	<add name = "prod" connectionString="YourConnectionString"/>	
+	//	<add name = "Dev"
 
-        public string MyConnection()
+ //       providerName="System.Data.SqlClient"
+	//	connectionString="Data Source=DESKTOP-80MBCB5\;AttachDbFilename=|DataDirectory|\Database.mdf;Database=Caps;user id=sa; password=Caps123;"/>
+	//</connectionStrings>
+        public DBConnection()
         {
-            MyConnections = new SQLiteConnection("Data Source=Database1.db");
-            string setting = ConfigurationManager.AppSettings["setting1"];
-            string conn = ConfigurationManager.ConnectionStrings["Dev"].ConnectionString;
+            string conn = ConfigurationManager.ConnectionStrings["Prod"].ConnectionString;
+            MyConnection = new SQLiteConnection(conn);
+        }
+        public string MyConnections()
+        {
+            //MyConnections = new SQLiteConnection("Data Source=Database1.db");
+            //string setting = ConfigurationManager.AppSettings["setting1"];
+            string conn = ConfigurationManager.ConnectionStrings["Prod"].ConnectionString;
             //providerName="System.Data.SqlClient"
             string con = @"Data Source=.\SQLEXPRESS01;AttachDbFilename=C:\Users\leomar\source\repos\BicoJosePOS\Database.mdf;Integrated Security=True;User Instance=True";//user id=sa; password=Caps123; Trusted_Connection=False;User Instance=False Database=Caps;
             
@@ -28,8 +39,8 @@ namespace Capstone
             string con3 = @"Data Source=DESKTOP-80MBCB5\;AttachDbFilename=|DataDirectory|\Database.mdf;Database=Caps;user id=sa; password=Caps123;";
                         
             string con2 = @"Data Source=.\SQLEXPRESS01;AttachDbFilename=|DataDirectory|\Database.mdf;Database=Database;Integrated Security=True;User Instance=True";
-            return con4;
-
+            return conn;
+            MyConnection = new SQLiteConnection(conn);
         }
 
         

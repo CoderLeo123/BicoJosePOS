@@ -5,16 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
+using System.Data.SQLite;
 namespace Capstone
 {
 
     internal class ClassGenerateID
     {
 
-        SqlConnection cn = new SqlConnection();
+        SQLiteConnection cn = new SQLiteConnection();
         //SqlCommand cm = new SqlCommand();
         DBConnection dbcon = new DBConnection();
-        SqlDataReader dr;
+        SQLiteDataReader dr;
         string title = "BICO-JOSE System";
         string I_ID, T_ID, P_ID, S_ID, STK_ID, trans_num; int count;
         //frmAddAccessories frmAdd = new frmAddAccessories();
@@ -23,10 +24,10 @@ namespace Capstone
         {
             try
             {
-                cn = new SqlConnection(dbcon.MyConnection());
+                cn = new SQLiteConnection(dbcon.MyConnection);
 
                 cn.Open();
-                SqlCommand cm = new SqlCommand("SELECT TOP 1 User_ID FROM tblUser ORDER BY User_ID DESC", cn);
+                SQLiteCommand cm = new SQLiteCommand("SELECT User_ID FROM tblUser ORDER BY User_ID DESC LIMIT 5", cn);
                 dr = cm.ExecuteReader();
                 dr.Read();
                 if (dr.HasRows)
@@ -58,10 +59,10 @@ namespace Capstone
         {
             try
             {
-                cn = new SqlConnection(dbcon.MyConnection());
+                cn = new SQLiteConnection(dbcon.MyConnection);
 
                 cn.Open();
-                SqlCommand cm = new SqlCommand("SELECT TOP 1 Patient_ID FROM tblPatientRecord ORDER BY Patient_ID DESC", cn);
+                SQLiteCommand cm = new SQLiteCommand("SELECT Patient_ID FROM tblPatientRecord ORDER BY Patient_ID DESC LIMIT 5", cn);
                 dr = cm.ExecuteReader();
                 dr.Read();
                 if (dr.HasRows)
@@ -91,10 +92,10 @@ namespace Capstone
         {
             try
             {
-                cn = new SqlConnection(dbcon.MyConnection());
+                cn = new SQLiteConnection(dbcon.MyConnection);
 
                 cn.Open();
-                SqlCommand cm = new SqlCommand("SELECT TOP 1 Prescript_No FROM tblPrescription ORDER BY Prescript_No DESC", cn);
+                SQLiteCommand cm = new SQLiteCommand("SELECT Prescript_No FROM tblPrescription ORDER BY Prescript_No DESC LIMIT 5", cn);
                 dr = cm.ExecuteReader();
                 dr.Read();
                 if (dr.HasRows)
@@ -124,9 +125,9 @@ namespace Capstone
         {//"tblProduct", "Product_ID", productID
             //SELECT TOP 1 Product_ID FROM tblProduct ORDER BY Product_ID DESC
             //string P_ID; int count;
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT TOP 1 " + column + " FROM " + table + " ORDER BY " + column + " DESC", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT " + column + " FROM " + table + " ORDER BY " + column + " DESC LIMIT 5", cn);
             dr = cm.ExecuteReader();
             dr.Read();
             P_ID = dr[0].ToString();
@@ -139,9 +140,9 @@ namespace Capstone
         {//"tblProduct", "Product_ID", productID
             //SELECT TOP 1 Product_ID FROM tblProduct ORDER BY Product_ID DESC
             //string P_ID; int count;
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT TOP 1 " + column + " FROM " + table + " ORDER BY " + column + " DESC", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT " + column + " FROM " + table + " ORDER BY " + column + " DESC LIMIT 5", cn);
             dr = cm.ExecuteReader();
             dr.Read();
             P_ID = dr[0].ToString();
@@ -153,9 +154,9 @@ namespace Capstone
 
         public void deleteInitialID(string table, string column, string value)
         {
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             cn.Open();
-            SqlCommand cm = new SqlCommand("DELETE FROM " + table + " WHERE " + column + " LIKE '" + value + "'", cn);
+            SQLiteCommand cm = new SQLiteCommand("DELETE FROM " + table + " WHERE " + column + " LIKE '" + value + "'", cn);
             cm.ExecuteNonQuery();
             cn.Close();
         }
@@ -163,9 +164,9 @@ namespace Capstone
         public void insertIntialID(string table, string column, string value)
         {//tblProduct, Product_ID, P1001
          //INSERT INTO tblProduct (Product_ID) VALUES('P1001')
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             cn.Open();
-            SqlCommand cm = new SqlCommand("INSERT INTO "+ table + " ("+ column + ") VALUES('"+ value + "')", cn);
+            SQLiteCommand cm = new SQLiteCommand("INSERT INTO " + table + " ("+ column + ") VALUES('"+ value + "')", cn);
             cm.ExecuteNonQuery();
             cn.Close();
         }
@@ -174,10 +175,10 @@ namespace Capstone
         {
             try
             {
-                cn = new SqlConnection(dbcon.MyConnection());
+                cn = new SQLiteConnection(dbcon.MyConnection);
 
                 cn.Open();
-                SqlCommand cm = new SqlCommand("SELECT TOP 1 Product_ID FROM tblProduct ORDER BY Product_ID DESC", cn);
+                SQLiteCommand cm = new SQLiteCommand("SELECT Product_ID FROM tblProduct ORDER BY Product_ID DESC LIMIT 5", cn);
                 dr = cm.ExecuteReader();
                 dr.Read();
                 if (dr.HasRows)
@@ -207,10 +208,10 @@ namespace Capstone
         {
             try
             {
-                cn = new SqlConnection(dbcon.MyConnection());
+                cn = new SQLiteConnection(dbcon.MyConnection);
 
                 cn.Open();//tblProductType
-                SqlCommand cm = new SqlCommand("SELECT TOP 1 Type_ID FROM tblType ORDER BY Type_ID DESC", cn);
+                SQLiteCommand cm = new SQLiteCommand("SELECT Type_ID FROM tblType ORDER BY Type_ID DESC LIMIT 5", cn);
                 dr = cm.ExecuteReader();
                 dr.Read();
 
@@ -241,10 +242,10 @@ namespace Capstone
         {
             try
             {
-                cn = new SqlConnection(dbcon.MyConnection());
+                cn = new SQLiteConnection(dbcon.MyConnection);
 
                 cn.Open();
-                SqlCommand cm = new SqlCommand("SELECT TOP 1 Item_ID FROM tblItem ORDER BY Item_ID DESC", cn);
+                SQLiteCommand cm = new SQLiteCommand("SELECT Item_ID FROM tblItem ORDER BY Item_ID DESC LIMIT 5", cn);
                 dr = cm.ExecuteReader();
                 dr.Read();
                 if (dr.HasRows)
@@ -274,9 +275,9 @@ namespace Capstone
         {
             try
             {
-                cn = new SqlConnection(dbcon.MyConnection());
+                cn = new SQLiteConnection(dbcon.MyConnection);
                 cn.Open();
-                SqlCommand cm = new SqlCommand("SELECT TOP 1 Service_ID FROM tblServices ORDER BY Service_ID DESC", cn);
+                SQLiteCommand cm = new SQLiteCommand("SELECT Service_ID FROM tblServices ORDER BY Service_ID DESC LIMIT 5", cn);
                 dr = cm.ExecuteReader();
                 dr.Read();
                 if (dr.HasRows)
@@ -306,9 +307,9 @@ namespace Capstone
         {//txtStockID
             try
             {
-                cn = new SqlConnection(dbcon.MyConnection());
+                cn = new SQLiteConnection(dbcon.MyConnection);
                 cn.Open();
-                SqlCommand cm = new SqlCommand("SELECT TOP 1 Stock_ID FROM tblStock ORDER BY Stock_ID DESC", cn);
+                SQLiteCommand cm = new SQLiteCommand("SELECT Stock_ID FROM tblStock ORDER BY Stock_ID DESC LIMIT 5", cn);
                 dr = cm.ExecuteReader();
                 dr.Read();
                 if (dr.HasRows)
@@ -348,11 +349,11 @@ namespace Capstone
         {//lblTransactionNo
             try
             {
-                cn = new SqlConnection(dbcon.MyConnection());
+                cn = new SQLiteConnection(dbcon.MyConnection);
                 string date = DateTime.Now.ToString("yyyyMMdd");
                 string final = "";
                 cn.Open();
-                SqlCommand cm = new SqlCommand("SELECT TOP 1 Transaction_No FROM tblCart ORDER BY Transaction_No DESC", cn);
+                SQLiteCommand cm = new SQLiteCommand("SELECT Transaction_No FROM tblCart ORDER BY Transaction_No DESC LIMIT 5", cn);
                 dr = cm.ExecuteReader();
                 dr.Read();
                 if (dr.HasRows)

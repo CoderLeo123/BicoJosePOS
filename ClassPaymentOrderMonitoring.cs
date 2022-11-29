@@ -4,24 +4,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Data.SQLite;
 namespace Capstone
 {
     internal class ClassPaymentOrderMonitoring
     {
-        SqlConnection cn = new SqlConnection();
+        SQLiteConnection cn = new SQLiteConnection();
         //SqlCommand cm = new SqlCommand();
         DBConnection dbcon = new DBConnection();
-        SqlDataReader dr;
+        SQLiteDataReader dr;
         ClassComputations classCompute = new ClassComputations();
         string title = "BICO-JOSE System";
 
         public void LoadRecordsUnsettled(DataGridView dgv, TextBox txtSearch)
         {//dataGridViewProduct, txtSearchProduct
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             int i = 0;
             dgv.Rows.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT * FROM ViewPaymentCart WHERE Status = 'Pending' AND Transaction_No LIKE '%" + txtSearch.Text + "%' Order by Transaction_No DESC", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT * FROM ViewPaymentCart WHERE Status = 'Pending' AND Transaction_No LIKE '%" + txtSearch.Text + "%' Order by Transaction_No DESC", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
@@ -35,9 +36,9 @@ namespace Capstone
 
         public void updateReleaseBy(string cashier, string transNo)
         {
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             cn.Open();
-            SqlCommand cm = new SqlCommand("UPDATE tblPaymentStatus SET Completed_By = @Completed_By WHERE Status LIKE 'Settled'", cn);
+            SQLiteCommand cm = new SQLiteCommand("UPDATE tblPaymentStatus SET Completed_By = @Completed_By WHERE Status LIKE 'Settled'", cn);
             cm.Parameters.AddWithValue("@Completed_By", cashier);
 
             cn.Close();
@@ -45,11 +46,11 @@ namespace Capstone
 
         public void LoadRecordsSettled(DataGridView dgv, TextBox txtSearch)
         {//dataGridViewProduct, txtSearchProduct
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             int i = 0; string ReleaseBY = "";
             dgv.Rows.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT * FROM ViewPaymentCart WHERE Status = 'Settled' AND Customer LIKE '%" + txtSearch.Text + "%' Order by Transaction_No DESC", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT * FROM ViewPaymentCart WHERE Status = 'Settled' AND Customer LIKE '%" + txtSearch.Text + "%' Order by Transaction_No DESC", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
@@ -66,11 +67,11 @@ namespace Capstone
         }
         public void LoadRecordsOrder(DataGridView dgv, TextBox txtSearch)
         {//dataGridViewProduct, txtSearchProduct
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             int i = 0;
             dgv.Rows.Clear();
             cn.Open();//Status = 'In The Lab'
-            SqlCommand cm = new SqlCommand("SELECT * FROM tblOrderStatus WHERE Status = 'In The Lab' AND Customer LIKE '%" + txtSearch.Text + "%' Order by Transaction_No DESC", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT * FROM tblOrderStatus WHERE Status = 'In The Lab' AND Customer LIKE '%" + txtSearch.Text + "%' Order by Transaction_No DESC", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
@@ -83,11 +84,11 @@ namespace Capstone
         }
         public void LoadRecordsOrderArrived(DataGridView dgv, TextBox txtSearch)
         {//dataGridViewProduct, txtSearchProduct
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             int i = 0;
             dgv.Rows.Clear();
             cn.Open();//Status = 'In The Lab'
-            SqlCommand cm = new SqlCommand("SELECT * FROM tblOrderStatus WHERE Status = 'Arrived' AND Customer LIKE '%" + txtSearch.Text + "%' Order by Transaction_No DESC", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT * FROM tblOrderStatus WHERE Status = 'Arrived' AND Customer LIKE '%" + txtSearch.Text + "%' Order by Transaction_No DESC", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
@@ -100,11 +101,11 @@ namespace Capstone
         }
         public void LoadRecordsOrderClaimed(DataGridView dgv, TextBox txtSearch)
         {//dataGridViewProduct, txtSearchProduct
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             int i = 0;
             dgv.Rows.Clear();
             cn.Open();//Status = 'In The Lab'
-            SqlCommand cm = new SqlCommand("SELECT * FROM tblOrderStatus WHERE Status = 'Claimed' AND Customer LIKE '%" + txtSearch.Text + "%' Order by Transaction_No DESC", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT * FROM tblOrderStatus WHERE Status = 'Claimed' AND Customer LIKE '%" + txtSearch.Text + "%' Order by Transaction_No DESC", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {

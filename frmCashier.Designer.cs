@@ -100,7 +100,6 @@
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.dataGridViewCart = new System.Windows.Forms.DataGridView();
-            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.NumCart = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DescriptionCart = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Expiration = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -119,6 +118,7 @@
             this.priceReal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Classif = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalReal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.panel2.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel9.SuspendLayout();
@@ -1017,10 +1017,6 @@
             this.dataGridViewCart.TabIndex = 3;
             this.dataGridViewCart.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewCart_CellContentClick);
             // 
-            // printDocument1
-            // 
-            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
-            // 
             // NumCart
             // 
             this.NumCart.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -1073,7 +1069,7 @@
             this.DiscountCart.Name = "DiscountCart";
             this.DiscountCart.ReadOnly = true;
             this.DiscountCart.Visible = false;
-            this.DiscountCart.Width = 134;
+            this.DiscountCart.Width = 125;
             // 
             // TotalCart
             // 
@@ -1176,6 +1172,10 @@
             this.totalReal.Name = "totalReal";
             this.totalReal.Visible = false;
             this.totalReal.Width = 125;
+            // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
             // frmCashier
             // 

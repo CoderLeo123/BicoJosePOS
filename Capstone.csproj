@@ -42,4 +42,10 @@
     <Folder Include="Class\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Database1.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

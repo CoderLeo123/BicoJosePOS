@@ -9,14 +9,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Data.SQLite;
 namespace Capstone
 {
     public partial class frmFinalReceipt : Form
     {
-        SqlConnection cn = new SqlConnection();
-        SqlCommand cm = new SqlCommand();
+        SQLiteConnection cn = new SQLiteConnection();
+        SQLiteCommand cm = new SQLiteCommand();
         DBConnection dbcon = new DBConnection();
-        SqlDataReader dr;
+        SQLiteDataReader dr;
         ClassGenerateID classGenerateID = new ClassGenerateID();
         ClassLoadData classLoadData = new ClassLoadData();
         ClassPatientTransaction classPatient = new ClassPatientTransaction();

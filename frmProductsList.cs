@@ -8,15 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-
+using System.Data.SQLite;
 namespace Capstone
 {
     public partial class frmProductsList : Form
     {
-        SqlConnection cn = new SqlConnection();
-        SqlCommand cm = new SqlCommand();
+        SQLiteConnection cn = new SQLiteConnection();
+        SQLiteCommand cm = new SQLiteCommand();
         DBConnection dbcon = new DBConnection();
-        SqlDataReader dr;
+        SQLiteDataReader dr;
         string title = "BICO-JOSE System";
         ClassGenerateID classGenerateID = new ClassGenerateID();
         ClassLoadData classLoadData = new ClassLoadData();
@@ -25,7 +25,7 @@ namespace Capstone
         public frmProductsList()
         {
             InitializeComponent();
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             classLoadData.LoadRecordsType(dataGridViewType, txtSearchTypeProducts);
             classLoadData.LoadRecordsProduct(dataGridViewProduct, txtSearchProduct);
             classLoadData.LoadRecordsItem(dataGridViewItems, txtSearch);
@@ -94,7 +94,7 @@ namespace Capstone
                 if (MessageBox.Show("Are you sure you want to delete this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     cn.Open();
-                    cm = new SqlCommand("DELETE FROM tblType WHERE Type_ID LIKE '" + dataGridViewType[1, e.RowIndex].Value.ToString() + "'", cn);
+                    cm = new SQLiteCommand("DELETE FROM tblType WHERE Type_ID LIKE '" + dataGridViewType[1, e.RowIndex].Value.ToString() + "'", cn);
                     cm.ExecuteNonQuery();
                     cn.Close();
                     MessageBox.Show("Record has been successfully deleted.", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -128,7 +128,7 @@ namespace Capstone
                 if (MessageBox.Show("Are you sure you want to delete this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     cn.Open();
-                    cm = new SqlCommand("DELETE FROM tblProduct WHERE Product_ID LIKE '" + dataGridViewProduct[1, e.RowIndex].Value.ToString() + "'", cn);
+                    cm = new SQLiteCommand("DELETE FROM tblProduct WHERE Product_ID LIKE '" + dataGridViewProduct[1, e.RowIndex].Value.ToString() + "'", cn);
                     cm.ExecuteNonQuery();
                     cn.Close();
                     MessageBox.Show("Record has been successfully deleted.", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -263,7 +263,7 @@ namespace Capstone
                 if (MessageBox.Show("Are you sure you want to delete this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     cn.Open();
-                    cm = new SqlCommand("DELETE FROM tblItem WHERE Item_ID LIKE '" + dataGridViewItems[9, e.RowIndex].Value.ToString() + "'", cn);
+                    cm = new SQLiteCommand("DELETE FROM tblItem WHERE Item_ID LIKE '" + dataGridViewItems[9, e.RowIndex].Value.ToString() + "'", cn);
                     cm.ExecuteNonQuery();
                     cn.Close();
                     MessageBox.Show("Record has been successfully deleted.", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -353,7 +353,7 @@ namespace Capstone
                 if (MessageBox.Show("Are you sure you want to delete this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     cn.Open();
-                    cm = new SqlCommand("DELETE FROM tblServices WHERE Service_ID LIKE '" + dataGridViewService[1, e.RowIndex].Value.ToString() + "'", cn);
+                    cm = new SQLiteCommand("DELETE FROM tblServices WHERE Service_ID LIKE '" + dataGridViewService[1, e.RowIndex].Value.ToString() + "'", cn);
                     cm.ExecuteNonQuery();
                     cn.Close();
                     MessageBox.Show("Record has been successfully deleted.", title, MessageBoxButtons.OK, MessageBoxIcon.Information);

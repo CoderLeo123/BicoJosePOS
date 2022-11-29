@@ -9,14 +9,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Drawing.Printing;
+using System.Data.SQLite;
 namespace Capstone
 {
     public partial class frmReports : Form
     {
-        SqlConnection cn = new SqlConnection();
-        SqlCommand cm = new SqlCommand();
+        SQLiteConnection cn = new SQLiteConnection();
+        SQLiteCommand cm = new SQLiteCommand();
         DBConnection dbcon = new DBConnection();
-        SqlDataReader dr;
+        SQLiteDataReader dr;
         ClassLoadData classLoadData = new ClassLoadData();
         ClassReports classReport = new ClassReports();
         int sWidth = 850, sLength = 1050, lLength = 1400;
@@ -37,7 +38,7 @@ namespace Capstone
         public frmReports()
         {
             InitializeComponent();
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             textRightAlign();
             changeDatePriorCurrent(dateTimePickerStartSold);
             changeDatePriorCurrent(dateTimePickerStartTrans);
@@ -74,7 +75,7 @@ namespace Capstone
         }
         public void dateSelect(DataGridView dgv)
         {//dataGridViewInitial
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
              row = 0; string transDate = "";
             duplicateTransDate List = new duplicateTransDate();
             dup.Clear();
@@ -82,7 +83,7 @@ namespace Capstone
             dup.Add(List);
             dgv.Rows.Clear();            
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT DISTINCT Transaction_Date FROM tblReceipt", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT DISTINCT Transaction_Date FROM tblReceipt", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
@@ -109,10 +110,10 @@ namespace Capstone
         }
         public void computeSalePerDay(string transDate)
         {//string transDate = dgv.Rows[e.RowIndex].Cells[0].Value.ToString();
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             double payment = 0, balance = 0, change = 0; int rowCount = 0; string TDate = "N/A";
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT Payment, Balance, Change FROM tblReceipt WHERE Transaction_Date LIKE '%" + transDate + "%' ", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT Payment, Balance, Change FROM tblReceipt WHERE Transaction_Date LIKE '%" + transDate + "%' ", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
@@ -178,9 +179,9 @@ namespace Capstone
       
         public void deleteData()
         {
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             cn.Open();
-            SqlCommand cm = new SqlCommand("DELETE FROM tblSalesReport", cn);
+            SQLiteCommand cm = new SQLiteCommand("DELETE FROM tblSalesReport", cn);
             cm.ExecuteNonQuery();
             cn.Close();
         }
@@ -193,9 +194,9 @@ namespace Capstone
                 for (int i = 0; i < dataGridViewInitial.Rows.Count; i++)
                 {
                     pass = dataGridViewInitial.Rows[i].Cells[1].Value?.ToString();
-                    cn = new SqlConnection(dbcon.MyConnection());
+                    cn = new SQLiteConnection(dbcon.MyConnection);
                     cn.Open();
-                    SqlCommand cm = new SqlCommand("INSERT INTO tblSalesReport (Date) VALUES('"+ pass + "')", cn);
+                    SQLiteCommand cm = new SQLiteCommand("INSERT INTO tblSalesReport (Date) VALUES('" + pass + "')", cn);
                     //cm.Parameters.AddWithValue("@Date", pass);
                     cm.ExecuteNonQuery();
                     cn.Close();
@@ -204,9 +205,9 @@ namespace Capstone
         }
         public void updateSaleIntoTbl(string date, double payment, double balance)
         {
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             cn.Open();
-            SqlCommand cm = new SqlCommand("UPDATE tblSalesReport SET Total_Sale = @Total_Sale, Total_Bal = @Total_Bal WHERE Date LIKE '" + date + "'", cn);
+            SQLiteCommand cm = new SQLiteCommand("UPDATE tblSalesReport SET Total_Sale = @Total_Sale, Total_Bal = @Total_Bal WHERE Date LIKE '" + date + "'", cn);
             cm.Parameters.AddWithValue("@Total_Sale", payment.ToString("#,##0.00"));
             cm.Parameters.AddWithValue("@Total_Bal", balance.ToString("#,##0.00"));
             cm.ExecuteNonQuery();
@@ -711,11 +712,11 @@ namespace Capstone
         }
         public void tblServiceList(string transacNo, out int rowCount)
         {
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             //Desc = ""; Price = ""; Quant = ""; Total = ""; UnitM = "";
             rowCount = 0; SerList.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT Name, Price FROM ViewServiceAvailed WHERE Transaction_No LIKE '" + transacNo + "'", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT Name, Price FROM ViewServiceAvailed WHERE Transaction_No LIKE '" + transacNo + "'", cn);
             dr = cm.ExecuteReader();
 
             while (dr.Read())
@@ -754,9 +755,9 @@ namespace Capstone
         public void tblAvailedList(string transacNo, out int rowCount, out int rowCountDesc)
         {
             rowCount = 0; rowCountDesc = 0;
-            try
-            { 
-                cn = new SqlConnection(dbcon.MyConnection());
+            //try
+            //{ 
+                cn = new SQLiteConnection(dbcon.MyConnection);
             //Desc = ""; Price = ""; Quant = ""; Total = ""; UnitM = "";
             int count, rowCountAll = 0, quanti = 0; string des = "", UnitMe = "";
             double price = 0, total = 0;
@@ -772,8 +773,8 @@ namespace Capstone
 
             IList.Clear();
             cn.Open();
-            //SqlCommand cm = new SqlCommand("SELECT Description, Price, Quantity, Total, Unit_Measure, COUNT(Description) FROM ViewCartStockItem WHERE Transaction_No LIKE '" + transacNo + "' GROUP BY Description, Price, Quantity, Total, Unit_Measure HAVING COUNT(Description) < 1", cn);
-            SqlCommand cm = new SqlCommand("SELECT Description, Price, Quantity, Total, Unit_Measure FROM ViewCartStockItem WHERE Transaction_No LIKE '" + transacNo + "'", cn);
+                //SqlCommand cm = new SqlCommand("SELECT Description, Price, Quantity, Total, Unit_Measure, COUNT(Description) FROM ViewCartStockItem WHERE Transaction_No LIKE '" + transacNo + "' GROUP BY Description, Price, Quantity, Total, Unit_Measure HAVING COUNT(Description) < 1", cn);
+                SQLiteCommand cm = new SQLiteCommand("SELECT Description, Price, Quantity, Total, Unit_Measure FROM ViewCartStockItem WHERE Transaction_No LIKE '" + transacNo + "'", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
@@ -787,13 +788,17 @@ namespace Capstone
                     //comp.UnitM = dr.GetString(4);//"Unit_Measure"
 
                     ItemList List = new ItemList();
-                    List.Desc = dr.GetString(0);//"Description"
-                    List.Price = dr.GetDouble(1);//"Price"
-                    List.Qty = dr.GetInt32(2);//"Quantity"
-                    List.Total = dr.GetDouble(3);//"Total"
-                    List.UnitM = dr.GetString(4);//"Unit_Measure"
-
-                    IList.Add(List);
+                    //List.Desc = dr.GetString(0);//"Description"
+                    //List.Price = dr.GetDouble(1);//"Price"
+                    //List.Qty = dr.GetInt32(2);//"Quantity"
+                    //List.Total = dr.GetDouble(3);//"Total"
+                    //List.UnitM = dr.GetString(4);//"Unit_Measure"
+                List.Desc = des;//"Description"
+                List.Price = price;//"Price"
+                List.Qty = quanti;//"Quantity"
+                List.Total = total;//"Total"
+                List.UnitM = UnitMe;//"Unit_Measure"
+                IList.Add(List);
                     //compAll.Add(comp);
                 rowCount++;
                 //rowCountAll++;
@@ -822,12 +827,12 @@ namespace Capstone
                 //duplicateFilter(transacNo, out rowCountDesc, out rowCountAll);
                 //rowCountDesc = 2; rowCount = 4;
                 // calcu(rowCountDesc, rowCount);
-            }
-            catch (Exception ex)
-            {
-                cn.Close();
-                MessageBox.Show(ex.Message, "tblAvailedList", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    cn.Close();
+            //    MessageBox.Show(ex.Message, "tblAvailedListReports", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //}
         }
 
         public class ItemList
@@ -936,13 +941,13 @@ namespace Capstone
             x = 440;
             //y = 550;
             e.Graphics.DrawString("Total Amount: ", printFont, Brushes.Black, 20, (y += 50));//550
-            e.Graphics.DrawString(NetT, printFont, Brushes.Black, (x += 70), y);//510 
+            e.Graphics.DrawString("₱ " + NetT, printFont, Brushes.Black, (x += 70), y);//510 
 
             e.Graphics.DrawString("Amount Tendered: ", printFont, Brushes.Black, 20, (y += 30));
-            e.Graphics.DrawString(Payment, printFont, Brushes.Black, x, y);
+            e.Graphics.DrawString("₱ " + Payment, printFont, Brushes.Black, x, y);
 
             e.Graphics.DrawString("Change: ", printFont, Brushes.Black, 20, (y += 30));
-            e.Graphics.DrawString(Change, printFont, Brushes.Black, x, y);//710          
+            e.Graphics.DrawString("₱ " + Change, printFont, Brushes.Black, x, y);//710          
 
             e.Graphics.DrawString("THIS INVOICE/RECEIPT SHALL BE VALID FOR", printFontItallic, Brushes.Black, 130, (y += 60));//770
             e.Graphics.DrawString("ONE (1)) WEEK FROM THE DATE OF THE PERMIT TO USE", printFontItallic, Brushes.Black, 70, (y += 30));//800

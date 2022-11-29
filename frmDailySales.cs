@@ -8,14 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Data.SQLite;
 namespace Capstone
 {
     public partial class frmDailySales : Form
     {
-        SqlConnection cn = new SqlConnection();
-        SqlCommand cm = new SqlCommand();
+        SQLiteConnection cn = new SQLiteConnection();
+        SQLiteCommand cm = new SQLiteCommand();
         DBConnection dbcon = new DBConnection();
-        SqlDataReader dr;
+        SQLiteDataReader dr;
         ClassLoadData classLoadData = new ClassLoadData();
         ClassReports classReport = new ClassReports();
         string title = "BICO-JOSE System", transNo = "";
@@ -26,7 +27,7 @@ namespace Capstone
         public frmDailySales()
         {
             InitializeComponent();
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             changeDatePriorCurrent(dateTimePickerStartSold);
             changeDatePriorCurrent(dateTimePickerStartTrans);
             classLoadData.LoadRecordsTransacHist(dataGridViewTransacHist, txtSearchTransac, dateTimePickerStartTrans, dateTimePickerEndTrans);
@@ -75,11 +76,11 @@ namespace Capstone
 
         public void tblServiceList(string transacNo, out int rowCount)
         {
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             //Desc = ""; Price = ""; Quant = ""; Total = ""; UnitM = "";
             rowCount = 0; SList.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT Name, Price FROM ViewServiceAvailed WHERE Transaction_No LIKE '" + transacNo + "'", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT Name, Price FROM ViewServiceAvailed WHERE Transaction_No LIKE '" + transacNo + "'", cn);
             dr = cm.ExecuteReader();
 
             while (dr.Read())
@@ -105,7 +106,7 @@ namespace Capstone
 
         public void tblAvailedList(string transacNo, out int rowCount, out int rowCountDesc)
         {
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             //Desc = ""; Price = ""; Quant = ""; Total = ""; UnitM = "";
             int count, rowCountAll = 0, quanti = 0; string des = "", UnitMe = "";
             double price = 0, total = 0;
@@ -122,7 +123,7 @@ namespace Capstone
 
             rowCount = 0; rowCountDesc = 0; 
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT Description, Price, Quantity, Total, Unit_Measure FROM ViewCartStockItem WHERE Transaction_No LIKE '" + transacNo + "'", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT Description, Price, Quantity, Total, Unit_Measure FROM ViewCartStockItem WHERE Transaction_No LIKE '" + transacNo + "'", cn);
             dr = cm.ExecuteReader();
             
             while (dr.Read())
@@ -131,12 +132,17 @@ namespace Capstone
                 total = double.Parse(dr[3].ToString()); quanti = int.Parse(dr[2].ToString());
 
                 ItemList IList = new ItemList();
-                IList.Desc = dr.GetString(0);//"Description"
-                IList.Price = dr.GetDouble(1);//"Price"
-                IList.Qty = dr.GetInt32(2);//"Quantity"
-                IList.Total = dr.GetDouble(3);//"Total"
-                IList.UnitM = dr.GetString(4);//"Unit_Measure"
+                //IList.Desc = dr.GetString(0);//"Description"
+                //IList.Price = dr.GetDouble(1);//"Price"
+                //IList.Qty = dr.GetInt32(2);//"Quantity"
+                //IList.Total = dr.GetDouble(3);//"Total"
+                //IList.UnitM = dr.GetString(4);//"Unit_Measure"
 
+                IList.Desc = des;//"Description"
+                IList.Price = price;//"Price"
+                IList.Qty = quanti;//"Quantity"
+                IList.Total = total;//"Total"
+                IList.UnitM = UnitMe;//"Unit_Measure"
                 //comp.Desc = des;//"Description"
                 //comp.Price = price;//"Price"
                 //comp.Qty = quanti;//"Quantity"

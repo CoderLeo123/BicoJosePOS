@@ -8,14 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Data.SQLite;
 namespace Capstone
 {
     public partial class frmExpiration : Form
     {
-        SqlConnection cn = new SqlConnection();
-        SqlCommand cm = new SqlCommand();
+        SQLiteConnection cn = new SQLiteConnection();
+        SQLiteCommand cm = new SQLiteCommand();
         DBConnection dbcon = new DBConnection();
-        SqlDataReader dr;
+        SQLiteDataReader dr;
         ClassComputations classCompute = new ClassComputations();
         ClassLoadData classLoadData = new ClassLoadData();
         ClassInventory classInventory = new ClassInventory();
@@ -28,7 +29,7 @@ namespace Capstone
         public frmExpiration(frmBrowseItem frmAdd)
         {
             InitializeComponent();
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             frmB = frmAdd;
 
             
@@ -39,7 +40,7 @@ namespace Capstone
             try
             {
                 cn.Open();
-                cm = new SqlCommand("DELETE FROM tblBrowseExp", cn);
+                cm = new SQLiteCommand("DELETE FROM tblBrowseExp", cn);
                 cm.ExecuteNonQuery();
                 cn.Close();
                 this.Close();
@@ -104,7 +105,7 @@ namespace Capstone
             string displayPrice = unitPrice.ToString("#,##0.00");
             string displayTotal = unitTotal.ToString("#,##0.00");
             cn.Open();
-            cm = new SqlCommand("INSERT INTO tblCart (Stock_Num, Item_ID, Transaction_No, Quantity, Price, Total, Date, Status, Lense_Check, Display_Total, Display_Price, Unit_Measure) VALUES (@Stock_Num, @Item_ID, @TransactionNo, @Quantity, @Price, @Total, @Date, 'Cart', @Lense_Check, @Display_Total, @Display_Price, @Unit_Measure)", cn);
+            cm = new SQLiteCommand("INSERT INTO tblCart (Stock_Num, Item_ID, Transaction_No, Quantity, Price, Total, Date, Status, Lense_Check, Display_Total, Display_Price, Unit_Measure) VALUES (@Stock_Num, @Item_ID, @TransactionNo, @Quantity, @Price, @Total, @Date, 'Cart', @Lense_Check, @Display_Total, @Display_Price, @Unit_Measure)", cn);
             cm.Parameters.AddWithValue("@Stock_Num", unitStockNum);//unitStockNum
             cm.Parameters.AddWithValue("@Item_ID", ItmID);//ItmID = lblItemIDPass.Text
             cm.Parameters.AddWithValue("@TransactionNo", TransNo);// frmB.lblTrans.Text
@@ -229,7 +230,7 @@ namespace Capstone
                     dataGridViewSelected.Rows.RemoveAt(dataGridViewSelected.CurrentRow.Index);
 
                     cn.Open();
-                    cm = new SqlCommand("SELECT * FROM tblBrowseExp WHERE num LIKE '" + id.ToString() + "' ", cn);
+                    cm = new SQLiteCommand("SELECT * FROM tblBrowseExp WHERE num LIKE '" + id.ToString() + "' ", cn);
                     dr = cm.ExecuteReader();
                     while (dr.Read())
                     {
@@ -244,7 +245,7 @@ namespace Capstone
                     if (dataGridViewSelected.Rows.Count == 0)
                     {
                         cn.Open();
-                        cm = new SqlCommand("DELETE FROM tblBrowseExp", cn);
+                        cm = new SQLiteCommand("DELETE FROM tblBrowseExp", cn);
                         cm.ExecuteNonQuery();
                         cn.Close();
                     }
@@ -455,7 +456,7 @@ namespace Capstone
                     if (classfici == "Non-Consumable")
                     {
                         cn.Open();
-                        cm = new SqlCommand("INSERT INTO tblCart (Stock_Num, Item_ID, Transaction_No, Quantity, Price, Total, Date, Status, Lense_Check, Display_Total, Unit_Measure, Display_Price) VALUES (@Stock_Num, @Item_ID, @TransactionNo, @Quantity, @Price, @Total, @Date, 'Cart', @Lense_Check, @Display_Total, @Unit_Measure, @Display_Price)", cn);
+                        cm = new SQLiteCommand("INSERT INTO tblCart (Stock_Num, Item_ID, Transaction_No, Quantity, Price, Total, Date, Status, Lense_Check, Display_Total, Unit_Measure, Display_Price) VALUES (@Stock_Num, @Item_ID, @TransactionNo, @Quantity, @Price, @Total, @Date, 'Cart', @Lense_Check, @Display_Total, @Unit_Measure, @Display_Price)", cn);
                         //cm.Parameters.AddWithValue("@Stock_ID", frmB.dataGridViewBrowse[1, i].Value.ToString());
                         cm.Parameters.AddWithValue("@Stock_Num", dataGridViewNC[1, 0].Value.ToString());
                         cm.Parameters.AddWithValue("@Item_ID", lblItemIDPass.Text);
@@ -504,17 +505,17 @@ namespace Capstone
             {
                 status = "Purchased";
             }
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             cn.Open();//Set Quantity
-            SqlCommand cm = new SqlCommand("Update tblStock SET Item_Status = 'Purchased' WHERE Num = " + SNum + "", cn);            
+            SQLiteCommand cm = new SQLiteCommand("Update tblStock SET Item_Status = 'Purchased' WHERE Num = " + SNum + "", cn);            
             cm.ExecuteNonQuery();
             cn.Close();
         }
         public void reducedQuantity(string itemID, int CartQty)
         {
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             cn.Open();//Set Quantity
-            SqlCommand cm = new SqlCommand("UPDATE tblItem SET Quantity = Quantity - @Cart WHERE Stock_Check = 1 AND Item_ID LIKE '" + itemID + "'", cn);
+            SQLiteCommand cm = new SQLiteCommand("UPDATE tblItem SET Quantity = Quantity - @Cart WHERE Stock_Check = 1 AND Item_ID LIKE '" + itemID + "'", cn);
             cm.Parameters.AddWithValue("@Cart", CartQty);
             cm.ExecuteNonQuery();
             cn.Close();
@@ -523,9 +524,9 @@ namespace Capstone
         public void reducedQuantityTblStock(int SNum, int CartQty)
         {
             //string StkID = dataGridViewStockItems.Rows[i].Cells[3].Value?.ToString();
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             cn.Open();//Set Quantity
-            SqlCommand cm = new SqlCommand("UPDATE tblStockInventory SET Quantity = Quantity - @Cart WHERE Stock_Num = " + SNum + " ", cn);
+            SQLiteCommand cm = new SQLiteCommand("UPDATE tblStockInventory SET Quantity = Quantity - @Cart WHERE Stock_Num = " + SNum + " ", cn);
             cm.Parameters.AddWithValue("@Cart", CartQty);
             cm.ExecuteNonQuery();
             cn.Close();
@@ -534,9 +535,9 @@ namespace Capstone
         public void updateTblStockInvent(int SNum)
         {
             //string StkID = dataGridViewStockItems.Rows[i].Cells[3].Value?.ToString();
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             cn.Open();//Set Quantity
-            SqlCommand cm = new SqlCommand("UPDATE tblStockInventory SET Status = 'Purchased' WHERE Stock_Num = " + SNum + " ", cn);  
+            SQLiteCommand cm = new SQLiteCommand("UPDATE tblStockInventory SET Status = 'Purchased' WHERE Stock_Num = " + SNum + " ", cn);  
             cm.ExecuteNonQuery();
             cn.Close();
         }

@@ -8,14 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Data.SQLite;
 namespace Capstone
 {
     public partial class frmTransactionPatient : Form
     {
-        SqlConnection cn = new SqlConnection();
-        SqlCommand cm = new SqlCommand();
+        SQLiteConnection cn = new SQLiteConnection();
+        SQLiteCommand cm = new SQLiteCommand();
         DBConnection dbcon = new DBConnection();
-        SqlDataReader dr;
+        SQLiteDataReader dr;
         ClassPatientTransaction classPatient = new ClassPatientTransaction();
         ClassReports classReport = new ClassReports();
         string title = "BICO-JOSE System", transNo = "", check = "";
@@ -27,7 +28,7 @@ namespace Capstone
         public frmTransactionPatient(frmAddPatientRecord frmL)
         {
             InitializeComponent();
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             this.frmL = frmL;
         }
 
@@ -47,7 +48,7 @@ namespace Capstone
             if (colName == "ADD")
             {
                 cn.Open();
-                cm = new SqlCommand("SELECT Patient_ID FROM tblPaymentStatus WHERE Transaction_No LIKE '" + TransNo + "' ", cn);
+                cm = new SQLiteCommand("SELECT Patient_ID FROM tblPaymentStatus WHERE Transaction_No LIKE '" + TransNo + "' ", cn);
                 dr = cm.ExecuteReader();
                 if (dr.Read())
                 {
@@ -66,7 +67,7 @@ namespace Capstone
                         //cn.Close();
 
                         cn.Open();
-                        cm = new SqlCommand("INSERT INTO tblPatientTransaction (Patient_ID, Transaction_No, Transaction_Date, Type, Name, Old_TransNo) VALUES(@Patient_ID, @Transaction_No, @Transaction_Date, @Type, @Name, @Old_TransNo)", cn);
+                        cm = new SQLiteCommand("INSERT INTO tblPatientTransaction (Patient_ID, Transaction_No, Transaction_Date, Type, Name, Old_TransNo) VALUES(@Patient_ID, @Transaction_No, @Transaction_Date, @Type, @Name, @Old_TransNo)", cn);
                         cm.Parameters.AddWithValue("@Patient_ID", pID);
                         cm.Parameters.AddWithValue("@Transaction_No", TransNo);
                         cm.Parameters.AddWithValue("@Old_TransNo", TransNo);
@@ -111,7 +112,7 @@ namespace Capstone
             if (colName == "ad")
             {
                 cn.Open();
-                cm = new SqlCommand("SELECT Patient_ID FROM tblReceiptSettle WHERE Transaction_No LIKE '" + TransNo + "' ", cn);
+                cm = new SQLiteCommand("SELECT Patient_ID FROM tblReceiptSettle WHERE Transaction_No LIKE '" + TransNo + "' ", cn);
                 dr = cm.ExecuteReader();
                 if (dr.Read())
                 {
@@ -128,7 +129,7 @@ namespace Capstone
                         //cm.ExecuteNonQuery();
                         //cn.Close();
                         cn.Open();
-                        cm = new SqlCommand("INSERT INTO tblPatientTransaction (Patient_ID, Transaction_No, Transaction_Date, Type, Name, Old_TransNo) VALUES(@Patient_ID, @Transaction_No, @Transaction_Date, @Type, @Name, @Old_TransNo)", cn);
+                        cm = new SQLiteCommand("INSERT INTO tblPatientTransaction (Patient_ID, Transaction_No, Transaction_Date, Type, Name, Old_TransNo) VALUES(@Patient_ID, @Transaction_No, @Transaction_Date, @Type, @Name, @Old_TransNo)", cn);
                         cm.Parameters.AddWithValue("@Patient_ID", pID);
                         cm.Parameters.AddWithValue("@Transaction_No", TransNo);
                         cm.Parameters.AddWithValue("@Old_TransNo", oldTrans);
@@ -287,11 +288,11 @@ namespace Capstone
         }
         public void tblServiceList(string transacNo, out int rowCount)
         {
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             //Desc = ""; Price = ""; Quant = ""; Total = ""; UnitM = "";
             rowCount = 0; SList.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT Name, Price FROM ViewServiceAvailed WHERE Transaction_No LIKE '" + transacNo + "'", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT Name, Price FROM ViewServiceAvailed WHERE Transaction_No LIKE '" + transacNo + "'", cn);
             dr = cm.ExecuteReader();
 
             while (dr.Read())
@@ -316,11 +317,11 @@ namespace Capstone
         }
         public void tblAvailedList(string transacNo, out int rowCount)
         {
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             //Desc = ""; Price = ""; Quant = ""; Total = ""; UnitM = "";
             rowCount = 0; List.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT Description, Price, Quantity, Total, Unit_Measure FROM ViewCartStockItem WHERE Transaction_No LIKE '" + transacNo + "'", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT Description, Price, Quantity, Total, Unit_Measure FROM ViewCartStockItem WHERE Transaction_No LIKE '" + transacNo + "'", cn);
             dr = cm.ExecuteReader();
 
             while (dr.Read())
