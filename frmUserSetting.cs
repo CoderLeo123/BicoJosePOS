@@ -201,7 +201,7 @@ namespace Capstone
         private void dataGridViewUsers_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             lblUsID.Text = dataGridViewUsers.Rows[e.RowIndex].Cells[4].Value.ToString();
-            string userID = dataGridViewUsers.Rows[e.RowIndex].Cells[4].Value.ToString();
+            string userID = dataGridViewUsers.Rows[e.RowIndex].Cells[4].Value?.ToString();
             string colName = dataGridViewUsers.Columns[e.ColumnIndex].Name;
             string role = dataGridViewUsers.Rows[e.RowIndex].Cells[3].Value?.ToString();
             string FName = dataGridViewUsers.Rows[e.RowIndex].Cells[5].Value?.ToString();
@@ -224,8 +224,9 @@ namespace Capstone
                     if(role == "Master")
                     {
                         frm.comBoxUserType.Visible = false;
-
+                        frm.lblMaster.Text = "Master";
                     }
+                    frm.lblMaster.Text = "admin";
                     frm.comBoxUserType.SelectedItem = role;
                     frm.labelTitle.Text = "Edit User";
                     frm.btnCreateAccount.Visible = false;

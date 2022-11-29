@@ -147,6 +147,7 @@ namespace Capstone
                 else
                 {
                     MessageBox.Show("User type is not defined", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
                 }
                 this.Dispose(); this.Close();
             }

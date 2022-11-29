@@ -307,7 +307,11 @@ namespace Capstone
             try
             {
                 string fullname = txtFirstN.Text + " " + txtLastN.Text;
-
+                string role = comBoxUserType.Text;
+                if (lblMaster.Text == "Master")
+                {
+                    role = "Master";
+                }
                 if (MessageBox.Show("Are you sure you want to update this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     cn.Open();
@@ -317,7 +321,7 @@ namespace Capstone
                     cm.Parameters.AddWithValue("@Password", txtPasswordCreate.Text);
                     cm.Parameters.AddWithValue("@FName", txtFirstN.Text);
                     cm.Parameters.AddWithValue("@LName", txtLastN.Text);
-                    cm.Parameters.AddWithValue("@User_Type", comBoxUserType.Text);
+                    cm.Parameters.AddWithValue("@User_Type", role);
                     
                     cm.ExecuteNonQuery();
                     cn.Close();
