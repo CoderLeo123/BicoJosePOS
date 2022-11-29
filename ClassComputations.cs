@@ -4,15 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Data.SQLite;
 
 namespace Capstone
 {
     internal class ClassComputations
     {
-        SqlConnection cn = new SqlConnection();
+        SQLiteConnection cn = new SQLiteConnection();
         //SqlCommand cm = new SqlCommand();
-        DBConnection dbcon = new DBConnection();
-        SqlDataReader dr;
+       
+        
         string title = "BICO-JOSE System";
         //lblNetNoComa
         public void GetCartTotal(Label labelDiscount, Label labelSalesTotal, Label labelPayment, Label labelNetTotal, Label lblNetNoComa)

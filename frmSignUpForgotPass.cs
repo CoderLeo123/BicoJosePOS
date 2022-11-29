@@ -8,14 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Data.SQLite;
 namespace Capstone
 {
     public partial class frmSignUpForgotPass : Form
     {
-        SqlConnection cn = new SqlConnection();
-        SqlCommand cm = new SqlCommand();
+        SQLiteConnection cn = new SQLiteConnection();
+        SQLiteCommand cm = new SQLiteCommand();
         DBConnection dbcon = new DBConnection();
-        SqlDataReader dr;
+        SQLiteDataReader dr;
         frmUserSetting frmU;
         ClassLoadData classLoadData = new ClassLoadData();
         ClassGenerateID classGenerateID = new ClassGenerateID();
@@ -26,7 +27,7 @@ namespace Capstone
         public frmSignUpForgotPass(frmUserSetting frmU)
         {
             InitializeComponent();
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             classGenerateID.GenerateUserID(lblUserID);
             txtPasswordCreate.PasswordChar = '●';
             txtConfirmPass.PasswordChar = '●';
@@ -145,7 +146,7 @@ namespace Capstone
                         if (frmP.lblGrant.Text == "1")
                         {
                             cn.Open();
-                            cm = new SqlCommand("INSERT INTO tblUser (User_ID, Username, Password, Name, User_Type, FName, LName) VALUES(@User_ID, @Username, @Password, @Name, @User_Type, @FName, @LName)", cn);
+                            cm = new SQLiteCommand("INSERT INTO tblUser (User_ID, Username, Password, Name, User_Type, FName, LName) VALUES(@User_ID, @Username, @Password, @Name, @User_Type, @FName, @LName)", cn);
                             cm.Parameters.AddWithValue("@User_ID", lblUserID.Text);
                             cm.Parameters.AddWithValue("@Username", Uname);
                             cm.Parameters.AddWithValue("@Password", correctP);
@@ -169,7 +170,7 @@ namespace Capstone
                     else
                     {
                         cn.Open();
-                        cm = new SqlCommand("INSERT INTO tblUser (User_ID, Username, Password, Name, User_Type, FName, LName) VALUES(@User_ID, @Username, @Password, @Name, @User_Type, @FName, @LName)", cn);
+                        cm = new SQLiteCommand("INSERT INTO tblUser (User_ID, Username, Password, Name, User_Type, FName, LName) VALUES(@User_ID, @Username, @Password, @Name, @User_Type, @FName, @LName)", cn);
                         cm.Parameters.AddWithValue("@User_ID", lblUserID.Text);
                         cm.Parameters.AddWithValue("@Username", Uname);
                         cm.Parameters.AddWithValue("@Password", correctP);
@@ -224,7 +225,7 @@ namespace Capstone
         {
             string password = txtNewPassword.Text;
             cn.Open();
-            cm = new SqlCommand("UPDATE tblUser SET Password = '"+ password + "' WHERE User_ID LIKE '"+ lblUserIDForgot.Text +"'", cn);
+            cm = new SQLiteCommand("UPDATE tblUser SET Password = '" + password + "' WHERE User_ID LIKE '"+ lblUserIDForgot.Text +"'", cn);
   
             cm.ExecuteNonQuery();
             cn.Close();
@@ -315,7 +316,7 @@ namespace Capstone
                 if (MessageBox.Show("Are you sure you want to update this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     cn.Open();
-                    cm = new SqlCommand("UPDATE tblUser SET Username = @Username, Name = @Name, Password = @Password, FName = @FName, LName = @LName, User_Type = @User_Type WHERE User_ID LIKE '" + lblUserID.Text + "'", cn);
+                    cm = new SQLiteCommand("UPDATE tblUser SET Username = @Username, Name = @Name, Password = @Password, FName = @FName, LName = @LName, User_Type = @User_Type WHERE User_ID LIKE '" + lblUserID.Text + "'", cn);
                     cm.Parameters.AddWithValue("@Username", txtUserNameCreate.Text);
                     cm.Parameters.AddWithValue("@Name", fullname);
                     cm.Parameters.AddWithValue("@Password", txtPasswordCreate.Text);

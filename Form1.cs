@@ -1,13 +1,13 @@
 using System.Data.SqlClient;
-
+using System.Data.SQLite;
 namespace Capstone
 {
     public partial class frmAdmin : Form
     {
-        SqlConnection cn = new SqlConnection();
-        SqlCommand cm = new SqlCommand();
+        SQLiteConnection cn = new SQLiteConnection();
+        SQLiteCommand cm = new SQLiteCommand();
         DBConnection dbcon = new DBConnection();
-        SqlDataReader dr;
+        SQLiteDataReader dr;
         ClassLoadData classLoadData = new ClassLoadData();
         ClassInventory classInvent = new ClassInventory();
         ClassReports classReport = new ClassReports();
@@ -22,7 +22,7 @@ namespace Capstone
         public frmAdmin()
         {
             InitializeComponent();
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             Stock();
             Users();
             Payment();
@@ -37,7 +37,7 @@ namespace Capstone
         {
             
             cn.Open();
-            cm = new SqlCommand("INSERT INTO tblExpList (Stock_Num, Description, Expiration_Date, Quantity, Unit_Measure) VALUES(@Stock_Num, @Description, @Expiration_Date, @Quantity, @Unit_Measure)", cn);
+            cm = new SQLiteCommand("INSERT INTO tblExpList (Stock_Num, Description, Expiration_Date, Quantity, Unit_Measure) VALUES(@Stock_Num, @Description, @Expiration_Date, @Quantity, @Unit_Measure)", cn);
             cm.Parameters.AddWithValue("@Stock_Num", stockNum);
             cm.Parameters.AddWithValue("@Description", Description);
             cm.Parameters.AddWithValue("@Expiration_Date", Expiration_Date);
@@ -49,13 +49,13 @@ namespace Capstone
         public void clearExpList()
         {
             cn.Open();
-            cm = new SqlCommand("DELETE FROM tblExpList", cn);            
+            cm = new SQLiteCommand("DELETE FROM tblExpList", cn);            
             cm.ExecuteNonQuery();
             cn.Close();
         }
         public void Expiration()
         {
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             string expDate = "";
             int expiringCount = 0;
             int i = 0;
@@ -67,7 +67,7 @@ namespace Capstone
             SList.Clear();
             
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT * FROM ViewStockItemInventory WHERE Status LIKE 'Available'", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT * FROM ViewStockItemInventory WHERE Status LIKE 'Available'", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
@@ -119,7 +119,7 @@ namespace Capstone
         }
         public void Stock()
         {
-            cn = new SqlConnection(dbcon.MyConnection());            
+            cn = new SQLiteConnection(dbcon.MyConnection);            
             int StockLevel = 0;
             int CriticalCount = 0;
             int outOfStockCount = 0;
@@ -127,7 +127,7 @@ namespace Capstone
             int reOrderStockCount = 0;
             //int ExpStockCount = 0;
             cn.Open();
-                SqlCommand cm = new SqlCommand("SELECT Stock_Level FROM tblItem WHERE Lense_Check = 1 Order by Item_ID", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT Stock_Level FROM tblItem WHERE Lense_Check = 1 Order by Item_ID", cn);
                 dr = cm.ExecuteReader();
                 while (dr.Read())
                 {                                      
@@ -190,12 +190,12 @@ namespace Capstone
         }
         public void Payment()
         {
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             string status = "";
             int pendingCount = 0;
             int settledCount = 0;
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT Status FROM tblPaymentStatus Order by Num", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT Status FROM tblPaymentStatus Order by Num", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {               
@@ -216,13 +216,13 @@ namespace Capstone
         }
         public void Order()
         {
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             string status = "";
             int claimedCount = 0;
             int inLabCount = 0;
             int arrivedCount = 0;
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT Status FROM tblOrderStatus Order by Num", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT Status FROM tblOrderStatus Order by Num", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
@@ -412,18 +412,26 @@ namespace Capstone
 
         private void btnStockDel_Click(object sender, EventArgs e)
         {
-            frmStockIn frm = new frmStockIn();
-            frm.TopLevel = false;
-            panelLoad.Controls.Clear();
-            panelLoad.Controls.Add(frm);
-            frm.txtStockInBy.Text = lblName.Text;
-            if(frm.txtStockID.Text == "0")
+            try
             {
-                classGenerateID.GenerateStockID(frm.txtStockID);
+                frmStockIn frm = new frmStockIn();
+                frm.TopLevel = false;
+                panelLoad.Controls.Clear();
+                panelLoad.Controls.Add(frm);
+                frm.txtStockInBy.Text = lblName.Text;
+                if (frm.txtStockID.Text == "0")
+                {
+                    classGenerateID.GenerateStockID(frm.txtStockID);
+                }
+                frm.BringToFront();
+                frm.Show();
             }
-            frm.BringToFront();
-            frm.Show();
-        
+            catch (Exception ex)
+            {
+                cn.Close();
+                MessageBox.Show(ex.Message, "Stock Delivery btn", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
         }
 
         private void btnInventory_Click(object sender, EventArgs e)
@@ -486,7 +494,7 @@ namespace Capstone
         }
         public void Users()
         {            
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             int i = 0;           
             string role = "";
             int adminCount = 0;
@@ -494,7 +502,7 @@ namespace Capstone
             int MasterCount = 0;
             int totalUsers = 0;
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT User_Type FROM tblUser Order by Num", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT User_Type FROM tblUser Order by Num", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {                     

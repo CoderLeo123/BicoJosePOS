@@ -8,14 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Data.SQLite;
 namespace Capstone
 {
     public partial class frmQuantity : Form
     {
-        SqlConnection cn = new SqlConnection();
-        SqlCommand cm = new SqlCommand();
+        SQLiteConnection cn = new SQLiteConnection();
+        SQLiteCommand cm = new SQLiteCommand();
         DBConnection dbcon = new DBConnection();
-        SqlDataReader dr;
+        SQLiteDataReader dr;
         string title = "BICO-JOSE System";
         int i; String ID;
         
@@ -23,7 +24,7 @@ namespace Capstone
         public frmQuantity(frmBrowseItem frmAdd)
         {
             InitializeComponent();
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             
             frmB = frmAdd;
             Compute();
@@ -97,7 +98,7 @@ namespace Capstone
 
                     
                     cn.Open();
-                    cm = new SqlCommand("INSERT INTO tblCart (Item_ID, Transaction_No, Quantity, Price, Total, Date, Status) VALUES (@Item_ID, @TransactionNo, @Quantity, @Price, @Total, @Date, 'Cart')", cn);
+                    cm = new SQLiteCommand("INSERT INTO tblCart (Item_ID, Transaction_No, Quantity, Price, Total, Date, Status) VALUES (@Item_ID, @TransactionNo, @Quantity, @Price, @Total, @Date, 'Cart')", cn);
                     //cm.Parameters.AddWithValue("@Stock_ID", frmB.dataGridViewBrowse[1, i].Value.ToString());
                     //cm.Parameters.AddWithValue("@Stock_Num", frmB.dataGridViewBrowse[1, i].Value.ToString());
                     cm.Parameters.AddWithValue("@Item_ID", frmB.dataGridViewBrowse[1, i].Value.ToString());

@@ -4,25 +4,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Data.SQLite;
 namespace Capstone
 {
     internal class ClassReports
     {
-        SqlConnection cn = new SqlConnection();
-        SqlCommand cm = new SqlCommand();
+        SQLiteConnection cn = new SQLiteConnection();
+        SQLiteCommand cm = new SQLiteCommand();
         DBConnection dbcon = new DBConnection();
-        SqlDataReader dr;
+        SQLiteDataReader dr;
         ClassLoadData classLoadData = new ClassLoadData();
         List<SalesReport> SList = new List<SalesReport>();
         string title = "BICO-JOSE System";
 
         public void tblReceiptValue(string transacNo, out string TransDate, out string PMode, out string PTerms, out string Customer, out string GrossT, out string Discoun, out string NetT, out string Payment, out string Balance, out string Change, out string DisPerc, out string SettledDate, out string Cashier, out int rowCount)
         {
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             TransDate = ""; PMode = ""; PTerms = ""; Customer = ""; GrossT = ""; Discoun = ""; NetT = ""; Payment = ""; Balance = ""; Change = ""; DisPerc = ""; SettledDate = ""; Cashier = "";
             rowCount = -1;
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT * FROM tblReceipt WHERE Transaction_No LIKE '"+ transacNo + "'", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT * FROM tblReceipt WHERE Transaction_No LIKE '" + transacNo + "'", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
@@ -38,11 +39,11 @@ namespace Capstone
         }
         public void tblReceiptSettle(string transacNo, out string TransDate, out string PMode, out string Customer, out string NetT, out string Payment, out string Change, out string Cashier, out string oldTrans, out string newTrans)
         {
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             TransDate = ""; PMode = "";Customer = ""; NetT = ""; Payment = ""; Change = ""; Cashier = ""; oldTrans = ""; newTrans = "";
 
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT * FROM tblReceiptSettle WHERE New_TransacNo LIKE '" + transacNo + "'", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT * FROM tblReceiptSettle WHERE New_TransacNo LIKE '" + transacNo + "'", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
@@ -58,10 +59,10 @@ namespace Capstone
         }
         public void tblAvailedList(string transacNo, out string Desc, out string Price, out string Quant, out string Total, out string UnitM)
         {
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             Desc = ""; Price = ""; Quant = ""; Total = ""; UnitM = "";
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT Description, Price, Quantity, Total, Unit_Measure FROM ViewCartStockItem WHERE Transaction_No LIKE '" + transacNo + "'", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT Description, Price, Quantity, Total, Unit_Measure FROM ViewCartStockItem WHERE Transaction_No LIKE '" + transacNo + "'", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
@@ -77,10 +78,10 @@ namespace Capstone
         }
         public void tblServiceAvailedList(string transacNo, out string SName, out string SPrice, out int rowCount)
         {
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             SName = ""; SPrice = ""; rowCount = -1;
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT Name, Price FROM ViewServiceAvailed WHERE Transaction_No LIKE '" + transacNo + "'", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT Name, Price FROM ViewServiceAvailed WHERE Transaction_No LIKE '" + transacNo + "'", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
@@ -94,11 +95,11 @@ namespace Capstone
 
         public void dateSelect(DataGridView dgv)
         {//dataGridViewInitial
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             int i = 0;
             dgv.Rows.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT DISTINCT Transaction_Date FROM tblReceipt", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT DISTINCT Transaction_Date FROM tblReceipt", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
@@ -112,10 +113,10 @@ namespace Capstone
         }
         public void computeSalePerDay(string transDate)
         {//string transDate = dgv.Rows[e.RowIndex].Cells[0].Value.ToString();
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             double payment = 0, balance = 0; int rowCount = 0;
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT Payment, Balance FROM tblReceipt WHERE Transaction_Date LIKE '" + transDate + "' ", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT Payment, Balance FROM tblReceipt WHERE Transaction_Date LIKE '" + transDate + "' ", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
@@ -173,9 +174,9 @@ namespace Capstone
             try
             {
                 date = "";
-                cn = new SqlConnection(dbcon.MyConnection());
+                cn = new SQLiteConnection(dbcon.MyConnection);
                 cn.Open();
-                SqlCommand cm = new SqlCommand("INSERT INTO tblSalesReport (Date) VALUES(@Date)", cn);
+                SQLiteCommand cm = new SQLiteCommand("INSERT INTO tblSalesReport (Date) VALUES(@Date)", cn);
                 cm.Parameters.AddWithValue("@Date", date);
                 cm.ExecuteNonQuery();
                 cn.Close();
@@ -191,7 +192,7 @@ namespace Capstone
         {
 
             cn.Open();
-            SqlCommand cm = new SqlCommand("UPDATE tblSalesReport SET Total_Sale = @Total_Sale, Total_Bal = @Total_Bal WHERE Date LIKE '" + date + "'", cn);
+            SQLiteCommand cm = new SQLiteCommand("UPDATE tblSalesReport SET Total_Sale = @Total_Sale, Total_Bal = @Total_Bal WHERE Date LIKE '" + date + "'", cn);
             cm.Parameters.AddWithValue("@Total_Sale", payment.ToString("#,##0.00"));
             cm.Parameters.AddWithValue("@Total_Bal", balance.ToString("#,##0.00"));
             cm.ExecuteNonQuery();
@@ -201,11 +202,11 @@ namespace Capstone
 
         public void loadSalesPerDay(DataGridView dgv, string Col)
         {
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             int i = 0;string bal; double balan;
             dgv.Rows.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT Date, "+ Col + " FROM tblSalesReport ORDER BY Date DESC", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT Date, " + Col + " FROM tblSalesReport ORDER BY Date DESC", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {

@@ -8,14 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Data.SQLite;
 namespace Capstone
 {
     public partial class frmCashier : Form
     {
-        SqlConnection cn = new SqlConnection();
-        SqlCommand cm = new SqlCommand();
+        SQLiteConnection cn = new SQLiteConnection();
+        SQLiteCommand cm = new SQLiteCommand();
         DBConnection dbcon = new DBConnection();
-        SqlDataReader dr;
+        SQLiteDataReader dr;
         ClassComputations classCompute = new ClassComputations();
         ClassLoadData classLoadData = new ClassLoadData();
         ClassGenerateID classGenerateID = new ClassGenerateID();
@@ -27,7 +28,7 @@ namespace Capstone
         public frmCashier()
         {
             InitializeComponent();
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             lblDate.Text = DateTime.Parse(DateTime.Now.ToString()).ToShortDateString();
             classLoadData.LoadCart(dataGridViewCart, lblDiscount, lblSalesTotal, lblPayment, lblNetTotal, btnSettlePayment, btnAddDiscount, btnClearCart, txtSearch, dataGridViewService, lblNetNoComa, lblGrossNoComma);
             
@@ -151,9 +152,9 @@ namespace Capstone
         }
         public void returnQuantity(string itemID, int CartQty)
         {
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             cn.Open();//Set Quantity
-            SqlCommand cm = new SqlCommand("UPDATE tblItem SET Quantity = Quantity + @Cart WHERE Stock_Check = 1 AND Item_ID LIKE '" + itemID + "'", cn);
+            SQLiteCommand cm = new SQLiteCommand("UPDATE tblItem SET Quantity = Quantity + @Cart WHERE Stock_Check = 1 AND Item_ID LIKE '" + itemID + "'", cn);
             cm.Parameters.AddWithValue("@Cart", CartQty);
             cm.ExecuteNonQuery();
             cn.Close();
@@ -161,9 +162,9 @@ namespace Capstone
         }
         public void reducedQuantity(string itemID, int CartQty)
         {
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             cn.Open();//Set Quantity
-            SqlCommand cm = new SqlCommand("UPDATE tblItem SET Quantity = Quantity - @Cart WHERE Stock_Check = 1 AND Item_ID LIKE '" + itemID + "'", cn);
+            SQLiteCommand cm = new SQLiteCommand("UPDATE tblItem SET Quantity = Quantity - @Cart WHERE Stock_Check = 1 AND Item_ID LIKE '" + itemID + "'", cn);
             cm.Parameters.AddWithValue("@Cart", CartQty);
             cm.ExecuteNonQuery();
             cn.Close();
@@ -171,10 +172,10 @@ namespace Capstone
         }
         public void selectTblQty(string itemID, out int currQty)
         {
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             currQty = 0;
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT Quantity FROM tblItem WHERE Item_ID LIKE '" + itemID + "'", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT Quantity FROM tblItem WHERE Item_ID LIKE '" + itemID + "'", cn);
             dr = cm.ExecuteReader();
             if (dr.Read())
             {
@@ -186,9 +187,9 @@ namespace Capstone
         public void reducedQuantityTblStock(string SNum, int CartQty)
         {
             //string StkID = dataGridViewStockItems.Rows[i].Cells[3].Value?.ToString();
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             cn.Open();//Set Quantity
-            SqlCommand cm = new SqlCommand("UPDATE tblStockInventory SET Quantity = Quantity - @Cart WHERE Stock_Num LIKE " + SNum + " ", cn);
+            SQLiteCommand cm = new SQLiteCommand("UPDATE tblStockInventory SET Quantity = Quantity - @Cart WHERE Stock_Num LIKE " + SNum + " ", cn);
             cm.Parameters.AddWithValue("@Cart", CartQty);
             cm.ExecuteNonQuery();
             cn.Close();
@@ -197,18 +198,18 @@ namespace Capstone
         public void returnQuantityTblStock(int SNum, int CartQty)
         {
             //string StkID = dataGridViewStockItems.Rows[i].Cells[3].Value?.ToString();
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             cn.Open();//Set Quantity
-            SqlCommand cm = new SqlCommand("UPDATE tblStockInventory SET Quantity = Quantity + @Cart, Status = 'Available' WHERE Stock_Num = " + SNum + " ", cn);
+            SQLiteCommand cm = new SQLiteCommand("UPDATE tblStockInventory SET Quantity = Quantity + @Cart, Status = 'Available' WHERE Stock_Num = " + SNum + " ", cn);
             cm.Parameters.AddWithValue("@Cart", CartQty);
             cm.ExecuteNonQuery();
             cn.Close();
         }
         public void updateTblStock(int SNum)
         {
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             cn.Open();//Set Quantity
-            SqlCommand cm = new SqlCommand("Update tblStock SET Item_Status = 'Available' WHERE Num = " + SNum + "", cn);
+            SQLiteCommand cm = new SQLiteCommand("Update tblStock SET Item_Status = 'Available' WHERE Num = " + SNum + "", cn);
             cm.ExecuteNonQuery();
             cn.Close();
         }
@@ -225,7 +226,7 @@ namespace Capstone
                 if (MessageBox.Show("Remove this Item?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     cn.Open();
-                    cm = new SqlCommand("DELETE FROM tblCart WHERE Num LIKE '" + dataGridViewCart.Rows[e.RowIndex].Cells[11].Value.ToString() + "'", cn);
+                    cm = new SQLiteCommand("DELETE FROM tblCart WHERE Num LIKE '" + dataGridViewCart.Rows[e.RowIndex].Cells[11].Value.ToString() + "'", cn);
                     cm.ExecuteNonQuery();
                     cn.Close();
                     MessageBox.Show("Record has been successfully deleted.", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -253,7 +254,7 @@ namespace Capstone
                     qtyCart = 1;
                 }
                 cn.Open();
-                cm = new SqlCommand("UPDATE tblCart SET Quantity = Quantity + '"+ qtyCart + "' WHERE Num LIKE '" + dataGridViewCart.Rows[e.RowIndex].Cells[11].Value.ToString() + "'", cn);
+                cm = new SQLiteCommand("UPDATE tblCart SET Quantity = Quantity + '" + qtyCart + "' WHERE Num LIKE '" + dataGridViewCart.Rows[e.RowIndex].Cells[11].Value.ToString() + "'", cn);
                 cm.ExecuteNonQuery();
                 cn.Close();
                
@@ -275,7 +276,7 @@ namespace Capstone
                     qtyCart = 0;
                 }
                 cn.Open();
-                cm = new SqlCommand("UPDATE tblCart SET Quantity = Quantity - '" + qtyCart + "' WHERE Num LIKE '" + dataGridViewCart.Rows[e.RowIndex].Cells[11].Value.ToString() + "'", cn);
+                cm = new SQLiteCommand("UPDATE tblCart SET Quantity = Quantity - '" + qtyCart + "' WHERE Num LIKE '" + dataGridViewCart.Rows[e.RowIndex].Cells[11].Value.ToString() + "'", cn);
                 cm.ExecuteNonQuery();
                 cn.Close();
                 if (Classfic == "Consumable")
@@ -324,7 +325,7 @@ namespace Capstone
                     for (int i = 0; i < dataGridViewCart.Rows.Count; i++)
                     {
                         cn.Open();
-                        cm = new SqlCommand("DELETE FROM tblCart WHERE num Status LIKE 'Cart'", cn);
+                        cm = new SQLiteCommand("DELETE FROM tblCart WHERE num Status LIKE 'Cart'", cn);
                         cm.ExecuteNonQuery();
                         cn.Close();
                     }
@@ -364,7 +365,7 @@ namespace Capstone
                 if (MessageBox.Show("Remove this Item?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     cn.Open();
-                    cm = new SqlCommand("DELETE FROM tblServiceAvailed WHERE Num LIKE '" + dataGridViewService.Rows[e.RowIndex].Cells[6].Value.ToString() + "'", cn);
+                    cm = new SQLiteCommand("DELETE FROM tblServiceAvailed WHERE Num LIKE '" + dataGridViewService.Rows[e.RowIndex].Cells[6].Value.ToString() + "'", cn);
                     //cm.Parameters.AddWithValue("@User_ID", lblUserID.Text);//dataGridViewService.Rows[e.RowIndex].Cells[6].Value.ToString()
                     cm.ExecuteNonQuery();
                     cn.Close();
@@ -414,7 +415,7 @@ namespace Capstone
             }
 
             cn.Open();
-            cm = new SqlCommand("UPDATE tblCart SET Discount = " + discountPerc + " WHERE Transaction_No LIKE '%" + transNo + "%'", cn);
+            cm = new SQLiteCommand("UPDATE tblCart SET Discount = " + discountPerc + " WHERE Transaction_No LIKE '%" + transNo + "%'", cn);
             cm.ExecuteNonQuery();
             cn.Close();
             classLoadData.LoadCart(dataGridViewCart, lblDiscount, lblSalesTotal, lblPayment, lblNetTotal, btnSettlePayment, btnAddDiscount, btnClearCart, txtSearch, dataGridViewService, lblNetNoComa, lblGrossNoComma);

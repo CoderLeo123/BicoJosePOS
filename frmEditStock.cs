@@ -8,14 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+
+using System.Data.SQLite;
 namespace Capstone
 {
     public partial class frmEditStock : Form
     {
-        SqlConnection cn = new SqlConnection();
-        SqlCommand cm = new SqlCommand();
+        SQLiteConnection cn = new SQLiteConnection();
+        SQLiteCommand cm = new SQLiteCommand();
         DBConnection dbcon = new DBConnection();
-        SqlDataReader dr;
+        SQLiteDataReader dr;
         frmStockIn frmList;
         ClassLoadData classLoadData = new ClassLoadData();
         string title = "BICO-JOSE System";
@@ -25,7 +27,7 @@ namespace Capstone
         public frmEditStock(frmStockIn frmAdd)
         {
             InitializeComponent();
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             frmList = frmAdd;
             //lblCheck.Text = "Yes";
         }
@@ -52,7 +54,7 @@ namespace Capstone
                         int i = frmList.dataGridViewStockItems.CurrentRow.Index;
 
                         cn.Open();
-                        cm = new SqlCommand("UPDATE tblStock SET Expiration_Date = '" + DateTime.Parse(dateExpiration.Value.ToString()).ToShortDateString() + "', Quantity = Quantity + " + int.Parse(txtQuantity.Text) + " WHERE num LIKE '" + lblID.Text + "' ", cn);
+                        cm = new SQLiteCommand("UPDATE tblStock SET Expiration_Date = '" + DateTime.Parse(dateExpiration.Value.ToString()).ToShortDateString() + "', Quantity = Quantity + " + int.Parse(txtQuantity.Text) + " WHERE num LIKE '" + lblID.Text + "' ", cn);
                         cm.ExecuteNonQuery();
                         cn.Close();
 
@@ -70,7 +72,7 @@ namespace Capstone
                         int i = frmList.dataGridViewStockItems.CurrentRow.Index;
 
                         cn.Open();
-                        cm = new SqlCommand("UPDATE tblStock SET Expiration_Date = null, Quantity = Quantity + " + int.Parse(txtQuantity.Text) + " WHERE num LIKE '" + lblID.Text + "' ", cn);
+                        cm = new SQLiteCommand("UPDATE tblStock SET Expiration_Date = null, Quantity = Quantity + " + int.Parse(txtQuantity.Text) + " WHERE num LIKE '" + lblID.Text + "' ", cn);
                         cm.ExecuteNonQuery();
                         cn.Close();
                         frmList.dataGridViewStockItems[6, i].Value = "Non-Consumable";

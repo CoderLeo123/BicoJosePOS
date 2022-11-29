@@ -8,30 +8,31 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Data.SQLite;
 namespace Capstone
 {
     public partial class frmDashboardDetails : Form
     {
-        SqlConnection cn = new SqlConnection();
-        SqlCommand cm = new SqlCommand();
+        SQLiteConnection cn = new SQLiteConnection();
+        SQLiteCommand cm = new SQLiteCommand();
         DBConnection dbcon = new DBConnection();
-        SqlDataReader dr;
+        SQLiteDataReader dr;
         private bool mouseDown;
         private Point lastLocation;
         public frmDashboardDetails()
         {
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             InitializeComponent();
            
         }
 
         public void LoadExpList()
         {
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             int i = 0;
             dataGridViewExpira.Rows.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT * FROM tblExpList WHERE Quantity > 0 ORDER BY Expiration_Date ASC", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT * FROM tblExpList WHERE Quantity > 0 ORDER BY Expiration_Date ASC", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {

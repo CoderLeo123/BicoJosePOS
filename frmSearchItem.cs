@@ -8,14 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Data.SQLite;
 namespace Capstone
 {
     public partial class frmSearchItem : Form
     {
-        SqlConnection cn = new SqlConnection();
-        SqlCommand cm = new SqlCommand();
+        SQLiteConnection cn = new SQLiteConnection();
+        SQLiteCommand cm = new SQLiteCommand();
         DBConnection dbcon = new DBConnection();
-        SqlDataReader dr;
+        SQLiteDataReader dr;
         ClassLoadData classLoadData = new ClassLoadData();
         string title = "BICO-JOSE System";
         frmStockIn frmList;
@@ -25,7 +26,7 @@ namespace Capstone
         public frmSearchItem(frmStockIn frmAdd)
         {
             InitializeComponent();
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
 
             LoadRecordsSearch(0);
             textRightAlign();
@@ -66,7 +67,7 @@ namespace Capstone
             int i = 0;
             dataGridViewSearchItem.Rows.Clear();
             cn.Open();
-            cm = new SqlCommand("SELECT * FROM ViewItemProductType WHERE Stock_Check > "+lenseCheckValue +" ORDER BY Item_ID", cn);
+            cm = new SQLiteCommand("SELECT * FROM ViewItemProductType WHERE Stock_Check > " +lenseCheckValue +" ORDER BY Item_ID", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
@@ -129,7 +130,7 @@ namespace Capstone
                         //    cn.Close();
                         //}                        
                         cn.Open();
-                        cm = new SqlCommand("INSERT INTO tblStock (Stock_ID, Item_ID, Stock_In_Date, Stock_In_By, Status, Type) VALUES(@StockID, @ItemID, @StockDate, @StockInBy, 'Pending', @Type)", cn);
+                        cm = new SQLiteCommand("INSERT INTO tblStock (Stock_ID, Item_ID, Stock_In_Date, Stock_In_By, Status, Type) VALUES(@StockID, @ItemID, @StockDate, @StockInBy, 'Pending', @Type)", cn);
                         cm.Parameters.AddWithValue("@StockID", frmList.txtStockID.Text);
                         cm.Parameters.AddWithValue("@ItemID", dataGridViewSearchItem[1, e.RowIndex].Value.ToString());
                         cm.Parameters.AddWithValue("@StockInBy", frmList.txtStockInBy.Text);

@@ -5,14 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
+using System.Data.SQLite;
 namespace Capstone
 {
     internal class ClassLoginAndSignUp
     {
-        SqlConnection cn = new SqlConnection();
+        SQLiteConnection cn = new SQLiteConnection();
         //SqlCommand cm = new SqlCommand();
         DBConnection dbcon = new DBConnection();
-        SqlDataReader dr;
+        SQLiteDataReader dr;
         ClassComputations classCompute = new ClassComputations();
         string title = "BICO-JOSE System";
 
@@ -78,10 +79,10 @@ namespace Capstone
         }
         public void checkForBlankOrIncorrectCredentials(TextBox checkText, Label labelNotice, string colName)
         {//txtUsername, lblUserNotice, "Username"
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             string var = "";
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT "+ colName + " FROM tblUser WHERE " + colName + " = @Username", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT " + colName + " FROM tblUser WHERE " + colName + " = @Username", cn);
             cm.Parameters.AddWithValue("@Username", checkText.Text);
             dr = cm.ExecuteReader();
             dr.Read();
@@ -110,9 +111,9 @@ namespace Capstone
         }
         public void checkForAdmin()
         {//string user_ID, string UserName, string password, string Name, string userType
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT * FROM tblUser WHERE User_ID LIKE 'USR1000'", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT * FROM tblUser WHERE User_ID LIKE 'USR1000'", cn);
             dr = cm.ExecuteReader();
             dr.Read();
             if (dr.HasRows)
@@ -125,7 +126,7 @@ namespace Capstone
             }
             else
             {
-                insertFirstAdmin("USR1000", "Admin", "BicoJose123", "Insert", "Name", "Master");                
+                insertFirstAdmin("USR1000", "Admin", "BicoJose123", "Master", "Administrator", "Master");                
             }
             dr.Close();
             cn.Close();
@@ -133,10 +134,10 @@ namespace Capstone
 
         public void insertFirstAdmin(string user_ID, string UserName, string password, string FName, string LName, string userType)
         {
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             string Name = FName + " " + LName;            
             cn.Open();
-            SqlCommand cm = new SqlCommand("INSERT INTO tblUser (User_ID, Username, Password, Name, User_Type, FName, LName) VALUES(@User_ID, @Username, @Password, @Name, @User_Type, @FName, @LName)", cn);
+            SQLiteCommand cm = new SQLiteCommand("INSERT INTO tblUser (User_ID, Username, Password, Name, User_Type, FName, LName) VALUES(@User_ID, @Username, @Password, @Name, @User_Type, @FName, @LName)", cn);
             cm.Parameters.AddWithValue("@User_ID", user_ID);
             cm.Parameters.AddWithValue("@Username", UserName);
             cm.Parameters.AddWithValue("@Password", password);
@@ -149,10 +150,10 @@ namespace Capstone
         }
         public void selectDataTblUser(out string user_num, out string user_ID, out string UserName, out string name, out string userType, TextBox txtUser, TextBox txtPass, out bool found)
         {
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             user_num = ""; user_ID = ""; UserName = ""; name = ""; userType = "";
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT * FROM tblUser WHERE Username = @Username AND Password = @Password", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT * FROM tblUser WHERE Username = @Username AND Password = @Password", cn);
             cm.Parameters.AddWithValue("@Username", txtUser.Text);
             cm.Parameters.AddWithValue("@Password", txtPass.Text);
             dr = cm.ExecuteReader();
@@ -177,9 +178,9 @@ namespace Capstone
         }
         public void insertLoginDateTime(string user_ID, string Login_DateTime)
         {
-            cn = new SqlConnection(dbcon.MyConnection());          
+            cn = new SQLiteConnection(dbcon.MyConnection);          
             cn.Open();
-            SqlCommand cm = new SqlCommand("INSERT INTO tblLoginSession (User_ID, Login_DateTime) VALUES(@User_ID, @Login_DateTime)", cn);
+            SQLiteCommand cm = new SQLiteCommand("INSERT INTO tblLoginSession (User_ID, Login_DateTime) VALUES(@User_ID, @Login_DateTime)", cn);
             cm.Parameters.AddWithValue("@User_ID", user_ID);
             cm.Parameters.AddWithValue("@Login_DateTime", Login_DateTime);            
             cm.ExecuteNonQuery();
@@ -187,10 +188,10 @@ namespace Capstone
         }
         public void selectNumSession(out string user_num, string logIn)
         {
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             user_num = ""; 
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT Num FROM tblLoginSession WHERE Login_DateTime LIKE @logIn", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT Num FROM tblLoginSession WHERE Login_DateTime LIKE @logIn", cn);
             cm.Parameters.AddWithValue("@logIn", logIn);            
             dr = cm.ExecuteReader();
             dr.Read();
@@ -203,9 +204,9 @@ namespace Capstone
         }
         public void insertLogOutDateTime(string User_num, string Logout_DateTime)
         {
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             cn.Open();
-            SqlCommand cm = new SqlCommand("UPDATE tblLoginSession SET Logout_DateTime = @Logout_DateTime WHERE Num = @User_num", cn);
+            SQLiteCommand cm = new SQLiteCommand("UPDATE tblLoginSession SET Logout_DateTime = @Logout_DateTime WHERE Num = @User_num", cn);
             cm.Parameters.AddWithValue("@User_num", User_num);
             cm.Parameters.AddWithValue("@Logout_DateTime", Logout_DateTime);
             cm.ExecuteNonQuery();

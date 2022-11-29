@@ -10,11 +10,11 @@ namespace Capstone
 {
     internal class ClassLoadData : ClassComputations
     {
-        
-        SqlConnection cn = new SqlConnection();
-        //SqlCommand cm = new SqlCommand();
+
+        SQLiteConnection cn = new SQLiteConnection();
+        //SQLiteCommand  cm = new SQLiteCommand ();
         DBConnection dbcon = new DBConnection();
-        SqlDataReader dr;
+        SQLiteDataReader dr;
         ClassComputations classCompute = new ClassComputations();
         string title = "BICO-JOSE System";
 
@@ -22,11 +22,11 @@ namespace Capstone
 
         public void LoadRecordsPatient(DataGridView dgv, TextBox txtSearch)
         {//dataGridViewProduct, txtSearchProduct
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             int i = 0;
             dgv.Rows.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT * FROM tblPatientRecord WHERE Customer_Name LIKE '%" + txtSearch.Text + "%' Order by Patient_ID DESC", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT * FROM tblPatientRecord WHERE Customer_Name LIKE '%" + txtSearch.Text + "%' Order by Patient_ID DESC", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             { 
@@ -40,11 +40,11 @@ namespace Capstone
 
         public void LoadRecordsPrescription(DataGridView dgv, TextBox txtSearch)
         {//dataGridViewProduct, txtSearchProduct
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             int i = 0;
             dgv.Rows.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT * FROM tblPrescription WHERE Product LIKE '%" + txtSearch.Text + "%' Order by Patient_ID", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT * FROM tblPrescription WHERE Product LIKE '%" + txtSearch.Text + "%' Order by Patient_ID", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
@@ -58,11 +58,11 @@ namespace Capstone
 
         public void LoadRecordsProduct(DataGridView dgv, TextBox txtSearch)
         {//dataGridViewProduct, txtSearchProduct
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             int i = 0;
             dgv.Rows.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT * FROM tblProduct WHERE Product LIKE '%" + txtSearch.Text + "%' Order by Product_ID", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT * FROM tblProduct WHERE Product LIKE '%" + txtSearch.Text + "%' Order by Product_ID", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {                             //                     3-PRODUCT / 3-Product              
@@ -75,11 +75,11 @@ namespace Capstone
 
         public void LoadRecordsType(DataGridView dgv, TextBox txtSearch)
         {// dataGridViewType, txtSearchTypeProducts
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             int i = 0;
             dgv.Rows.Clear();
             cn.Open(); //JoinProductType
-            SqlCommand cm = new SqlCommand("SELECT * FROM ViewProductType WHERE Type LIKE '%" + txtSearch.Text + "%' OR Product LIKE '%" + txtSearch.Text + "%' Order by Type_ID", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT * FROM ViewProductType WHERE Type LIKE '%" + txtSearch.Text + "%' OR Product LIKE '%" + txtSearch.Text + "%' Order by Type_ID", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {                             //                       2-TYPE / 2-Type              4-PRODUCT / 3-Product         
@@ -92,9 +92,9 @@ namespace Capstone
 
         public string selectLenseID(string table, string column, string columnCondition, string returnValue)
         {//SELECT Type_ID from tblType WHERE Type LIKE '%Lense%'
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT " + column + " FROM " + table + " WHERE " + columnCondition + " LIKE '%Lense%'", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT " + column + " FROM " + table + " WHERE " + columnCondition + " LIKE '%Lense%'", cn);
             dr = cm.ExecuteReader();
             dr.Read();
             if (dr.HasRows)
@@ -114,14 +114,14 @@ namespace Capstone
 
         public void updateLenseCheck(string table, string columnToUpdate, string columnCondition)
         {//UPDATE tblItem SET Lense_Check WHERE Type LIKE variable(Type_ID of "Lense Features")
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             //string lenseID = "";
             //lenseID = selectLenseID("tblType", "Type_ID", "Type", lenseID);
             //if (!(lenseID.Equals("N/A")))
             //{
                 //cn.Close();
                 cn.Open();
-                SqlCommand cm = new SqlCommand("UPDATE " + table + " SET " + columnToUpdate + " = 0 WHERE " + columnCondition + " LIKE '%Vision%'", cn);
+            SQLiteCommand cm = new SQLiteCommand("UPDATE " + table + " SET " + columnToUpdate + " = 0 WHERE " + columnCondition + " LIKE '%Vision%'", cn);
                 cm.ExecuteNonQuery();
                 cn.Close();
             //}
@@ -157,11 +157,11 @@ namespace Capstone
         {//dataGridViewItems, txtSearch
             
             updateLenseCheck("tblItem", "Lense_Check", "Type");
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             int i = 0;
             dgv.Rows.Clear();
             cn.Open();//ViewItemProductType
-            SqlCommand cm = new SqlCommand("SELECT * FROM ViewItemProductType WHERE Description LIKE '%" + txtSearch.Text + "%' OR Type LIKE '%" + txtSearch.Text + "%' Order by Item_ID DESC", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT * FROM ViewItemProductType WHERE Description LIKE '%" + txtSearch.Text + "%' OR Type LIKE '%" + txtSearch.Text + "%' Order by Item_ID DESC", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
@@ -190,11 +190,11 @@ namespace Capstone
 
         public void LoadRecordsService(DataGridView dgv, TextBox txtSearch)
         {//dataGridViewService, txtSearchService
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             int i = 0;
             dgv.Rows.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT * FROM tblServices WHERE Name LIKE '%" + txtSearch.Text + "%' OR Description LIKE '%" + txtSearch.Text + "%' Order by Service_ID", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT * FROM tblServices WHERE Name LIKE '%" + txtSearch.Text + "%' OR Description LIKE '%" + txtSearch.Text + "%' Order by Service_ID", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
@@ -212,11 +212,11 @@ namespace Capstone
         {//dataGridViewOnHand, txtSearch
             try
             {
-                cn = new SqlConnection(dbcon.MyConnection());
+                cn = new SQLiteConnection(dbcon.MyConnection);
                 int i = 0;
                 dgv.Rows.Clear();
                 cn.Open();
-                SqlCommand cm = new SqlCommand("SELECT * from ViewItemProductType WHERE (Description LIKE '%" + textSearch.Text + "%' OR Type LIKE '%" + textSearch.Text + "%') AND Lense_Check > 0 ", cn);
+                SQLiteCommand cm = new SQLiteCommand("SELECT * from ViewItemProductType WHERE (Description LIKE '%" + textSearch.Text + "%' OR Type LIKE '%" + textSearch.Text + "%') AND Lense_Check > 0 ", cn);
                 dr = cm.ExecuteReader();
                 while (dr.Read())
                 {
@@ -240,11 +240,11 @@ namespace Capstone
         {//dataGridViewStockItems, txtStockID, label3
             try
             {
-                cn = new SqlConnection(dbcon.MyConnection());
+                cn = new SQLiteConnection(dbcon.MyConnection);
                 int i = 0;
                 dgv.Rows.Clear();
                 cn.Open();
-                SqlCommand cm = new SqlCommand("SELECT * from ViewStockItemType WHERE Stock_ID LIKE '" + textID.Text + "' AND Status LIKE 'Pending' ", cn);
+                SQLiteCommand cm = new SQLiteCommand("SELECT * from ViewStockItemType WHERE Stock_ID LIKE '" + textID.Text + "' AND Status LIKE 'Pending' ", cn);
                 dr = cm.ExecuteReader();
                 while (dr.Read())
                 {
@@ -309,11 +309,11 @@ namespace Capstone
         {//dataGridViewDetails, labelItemID
             try
             {
-                cn = new SqlConnection(dbcon.MyConnection());
+                cn = new SQLiteConnection(dbcon.MyConnection);
                 int i = 0;
                 dgv.Rows.Clear();
                 cn.Open();
-                SqlCommand cm = new SqlCommand("SELECT Stock_In_Date, Quantity, Expiration_Date, Stock_In_By, Unit_Measure, Item_Status FROM tblStock WHERE Item_ID LIKE '%" + labelID.Text + "%' ORDER BY Stock_In_Date DESC", cn);
+                SQLiteCommand cm = new SQLiteCommand("SELECT Stock_In_Date, Quantity, Expiration_Date, Stock_In_By, Unit_Measure, Item_Status FROM tblStock WHERE Item_ID LIKE '%" + labelID.Text + "%' ORDER BY Stock_In_Date DESC", cn);
                 dr = cm.ExecuteReader();
                 while (dr.Read())
                 {
@@ -355,11 +355,11 @@ namespace Capstone
         {//dataGridViewBrowse, txtSearch
             try
             {
-                cn = new SqlConnection(dbcon.MyConnection());
+                cn = new SQLiteConnection(dbcon.MyConnection);
                 int i = 0;
                 dgv.Rows.Clear();
                 cn.Open();
-                SqlCommand cm = new SqlCommand("SELECT * from ViewItemProductType WHERE Quantity > 0 AND (Description LIKE '%" + textSearch.Text + "%' OR Type LIKE '%" + textSearch.Text + "%') ORDER BY Item_ID", cn);
+                SQLiteCommand cm = new SQLiteCommand("SELECT * from ViewItemProductType WHERE Quantity > 0 AND (Description LIKE '%" + textSearch.Text + "%' OR Type LIKE '%" + textSearch.Text + "%') ORDER BY Item_ID", cn);
                 dr = cm.ExecuteReader();
                 while (dr.Read())
                 {
@@ -387,7 +387,7 @@ namespace Capstone
                 cn.Close();
 
                 cn.Open();
-                cm = new SqlCommand("SELECT * from ViewItemProductType WHERE Lense_Check = 0 AND (Description LIKE '%" + textSearch.Text + "%' OR Type LIKE '%" + textSearch.Text + "%') ORDER BY Item_ID", cn);
+                cm = new SQLiteCommand("SELECT * from ViewItemProductType WHERE Lense_Check = 0 AND (Description LIKE '%" + textSearch.Text + "%' OR Type LIKE '%" + textSearch.Text + "%') ORDER BY Item_ID", cn);
                 dr = cm.ExecuteReader();
                 while (dr.Read())
                 {
@@ -418,13 +418,13 @@ namespace Capstone
         }
         public void LoadCart(DataGridView dgv, Label labelDiscount, Label labelSalesTotal, Label labelPayment, Label labelNetTotal, Button buttonSettle, Button buttonDiscount, Button buttonClear, TextBox textSearch, DataGridView dgv2, Label lblNetNoComa, Label lblGrossNoComma)
         {                           //dataGridViewCart, lblDiscount, lblSalesTotal, lblPayment, lblNetTotal, btnSettlePayment, btnAddDiscount, btnClearCart, txtSearch, dataGridViewService
-            //try
-            //{
-                string servTotal = ""; Boolean hasRecord = false;
+            cn = new SQLiteConnection(dbcon.MyConnection);                        
+                //string servTotal = "0.00";                
+                double servTotal = 0;               
+                bool hasRecord = false;
                 LoadRecordServiceAvail(dgv2, out servTotal, out hasRecord);
-                //classCompute.ComputeUnitTotal(dgv);
-                cn = new SqlConnection(dbcon.MyConnection());
-                
+                     
+                //classCompute.ComputeUnitTotal(dgv);                            
                 int i = 0;
                 double total = 0;
                 double discount = 0;
@@ -432,11 +432,12 @@ namespace Capstone
                 double addToCurrentTotal = double.Parse(labelSalesTotal.Text);
                 dgv.Rows.Clear();
                 cn.Open();
-                SqlCommand cm = new SqlCommand("SELECT * from ViewCartStockItem WHERE Description Like '%" + textSearch.Text + "%' AND Status LIKE 'Cart'", cn);
+                 SQLiteCommand cm = new SQLiteCommand("SELECT * from ViewCartStockItem WHERE Description Like '%" + textSearch.Text + "%' AND Status LIKE 'Cart'", cn);
                 dr = cm.ExecuteReader();
                 while (dr.Read())
                 {
                     string ExpirationDate = dr[2].ToString();
+                    //string ExpirationDate = "";
                     if (string.IsNullOrEmpty(ExpirationDate))
                     {
                         ExpirationDate = "Non-Consumable";
@@ -452,7 +453,7 @@ namespace Capstone
                             ExpirationDate = dr[2].ToString().Substring(0, 9);
                         }
                     }
-                    total += Double.Parse(dr[5].ToString());
+                    total += double.Parse(dr[5].ToString());
                     discount = Double.Parse(dr[11].ToString());
 
                                // 0-Num                2-EXPIRATION / 2-Expiration_Date                                  4-QUANTITY / 3-Quantity                        6-TOTAL / 5-TOTAL                                                                                                                       11-CartID / 12-Num
@@ -462,8 +463,13 @@ namespace Capstone
                 }
                 dr.Close();
                 cn.Close();
-                
-                total += double.Parse(servTotal);
+                //double passi = 0;
+                //if (double.TryParse(servTotal, out passi))
+                //    {
+                //        passi = double.Parse(servTotal);                        
+                //    } else { }
+                //total += passi;
+                total += servTotal;
                 ComputeDiscount(discount, total, out discountResult);
                 labelDiscount.Text = discountResult.ToString("0.00");
                 labelSalesTotal.Text = total.ToString("#,#0.00");
@@ -487,11 +493,11 @@ namespace Capstone
         
         public void LoadRecordsTransacHist(DataGridView dgv, TextBox txtSearch, DateTimePicker dateStart, DateTimePicker dateEnd)
         {//dataGridViewTransacHist, txtSearchTransac
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             int i = 0;
             dgv.Rows.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT DISTINCT Num, Customer, Transaction_No, Cashier, Date FROM ViewPaymentCart WHERE Customer LIKE '%" + txtSearch.Text + "%' OR Cashier LIKE '%" + txtSearch.Text + "%' AND Date BETWEEN '" + dateStart.Value.ToShortDateString() + "' AND '" + dateEnd.Value.ToShortDateString() + "' ORDER BY Transaction_No DESC", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT DISTINCT Num, Customer, Transaction_No, Cashier, Date FROM ViewPaymentCart WHERE Customer LIKE '%" + txtSearch.Text + "%' OR Cashier LIKE '%" + txtSearch.Text + "%' AND Date BETWEEN '" + dateStart.Value.ToShortDateString() + "' AND '" + dateEnd.Value.ToShortDateString() + "' ORDER BY Transaction_No DESC", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
@@ -516,11 +522,11 @@ namespace Capstone
 
         public void LoadRecordsTransacSettled(DataGridView dgv, TextBox txtSearch, DateTimePicker dateStart, DateTimePicker dateEnd)
         {//dataGridViewTransacHist, txtSearchTransac
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             int i = 0;
             dgv.Rows.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT DISTINCT Num, Customer, New_TransacNo, Cashier, Transaction_Date FROM tblReceiptSettle WHERE Customer LIKE '%" + txtSearch.Text + "%' OR Cashier LIKE '%" + txtSearch.Text + "%' AND Transaction_Date BETWEEN '" + dateStart.Value.ToShortDateString() + "' AND '" + dateEnd.Value.ToShortDateString() + "' ORDER BY New_TransacNo DESC", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT DISTINCT Num, Customer, New_TransacNo, Cashier, Transaction_Date FROM tblReceiptSettle WHERE Customer LIKE '%" + txtSearch.Text + "%' OR Cashier LIKE '%" + txtSearch.Text + "%' AND Transaction_Date BETWEEN '" + dateStart.Value.ToShortDateString() + "' AND '" + dateEnd.Value.ToShortDateString() + "' ORDER BY New_TransacNo DESC", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
@@ -545,11 +551,11 @@ namespace Capstone
 
         public void LoadRecordsSoldItems(DataGridView dgv, TextBox txtSearch, DateTimePicker dateStart, DateTimePicker dateEnd)
         {//dataGridViewSoldItems, txtSearchSold
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             int i = 0;
             dgv.Rows.Clear();//         
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT * FROM ViewCartStockItem WHERE Description LIKE '%" + txtSearch.Text + "%' AND Status = 'Sold' OR Date BETWEEN '" + dateStart.Value.ToShortDateString() + "' AND '" + dateEnd.Value.ToShortDateString() + "' ORDER BY Transaction_No DESC", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT * FROM ViewCartStockItem WHERE Description LIKE '%" + txtSearch.Text + "%' AND Status = 'Sold' OR Date BETWEEN '" + dateStart.Value.ToShortDateString() + "' AND '" + dateEnd.Value.ToShortDateString() + "' ORDER BY Transaction_No DESC", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
@@ -593,11 +599,11 @@ namespace Capstone
         {//dataGridViewService
             try
             {
-                cn = new SqlConnection(dbcon.MyConnection());
+                cn = new SQLiteConnection(dbcon.MyConnection);
                 int i = 0;
                 dgv.Rows.Clear();
                 cn.Open(); //Description LIKE '%" + txtSearch.Text + "%' OR Description LIKE '%" + txtSearch.Text + "%'
-                SqlCommand cm = new SqlCommand("SELECT * FROM tblServices WHERE Name LIKE '%" + txtSearch.Text + "%' OR Description LIKE '%" + txtSearch.Text + "%'", cn);
+                SQLiteCommand cm = new SQLiteCommand("SELECT * FROM tblServices WHERE Name LIKE '%" + txtSearch.Text + "%' OR Description LIKE '%" + txtSearch.Text + "%'", cn);
                 dr = cm.ExecuteReader();
                 while (dr.Read())
                 {
@@ -615,16 +621,16 @@ namespace Capstone
             }
         }
 
-        public void LoadRecordServiceAvail(DataGridView dgv, out string serviceTotal, out bool hasRecord)
+        public void LoadRecordServiceAvail(DataGridView dgv, out double serviceTotal, out bool hasRecord)
         {//dataGridViewService
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             int i = 0; hasRecord = false;
             //total = new Label();
             double totalVar = 0;
             //double addToCurrentTotal = double.Parse(total.Text);
             dgv.Rows.Clear();
             cn.Open(); //Description LIKE '%" + txtSearch.Text + "%' OR Description LIKE '%" + txtSearch.Text + "%'
-            SqlCommand cm = new SqlCommand("SELECT * FROM ViewServiceAvailed WHERE Status LIKE 'Pending'", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT * FROM ViewServiceAvailed WHERE Status LIKE 'Pending'", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
@@ -637,7 +643,8 @@ namespace Capstone
             dr.Close();
             cn.Close();
             //totalVar += addToCurrentTotal;
-            serviceTotal = totalVar.ToString("#,##0.00");
+            //serviceTotal = totalVar.ToString("00.00");
+            serviceTotal = totalVar;
             
         }
 
@@ -645,9 +652,9 @@ namespace Capstone
         {
             try
             {
-                cn = new SqlConnection(dbcon.MyConnection());
+                cn = new SQLiteConnection(dbcon.MyConnection);
                 cn.Open();//tblProductType
-                SqlCommand cm = new SqlCommand("SELECT Type FROM tblType", cn);
+                SQLiteCommand cm = new SQLiteCommand("SELECT Type FROM tblType", cn);
                 dr = cm.ExecuteReader();
                 while (dr.Read())
                 {   //comBoxType
@@ -670,9 +677,9 @@ namespace Capstone
             textTypeID.Clear();
             try
             {
-                cn = new SqlConnection(dbcon.MyConnection());
+                cn = new SQLiteConnection(dbcon.MyConnection);
                 cn.Open();//tblProductType
-                SqlCommand cm = new SqlCommand("SELECT Type_ID, Product FROM tblType WHERE Type LIKE '" + comboBoxType.Text + "'", cn);
+                SQLiteCommand cm = new SQLiteCommand("SELECT Type_ID, Product FROM tblType WHERE Type LIKE '" + comboBoxType.Text + "'", cn);
                 dr = cm.ExecuteReader();
                 while (dr.Read())
                 {
@@ -696,9 +703,9 @@ namespace Capstone
             textProductIDType.Clear();
             try
             {
-                cn = new SqlConnection(dbcon.MyConnection());
+                cn = new SQLiteConnection(dbcon.MyConnection);
                 cn.Open();
-                SqlCommand cm = new SqlCommand("SELECT Product_ID FROM tblProduct WHERE Product LIKE '%" + comboBoxProductType.Text + "'", cn);
+                SQLiteCommand cm = new SQLiteCommand("SELECT Product_ID FROM tblProduct WHERE Product LIKE '%" + comboBoxProductType.Text + "'", cn);
                 dr = cm.ExecuteReader();
                 while (dr.Read())
                 {
@@ -721,9 +728,9 @@ namespace Capstone
         {// comBoxProductType
             try
             {
-                cn = new SqlConnection(dbcon.MyConnection());
+                cn = new SQLiteConnection(dbcon.MyConnection);
                 cn.Open();
-                SqlCommand cm = new SqlCommand("SELECT Product FROM tblProduct", cn);
+                SQLiteCommand cm = new SQLiteCommand("SELECT Product FROM tblProduct", cn);
                 dr = cm.ExecuteReader();
                 while (dr.Read())
                 {
@@ -741,10 +748,10 @@ namespace Capstone
 
         public void LoadUnitMeasure(ComboBox comboBoxUnit)
         {//comBoxUnit
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             comboBoxUnit.Items.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT UnitMeasure FROM tblUnitMeasure", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT UnitMeasure FROM tblUnitMeasure", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {

@@ -8,14 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+
+using System.Data.SQLite;
 namespace Capstone
 {
     public partial class frmExpListDispose : Form
     {
-        SqlConnection cn = new SqlConnection();
-        SqlCommand cm = new SqlCommand();
+        SQLiteConnection cn = new SQLiteConnection();
+        SQLiteCommand cm = new SQLiteCommand();
         DBConnection dbcon = new DBConnection();
-        SqlDataReader dr;
+        SQLiteDataReader dr;
         ClassInventory classInvent = new ClassInventory();
         string title = "BICO-JOSE System";
         frmInventory frmL;
@@ -24,7 +26,7 @@ namespace Capstone
         public frmExpListDispose(frmInventory frmL)
         {
             InitializeComponent();
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             this.frmL = frmL;
         }
 
@@ -48,17 +50,17 @@ namespace Capstone
                     if (frmP.lblGrant.Text == "1")
                     {
                         cn.Open();
-                        cm = new SqlCommand("Update tblStockInventory SET Status = 'Dispose', Disposal_Date = '"+lblDisposalDate.Text+"' WHERE id LIKE '" + dataGridViewExpLis.Rows[e.RowIndex].Cells[1].Value.ToString() + "'", cn);
+                        cm = new SQLiteCommand("Update tblStockInventory SET Status = 'Dispose', Disposal_Date = '" +lblDisposalDate.Text+"' WHERE id LIKE '" + dataGridViewExpLis.Rows[e.RowIndex].Cells[1].Value.ToString() + "'", cn);
                         cm.ExecuteNonQuery();
                         cn.Close();
 
                         cn.Open();
-                        cm = new SqlCommand("Update tblItem SET Quantity = Quantity - "+ disposeQty + " WHERE Item_ID LIKE '" + ITMID + "'", cn);
+                        cm = new SQLiteCommand("Update tblItem SET Quantity = Quantity - " + disposeQty + " WHERE Item_ID LIKE '" + ITMID + "'", cn);
                         cm.ExecuteNonQuery();
                         cn.Close();
 
                         cn.Open();
-                        cm = new SqlCommand("Update tblStock SET Item_Status = 'Dispose' WHERE Num LIKE '" + dataGridViewExpLis.Rows[e.RowIndex].Cells[5].Value.ToString() + "'", cn);
+                        cm = new SQLiteCommand("Update tblStock SET Item_Status = 'Dispose' WHERE Num LIKE '" + dataGridViewExpLis.Rows[e.RowIndex].Cells[5].Value.ToString() + "'", cn);
                         cm.ExecuteNonQuery();
                         cn.Close();
 

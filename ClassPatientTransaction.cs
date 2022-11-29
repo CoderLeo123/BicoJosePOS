@@ -4,24 +4,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Data.SQLite;
 namespace Capstone
 {
     internal class ClassPatientTransaction
     {
-        SqlConnection cn = new SqlConnection();
+        SQLiteConnection cn = new SQLiteConnection();
         //SqlCommand cm = new SqlCommand();
         DBConnection dbcon = new DBConnection();
-        SqlDataReader dr;
+        SQLiteDataReader dr;
         ClassComputations classCompute = new ClassComputations();
         string title = "BICO-JOSE System";
 
         public void LoadRecordsTransacHist(DataGridView dgv, TextBox txtSearch)
         {//dataGridViewTransacHist, txtSearchTransac
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             int i = 0;
             dgv.Rows.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT DISTINCT Num, Customer, Transaction_No, Cashier, Date FROM ViewPaymentCart WHERE Customer LIKE '%" + txtSearch.Text + "%' OR Cashier LIKE '%" + txtSearch.Text + "%' ", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT DISTINCT Num, Customer, Transaction_No, Cashier, Date FROM ViewPaymentCart WHERE Customer LIKE '%" + txtSearch.Text + "%' OR Cashier LIKE '%" + txtSearch.Text + "%' ", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
@@ -46,11 +47,11 @@ namespace Capstone
 
         public void LoadRecordsTransacSettled(DataGridView dgv, TextBox txtSearch)
         {//dataGridViewTransacHist, txtSearchTransac
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             int i = 0;
             dgv.Rows.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT DISTINCT Num, Customer, New_TransacNo, Cashier, Transaction_Date, Transaction_No FROM tblReceiptSettle WHERE Customer LIKE '%" + txtSearch.Text + "%' OR Cashier LIKE '%" + txtSearch.Text + "%' ", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT DISTINCT Num, Customer, New_TransacNo, Cashier, Transaction_Date, Transaction_No FROM tblReceiptSettle WHERE Customer LIKE '%" + txtSearch.Text + "%' OR Cashier LIKE '%" + txtSearch.Text + "%' ", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
@@ -74,11 +75,11 @@ namespace Capstone
         }
         public void LoadPatientTransactionList(DataGridView dgv, string pID)
         {//dataGridViewTransacHist, txtSearchTransac
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             int i = 0;
             dgv.Rows.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT * FROM tblPatientTransaction WHERE Patient_ID LIKE '"+ pID + "'", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT * FROM tblPatientTransaction WHERE Patient_ID LIKE '" + pID + "'", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
@@ -94,9 +95,9 @@ namespace Capstone
         public void LoadPatientDetails(string pID, out string FullName, out string Address, out string Phone, out string Age, out string Date, out string Note)
         {
             FullName = ""; Address = ""; Phone = ""; Age = ""; Date = ""; Note = "";
-            cn = new SqlConnection(dbcon.MyConnection());           
+            cn = new SQLiteConnection(dbcon.MyConnection);           
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT * FROM tblPatientRecord WHERE Patient_ID LIKE '%" + pID + "%'", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT * FROM tblPatientRecord WHERE Patient_ID LIKE '%" + pID + "%'", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
@@ -108,11 +109,11 @@ namespace Capstone
         }
         public void LoadPrescription(DataGridView dgv, string prescID)
         {
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             
             dgv.Rows.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT * FROM tblPrescription WHERE Prescript_No LIKE '%" + prescID + "%'", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT * FROM tblPrescription WHERE Prescript_No LIKE '%" + prescID + "%'", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
@@ -127,9 +128,9 @@ namespace Capstone
         {
             FramePrice = ""; LensPrice = ""; TotalCost = ""; NetTotal = ""; Deposit = ""; Balance = ""; Discount = ""; DueDate = "";
 
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT * FROM tblReceipt WHERE Transaction_No LIKE '%" + transNo + "%'", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT * FROM tblReceipt WHERE Transaction_No LIKE '%" + transNo + "%'", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
@@ -144,9 +145,9 @@ namespace Capstone
         {
             NetTotal = ""; Payment = ""; DueDate = "";
 
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT Net_Total, Payment, Transaction_Date FROM tblReceiptSettle WHERE New_TransacNo LIKE '%" + transNo + "%'", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT Net_Total, Payment, Transaction_Date FROM tblReceiptSettle WHERE New_TransacNo LIKE '%" + transNo + "%'", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
@@ -159,10 +160,10 @@ namespace Capstone
         public void LoadItems(DataGridView dgv, string transNo, out int RowCount)
         {
             RowCount = 0;
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             dgv.Rows.Clear(); 
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT Quantity, Description FROM ViewCartStockItem WHERE Transaction_No LIKE '%" + transNo + "%' AND Lense_Check = 1", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT Quantity, Description FROM ViewCartStockItem WHERE Transaction_No LIKE '%" + transNo + "%' AND Lense_Check = 1", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
@@ -175,10 +176,10 @@ namespace Capstone
         public void LoadLense(DataGridView dgv, string transNo, out int RowCount)
         {
             RowCount = 0;
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             dgv.Rows.Clear();
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT Quantity, Description FROM ViewCartStockItem WHERE Transaction_No LIKE '%" + transNo + "%' AND Lense_Check = 0", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT Quantity, Description FROM ViewCartStockItem WHERE Transaction_No LIKE '%" + transNo + "%' AND Lense_Check = 0", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {

@@ -8,18 +8,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Data.SQLite;
 namespace Capstone
 {
     public partial class frmEditOrder : Form
     {
-        SqlConnection cn = new SqlConnection();
-        SqlCommand cm = new SqlCommand();
+        SQLiteConnection cn = new SQLiteConnection();
+        SQLiteCommand cm = new SQLiteCommand();
         DBConnection dbcon = new DBConnection();
         ClassGenerateID classGenerateID = new ClassGenerateID();
         ClassPaymentOrderMonitoring classLoad = new ClassPaymentOrderMonitoring();
         ClassReports classReport = new ClassReports();
         List<ItemList> List = new List<ItemList>();
-        SqlDataReader dr;
+        SQLiteDataReader dr;
         string title = "BICO-JOSE System", transNo = "";
         frmPaymentStatus frmL;
         private bool mouseDown;
@@ -29,7 +30,7 @@ namespace Capstone
         public frmEditOrder(frmPaymentStatus frmL)
         {
             InitializeComponent();
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             this.frmL = frmL;
             previewItems();
         }
@@ -63,7 +64,7 @@ namespace Capstone
                 if (MessageBox.Show("Are you sure you want to save this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     cn.Open();
-                    cm = new SqlCommand("UPDATE tblOrderStatus SET Status = 'Claimed', Release_By = @Release_By, Date_Claimed = @Date_Claimed WHERE Transaction_No LIKE '" + TransNo + "'", cn);
+                    cm = new SQLiteCommand("UPDATE tblOrderStatus SET Status = 'Claimed', Release_By = @Release_By, Date_Claimed = @Date_Claimed WHERE Transaction_No LIKE '" + TransNo + "'", cn);
                     cm.Parameters.AddWithValue("@Release_By", releaseBy);
                     cm.Parameters.AddWithValue("@Date_Claimed", claimDate);
                     
@@ -93,7 +94,7 @@ namespace Capstone
                 if (MessageBox.Show("Are you sure you want to save this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     cn.Open();
-                    cm = new SqlCommand("UPDATE tblOrderStatus SET Status = 'Arrived', Received_By = @Received_By, Arrival_Date = @Date_Arrived WHERE Transaction_No LIKE '" + TransNo + "'", cn);
+                    cm = new SQLiteCommand("UPDATE tblOrderStatus SET Status = 'Arrived', Received_By = @Received_By, Arrival_Date = @Date_Arrived WHERE Transaction_No LIKE '" + TransNo + "'", cn);
                     cm.Parameters.AddWithValue("@Received_By", receivedBy);
                     cm.Parameters.AddWithValue("@Date_Arrived", arrivedDate);
 
@@ -167,21 +168,30 @@ namespace Capstone
         }
         public void tblAvailedList(string transacNo, out int rowCount)
         {
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             //Desc = ""; Price = ""; Quant = ""; Total = ""; UnitM = "";
             rowCount = 0; List.Clear();
+            int count, rowCountAll = 0, quanti = 0; string des = "", UnitMe = "";
+            double price = 0, total = 0;
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT Description, Price, Quantity, Total, Unit_Measure FROM ViewCartStockItem WHERE Transaction_No LIKE '" + transacNo + "'", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT Description, Price, Quantity, Total, Unit_Measure FROM ViewCartStockItem WHERE Transaction_No LIKE '" + transacNo + "'", cn);
             dr = cm.ExecuteReader();
 
             while (dr.Read())
             {
+                des = dr[0].ToString(); UnitMe = dr[4].ToString(); price = double.Parse(dr[1].ToString());
+                total = double.Parse(dr[3].ToString()); quanti = int.Parse(dr[2].ToString());
                 ItemList IList = new ItemList();
-                IList.Desc = dr.GetString(0);//"Description"
-                IList.Price = dr.GetDouble(1);//"Price"
-                IList.Qty = dr.GetInt32(2);//"Quantity"
-                IList.Total = dr.GetDouble(3);//"Total"
-                IList.UnitM = dr.GetString(4);//"Unit_Measure"
+                //IList.Desc = dr.GetString(0);//"Description"
+                //IList.Price = dr.GetDouble(1);//"Price"
+                //IList.Qty = dr.GetInt32(2);//"Quantity"
+                //IList.Total = dr.GetDouble(3);//"Total"
+                //IList.UnitM = dr.GetString(4);//"Unit_Measure"
+                IList.Desc = des;//"Description"
+                IList.Price = price;//"Price"
+                IList.Qty = quanti;//"Quantity"
+                IList.Total = total;//"Total"
+                IList.UnitM = UnitMe;//"Unit_Measure"
                 List.Add(IList);
                 rowCount++;
 
@@ -226,6 +236,8 @@ namespace Capstone
             frm.labelBal.Text = "Customer ";
             frm.labelBal.Visible = true;
             frm.txtRemBalances.Visible = false;
+            frm.txtMoney.Visible = false;
+            frm.lblMoneyTitle.Visible = false;
             frm.lblChangeDueDate.Visible = false;
             frm.labelTot.Text = "Balance Due";
             frm.panelDepositDueDate.Visible = true;

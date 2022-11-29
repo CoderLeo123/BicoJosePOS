@@ -8,16 +8,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Data.SQLite;
 namespace Capstone
 {
     public partial class frmAddAccessories : Form
     {
-        SqlConnection cn = new SqlConnection();
-        SqlCommand cm = new SqlCommand();
+        SQLiteConnection cn = new SQLiteConnection();
+        SQLiteCommand cm = new SQLiteCommand();
         DBConnection dbcon = new DBConnection();
         ClassGenerateID classGenerateID = new ClassGenerateID();
         ClassLoadData classLoadData = new ClassLoadData();
-        SqlDataReader dr;
+        SQLiteDataReader dr;
         string title = "BICO-JOSE System"; bool duplicate = false;        
         frmProductsList frmList;
         private bool mouseDown;
@@ -26,7 +27,7 @@ namespace Capstone
         public frmAddAccessories(frmProductsList frmAdd)
         {
             InitializeComponent();
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             frmList = frmAdd;
             classLoadData.LoadRecordsItem(frmList.dataGridViewItems, frmList.txtSearch);
         }
@@ -142,7 +143,7 @@ namespace Capstone
                     if (MessageBox.Show("Are you sure you want to save this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         cn.Open();
-                        cm = new SqlCommand("INSERT INTO tblServices (Service_ID, Name, Description, Price, Display_Price) VALUES(@ID, @Name, @Description, @Price, @Display_Price)", cn);
+                        cm = new SQLiteCommand("INSERT INTO tblServices (Service_ID, Name, Description, Price, Display_Price) VALUES(@ID, @Name, @Description, @Price, @Display_Price)", cn);
                         cm.Parameters.AddWithValue("@ID", txtServiceID.Text);
                         cm.Parameters.AddWithValue("@Name", txtServiceName.Text);
                         cm.Parameters.AddWithValue("@Description", txtServiceDesc.Text);
@@ -180,7 +181,7 @@ namespace Capstone
                   if (MessageBox.Show("Are you sure you want to update this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         cn.Open();
-                        cm = new SqlCommand("UPDATE tblServices SET Service_ID = @ID, Name = @Name, Description = @Description, Price = @Price, Display_Price = @Display_Price WHERE Service_ID LIKE '" + txtServiceID.Text + "'", cn);
+                        cm = new SQLiteCommand("UPDATE tblServices SET Service_ID = @ID, Name = @Name, Description = @Description, Price = @Price, Display_Price = @Display_Price WHERE Service_ID LIKE '" + txtServiceID.Text + "'", cn);
                         cm.Parameters.AddWithValue("@ID", txtServiceID.Text);
                         cm.Parameters.AddWithValue("@Name", txtServiceName.Text);
                         cm.Parameters.AddWithValue("@Description", txtServiceDesc.Text);
@@ -234,7 +235,7 @@ namespace Capstone
                     if (MessageBox.Show("Are you sure you want to save this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         cn.Open();
-                        cm = new SqlCommand("INSERT INTO tblType (Type_ID, Type, Product_ID, Product) VALUES(@ID, @Type, @ProductID, @Product)", cn);
+                        cm = new SQLiteCommand("INSERT INTO tblType (Type_ID, Type, Product_ID, Product) VALUES(@ID, @Type, @ProductID, @Product)", cn);
                         cm.Parameters.AddWithValue("@ID", txtTypID.Text);
                         cm.Parameters.AddWithValue("@ProductID", txtProductIDType.Text);
                         cm.Parameters.AddWithValue("@Product", comBoxProductType.Text);
@@ -273,7 +274,7 @@ namespace Capstone
                     if (MessageBox.Show("Are you sure you want to save this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         cn.Open();
-                        cm = new SqlCommand("INSERT INTO tblProduct (Product_ID, Product) VALUES(@ID, @Product)", cn);
+                        cm = new SQLiteCommand("INSERT INTO tblProduct (Product_ID, Product) VALUES(@ID, @Product)", cn);
                         cm.Parameters.AddWithValue("@ID", txtProdID.Text);
                         cm.Parameters.AddWithValue("@Product", txtProdName.Text);
 
@@ -304,7 +305,7 @@ namespace Capstone
                     if (MessageBox.Show("Are you sure you want to update this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         cn.Open();
-                        cm = new SqlCommand("UPDATE tblProduct SET Product_ID = @ID, Product = @Product WHERE Product_ID LIKE '" + txtProdID.Text + "'", cn);
+                        cm = new SQLiteCommand("UPDATE tblProduct SET Product_ID = @ID, Product = @Product WHERE Product_ID LIKE '" + txtProdID.Text + "'", cn);
                         cm.Parameters.AddWithValue("@ID", txtProdID.Text);
                         cm.Parameters.AddWithValue("@Product", txtProdName.Text);
                         cm.ExecuteNonQuery();
@@ -332,7 +333,7 @@ namespace Capstone
                     if (MessageBox.Show("Are you sure you want to update this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         cn.Open();
-                        cm = new SqlCommand("UPDATE tblType SET Type_ID = @ID, Type = @Type, Product_ID = @ProductID, Product = @Product WHERE Type_ID LIKE '" + txtTypID.Text + "'", cn);
+                        cm = new SQLiteCommand("UPDATE tblType SET Type_ID = @ID, Type = @Type, Product_ID = @ProductID, Product = @Product WHERE Type_ID LIKE '" + txtTypID.Text + "'", cn);
                         cm.Parameters.AddWithValue("@ID", txtTypID.Text);
                         cm.Parameters.AddWithValue("@ProductID", txtProductIDType.Text);
                         cm.Parameters.AddWithValue("@Product", comBoxProductType.Text);
@@ -390,7 +391,7 @@ namespace Capstone
                     if (MessageBox.Show("Are you sure you want to save this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         cn.Open();
-                        cm = new SqlCommand("INSERT INTO tblItem (Item_ID, Type_ID, Description, Price, Classification, Type, Stock_Level, Unit_Measure, Display_Price) VALUES(@ID, @TypeID, @Description, @Price, @Classification, @Type, @Stock_Level, @Unit_Measure, @Display_Price)", cn);
+                        cm = new SQLiteCommand("INSERT INTO tblItem (Item_ID, Type_ID, Description, Price, Classification, Type, Stock_Level, Unit_Measure, Display_Price) VALUES(@ID, @TypeID, @Description, @Price, @Classification, @Type, @Stock_Level, @Unit_Measure, @Display_Price)", cn);
                         cm.Parameters.AddWithValue("@ID", txtID.Text);
                         cm.Parameters.AddWithValue("@Description", txtDescription.Text);
                         cm.Parameters.AddWithValue("@TypeID", txtTypeID.Text);
@@ -431,7 +432,7 @@ namespace Capstone
                     if (MessageBox.Show("Are you sure you want to update this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         cn.Open();
-                        cm = new SqlCommand("UPDATE tblItem SET Item_ID = @ItemID, Type_ID = @TypeID, Description = @Description, Price = @Price, Classification = @Classification, Display_Price = @Display_Price WHERE Item_ID LIKE '" + txtID.Text + "'", cn);
+                        cm = new SQLiteCommand("UPDATE tblItem SET Item_ID = @ItemID, Type_ID = @TypeID, Description = @Description, Price = @Price, Classification = @Classification, Display_Price = @Display_Price WHERE Item_ID LIKE '" + txtID.Text + "'", cn);
                         cm.Parameters.AddWithValue("@ItemID", txtID.Text);
                         cm.Parameters.AddWithValue("@Description", txtDescription.Text);
                         cm.Parameters.AddWithValue("@Price", Price);
@@ -489,9 +490,9 @@ namespace Capstone
 
         public void scanForDuplicateName(string col, string tbl, TextBox Name, out bool found)
         {            
-            cn = new SqlConnection(dbcon.MyConnection());            
+            cn = new SQLiteConnection(dbcon.MyConnection);            
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT "+ col + " FROM " + tbl + "  WHERE " + col + " LIKE @Name", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT " + col + " FROM " + tbl + "  WHERE " + col + " LIKE @Name", cn);
             cm.Parameters.AddWithValue("@Name", Name.Text);            
             dr = cm.ExecuteReader();
             dr.Read();

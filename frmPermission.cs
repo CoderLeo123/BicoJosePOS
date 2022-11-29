@@ -8,14 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Data.SQLite;
 namespace Capstone
 {
     public partial class frmPermission : Form
     {
-        SqlConnection cn = new SqlConnection();
-        SqlCommand cm = new SqlCommand();
+        SQLiteConnection cn = new SQLiteConnection();
+        SQLiteCommand cm = new SQLiteCommand();
         DBConnection dbcon = new DBConnection();
-        SqlDataReader dr;
+        SQLiteDataReader dr;
         ClassGenerateID classGenerateID = new ClassGenerateID();
         ClassLoadData classLoadData = new ClassLoadData();
         string title = "BICO-JOSE System";
@@ -24,7 +25,7 @@ namespace Capstone
         public frmPermission()
         {
             InitializeComponent();
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             confirm();
             lblGrant.Text = "0";
             txtAdminPassword.PasswordChar = '●'; txtAdminPassword.MaxLength = 14;
@@ -78,7 +79,7 @@ namespace Capstone
 
 
             cn.Open();
-            cm = new SqlCommand("SELECT Password, User_ID FROM tblUser WHERE Password LIKE '%" + txtAdminPassword.Text + "%' AND User_Type LIKE '%Master%'", cn);
+            cm = new SQLiteCommand("SELECT Password, User_ID FROM tblUser WHERE Password LIKE '%" + txtAdminPassword.Text + "%' AND User_Type LIKE '%Master%'", cn);
             dr = cm.ExecuteReader();
             dr.Read();
             if (dr.HasRows)

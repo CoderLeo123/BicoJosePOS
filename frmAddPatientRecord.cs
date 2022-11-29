@@ -8,14 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Data.SQLite;
 namespace Capstone
 {
     public partial class frmAddPatientRecord : Form
     {
-        SqlConnection cn = new SqlConnection();
-        SqlCommand cm = new SqlCommand();
+        SQLiteConnection cn = new SQLiteConnection();
+        SQLiteCommand cm = new SQLiteCommand();
         DBConnection dbcon = new DBConnection();
-        SqlDataReader dr;
+        SQLiteDataReader dr;
         ClassComputations classCompute = new ClassComputations();
         ClassLoadData classLoadData = new ClassLoadData();
         ClassLoginAndSignUp classLoginMethod = new ClassLoginAndSignUp();
@@ -27,7 +28,7 @@ namespace Capstone
         public frmAddPatientRecord(frmPatientRecord frmA)
         {
             InitializeComponent();
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             frmL = frmA;     
         }
         public void MethodCheckForBlank()
@@ -134,7 +135,7 @@ namespace Capstone
                 if (MessageBox.Show("Are you sure you want to save this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     cn.Open();
-                    cm = new SqlCommand("INSERT INTO tblPatientRecord (Patient_ID, Customer_Name, Address, Contact, Age, Gender, Check_Up_Date, Prescript_No, Birth_Date, First_Name, Last_Name) VALUES(@Patient_ID, @Customer_Name, @Address, @Contact, @Age, @Gender, @Check_Up_Date, @Prescript_No, @Birth_Date, @First_Name, @Last_Name)", cn);
+                    cm = new SQLiteCommand("INSERT INTO tblPatientRecord (Patient_ID, Customer_Name, Address, Contact, Age, Gender, Check_Up_Date, Prescript_No, Birth_Date, First_Name, Last_Name) VALUES(@Patient_ID, @Customer_Name, @Address, @Contact, @Age, @Gender, @Check_Up_Date, @Prescript_No, @Birth_Date, @First_Name, @Last_Name)", cn);
                     cm.Parameters.AddWithValue("@Patient_ID", txtAddPatientID.Text);
                     cm.Parameters.AddWithValue("@Prescript_No", txtAddPrescNum.Text);
                     cm.Parameters.AddWithValue("@Customer_Name", CName);
@@ -151,7 +152,7 @@ namespace Capstone
                     cn.Close();
 
                     cn.Open();
-                    cm = new SqlCommand("INSERT INTO tblPrescription (Patient_ID, Prescript_No, SPH_OD, CYL_OD, AXIS_OD, PD_OD, ADD_OD, SPH_OS, CYL_OS, AXIS_OS, ADD_OS, PD_OS) VALUES(@Patient_ID, @Prescript_No, @SPH_OD, @CYL_OD, @AXIS_OD, @PD_OD, @ADD_OD, @SPH_OS, @CYL_OS, @AXIS_OS, @ADD_OS, @PD_OS)", cn);
+                    cm = new SQLiteCommand("INSERT INTO tblPrescription (Patient_ID, Prescript_No, SPH_OD, CYL_OD, AXIS_OD, PD_OD, ADD_OD, SPH_OS, CYL_OS, AXIS_OS, ADD_OS, PD_OS) VALUES(@Patient_ID, @Prescript_No, @SPH_OD, @CYL_OD, @AXIS_OD, @PD_OD, @ADD_OD, @SPH_OS, @CYL_OS, @AXIS_OS, @ADD_OS, @PD_OS)", cn);
                     cm.Parameters.AddWithValue("@Patient_ID", txtAddPatientID.Text);
                     cm.Parameters.AddWithValue("@Prescript_No", txtAddPrescNum.Text);
                     cm.Parameters.AddWithValue("@SPH_OD", txtAddODSPH.Text);
@@ -298,7 +299,7 @@ namespace Capstone
                 if (MessageBox.Show("Are you sure you want to update this record?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     cn.Open();
-                    cm = new SqlCommand("UPDATE tblPatientRecord SET Customer_Name = @Customer_Name, Address = @Address, Contact = @Contact, Age = @Age, Gender = @Gender, Check_Up_Date = @Check_Up_Date, Birth_Date = @Birth_Date, First_Name = @First_Name, Last_Name = @Last_Name, Note = @Note WHERE Patient_ID LIKE '" + pID + "'", cn);                    
+                    cm = new SQLiteCommand("UPDATE tblPatientRecord SET Customer_Name = @Customer_Name, Address = @Address, Contact = @Contact, Age = @Age, Gender = @Gender, Check_Up_Date = @Check_Up_Date, Birth_Date = @Birth_Date, First_Name = @First_Name, Last_Name = @Last_Name, Note = @Note WHERE Patient_ID LIKE '" + pID + "'", cn);                    
                     cm.Parameters.AddWithValue("@Customer_Name", CName);
                     cm.Parameters.AddWithValue("@Address", address);
                     cm.Parameters.AddWithValue("@Contact", contact);
@@ -313,7 +314,7 @@ namespace Capstone
                     cn.Close();
 
                     cn.Open();
-                    cm = new SqlCommand("UPDATE tblPrescription SET SPH_OD = @SPH_OD, CYL_OD = @CYL_OD, AXIS_OD = @AXIS_OD, PD_OD = @PD_OD, ADD_OD = @ADD_OD, SPH_OS = @SPH_OS, CYL_OS = @CYL_OS, AXIS_OS = @AXIS_OS, PD_OS = @PD_OS, ADD_OS = @ADD_OS WHERE Patient_ID LIKE '" + pID + "'", cn);
+                    cm = new SQLiteCommand("UPDATE tblPrescription SET SPH_OD = @SPH_OD, CYL_OD = @CYL_OD, AXIS_OD = @AXIS_OD, PD_OD = @PD_OD, ADD_OD = @ADD_OD, SPH_OS = @SPH_OS, CYL_OS = @CYL_OS, AXIS_OS = @AXIS_OS, PD_OS = @PD_OS, ADD_OS = @ADD_OS WHERE Patient_ID LIKE '" + pID + "'", cn);
                     cm.Parameters.AddWithValue("@SPH_OD", ODSPH);
                     cm.Parameters.AddWithValue("@CYL_OD", ODCYL);
                     cm.Parameters.AddWithValue("@AXIS_OD", ODAXIS);
@@ -367,7 +368,7 @@ namespace Capstone
                     if (frmP.lblGrant.Text == "1")
                     {
                         cn.Open();
-                        cm = new SqlCommand("DELETE FROM tblPatientTransaction WHERE Num LIKE '" + num + "'", cn);
+                        cm = new SQLiteCommand("DELETE FROM tblPatientTransaction WHERE Num LIKE '" + num + "'", cn);
                         cm.ExecuteNonQuery();
                         cn.Close();
                         MessageBox.Show("Transaction has been successfully removed.", title, MessageBoxButtons.OK, MessageBoxIcon.Information);

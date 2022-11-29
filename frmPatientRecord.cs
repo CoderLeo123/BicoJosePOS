@@ -8,14 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Data.SQLite;
 namespace Capstone
 {
     public partial class frmPatientRecord : Form
     {
-        SqlConnection cn = new SqlConnection();
-        SqlCommand cm = new SqlCommand();
+        SQLiteConnection cn = new SQLiteConnection();
+        SQLiteCommand cm = new SQLiteCommand();
         DBConnection dbcon = new DBConnection();
-        SqlDataReader dr;
+        SQLiteDataReader dr;
         ClassGenerateID classGenerateID = new ClassGenerateID();
         ClassLoadData classLoadData = new ClassLoadData();
         ClassPatientTransaction classPatient = new ClassPatientTransaction();
@@ -57,12 +58,12 @@ namespace Capstone
         }
         public void LoadPrescription(string PID, out string ODSPH, out string ODCYL, out string ODAXIS, out string ODADD, out string ODPD, out string OSSPH, out string OSCYL, out string OSAXIS, out string OSADD, out string OSPD)
         {
-            cn = new SqlConnection(dbcon.MyConnection());
+            cn = new SQLiteConnection(dbcon.MyConnection);
             ODSPH = ""; ODCYL = ""; ODAXIS = ""; ODADD = ""; ODPD = "";
             OSSPH = ""; OSCYL = ""; OSAXIS = ""; OSADD = ""; OSPD = "";
 
             cn.Open();
-            SqlCommand cm = new SqlCommand("SELECT * FROM tblPrescription WHERE Patient_ID LIKE '%" + PID + "%'", cn);
+            SQLiteCommand cm = new SQLiteCommand("SELECT * FROM tblPrescription WHERE Patient_ID LIKE '%" + PID + "%'", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
@@ -149,7 +150,7 @@ namespace Capstone
                     if (MessageBox.Show("Remove this Item?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         cn.Open();
-                        cm = new SqlCommand("DELETE FROM tblPatientRecord WHERE Patient_ID LIKE '" + PatID + "'", cn);
+                        cm = new SQLiteCommand("DELETE FROM tblPatientRecord WHERE Patient_ID LIKE '" + PatID + "'", cn);
                         cm.ExecuteNonQuery();
                         cn.Close();
                         MessageBox.Show("Record has been successfully deleted.", title, MessageBoxButtons.OK, MessageBoxIcon.Information);
