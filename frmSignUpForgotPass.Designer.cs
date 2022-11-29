@@ -34,6 +34,8 @@
             this.tabControlRegister = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panelSignUp = new System.Windows.Forms.Panel();
+            this.lblMaster = new System.Windows.Forms.Label();
+            this.btnEditUser = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.lblPermi = new System.Windows.Forms.Label();
             this.lblUserID = new System.Windows.Forms.Label();
@@ -60,7 +62,7 @@
             this.txtConfirmNewPass = new System.Windows.Forms.TextBox();
             this.txtNewPassword = new System.Windows.Forms.TextBox();
             this.btnResetPass = new System.Windows.Forms.Button();
-            this.btnEditUser = new System.Windows.Forms.Button();
+            this.sqliteCommand1 = new Microsoft.Data.Sqlite.SqliteCommand();
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
@@ -131,6 +133,7 @@
             // 
             // panelSignUp
             // 
+            this.panelSignUp.Controls.Add(this.lblMaster);
             this.panelSignUp.Controls.Add(this.btnEditUser);
             this.panelSignUp.Controls.Add(this.label1);
             this.panelSignUp.Controls.Add(this.lblPermi);
@@ -153,6 +156,34 @@
             this.panelSignUp.Size = new System.Drawing.Size(633, 519);
             this.panelSignUp.TabIndex = 0;
             this.panelSignUp.Paint += new System.Windows.Forms.PaintEventHandler(this.panelSignUp_Paint);
+            // 
+            // lblMaster
+            // 
+            this.lblMaster.AutoSize = true;
+            this.lblMaster.ForeColor = System.Drawing.Color.Red;
+            this.lblMaster.Location = new System.Drawing.Point(456, 409);
+            this.lblMaster.Name = "lblMaster";
+            this.lblMaster.Size = new System.Drawing.Size(67, 38);
+            this.lblMaster.TabIndex = 84;
+            this.lblMaster.Text = "mas";
+            this.lblMaster.Visible = false;
+            // 
+            // btnEditUser
+            // 
+            this.btnEditUser.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnEditUser.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEditUser.FlatAppearance.BorderSize = 0;
+            this.btnEditUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditUser.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnEditUser.ForeColor = System.Drawing.Color.White;
+            this.btnEditUser.Location = new System.Drawing.Point(209, 456);
+            this.btnEditUser.Name = "btnEditUser";
+            this.btnEditUser.Size = new System.Drawing.Size(192, 58);
+            this.btnEditUser.TabIndex = 85;
+            this.btnEditUser.Text = "UPDATE";
+            this.btnEditUser.UseVisualStyleBackColor = false;
+            this.btnEditUser.Visible = false;
+            this.btnEditUser.Click += new System.EventHandler(this.btnEditUser_Click);
             // 
             // label1
             // 
@@ -463,22 +494,12 @@
             this.btnResetPass.UseVisualStyleBackColor = false;
             this.btnResetPass.Click += new System.EventHandler(this.btnResetPass_Click);
             // 
-            // btnEditUser
+            // sqliteCommand1
             // 
-            this.btnEditUser.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnEditUser.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEditUser.FlatAppearance.BorderSize = 0;
-            this.btnEditUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditUser.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnEditUser.ForeColor = System.Drawing.Color.White;
-            this.btnEditUser.Location = new System.Drawing.Point(209, 456);
-            this.btnEditUser.Name = "btnEditUser";
-            this.btnEditUser.Size = new System.Drawing.Size(192, 58);
-            this.btnEditUser.TabIndex = 85;
-            this.btnEditUser.Text = "UPDATE";
-            this.btnEditUser.UseVisualStyleBackColor = false;
-            this.btnEditUser.Visible = false;
-            this.btnEditUser.Click += new System.EventHandler(this.btnEditUser_Click);
+            this.sqliteCommand1.CommandTimeout = 30;
+            this.sqliteCommand1.Connection = null;
+            this.sqliteCommand1.Transaction = null;
+            this.sqliteCommand1.UpdatedRowSource = System.Data.UpdateRowSource.None;
             // 
             // frmSignUpForgotPass
             // 
@@ -542,5 +563,7 @@
         public Label label1;
         public Button btnEditUser;
         public Label labelTitle;
+        public Label lblMaster;
+        private Microsoft.Data.Sqlite.SqliteCommand sqliteCommand1;
     }
 }

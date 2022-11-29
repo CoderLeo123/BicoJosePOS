@@ -104,7 +104,8 @@ namespace Capstone
                 
                 lblGrant.Text = "1";
                 lblAdminPassNotice.Text = "Permision Granted";
-                this.Close();
+                //this.Close();
+                this.Hide();
             }
         }
 

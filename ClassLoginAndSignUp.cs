@@ -125,8 +125,7 @@ namespace Capstone
             }
             else
             {
-                insertFirstAdmin("USR1000", "leo", "qweasd", "Leomar", "Cabug", "Master");
-                
+                insertFirstAdmin("USR1000", "Admin", "BicoJose123", "Insert", "Name", "Master");                
             }
             dr.Close();
             cn.Close();
@@ -135,10 +134,7 @@ namespace Capstone
         public void insertFirstAdmin(string user_ID, string UserName, string password, string FName, string LName, string userType)
         {
             cn = new SqlConnection(dbcon.MyConnection());
-            string Name = FName + " " + LName;
-
-            
-
+            string Name = FName + " " + LName;            
             cn.Open();
             SqlCommand cm = new SqlCommand("INSERT INTO tblUser (User_ID, Username, Password, Name, User_Type, FName, LName) VALUES(@User_ID, @Username, @Password, @Name, @User_Type, @FName, @LName)", cn);
             cm.Parameters.AddWithValue("@User_ID", user_ID);

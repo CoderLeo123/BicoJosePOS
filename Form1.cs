@@ -31,7 +31,7 @@ namespace Capstone
             frmLogin frmL = new frmLogin();
             frmL.Hide();
             stockBlinkNotify();
-          
+            //classLoginMethod.insertFirstAdmin("USR1000", "Admin", "BicoJose123", "Insert", "Name", "Master");
         }
         public void addToExpList(string stockNum, string Description, string Expiration_Date, string Quantity, string Unit_Measure)
         {
